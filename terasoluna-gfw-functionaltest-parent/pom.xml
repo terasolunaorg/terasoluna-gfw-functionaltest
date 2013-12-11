@@ -12,7 +12,7 @@
     </parent>
 
     <name>TERASOLUNA Web Blank Project Parent POM</name>
-    <version>1.0.0.RELEASE</version>
+    <version>1.0.1-SNAPSHOT</version>
     <description>TERASOLUNA Web Blank Project Parent POM</description>
     <url>http://terasoluna.org</url>
     <inceptionYear>2013</inceptionYear>
