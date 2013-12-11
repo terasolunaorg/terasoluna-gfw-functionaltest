@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <mvc:annotation-driven>
+        <mvc:argument-resolvers>
+            <bean
+                class="org.springframework.data.web.PageableHandlerMethodArgumentResolver"/>
+            <bean
+                class="org.terasoluna.gfw.web.token.transaction.TransactionTokenContextHandlerMethodArgumentResolver" />
+        </mvc:argument-resolvers>
+    </mvc:annotation-driven>
+
+    <mvc:default-servlet-handler />
+
+    <context:component-scan base-package="org.terasoluna.gfw.functionaltest.app" />
+
+    <mvc:view-controller path="redirect/login" view-name="redirect/login" />
+    
+    <mvc:view-controller path="redirect/withgoto/loginWithGoTo" view-name="redirect/withgoto/loginWithGoTo" />
+
+    <mvc:view-controller path="redirect/withwhitelist/loginWithWhiteList" view-name="redirect/withwhitelist/loginWithWhiteList" />
+
+    <mvc:resources mapping="/resources/**"
+        location="/resources/,classpath:META-INF/resources/"
+        cache-period="#{60 * 60}" />
+
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**" />
+            <mvc:exclude-mapping path="/resources/**" />
+            <mvc:exclude-mapping path="/**/*.html" />
+            <mvc:exclude-mapping path="/logging/traceLoggingInterceptor/customWarnHandling/**" />
+            <bean
+                class="org.terasoluna.gfw.web.logging.TraceLoggingInterceptor" />
+        </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping path="/**" />
+            <mvc:exclude-mapping path="/resources/**" />
+            <mvc:exclude-mapping path="/**/*.html" />
+            <mvc:exclude-mapping
+                path="/transactiontoken/customTransactionStoreSize2/**" />
+            <mvc:exclude-mapping
+                path="/transactiontoken/customTransactionStoreSize1/**" />
+            <bean
+                class="org.terasoluna.gfw.web.token.transaction.TransactionTokenInterceptor" />
+        </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping
+                path="/transactiontoken/customTransactionStoreSize2/**" />
+            <mvc:exclude-mapping path="/resources/**" />
+            <mvc:exclude-mapping path="/**/*.html" />
+            <bean
+                class="org.terasoluna.gfw.web.token.transaction.TransactionTokenInterceptor">
+                <constructor-arg value="2" />
+            </bean>
+        </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping
+                path="/transactiontoken/customTransactionStoreSize1/**" />
+            <mvc:exclude-mapping path="/resources/**" />
+            <mvc:exclude-mapping path="/**/*.html" />
+            <bean
+                class="org.terasoluna.gfw.web.token.transaction.TransactionTokenInterceptor">
+                <constructor-arg value="1" />
+            </bean>
+        </mvc:interceptor>
+
+        <mvc:interceptor>
+            <mvc:mapping path="/**" />
+            <mvc:exclude-mapping path="/resources/**" />
+            <mvc:exclude-mapping path="/**/*.html" />
+            <bean
+                class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" />
+        </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping path="/**" />
+            <mvc:exclude-mapping path="/resources/**" />
+            <mvc:exclude-mapping path="/**/*.html" />
+            <bean
+                class="org.springframework.orm.jpa.support.OpenEntityManagerInViewInterceptor" />
+        </mvc:interceptor>
+         <mvc:interceptor>
+            <mvc:mapping path="/**" />
+            <mvc:exclude-mapping path="/resources/**" />
+            <mvc:exclude-mapping path="/**/*.html" />
+            <mvc:exclude-mapping path="/codelist/fallbackToEn/**" />
+            <mvc:exclude-mapping path="/codelist/fallbackToFr/**" />
+            <mvc:exclude-mapping path="/codelist/noPattern/**" />
+            <mvc:exclude-mapping path="/codelist/jdbcCodeListTestDBError/**" />
+            <bean class="org.terasoluna.gfw.web.codelist.CodeListInterceptor">
+                <property name="codeListIdPattern" value="CL_.+" />
+            </bean>
+        </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping path="/codelist/fallbackToEn/**" />
+            <mvc:exclude-mapping path="/resources/**" />
+            <mvc:exclude-mapping path="/**/*.html" />
+
+            <bean class="org.terasoluna.gfw.web.codelist.CodeListInterceptor">
+                <property name="codeListIdPattern" value="CL_.+" />
+                <property name="fallbackTo" value="en" />
+            </bean>
+        </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping path="/codelist/fallbackToFr/**" />
+            <mvc:exclude-mapping path="/resources/**" />
+            <mvc:exclude-mapping path="/**/*.html" />
+            <bean class="org.terasoluna.gfw.web.codelist.CodeListInterceptor">
+                <property name="codeListIdPattern" value="CL_.+" />
+                <property name="fallbackTo" value="fr" />
+            </bean>
+        </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping path="/codelist/multiplePattern/**" />
+            <mvc:exclude-mapping path="/resources/**" />
+            <mvc:exclude-mapping path="/**/*.html" />
+            <bean class="org.terasoluna.gfw.web.codelist.CodeListInterceptor">
+                <property name="codeListIdPattern" value="CL_.+|SAMPLE_.+" />
+                <property name="fallbackTo" value="fr" />
+            </bean>
+        </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping path="/codelist/jdbcCodeListTestDBError/**" />
+            <mvc:exclude-mapping path="/resources/**" />
+            <mvc:exclude-mapping path="/**/*.html" />
+            <bean class="org.terasoluna.gfw.web.codelist.CodeListInterceptor">
+                <property name="codeListIdPattern" value="CL_CODELIST_WRONG_ITEM" />
+                <property name="fallbackTo" value="fr" />
+            </bean>
+        </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping path="/logging/traceLoggingInterceptor/customWarnHandling/**" />
+            <mvc:exclude-mapping path="/resources/**" />
+            <mvc:exclude-mapping path="/**/*.html" />
+            <bean
+                class="org.terasoluna.gfw.web.logging.TraceLoggingInterceptor">
+                <property name="warnHandlingNanos" value="5000000000" /> 
+            </bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+
+    <bean id="viewResolver"
+        class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/views/" />
+        <property name="suffix" value=".jsp" />
+        <property name="order" value="2" />
+    </bean>
+
+    <bean id="localeResolver"
+        class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
+        <property name="defaultLocale" value="en" />
+    </bean>
+
+    <bean id="multipartResolver"
+        class="org.springframework.web.multipart.support.StandardServletMultipartResolver"> <!-- (1) -->
+    </bean>
+
+    <bean
+        class="org.springframework.web.servlet.view.tiles2.TilesViewResolver">
+        <property name="order" value="1" />
+    </bean>
+
+    <bean class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
+        <property name="definitions">
+            <list>
+                <value>/WEB-INF/tiles/tiles-definitions.xml</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
+        <property name="order" value="1" />
+    </bean>
+
+    <bean id="requestDataValueProcessor"
+        class="org.terasoluna.gfw.web.mvc.support.CompositeRequestDataValueProcessor">
+        <constructor-arg>
+            <util:list>
+                <bean
+                    class="org.springframework.security.web.servlet.support.csrf.CsrfRequestDataValueProcessor"
+                    factory-method="create" />
+                <bean
+                    class="org.terasoluna.gfw.web.token.transaction.TransactionTokenRequestDataValueProcessor" />
+            </util:list>
+        </constructor-arg>
+    </bean>
+
+</beans>

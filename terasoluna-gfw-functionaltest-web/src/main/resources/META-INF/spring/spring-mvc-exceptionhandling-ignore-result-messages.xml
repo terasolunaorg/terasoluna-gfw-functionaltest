@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!-- Common Definition -->
+    <import
+        resource="classpath:/META-INF/spring/spring-mvc-common.xml" />
+
+	<!-- Setting Exception Handling. -->
+	<!-- Exception Resolver. -->
+	<bean class="org.terasoluna.gfw.web.exception.SystemExceptionResolver">
+		<property name="exceptionCodeResolver" ref="exceptionCodeResolver" />
+		<!-- Setting and Customization by project. -->
+		<property name="order" value="3" />
+		<property name="resultMessagesAttribute"><null/></property>
+		<property name="exceptionMappings">
+			<map>
+				<entry key="InvalidTransactionTokenException" value="common/error/tokenError" />
+				<entry key="ResourceNotFoundException" value="common/error/resourceNotFoundError" />
+				<entry key="BusinessException" value="common/error/businessError" />
+			</map>
+		</property>
+		<property name="statusCodes">
+			<map>
+				<entry key="common/error/tokenError" value="409" />
+				<entry key="common/error/resourceNotFoundError" value="404" />
+				<entry key="common/error/businessError" value="409" />
+			</map>
+		</property>
+		<property name="defaultErrorView" value="common/error/systemError" />
+		<property name="defaultStatusCode" value="500" />
+	</bean>
+	<!-- AOP. -->
+	<bean id="handlerExceptionResolverLoggingInterceptor"
+		class="org.terasoluna.gfw.web.exception.HandlerExceptionResolverLoggingInterceptor">
+		<property name="exceptionLogger" ref="exceptionLogger" />
+		<property name="ignoreExceptions">
+			<set>
+				<value>org.springframework.dao.PessimisticLockingFailureException</value>
+			</set>
+		</property>
+	</bean>
+	<aop:config>
+		<aop:advisor advice-ref="handlerExceptionResolverLoggingInterceptor"
+			pointcut="execution(* org.springframework.web.servlet.HandlerExceptionResolver.resolveException(..))" />
+	</aop:config>
+
+</beans>

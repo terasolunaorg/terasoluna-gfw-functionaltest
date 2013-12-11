@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+    xmlns:util="http://www.springframework.org/schema/util"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+        http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
+
+    <import resource="classpath:/META-INF/spring/terasoluna-gfw-functionaltest-env.xml" />
+
+    <jpa:repositories
+        base-package="org.terasoluna.gfw.functionaltest.domain.repository"
+        transaction-manager-ref="jpaTransactionManager" />
+
+    <bean id="jpaVendorAdapter"
+        class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+        <property name="showSql" value="false" />
+        <property name="database" value="${database}" />
+    </bean>
+
+    <bean
+        class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
+        id="abstractEntityManagerFactory" abstract="true">
+        <property name="packagesToScan" value="org.terasoluna.gfw.functionaltest.domain.model" />
+        <property name="jpaVendorAdapter" ref="jpaVendorAdapter" />
+        <property name="jpaPropertyMap">
+            <map>
+                <entry key="hibernate.hbm2ddl.auto" value="none" />
+                <entry key="hibernate.ejb.naming_strategy"
+                    value="org.hibernate.cfg.ImprovedNamingStrategy" />
+                <entry key="hibernate.connection.charSet" value="UTF-8" />
+                <entry key="hibernate.show_sql" value="false" />
+                <entry key="hibernate.format_sql" value="false" />
+                <entry key="hibernate.use_sql_comments" value="true" />
+                <entry key="hibernate.jdbc.batch_size" value="30" />
+                <entry key="hibernate.jdbc.fetch_size" value="100" />
+            </map>
+        </property>
+    </bean>
+
+    <bean id="jdbcTemplate"
+        class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
+        <constructor-arg>
+            <ref bean="dataSource" />
+        </constructor-arg>
+    </bean>
+
+	<bean id="sqlMapClient"
+        class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+        <property name="configLocations"
+            value="classpath*:/META-INF/mybatis/config/*sqlMapConfig.xml" />
+        <property name="mappingLocations"
+            value="classpath*:/META-INF/mybatis/sql/**/*-sqlmap.xml" />
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+    
+    <bean id="queryDAO" class="jp.terasoluna.fw.dao.ibatis.QueryDAOiBatisImpl">
+        <property name="sqlMapClient" ref="sqlMapClient" />
+    </bean>
+
+</beans>

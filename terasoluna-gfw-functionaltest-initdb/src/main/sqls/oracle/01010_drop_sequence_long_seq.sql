@@ -1,0 +1,3 @@
+BEGIN
+DROP_SEQUENCE('long_seq');
+END;

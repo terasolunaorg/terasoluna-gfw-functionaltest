@@ -1,0 +1,450 @@
+/*
+ * Copyright (C) 2013 terasoluna.org
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
+ * either express or implied. See the License for the specific language
+ * governing permissions and limitations under the License.
+ */
+package org.terasoluna.gfw.functionaltest.app.el;
+
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.core.StringContains.containsString;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.fail;
+
+import java.util.concurrent.TimeUnit;
+
+import javax.inject.Inject;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.Select;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.terasoluna.gfw.functionaltest.app.FunctionTestSupport;
+
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = { "classpath:META-INF/spring/seleniumContext.xml" })
+public class ElTest extends FunctionTestSupport {
+
+    @Inject
+    protected WebDriver driver;
+
+    private boolean acceptNextAlert = true;
+    
+    public ElTest() {
+    }
+
+    @Before
+    public void setUp() {
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver.get(applicationContextUrl);
+        driver.findElement(By.id("EL")).click();
+    }
+
+    @Test
+    public void test01_XSS_Measures() {
+
+        driver.findElement(By.id("01")).click();
+        driver.findElement(By.id("text-output")).sendKeys(
+                "<script>alert(\"XSS Attack\")</script>");
+        driver.findElement(By.id("btn-output")).click();
+
+        // output data 01_01 Test
+        // It is an error if the dialog alert has gone out
+        assertThat(driver.findElement(By.id("xssOutput")).getText(),
+                is("<script>alert(\"XSS Attack\")</script>"));
+
+        // screen capture
+        screenCapture.save(driver);
+
+        driver.get(applicationContextUrl);
+        driver.findElement(By.id("EL")).click();
+        driver.findElement(By.id("01")).click();
+        driver.findElement(By.id("text-output")).sendKeys(
+                "<script>alert('XSS Attack')</script>");
+        driver.findElement(By.id("btn-output")).click();
+
+        // output data 01_02 Test
+        // It is an error if the dialog alert has gone out
+        assertThat(driver.findElement(By.id("xssOutput")).getText(),
+                is("<script>alert('XSS Attack')</script>"));
+
+        // screen capture
+        screenCapture.save(driver);
+
+        driver.get(applicationContextUrl);
+        driver.findElement(By.id("EL")).click();
+        driver.findElement(By.id("01")).click();
+        driver.findElement(By.id("text-output")).sendKeys("Spring Framework");
+        driver.findElement(By.id("btn-output")).click();
+
+        // output data 01_03 Test
+        assertThat(driver.findElement(By.id("xssOutput")).getText(),
+                is("Spring Framework"));
+    }
+
+    @Test
+    public void test02_URL_Encoding() {
+
+        driver.findElement(By.id("02")).click();
+        driver.findElement(By.id("text-output")).sendKeys(
+                "http://localhost:8080/spring?hl=ja&tab=Tw#hl=ja&q=あいうえお");
+        driver.findElement(By.id("btn-output")).click();
+
+        // output data 02_01 Test
+        assertThat(
+                driver.findElement(By.id("urlOutput")).getText(),
+                is("http://localhost:8080/spring?hl=ja&tab=Tw#hl=ja&q=%E3%81%82%E3%81%84%E3%81%86%E3%81%88%E3%81%8A"));
+
+        // screen capture
+        screenCapture.save(driver);
+
+        driver.get(applicationContextUrl);
+        driver.findElement(By.id("EL")).click();
+        driver.findElement(By.id("02")).click();
+        driver.findElement(By.id("text-output")).sendKeys(
+                "http://localhost:8080/spring");
+        driver.findElement(By.id("btn-output")).click();
+
+        // output data 02_02 Test
+        assertThat(driver.findElement(By.id("urlOutput")).getText(),
+                is("http://localhost:8080/spring"));
+    }
+
+    @Test
+    public void test03_New_Line() {
+
+        driver.findElement(By.id("03")).click();
+        driver.findElement(By.id("text-output")).sendKeys(
+                "Spring\nmvc\nspring mvc");
+        driver.findElement(By.id("btn-output")).click();
+
+        // output data 03_01 Test
+        String htmlSource = driver.getPageSource();
+        
+        assertThat(htmlSource, containsString("Spring"));
+        
+        if (driver instanceof FirefoxDriver) {
+            assertThat(htmlSource, containsString("<br />mvc"));
+            assertThat(htmlSource, containsString("<br />spring mvc"));
+        } else {
+            assertThat(htmlSource, containsString("<br>mvc"));
+            assertThat(htmlSource, containsString("<br>spring mvc"));
+        }
+        
+        // screen capture
+        screenCapture.save(driver);
+
+        driver.get(applicationContextUrl);
+        driver.findElement(By.id("EL")).click();
+        driver.findElement(By.id("03")).click();
+
+        driver.findElement(By.id("text-output")).sendKeys("Spring_Mvc");
+        driver.findElement(By.id("btn-output")).click();
+
+        // output data 03_02 Test
+        assertThat(driver.getPageSource().contains("Spring_Mvc"), is(true));
+    }
+
+    @Test
+    public void test04_Cut_String() {
+
+        driver.findElement(By.id("04")).click();
+        driver.findElement(By.id("text-output")).sendKeys(
+                "SpringSpringSpringSpringSpringS");
+        driver.findElement(By.id("btn-output")).click();
+
+        // output 04_01 Test
+        assertThat(driver.findElement(By.id("cutOutput")).getText(),
+                is("SpringSpringSpringSpringSpring"));
+
+        // screen capture
+        screenCapture.save(driver);
+
+        driver.get(applicationContextUrl);
+        driver.findElement(By.id("EL")).click();
+        driver.findElement(By.id("04")).click();
+        driver.findElement(By.id("text-output")).sendKeys(
+                "SpringSpringSpringSpringSprin");
+        driver.findElement(By.id("btn-output")).click();
+
+        // output 04_02 Test
+        assertThat(driver.findElement(By.id("cutOutput")).getText(),
+                is("SpringSpringSpringSpringSprin"));
+
+        // screen capture
+        screenCapture.save(driver);
+
+        driver.get(applicationContextUrl);
+        driver.findElement(By.id("EL")).click();
+        driver.findElement(By.id("04")).click();
+        driver.findElement(By.id("text-output")).sendKeys(
+                "SpringSpringSpringSpringSpring");
+        driver.findElement(By.id("btn-output")).click();
+
+        // output 04_03 Test
+        assertThat(driver.findElement(By.id("cutOutput")).getText(),
+                is("SpringSpringSpringSpringSpring"));
+
+        // screen capture
+        screenCapture.save(driver);
+
+        driver.get(applicationContextUrl);
+        driver.findElement(By.id("EL")).click();
+        driver.findElement(By.id("04")).click();
+        driver.findElement(By.id("text-output")).sendKeys(
+                "スプリングエムブイシー（ＳＰＲＩＮＧ　ＭＶＣ）、スプリングセキュリティー");
+        driver.findElement(By.id("btn-output")).click();
+
+        // output 04_04 Test
+        assertThat(driver.findElement(By.id("cutOutput")).getText(),
+                is("スプリングエムブイシー（ＳＰＲＩＮＧ　ＭＶＣ）、スプリングセ"));
+    }
+
+    @Test(expected = NoSuchElementException.class)
+    public void test05_URL_Link() {
+
+        driver.findElement(By.id("05")).click();
+        driver.findElement(By.id("text-output")).sendKeys(
+                "123456789http://example.com/tour/ 01234567890");
+        driver.findElement(By.id("btn-output")).click();
+
+        // output 05_01 Test
+        assertThat(driver.findElement(By.id("linkOutput")).getText(),
+                is("123456789http://example.com/tour/ 01234567890"));
+        // output link
+        assertThat(driver.findElement(By.linkText("http://example.com/tour/"))
+                .getText(), is("http://example.com/tour/"));
+
+        // screen capture
+        screenCapture.save(driver);
+
+        driver.get(applicationContextUrl);
+        driver.findElement(By.id("EL")).click();
+        driver.findElement(By.id("05")).click();
+        driver.findElement(By.id("text-output")).sendKeys(
+                "123456789https://example.com/tour/ 01234567890");
+        driver.findElement(By.id("btn-output")).click();
+
+        // output 05_02 Test
+        assertThat(driver.findElement(By.id("linkOutput")).getText(),
+                is("123456789https://example.com/tour/ 01234567890"));
+        // output link
+        assertThat(driver.findElement(By.linkText("http://example.com/tour/"))
+                .getText(), is("https://example.com/tour/"));
+
+        // screen capture
+        screenCapture.save(driver);
+
+        driver.get(applicationContextUrl);
+        driver.findElement(By.id("EL")).click();
+        driver.findElement(By.id("05")).click();
+        driver.findElement(By.id("text-output")).sendKeys(
+                "123456789ttps://example.com/tour/ 01234567890");
+        driver.findElement(By.id("btn-output")).click();
+
+        // output 05_03 Test
+        assertThat(driver.findElement(By.id("linkOutput")).getText(),
+                is("123456789ttps://example.com/tour/ 01234567890"));
+
+        try {
+            // No link
+            driver.findElement(By.linkText("ttps://example.com/tour/"));
+            fail("error route");
+        } catch (NoSuchElementException e) {
+            throw e;
+        }
+    }
+
+    @Test
+    public void test06_Query_Display() {
+
+        driver.findElement(By.id("06_01-02")).click();
+
+        // output 06_01-02 Test
+        assertThat(
+                driver.findElement(By.id("queryOutput")).getText(),
+                is("Date=Tue%20Oct%2001%2000:00:00%20JST%202013&String=Spring&int=100"));
+        assertThat(
+                driver.findElement(By.id("noAndQueryOutput")).getText(),
+                is("&String=framework&Long=100&boolean=true&DateTime=10/1/13%2012:00%20AM"));
+
+        // screen capture
+        screenCapture.save(driver);
+
+        driver.get(applicationContextUrl);
+        driver.findElement(By.id("EL")).click();
+        driver.findElement(By.id("06_03-")).click();
+
+        driver.findElement(By.id("name")).sendKeys("hoge");
+        new Select(driver.findElement(By.id("main")))
+                .selectByVisibleText("YES");
+        driver.findElement(By.id("age")).sendKeys("10");
+        driver.findElement(By.id("dateOfBirth")).sendKeys("2000-01-01");
+        new Select(driver.findElement(By.id("countries"))).selectByVisibleText("JA");
+        driver.findElement(By.id("btn-output")).click();
+
+        // output 06_03 Test
+        assertThat(
+                driver.findElement(
+                        By.xpath("//a[contains(@href, '?page=1&size=10&age=10&countries=JA&dateOfBirth=2000-01-01&main=true&name=hoge')]"))
+                        .getText(), is("2"));
+
+        // screen capture
+        screenCapture.save(driver);
+
+        driver.get(applicationContextUrl);
+        driver.findElement(By.id("EL")).click();
+        driver.findElement(By.id("06_03-")).click();
+        driver.findElement(By.id("btn-output")).click();
+
+        // output 06_04 Test
+        assertThat(
+                driver.findElement(
+                        By.xpath("//a[contains(@href, '?page=1&size=10&age=0&countries=&dateOfBirth=&main=false&name=')]"))
+                        .getText(), is("2"));
+
+        // screen capture
+        screenCapture.save(driver);
+
+        driver.get(applicationContextUrl);
+        driver.findElement(By.id("EL")).click();
+        driver.findElement(By.id("06_03-")).click();
+
+        driver.findElement(By.id("name")).sendKeys(
+                "<script>alert('XSS Attack')</script>");
+        driver.findElement(By.id("btn-output")).click();
+
+        // output 06_05 Test
+        assertThat(
+                driver.findElement(
+                        By.xpath("//a[contains(@href, \"?page=1&size=10&age=0&countries=&dateOfBirth=&main=false&name=%253Cscript%253Ealert('XSS%2520Attack')%253C/script%253E\")]"))
+                        .getText(), is("2"));
+
+        // screen capture
+        screenCapture.save(driver);
+
+        driver.get(applicationContextUrl);
+        driver.findElement(By.id("EL")).click();
+        driver.findElement(By.id("06_03-")).click();
+
+        driver.findElement(By.id("name")).sendKeys("あいうえお");
+        driver.findElement(By.id("btn-output")).click();
+
+        // output 06_06 Test
+        assertThat(
+                driver.findElement(
+                        By.xpath("//a[contains(@href, '?page=1&size=10&age=0&countries=&dateOfBirth=&main=false&name=%25E3%2581%2582%25E3%2581%2584%25E3%2581%2586%25E3%2581%2588%25E3%2581%258A')]"))
+                        .getText(), is("2"));
+
+        // screen capture
+        screenCapture.save(driver);
+
+        driver.get(applicationContextUrl);
+        driver.findElement(By.id("EL")).click();
+        driver.findElement(By.id("06_07")).click();
+
+        // output 06_07 Test
+        assertThat(driver.findElement(By.id("queryOutput")).getText(), is(""));
+    }
+
+    @Test
+    public void test07_JavaScript_XSS_Measures() {
+        driver.findElement(By.id("07_01")).click();
+        driver.findElement(By.id("write")).click();
+
+        // output 07_01 Test
+        assertThat(
+                driver.findElement(By.id("message")).getText(),
+                is("<script></script><script>alert('XSS Attack');</script></script> <h2>JavaScript XSS Measures f:js()</h2>"));
+
+        // screen capture
+        screenCapture.save(driver);
+
+        driver.get(applicationContextUrl);
+        driver.findElement(By.id("EL")).click();
+        driver.findElement(By.id("07_02")).click();
+        driver.findElement(By.id("write")).click();
+
+        // output 07_02 Test
+        assertThat(
+                driver.findElement(By.id("message")).getText(),
+                is("<script></script><script>alert(\"XSS Attack\");</script></script> <h2>JavaScript XSS Measures f:js()</h2>"));
+
+        // screen capture
+        screenCapture.save(driver);
+
+        driver.get(applicationContextUrl);
+        driver.findElement(By.id("EL")).click();
+        driver.findElement(By.id("07_03")).click();
+        driver.findElement(By.id("write")).click();
+
+        // output 07_03 Test
+        assertThat(
+                driver.findElement(By.id("message")).getText(),
+                is("<script>Spring Framework</script> <h2>JavaScript XSS Measures f:js()</h2>"));
+
+    }
+
+    @Test
+    public void test08_EventHandler_XSS_Measures() {
+        driver.findElement(By.id("08_01")).click();
+        driver.findElement(By.id("write")).click();
+        
+        // output 08_01 Test
+        assertThat(closeAlertAndGetItsText(), is("input ');alert('XSS Attack');// . )"));
+
+        // screen capture
+        screenCapture.save(driver);
+    
+        driver.get(applicationContextUrl);
+        driver.findElement(By.id("EL")).click();
+        driver.findElement(By.id("08_02")).click();
+        driver.findElement(By.id("write")).click();
+        
+        // output 08_02 Test
+        assertThat(closeAlertAndGetItsText(), is("input ');alert(\"XSS Attack\");// . )"));
+
+        // screen capture
+        screenCapture.save(driver);
+        
+        driver.get(applicationContextUrl);
+        driver.findElement(By.id("EL")).click();
+        driver.findElement(By.id("08_03")).click();
+        driver.findElement(By.id("write")).click();
+        
+        // output 08_03 Test
+        assertThat(closeAlertAndGetItsText(), is("input Spring Framework"));
+
+    }
+
+    private String closeAlertAndGetItsText() {
+        try {
+            Alert alert = driver.switchTo().alert();
+            String alertText = alert.getText();
+            if (acceptNextAlert) {
+                alert.accept();
+            } else {
+                alert.dismiss();
+            }
+            return alertText;
+        } finally {
+            acceptNextAlert = true;
+        }
+    }
+}

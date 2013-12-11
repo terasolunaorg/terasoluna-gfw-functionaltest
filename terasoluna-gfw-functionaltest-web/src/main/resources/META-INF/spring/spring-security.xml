@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sec="http://www.springframework.org/schema/security"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<sec:http pattern="/logging/**" auto-config="true"
+        use-expressions="true" request-matcher="ant">
+        <sec:custom-filter ref="csrfFilter" before="LOGOUT_FILTER" />
+        <sec:session-management
+            session-authentication-strategy-ref="sessionAuthenticationStrategy" />
+        <sec:form-login
+            login-page="/logging/userIdMDCPutFilter" default-target-url="/"
+            always-use-default-target="false"
+            login-processing-url="/logging/j_spring_security_check"
+            authentication-failure-url="/logging/userIdMDCPutFilter"
+            authentication-success-handler-ref="redirectHandler" />
+        <sec:logout
+            logout-url="/logging/userIdMDCPutFilter/logout"
+            logout-success-url="/logging/userIdMDCPutFilter"
+            invalidate-session="true"
+            delete-cookies="JSESSIONID"/>
+    </sec:http>
+    
+    <sec:http pattern="/redirect/withgoto/**" auto-config="true"
+        use-expressions="true" request-matcher="ant">
+        <sec:custom-filter ref="csrfFilter" before="LOGOUT_FILTER" />
+        <sec:session-management
+            session-authentication-strategy-ref="sessionAuthenticationStrategy" />
+        <sec:form-login password-parameter="j_password"
+            username-parameter="j_username"
+            login-processing-url="/redirect/withgoto/j_spring_security_check"
+            login-page="/redirect/withgoto/loginWithGoTo"
+            default-target-url="/" always-use-default-target="false"
+            authentication-failure-handler-ref="redirectErrorHandlerWithGoTo"
+            authentication-success-handler-ref="redirectHandlerWithGoTo" />
+    </sec:http>
+    
+    <sec:http pattern="/redirect/withwhitelist/**" auto-config="true"
+        use-expressions="true" request-matcher="ant">
+        <sec:custom-filter ref="csrfFilter" before="LOGOUT_FILTER" />
+        <sec:session-management
+            session-authentication-strategy-ref="sessionAuthenticationStrategy" />
+        <sec:form-login password-parameter="j_password"
+            username-parameter="j_username"
+            login-processing-url="/redirect/withwhitelist/j_spring_security_check"
+            login-page="/redirect/withwhitelist/loginWithWhiteList"
+            default-target-url="/" always-use-default-target="false"
+            authentication-failure-handler-ref="redirectErrorHandlerWithWhiteList"
+            authentication-success-handler-ref="redirectHandlerWithWhiteList" />
+    </sec:http>
+
+    <sec:http pattern="/csrf/errorPageNotSet/**" auto-config="true"
+        use-expressions="true" request-matcher="ant">
+        <sec:custom-filter ref="csrfFilterErrorPageNotSet" before="LOGOUT_FILTER" />
+        <sec:session-management
+            session-authentication-strategy-ref="sessionAuthenticationStrategy" />
+        <sec:form-login login-page="/redirect/login" 
+            default-target-url="/" always-use-default-target="false"
+            authentication-failure-handler-ref="redirectErrorHandler"
+            authentication-success-handler-ref="redirectHandler" />
+    </sec:http>
+
+    <sec:http pattern="/csrf/notAcceptable/**" auto-config="true"
+        use-expressions="true" request-matcher="ant">
+        <sec:custom-filter ref="csrfFilterNotAcceptable" before="LOGOUT_FILTER" />
+        <sec:session-management
+            session-authentication-strategy-ref="sessionAuthenticationStrategy" />
+        <sec:form-login login-page="/redirect/login" 
+            default-target-url="/" always-use-default-target="false"
+            authentication-failure-handler-ref="redirectErrorHandler"
+            authentication-success-handler-ref="redirectHandler" />
+    </sec:http>
+
+    <sec:http pattern="/**" auto-config="true"
+        use-expressions="true" request-matcher="ant">
+        <sec:custom-filter ref="csrfFilter" before="LOGOUT_FILTER" />
+        <sec:session-management
+            session-authentication-strategy-ref="sessionAuthenticationStrategy" />
+        <sec:form-login login-page="/redirect/login" 
+            default-target-url="/" always-use-default-target="false"
+            authentication-failure-handler-ref="redirectErrorHandler"
+            authentication-success-handler-ref="redirectHandler" />
+    </sec:http>
+
+    <!-- CSRF Protection -->
+    <bean id="csrfTokenRepository"
+        class="org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository" />
+
+    <bean id="csrfFilter" class="org.springframework.security.web.csrf.CsrfFilter">
+        <constructor-arg index="0" ref="csrfTokenRepository" />
+        <property name="accessDeniedHandler">
+            <bean
+                class="org.springframework.security.web.access.AccessDeniedHandlerImpl">
+                <property name="errorPage"
+                    value="/WEB-INF/views/common/error/csrfTokenError.jsp" />
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="sessionAuthenticationStrategy"
+        class="org.springframework.security.web.authentication.session.CompositeSessionAuthenticationStrategy">
+        <constructor-arg index="0">
+            <list>
+                <bean
+                    class="org.springframework.security.web.authentication.session.SessionFixationProtectionStrategy" />
+                <bean
+                    class="org.springframework.security.web.csrf.CsrfAuthenticationStrategy">
+                    <constructor-arg index="0"
+                        ref="csrfTokenRepository" />
+                </bean>
+            </list>
+        </constructor-arg>
+    </bean>
+
+    <bean id="csrfFilterErrorPageNotSet" class="org.springframework.security.web.csrf.CsrfFilter">
+        <constructor-arg index="0" ref="csrfTokenRepository" />
+        <property name="accessDeniedHandler">
+            <bean
+                class="org.springframework.security.web.access.AccessDeniedHandlerImpl" />
+        </property>
+    </bean>
+
+    <bean id="csrfFilterNotAcceptable" class="org.springframework.security.web.csrf.CsrfFilter">
+        <constructor-arg index="0" ref="csrfTokenRepository" />
+        <property name="accessDeniedHandler">
+            <bean
+                class="org.terasoluna.gfw.functionaltest.app.csrf.NotAcceptableHandler" />
+        </property>
+    </bean>
+
+    <bean id="redirectHandler"
+        class="org.terasoluna.gfw.security.web.redirect.RedirectAuthenticationHandler">
+        <property name="targetUrlParameter" value="redirectTo" />
+    </bean>
+
+    <bean id="redirectHandlerWithGoTo"
+        class="org.terasoluna.gfw.security.web.redirect.RedirectAuthenticationHandler">
+        <property name="targetUrlParameter" value="goTo" />
+    </bean>
+    
+    <bean id="redirectHandlerWithWhiteList"
+        class="org.terasoluna.gfw.security.web.redirect.RedirectAuthenticationHandler">
+        <property name="targetUrlParameter" value="redirectTo" />
+        <property name="redirectToRedirectStrategy" ref="whiteListRedirectStrategy" />
+    </bean>
+
+    <bean id="whiteListRedirectStrategy" class="org.terasoluna.gfw.functionaltest.app.redirect.WhiteListRedirectStrategy"/>
+    
+    <bean id="redirectErrorHandlerWithGoTo"
+        class="org.springframework.security.web.authentication.ExceptionMappingAuthenticationFailureHandler">
+        <property name="defaultFailureUrl" value="/redirect/withgoto/loginWithGoTo?error=true" />
+        <property name="useForward" value="true" />
+    </bean>
+    
+    <bean id="redirectErrorHandlerWithWhiteList"
+        class="org.springframework.security.web.authentication.ExceptionMappingAuthenticationFailureHandler">
+        <property name="defaultFailureUrl" value="/redirect/withwhitelist/loginWithWhiteList?error=true" />
+        <property name="useForward" value="true" />
+    </bean>
+    
+    <bean id="redirectErrorHandler"
+        class="org.springframework.security.web.authentication.ExceptionMappingAuthenticationFailureHandler">
+        <property name="defaultFailureUrl" value="/redirect/login?error=true" />
+        <property name="useForward" value="true" />
+    </bean>
+
+    <sec:authentication-manager>
+        <sec:authentication-provider ref="authenticationProvider" />
+    </sec:authentication-manager>
+
+    <bean id="authenticationProvider"
+        class="org.springframework.security.authentication.dao.DaoAuthenticationProvider">
+        <property name="hideUserNotFoundExceptions" value="true" />
+        <property name="passwordEncoder" ref="passwordEncoder" />
+        <property name="userDetailsService" ref="userService" />
+    </bean>
+
+    <sec:user-service id="userService">
+        <sec:user name="user1" authorities="ROLE_USER"
+            password="$2a$10$jp17ZwIs3a6keGWkvbN5se3zPvkYGDaJZU7DL.bnFzahFf8lbYt/S" /> <!-- the raw password is "user1" -->
+        <sec:user name="user2" authorities="ROLE_USER"
+            password="$2a$10$ZnxOefrbXdlAtV2lkLGMDOk8DclJ0Qgx/0rNt9whwcQD2QCz9cvsO" /> <!-- the raw password is "user2" -->
+        <sec:user name="user3" authorities="ROLE_USER"
+            password="$2a$10$q89zNlHbf2cFQ/bUtXs1fexNxPBQPDyplbl1GfrWVGAK48GFSy9OK" /> <!-- the raw password is "user3" -->
+    </sec:user-service>
+    
+</beans>
