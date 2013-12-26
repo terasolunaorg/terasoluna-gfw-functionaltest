@@ -28,6 +28,12 @@ public class TransactionTokenFlow6Controller {
     @RequestMapping(value = "flow6", method = RequestMethod.POST, params = "confirm")
     @TransactionTokenCheck(type = TransactionTokenType.BEGIN)
     public String flow6Step2() {
-        return "transactiontoken/transactionTokenDisplay";
+        return "transactiontoken/transactionTokenDisplayStart";
+    }
+
+    @RequestMapping(value = "flow6", method = RequestMethod.POST, params = "create")
+    @TransactionTokenCheck(type = TransactionTokenType.IN)
+    public String flow6Step3() {
+        return "transactiontoken/transactionTokenDisplayFinish";
     }
 }
