@@ -5,17 +5,8 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-/**
- * WebDriverを使って入力フィールドにアクセスするためのクラス。
- * <p>
- * 標準的な方法でアクセスする方法と、JavaScriptを使ってアクセスする方法の２つを提供している。
- * </p>
- */
 public enum WebDriverInputFieldAccessor {
 
-    /**
-     * Seleniumの標準的な方法で入力フィールドにアクセスするオブジェクト。
-     */
     STANDARD {
         /**
          * {@inheritDoc}
@@ -36,12 +27,6 @@ public enum WebDriverInputFieldAccessor {
         }
     },
 
-    /**
-     * JavaScriptを使って入力フィールドにアクセスするオブジェクト。
-     * <p>
-     * 入力フィールドへのアクセスを高速化する事を目的としたオブジェクトである。
-     * </p>
-     */
     JAVASCRIPT {
         /**
          * {@inheritDoc}
@@ -73,22 +58,10 @@ public enum WebDriverInputFieldAccessor {
 
     };
 
-    /**
-     * 指定した要素(テキスト項目)に値を追加する。
-     * @param by 要素(テキスト項目)を探すための識別子
-     */
     public abstract void appendValue(By by, String value, WebDriver webDriver);
 
-    /**
-     * 指定した要素(テキスト項目)の値を上書きする。
-     * @param by 要素(テキスト項目)を探すための識別子
-     */
     public abstract void overrideValue(By by, String value, WebDriver webDriver);
 
-    /**
-     * 指定した入力フィールドに設定されている値を取得する。
-     * @param by 要素を探すための識別子
-     */
     public String getValue(By by, WebDriver webDriver) {
         return webDriver.findElement(by).getAttribute("value");
     }
