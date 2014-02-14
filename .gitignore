@@ -7,3 +7,5 @@ target
 .git
 .idea
 .DS_Store
+evidence
+log

@@ -18,16 +18,9 @@ package org.terasoluna.gfw.functionaltest.app.sequencer;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-import java.util.concurrent.TimeUnit;
-
-import javax.inject.Inject;
-
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.terasoluna.gfw.functionaltest.app.FunctionTestSupport;
@@ -35,24 +28,6 @@ import org.terasoluna.gfw.functionaltest.app.FunctionTestSupport;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:META-INF/spring/seleniumContext.xml" })
 public class SequencerTest extends FunctionTestSupport {
-
-    @Inject
-    protected WebDriver driver;
-
-    public SequencerTest() {
-
-    }
-
-    @Before
-    public void setUp() {
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        driver.get(applicationContextUrl);
-        driver.findElement(By.id("Sequencer")).click();
-    }
-
-    @After
-    public void tearDown() {
-    }
 
     @Test
     public void test01_01_getSequenceByInteger() {

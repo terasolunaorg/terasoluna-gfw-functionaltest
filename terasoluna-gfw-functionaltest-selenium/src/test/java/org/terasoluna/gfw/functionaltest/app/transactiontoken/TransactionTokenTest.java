@@ -21,9 +21,9 @@ import static org.hamcrest.core.IsNull.notNullValue;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
-import java.util.concurrent.TimeUnit;
-
-import javax.inject.Inject;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.junit.After;
 import org.junit.Before;
@@ -32,7 +32,6 @@ import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
@@ -46,26 +45,33 @@ import org.terasoluna.gfw.functionaltest.app.ScreenCaptureWebDriverEventListener
 @ContextConfiguration(locations = { "classpath:META-INF/spring/seleniumContext.xml" })
 public class TransactionTokenTest extends FunctionTestSupport {
 
-    @Inject
-    protected WebDriver webDriver;
+    private static final Set<String> testCasesOfRebootTarget = new HashSet<String>(Arrays
+            .asList("test03_01_defaultTokenStoreSizeOver",
+                    "test03_02_customTokenStoreSizeOverClassMethodNamespace",
+                    "test03_03_customTokenStoreSizeOverMethodOnlyNamespace",
+                    "test03_04_customTokenStoreSizeOverGlobalNamespace"));
 
     protected EventFiringWebDriver driver;
 
     public TransactionTokenTest() {
+        disableSetupDefaultWebDriver();
     }
 
     @Before
     public void setUp() {
-        driver = new EventFiringWebDriver(webDriver);
+        if (testCasesOfRebootTarget.contains(testName.getMethodName())) {
+            quitDefaultWebDriver();
+        }
+        bootDefaultWebDriver();
+        driver = new EventFiringWebDriver(getDefaultWebDriver());
         driver.register(new ScreenCaptureWebDriverEventListener(screenCapture));
-
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        driver.get(applicationContextUrl);
-        driver.findElement(By.id("Transaction")).click();
     }
 
     @After
     public void tearDown() {
+        if (testCasesOfRebootTarget.contains(testName.getMethodName())) {
+            quitDefaultWebDriver();
+        }
     }
 
     @Test
@@ -452,8 +458,8 @@ public class TransactionTokenTest extends FunctionTestSupport {
     @Test
     public void test03_01_defaultTokenStoreSizeOver() {
         // FireFox Test Only
-        if (webDriver instanceof ChromeDriver
-                || webDriver instanceof InternetExplorerDriver) {
+        if (driver.getWrappedDriver() instanceof ChromeDriver
+                || driver.getWrappedDriver() instanceof InternetExplorerDriver) {
             return;
         }
 
@@ -487,8 +493,8 @@ public class TransactionTokenTest extends FunctionTestSupport {
     @Test
     public void test03_02_customTokenStoreSizeOverClassMethodNamespace() {
         // FireFox Test Only
-        if (webDriver instanceof ChromeDriver
-                || webDriver instanceof InternetExplorerDriver) {
+        if (driver.getWrappedDriver() instanceof ChromeDriver
+                || driver.getWrappedDriver() instanceof InternetExplorerDriver) {
             return;
         }
 
@@ -546,8 +552,8 @@ public class TransactionTokenTest extends FunctionTestSupport {
     @Test
     public void test03_03_customTokenStoreSizeOverMethodOnlyNamespace() {
         // FireFox Test Only
-        if (webDriver instanceof ChromeDriver
-                || webDriver instanceof InternetExplorerDriver) {
+        if (driver.getWrappedDriver() instanceof ChromeDriver
+                || driver.getWrappedDriver() instanceof InternetExplorerDriver) {
             return;
         }
 
@@ -581,8 +587,8 @@ public class TransactionTokenTest extends FunctionTestSupport {
     @Test
     public void test03_04_customTokenStoreSizeOverGlobalNamespace() {
         // FireFox Test Only
-        if (webDriver instanceof ChromeDriver
-                || webDriver instanceof InternetExplorerDriver) {
+        if (driver.getWrappedDriver() instanceof ChromeDriver
+                || driver.getWrappedDriver() instanceof InternetExplorerDriver) {
             return;
         }
 

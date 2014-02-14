@@ -20,17 +20,11 @@ import static org.hamcrest.core.StringContains.containsString;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
 
-import java.util.concurrent.TimeUnit;
-
-import javax.inject.Inject;
-
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.springframework.test.context.ContextConfiguration;
@@ -41,21 +35,8 @@ import org.terasoluna.gfw.functionaltest.app.FunctionTestSupport;
 @ContextConfiguration(locations = { "classpath:META-INF/spring/seleniumContext.xml" })
 public class ElTest extends FunctionTestSupport {
 
-    @Inject
-    protected WebDriver driver;
-
     private boolean acceptNextAlert = true;
     
-    public ElTest() {
-    }
-
-    @Before
-    public void setUp() {
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        driver.get(applicationContextUrl);
-        driver.findElement(By.id("EL")).click();
-    }
-
     @Test
     public void test01_XSS_Measures() {
 

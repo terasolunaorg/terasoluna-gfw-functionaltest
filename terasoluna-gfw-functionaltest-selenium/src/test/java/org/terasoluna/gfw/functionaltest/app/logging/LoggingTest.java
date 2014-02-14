@@ -20,16 +20,11 @@ import static org.hamcrest.CoreMatchers.not;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
-import java.util.concurrent.TimeUnit;
-
 import javax.inject.Inject;
 
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -44,22 +39,7 @@ import org.terasoluna.gfw.functionaltest.app.FunctionTestSupport;
 public class LoggingTest extends FunctionTestSupport {
 
     @Inject
-    protected WebDriver driver;
-
-    @Inject
     protected RestTemplate restTemplate;
-
-    @Before
-    public void setUp() {
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        driver.get(applicationContextUrl);
-        driver.findElement(By.id("logging")).click();
-    }
-
-    @After
-    public void tearDown() {
-
-    }
 
     @Test
     public void test01_01_createDefaultXTrackMDC() {
