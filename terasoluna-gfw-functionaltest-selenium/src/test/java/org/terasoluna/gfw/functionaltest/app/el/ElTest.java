@@ -20,17 +20,11 @@ import static org.hamcrest.core.StringContains.containsString;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
 
-import java.util.concurrent.TimeUnit;
-
-import javax.inject.Inject;
-
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.springframework.test.context.ContextConfiguration;
@@ -41,27 +35,14 @@ import org.terasoluna.gfw.functionaltest.app.FunctionTestSupport;
 @ContextConfiguration(locations = { "classpath:META-INF/spring/seleniumContext.xml" })
 public class ElTest extends FunctionTestSupport {
 
-    @Inject
-    protected WebDriver driver;
-
     private boolean acceptNextAlert = true;
-    
-    public ElTest() {
-    }
-
-    @Before
-    public void setUp() {
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        driver.get(applicationContextUrl);
-        driver.findElement(By.id("EL")).click();
-    }
 
     @Test
     public void test01_XSS_Measures() {
 
         driver.findElement(By.id("01")).click();
-        driver.findElement(By.id("text-output")).sendKeys(
-                "<script>alert(\"XSS Attack\")</script>");
+        inputFieldAccessor.overrideValue(By.id("text-output"),
+                "<script>alert(\"XSS Attack\")</script>", driver);
         driver.findElement(By.id("btn-output")).click();
 
         // output data 01_01 Test
@@ -75,8 +56,8 @@ public class ElTest extends FunctionTestSupport {
         driver.get(applicationContextUrl);
         driver.findElement(By.id("EL")).click();
         driver.findElement(By.id("01")).click();
-        driver.findElement(By.id("text-output")).sendKeys(
-                "<script>alert('XSS Attack')</script>");
+        inputFieldAccessor.overrideValue(By.id("text-output"),
+                "<script>alert('XSS Attack')</script>", driver);
         driver.findElement(By.id("btn-output")).click();
 
         // output data 01_02 Test
@@ -90,7 +71,8 @@ public class ElTest extends FunctionTestSupport {
         driver.get(applicationContextUrl);
         driver.findElement(By.id("EL")).click();
         driver.findElement(By.id("01")).click();
-        driver.findElement(By.id("text-output")).sendKeys("Spring Framework");
+        inputFieldAccessor.overrideValue(By.id("text-output"),
+                "Spring Framework", driver);
         driver.findElement(By.id("btn-output")).click();
 
         // output data 01_03 Test
@@ -102,8 +84,9 @@ public class ElTest extends FunctionTestSupport {
     public void test02_URL_Encoding() {
 
         driver.findElement(By.id("02")).click();
-        driver.findElement(By.id("text-output")).sendKeys(
-                "http://localhost:8080/spring?hl=ja&tab=Tw#hl=ja&q=あいうえお");
+        inputFieldAccessor.overrideValue(By.id("text-output"),
+                "http://localhost:8080/spring?hl=ja&tab=Tw#hl=ja&q=あいうえお",
+                driver);
         driver.findElement(By.id("btn-output")).click();
 
         // output data 02_01 Test
@@ -117,8 +100,8 @@ public class ElTest extends FunctionTestSupport {
         driver.get(applicationContextUrl);
         driver.findElement(By.id("EL")).click();
         driver.findElement(By.id("02")).click();
-        driver.findElement(By.id("text-output")).sendKeys(
-                "http://localhost:8080/spring");
+        inputFieldAccessor.overrideValue(By.id("text-output"),
+                "http://localhost:8080/spring", driver);
         driver.findElement(By.id("btn-output")).click();
 
         // output data 02_02 Test
@@ -130,15 +113,15 @@ public class ElTest extends FunctionTestSupport {
     public void test03_New_Line() {
 
         driver.findElement(By.id("03")).click();
-        driver.findElement(By.id("text-output")).sendKeys(
-                "Spring\nmvc\nspring mvc");
+        inputFieldAccessor.overrideValue(By.id("text-output"),
+                "Spring\nmvc\nspring mvc", driver);
         driver.findElement(By.id("btn-output")).click();
 
         // output data 03_01 Test
         String htmlSource = driver.getPageSource();
-        
+
         assertThat(htmlSource, containsString("Spring"));
-        
+
         if (driver instanceof FirefoxDriver) {
             assertThat(htmlSource, containsString("<br />mvc"));
             assertThat(htmlSource, containsString("<br />spring mvc"));
@@ -146,7 +129,7 @@ public class ElTest extends FunctionTestSupport {
             assertThat(htmlSource, containsString("<br>mvc"));
             assertThat(htmlSource, containsString("<br>spring mvc"));
         }
-        
+
         // screen capture
         screenCapture.save(driver);
 
@@ -154,7 +137,8 @@ public class ElTest extends FunctionTestSupport {
         driver.findElement(By.id("EL")).click();
         driver.findElement(By.id("03")).click();
 
-        driver.findElement(By.id("text-output")).sendKeys("Spring_Mvc");
+        inputFieldAccessor.overrideValue(By.id("text-output"), "Spring_Mvc",
+                driver);
         driver.findElement(By.id("btn-output")).click();
 
         // output data 03_02 Test
@@ -165,8 +149,8 @@ public class ElTest extends FunctionTestSupport {
     public void test04_Cut_String() {
 
         driver.findElement(By.id("04")).click();
-        driver.findElement(By.id("text-output")).sendKeys(
-                "SpringSpringSpringSpringSpringS");
+        inputFieldAccessor.overrideValue(By.id("text-output"),
+                "SpringSpringSpringSpringSpringS", driver);
         driver.findElement(By.id("btn-output")).click();
 
         // output 04_01 Test
@@ -179,8 +163,8 @@ public class ElTest extends FunctionTestSupport {
         driver.get(applicationContextUrl);
         driver.findElement(By.id("EL")).click();
         driver.findElement(By.id("04")).click();
-        driver.findElement(By.id("text-output")).sendKeys(
-                "SpringSpringSpringSpringSprin");
+        inputFieldAccessor.overrideValue(By.id("text-output"),
+                "SpringSpringSpringSpringSprin", driver);
         driver.findElement(By.id("btn-output")).click();
 
         // output 04_02 Test
@@ -193,8 +177,8 @@ public class ElTest extends FunctionTestSupport {
         driver.get(applicationContextUrl);
         driver.findElement(By.id("EL")).click();
         driver.findElement(By.id("04")).click();
-        driver.findElement(By.id("text-output")).sendKeys(
-                "SpringSpringSpringSpringSpring");
+        inputFieldAccessor.overrideValue(By.id("text-output"),
+                "SpringSpringSpringSpringSpring", driver);
         driver.findElement(By.id("btn-output")).click();
 
         // output 04_03 Test
@@ -207,8 +191,8 @@ public class ElTest extends FunctionTestSupport {
         driver.get(applicationContextUrl);
         driver.findElement(By.id("EL")).click();
         driver.findElement(By.id("04")).click();
-        driver.findElement(By.id("text-output")).sendKeys(
-                "スプリングエムブイシー（ＳＰＲＩＮＧ　ＭＶＣ）、スプリングセキュリティー");
+        inputFieldAccessor.overrideValue(By.id("text-output"),
+                "スプリングエムブイシー（ＳＰＲＩＮＧ　ＭＶＣ）、スプリングセキュリティー", driver);
         driver.findElement(By.id("btn-output")).click();
 
         // output 04_04 Test
@@ -220,8 +204,8 @@ public class ElTest extends FunctionTestSupport {
     public void test05_URL_Link() {
 
         driver.findElement(By.id("05")).click();
-        driver.findElement(By.id("text-output")).sendKeys(
-                "123456789http://example.com/tour/ 01234567890");
+        inputFieldAccessor.overrideValue(By.id("text-output"),
+                "123456789http://example.com/tour/ 01234567890", driver);
         driver.findElement(By.id("btn-output")).click();
 
         // output 05_01 Test
@@ -237,8 +221,8 @@ public class ElTest extends FunctionTestSupport {
         driver.get(applicationContextUrl);
         driver.findElement(By.id("EL")).click();
         driver.findElement(By.id("05")).click();
-        driver.findElement(By.id("text-output")).sendKeys(
-                "123456789https://example.com/tour/ 01234567890");
+        inputFieldAccessor.overrideValue(By.id("text-output"),
+                "123456789https://example.com/tour/ 01234567890", driver);
         driver.findElement(By.id("btn-output")).click();
 
         // output 05_02 Test
@@ -254,8 +238,8 @@ public class ElTest extends FunctionTestSupport {
         driver.get(applicationContextUrl);
         driver.findElement(By.id("EL")).click();
         driver.findElement(By.id("05")).click();
-        driver.findElement(By.id("text-output")).sendKeys(
-                "123456789ttps://example.com/tour/ 01234567890");
+        inputFieldAccessor.overrideValue(By.id("text-output"),
+                "123456789ttps://example.com/tour/ 01234567890", driver);
         driver.findElement(By.id("btn-output")).click();
 
         // output 05_03 Test
@@ -291,12 +275,13 @@ public class ElTest extends FunctionTestSupport {
         driver.findElement(By.id("EL")).click();
         driver.findElement(By.id("06_03-")).click();
 
-        driver.findElement(By.id("name")).sendKeys("hoge");
+        inputFieldAccessor.overrideValue(By.id("name"), "hoge", driver);
         new Select(driver.findElement(By.id("main")))
                 .selectByVisibleText("YES");
-        driver.findElement(By.id("age")).sendKeys("10");
-        driver.findElement(By.id("dateOfBirth")).sendKeys("2000-01-01");
-        new Select(driver.findElement(By.id("countries"))).selectByVisibleText("JA");
+        inputFieldAccessor.overrideValue(By.id("age"), "10", driver);
+        inputFieldAccessor.overrideValue(By.id("dateOfBirth"), "2000-01-01", driver);
+        new Select(driver.findElement(By.id("countries")))
+                .selectByVisibleText("JA");
         driver.findElement(By.id("btn-output")).click();
 
         // output 06_03 Test
@@ -326,8 +311,8 @@ public class ElTest extends FunctionTestSupport {
         driver.findElement(By.id("EL")).click();
         driver.findElement(By.id("06_03-")).click();
 
-        driver.findElement(By.id("name")).sendKeys(
-                "<script>alert('XSS Attack')</script>");
+        inputFieldAccessor.overrideValue(By.id("name"),
+                "<script>alert('XSS Attack')</script>", driver);
         driver.findElement(By.id("btn-output")).click();
 
         // output 06_05 Test
@@ -343,7 +328,7 @@ public class ElTest extends FunctionTestSupport {
         driver.findElement(By.id("EL")).click();
         driver.findElement(By.id("06_03-")).click();
 
-        driver.findElement(By.id("name")).sendKeys("あいうえお");
+        inputFieldAccessor.overrideValue(By.id("name"), "あいうえお", driver);
         driver.findElement(By.id("btn-output")).click();
 
         // output 06_06 Test
@@ -405,29 +390,31 @@ public class ElTest extends FunctionTestSupport {
     public void test08_EventHandler_XSS_Measures() {
         driver.findElement(By.id("08_01")).click();
         driver.findElement(By.id("write")).click();
-        
+
         // output 08_01 Test
-        assertThat(closeAlertAndGetItsText(), is("input ');alert('XSS Attack');// . )"));
+        assertThat(closeAlertAndGetItsText(),
+                is("input ');alert('XSS Attack');// . )"));
 
         // screen capture
         screenCapture.save(driver);
-    
+
         driver.get(applicationContextUrl);
         driver.findElement(By.id("EL")).click();
         driver.findElement(By.id("08_02")).click();
         driver.findElement(By.id("write")).click();
-        
+
         // output 08_02 Test
-        assertThat(closeAlertAndGetItsText(), is("input ');alert(\"XSS Attack\");// . )"));
+        assertThat(closeAlertAndGetItsText(),
+                is("input ');alert(\"XSS Attack\");// . )"));
 
         // screen capture
         screenCapture.save(driver);
-        
+
         driver.get(applicationContextUrl);
         driver.findElement(By.id("EL")).click();
         driver.findElement(By.id("08_03")).click();
         driver.findElement(By.id("write")).click();
-        
+
         // output 08_03 Test
         assertThat(closeAlertAndGetItsText(), is("input Spring Framework"));
 

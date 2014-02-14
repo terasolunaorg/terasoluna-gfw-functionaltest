@@ -16,25 +16,32 @@
 package org.terasoluna.gfw.functionaltest.app;
 
 import java.io.File;
-import java.lang.reflect.Field;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 import javax.inject.Inject;
 
+import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.rules.TestName;
 import org.junit.rules.TestWatchman;
 import org.junit.runners.model.FrameworkMethod;
 import org.openqa.selenium.WebDriver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.support.ApplicationObjectSupport;
-import org.springframework.util.ReflectionUtils;
 
 public class FunctionTestSupport extends ApplicationObjectSupport {
 
-    private final Set<WebDriver> webDrivers = new HashSet<WebDriver>();
+    private static final Logger classLogger = LoggerFactory
+            .getLogger(FunctionTestSupport.class);
+
+    protected static WebDriver driver;
+
+    private static final Set<WebDriver> webDrivers = new HashSet<WebDriver>();
 
     @Value("${selenium.serverUrl}")
     protected String serverUrl;
@@ -73,50 +80,54 @@ public class FunctionTestSupport extends ApplicationObjectSupport {
         @Override
         public void finished(FrameworkMethod method) {
             onFinished();
-            quitWebDrivers();
         }
     };
 
+    private boolean useSetupDefaultWebDriver = true;
+
+    private String simplePackageName;
+
+    protected WebDriverInputFieldAccessor inputFieldAccessor = WebDriverInputFieldAccessor.JAVASCRIPT;
+
     protected FunctionTestSupport() {
+        this.simplePackageName = this.getClass().getPackage().getName()
+                .replaceAll(".*\\.", "");
+    }
+
+    @Value("${selenium.webDriverInputFieldAccessor:JAVASCRIPT}")
+    public void setWebDriverInputFieldAccessor(
+            String webDriverInputFieldAccessor) {
+        this.inputFieldAccessor = WebDriverInputFieldAccessor
+                .valueOf(webDriverInputFieldAccessor.toUpperCase());
+    }
+
+    @AfterClass
+    public final static void tearDownWebDrivers() {
+        quitWebDrivers();
+        driver = null;
     }
 
     @Before
     public final void setUpEvidence() {
 
-        String simplePackageName = this.getClass().getPackage().getName()
-                .replaceAll(".*\\.", "");
         String testCaseName = testName.getMethodName().replaceAll("^test", "");
 
         File evidenceSavingDirectory = new File(String.format("%s/%s/%s",
                 evidenceBaseDirectory, simplePackageName, testCaseName));
 
-        logger.debug("evidenceSavingDirectory is " + evidenceSavingDirectory
-                .getAbsolutePath());
-        
+        logger.debug("evidenceSavingDirectory is "
+                + evidenceSavingDirectory.getAbsolutePath());
+
         screenCapture.setUp(evidenceSavingDirectory);
         pageSource.setUp(evidenceSavingDirectory);
     }
 
     @Before
-    public final void bindWebDrivers() {
-        Field[] fields = getClass().getDeclaredFields();
-        for (Field field : fields) {
-
-            if (!WebDriver.class.equals(field.getType())) {
-                continue;
-            }
-            Object object = null;
-            try {
-                field.setAccessible(true);
-                object = ReflectionUtils.getField(field, this);
-            } finally {
-                field.setAccessible(false);
-            }
-            if (object == null) {
-                continue;
-            }
-            webDrivers.add(WebDriver.class.cast(object));
+    public final void setUpDefaultWebDriver() {
+        if (!useSetupDefaultWebDriver) {
+            return;
         }
+        bootDefaultWebDriver();
     }
 
     protected void bindWebDriver(WebDriver webDriver) {
@@ -127,12 +138,52 @@ public class FunctionTestSupport extends ApplicationObjectSupport {
         webDrivers.remove(webDriver);
     }
 
-    private void quitWebDrivers() {
+    protected void bootDefaultWebDriver() {
+        if (driver == null) {
+            driver = newWebDriver();
+        }
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver.get(getPackageRootUrl());
+    }
+
+    private WebDriver newWebDriver() {
+        WebDriver webDriver = getApplicationContext().getBean(WebDriver.class);
+        webDrivers.add(webDriver);
+        return webDriver;
+    }
+
+    protected void quitDefaultWebDriver() {
+        if (driver != null) {
+            try {
+                driver.quit();
+            } finally {
+                driver = null;
+            }
+        }
+    }
+
+    protected WebDriver getDefaultWebDriver() {
+        return driver;
+    }
+
+    protected String getPackageRootUrl() {
+        return applicationContextUrl + "/" + simplePackageName + "/";
+    }
+
+    protected void disableSetupDefaultWebDriver() {
+        this.useSetupDefaultWebDriver = false;
+    }
+
+    protected void enableSetupDefaultWebDriver() {
+        this.useSetupDefaultWebDriver = true;
+    }
+
+    private static void quitWebDrivers() {
         for (WebDriver webDriver : webDrivers) {
             try {
                 webDriver.quit();
             } catch (Throwable t) {
-                logger.error("failed quit.", t);
+                classLogger.error("failed quit.", t);
             }
         }
         webDrivers.clear();
