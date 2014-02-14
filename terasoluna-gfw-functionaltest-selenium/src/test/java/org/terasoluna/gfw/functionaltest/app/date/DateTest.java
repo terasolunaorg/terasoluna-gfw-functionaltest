@@ -20,18 +20,11 @@ import static org.hamcrest.number.OrderingComparison.greaterThanOrEqualTo;
 import static org.hamcrest.number.OrderingComparison.lessThanOrEqualTo;
 import static org.junit.Assert.assertThat;
 
-import java.util.concurrent.TimeUnit;
-
-import javax.inject.Inject;
-
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.terasoluna.gfw.functionaltest.app.FunctionTestSupport;
@@ -40,25 +33,11 @@ import org.terasoluna.gfw.functionaltest.app.FunctionTestSupport;
 @ContextConfiguration(locations = { "classpath:META-INF/spring/seleniumContext.xml" })
 public class DateTest extends FunctionTestSupport {
 
-    @Inject
-    protected WebDriver driver;
-    
     private static final DateTimeFormatter dateTimeFormat =
             DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss.SSS");
     
     private static final DateTimeFormatter timeFormat =
             DateTimeFormat.forPattern("HH:mm:ss.SSS");
-    
-    @Before
-    public void setUp() {
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        driver.get(applicationContextUrl);
-        driver.findElement(By.id("Date")).click();
-    }
-    
-    @After
-    public void tearDown() {
-    }
     
     @Test
     public void test01_01_serverTimeReturn (){
@@ -264,7 +243,7 @@ public class DateTest extends FunctionTestSupport {
     public void test03_01_adjustedDateReturn (){
         // update adjustedValue
         driver.findElement(By.id("management")).click();
-        driver.findElement(By.id("diffTime")).sendKeys("-86400000");
+        inputFieldAccessor.overrideValue(By.id("diffTime"), "-86400000", driver);
         driver.findElement(By.id("btn-diff")).click();
         
         driver.findElement(By.id("adjustedDateReturn_03_01")).click();
@@ -291,7 +270,7 @@ public class DateTest extends FunctionTestSupport {
     public void test03_02_adjustedDateReturn (){
         // update adjustedValue
         driver.findElement(By.id("management")).click();
-        driver.findElement(By.id("diffTime")).sendKeys("-86400000");
+        inputFieldAccessor.overrideValue(By.id("diffTime"), "-86400000", driver);
         driver.findElement(By.id("btn-diff")).click();
         
         driver.findElement(By.id("adjustedDateReturn_03_02")).click();
@@ -318,7 +297,7 @@ public class DateTest extends FunctionTestSupport {
     public void test03_03_adjustedDateReturn (){
         // update adjustedValue
         driver.findElement(By.id("management")).click();
-        driver.findElement(By.id("diffTime")).sendKeys("-86400000");
+        inputFieldAccessor.overrideValue(By.id("diffTime"), "-86400000", driver);
         driver.findElement(By.id("btn-diff")).click();
         
         driver.findElement(By.id("adjustedDateReturn_03_03")).click();
@@ -344,7 +323,7 @@ public class DateTest extends FunctionTestSupport {
     public void test03_04_adjustedDateReturn (){
         // update adjustedValue
         driver.findElement(By.id("management")).click();
-        driver.findElement(By.id("diffTime")).sendKeys("-86400000");
+        inputFieldAccessor.overrideValue(By.id("diffTime"), "-86400000", driver);
         driver.findElement(By.id("btn-diff")).click();
         
         driver.findElement(By.id("adjustedDateReturn_03_04")).click();
@@ -371,7 +350,7 @@ public class DateTest extends FunctionTestSupport {
     public void test03_05_adjustedDateReturn (){
         // update adjustedValue
         driver.findElement(By.id("management")).click();
-        driver.findElement(By.id("diffTime")).sendKeys("-3600000");
+        inputFieldAccessor.overrideValue(By.id("diffTime"), "-3600000", driver);
         driver.findElement(By.id("btn-diff")).click();
         
         driver.findElement(By.id("adjustedDateReturn_03_05")).click();
@@ -398,7 +377,7 @@ public class DateTest extends FunctionTestSupport {
     public void test03_06_adjustedDateReturn (){
         // update adjustedValue
         driver.findElement(By.id("management")).click();
-        driver.findElement(By.id("diffTime")).sendKeys("-86400");
+        inputFieldAccessor.overrideValue(By.id("diffTime"), "-86400", driver);
         driver.findElement(By.id("btn-diff")).click();
         
         driver.findElement(By.id("adjustedDateReturn_03_06")).click();
@@ -427,7 +406,7 @@ public class DateTest extends FunctionTestSupport {
     public void test03_07_adjustedDateReturn (){
         // update adjustedValue
         driver.findElement(By.id("management")).click();
-        driver.findElement(By.id("diffTime")).sendKeys("1440");
+        inputFieldAccessor.overrideValue(By.id("diffTime"), "1440", driver);
         driver.findElement(By.id("btn-diff")).click();
         
         driver.findElement(By.id("adjustedDateReturn_03_07")).click();
@@ -454,7 +433,7 @@ public class DateTest extends FunctionTestSupport {
     public void test03_08_adjustedDateReturn (){
         // update adjustedValue
         driver.findElement(By.id("management")).click();
-        driver.findElement(By.id("diffTime")).sendKeys("-24");
+        inputFieldAccessor.overrideValue(By.id("diffTime"), "-24", driver);
         driver.findElement(By.id("btn-diff")).click();
         
         driver.findElement(By.id("adjustedDateReturn_03_08")).click();
@@ -483,7 +462,7 @@ public class DateTest extends FunctionTestSupport {
     public void test03_09_adjustedDateReturn (){
         // update adjustedValue
         driver.findElement(By.id("management")).click();
-        driver.findElement(By.id("diffTime")).sendKeys("1");
+        inputFieldAccessor.overrideValue(By.id("diffTime"), "1", driver);
         driver.findElement(By.id("btn-diff")).click();
         
         driver.findElement(By.id("adjustedDateReturn_03_09")).click();
@@ -512,7 +491,7 @@ public class DateTest extends FunctionTestSupport {
     public void test03_10_adjustedDateReturn (){
         // update adjustedValue
         driver.findElement(By.id("management")).click();
-        driver.findElement(By.id("diffTime")).sendKeys("1");
+        inputFieldAccessor.overrideValue(By.id("diffTime"), "1", driver);
         driver.findElement(By.id("btn-diff")).click();
         
         driver.findElement(By.id("management")).click();
@@ -545,7 +524,7 @@ public class DateTest extends FunctionTestSupport {
         
         // update adjustedValue
         driver.findElement(By.id("management")).click();
-        driver.findElement(By.id("diffTime")).sendKeys("2");
+        inputFieldAccessor.overrideValue(By.id("diffTime"), "2", driver);
         driver.findElement(By.id("btn-diff")).click();
         
         driver.findElement(By.id("management")).click();
@@ -579,7 +558,7 @@ public class DateTest extends FunctionTestSupport {
         
         // update adjustedValue
         driver.findElement(By.id("management")).click();
-        driver.findElement(By.id("diffTime")).sendKeys("1");
+        inputFieldAccessor.overrideValue(By.id("diffTime"), "1", driver);
         driver.findElement(By.id("btn-diff")).click();
         
         driver.findElement(By.id("adjustedDateReturn_03_11")).click();
@@ -609,7 +588,7 @@ public class DateTest extends FunctionTestSupport {
         
         // update adjustedValue
         driver.findElement(By.id("management")).click();
-        driver.findElement(By.id("diffTime")).sendKeys("3");
+        inputFieldAccessor.overrideValue(By.id("diffTime"), "3", driver);
         driver.findElement(By.id("btn-diff")).click();
         
         driver.findElement(By.id("adjustedDateReturn_03_11")).click();
@@ -639,7 +618,7 @@ public class DateTest extends FunctionTestSupport {
         
         // update adjustedValue
         driver.findElement(By.id("management")).click();
-        driver.findElement(By.id("diffTime")).sendKeys("0");
+        inputFieldAccessor.overrideValue(By.id("diffTime"), "0", driver);
         driver.findElement(By.id("btn-diff")).click();
         
         driver.findElement(By.id("adjustedDateReturn_03_11")).click();

@@ -21,8 +21,6 @@ import javax.inject.Inject;
 import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.text.IsEqualIgnoringCase.*;
 import static org.junit.Assert.*;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.core.io.ClassPathResource;
@@ -41,12 +39,8 @@ public class DownloadTest extends FunctionTestSupport {
     @Inject
     protected RestTemplate restTemplate;
 
-    @Before
-    public void setUp() {
-    }
-
-    @After
-    public void tearDown() {
+    public DownloadTest(){
+        disableSetupDefaultWebDriver();
     }
 
     @Test
