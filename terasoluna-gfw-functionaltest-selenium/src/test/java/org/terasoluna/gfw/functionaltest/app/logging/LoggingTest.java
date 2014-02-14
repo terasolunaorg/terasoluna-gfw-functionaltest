@@ -20,16 +20,11 @@ import static org.hamcrest.CoreMatchers.not;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
-import java.util.concurrent.TimeUnit;
-
 import javax.inject.Inject;
 
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -44,22 +39,7 @@ import org.terasoluna.gfw.functionaltest.app.FunctionTestSupport;
 public class LoggingTest extends FunctionTestSupport {
 
     @Inject
-    protected WebDriver driver;
-
-    @Inject
     protected RestTemplate restTemplate;
-
-    @Before
-    public void setUp() {
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        driver.get(applicationContextUrl);
-        driver.findElement(By.id("logging")).click();
-    }
-
-    @After
-    public void tearDown() {
-
-    }
 
     @Test
     public void test01_01_createDefaultXTrackMDC() {
@@ -143,7 +123,7 @@ public class LoggingTest extends FunctionTestSupport {
         // check visually the log file
         // filename:traceLoggingInterceptorTest.log
     }
-    
+
     @Test
     public void test02_01_createDefaultUserIdMDCBeforeLogin() {
         driver.findElement(By.id("userIdMDCPutFilter")).click();
@@ -173,8 +153,8 @@ public class LoggingTest extends FunctionTestSupport {
         driver.findElement(By.id("userIdMDCPutFilter")).click();
 
         // authentication as username "user1"
-        driver.findElement(By.id("username")).sendKeys("user1");
-        driver.findElement(By.id("password")).sendKeys("user1");
+        inputFieldAccessor.overrideValue(By.id("username"), "user1", driver);
+        inputFieldAccessor.overrideValue(By.id("password"), "user1", driver);
         driver.findElement(By.id("btn1")).click();
 
         // create default userId MDC
@@ -184,33 +164,34 @@ public class LoggingTest extends FunctionTestSupport {
         assertThat(driver.findElement(By.id("userIdMDC")).getText(),
                 is("user1"));
     }
-    
+
     @Test
     public void test02_06_createCustomUserIdMDCBeforeLogin() {
         driver.findElement(By.id("userIdMDCPutFilter")).click();
 
         // authentication as username "user1"
-        driver.findElement(By.id("username")).sendKeys("user1");
-        driver.findElement(By.id("password")).sendKeys("user1");
+        inputFieldAccessor.overrideValue(By.id("username"), "user1", driver);
+        inputFieldAccessor.overrideValue(By.id("password"), "user1", driver);
         driver.findElement(By.id("btn1")).click();
 
         // Screen transition
-        driver.findElement(By.linkText("terasoluna-gfw-functionaltest")).click();
+        driver.findElement(By.linkText("terasoluna-gfw-functionaltest"))
+                .click();
         driver.findElement(By.id("logging")).click();
         driver.findElement(By.id("userIdMDCPutFilter")).click();
-        
+
         // create default userId MDC
         driver.findElement(By.id("userIdMDCPutFilterDefault")).click();
 
         // check default userId MDC
         assertThat(driver.findElement(By.id("userIdMDC")).getText(),
                 is("user1"));
-        
+
         // check trace logging
         // check visually the log file
         // filename:traceLoggingInterceptorTest.log
     }
-    
+
     @Test
     public void test04_01_defaultTraceLoggingAsTraceLevel() {
         driver.findElement(By.id("traceLoggingInterceptor")).click();
