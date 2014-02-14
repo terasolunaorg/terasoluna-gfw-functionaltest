@@ -279,8 +279,7 @@ public class ElTest extends FunctionTestSupport {
         new Select(driver.findElement(By.id("main")))
                 .selectByVisibleText("YES");
         inputFieldAccessor.overrideValue(By.id("age"), "10", driver);
-        inputFieldAccessor.overrideValue(By.id("dateOfBirth"), "2000-01-01",
-                driver);
+        inputFieldAccessor.overrideValue(By.id("dateOfBirth"), "2000-01-01", driver);
         new Select(driver.findElement(By.id("countries")))
                 .selectByVisibleText("JA");
         driver.findElement(By.id("btn-output")).click();
