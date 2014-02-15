@@ -190,8 +190,8 @@ public class RedirectTest extends FunctionTestSupport {
         driver.findElement(By.id("btn1")).click();
 
         // confirms that transition is made to external link
-        assertThat(driver.getCurrentUrl()
-                .startsWith("http://egg.nttdata.co.jp"), is(true));
+        assertThat(driver.getTitle(), is("terasoluna.org"));
+        
     }
 
     @Test
