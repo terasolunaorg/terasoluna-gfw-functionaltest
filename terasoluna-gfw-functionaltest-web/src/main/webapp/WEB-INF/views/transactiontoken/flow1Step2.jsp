@@ -24,6 +24,10 @@
 	<input name="redo1" class="mainbtn" style="width: 200px;" type="submit"
 		value="Back" />
 </form:form>
+<br>
+<form action="${pageContext.request.contextPath}/transactiontoken" method="get" target="_blank">
+    <input id="open-new-window" class="mainbtn" style="width: 200px;" type="submit" value="Open New Window">
+</form>
 
 <script type="text/javascript">
 	document.getElementById("result").innerHTML = document

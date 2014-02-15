@@ -35,6 +35,11 @@
 	<br>
 </form:form>
 
+<form action="${pageContext.request.contextPath}/transactiontoken" method="get" target="_blank">
+    <br>
+    <input id="open-new-window" class="mainbtn" style="width: 400px;" type="submit" value="Open New Window">
+</form>
+
 <script type="text/javascript">
 	document.getElementById("result").innerHTML = document
 			.getElementsByName('_TRANSACTION_TOKEN')[0].value;
