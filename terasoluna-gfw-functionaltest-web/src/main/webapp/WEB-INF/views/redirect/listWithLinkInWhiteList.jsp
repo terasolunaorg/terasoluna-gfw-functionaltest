@@ -14,7 +14,7 @@
         <td>${f:h(user.name)}</td>
         <td><form:form action="${pageContext.request.contextPath}/redirect/withwhitelist/loginWithWhiteList"
             method="GET">
-            <input type="hidden" id="hdn1" name="redirectTo" value="http://egg.nttdata.co.jp">
+            <input type="hidden" id="hdn1" name="redirectTo" value="http://terasoluna.org">
             <input type="submit" id="btn1" class="mainbtn" value="Login to Detail" />
           </form:form></td>
       </tr>
