@@ -22,6 +22,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.terasoluna.gfw.functionaltest.app.FunctionTestSupport;
@@ -29,6 +30,9 @@ import org.terasoluna.gfw.functionaltest.app.FunctionTestSupport;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:META-INF/spring/seleniumContext.xml" })
 public class RedirectTest extends FunctionTestSupport {
+
+    @Value("${app.redirect.allowed.externalUrl}")
+    String redirectionAllowedExternalUrl;
 
     @Test
     public void test01_01_redirectToValidInternalLink() {
@@ -191,7 +195,7 @@ public class RedirectTest extends FunctionTestSupport {
 
         // confirms that transition is made to external link
         assertThat(driver.getCurrentUrl()
-                .startsWith("http://egg.nttdata.co.jp"), is(true));
+                .startsWith(redirectionAllowedExternalUrl), is(true));
     }
 
     @Test

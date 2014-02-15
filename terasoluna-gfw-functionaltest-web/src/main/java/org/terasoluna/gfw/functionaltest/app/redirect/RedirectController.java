@@ -19,6 +19,7 @@ import java.security.Principal;
 
 import javax.inject.Inject;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -34,6 +35,9 @@ public class RedirectController {
     @Inject
     RedirectService redirectService;
 
+    @Value("${app.redirect.allowed.externalUrl}")
+    String redirectionAllowedExternalUrl;
+    
     @RequestMapping(method = RequestMethod.GET)
     public String index() {
         return "redirect/index";
@@ -76,6 +80,8 @@ public class RedirectController {
     @RequestMapping(value = "listWithLinkInWhiteList", method = RequestMethod.GET)
     public String listWithLinkInWhiteList(Model model) {
         model.addAttribute("users", redirectService.findUserInfo());
+        model.addAttribute("redirectionAllowedExternalUrl",
+                redirectionAllowedExternalUrl);
         return "redirect/listWithLinkInWhiteList";
     }
     

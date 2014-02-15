@@ -196,7 +196,7 @@
             <util:map key-type="java.lang.String" value-type="java.lang.String"
                 map-class="java.util.LinkedHashMap">
                 <entry key="1" value="http://www.google.com" />
-                <entry key="2" value="http://egg.nttdata.co.jp" />
+                <entry key="2" value="${app.redirect.allowed.externalUrl}" />
             </util:map>
         </property>
     </bean>
