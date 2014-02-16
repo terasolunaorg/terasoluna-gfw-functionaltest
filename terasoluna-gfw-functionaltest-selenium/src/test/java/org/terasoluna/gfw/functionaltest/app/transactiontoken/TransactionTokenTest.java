@@ -39,8 +39,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.terasoluna.gfw.functionaltest.app.FunctionTestSupport;
 import org.terasoluna.gfw.functionaltest.app.ScreenCaptureWebDriverEventListener;
 
-import com.gargoylesoftware.htmlunit.javascript.IEWeirdSyntaxScriptPreProcessor;
-
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:META-INF/spring/seleniumContext.xml" })
 public class TransactionTokenTest extends FunctionTestSupport {
