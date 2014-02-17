@@ -23,6 +23,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.Set;
 
 import org.junit.After;
@@ -31,9 +32,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.springframework.test.context.ContextConfiguration;
@@ -457,34 +455,29 @@ public class TransactionTokenTest extends FunctionTestSupport {
 
     @Test
     public void test03_01_defaultTokenStoreSizeOver() {
-        // FireFox Test Only
-        if (driver.getWrappedDriver() instanceof ChromeDriver
-                || driver.getWrappedDriver() instanceof InternetExplorerDriver) {
+
+        if (driver.getWrappedDriver() instanceof InternetExplorerDriver) {
+            logger.warn(testName.getMethodName()
+                    + " is not support Internet Explorer.");
             return;
         }
 
-        // Main tab
+        // Main window
         driver.findElement(By.id("link2")).click();
         driver.findElement(By.id("btn-flow1")).click();
-        String firstTab = driver.getWindowHandle();
-
-        WebElement body;
+        String mainWindow = driver.getWindowHandle();
 
         for (int i = 0; i < 10; i++) {
-            body = driver.findElement(By.tagName("body"));
-            body.sendKeys(Keys.chord(Keys.CONTROL, "t"));
-            driver.get(applicationContextUrl);
-            driver.findElement(By.id("Transaction")).click();
+            driver.findElement(By.id("open-new-window")).click();
+            driver.switchTo()
+                    .window(new LinkedList<String>(driver.getWindowHandles())
+                            .getLast());
             driver.findElement(By.id("link2")).click();
             driver.findElement(By.id("btn-flow1")).click();
         }
 
-        // TODO This does not work on IE and Chrome
-        driver.findElement(By.tagName("body")).sendKeys(
-                Keys.chord(Keys.CONTROL, Keys.TAB));
-        driver.switchTo().window(firstTab);
-
         // Click for in
+        driver.switchTo().window(mainWindow);
         driver.findElement(By.id("btn-in")).click();
         assertThat(driver.findElement(By.cssSelector("h2")).getText(),
                 is("Transaction Token Error"));
@@ -492,58 +485,52 @@ public class TransactionTokenTest extends FunctionTestSupport {
 
     @Test
     public void test03_02_customTokenStoreSizeOverClassMethodNamespace() {
-        // FireFox Test Only
-        if (driver.getWrappedDriver() instanceof ChromeDriver
-                || driver.getWrappedDriver() instanceof InternetExplorerDriver) {
+
+        if (driver.getWrappedDriver() instanceof InternetExplorerDriver) {
+            logger.warn(testName.getMethodName()
+                    + " is not support Internet Explorer.");
             return;
         }
 
         // TODO this test fails if the other namespace starts with the main namespace
 
-        // First tab
+        // Main window
         // start some non conflicting operation
         driver.findElement(By.id("link3")).click();
         driver.findElement(By.id("btn-begin1-other")).click();
-        String firstTab = driver.getWindowHandle();
+        String mainWindow = driver.getWindowHandle();
 
-        // Second tab
+        // Conflict window
         // Start conflicting operation
-        WebElement bodyMain = driver.findElement(By.tagName("body"));
-        bodyMain.sendKeys(Keys.chord(Keys.CONTROL, "t"));
-        driver.get(applicationContextUrl);
-        driver.findElement(By.id("Transaction")).click();
+        driver.findElement(By.id("open-new-window")).click();
+        driver.switchTo()
+                .window(new LinkedList<String>(driver.getWindowHandles())
+                        .getLast());
         driver.findElement(By.id("link3")).click();
         driver.findElement(By.id("btn-begin1")).click();
-
-        String conflictTab = driver.getWindowHandle();
-
-        WebElement body;
+        String conflictWindow = driver.getWindowHandle();
+        
 
         for (int i = 0; i < 2; i++) {
-            body = driver.findElement(By.tagName("body"));
-            body.sendKeys(Keys.chord(Keys.CONTROL, "t"));
-            driver.get(applicationContextUrl);
-            driver.findElement(By.id("Transaction")).click();
+            // Other window
+            driver.findElement(By.id("open-new-window")).click();
+            driver.switchTo()
+                    .window(new LinkedList<String>(driver.getWindowHandles())
+                            .getLast());
             driver.findElement(By.id("link3")).click();
             driver.findElement(By.id("btn-begin1")).click();
         }
 
-        // Complete non conflicting operation first
-        driver.findElement(By.tagName("body")).sendKeys(
-                Keys.chord(Keys.CONTROL, Keys.TAB));
-        driver.switchTo().window(firstTab);
+        // Complete non conflicting operation main window
         // Click for in
+        driver.switchTo().window(mainWindow);
         driver.findElement(By.id("btn-in1-other")).click();
         assertThat(driver.findElement(By.cssSelector("h2")).getText(),
                 is(not("Transaction Token Error")));
 
         // Check transaction token error for the operation of which transaction token has expired
-        // TODO This does not work on IE and Chrome
-        driver.findElement(By.tagName("body")).sendKeys(
-                Keys.chord(Keys.CONTROL, Keys.TAB));
-        driver.switchTo().window(conflictTab);
-
         // Click for in
+        driver.switchTo().window(conflictWindow);
         driver.findElement(By.id("btn-in1")).click();
         assertThat(driver.findElement(By.cssSelector("h2")).getText(),
                 is("Transaction Token Error"));
@@ -551,34 +538,30 @@ public class TransactionTokenTest extends FunctionTestSupport {
 
     @Test
     public void test03_03_customTokenStoreSizeOverMethodOnlyNamespace() {
-        // FireFox Test Only
-        if (driver.getWrappedDriver() instanceof ChromeDriver
-                || driver.getWrappedDriver() instanceof InternetExplorerDriver) {
+
+        if (driver.getWrappedDriver() instanceof InternetExplorerDriver) {
+            logger.warn(testName.getMethodName()
+                    + " is not support Internet Explorer.");
             return;
         }
 
-        // Main tab
+        // Main window
         driver.findElement(By.id("link3")).click();
         driver.findElement(By.id("btn-begin2")).click();
-        String firstTab = driver.getWindowHandle();
-
-        WebElement body;
+        String mainWindow = driver.getWindowHandle();
 
         for (int i = 0; i < 2; i++) {
-            body = driver.findElement(By.tagName("body"));
-            body.sendKeys(Keys.chord(Keys.CONTROL, "t"));
-            driver.get(applicationContextUrl);
-            driver.findElement(By.id("Transaction")).click();
+            // Other window
+            driver.findElement(By.id("open-new-window")).click();
+            driver.switchTo()
+                    .window(new LinkedList<String>(driver.getWindowHandles())
+                            .getLast());
             driver.findElement(By.id("link3")).click();
             driver.findElement(By.id("btn-begin2")).click();
         }
 
-        // TODO This does not work on IE and Chrome
-        driver.findElement(By.tagName("body")).sendKeys(
-                Keys.chord(Keys.CONTROL, Keys.TAB));
-        driver.switchTo().window(firstTab);
-
         // Click for in
+        driver.switchTo().window(mainWindow);
         driver.findElement(By.id("btn-in2")).click();
         assertThat(driver.findElement(By.cssSelector("h2")).getText(),
                 is("Transaction Token Error"));
@@ -586,32 +569,28 @@ public class TransactionTokenTest extends FunctionTestSupport {
 
     @Test
     public void test03_04_customTokenStoreSizeOverGlobalNamespace() {
-        // FireFox Test Only
-        if (driver.getWrappedDriver() instanceof ChromeDriver
-                || driver.getWrappedDriver() instanceof InternetExplorerDriver) {
+
+        if (driver.getWrappedDriver() instanceof InternetExplorerDriver) {
+            logger.warn(testName.getMethodName()
+                    + " is not support Internet Explorer.");
             return;
         }
 
-        // Main tab
+        // Main window
         driver.findElement(By.id("link3")).click();
         driver.findElement(By.id("btn-begin3")).click();
-        String firstTab = driver.getWindowHandle();
+        String mainWindow = driver.getWindowHandle();
 
-        WebElement body;
-
-        body = driver.findElement(By.tagName("body"));
-        body.sendKeys(Keys.chord(Keys.CONTROL, "t"));
-        driver.get(applicationContextUrl);
-        driver.findElement(By.id("Transaction")).click();
+        // Other window
+        driver.findElement(By.id("open-new-window")).click();
+        driver.switchTo()
+                .window(new LinkedList<String>(driver.getWindowHandles())
+                        .getLast());
         driver.findElement(By.id("link3")).click();
         driver.findElement(By.id("btn-begin3")).click();
-
-        // TODO This does not work on IE and Chrome
-        driver.findElement(By.tagName("body")).sendKeys(
-                Keys.chord(Keys.CONTROL, Keys.TAB));
-        driver.switchTo().window(firstTab);
 
         // Click for in
+        driver.switchTo().window(mainWindow);
         driver.findElement(By.id("btn-in3")).click();
         assertThat(driver.findElement(By.cssSelector("h2")).getText(),
                 is("Transaction Token Error"));
