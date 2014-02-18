@@ -1,3 +1,5 @@
     <h2>Output Message</h2>
-    <t:messagesPanel />
+    <div id="messagesPanel">
+    	<t:messagesPanel />
+    </div>
 

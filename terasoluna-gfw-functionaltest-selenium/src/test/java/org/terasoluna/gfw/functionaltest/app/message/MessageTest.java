@@ -688,7 +688,7 @@ public class MessageTest extends FunctionTestSupport {
         // div ul li Tag confirm
         // Message Confirm
         assertThat(
-                driver.findElement(By.xpath("/html/body/div/div")).getText(),
+                driver.findElement(By.id("messagesPanel")).getText(),
                 is("<div>Hello World!!</div>"));
 
         // screen capture
@@ -703,7 +703,7 @@ public class MessageTest extends FunctionTestSupport {
         // div ul li Tag confirm
         // Message Confirm
         assertThat(
-                driver.findElement(By.xpath("/html/body/div/div")).getText(),
+                driver.findElement(By.id("messagesPanel")).getText(),
                 is("Hello World!!"));
 
         // screen capture
