@@ -190,4 +190,14 @@
 			<a id="styleChangeScreen_08_01" href="${pageContext.request.contextPath}/message/8_1">styleChangeScreen_08_01</a>
 		</td>
 	</tr>
+	<tr>
+		<td>
+			<a id="disableHtmlEscape_09_01" href="${pageContext.request.contextPath}/message/9_1">disableHtmlEscape_09_01</a>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<a id="disableHtmlEscape_09_02" href="${pageContext.request.contextPath}/message/9_2">disableHtmlEscape_09_02</a>
+		</td>
+	</tr>
 </table>

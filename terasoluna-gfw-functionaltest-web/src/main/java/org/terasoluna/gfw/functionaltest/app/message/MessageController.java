@@ -358,4 +358,20 @@ public class MessageController {
         return "message/styleChangeScreen";
     }
     
+    @RequestMapping(value="9_1", method = RequestMethod.GET)
+    public String disableHtmlEscape_09_01(Model model) {
+        
+        model.addAttribute(ResultMessages.success().add("i.gt.me.0006"));
+        
+        return "message/disableHtmlEscapeNotSpecified";
+    }
+    
+    @RequestMapping(value="9_2", method = RequestMethod.GET)
+    public String disableHtmlEscape_09_02(Model model) {
+        
+        model.addAttribute(ResultMessages.success().add("i.gt.me.0006"));
+        
+        return "message/disableHtmlEscapeSpecifiedTrue";
+    }
+    
 }

@@ -679,5 +679,35 @@ public class MessageTest extends FunctionTestSupport {
         // screen capture
         screenCapture.save(driver);
     }
+    
+    
+    @Test
+    public void test09_01_disableHtmlEscape() {
+        driver.findElement(By.id("disableHtmlEscape_09_01")).click();
+
+        // div ul li Tag confirm
+        // Message Confirm
+        assertThat(
+                driver.findElement(By.id("messagesPanel")).getText(),
+                is("<div>Hello World!!</div>"));
+
+        // screen capture
+        screenCapture.save(driver);
+    }
+
+    
+    @Test
+    public void test09_02_disableHtmlEscape() {
+        driver.findElement(By.id("disableHtmlEscape_09_02")).click();
+
+        // div ul li Tag confirm
+        // Message Confirm
+        assertThat(
+                driver.findElement(By.id("messagesPanel")).getText(),
+                is("Hello World!!"));
+
+        // screen capture
+        screenCapture.save(driver);
+    }
 
 }
