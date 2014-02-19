@@ -346,6 +346,22 @@ public class ElTest extends FunctionTestSupport {
 
         // output 06_07 Test
         assertThat(driver.findElement(By.id("queryOutput")).getText(), is(""));
+        
+        // screen capture
+        screenCapture.save(driver);
+
+        driver.get(applicationContextUrl);
+        driver.findElement(By.id("EL")).click();
+        driver.findElement(By.id("06_03-")).click();
+        
+        inputFieldAccessor.overrideValue(By.id("name"), "TEST[]#+=&TEST", driver);
+        driver.findElement(By.id("btn-output")).click();
+
+        // output 06_08 Test
+        assertThat(
+                driver.findElement(
+                        By.xpath("//a[contains(@href, '?page=1&size=10&age=0&countries=&dateOfBirth=&main=false&name=TEST%255B%255D%2523%252B%253D%2526TEST')]"))
+                        .getText(), is("2"));
     }
 
     @Test
