@@ -116,4 +116,7 @@
   <tr>
     <td><a href="${pageContext.request.contextPath}/codelist/08_07_form">@ExistInCodeList Test (Multiple Custom codelist)</a></td>
   </tr>
+  <tr>
+    <td><a href="${pageContext.request.contextPath}/codelist/09_01_form">EnumCodeList Test</a></td>
+  </tr>
 </table>
