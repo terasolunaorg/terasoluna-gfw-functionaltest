@@ -543,4 +543,30 @@ public class CodeListTest extends FunctionTestSupport {
 
         driver.findElement(By.id("btnback")).click();
     }
+    
+    @Test
+    public void test09_01_form() {
+        driver.findElement(By.linkText("EnumCodeList Test")).click();
+        assertThat(driver.findElement(By.cssSelector("option[value=\"key1\"]"))
+                .getText(), is("label1"));
+        assertThat(driver.findElement(By.cssSelector("option[value=\"key2\"]"))
+                .getText(), is("label2"));
+        assertThat(driver.findElement(By.cssSelector("option[value=\"key3\"]"))
+                .getText(), is("label3"));
+        driver.findElement(By.id("btn1")).click();
+        assertThat(driver.findElement(By.id("output")).getText(), is("key1"));
+        driver.findElement(By.id("btnback")).click();
+        driver.findElement(By.linkText("EnumCodeList Test")).click();
+        new Select(driver.findElement(By.id("item1")))
+                .selectByVisibleText("label2");
+        driver.findElement(By.id("btn1")).click();
+        assertThat(driver.findElement(By.id("output")).getText(), is("key2"));
+        driver.findElement(By.id("btnback")).click();
+        driver.findElement(By.linkText("EnumCodeList Test")).click();
+        new Select(driver.findElement(By.id("item1")))
+                .selectByVisibleText("label3");
+        driver.findElement(By.id("btn1")).click();
+        assertThat(driver.findElement(By.id("output")).getText(), is("key3"));
+        driver.findElement(By.id("btnback")).click();
+    }
 }
