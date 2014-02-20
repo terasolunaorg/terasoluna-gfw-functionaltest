@@ -28,9 +28,9 @@ public enum MonthOfYear implements CodeListItem {
 
     DECEMBER("December", "12");
 
-    private String label;
+    private final String label;
 
-    private String value;
+    private final String value;
 
     private MonthOfYear(String label, String value) {
         this.label = label;
