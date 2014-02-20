@@ -2,7 +2,7 @@ package org.terasoluna.gfw.functionaltest.app.codelist;
 
 import org.terasoluna.gfw.common.codelist.EnumCodeList.CodeListItem;
 
-public enum YearName implements CodeListItem {
+public enum MonthOfYear implements CodeListItem {
 
     JANUARY("January", "1"),
 
@@ -32,7 +32,7 @@ public enum YearName implements CodeListItem {
 
     private String value;
 
-    private YearName(String label, String value) {
+    private MonthOfYear(String label, String value) {
         this.label = label;
         this.value = value;
     }

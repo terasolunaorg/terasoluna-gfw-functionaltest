@@ -28,7 +28,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.terasoluna.gfw.common.codelist.CodeList;
-import org.terasoluna.gfw.common.codelist.EnumCodeList;
 import org.terasoluna.gfw.functionaltest.domain.model.ItemCode;
 import org.terasoluna.gfw.functionaltest.domain.service.codelist.CodeListService;
 
@@ -321,9 +320,6 @@ public class CodeListContoller {
     // test case 09_01
     @RequestMapping(value = "09_01_form", method = RequestMethod.GET)
     public String test09_01_form(CodeListForm form, Model model) {
-        // create ListMap using EnumCodeList
-        model.addAttribute("clCodeListUsingEnumCodeList",
-                new EnumCodeList(YearName.class).asMap());
         return "codelist/09_01_form";
     }
 }
