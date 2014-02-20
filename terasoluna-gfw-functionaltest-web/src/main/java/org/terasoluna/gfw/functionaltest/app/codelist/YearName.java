@@ -4,39 +4,42 @@ import org.terasoluna.gfw.common.codelist.EnumCodeList.CodeListItem;
 
 public enum YearName implements CodeListItem {
 
-    January("1"),
+    JANUARY("January", "1"),
 
-    February("2"),
+    FEBRUARY("February", "2"),
 
-    March("3"),
+    MARCH("March", "3"),
 
-    April("4"),
+    APRIL("April", "4"),
 
-    May("5"),
+    MAY("May", "5"),
 
-    June("6"),
+    JUNE("June", "6"),
 
-    July("7"),
+    JULY("July", "7"),
 
-    August("8"),
+    AUGUST("August", "8"),
 
-    September("9"),
+    SEPTEMBER("September", "9"),
 
-    October("10"),
+    OCTOBER("October", "10"),
 
-    November("11"),
+    NOVEMBER("November", "11"),
 
-    December("12");
+    DECEMBER("December", "12");
+
+    private String label;
 
     private String value;
 
-    private YearName(String value) {
+    private YearName(String label, String value) {
+        this.label = label;
         this.value = value;
     }
 
     @Override
     public String getCodeLabel() {
-        return this.name();
+        return this.label;
     }
 
     @Override
