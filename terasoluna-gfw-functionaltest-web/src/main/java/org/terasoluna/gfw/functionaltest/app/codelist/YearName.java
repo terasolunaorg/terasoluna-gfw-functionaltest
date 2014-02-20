@@ -2,17 +2,35 @@ package org.terasoluna.gfw.functionaltest.app.codelist;
 
 import org.terasoluna.gfw.common.codelist.EnumCodeList.CodeListItem;
 
-public enum LabelNames implements CodeListItem {
+public enum YearName implements CodeListItem {
 
-    label1("key1"),
+    January("1"),
 
-    label2("key2"),
+    February("2"),
 
-    label3("key3");
+    March("3"),
+
+    April("4"),
+
+    May("5"),
+
+    June("6"),
+
+    July("7"),
+
+    August("8"),
+
+    September("9"),
+
+    October("10"),
+
+    November("11"),
+
+    December("12");
 
     private String value;
 
-    private LabelNames(String value) {
+    private YearName(String value) {
         this.value = value;
     }
 

@@ -322,7 +322,8 @@ public class CodeListContoller {
     @RequestMapping(value = "09_01_form", method = RequestMethod.GET)
     public String test09_01_form(CodeListForm form, Model model) {
         // create ListMap using EnumCodeList
-        model.addAttribute("clCodeListUsingEnumCodeList", new EnumCodeList(LabelNames.class).asMap());
+        model.addAttribute("clCodeListUsingEnumCodeList",
+                new EnumCodeList(YearName.class).asMap());
         return "codelist/09_01_form";
     }
 }

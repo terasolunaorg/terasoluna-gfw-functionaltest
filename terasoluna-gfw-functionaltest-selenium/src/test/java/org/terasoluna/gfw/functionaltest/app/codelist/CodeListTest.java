@@ -547,26 +547,110 @@ public class CodeListTest extends FunctionTestSupport {
     @Test
     public void test09_01_form() {
         driver.findElement(By.linkText("EnumCodeList Test")).click();
-        assertThat(driver.findElement(By.cssSelector("option[value=\"key1\"]"))
-                .getText(), is("label1"));
-        assertThat(driver.findElement(By.cssSelector("option[value=\"key2\"]"))
-                .getText(), is("label2"));
-        assertThat(driver.findElement(By.cssSelector("option[value=\"key3\"]"))
-                .getText(), is("label3"));
+        assertThat(driver.findElement(By.cssSelector("option[value=\"1\"]"))
+                .getText(), is("January"));
+        assertThat(driver.findElement(By.cssSelector("option[value=\"2\"]"))
+                .getText(), is("February"));
+        assertThat(driver.findElement(By.cssSelector("option[value=\"3\"]"))
+                .getText(), is("March"));
+        assertThat(driver.findElement(By.cssSelector("option[value=\"4\"]"))
+                .getText(), is("April"));
+        assertThat(driver.findElement(By.cssSelector("option[value=\"5\"]"))
+                .getText(), is("May"));
+        assertThat(driver.findElement(By.cssSelector("option[value=\"6\"]"))
+                .getText(), is("June"));
+        assertThat(driver.findElement(By.cssSelector("option[value=\"7\"]"))
+                .getText(), is("July"));
+        assertThat(driver.findElement(By.cssSelector("option[value=\"8\"]"))
+                .getText(), is("August"));
+        assertThat(driver.findElement(By.cssSelector("option[value=\"9\"]"))
+                .getText(), is("September"));
+        assertThat(driver.findElement(By.cssSelector("option[value=\"10\"]"))
+                .getText(), is("October"));
+        assertThat(driver.findElement(By.cssSelector("option[value=\"11\"]"))
+                .getText(), is("November"));
+        assertThat(driver.findElement(By.cssSelector("option[value=\"12\"]"))
+                .getText(), is("December"));
+        
         driver.findElement(By.id("btn1")).click();
-        assertThat(driver.findElement(By.id("output")).getText(), is("key1"));
+        assertThat(driver.findElement(By.id("output")).getText(), is("1"));
         driver.findElement(By.id("btnback")).click();
+        
         driver.findElement(By.linkText("EnumCodeList Test")).click();
         new Select(driver.findElement(By.id("item1")))
-                .selectByVisibleText("label2");
+                .selectByVisibleText("February");
         driver.findElement(By.id("btn1")).click();
-        assertThat(driver.findElement(By.id("output")).getText(), is("key2"));
+        assertThat(driver.findElement(By.id("output")).getText(), is("2"));
         driver.findElement(By.id("btnback")).click();
+        
         driver.findElement(By.linkText("EnumCodeList Test")).click();
         new Select(driver.findElement(By.id("item1")))
-                .selectByVisibleText("label3");
+                .selectByVisibleText("March");
         driver.findElement(By.id("btn1")).click();
-        assertThat(driver.findElement(By.id("output")).getText(), is("key3"));
+        assertThat(driver.findElement(By.id("output")).getText(), is("3"));
+        driver.findElement(By.id("btnback")).click();
+
+        driver.findElement(By.linkText("EnumCodeList Test")).click();
+        new Select(driver.findElement(By.id("item1")))
+                .selectByVisibleText("April");
+        driver.findElement(By.id("btn1")).click();
+        assertThat(driver.findElement(By.id("output")).getText(), is("4"));
+        driver.findElement(By.id("btnback")).click();
+
+        driver.findElement(By.linkText("EnumCodeList Test")).click();
+        new Select(driver.findElement(By.id("item1")))
+                .selectByVisibleText("May");
+        driver.findElement(By.id("btn1")).click();
+        assertThat(driver.findElement(By.id("output")).getText(), is("5"));
+        driver.findElement(By.id("btnback")).click();
+
+        driver.findElement(By.linkText("EnumCodeList Test")).click();
+        new Select(driver.findElement(By.id("item1")))
+                .selectByVisibleText("June");
+        driver.findElement(By.id("btn1")).click();
+        assertThat(driver.findElement(By.id("output")).getText(), is("6"));
+        driver.findElement(By.id("btnback")).click();
+
+        driver.findElement(By.linkText("EnumCodeList Test")).click();
+        new Select(driver.findElement(By.id("item1")))
+                .selectByVisibleText("July");
+        driver.findElement(By.id("btn1")).click();
+        assertThat(driver.findElement(By.id("output")).getText(), is("7"));
+        driver.findElement(By.id("btnback")).click();
+
+        driver.findElement(By.linkText("EnumCodeList Test")).click();
+        new Select(driver.findElement(By.id("item1")))
+                .selectByVisibleText("August");
+        driver.findElement(By.id("btn1")).click();
+        assertThat(driver.findElement(By.id("output")).getText(), is("8"));
+        driver.findElement(By.id("btnback")).click();
+
+        driver.findElement(By.linkText("EnumCodeList Test")).click();
+        new Select(driver.findElement(By.id("item1")))
+                .selectByVisibleText("September");
+        driver.findElement(By.id("btn1")).click();
+        assertThat(driver.findElement(By.id("output")).getText(), is("9"));
+        driver.findElement(By.id("btnback")).click();
+
+        driver.findElement(By.linkText("EnumCodeList Test")).click();
+        new Select(driver.findElement(By.id("item1")))
+                .selectByVisibleText("October");
+        driver.findElement(By.id("btn1")).click();
+        assertThat(driver.findElement(By.id("output")).getText(), is("10"));
+        driver.findElement(By.id("btnback")).click();
+
+        driver.findElement(By.linkText("EnumCodeList Test")).click();
+        new Select(driver.findElement(By.id("item1")))
+                .selectByVisibleText("November");
+        driver.findElement(By.id("btn1")).click();
+        assertThat(driver.findElement(By.id("output")).getText(), is("11"));
+        driver.findElement(By.id("btnback")).click();
+
+        driver.findElement(By.linkText("EnumCodeList Test")).click();
+        new Select(driver.findElement(By.id("item1")))
+                .selectByVisibleText("December");
+        driver.findElement(By.id("btn1")).click();
+        assertThat(driver.findElement(By.id("output")).getText(), is("12"));
         driver.findElement(By.id("btnback")).click();
     }
 }
