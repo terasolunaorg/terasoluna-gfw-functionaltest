@@ -20,8 +20,6 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.inject.Inject;
-
 import org.joda.time.DateTime;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -38,9 +36,6 @@ import org.terasoluna.gfw.functionaltest.domain.repository.customer.CustomerSear
 @Controller
 @RequestMapping(value = "el")
 public class ElController {
-    
-    @Inject
-    ELHelper elHelper;
     
     @ModelAttribute
     public CustomerSearchCriteria setUpForm() {
@@ -157,9 +152,6 @@ public class ElController {
         for (int i=1; i <= 10; i++) {
             customerList.add("Customer");
         }
-        
-        // decode paramater "name"
-        elHelper.decodeName(criteria);
         
         Page<String> customer = new PageImpl<String>(customerList, pageable, 100);
         
