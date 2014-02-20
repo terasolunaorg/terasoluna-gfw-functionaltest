@@ -1,4 +1,4 @@
-package org.terasoluna.gfw.functionaltest.app.codelist;
+package org.terasoluna.gfw.functionaltest.domain.common.datetime;
 
 import org.terasoluna.gfw.common.codelist.EnumCodeList.CodeListItem;
 

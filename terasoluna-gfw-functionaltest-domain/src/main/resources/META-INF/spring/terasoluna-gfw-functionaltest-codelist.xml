@@ -202,6 +202,7 @@
     </bean>
     
     <bean id="CL_MONTH_OF_YEAR" class="org.terasoluna.gfw.common.codelist.EnumCodeList">
-        <constructor-arg index="0" value="org.terasoluna.gfw.functionaltest.app.codelist.MonthOfYear" />
+        <constructor-arg index="0"
+            value="org.terasoluna.gfw.functionaltest.domain.common.datetime.MonthOfYear" />
     </bean>
 </beans>
