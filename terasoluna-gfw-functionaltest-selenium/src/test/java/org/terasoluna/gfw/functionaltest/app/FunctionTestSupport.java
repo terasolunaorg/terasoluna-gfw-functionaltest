@@ -55,6 +55,8 @@ public class FunctionTestSupport extends ApplicationObjectSupport {
     @Value("${selenium.evidenceBaseDirectory}")
     protected String evidenceBaseDirectory;
 
+    protected WebDriverOperations webDriverOperations;
+
     @Inject
     protected ScreenCapture screenCapture;
 
@@ -88,6 +90,8 @@ public class FunctionTestSupport extends ApplicationObjectSupport {
     private String simplePackageName;
 
     protected WebDriverInputFieldAccessor inputFieldAccessor = WebDriverInputFieldAccessor.JAVASCRIPT;
+
+    protected long defaultTimeoutSecForImplicitlyWait = 5;
 
     protected FunctionTestSupport() {
         this.simplePackageName = this.getClass().getPackage().getName()
@@ -142,8 +146,13 @@ public class FunctionTestSupport extends ApplicationObjectSupport {
         if (driver == null) {
             driver = newWebDriver();
         }
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(
+                defaultTimeoutSecForImplicitlyWait, TimeUnit.SECONDS);
         driver.get(getPackageRootUrl());
+        
+        this.webDriverOperations = new WebDriverOperations(driver);
+        this.webDriverOperations
+                .setDefaultTimeoutForImplicitlyWait(defaultTimeoutSecForImplicitlyWait);
     }
 
     private WebDriver newWebDriver() {
