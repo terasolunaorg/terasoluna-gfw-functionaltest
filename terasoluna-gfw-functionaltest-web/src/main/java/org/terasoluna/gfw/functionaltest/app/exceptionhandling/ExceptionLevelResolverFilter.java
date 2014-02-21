@@ -31,8 +31,8 @@ public class ExceptionLevelResolverFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request,
             HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
 
-        String path = request.getServletPath();
-
+        String path = request.getRequestURI().replaceFirst(request.getContextPath(), "");
+                
         if (path.equals("/exceptionhandling/5_1")) {
             throw new BusinessTestException("n.cc.0000", "Error");
         } else if (path.equals("/exceptionhandling/5_2")) {

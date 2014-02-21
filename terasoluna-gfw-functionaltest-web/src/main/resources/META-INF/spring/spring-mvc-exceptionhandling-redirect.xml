@@ -33,7 +33,7 @@
 				<entry key="common/error/businessError" value="409" />
 			</map>
 		</property>
-		<property name="defaultErrorView" value="redirect:exceptionHandlingRedirect/3_4_1" />
+		<property name="defaultErrorView" value="redirect:/exceptionHandlingRedirect/exceptionhandling/exceptionHandlingRedirect/3_4_1" />
 		<property name="defaultStatusCode" value="500" />
 	</bean>
 	<!-- AOP. -->

@@ -56,23 +56,17 @@ public class CsrfController {
     }
 
     @RequestMapping(value = "1_1", method = RequestMethod.GET)
-    public String springFormNormalCsrfTokenSend_HttpMethodGet_01_01(Model model) {
-        model.addAttribute("testName",
-                Thread.currentThread().getStackTrace()[1].getMethodName());
+    public String springFormNormalCsrfTokenSend_HttpMethodGet_01_01() {
         return "csrf/success";
     }
 
     @RequestMapping(value = "1_2", method = RequestMethod.GET)
-    public String springFormAlterCsrfTokenSend_HttpMethodGet_01_02(Model model) {
-        model.addAttribute("testName",
-                Thread.currentThread().getStackTrace()[1].getMethodName());
+    public String springFormAlterCsrfTokenSend_HttpMethodGet_01_02() {
         return "csrf/success";
     }
 
     @RequestMapping(value = "1_3", method = RequestMethod.POST)
-    public String springFormNormalCsrfTokenSend_HttpMethodPost_01_03(Model model) {
-        model.addAttribute("testName",
-                Thread.currentThread().getStackTrace()[1].getMethodName());
+    public String springFormNormalCsrfTokenSend_HttpMethodPost_01_03() {
         return "csrf/success";
     }
 
@@ -82,9 +76,7 @@ public class CsrfController {
     }
 
     @RequestMapping(value = "1_5", method = RequestMethod.POST)
-    public String formNormalCsrfTokenSend_HttpMethodPost_01_05(Model model) {
-        model.addAttribute("testName",
-                Thread.currentThread().getStackTrace()[1].getMethodName());
+    public String formNormalCsrfTokenSend_HttpMethodPost_01_05() {
         return "csrf/success";
     }
 
