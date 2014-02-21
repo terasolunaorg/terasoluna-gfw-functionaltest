@@ -65,8 +65,8 @@ public class CsrfTest extends FunctionTestSupport {
         driver.findElement(By.id("csrf_1_1")).click();
 
         // Normal screen transition
-        assertThat(driver.findElement(By.id("testName")).getText(),
-                is("springFormNormalCsrfTokenSend_HttpMethodGet_01_01"));
+        assertThat(driver.findElement(By.id("successMessage")).getText(),
+                is("Screen transition was completed successfully."));
 
         screenCapture.save(driver);
 
@@ -80,8 +80,8 @@ public class CsrfTest extends FunctionTestSupport {
         driver.findElement(By.id("csrf_1_2")).click();
 
         // Normal screen transition
-        assertThat(driver.findElement(By.id("testName")).getText(),
-                is("springFormAlterCsrfTokenSend_HttpMethodGet_01_02"));
+        assertThat(driver.findElement(By.id("successMessage")).getText(),
+                is("Screen transition was completed successfully."));
 
         screenCapture.save(driver);
 
@@ -94,8 +94,8 @@ public class CsrfTest extends FunctionTestSupport {
         driver.findElement(By.id("csrf_1_3")).click();
 
         // Normal screen transition
-        assertThat(driver.findElement(By.id("testName")).getText(),
-                is("springFormNormalCsrfTokenSend_HttpMethodPost_01_03"));
+        assertThat(driver.findElement(By.id("successMessage")).getText(),
+                is("Screen transition was completed successfully."));
 
         screenCapture.save(driver);
 
@@ -133,8 +133,8 @@ public class CsrfTest extends FunctionTestSupport {
         driver.findElement(By.id("csrf_1_5")).click();
 
         // Normal screen transition
-        assertThat(driver.findElement(By.id("testName")).getText(),
-                is("formNormalCsrfTokenSend_HttpMethodPost_01_05"));
+        assertThat(driver.findElement(By.id("successMessage")).getText(),
+                is("Screen transition was completed successfully."));
 
         screenCapture.save(driver);
 

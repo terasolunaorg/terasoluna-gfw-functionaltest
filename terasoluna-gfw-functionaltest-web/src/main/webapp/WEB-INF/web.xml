@@ -138,11 +138,11 @@
 	</filter-mapping>
 
 	<filter>
-		<filter-name>ThrowIOExceptionFilter</filter-name>
-		<filter-class>org.terasoluna.gfw.functionaltest.app.exceptionhandling.ThrowIOExceptionFilter</filter-class>
+		<filter-name>ThrowIllegalStateExceptionFilter</filter-name>
+		<filter-class>org.terasoluna.gfw.functionaltest.app.exceptionhandling.ThrowIllegalStateExceptionFilter</filter-class>
 	</filter>
 	<filter-mapping>
-		<filter-name>ThrowIOExceptionFilter</filter-name>
+		<filter-name>ThrowIllegalStateExceptionFilter</filter-name>
 		<url-pattern>/exceptionhandling/4_4</url-pattern>
 	</filter-mapping>
 
