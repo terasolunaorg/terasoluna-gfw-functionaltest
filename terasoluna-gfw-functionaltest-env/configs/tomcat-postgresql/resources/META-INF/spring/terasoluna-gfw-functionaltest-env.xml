@@ -88,7 +88,7 @@
     </bean>
 
     <bean id="dbLogCleaner"
-        class="jp.co.ntt.fw.spring.functionaltest.domain.DBLogCleaner">
+        class="org.terasoluna.gfw.functionaltest.domain.DBLogCleaner">
         <property name="dataSource" ref="dataSourceForLogging" />
     </bean>
 
