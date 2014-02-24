@@ -7,7 +7,7 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 
 /**
- * ブラウザ操作(WebDriverに対するロジック)を提供するクラス。
+ * Class that provides a (logic for WebDriver) browser operation.
  */
 public class WebDriverOperations {
 
@@ -20,8 +20,8 @@ public class WebDriverOperations {
     }
 
     /**
-     * 要素を見つけるまでの待機処理のデフォルトのタイムアウト値を設定する。
-     * @param defaultTimeoutSecForImplicitlyWait 要素を見つけるまでの待機処理のデフォルトのタイムアウト値(秒)
+     * Set the default timeout value of the waiting process to find the element.
+     * @param defaultTimeoutSecForImplicitlyWait The default timeout value of the waiting process to find the element (s)
      */
     public void setDefaultTimeoutForImplicitlyWait(
             long defaultTimeoutSecForImplicitlyWait) {
@@ -29,9 +29,9 @@ public class WebDriverOperations {
     }
 
     /**
-     * 指定した要素が存在するかチェックする。
-     * @param by 要素を探すための識別子
-     * @return 指定した要素が存在する場合にtrueを返却する。
+     * Check the specified element exists.
+     * @param by Identifier to look for elements
+     * @return And returns true if the specified element is present.
      */
     public boolean exists(By by) {
         webDriver.findElement(By.tagName("body"));
@@ -48,7 +48,7 @@ public class WebDriverOperations {
     }
 
     /**
-     * 要素を見つけるまでの待機処理のタイムアウト値をデフォルト値に設定する。
+     * Set to the default value of the timeout value waiting process to find the element.
      */
     public void setDefaultTimeoutForImplicitlyWait() {
         setTimeoutForImplicitlyWait(defaultTimeoutSecForImplicitlyWait,
@@ -56,7 +56,7 @@ public class WebDriverOperations {
     }
 
     /**
-     * 要素を見つけるまでの待機処理のタイムアウト値を設定する。
+     * Set the time-out value of the waiting process to find the element.
      */
     public void setTimeoutForImplicitlyWait(long timeout, TimeUnit timeUnit) {
         webDriver.manage().timeouts().implicitlyWait(timeout, timeUnit);
