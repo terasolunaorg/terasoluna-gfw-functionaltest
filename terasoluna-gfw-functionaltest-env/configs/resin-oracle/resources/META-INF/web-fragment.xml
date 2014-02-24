@@ -36,7 +36,7 @@
     </context-param>
     <context-param>
         <param-name>db.tcpServer</param-name>
-        <param-value>-tcpAllowOthers</param-value>
+        <param-value>-tcpAllowOthers -tcpPort 9192</param-value>
     </context-param>
 
 </web-fragment>
