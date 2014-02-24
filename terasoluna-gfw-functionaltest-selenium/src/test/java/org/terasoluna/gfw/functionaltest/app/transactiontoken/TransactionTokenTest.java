@@ -20,6 +20,7 @@ import static org.hamcrest.core.IsNot.not;
 import static org.hamcrest.core.IsNull.notNullValue;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertFalse;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -137,8 +138,7 @@ public class TransactionTokenTest extends FunctionTestSupport {
         assertThat(newTokenValue, is(not(currentTokenValue)));
 
         driver.findElement(By.id("btn-end")).click();
-        assertThat(driver.findElements(By.name("_TRANSACTION_TOKEN")).size(),
-                is(0));
+        assertFalse(webDriverOperations.exists(By.name("_TRANSACTION_TOKEN")));
 
     }
 
@@ -170,8 +170,7 @@ public class TransactionTokenTest extends FunctionTestSupport {
         assertThat(newTokenValue, is(not(currentTokenValue)));
 
         driver.findElement(By.id("btn-end")).click();
-        assertThat(driver.findElements(By.name("_TRANSACTION_TOKEN")).size(),
-                is(0));
+        assertFalse(webDriverOperations.exists(By.name("_TRANSACTION_TOKEN")));
     }
 
     @Test
@@ -183,8 +182,7 @@ public class TransactionTokenTest extends FunctionTestSupport {
                 notNullValue());
 
         driver.findElement(By.id("btn-end")).click();
-        assertThat(driver.findElements(By.name("_TRANSACTION_TOKEN")).size(),
-                is(0));
+        assertFalse(webDriverOperations.exists(By.name("_TRANSACTION_TOKEN")));
 
     }
 
@@ -197,8 +195,7 @@ public class TransactionTokenTest extends FunctionTestSupport {
                 notNullValue());
 
         driver.findElement(By.id("btn-in-finish")).click();
-        assertThat(driver.findElements(By.name("_TRANSACTION_TOKEN")).size(),
-                is(0));
+        assertFalse(webDriverOperations.exists(By.name("_TRANSACTION_TOKEN")));
 
     }
 
@@ -265,9 +262,7 @@ public class TransactionTokenTest extends FunctionTestSupport {
         assertThat(newTokenValue, is(not(currentTokenValue)));
 
         driver.findElement(By.id("btn-end")).click();
-        assertThat(driver.findElements(By.name("_TRANSACTION_TOKEN")).size(),
-                is(0));
-
+        assertFalse(webDriverOperations.exists(By.name("_TRANSACTION_TOKEN")));
     }
 
     @Test
@@ -310,8 +305,7 @@ public class TransactionTokenTest extends FunctionTestSupport {
 
         // error occurs in end and returns back to step-1 screen with transaction token destroyed
         driver.findElement(By.id("btn-end-error")).click();
-        assertThat(driver.findElements(By.name("_TRANSACTION_TOKEN")).size(),
-                is(0));
+        assertFalse(webDriverOperations.exists(By.name("_TRANSACTION_TOKEN")));
     }
 
     @Test
@@ -346,8 +340,7 @@ public class TransactionTokenTest extends FunctionTestSupport {
 
         // this time no error and token is destroyed
         driver.findElement(By.id("btn-in-finish")).click();
-        assertThat(driver.findElements(By.name("_TRANSACTION_TOKEN")).size(),
-                is(0));
+        assertFalse(webDriverOperations.exists(By.name("_TRANSACTION_TOKEN")));
     }
 
     @Test
@@ -503,13 +496,11 @@ public class TransactionTokenTest extends FunctionTestSupport {
         // Conflict window
         // Start conflicting operation
         driver.findElement(By.id("open-new-window")).click();
-        driver.switchTo()
-                .window(new LinkedList<String>(driver.getWindowHandles())
-                        .getLast());
+        driver.switchTo().window(
+                new LinkedList<String>(driver.getWindowHandles()).getLast());
         driver.findElement(By.id("link3")).click();
         driver.findElement(By.id("btn-begin1")).click();
         String conflictWindow = driver.getWindowHandle();
-        
 
         for (int i = 0; i < 2; i++) {
             // Other window
@@ -583,15 +574,86 @@ public class TransactionTokenTest extends FunctionTestSupport {
 
         // Other window
         driver.findElement(By.id("open-new-window")).click();
-        driver.switchTo()
-                .window(new LinkedList<String>(driver.getWindowHandles())
-                        .getLast());
+        driver.switchTo().window(
+                new LinkedList<String>(driver.getWindowHandles()).getLast());
         driver.findElement(By.id("link3")).click();
         driver.findElement(By.id("btn-begin3")).click();
 
         // Click for in
         driver.switchTo().window(mainWindow);
         driver.findElement(By.id("btn-in3")).click();
+        assertThat(driver.findElement(By.cssSelector("h2")).getText(),
+                is("Transaction Token Error"));
+    }
+
+    @Test
+    public void test03_05_defaultTokenStoreSizeOpen() {
+
+        if (driver.getWrappedDriver() instanceof InternetExplorerDriver) {
+            logger.warn(testName.getMethodName()
+                    + " is not support Internet Explorer.");
+            return;
+        }
+
+        // Main window
+        driver.findElement(By.id("link2")).click();
+        driver.findElement(By.id("btn-flow1")).click();
+        String mainWindow = driver.getWindowHandle();
+
+        // The default maximum number of open window(create token)
+        for (int i = 0; i < 9; i++) {
+            driver.findElement(By.id("open-new-window")).click();
+            driver.switchTo()
+                    .window(new LinkedList<String>(driver.getWindowHandles())
+                            .getLast());
+            driver.findElement(By.id("link2")).click();
+            driver.findElement(By.id("btn-flow1")).click();
+        }
+
+        // Click for in
+        driver.switchTo().window(mainWindow);
+        driver.findElement(By.id("btn-in")).click();
+        assertTrue(driver.findElement(By.name("_TRANSACTION_TOKEN"))
+                .getAttribute("value").matches(
+                        "transactiontoken~[0-9a-z]{32}~[0-9a-z]{32}"));
+    }
+
+    @Test
+    public void test03_06_defaultTokenStoreSizeOpenCheck() {
+
+        if (driver.getWrappedDriver() instanceof InternetExplorerDriver) {
+            logger.warn(testName.getMethodName()
+                    + " is not support Internet Explorer.");
+            return;
+        }
+
+        // Main window
+        driver.findElement(By.id("link2")).click();
+        driver.findElement(By.id("btn-flow1")).click();
+        String mainWindow = driver.getWindowHandle();
+
+        // The default maximum number of open window(create token)
+        for (int i = 0; i < 9; i++) {
+            driver.findElement(By.id("open-new-window")).click();
+            driver.switchTo()
+                    .window(new LinkedList<String>(driver.getWindowHandles())
+                            .getLast());
+            driver.findElement(By.id("link2")).click();
+            driver.findElement(By.id("btn-flow1")).click();
+        }
+
+        // Other window token check is OK (Overwrite token of the first window)
+        driver.switchTo().window(
+                new LinkedList<String>(driver.getWindowHandles()).get(4));
+        driver.findElement(By.name("redo1")).click();
+        driver.findElement(By.id("btn-flow1")).click();
+        assertTrue(driver.findElement(By.name("_TRANSACTION_TOKEN"))
+                .getAttribute("value").matches(
+                        "transactiontoken~[0-9a-z]{32}~[0-9a-z]{32}"));
+
+        // Token check of the open window in the first is NG
+        driver.switchTo().window(mainWindow);
+        driver.findElement(By.id("btn-in")).click();
         assertThat(driver.findElement(By.cssSelector("h2")).getText(),
                 is("Transaction Token Error"));
     }
