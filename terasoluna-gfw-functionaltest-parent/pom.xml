@@ -212,6 +212,11 @@
                 <artifactId>ojdbc6</artifactId>
                 <version>${ojdbc6.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.ibm</groupId>
+                <artifactId>db2jcc</artifactId>
+                <version>${db2jcc.version}</version>
+            </dependency>
             <!-- == End Database == -->
         </dependencies>
     </dependencyManagement>
@@ -256,6 +261,7 @@
         <org.springframework.build.aws.version>3.0.0.RELEASE</org.springframework.build.aws.version>
         <postgresql.version>9.1-901.jdbc4</postgresql.version>
         <ojdbc6.version>11.2.0.2.0</ojdbc6.version>
+        <db2jcc.version>10.5</db2jcc.version>
         <tiles.version>2.2.2</tiles.version>
         <tomcat.api.version>7.0.40</tomcat.api.version>
         <selenium.version>2.39.0</selenium.version>

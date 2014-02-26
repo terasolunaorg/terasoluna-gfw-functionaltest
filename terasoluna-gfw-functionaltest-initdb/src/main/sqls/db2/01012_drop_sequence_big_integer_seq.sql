@@ -1,0 +1,1 @@
+DROP SEQUENCE big_integer_seq
