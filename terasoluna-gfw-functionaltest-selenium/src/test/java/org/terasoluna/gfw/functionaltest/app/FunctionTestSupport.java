@@ -33,6 +33,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.support.ApplicationObjectSupport;
+import org.terasoluna.gfw.functionaltest.domain.DBLogCleaner;
 
 public class FunctionTestSupport extends ApplicationObjectSupport {
 
@@ -63,6 +64,15 @@ public class FunctionTestSupport extends ApplicationObjectSupport {
     @Inject
     protected PageSource pageSource;
 
+    @Inject
+    protected DBLogProvider dbLogProvider;
+    
+    @Inject
+    private DBLog dbLog;
+    
+    @Inject
+    private DBLogCleaner dbLogCleaner;
+    
     @Rule
     public TestName testName = new TestName();
 
@@ -124,6 +134,8 @@ public class FunctionTestSupport extends ApplicationObjectSupport {
 
         screenCapture.setUp(evidenceSavingDirectory);
         pageSource.setUp(evidenceSavingDirectory);
+        
+        dbLog.setUp(evidenceSavingDirectory);
     }
 
     @Before
@@ -134,6 +146,11 @@ public class FunctionTestSupport extends ApplicationObjectSupport {
         bootDefaultWebDriver();
     }
 
+    @Before
+    public final void setUpDBLog() {
+        dbLogCleaner.cleanupAll();
+    }
+    
     protected void bindWebDriver(WebDriver webDriver) {
         webDrivers.add(webDriver);
     }
@@ -212,6 +229,11 @@ public class FunctionTestSupport extends ApplicationObjectSupport {
                 logger.error("failed screen PageSource.", t);
             }
         }
+        try {
+            dbLog.save(subTitle);
+        } catch (Throwable t) {
+            logger.error("failed dbLog capture.", t);
+        }
     }
 
     private void failedEvidence() {
@@ -227,6 +249,11 @@ public class FunctionTestSupport extends ApplicationObjectSupport {
             } catch (Throwable t) {
                 logger.error("failed screen PageSource.", t);
             }
+        }
+        try {
+            dbLog.saveForced(subTitle);
+        } catch (Throwable t) {
+            logger.error("failed dbLog capture.", t);
         }
     }
 
