@@ -13,7 +13,7 @@
     <bean id="realDataSourceForLogging" class="org.apache.commons.dbcp.BasicDataSource"
         destroy-method="close">
         <property name="driverClassName" value="org.h2.Driver" />
-        <property name="url" value="jdbc:h2:tcp://localhost:9192/mem:terasoluna-gfw-functionaltest" />
+        <property name="url" value="jdbc:h2:tcp://localhost:${selenium.logDbPort}/mem:terasoluna-gfw-functionaltest" />
         <property name="username" value="sa" />
         <property name="password" value="" />
         <property name="defaultAutoCommit" value="false" />
@@ -37,7 +37,7 @@
 
     <bean id="restTemplate" class="org.springframework.web.client.RestTemplate" />
 
-    <bean id="dbLogAssertOperations" class="org.terasoluna.gfw.functionaltest.app.DBLogAssertOperations">
+    <bean id="dbLogAssertOperations" class="org.terasoluna.gfw.functionaltest.app.DBLogProvider">
         <constructor-arg index="0">
             <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
                 <property name="dataSource" ref="dataSourceForLogging" />

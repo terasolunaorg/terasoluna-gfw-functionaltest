@@ -67,14 +67,17 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
     public void test02_01_useCaseControllerHandling() {
 
         driver.findElement(By.id("useCaseControllerHandling_02_01")).click();
-        
-        // INFO Level Log
-        dbLogAssertOperations.waitForAssertion();
-        dbLogAssertOperations.assertContainsMessageAndLevels("\\[e.xx.9999\\] 2_1 Continue", "INFO");
-        
-        dbLogAssertOperations.assertContainsByRegexExceptionMessage(null, null,
-                "2_1 Continue*", "..*ContinueException..*");
 
+        // INFO Level Log
+        dbLogProvider.waitForAssertion();
+        assertThat(dbLogProvider.countContainsMessageAndLevelsAndLogger(
+                "\\[e.xx.9999\\] 2_1 Continue", "INFO", "org.terasoluna.gfw.common.exception.ExceptionLogger"), is(1L));
+        assertThat(dbLogProvider.countContainsMessageAndLevelsAndLogger(
+                "\\[e.xx.9999\\] 2_1 Continue", "INFO", "org.terasoluna.gfw.common.exception.ExceptionLogger.Monitoring"), is(1L));
+
+        assertThat(dbLogProvider
+                .countContainsByRegexExceptionMessage(null, null,
+                        "2_1 Continue*", "..*ContinueException..*"), is(1L));
     }
 
     @Test
@@ -86,7 +89,7 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
 
         // output error message
         assertThat(driver.findElement(By.xpath("//li")).getText(), is("2_2 Ok"));
-        
+
     }
 
     @Test

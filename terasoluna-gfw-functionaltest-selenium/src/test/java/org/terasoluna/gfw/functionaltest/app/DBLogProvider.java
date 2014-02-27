@@ -15,9 +15,6 @@
  */
 package org.terasoluna.gfw.functionaltest.app;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
-
 import java.util.List;
 
 import org.springframework.jdbc.core.JdbcOperations;
@@ -26,11 +23,11 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcOperations;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.util.StringUtils;
 
-public class DBLogAssertOperations {
+public class DBLogProvider {
 
     private final NamedParameterJdbcOperations jdbcOperations;
 
-    public DBLogAssertOperations(JdbcOperations jdbcOperations) {
+    public DBLogProvider (JdbcOperations jdbcOperations) {
         this.jdbcOperations = new NamedParameterJdbcTemplate(jdbcOperations);
     }
 
@@ -38,28 +35,28 @@ public class DBLogAssertOperations {
         return jdbcOperations;
     }
 
-    public void assertNotContainsError() {
-        assertNotContainsError(null);
+    public long countNotContainsError() {
+        return countNotContainsError(null);
     }
 
-    public void assertNotContainsError(String xTrack) {
-        assertNotContainsLevels(xTrack, "ERROR");
+    public long countNotContainsError(String xTrack) {
+        return countNotContainsLevels(xTrack, "ERROR");
     }
 
-    public void assertNotContainsWarn() {
-        assertNotContainsWarn(null);
+    public long countNotContainsWarn() {
+        return countNotContainsWarn(null);
     }
 
-    public void assertNotContainsWarn(String xTrack) {
-        assertNotContainsLevels(xTrack, "WARN");
+    public long countNotContainsWarn(String xTrack) {
+        return countNotContainsLevels(xTrack, "WARN");
     }
 
-    public void assertNotContainsWarnAndError() {
-        assertNotContainsWarnAndError(null);
+    public long countNotContainsWarnAndError() {
+        return countNotContainsWarnAndError(null);
     }
 
-    public void assertNotContainsWarnAndError(String xTrack) {
-        assertNotContainsLevels(xTrack, "WARN", "ERROR");
+    public long countNotContainsWarnAndError(String xTrack) {
+        return countNotContainsLevels(xTrack, "WARN", "ERROR");
     }
 
     public void waitForAssertion() {
@@ -78,29 +75,29 @@ public class DBLogAssertOperations {
         }
     }
 
-    public void assertContainsByMessage(String loggerName, String message) {
-        assertContainsByMessage(null, loggerName, message);
+    public long countContainsByMessage(String loggerName, String message) {
+        return count(null, loggerName, message);
     }
 
-    public void assertContainsByMessage(String xTrack, String loggerName,
+    public long count(String xTrack, String loggerName,
             String message) {
         long count = getCountInLogContainsByMessage(xTrack, loggerName, message);
-        assertThat(count, is(1L));
+        return count;
     }
 
-    public void assertContainsByRegexMessage(String loggerNamePattern,
+    public long countContainsByRegexMessage(String loggerNamePattern,
             String messagePattern) {
-        assertContainsByRegexMessage(null, loggerNamePattern, messagePattern);
+        return countContainsByRegexMessage(null, loggerNamePattern, messagePattern);
     }
 
-    public void assertContainsByRegexMessage(String xTrack,
+    public long countContainsByRegexMessage(String xTrack,
             String loggerNamePattern, String messagePattern) {
         long count = getCountInLogContainsByRegexMessage(xTrack,
                 loggerNamePattern, messagePattern);
-        assertThat(count, is(1L));
+        return count;
     }
 
-    public void assertContainsByRegexExceptionMessage(String xTrack,
+    public long countContainsByRegexExceptionMessage(String xTrack,
             String loggerNamePattern, String messagePattern,
             String exceptionMessagePattern) {
 
@@ -128,10 +125,10 @@ public class DBLogAssertOperations {
         params.addValue("exceptionMessage", exceptionMessagePattern);
         Long count = jdbcOperations.queryForObject(sql.toString(), params,
                 Long.class);
-        assertThat(count, is(1L));
+        return count;
     }
 
-    public void assertContainsByRegexStackTrace(String stackTracePattern) {
+    public long countContainsByRegexStackTrace(String stackTracePattern) {
 
         StringBuilder sql = new StringBuilder();
         StringBuilder where = new StringBuilder();
@@ -143,29 +140,29 @@ public class DBLogAssertOperations {
         params.addValue("stackTrace", stackTracePattern);
         Long count = jdbcOperations.queryForObject(sql.toString(), params,
                 Long.class);
-        assertThat(count, is(1L));
+        return count;
     }
 
-    public void assertNotContainsByMessage(String loggerName, String message) {
-        assertContainsByMessage(null, loggerName, message);
+    public long countNotContainsByMessage(String loggerName, String message) {
+        return count(null, loggerName, message);
     }
 
-    public void assertNotContainsByMessage(String xTrack, String loggerName,
+    public long countNotContainsByMessage(String xTrack, String loggerName,
             String message) {
         long count = getCountInLogContainsByMessage(xTrack, loggerName, message);
-        assertThat(count, is(0L));
+        return count;
     }
 
-    public void assertNotContainsByRegexMessage(String loggerNamePattern,
+    public long countNotContainsByRegexMessage(String loggerNamePattern,
             String messagePattern) {
-        assertContainsByRegexMessage(null, loggerNamePattern, messagePattern);
+        return countContainsByRegexMessage(null, loggerNamePattern, messagePattern);
     }
 
-    public void assertNotContainsByRegexMessage(String xTrack,
+    public long countNotContainsByRegexMessage(String xTrack,
             String loggerNamePattern, String messagePattern) {
         long count = getCountInLogContainsByRegexMessage(xTrack,
                 loggerNamePattern, messagePattern);
-        assertThat(count, is(0L));
+        return count;
     }
 
     public List<String> getLogByRegexMessage(String xTrack,
@@ -195,21 +192,31 @@ public class DBLogAssertOperations {
                 .queryForList(sql.toString(), params, String.class);
     }
 
-    public void assertContainsMessageAndLevels(String message, String level) {
+    public long countContainsMessageAndLevels(String message, String level) {
+
+        return countContainsMessageAndLevelsAndLogger(message, level, null);
+    }
+
+    public long countContainsMessageAndLevelsAndLogger(String message, String level, String loggerName) {
 
         StringBuilder sql = new StringBuilder();
         sql.append("SELECT COUNT(e.*) FROM logging_event e WHERE e.formatted_message REGEXP :message AND e.level_string = :level");
 
+        if (StringUtils.hasText(loggerName)) {
+            sql.append(" AND e.logger_name = :loggerName");
+        }
+        
         MapSqlParameterSource params = new MapSqlParameterSource();
         params.addValue("message", message);
         params.addValue("level", level);
-
+        params.addValue("loggerName", loggerName);
+        
         Long count = jdbcOperations.queryForObject(sql.toString(), params,
                 Long.class);
-        assertThat(count, is(1L));
+        return count;
     }
-
-    protected void assertNotContainsLevels(String xTrack, String... levels) {
+    
+    protected long countNotContainsLevels(String xTrack, String... levels) {
 
         StringBuilder sql = new StringBuilder();
         StringBuilder where = new StringBuilder();
@@ -235,7 +242,7 @@ public class DBLogAssertOperations {
         }
         Long count = jdbcOperations.queryForObject(sql.toString(), params,
                 Long.class);
-        assertThat(count, is(0L));
+        return count;
     }
 
     private long getCountInLogContainsByRegexMessage(String xTrack,

@@ -63,7 +63,7 @@ public class FunctionTestSupport extends ApplicationObjectSupport {
     protected PageSource pageSource;
 
     @Inject
-    protected DBLogAssertOperations dbLogAssertOperations;
+    protected DBLogProvider dbLogProvider;
     
     @Inject
     private DBLog dbLog;

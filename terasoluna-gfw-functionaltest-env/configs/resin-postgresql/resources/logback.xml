@@ -77,7 +77,7 @@
         <level value="info" />
     </logger>
     <logger name="org.terasoluna.gfw.common.exception.ExceptionLogger.Monitoring" additivity="false">
-        <level value="error" />
+        <level value="info" />
         <appender-ref ref="MONITORING_LOG_FILE" />
         <appender-ref ref="DB" />
     </logger>
