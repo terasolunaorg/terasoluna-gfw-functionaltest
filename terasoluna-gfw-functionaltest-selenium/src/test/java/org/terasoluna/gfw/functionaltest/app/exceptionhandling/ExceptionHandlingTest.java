@@ -23,13 +23,11 @@ import javax.inject.Inject;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.web.client.UnknownHttpStatusCodeException;
 import org.terasoluna.gfw.functionaltest.app.FunctionTestSupport;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -68,27 +66,18 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
     @Test
     public void test02_01_useCaseControllerHandling() {
 
-        // TODO Fire Fox not forward next screen
-        if (driver instanceof FirefoxDriver) {
-            try {
-                restTemplate.getForEntity(applicationContextUrl
-                        + "/exceptionhandling/2_1", String.class);
-            } catch (UnknownHttpStatusCodeException e) {
-            }
-
-            // TODO Assert Output Log
-
-            return;
-        }
-
         driver.findElement(By.id("useCaseControllerHandling_02_01")).click();
 
-        // TODO Assert Output Log
+        // INFO Level Log
+        dbLogProvider.waitForAssertion();
+        assertThat(dbLogProvider.countContainsMessageAndLevelsAndLogger(
+                "\\[e.xx.9999\\] 2_1 Continue", "INFO", "org.terasoluna.gfw.common.exception.ExceptionLogger"), is(1L));
+        assertThat(dbLogProvider.countContainsMessageAndLevelsAndLogger(
+                "\\[e.xx.9999\\] 2_1 Continue", "INFO", "org.terasoluna.gfw.common.exception.ExceptionLogger.Monitoring"), is(1L));
 
-        // output error message
-        assertThat(driver.findElement(By.xpath("//li")).getText(),
-                is("2_1 Continue"));
-
+        assertThat(dbLogProvider
+                .countContainsByRegexExceptionMessage(null, null,
+                        "2_1 Continue*", "..*ContinueException..*"), is(1L));
     }
 
     @Test
@@ -100,7 +89,7 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
 
         // output error message
         assertThat(driver.findElement(By.xpath("//li")).getText(), is("2_2 Ok"));
-        
+
     }
 
     @Test
