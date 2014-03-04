@@ -28,6 +28,7 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -473,4 +474,20 @@ public class PaginationController {
         return "pagination/pager";
     }
     
+    @RequestMapping(value = "20_1", method = RequestMethod.GET)
+    public String fuinctionTest_20_1(PersonSearchForm form,
+            @PageableDefault(sort = "personId") Pageable pageable, Model model) {
+        
+        if(!StringUtils.hasLength(form.getName())){
+            return "pagination/search";
+        }
+
+        Page<Person> page = paginationService.findPersonByName(
+                form.getName(), pageable);
+
+        model.addAttribute("page", page);
+
+        return "pagination/search";
+    }
+
 }
