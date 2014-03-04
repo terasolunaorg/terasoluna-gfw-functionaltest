@@ -126,7 +126,13 @@ public class LoggingTest extends FunctionTestSupport {
 
     @Test
     public void test02_01_createDefaultUserIdMDCBeforeLogin() {
+        // setup
         driver.findElement(By.id("userIdMDCPutFilter")).click();
+        // login -> logout
+        inputFieldAccessor.overrideValue(By.id("username"), "user1", driver);
+        inputFieldAccessor.overrideValue(By.id("password"), "user1", driver);
+        driver.findElement(By.id("btn1")).click();
+        driver.findElement(By.id("logout")).click();
 
         // create default userId MDC
         driver.findElement(By.id("userIdMDCPutFilterDefault")).click();
@@ -138,7 +144,13 @@ public class LoggingTest extends FunctionTestSupport {
 
     @Test
     public void test02_02_createCustomUserIdMDCBeforeLogin() {
+        // setup
         driver.findElement(By.id("userIdMDCPutFilter")).click();
+        // login -> logout
+        inputFieldAccessor.overrideValue(By.id("username"), "user1", driver);
+        inputFieldAccessor.overrideValue(By.id("password"), "user1", driver);
+        driver.findElement(By.id("btn1")).click();
+        driver.findElement(By.id("logout")).click();
 
         // create custom userId MDC
         driver.findElement(By.id("userIdMDCPutFilterCustom")).click();
