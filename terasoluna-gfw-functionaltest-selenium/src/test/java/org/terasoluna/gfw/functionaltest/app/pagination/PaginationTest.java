@@ -1588,7 +1588,7 @@ public class PaginationTest extends FunctionTestSupport {
     }
     
     @Test
-    public void test20_01_search() {
+    public void test20_01_searchWithCriteriaQuery() {
         driver.findElement(By.id("search_20_1")).click();
 
         // search
@@ -1611,8 +1611,8 @@ public class PaginationTest extends FunctionTestSupport {
         }
         // move specified page(3 page)
         {
-            driver.findElement(By.className("pagination"))
-                    .findElement(By.linkText("3")).click();
+            driver.findElement(By.id("paginationTop")).findElement(
+                    By.linkText("3")).click();
 
             // assert 3 page
             assertThat(driver.findElement(By.id("pagePosition")).getText(),
@@ -1630,8 +1630,8 @@ public class PaginationTest extends FunctionTestSupport {
         }
         // move next page(4 page)
         {
-            driver.findElement(By.className("pagination"))
-                    .findElement(By.linkText(">")).click();
+            driver.findElement(By.id("paginationTop")).findElement(
+                    By.linkText(">")).click();
 
             // assert 4 page
             assertThat(driver.findElement(By.id("pagePosition")).getText(),
@@ -1649,8 +1649,8 @@ public class PaginationTest extends FunctionTestSupport {
         }
         // move last page(10 page)
         {
-            driver.findElement(By.className("pagination"))
-                    .findElement(By.linkText(">>")).click();
+            driver.findElement(By.id("paginationTop")).findElement(
+                    By.linkText(">>")).click();
 
             // assert 10 page
             assertThat(driver.findElement(By.id("pagePosition")).getText(),
@@ -1668,8 +1668,8 @@ public class PaginationTest extends FunctionTestSupport {
         }
         // move previous page(9 page)
         {
-            driver.findElement(By.className("pagination"))
-                    .findElement(By.linkText("<")).click();
+            driver.findElement(By.id("paginationTop")).findElement(
+                    By.linkText("<")).click();
 
             // assert 9 page
             assertThat(driver.findElement(By.id("pagePosition")).getText(),
@@ -1687,8 +1687,8 @@ public class PaginationTest extends FunctionTestSupport {
         }
         // move first page(1 page)
         {
-            driver.findElement(By.className("pagination"))
-                    .findElement(By.linkText("<<")).click();
+            driver.findElement(By.id("paginationTop")).findElement(
+                    By.linkText("<<")).click();
 
             // assert 1 page
             assertThat(driver.findElement(By.id("pagePosition")).getText(),
@@ -1703,6 +1703,94 @@ public class PaginationTest extends FunctionTestSupport {
                     is("201"));
             assertThat(driver.findElement(By.id("personId9")).getText(),
                     is("210"));
+        }
+    }
+
+    @Test
+    public void test20_02_searchWithCriteriaQueryAndDisableHtmlEscapeOfCriteriaQueryIsFalse() {
+        driver.findElement(By.id("search_20_2")).click();
+
+        // search
+        {
+            inputFieldAccessor.appendValue(By.id("name"), "<>\"'", driver);
+            driver.findElement(By.id("searchButton")).click();
+            // assert 1 page
+            assertThat(driver.findElement(By.id("pagePosition")).getText(),
+                    is("1"));
+            assertThat(driver.findElement(By.id("rangeStart")).getText(),
+                    is("1"));
+            assertThat(driver.findElement(By.id("rangeEnd")).getText(),
+                    is("10"));
+            assertThat(driver.findElement(By.id("totalResults")).getText(),
+                    is("20"));
+            assertThat(driver.findElement(By.id("personId0")).getText(),
+                    is("181"));
+            assertThat(driver.findElement(By.id("personId9")).getText(),
+                    is("190"));
+        }
+        // move specified page(2 page)
+        {
+            driver.findElement(
+                    By.id("paginationDisableHtmlEscapeOfCriteriaQueryIsFalse"))
+                    .findElement(By.linkText("2")).click();
+
+            // assert 3 page
+            assertThat(driver.findElement(By.id("pagePosition")).getText(),
+                    is("2"));
+            assertThat(driver.findElement(By.id("rangeStart")).getText(),
+                    is("11"));
+            assertThat(driver.findElement(By.id("rangeEnd")).getText(),
+                    is("20"));
+            assertThat(driver.findElement(By.id("totalResults")).getText(),
+                    is("20"));
+            assertThat(driver.findElement(By.id("personId0")).getText(),
+                    is("191"));
+            assertThat(driver.findElement(By.id("personId9")).getText(),
+                    is("200"));
+        }
+    }
+
+    @Test
+    public void test20_03_searchWithCriteriaQueryAndDisableHtmlEscapeOfCriteriaQueryIsTrue() {
+        driver.findElement(By.id("search_20_3")).click();
+
+        // search
+        {
+            inputFieldAccessor.appendValue(By.id("name"), "<>\"'", driver);
+            driver.findElement(By.id("searchButton")).click();
+            // assert 1 page
+            assertThat(driver.findElement(By.id("pagePosition")).getText(),
+                    is("1"));
+            assertThat(driver.findElement(By.id("rangeStart")).getText(),
+                    is("1"));
+            assertThat(driver.findElement(By.id("rangeEnd")).getText(),
+                    is("10"));
+            assertThat(driver.findElement(By.id("totalResults")).getText(),
+                    is("20"));
+            assertThat(driver.findElement(By.id("personId0")).getText(),
+                    is("181"));
+            assertThat(driver.findElement(By.id("personId9")).getText(),
+                    is("190"));
+        }
+        // move specified page(2 page)
+        {
+            driver.findElement(
+                    By.id("paginationDisableHtmlEscapeOfCriteriaQueryIsTrue"))
+                    .findElement(By.linkText("2")).click();
+
+            // assert 3 page
+            assertThat(driver.findElement(By.id("pagePosition")).getText(),
+                    is("2"));
+            assertThat(driver.findElement(By.id("rangeStart")).getText(),
+                    is("11"));
+            assertThat(driver.findElement(By.id("rangeEnd")).getText(),
+                    is("20"));
+            assertThat(driver.findElement(By.id("totalResults")).getText(),
+                    is("20"));
+            assertThat(driver.findElement(By.id("personId0")).getText(),
+                    is("191"));
+            assertThat(driver.findElement(By.id("personId9")).getText(),
+                    is("200"));
         }
     }
 

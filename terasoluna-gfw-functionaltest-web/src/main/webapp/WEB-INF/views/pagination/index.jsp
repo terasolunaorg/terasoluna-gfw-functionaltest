@@ -192,7 +192,17 @@
 	</tr>
     <tr>
         <td>
-            <a id="search_20_1" href="${pageContext.request.contextPath}/pagination/20_1">search_20_1</a>
+            <a id="search_20_1" href="${pageContext.request.contextPath}/pagination/20_1">searchWithCriteriaQuery_20_1</a>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a id="search_20_2" href="${pageContext.request.contextPath}/pagination/20_2">searchWithCriteriaQueryAndDisableHtmlEscapeOfCriteriaQueryIsFalse_20_2</a>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a id="search_20_3" href="${pageContext.request.contextPath}/pagination/20_3">searchWithCriteriaQueryAndDisableHtmlEscapeOfCriteriaQueryIsTrue_20_3</a>
         </td>
     </tr>
 </table>

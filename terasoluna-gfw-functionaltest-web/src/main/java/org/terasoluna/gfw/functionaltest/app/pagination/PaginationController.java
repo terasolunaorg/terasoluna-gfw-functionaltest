@@ -474,16 +474,16 @@ public class PaginationController {
         return "pagination/pager";
     }
     
-    @RequestMapping(value = "20_1", method = RequestMethod.GET)
-    public String fuinctionTest_20_1(PersonSearchForm form,
+    @RequestMapping(value = { "20_1", "20_2", "20_3" }, method = RequestMethod.GET)
+    public String fuinctionTest_20_x(PersonSearchForm form,
             @PageableDefault(sort = "personId") Pageable pageable, Model model) {
-        
-        if(!StringUtils.hasLength(form.getName())){
+
+        if (!StringUtils.hasLength(form.getName())) {
             return "pagination/search";
         }
 
-        Page<Person> page = paginationService.findPersonByName(
-                form.getName(), pageable);
+        Page<Person> page = paginationService.findPersonByName(form.getName(),
+                pageable);
 
         model.addAttribute("page", page);
 
