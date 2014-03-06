@@ -23,4 +23,6 @@ public interface PaginationService {
     
     Page<Person> findPerson(Pageable pageable);
 
+    Page<Person> findPersonByName(String name, Pageable pageable);
+
 }

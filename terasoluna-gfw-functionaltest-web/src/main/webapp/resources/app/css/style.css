@@ -714,3 +714,7 @@ div.right {
     margin:0;
     text-align:right;
 }
+
+.center-content {
+  text-align: center;
+}
