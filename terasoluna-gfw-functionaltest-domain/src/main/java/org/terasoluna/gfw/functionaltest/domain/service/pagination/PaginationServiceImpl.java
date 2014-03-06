@@ -25,13 +25,17 @@ import org.terasoluna.gfw.functionaltest.domain.repository.person.PersonReposito
 
 @Service
 public class PaginationServiceImpl implements PaginationService {
-    
+
     @Inject
     protected PersonRepository personRepostiroy;
-    
+
     @Override
     public Page<Person> findPerson(Pageable pageable) {
         return personRepostiroy.findAll(pageable);
+    }
+
+    public Page<Person> findPersonByName(String name, Pageable pageable) {
+        return personRepostiroy.findPageByName(name, pageable);
     }
 
 }
