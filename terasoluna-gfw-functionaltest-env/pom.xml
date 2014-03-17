@@ -60,6 +60,17 @@
                             <pomFile>${basedir}/3rdparty/com/oracle/ojdbc6/${ojdbc6.version}/ojdbc6-${ojdbc6.version}.pom</pomFile>
                         </configuration>
                     </execution>
+                    <execution>
+                        <id>install-db2jcc</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>install-file</goal>
+                        </goals>
+                        <configuration>
+                            <file>${basedir}/3rdparty/com/ibm/db2jcc/${db2jcc.version}/db2jcc-${db2jcc.version}.jar</file>
+                            <pomFile>${basedir}/3rdparty/com/ibm/db2jcc/${db2jcc.version}/db2jcc-${db2jcc.version}.pom</pomFile>
+                        </configuration>
+                    </execution>
                 </executions>
             </plugin>
         </plugins>
@@ -102,6 +113,13 @@
             <properties>
                 <resource.directory>${basedir}/configs/resin-oracle/resources</resource.directory>
                 <buildFinalName>${project.artifactId}-${project.version}-resin-oracle</buildFinalName>
+            </properties>
+        </profile>
+        <profile>
+            <id>websphere-db2</id>
+            <properties>
+                <resource.directory>${basedir}/configs/websphere-db2/resources</resource.directory>
+                <buildFinalName>${project.artifactId}-${project.version}-websphere-db2</buildFinalName>
             </properties>
         </profile>
     </profiles>

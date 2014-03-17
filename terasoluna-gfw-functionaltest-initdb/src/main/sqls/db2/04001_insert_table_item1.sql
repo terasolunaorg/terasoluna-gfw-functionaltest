@@ -1,0 +1,1 @@
+INSERT INTO item1 VALUES(1,'key1','label1'),(2,'key2','label2'),(3,'key3','label3')

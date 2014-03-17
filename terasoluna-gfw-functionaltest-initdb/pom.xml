@@ -49,6 +49,21 @@
                 <db.delimiterType>row</db.delimiterType>
             </properties>
         </profile>
+        <profile>
+            <id>db2</id>
+            <properties>
+                <db.encoding>UTF8</db.encoding>
+                <db.basedir>src/main/sqls/db2</db.basedir>
+                <db.url>jdbc:db2://localhost:50000/teradb</db.url>
+                <db.username>db2admin</db.username>
+                <db.password></db.password>
+                <db.driver>com.ibm.db2.jcc.DB2Driver</db.driver>
+                <db.groupId>com.ibm</db.groupId>
+                <db.artifactId>db2jcc</db.artifactId>
+                <db.version>${db2jcc.version}</db.version>
+                <db.delimiterType>row</db.delimiterType>
+            </properties>
+        </profile>
     </profiles>
 
     <build>
