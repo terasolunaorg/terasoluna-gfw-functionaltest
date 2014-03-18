@@ -15,8 +15,16 @@
  */
 package org.terasoluna.gfw.functionaltest.domain.repository.person;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.terasoluna.gfw.functionaltest.domain.model.Person;
 
 public interface PersonRepository extends JpaRepository<Person, String> {
+
+    @Query("SELECT p FROM Person p WHERE firstname LIKE %:name% OR lastname LIKE %:name%")
+    Page<Person> findPageByName(@Param("name") String name, Pageable pageable);
+
 }
