@@ -60,8 +60,6 @@ public class DownloadTest extends FunctionTestSupport {
         MediaType contentType = headers.getContentType();
         assertThat(contentType.getType(), is("image"));
         assertThat(contentType.getSubtype(), is("png"));
-        assertThat(contentType.getParameter("charset"),
-                equalToIgnoringCase("UTF-8"));
 
         assertThat(response.getBody(), is(expected));
     }
