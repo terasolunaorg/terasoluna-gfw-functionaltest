@@ -24,32 +24,32 @@ import org.springframework.transaction.annotation.Transactional;
 import org.terasoluna.gfw.common.query.QueryEscapeUtils;
 import org.terasoluna.gfw.functionaltest.domain.TransactionManagers;
 import org.terasoluna.gfw.functionaltest.domain.model.Todo;
-import org.terasoluna.gfw.functionaltest.domain.repository.queryescape.TodoJpaRepository;
+import org.terasoluna.gfw.functionaltest.domain.repository.queryescape.TodoMybatisRepository;
 
-@Service("queryEscapeJpaService")
-public class QueryEscapeJpaServiceImpl implements QueryEscapeService {
+@Service("queryEscapeMybatisService")
+public class QueryEscapeMybatisServiceImpl implements QueryEscapeService {
 
     @Inject
-    protected TodoJpaRepository queryEscapeJpaRepository;
+    protected TodoMybatisRepository queryEscapeMybatisRepository;
 
-    @Transactional(value = TransactionManagers.JPA, readOnly = true)
+    @Transactional(value = TransactionManagers.DATASOURCE, readOnly = true)
     @Override
     public List<Todo> findAllByTitleLikePrefix(String title) {
         String condition = QueryEscapeUtils.toStartingWithCondition(title);
-        return queryEscapeJpaRepository.findAllByTitleLike(condition);
+        return queryEscapeMybatisRepository.findAllByTitleLike(condition);
     }
 
-    @Transactional(value = TransactionManagers.JPA, readOnly = true)
+    @Transactional(value = TransactionManagers.DATASOURCE, readOnly = true)
     @Override
     public List<Todo> findAllByTitleLikeSuffix(String title) {
         String condition = QueryEscapeUtils.toEndingWithCondition(title);
-        return queryEscapeJpaRepository.findAllByTitleLike(condition);
+        return queryEscapeMybatisRepository.findAllByTitleLike(condition);
     }
 
-    @Transactional(value = TransactionManagers.JPA, readOnly = true)
+    @Transactional(value = TransactionManagers.DATASOURCE, readOnly = true)
     @Override
     public List<Todo> findAllByTitleLikePartical(String title) {
         String condition = QueryEscapeUtils.toContainingCondition(title);
-        return queryEscapeJpaRepository.findAllByTitleLike(condition);
+        return queryEscapeMybatisRepository.findAllByTitleLike(condition);
     }
 }

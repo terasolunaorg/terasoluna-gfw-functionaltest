@@ -30,10 +30,10 @@ import org.terasoluna.gfw.functionaltest.domain.service.queryescape.QueryEscapeS
 
 @Controller
 @RequestMapping("queryescape/MyBatis2")
-public class QueryEscapeMybatis2Controller {
+public class QueryEscapeMybatisController {
 
     @Inject
-    @Named("QueryEscapeMybatis2Service")
+    @Named("queryEscapeMybatisService")
     protected QueryEscapeService queryEscapeService;
 
     @ModelAttribute

@@ -33,7 +33,7 @@ import org.terasoluna.gfw.functionaltest.domain.service.queryescape.QueryEscapeS
 public class QueryEscapeJpaController {
 
     @Inject
-    @Named("QueryEscapeJpaService")
+    @Named("queryEscapeJpaService")
     protected QueryEscapeService queryEscapeService;
 
     @ModelAttribute
