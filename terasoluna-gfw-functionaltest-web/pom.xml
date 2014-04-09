@@ -31,11 +31,11 @@
             </dependencies>
         </profile>
         <profile>
-            <id>warpack-mybatis2</id>
+            <id>warpack</id>
             <dependencies>
                 <dependency>
                     <groupId>${project.groupId}</groupId>
-                    <artifactId>terasoluna-gfw-functionaltest-infra-mybatis2</artifactId>
+                    <artifactId>terasoluna-gfw-functionaltest-infra-mybatis3</artifactId>
                     <version>${project.version}</version>
                     <exclusions>
                         <exclusion>
@@ -47,11 +47,11 @@
             </dependencies>
         </profile>
         <profile>
-            <id>warpack-mybatis3</id>
+            <id>warpack-mybatis2</id>
             <dependencies>
                 <dependency>
                     <groupId>${project.groupId}</groupId>
-                    <artifactId>terasoluna-gfw-functionaltest-infra-mybatis3</artifactId>
+                    <artifactId>terasoluna-gfw-functionaltest-infra-mybatis2</artifactId>
                     <version>${project.version}</version>
                     <exclusions>
                         <exclusion>
