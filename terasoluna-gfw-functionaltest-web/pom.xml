@@ -31,12 +31,7 @@
             </dependencies>
         </profile>
         <profile>
-            <id>warpack</id>
-            <dependencies>
-            </dependencies>
-        </profile>
-        <profile>
-            <id>mybatis2</id>
+            <id>warpack-mybatis2</id>
             <dependencies>
                 <dependency>
                     <groupId>${project.groupId}</groupId>
@@ -52,7 +47,7 @@
             </dependencies>
         </profile>
         <profile>
-            <id>mybatis3</id>
+            <id>warpack-mybatis3</id>
             <dependencies>
                 <dependency>
                     <groupId>${project.groupId}</groupId>
@@ -64,6 +59,16 @@
                             <artifactId>terasoluna-gfw-functionaltest-env</artifactId>
                         </exclusion>
                     </exclusions>
+                </dependency>
+            </dependencies>
+        </profile>
+        <profile>
+            <id>warpack-env</id>
+            <dependencies>
+                <dependency>
+                    <groupId>${project.groupId}</groupId>
+                    <artifactId>terasoluna-gfw-functionaltest-env</artifactId>
+                    <version>${project.version}</version>
                 </dependency>
             </dependencies>
         </profile>
