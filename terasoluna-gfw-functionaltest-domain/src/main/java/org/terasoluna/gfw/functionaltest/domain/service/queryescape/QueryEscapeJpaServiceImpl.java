@@ -26,27 +26,25 @@ import org.terasoluna.gfw.functionaltest.domain.TransactionManagers;
 import org.terasoluna.gfw.functionaltest.domain.model.Todo;
 import org.terasoluna.gfw.functionaltest.domain.repository.queryescape.TodoJpaRepository;
 
+@Transactional(value = TransactionManagers.JPA, readOnly = true)
 @Service("queryEscapeJpaService")
 public class QueryEscapeJpaServiceImpl implements QueryEscapeService {
 
     @Inject
-    protected TodoJpaRepository queryEscapeJpaRepository;
+    TodoJpaRepository queryEscapeJpaRepository;
 
-    @Transactional(value = TransactionManagers.JPA, readOnly = true)
     @Override
     public List<Todo> findAllByTitleLikePrefix(String title) {
         String condition = QueryEscapeUtils.toStartingWithCondition(title);
         return queryEscapeJpaRepository.findAllByTitleLike(condition);
     }
 
-    @Transactional(value = TransactionManagers.JPA, readOnly = true)
     @Override
     public List<Todo> findAllByTitleLikeSuffix(String title) {
         String condition = QueryEscapeUtils.toEndingWithCondition(title);
         return queryEscapeJpaRepository.findAllByTitleLike(condition);
     }
 
-    @Transactional(value = TransactionManagers.JPA, readOnly = true)
     @Override
     public List<Todo> findAllByTitleLikePartical(String title) {
         String condition = QueryEscapeUtils.toContainingCondition(title);

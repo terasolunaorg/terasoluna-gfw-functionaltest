@@ -34,7 +34,10 @@ public class QueryEscapeJpaController {
 
     @Inject
     @Named("queryEscapeJpaService")
-    protected QueryEscapeService queryEscapeService;
+    QueryEscapeService queryEscapeService;
+
+    @Inject
+    QueryEscapeHelper queryEscapeHelper;
 
     @ModelAttribute
     public TodoForm setUpForm() {
@@ -42,60 +45,56 @@ public class QueryEscapeJpaController {
         return form;
     }
 
+    @ModelAttribute("targetORMapper")
+    public String setUpTargetORMapper() {
+        return "JPA";
+    }
+
     @RequestMapping(method = RequestMethod.GET)
     public String index(Model model) {
-        model.addAttribute("targetORMapper", "JPA");
         return "queryescape/todoList";
     }
 
     @RequestMapping(value = "search", method = RequestMethod.GET, params = "prefix")
-    public String searchWithPrefixUsingJpa_04_XX(TodoForm form, Model model) {
+    public String searchWithPrefix_04_XX(TodoForm form, Model model) {
 
         List<Todo> list = queryEscapeService.findAllByTitleLikePrefix(form
                 .getTodoTitle());
 
-        model.addAttribute("targetORMapper", "JPA");
-        model.addAttribute("searchPattern", "prefix search");
-        model.addAttribute("hitNumber", list.size());
-        model.addAttribute("todoList", list);
+        queryEscapeHelper.bindToModel("prefix search", list, model);
+
         return "queryescape/todoList";
     }
 
     @RequestMapping(value = "search", method = RequestMethod.GET, params = "suffix")
-    public String searchWithSuffixUsingJpa_05_XX(TodoForm form, Model model) {
+    public String searchWithSuffix_05_XX(TodoForm form, Model model) {
 
         List<Todo> list = queryEscapeService.findAllByTitleLikeSuffix(form
                 .getTodoTitle());
 
-        model.addAttribute("targetORMapper", "JPA");
-        model.addAttribute("searchPattern", "suffix search");
-        model.addAttribute("hitNumber", list.size());
-        model.addAttribute("todoList", list);
+        queryEscapeHelper.bindToModel("suffix search", list, model);
+
         return "queryescape/todoList";
     }
 
     @RequestMapping(value = "search", method = RequestMethod.GET, params = "partical")
-    public String searchWithParticalUsingJpa_06_XX(TodoForm form, Model model) {
+    public String searchWithPartical_06_XX(TodoForm form, Model model) {
 
         List<Todo> list = queryEscapeService.findAllByTitleLikePartical(form
                 .getTodoTitle());
 
-        model.addAttribute("targetORMapper", "JPA");
-        model.addAttribute("searchPattern", "partical search");
-        model.addAttribute("hitNumber", list.size());
-        model.addAttribute("todoList", list);
+        queryEscapeHelper.bindToModel("partical search", list, model);
+
         return "queryescape/todoList";
     }
 
     @RequestMapping(value = "search", method = RequestMethod.GET, params = "nullTodoTitle")
-    public String searchWithPrefixUsingJpa_XX_YY(Model model) {
+    public String searchWithPrefix_XX_YY(Model model) {
 
         List<Todo> list = queryEscapeService.findAllByTitleLikePrefix(null);
 
-        model.addAttribute("targetORMapper", "JPA");
-        model.addAttribute("searchPattern", "null todo title search");
-        model.addAttribute("hitNumber", list.size());
-        model.addAttribute("todoList", list);
+        queryEscapeHelper.bindToModel("null todo title search", list, model);
+
         return "queryescape/todoList";
     }
 }

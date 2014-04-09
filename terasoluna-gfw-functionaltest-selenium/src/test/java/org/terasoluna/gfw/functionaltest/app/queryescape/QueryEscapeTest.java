@@ -30,7 +30,7 @@ import org.terasoluna.gfw.functionaltest.app.FunctionTestSupport;
 public class QueryEscapeTest extends FunctionTestSupport {
 
     @Test
-    public void test01_01_searchWithPrefixUsingMybatis2() {
+    public void test01_01_searchWithPrefixUsingMybatis() {
         driver.findElement(By.id("link1")).click();
 
         // search with prefix test
@@ -49,7 +49,7 @@ public class QueryEscapeTest extends FunctionTestSupport {
     }
 
     @Test
-    public void test01_02_searchWithPrefixUsingMybatis2() {
+    public void test01_02_searchWithPrefixUsingMybatis() {
         driver.findElement(By.id("link1")).click();
 
         // search with prefix test
@@ -68,7 +68,7 @@ public class QueryEscapeTest extends FunctionTestSupport {
     }
 
     @Test
-    public void test01_03_searchWithPrefixUsingMybatis2() {
+    public void test01_03_searchWithPrefixUsingMybatis() {
         driver.findElement(By.id("link1")).click();
 
         // search with prefix test
@@ -87,7 +87,7 @@ public class QueryEscapeTest extends FunctionTestSupport {
     }
 
     @Test
-    public void test01_04_searchWithPrefixUsingMybatis2() {
+    public void test01_04_searchWithPrefixUsingMybatis() {
         driver.findElement(By.id("link1")).click();
 
         // search with prefix test
@@ -106,7 +106,7 @@ public class QueryEscapeTest extends FunctionTestSupport {
     }
 
     @Test
-    public void test01_05_searchWithPrefixUsingMybatis2() {
+    public void test01_05_searchWithPrefixUsingMybatis() {
         driver.findElement(By.id("link1")).click();
 
         // search with prefix test
@@ -125,7 +125,7 @@ public class QueryEscapeTest extends FunctionTestSupport {
     }
 
     @Test
-    public void test01_06_searchWithPrefixUsingMybatis2() {
+    public void test01_06_searchWithPrefixUsingMybatis() {
         driver.findElement(By.id("link1")).click();
 
         // search with prefix test
@@ -144,7 +144,7 @@ public class QueryEscapeTest extends FunctionTestSupport {
     }
 
     @Test
-    public void test01_07_searchWithPrefixUsingMybatis2() {
+    public void test01_07_searchWithPrefixUsingMybatis() {
         driver.findElement(By.id("link1")).click();
 
         // search with prefix test
@@ -182,7 +182,7 @@ public class QueryEscapeTest extends FunctionTestSupport {
     }
 
     @Test
-    public void test01_08_searchWithPrefixUsingMybatis2() {
+    public void test01_08_searchWithPrefixUsingMybatis() {
         driver.findElement(By.id("link1")).click();
 
         // search with prefix test
@@ -196,7 +196,7 @@ public class QueryEscapeTest extends FunctionTestSupport {
     }
 
     @Test
-    public void test02_01_searchWithSuffixUsingMybatis2() {
+    public void test02_01_searchWithSuffixUsingMybatis() {
         driver.findElement(By.id("link1")).click();
 
         // search with suffix test
@@ -213,7 +213,7 @@ public class QueryEscapeTest extends FunctionTestSupport {
     }
 
     @Test
-    public void test02_02_searchWithSuffixUsingMybatis2() {
+    public void test02_02_searchWithSuffixUsingMybatis() {
         driver.findElement(By.id("link1")).click();
 
         // search with suffix test
@@ -230,7 +230,7 @@ public class QueryEscapeTest extends FunctionTestSupport {
     }
 
     @Test
-    public void test02_03_searchWithSuffixUsingMybatis2() {
+    public void test02_03_searchWithSuffixUsingMybatis() {
         driver.findElement(By.id("link1")).click();
 
         // search with suffix test
@@ -247,7 +247,7 @@ public class QueryEscapeTest extends FunctionTestSupport {
     }
 
     @Test
-    public void test02_04_searchWithSuffixUsingMybatis2() {
+    public void test02_04_searchWithSuffixUsingMybatis() {
         driver.findElement(By.id("link1")).click();
 
         // search with suffix test
@@ -264,7 +264,7 @@ public class QueryEscapeTest extends FunctionTestSupport {
     }
 
     @Test
-    public void test02_05_searchWithSuffixUsingMybatis2() {
+    public void test02_05_searchWithSuffixUsingMybatis() {
         driver.findElement(By.id("link1")).click();
 
         // search with suffix test
@@ -281,7 +281,7 @@ public class QueryEscapeTest extends FunctionTestSupport {
     }
 
     @Test
-    public void test02_06_searchWithSuffixUsingMybatis2() {
+    public void test02_06_searchWithSuffixUsingMybatis() {
         driver.findElement(By.id("link1")).click();
 
         // search with suffix test
@@ -298,7 +298,7 @@ public class QueryEscapeTest extends FunctionTestSupport {
     }
 
     @Test
-    public void test03_01_searchWithParticalUsingMybatis2() {
+    public void test03_01_searchWithParticalUsingMybatis() {
         driver.findElement(By.id("link1")).click();
 
         // search with partical test
@@ -317,7 +317,7 @@ public class QueryEscapeTest extends FunctionTestSupport {
     }
 
     @Test
-    public void test03_02_searchWithParticalUsingMybatis2() {
+    public void test03_02_searchWithParticalUsingMybatis() {
         driver.findElement(By.id("link1")).click();
 
         // search with partical test
@@ -336,7 +336,7 @@ public class QueryEscapeTest extends FunctionTestSupport {
     }
 
     @Test
-    public void test03_03_searchWithParticalUsingMybatis2() {
+    public void test03_03_searchWithParticalUsingMybatis() {
         driver.findElement(By.id("link1")).click();
 
         // search with partical test
@@ -355,7 +355,7 @@ public class QueryEscapeTest extends FunctionTestSupport {
     }
 
     @Test
-    public void test03_04_searchWithParticalUsingMybatis2() {
+    public void test03_04_searchWithParticalUsingMybatis() {
         driver.findElement(By.id("link1")).click();
 
         // search with partical test
@@ -374,7 +374,7 @@ public class QueryEscapeTest extends FunctionTestSupport {
     }
 
     @Test
-    public void test03_05_searchWithParticalUsingMybatis2() {
+    public void test03_05_searchWithParticalUsingMybatis() {
         driver.findElement(By.id("link1")).click();
 
         // search with partical test
@@ -393,7 +393,7 @@ public class QueryEscapeTest extends FunctionTestSupport {
     }
 
     @Test
-    public void test03_06_searchWithParticalUsingMybatis2() {
+    public void test03_06_searchWithParticalUsingMybatis() {
         driver.findElement(By.id("link1")).click();
 
         // search with partical test

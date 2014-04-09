@@ -26,27 +26,25 @@ import org.terasoluna.gfw.functionaltest.domain.TransactionManagers;
 import org.terasoluna.gfw.functionaltest.domain.model.Todo;
 import org.terasoluna.gfw.functionaltest.domain.repository.queryescape.TodoMybatisRepository;
 
+@Transactional(value = TransactionManagers.DATASOURCE, readOnly = true)
 @Service("queryEscapeMybatisService")
 public class QueryEscapeMybatisServiceImpl implements QueryEscapeService {
 
     @Inject
-    protected TodoMybatisRepository queryEscapeMybatisRepository;
+    TodoMybatisRepository queryEscapeMybatisRepository;
 
-    @Transactional(value = TransactionManagers.DATASOURCE, readOnly = true)
     @Override
     public List<Todo> findAllByTitleLikePrefix(String title) {
         String condition = QueryEscapeUtils.toStartingWithCondition(title);
         return queryEscapeMybatisRepository.findAllByTitleLike(condition);
     }
 
-    @Transactional(value = TransactionManagers.DATASOURCE, readOnly = true)
     @Override
     public List<Todo> findAllByTitleLikeSuffix(String title) {
         String condition = QueryEscapeUtils.toEndingWithCondition(title);
         return queryEscapeMybatisRepository.findAllByTitleLike(condition);
     }
 
-    @Transactional(value = TransactionManagers.DATASOURCE, readOnly = true)
     @Override
     public List<Todo> findAllByTitleLikePartical(String title) {
         String condition = QueryEscapeUtils.toContainingCondition(title);

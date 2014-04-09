@@ -29,12 +29,15 @@ import org.terasoluna.gfw.functionaltest.domain.model.Todo;
 import org.terasoluna.gfw.functionaltest.domain.service.queryescape.QueryEscapeService;
 
 @Controller
-@RequestMapping("queryescape/MyBatis2")
+@RequestMapping("queryescape/MyBatis")
 public class QueryEscapeMybatisController {
 
     @Inject
     @Named("queryEscapeMybatisService")
-    protected QueryEscapeService queryEscapeService;
+    QueryEscapeService queryEscapeService;
+
+    @Inject
+    QueryEscapeHelper queryEscapeHelper;
 
     @ModelAttribute
     public TodoForm setUpForm() {
@@ -42,61 +45,58 @@ public class QueryEscapeMybatisController {
         return form;
     }
 
+    @ModelAttribute("targetORMapper")
+    public String setUpTargetORMapper() {
+        return "MyBatis";
+    }
+
     @RequestMapping(method = RequestMethod.GET)
     public String index(Model model) {
-        model.addAttribute("targetORMapper", "MyBatis2");
         return "queryescape/todoList";
     }
 
     @RequestMapping(value = "search", method = RequestMethod.GET, params = "prefix")
-    public String searchWithPrefixUsingMybatis2_01_XX(TodoForm form, Model model) {
+    public String searchWithPrefix_01_XX(TodoForm form, Model model) {
 
         List<Todo> list = queryEscapeService.findAllByTitleLikePrefix(form
                 .getTodoTitle());
 
-        model.addAttribute("targetORMapper", "MyBatis2");
-        model.addAttribute("searchPattern", "prefix search");
-        model.addAttribute("hitNumber", list.size());
-        model.addAttribute("todoList", list);
+        queryEscapeHelper.bindToModel("prefix search", list, model);
+
         return "queryescape/todoList";
     }
 
     @RequestMapping(value = "search", method = RequestMethod.GET, params = "suffix")
-    public String searchWithSuffixUsingMybatis2_02_XX(TodoForm form, Model model) {
+    public String searchWithSuffix_02_XX(TodoForm form, Model model) {
 
         List<Todo> list = queryEscapeService.findAllByTitleLikeSuffix(form
                 .getTodoTitle());
 
-        model.addAttribute("targetORMapper", "MyBatis2");
-        model.addAttribute("searchPattern", "suffix search");
-        model.addAttribute("hitNumber", list.size());
-        model.addAttribute("todoList", list);
+        queryEscapeHelper.bindToModel("suffix search", list, model);
+
         return "queryescape/todoList";
     }
 
     @RequestMapping(value = "search", method = RequestMethod.GET, params = "partical")
-    public String searchWithParticalUsingMybatis2_03_XX(TodoForm form,
+    public String searchWithPartical_03_XX(TodoForm form,
             Model model) {
 
         List<Todo> list = queryEscapeService.findAllByTitleLikePartical(form
                 .getTodoTitle());
 
-        model.addAttribute("targetORMapper", "MyBatis2");
-        model.addAttribute("searchPattern", "partical search");
-        model.addAttribute("hitNumber", list.size());
-        model.addAttribute("todoList", list);
+        queryEscapeHelper.bindToModel("partical search", list, model);
+
         return "queryescape/todoList";
     }
 
     @RequestMapping(value = "search", method = RequestMethod.GET, params = "nullTodoTitle")
-    public String searchWithPrefixUsingMybatis2_01_08(Model model) {
+    public String searchWithPrefix_01_08(Model model) {
 
         List<Todo> list = queryEscapeService.findAllByTitleLikePrefix(null);
 
-        model.addAttribute("targetORMapper", "MyBatis2");
-        model.addAttribute("searchPattern", "null todo title search");
-        model.addAttribute("hitNumber", list.size());
-        model.addAttribute("todoList", list);
+        queryEscapeHelper.bindToModel("null todo title search", list, model);
+
         return "queryescape/todoList";
     }
+
 }
