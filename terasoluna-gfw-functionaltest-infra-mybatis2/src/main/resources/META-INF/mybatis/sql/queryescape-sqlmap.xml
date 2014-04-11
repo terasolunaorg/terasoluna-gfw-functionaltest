@@ -10,13 +10,18 @@
         <result property="todoTitle" column="todo_title" />
     </resultMap>
 
-    <select id="findAllByTitleLike" parameterClass="java.lang.String"
-        resultMap="todo"><![CDATA[
-SELECT id, 
-       todo_title
-FROM   todo 
-WHERE  todo_title LIKE #todoTitle# ESCAPE '~'
-ORDER BY id
-]]></select>
+    <select id="findAllByTitleLike" parameterClass="java.lang.String" resultMap="todo">
+    <![CDATA[
+        SELECT
+            id, 
+            todo_title
+        FROM
+            todo 
+        WHERE
+            todo_title LIKE #todoTitle# ESCAPE '~'
+        ORDER BY
+            id
+    ]]>
+    </select>
 
 </sqlMap>

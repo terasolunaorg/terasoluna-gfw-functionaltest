@@ -13,13 +13,22 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.terasoluna.gfw.functionaltest.domain.repository.queryescape;
+package org.terasoluna.gfw.functionaltest.app.queryescape;
 
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+import org.springframework.ui.Model;
 import org.terasoluna.gfw.functionaltest.domain.model.Todo;
 
-public interface TodoMybatis2Repository {
+@Component
+public class QueryEscapeHelper {
 
-    List<Todo> findAllByTitleLike(String todoTitle);
+    public void bindToModel(String searchPattern, List<Todo> todoList,
+            Model model) {
+        model.addAttribute("searchPattern", searchPattern);
+        model.addAttribute("hitNumber", todoList.size());
+        model.addAttribute("todoList", todoList);
+    }
+
 }

@@ -13,7 +13,7 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.terasoluna.gfw.functionaltest.domain.repository.queryescape;
+package org.terasoluna.gfw.functionaltest.infra.repository.queryescape;
 
 import java.util.List;
 
@@ -22,21 +22,18 @@ import javax.inject.Inject;
 import jp.terasoluna.fw.dao.QueryDAO;
 
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
-import org.terasoluna.gfw.functionaltest.domain.TransactionManagers;
 import org.terasoluna.gfw.functionaltest.domain.model.Todo;
+import org.terasoluna.gfw.functionaltest.domain.repository.queryescape.TodoMybatisRepository;
 
 @Repository
-@Transactional(value = TransactionManagers.DATASOURCE)
-public class TodoMybatis2RepositoryImpl implements TodoMybatis2Repository {
+public class TodoMybatis2RepositoryImpl implements TodoMybatisRepository {
 
     @Inject
     protected QueryDAO queryDAO;
 
     @Override
-    @Transactional(value = TransactionManagers.DATASOURCE, readOnly = true)
     public List<Todo> findAllByTitleLike(String todoTitle) {
-        return queryDAO.executeForObjectList("queryescape.findAllByTitleLike",
-                todoTitle);
+        return queryDAO.executeForObjectList("queryescape.findAllByTitleLike", todoTitle);
     }
+
 }
