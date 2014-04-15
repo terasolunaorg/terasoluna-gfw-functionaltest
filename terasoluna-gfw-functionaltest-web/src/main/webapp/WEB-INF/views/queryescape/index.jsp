@@ -4,7 +4,7 @@
 	<table>
 		<tr>
 			<td><a id="link1"
-					href="${pageContext.request.contextPath}/queryescape/MyBatis2/">QueryEscapeUtil Function Test Using MyBatis2</a>
+					href="${pageContext.request.contextPath}/queryescape/MyBatis/">QueryEscapeUtil Function Test Using MyBatis</a>
 			</td>
 		</tr>
 		<tr>
