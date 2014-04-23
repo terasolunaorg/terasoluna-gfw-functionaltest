@@ -4,12 +4,16 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>terasoluna-gfw-functionaltest-selenium</artifactId>
     <packaging>jar</packaging>
+    <name>TERASOLUNA Global Framework Functionality Test</name>
+    <description>Selenium tests for functionalities provided by TERASOLUNA Global Framework</description>
     <parent>
         <version>1.1.0-SNAPSHOT</version>
         <artifactId>terasoluna-gfw-functionaltest-parent</artifactId>
         <groupId>org.terasoluna.gfw.functionaltest</groupId>
         <relativePath>../terasoluna-gfw-functionaltest-parent/pom.xml</relativePath>
     </parent>
+    <name>Terasoluna Global Framework Functionality Test Application</name>
+    <description>Selenium tests of Functionality Test Application</description>
 
     <dependencies>
         <dependency>
