@@ -12,8 +12,8 @@
         <groupId>org.terasoluna.gfw.functionaltest</groupId>
         <relativePath>../terasoluna-gfw-functionaltest-parent/pom.xml</relativePath>
     </parent>
-    <name>Terasoluna Global Framework Functionality Test Application</name>
-    <description>Selenium tests of Functionality Test Application</description>
+    <name>Terasoluna Global Framework - Functionality Test Application - Selenium</name>
+    <description>Selenium tests of Functionality Test Application using Terasoluna Global Framework</description>
 
     <dependencies>
         <dependency>
