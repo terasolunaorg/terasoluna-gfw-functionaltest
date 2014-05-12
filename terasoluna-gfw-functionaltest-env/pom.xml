@@ -9,7 +9,8 @@
         <version>1.0.1-SNAPSHOT</version>
         <relativePath>../terasoluna-gfw-functionaltest-parent/pom.xml</relativePath>
     </parent>
-
+    <name>TERASOLUNA Global Framework - Functionality Test Application - Environment Layer</name>
+    <description>Environment dependent layer of Functionality Test Application using TERASOLUNA Global Framework</description>
     <build>
         <finalName>${buildFinalName}</finalName>
         <resources>
