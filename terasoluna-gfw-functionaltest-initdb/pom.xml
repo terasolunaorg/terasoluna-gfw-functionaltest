@@ -6,7 +6,7 @@
         <groupId>org.terasoluna.gfw.functionaltest</groupId>
         <artifactId>terasoluna-gfw-functionaltest-parent</artifactId>
         <version>1.0.1-SNAPSHOT</version>
-        <relativePath>../terasoluna-gfw-functionaltest/pom.xml</relativePath>
+        <relativePath>../terasoluna-gfw-functionaltest-parent/pom.xml</relativePath>
     </parent>
     <name>TERASOLUNA Global Framework - Functionality Test Application - DB Init</name>
     <description>DB initialization scripts of Functionality Test Application using TERASOLUNA Global Framework</description>
