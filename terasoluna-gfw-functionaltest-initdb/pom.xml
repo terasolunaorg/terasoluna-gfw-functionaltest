@@ -43,7 +43,7 @@
                 <db.url>jdbc:oracle:thin:@localhost:1521:teradb</db.url>
                 <db.username>gfw</db.username>
                 <db.password>gfw</db.password>
-                <db.driver>oracle.jdbc.driver.OracleDriver</db.driver>
+                <db.driver>oracle.jdbc.OracleDriver</db.driver>
                 <db.groupId>com.oracle</db.groupId>
                 <db.artifactId>ojdbc6</db.artifactId>
                 <db.version>${ojdbc6.version}</db.version>

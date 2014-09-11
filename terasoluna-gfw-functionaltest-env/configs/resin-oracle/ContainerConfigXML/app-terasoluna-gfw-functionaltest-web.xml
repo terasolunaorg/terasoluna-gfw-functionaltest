@@ -4,7 +4,7 @@
     <!-- settings of DataSource -->
     <database jndi-name="jdbc/dataSource">
       <driver>
-        <type>oracle.jdbc.driver.OracleDriver</type>
+        <type>oracle.jdbc.OracleDriver</type>
         <url>jdbc:oracle:thin:@localhost:1521:teradb</url>
         <user>gfw</user>
         <password>gfw</password>
