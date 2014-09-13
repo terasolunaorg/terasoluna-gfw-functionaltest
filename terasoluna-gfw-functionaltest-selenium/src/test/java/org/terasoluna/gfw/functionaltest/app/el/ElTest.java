@@ -16,16 +16,20 @@
 package org.terasoluna.gfw.functionaltest.app.el;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.core.StringContains.containsString;
+import static org.hamcrest.core.IsNull.nullValue;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.StringReader;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -110,7 +114,7 @@ public class ElTest extends FunctionTestSupport {
     }
 
     @Test
-    public void test03_New_Line() {
+    public void test03_New_Line() throws IOException {
 
         driver.findElement(By.id("03")).click();
         inputFieldAccessor.overrideValue(By.id("text-output"),
@@ -118,17 +122,14 @@ public class ElTest extends FunctionTestSupport {
         driver.findElement(By.id("btn-output")).click();
 
         // output data 03_01 Test
-        String htmlSource = driver.getPageSource();
-
-        assertThat(htmlSource, containsString("Spring"));
-
-        if (driver instanceof FirefoxDriver) {
-            assertThat(htmlSource, containsString("<br />mvc"));
-            assertThat(htmlSource, containsString("<br />spring mvc"));
-        } else {
-            assertThat(htmlSource, containsString("<br>mvc"));
-            assertThat(htmlSource, containsString("<br>spring mvc"));
-        }
+        WebElement newLineOutput = driver.findElement(By.id("newLineOutput"));
+        BufferedReader newLineOutputTextReader = new BufferedReader(new StringReader(
+                newLineOutput.getText()));
+        assertThat(newLineOutputTextReader.readLine(), is("Spring"));
+        assertThat(newLineOutputTextReader.readLine(), is("mvc"));
+        assertThat(newLineOutputTextReader.readLine(), is("spring mvc"));
+        assertThat(newLineOutputTextReader.readLine(), nullValue());
+        assertThat(newLineOutput.findElements(By.tagName("br")).size(), is(2));
 
         // screen capture
         screenCapture.save(driver);
