@@ -12,8 +12,8 @@
         <h3 id="exceptionCode">${f:h(errorCode)}</h3>
         <div id="messagesPanel"><t:messagesPanel /></div>
         <hr>
-        <p style="text-align: center; background: #e5eCf9;">Copyright
-            &copy; 2013 NTT DATA CORPORATION
+        <p style="text-align: center; background: #e5eCf9;">
+             <spring:message code="copyright" htmlEscape="false" />
             (X-Track:${f:h(requestScope["X-Track"])})</p>
     </div>
 </body>
