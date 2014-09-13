@@ -8,7 +8,9 @@
     var contextPath = "${pageContext.request.contextPath}";
 
     $(function() {
+        var $result = $('#result');
         $('#ajaxButton').on('click', function() {
+            $result.html('');
             var $form = $('#ajaxForm');
             var token = $("meta[name='_csrf']").attr("content");
             var header = $("meta[name='_csrf_header']").attr("content");
@@ -20,10 +22,10 @@
                 type : '${f:h(method)}',
                 data: $form.serialize(),
             }).done(function(data, status, xhr) {
-            	alert(xhr.status);
-            }).fail(function(data) {
+                $result.html("<span>" + xhr.status + "</span>");
+            }).fail(function(xhr) {
                 // error handling
-                alert(data.status);
+                $result.html("<span>" + xhr.status + "</span>");
             });
         });
     });
@@ -34,3 +36,4 @@
     <form id="ajaxForm" action="${pageContext.request.contextPath}">
         <input id="ajaxButton" class="mainbtn" type="button" value="send">
     </form>
+    <div id="result"></div>
