@@ -125,10 +125,14 @@ public class ElTest extends FunctionTestSupport {
         WebElement newLineOutput = driver.findElement(By.id("newLineOutput"));
         BufferedReader newLineOutputTextReader = new BufferedReader(new StringReader(
                 newLineOutput.getText()));
-        assertThat(newLineOutputTextReader.readLine(), is("Spring"));
-        assertThat(newLineOutputTextReader.readLine(), is("mvc"));
-        assertThat(newLineOutputTextReader.readLine(), is("spring mvc"));
-        assertThat(newLineOutputTextReader.readLine(), nullValue());
+        try {
+            assertThat(newLineOutputTextReader.readLine(), is("Spring"));
+            assertThat(newLineOutputTextReader.readLine(), is("mvc"));
+            assertThat(newLineOutputTextReader.readLine(), is("spring mvc"));
+            assertThat(newLineOutputTextReader.readLine(), nullValue());
+        } finally {
+            newLineOutputTextReader.close();
+        }
         assertThat(newLineOutput.findElements(By.tagName("br")).size(), is(2));
 
         // screen capture
