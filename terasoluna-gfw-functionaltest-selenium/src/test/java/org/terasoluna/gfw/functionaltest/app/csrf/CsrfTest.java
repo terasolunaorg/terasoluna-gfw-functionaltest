@@ -26,7 +26,6 @@ import javax.inject.Inject;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.springframework.core.io.ClassPathResource;
@@ -46,8 +45,6 @@ public class CsrfTest extends FunctionTestSupport {
 
     @Inject
     protected RestTemplate restTemplate;
-
-    private boolean acceptNextAlert = true;
 
     private JavascriptExecutor jse;
 
@@ -169,9 +166,9 @@ public class CsrfTest extends FunctionTestSupport {
         // 2.1 Test start
         driver.findElement(By.id("csrf_2_1")).click();
         driver.findElement(By.id("ajaxButton")).click();
-
+        
         // HttpStatusCode 200 return
-        assertThat(closeAlertAndGetItsText(), is("200"));
+        assertThat(getStatusCodeInAjaxRequest(), is("200"));
         screenCapture.save(driver);
 
         // 2.2 Test start
@@ -184,7 +181,7 @@ public class CsrfTest extends FunctionTestSupport {
         driver.findElement(By.id("ajaxButton")).click();
 
         // HttpStatusCode 200 return
-        assertThat(closeAlertAndGetItsText(), is("200"));
+        assertThat(getStatusCodeInAjaxRequest(), is("200"));
         screenCapture.save(driver);
 
         // 2.3 Test start
@@ -194,7 +191,7 @@ public class CsrfTest extends FunctionTestSupport {
         driver.findElement(By.id("ajaxButton")).click();
 
         // HttpStatusCode 200 return
-        assertThat(closeAlertAndGetItsText(), is("200"));
+        assertThat(getStatusCodeInAjaxRequest(), is("200"));
         screenCapture.save(driver);
 
         // 2.4 Test start
@@ -207,7 +204,7 @@ public class CsrfTest extends FunctionTestSupport {
         driver.findElement(By.id("ajaxButton")).click();
 
         // HttpStatusCode 403 return
-        assertThat(closeAlertAndGetItsText(), is("403"));
+        assertThat(getStatusCodeInAjaxRequest(), is("403"));
         screenCapture.save(driver);
 
         // 2.5 Test start
@@ -220,7 +217,7 @@ public class CsrfTest extends FunctionTestSupport {
         driver.findElement(By.id("ajaxButton")).click();
 
         // HttpStatusCode 200 return
-        assertThat(closeAlertAndGetItsText(), is("200"));
+        assertThat(getStatusCodeInAjaxRequest(), is("200"));
         screenCapture.save(driver);
         
         // 2.6 Test start
@@ -230,7 +227,7 @@ public class CsrfTest extends FunctionTestSupport {
         driver.findElement(By.id("ajaxButton")).click();
 
         // HttpStatusCode 200 return
-        assertThat(closeAlertAndGetItsText(), is("200"));
+        assertThat(getStatusCodeInAjaxRequest(), is("200"));
         screenCapture.save(driver);
 
         // 2.7 Test start
@@ -243,7 +240,7 @@ public class CsrfTest extends FunctionTestSupport {
         driver.findElement(By.id("ajaxButton")).click();
 
         // HttpStatusCode 403 return
-        assertThat(closeAlertAndGetItsText(), is("403"));
+        assertThat(getStatusCodeInAjaxRequest(), is("403"));
         screenCapture.save(driver);
         
         // 2.8 Test start
@@ -253,7 +250,7 @@ public class CsrfTest extends FunctionTestSupport {
         driver.findElement(By.id("ajaxButton")).click();
 
         // HttpStatusCode 200 return
-        assertThat(closeAlertAndGetItsText(), is("200"));
+        assertThat(getStatusCodeInAjaxRequest(), is("200"));
         screenCapture.save(driver);
 
         // 2.9 Test start
@@ -266,7 +263,7 @@ public class CsrfTest extends FunctionTestSupport {
         driver.findElement(By.id("ajaxButton")).click();
 
         // HttpStatusCode 403 return
-        assertThat(closeAlertAndGetItsText(), is("403"));
+        assertThat(getStatusCodeInAjaxRequest(), is("403"));
         screenCapture.save(driver);
         
         // 2.10 Test start
@@ -276,7 +273,7 @@ public class CsrfTest extends FunctionTestSupport {
         driver.findElement(By.id("ajaxButton")).click();
 
         // HttpStatusCode 200 return
-        assertThat(closeAlertAndGetItsText(), is("200"));
+        assertThat(getStatusCodeInAjaxRequest(), is("200"));
         screenCapture.save(driver);
 
         // 2.11 Test start
@@ -289,7 +286,7 @@ public class CsrfTest extends FunctionTestSupport {
         driver.findElement(By.id("ajaxButton")).click();
 
         // HttpStatusCode 403 return
-        assertThat(closeAlertAndGetItsText(), is("403"));
+        assertThat(getStatusCodeInAjaxRequest(), is("403"));
     }
 
     @Test
@@ -445,18 +442,8 @@ public class CsrfTest extends FunctionTestSupport {
         }
     }
 
-    private String closeAlertAndGetItsText() {
-        try {
-            Alert alert = driver.switchTo().alert();
-            String alertText = alert.getText();
-            if (acceptNextAlert) {
-                alert.accept();
-            } else {
-                alert.dismiss();
-            }
-            return alertText;
-        } finally {
-            acceptNextAlert = true;
-        }
+    private String getStatusCodeInAjaxRequest() {
+        return driver.findElement(By.id("result")).findElement(By.tagName("span")).getText();
     }
+
 }
