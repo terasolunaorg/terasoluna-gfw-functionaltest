@@ -18,6 +18,7 @@ package org.terasoluna.gfw.functionaltest.app.message;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
@@ -30,6 +31,11 @@ import org.terasoluna.gfw.functionaltest.app.FunctionTestSupport;
 public class MessageTest extends FunctionTestSupport {
 
     public MessageTest() {
+    }
+
+    @Before
+    public void setupDefaultLanguage(){
+        driver.findElement(By.id("English")).click();
     }
 
     @Test
@@ -621,7 +627,6 @@ public class MessageTest extends FunctionTestSupport {
 
     @Test
     public void test07_04_outputMessage() {
-        driver.findElement(By.id("English")).click();
         driver.findElement(By.id("outputMessage_07_04")).click();
 
         // div ul li Tag confirm
