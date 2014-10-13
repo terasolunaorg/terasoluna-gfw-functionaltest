@@ -4,7 +4,12 @@
 <configuration>
      
     <settings>
+        <setting name="mapUnderscoreToCamelCase" value="true" />
         <setting name="jdbcTypeForNull" value="NULL" />
     </settings>
+
+    <typeAliases>
+        <package name="org.terasoluna.gfw.functionaltest.domain.model" />
+    </typeAliases>
      
 </configuration>

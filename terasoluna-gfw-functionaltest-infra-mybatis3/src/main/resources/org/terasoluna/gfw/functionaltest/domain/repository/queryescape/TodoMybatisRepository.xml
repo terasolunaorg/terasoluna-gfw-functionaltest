@@ -5,13 +5,7 @@
 <mapper
     namespace="org.terasoluna.gfw.functionaltest.domain.repository.queryescape.TodoMybatisRepository">
 
-    <resultMap id="todo"
-        type="org.terasoluna.gfw.functionaltest.domain.model.Todo">
-        <result property="id" column="id" />
-        <result property="todoTitle" column="todo_title" />
-    </resultMap>
-
-    <select id="findAllByTitleLike" parameterType="java.lang.String" resultMap="todo">
+    <select id="findAllByTitleLike" parameterType="string" resultType="Todo">
     <![CDATA[
         SELECT
             id, 
@@ -22,5 +16,6 @@
             todo_title LIKE #{todoTitle} ESCAPE '~'
         ORDER BY
             id
-    ]]></select>
+    ]]>
+    </select>
 </mapper>
