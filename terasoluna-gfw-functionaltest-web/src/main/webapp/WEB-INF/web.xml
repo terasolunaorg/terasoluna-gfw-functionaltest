@@ -257,11 +257,6 @@
 	</error-page>
 
 	<error-page>
-		<error-code>406</error-code>
-		<location>/WEB-INF/views/common/error/csrfTokenError.jsp</location>
-	</error-page>
-
-	<error-page>
 		<exception-type>javax.servlet.ServletException</exception-type>
 		<location>/WEB-INF/views/common/error/servletError.jsp</location>
 	</error-page>
