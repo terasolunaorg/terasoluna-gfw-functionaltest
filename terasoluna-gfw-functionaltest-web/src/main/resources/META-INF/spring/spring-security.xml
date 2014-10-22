@@ -49,28 +49,6 @@
             authentication-success-handler-ref="redirectHandlerWithWhiteList" />
     </sec:http>
 
-    <sec:http pattern="/csrf/errorPageNotSet/**" auto-config="true"
-        use-expressions="true" request-matcher="ant">
-        <sec:custom-filter ref="csrfFilterErrorPageNotSet" before="LOGOUT_FILTER" />
-        <sec:session-management
-            session-authentication-strategy-ref="sessionAuthenticationStrategy" />
-        <sec:form-login login-page="/redirect/login" 
-            default-target-url="/" always-use-default-target="false"
-            authentication-failure-handler-ref="redirectErrorHandler"
-            authentication-success-handler-ref="redirectHandler" />
-    </sec:http>
-
-    <sec:http pattern="/csrf/notAcceptable/**" auto-config="true"
-        use-expressions="true" request-matcher="ant">
-        <sec:custom-filter ref="csrfFilterNotAcceptable" before="LOGOUT_FILTER" />
-        <sec:session-management
-            session-authentication-strategy-ref="sessionAuthenticationStrategy" />
-        <sec:form-login login-page="/redirect/login" 
-            default-target-url="/" always-use-default-target="false"
-            authentication-failure-handler-ref="redirectErrorHandler"
-            authentication-success-handler-ref="redirectHandler" />
-    </sec:http>
-
     <sec:http pattern="/**" auto-config="true"
         use-expressions="true" request-matcher="ant">
         <sec:csrf />
@@ -80,21 +58,6 @@
             authentication-failure-handler-ref="redirectErrorHandler"
             authentication-success-handler-ref="redirectHandler" />
     </sec:http>
-
-    <!-- CSRF Protection -->
-    <bean id="csrfTokenRepository"
-        class="org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository" />
-
-    <bean id="csrfFilter" class="org.springframework.security.web.csrf.CsrfFilter">
-        <constructor-arg index="0" ref="csrfTokenRepository" />
-        <property name="accessDeniedHandler">
-            <bean
-                class="org.springframework.security.web.access.AccessDeniedHandlerImpl">
-                <property name="errorPage"
-                    value="/WEB-INF/views/common/error/csrfTokenError.jsp" />
-            </bean>
-        </property>
-    </bean>
 
     <bean id="accessDeniedHandler"
         class="org.springframework.security.web.access.DelegatingAccessDeniedHandler">
@@ -117,37 +80,6 @@
                         value="/WEB-INF/views/common/error/accessDeniedError.jsp" />
             </bean>
         </constructor-arg>
-    </bean>
-
-    <bean id="sessionAuthenticationStrategy"
-        class="org.springframework.security.web.authentication.session.CompositeSessionAuthenticationStrategy">
-        <constructor-arg index="0">
-            <list>
-                <bean
-                    class="org.springframework.security.web.authentication.session.SessionFixationProtectionStrategy" />
-                <bean
-                    class="org.springframework.security.web.csrf.CsrfAuthenticationStrategy">
-                    <constructor-arg index="0"
-                        ref="csrfTokenRepository" />
-                </bean>
-            </list>
-        </constructor-arg>
-    </bean>
-
-    <bean id="csrfFilterErrorPageNotSet" class="org.springframework.security.web.csrf.CsrfFilter">
-        <constructor-arg index="0" ref="csrfTokenRepository" />
-        <property name="accessDeniedHandler">
-            <bean
-                class="org.springframework.security.web.access.AccessDeniedHandlerImpl" />
-        </property>
-    </bean>
-
-    <bean id="csrfFilterNotAcceptable" class="org.springframework.security.web.csrf.CsrfFilter">
-        <constructor-arg index="0" ref="csrfTokenRepository" />
-        <property name="accessDeniedHandler">
-            <bean
-                class="org.terasoluna.gfw.functionaltest.app.csrf.NotAcceptableHandler" />
-        </property>
     </bean>
 
     <bean id="redirectHandler"
