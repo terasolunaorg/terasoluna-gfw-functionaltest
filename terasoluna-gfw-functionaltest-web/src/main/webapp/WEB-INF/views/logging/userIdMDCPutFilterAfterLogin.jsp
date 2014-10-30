@@ -9,11 +9,11 @@
 		</tr>
 		<tr>
 			<td><a id="logout"
-					href="${pageContext.request.contextPath}/logging/userIdMDCPutFilter/logout">logout</a>
+					href="javascript:document.dummyForm.submit()">logout</a>
 			</td>
 		</tr>
 	</table>
-	
+	<form:form name="dummyForm" method="POST" action="${pageContext.request.contextPath}/logging/userIdMDCPutFilter/logout" />
 	<c:if test="${!(empty userIdMDC)}">
 	${f:h(attributeName)}:<div id="userIdMDC">${f:h(userIdMDC)}</div>
 	</c:if>
