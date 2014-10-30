@@ -29,6 +29,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
+            <scope>test</scope>
             <exclusions>
                 <exclusion>
                     <artifactId>commons-logging</artifactId>
