@@ -60,10 +60,6 @@
 			<td><a id="EL" href="${pageContext.request.contextPath}/el">EL
 					Function Test</a></td>
 		</tr>
-		<tr>
-			<td><a id="CSRF" href="${pageContext.request.contextPath}/csrf">CSRF
-					Function Test</a></td>
-		</tr>
 	</table>
 </body>
 </html>
