@@ -21,7 +21,6 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.terasoluna.gfw.common.query.QueryEscapeUtils;
 import org.terasoluna.gfw.functionaltest.domain.TransactionManagers;
 import org.terasoluna.gfw.functionaltest.domain.model.Todo;
 import org.terasoluna.gfw.functionaltest.domain.repository.queryescape.TodoMybatisRepository;
@@ -35,19 +34,16 @@ public class QueryEscapeMybatisServiceImpl implements QueryEscapeService {
 
     @Override
     public List<Todo> findAllByTitleLikePrefix(String title) {
-        String condition = QueryEscapeUtils.toStartingWithCondition(title);
-        return queryEscapeMybatisRepository.findAllByTitleLike(condition);
+        return queryEscapeMybatisRepository.findAllByTitleLikePrefix(title);
     }
 
     @Override
     public List<Todo> findAllByTitleLikeSuffix(String title) {
-        String condition = QueryEscapeUtils.toEndingWithCondition(title);
-        return queryEscapeMybatisRepository.findAllByTitleLike(condition);
+        return queryEscapeMybatisRepository.findAllByTitleLikeSuffix(title);
     }
 
     @Override
     public List<Todo> findAllByTitleLikePartical(String title) {
-        String condition = QueryEscapeUtils.toContainingCondition(title);
-        return queryEscapeMybatisRepository.findAllByTitleLike(condition);
+        return queryEscapeMybatisRepository.findAllByTitleLikePartical(title);
     }
 }
