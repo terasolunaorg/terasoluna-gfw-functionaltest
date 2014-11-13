@@ -51,7 +51,7 @@
 
     <appender name="DB" class="ch.qos.logback.classic.db.DBAppender">
         <connectionSource class="ch.qos.logback.core.db.DataSourceConnectionSource">
-            <dataSource class="org.apache.commons.dbcp.BasicDataSource">
+            <dataSource class="org.apache.commons.dbcp2.BasicDataSource">
                 <driverClassName>org.h2.Driver</driverClassName>
                 <url>jdbc:h2:mem:terasoluna-gfw-functionaltest;DB_CLOSE_DELAY=-1</url>
                 <username>sa</username>
