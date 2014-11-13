@@ -21,5 +21,7 @@ import org.terasoluna.gfw.functionaltest.domain.model.Todo;
 
 public interface TodoMybatisRepository {
 
-    List<Todo> findAllByTitleLike(String todoTitle);
+    List<Todo> findAllByTitleLikePrefix(String todoTitle);
+    List<Todo> findAllByTitleLikeSuffix(String todoTitle);
+    List<Todo> findAllByTitleLikePartical(String todoTitle);
 }

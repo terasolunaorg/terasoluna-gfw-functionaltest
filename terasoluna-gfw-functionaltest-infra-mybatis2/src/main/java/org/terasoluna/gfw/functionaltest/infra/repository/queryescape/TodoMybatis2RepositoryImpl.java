@@ -22,6 +22,7 @@ import javax.inject.Inject;
 import jp.terasoluna.fw.dao.QueryDAO;
 
 import org.springframework.stereotype.Repository;
+import org.terasoluna.gfw.common.query.QueryEscapeUtils;
 import org.terasoluna.gfw.functionaltest.domain.model.Todo;
 import org.terasoluna.gfw.functionaltest.domain.repository.queryescape.TodoMybatisRepository;
 
@@ -32,8 +33,20 @@ public class TodoMybatis2RepositoryImpl implements TodoMybatisRepository {
     protected QueryDAO queryDAO;
 
     @Override
-    public List<Todo> findAllByTitleLike(String todoTitle) {
+    public List<Todo> findAllByTitleLikePrefix(String title) {
+        String todoTitle = QueryEscapeUtils.toStartingWithCondition(title);
         return queryDAO.executeForObjectList("queryescape.findAllByTitleLike", todoTitle);
     }
 
+    @Override
+    public List<Todo> findAllByTitleLikeSuffix(String title) {
+        String todoTitle = QueryEscapeUtils.toEndingWithCondition(title);
+        return queryDAO.executeForObjectList("queryescape.findAllByTitleLike", todoTitle);
+    }
+    
+    @Override
+    public List<Todo> findAllByTitleLikePartical(String title) {
+        String todoTitle = QueryEscapeUtils.toContainingCondition(title);
+        return queryDAO.executeForObjectList("queryescape.findAllByTitleLike", todoTitle);
+    }
 }

@@ -5,7 +5,9 @@
 <mapper
     namespace="org.terasoluna.gfw.functionaltest.domain.repository.queryescape.TodoMybatisRepository">
 
-    <select id="findAllByTitleLike" parameterType="string" resultType="Todo">
+    <select id="findAllByTitleLikePrefix" parameterType="string" resultType="Todo">
+        <bind name="titleContainingCondition"
+            value="@org.terasoluna.gfw.common.query.QueryEscapeUtils@toStartingWithCondition(_parameter)" />
     <![CDATA[
         SELECT
             id, 
@@ -13,7 +15,39 @@
         FROM
             todo 
         WHERE
-            todo_title LIKE #{todoTitle} ESCAPE '~'
+            todo_title LIKE #{titleContainingCondition} ESCAPE '~'
+        ORDER BY
+            id
+    ]]>
+    </select>
+    
+    <select id="findAllByTitleLikeSuffix" parameterType="string" resultType="Todo">
+        <bind name="titleContainingCondition"
+            value="@org.terasoluna.gfw.common.query.QueryEscapeUtils@toEndingWithCondition(_parameter)" />
+    <![CDATA[
+        SELECT
+            id, 
+            todo_title
+        FROM
+            todo 
+        WHERE
+            todo_title LIKE #{titleContainingCondition} ESCAPE '~'
+        ORDER BY
+            id
+    ]]>
+    </select>
+    
+    <select id="findAllByTitleLikePartical" parameterType="string" resultType="Todo">
+        <bind name="titleContainingCondition"
+            value="@org.terasoluna.gfw.common.query.QueryEscapeUtils@toContainingCondition(_parameter)" />
+    <![CDATA[
+        SELECT
+            id, 
+            todo_title
+        FROM
+            todo 
+        WHERE
+            todo_title LIKE #{titleContainingCondition} ESCAPE '~'
         ORDER BY
             id
     ]]>
