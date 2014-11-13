@@ -135,5 +135,13 @@
             <type>pom</type>
         </dependency>
         <!-- == End TERASOLUNA == -->
+
+        <!-- == Begin Unit Test == -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+        <!-- == End Unit Test == -->
+
     </dependencies>
 </project>
