@@ -241,6 +241,5 @@
         <org.springframework.build.aws.version>3.0.0.RELEASE</org.springframework.build.aws.version>
         <postgresql.version>9.1-901.jdbc4</postgresql.version>
         <ojdbc6.version>11.2.0.2.0</ojdbc6.version>
-        <selenium.version>2.43.1</selenium.version>
     </properties>
 </project>
