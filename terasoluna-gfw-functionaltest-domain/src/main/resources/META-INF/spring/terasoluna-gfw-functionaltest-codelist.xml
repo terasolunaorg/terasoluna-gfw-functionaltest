@@ -4,7 +4,17 @@
     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
                 http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd">
 
-    <bean id="CL_CODELIST01_01" class="org.terasoluna.gfw.common.codelist.SimpleMapCodeList">
+    <bean id="jdbcTemplateForCodeList" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="dataSource" />
+        <property name="fetchSize" value="${codelist.jdbc.fetchSize:1000}" />
+   </bean>
+ 
+   <bean id="AbstractJdbcCodeList"
+              class="org.terasoluna.gfw.common.codelist.JdbcCodeList" abstract="true">
+        <property name="jdbcTemplate" ref="jdbcTemplateForCodeList" />
+   </bean>
+   
+   <bean id="CL_CODELIST01_01" class="org.terasoluna.gfw.common.codelist.SimpleMapCodeList">
         <property name="map">
             <util:map key-type="java.lang.String" value-type="java.lang.String"
                 map-class="java.util.LinkedHashMap">
@@ -47,24 +57,21 @@
     </bean>
 
 
-    <bean id="CL_CODELIST_ITEM1" class="org.terasoluna.gfw.common.codelist.JdbcCodeList">
-        <property name="dataSource" ref="dataSource" />
+    <bean id="CL_CODELIST_ITEM1" parent="AbstractJdbcCodeList">
         <property name="querySql"
             value="select code, label from item1 ORDER BY code" />
         <property name="valueColumn" value="code" />
         <property name="labelColumn" value="label" />
     </bean>
 
-    <bean id="CL_CODELIST_ITEM2" class="org.terasoluna.gfw.common.codelist.JdbcCodeList">
-        <property name="dataSource" ref="dataSource" />
+    <bean id="CL_CODELIST_ITEM2" parent="AbstractJdbcCodeList">
         <property name="querySql"
             value="select code, label from item2 ORDER BY code" />
         <property name="valueColumn" value="code" />
         <property name="labelColumn" value="label" />
     </bean>
 
-    <bean id="CODELIST_WRONG_ITEM" class="org.terasoluna.gfw.common.codelist.JdbcCodeList">
-        <property name="dataSource" ref="dataSource" />
+    <bean id="CODELIST_WRONG_ITEM" parent="AbstractJdbcCodeList">
         <property name="lazyInit" value="true" />
         <property name="querySql"
             value="select code, label_wrong from item2 ORDER BY code" />
@@ -104,16 +111,14 @@
         </property>
     </bean>
 
-    <bean id="CL_CODELIST06_06_EN" class="org.terasoluna.gfw.common.codelist.JdbcCodeList">
-        <property name="dataSource" ref="dataSource" />
+    <bean id="CL_CODELIST06_06_EN" parent="AbstractJdbcCodeList">
         <property name="querySql"
             value="select code, label_en from item3 ORDER BY code" />
         <property name="valueColumn" value="code" />
         <property name="labelColumn" value="label_en" />
     </bean>
 
-    <bean id="CL_CODELIST06_06_JA" class="org.terasoluna.gfw.common.codelist.JdbcCodeList">
-        <property name="dataSource" ref="dataSource" />
+    <bean id="CL_CODELIST06_06_JA" parent="AbstractJdbcCodeList">
         <property name="querySql"
             value="select code, label_ja from item3 ORDER BY code" />
         <property name="valueColumn" value="code" />
