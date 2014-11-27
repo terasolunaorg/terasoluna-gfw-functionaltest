@@ -4,7 +4,17 @@
     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
                 http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd">
 
-    <bean id="CL_CODELIST01_01" class="org.terasoluna.gfw.common.codelist.SimpleMapCodeList">
+   <bean id="jdbcTemplateForCodeList" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="dataSource" />
+        <property name="fetchSize" value="${codelist.jdbc.fetchSize:1000}" />
+   </bean>
+ 
+   <bean id="AbstractJdbcCodeList"
+              class="org.terasoluna.gfw.common.codelist.JdbcCodeList" abstract="true">
+        <property name="jdbcTemplate" ref="jdbcTemplateForCodeList" />
+   </bean>
+   
+   <bean id="CL_CODELIST01_01" class="org.terasoluna.gfw.common.codelist.SimpleMapCodeList">
         <property name="map">
             <util:map key-type="java.lang.String" value-type="java.lang.String"
                 map-class="java.util.LinkedHashMap">
