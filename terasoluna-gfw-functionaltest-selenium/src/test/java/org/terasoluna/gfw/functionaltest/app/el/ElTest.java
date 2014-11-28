@@ -96,7 +96,7 @@ public class ElTest extends FunctionTestSupport {
         // output data 02_01 Test
         assertThat(
                 driver.findElement(By.id("urlOutput")).getText(),
-                is("http://localhost:8080/spring?hl=ja&tab=Tw#hl=ja&q=%E3%81%82%E3%81%84%E3%81%86%E3%81%88%E3%81%8A"));
+                is("http://localhost:8080/spring?hl%3Dja%26tab%3DTw%23hl%3Dja%26q%3D%E3%81%82%E3%81%84%E3%81%86%E3%81%88%E3%81%8A"));
 
         // screen capture
         screenCapture.save(driver);
@@ -111,6 +111,20 @@ public class ElTest extends FunctionTestSupport {
         // output data 02_02 Test
         assertThat(driver.findElement(By.id("urlOutput")).getText(),
                 is("http://localhost:8080/spring"));
+
+        // screen capture
+        screenCapture.save(driver);
+
+        driver.get(applicationContextUrl);
+        driver.findElement(By.id("EL")).click();
+        driver.findElement(By.id("02")).click();
+        inputFieldAccessor.overrideValue(By.id("text-output"),
+                "TEST[]#+=&TEST", driver);
+        driver.findElement(By.id("btn-output")).click();
+
+        // output data 02_03 Test
+        assertThat(driver.findElement(By.id("urlOutput")).getText(),
+                is("TEST%5B%5D%23%2B%3D%26TEST"));
     }
 
     @Test
@@ -205,7 +219,7 @@ public class ElTest extends FunctionTestSupport {
                 is("スプリングエムブイシー（ＳＰＲＩＮＧ　ＭＶＣ）、スプリングセ"));
     }
 
-    @Test(expected = NoSuchElementException.class)
+    @Test
     public void test05_URL_Link() {
 
         driver.findElement(By.id("05")).click();
@@ -234,7 +248,7 @@ public class ElTest extends FunctionTestSupport {
         assertThat(driver.findElement(By.id("linkOutput")).getText(),
                 is("123456789https://example.com/tour/ 01234567890"));
         // output link
-        assertThat(driver.findElement(By.linkText("http://example.com/tour/"))
+        assertThat(driver.findElement(By.linkText("https://example.com/tour/"))
                 .getText(), is("https://example.com/tour/"));
 
         // screen capture
@@ -242,6 +256,25 @@ public class ElTest extends FunctionTestSupport {
 
         driver.get(applicationContextUrl);
         driver.findElement(By.id("EL")).click();
+        driver.findElement(By.id("05_04")).click();
+        inputFieldAccessor.overrideValue(By.id("text-outputQueryParam"),
+                "tera&1", driver);
+        driver.findElement(By.id("btn-output")).click();
+        
+        // output 05_04 Test
+        assertThat(driver.findElement(By.id("linkUOutput")).getText(),
+                is("http://localhost:8080/terasoluna-gfw-functionaltest-web/el/output_05_04?name=tera%261"));
+        // output link
+        assertThat(driver.findElement(By.linkText("http://localhost:8080/terasoluna-gfw-functionaltest-web/el/output_05_04?name=tera%261"))
+                .getText(), is("http://localhost:8080/terasoluna-gfw-functionaltest-web/el/output_05_04?name=tera%261"));
+        // inheriting of query Test
+        driver.findElement(By.id("linkUOutput")).findElement(
+                By.linkText("http://localhost:8080/terasoluna-gfw-functionaltest-web/el/output_05_04?name=tera%261")).click();
+    }
+
+    @Test(expected = NoSuchElementException.class)
+    public void test05_URL_NO_Link() {
+
         driver.findElement(By.id("05")).click();
         inputFieldAccessor.overrideValue(By.id("text-output"),
                 "123456789ttps://example.com/tour/ 01234567890", driver);

@@ -190,19 +190,59 @@
 			<a id="screenDrawing_19_1" href="${pageContext.request.contextPath}/pagination/19_1">screenDrawing_19_1</a>
 		</td>
 	</tr>
-    <tr>
-        <td>
-            <a id="search_20_1" href="${pageContext.request.contextPath}/pagination/20_1">searchWithCriteriaQuery_20_1</a>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <a id="search_20_2" href="${pageContext.request.contextPath}/pagination/20_2">searchWithCriteriaQueryAndDisableHtmlEscapeOfCriteriaQueryIsFalse_20_2</a>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <a id="search_20_3" href="${pageContext.request.contextPath}/pagination/20_3">searchWithCriteriaQueryAndDisableHtmlEscapeOfCriteriaQueryIsTrue_20_3</a>
-        </td>
-    </tr>
+	<tr>
+		<td>
+			<a id="search_20_1" href="${pageContext.request.contextPath}/pagination/20_1">searchWithCriteriaQueryAndFQueryFunction_20_1</a>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<a id="search_20_2" href="${pageContext.request.contextPath}/pagination/20_2">searchWithCriteriaQueryAndFUFunction_20_2</a>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<a id="search_20_3" href="${pageContext.request.contextPath}/pagination/20_3">searchWithCriteriaQueryAndDisableHtmlEscapeOfCriteriaQueryIsFalse_20_3</a>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<a id="search_20_4" href="${pageContext.request.contextPath}/pagination/20_4">searchWithCriteriaQueryAndFQueryFunctionAndDisableHtmlEscapeOfCriteriaQueryIsTrue_20_4</a>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<a id="search_20_5" href="${pageContext.request.contextPath}/pagination/20_5">searchWithCriteriaQueryAndFUFunctionAndDisableHtmlEscapeOfCriteriaQueryIsTrue_20_5</a>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<a id="search_21_1" href="${pageContext.request.contextPath}/pagination/21_1">searchWithPathTmplAndCriteriaQuery_21_1</a>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<a id="search_21_2" href="${pageContext.request.contextPath}/pagination/21_2">searchWithPathTmplAndCriteriaQuery_21_2</a>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<a id="search_22_1" href="${pageContext.request.contextPath}/pagination/22_1">searchWithQueryTmplAndCriteriaQuery_22_1</a>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<a id="search_22_2" href="${pageContext.request.contextPath}/pagination/22_2">searchWithQueryTmplAndCriteriaQuery_22_1</a>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<a id="search_23_1" href="${pageContext.request.contextPath}/pagination/23_1">searchWithPathTmplAndQueryTmplAndCriteriaQuery_23_1</a>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<a id="search_23_2" href="${pageContext.request.contextPath}/pagination/23_2">searchWithPathTmplAndQueryTmplAndCriteriaQuery_23_1</a>
+		</td>
+	</tr>
 </table>
