@@ -13,7 +13,7 @@
     <artifactId>terasoluna-gfw-functionaltest-initdb</artifactId>
 
     <properties>
-        <postgresql.version>8.3-606.jdbc3</postgresql.version>
+        <postgresql.version>9.3-1102-jdbc41</postgresql.version>
     </properties>
 
     <profiles>
