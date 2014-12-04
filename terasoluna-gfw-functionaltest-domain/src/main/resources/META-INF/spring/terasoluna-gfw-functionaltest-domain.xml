@@ -13,8 +13,7 @@
 
     <import
         resource="classpath:META-INF/spring/terasoluna-gfw-functionaltest-infra.xml" />
-    <import
-        resource="classpath:META-INF/spring/terasoluna-gfw-functionaltest-codelist.xml" />
+    <import resource="classpath*:META-INF/spring/**/*-codelist.xml" />
     <context:component-scan base-package="org.terasoluna.gfw.functionaltest.domain" />
     <bean id="dateFactory" class="org.terasoluna.gfw.common.date.DefaultDateFactory" />
 
