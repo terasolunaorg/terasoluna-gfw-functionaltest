@@ -18,7 +18,9 @@ package org.terasoluna.gfw.functionaltest.app.pagination;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.core.IsNull.notNullValue;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import java.util.concurrent.TimeUnit;
@@ -27,6 +29,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebElement;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.terasoluna.gfw.functionaltest.app.FunctionTestSupport;
@@ -1999,6 +2002,46 @@ public class PaginationTest extends FunctionTestSupport {
                     is("221"));
             assertThat(driver.findElement(By.id("personId9")).getText(),
                     is("230"));
+
+            // wait
+            driver.findElement(By.tagName("body"));
+
+            // ページネーションのリンクのURLのパスが
+            // “/terasoluna-gfw-functionaltest-web/pagination/21_1/{page}/{size}”
+            // に変更されていること。
+            assertTrue(driver.getCurrentUrl().contains(
+                    "/terasoluna-gfw-functionaltest-web/pagination/21_1/2/10"));
+
+            // 検索条件に指定した値がURLエンコーディングされていること。
+            // (f:query)
+            WebElement fqueryElement = driver
+                    .findElement(By
+                            .id("paginationCombinationOfPathTmplAndCriteriaQueryAndFQuery"));
+
+            for (int count = 3; count <= 12; count++) {
+                assertTrue(fqueryElement
+                        .findElement(By.xpath("ul/li[" + count + "]/a"))
+                        .getAttribute("href").endsWith("name=%2B%20%26%3D"));
+            }
+
+            // 検索条件に指定した値がページ検索時に引き継がれること
+            assertThat(inputFieldAccessor.getValue(By.id("name"), driver),
+                    is("+ &="));
+
+            // encodeの確認 (f:query)と(f:query)で同じURLになること
+            WebElement fuElement = driver
+                    .findElement(By
+                            .id("paginationCombinationOfPathTmplAndCriteriaQueryAndFU"));
+
+            for (int count = 3; count <= 12; count++) {
+                assertEquals(
+                        fqueryElement.findElement(
+                                By.xpath("ul/li[" + count + "]/a"))
+                                .getAttribute("href"),
+                        fuElement.findElement(
+                                By.xpath("ul/li[" + count + "]/a"))
+                                .getAttribute("href"));
+            }
         }
     }
 
@@ -2042,6 +2085,46 @@ public class PaginationTest extends FunctionTestSupport {
                     is("221"));
             assertThat(driver.findElement(By.id("personId9")).getText(),
                     is("230"));
+
+            // wait
+            driver.findElement(By.tagName("body"));
+
+            // ページネーションのリンクのURLのパスが
+            // “/terasoluna-gfw-functionaltest-web/pagination/21_1/{page}/{size}”
+            // に変更されていること。
+            assertTrue(driver.getCurrentUrl().contains(
+                    "/terasoluna-gfw-functionaltest-web/pagination/21_1/2/10"));
+
+            // 検索条件に指定した値がURLエンコーディングされていること。
+            // (f:u)
+            WebElement fuElement = driver
+                    .findElement(By
+                            .id("paginationCombinationOfPathTmplAndCriteriaQueryAndFU"));
+
+            for (int count = 3; count <= 12; count++) {
+                assertTrue(fuElement
+                        .findElement(By.xpath("ul/li[" + count + "]/a"))
+                        .getAttribute("href").endsWith("name=%2B%20%26%3D"));
+            }
+
+            // 検索条件に指定した値がページ検索時に引き継がれること
+            assertThat(inputFieldAccessor.getValue(By.id("name"), driver),
+                    is("+ &="));
+
+            // encodeの確認 (f:query)と(f:query)で同じURLになること
+            WebElement fqueryElement = driver
+                    .findElement(By
+                            .id("paginationCombinationOfPathTmplAndCriteriaQueryAndFQuery"));
+
+            for (int count = 3; count <= 12; count++) {
+                assertEquals(
+                        fqueryElement.findElement(
+                                By.xpath("ul/li[" + count + "]/a"))
+                                .getAttribute("href"),
+                        fuElement.findElement(
+                                By.xpath("ul/li[" + count + "]/a"))
+                                .getAttribute("href"));
+            }
         }
     }
 
@@ -2067,24 +2150,63 @@ public class PaginationTest extends FunctionTestSupport {
             assertThat(driver.findElement(By.id("personId9")).getText(),
                     is("291"));
         }
-        // move specified page(3 page)
+        // move specified page(2 page)
         {
             driver.findElement(
                     By.id("paginationCombinationOfQueryTmplAndCriteriaQueryAndFQuery"))
-                    .findElement(By.linkText("3")).click();
-            // assert 3 page
+                    .findElement(By.linkText("2")).click();
+            // assert 2 page
             assertThat(driver.findElement(By.id("pagePosition")).getText(),
-                    is("3"));
+                    is("2"));
             assertThat(driver.findElement(By.id("rangeStart")).getText(),
-                    is("21"));
+                    is("11"));
             assertThat(driver.findElement(By.id("rangeEnd")).getText(),
-                    is("30"));
+                    is("20"));
             assertThat(driver.findElement(By.id("totalResults")).getText(),
                     is("100"));
             assertThat(driver.findElement(By.id("personId0")).getText(),
-                    is("280"));
+                    is("290"));
             assertThat(driver.findElement(By.id("personId9")).getText(),
-                    is("271"));
+                    is("281"));
+
+            // wait
+            driver.findElement(By.tagName("body"));
+
+            // ページネーションのリンクのクエリが以下になっていること
+            // ?page=1&size=10&sort=personId,DESC
+            assertTrue(driver.getCurrentUrl().contains(
+                    "?page=1&size=10&sort=personId,DESC"));
+
+            // 検索条件に指定した値がURLエンコーディングされていること。
+            // (f:query)
+            WebElement fqueryElement = driver
+                    .findElement(By
+                            .id("paginationCombinationOfQueryTmplAndCriteriaQueryAndFQuery"));
+
+            for (int count = 3; count <= 12; count++) {
+                assertTrue(fqueryElement
+                        .findElement(By.xpath("ul/li[" + count + "]/a"))
+                        .getAttribute("href").endsWith("name=%2B%20%26%3D"));
+            }
+
+            // 検索条件に指定した値がページ検索時に引き継がれること
+            assertThat(inputFieldAccessor.getValue(By.id("name"), driver),
+                    is("+ &="));
+
+            // encodeの確認 (f:query)と(f:query)で同じURLになること
+            WebElement fuElement = driver
+                    .findElement(By
+                            .id("paginationCombinationOfQueryTmplAndCriteriaQueryAndFU"));
+
+            for (int count = 3; count <= 12; count++) {
+                assertEquals(
+                        fqueryElement.findElement(
+                                By.xpath("ul/li[" + count + "]/a"))
+                                .getAttribute("href"),
+                        fuElement.findElement(
+                                By.xpath("ul/li[" + count + "]/a"))
+                                .getAttribute("href"));
+            }
         }
     }
 
@@ -2110,24 +2232,63 @@ public class PaginationTest extends FunctionTestSupport {
             assertThat(driver.findElement(By.id("personId9")).getText(),
                     is("291"));
         }
-        // move specified page(3 page)
+        // move specified page(2 page)
         {
             driver.findElement(
                     By.id("paginationCombinationOfQueryTmplAndCriteriaQueryAndFU"))
-                    .findElement(By.linkText("3")).click();
-            // assert 3 page
+                    .findElement(By.linkText("2")).click();
+            // assert 2 page
             assertThat(driver.findElement(By.id("pagePosition")).getText(),
-                    is("3"));
+                    is("2"));
             assertThat(driver.findElement(By.id("rangeStart")).getText(),
-                    is("21"));
+                    is("11"));
             assertThat(driver.findElement(By.id("rangeEnd")).getText(),
-                    is("30"));
+                    is("20"));
             assertThat(driver.findElement(By.id("totalResults")).getText(),
                     is("100"));
             assertThat(driver.findElement(By.id("personId0")).getText(),
-                    is("280"));
+                    is("290"));
             assertThat(driver.findElement(By.id("personId9")).getText(),
-                    is("271"));
+                    is("281"));
+        }
+
+        // wait
+        driver.findElement(By.tagName("body"));
+
+        // ページネーションのリンクのクエリが以下になっていること
+        // ?page=1&size=10&sort=personId,DESC
+        assertTrue(driver.getCurrentUrl().contains(
+                "?page=1&size=10&sort=personId,DESC"));
+
+        // 検索条件に指定した値がURLエンコーディングされていること。
+        // (f;u)
+        WebElement fuElement = driver
+                .findElement(By
+                        .id("paginationCombinationOfQueryTmplAndCriteriaQueryAndFU"));
+
+        for (int count = 3; count <= 12; count++) {
+            assertTrue(fuElement
+                    .findElement(By.xpath("ul/li[" + count + "]/a"))
+                    .getAttribute("href").endsWith("name=%2B%20%26%3D"));
+        }
+
+        // 検索条件に指定した値がページ検索時に引き継がれること
+        assertThat(inputFieldAccessor.getValue(By.id("name"), driver),
+                is("+ &="));
+
+        // encodeの確認 (f:query)と(f:query)で同じURLになること
+        WebElement fqueryElement = driver
+                .findElement(By
+                        .id("paginationCombinationOfQueryTmplAndCriteriaQueryAndFQuery"));
+
+        for (int count = 3; count <= 12; count++) {
+            assertEquals(
+                    fqueryElement.findElement(
+                            By.xpath("ul/li[" + count + "]/a"))
+                            .getAttribute("href"),
+                    fuElement.findElement(
+                            By.xpath("ul/li[" + count + "]/a"))
+                            .getAttribute("href"));
         }
     }
 
@@ -2149,28 +2310,73 @@ public class PaginationTest extends FunctionTestSupport {
             assertThat(driver.findElement(By.id("totalResults")).getText(),
                     is("100"));
             assertThat(driver.findElement(By.id("personId0")).getText(),
-                    is("300"));
+                    is("250"));
             assertThat(driver.findElement(By.id("personId9")).getText(),
-                    is("291"));
+                    is("241"));
         }
-        // move specified page(3 page)
+        // move specified page(2 page)
         {
             driver.findElement(
                     By.id("paginationCombinationOfPathTmplAndQueryTmplAndCriteriaQueryAndFQuery"))
-                    .findElement(By.linkText("3")).click();
-            // assert 3 page
+                    .findElement(By.linkText("2")).click();
+            // assert 2 page
             assertThat(driver.findElement(By.id("pagePosition")).getText(),
-                    is("3"));
+                    is("2"));
             assertThat(driver.findElement(By.id("rangeStart")).getText(),
-                    is("21"));
+                    is("11"));
             assertThat(driver.findElement(By.id("rangeEnd")).getText(),
-                    is("30"));
+                    is("20"));
             assertThat(driver.findElement(By.id("totalResults")).getText(),
                     is("100"));
             assertThat(driver.findElement(By.id("personId0")).getText(),
-                    is("280"));
+                    is("240"));
             assertThat(driver.findElement(By.id("personId9")).getText(),
-                    is("271"));
+                    is("231"));
+
+            // wait
+            driver.findElement(By.tagName("body"));
+
+            // ページネーションのリンクのURLのパスが
+            // “/terasoluna-gfw-functionaltest-web/pagination/23_1/{page}/{size}”
+            // に変更されていること。
+            assertTrue(driver.getCurrentUrl().contains(
+                    "/terasoluna-gfw-functionaltest-web/pagination/23_1/1/10"));
+
+            // ページネーションのリンクのクエリが以下になっていること
+            // ?page=1&size=10&sort=firstname,DESC
+            assertTrue(driver.getCurrentUrl().contains(
+                    "?page=1&size=10&sort=firstname,DESC"));
+
+            // 検索条件に指定した値がURLエンコーディングされていること。
+            // (f:query)
+            WebElement fqueryElement = driver
+                    .findElement(By
+                            .id("paginationCombinationOfPathTmplAndQueryTmplAndCriteriaQueryAndFQuery"));
+
+            for (int count = 3; count <= 12; count++) {
+                assertTrue(fqueryElement
+                        .findElement(By.xpath("ul/li[" + count + "]/a"))
+                        .getAttribute("href").endsWith("name=%2B%20%26%3D"));
+            }
+
+            // 検索条件に指定した値がページ検索時に引き継がれること
+            assertThat(inputFieldAccessor.getValue(By.id("name"), driver),
+                    is("+ &="));
+
+            // encodeの確認 (f:query)と(f:query)で同じURLになること
+            WebElement fuElement = driver
+                    .findElement(By
+                            .id("paginationCombinationOfPathTmplAndQueryTmplAndCriteriaQueryAndFU"));
+
+            for (int count = 3; count <= 12; count++) {
+                assertEquals(
+                        fqueryElement.findElement(
+                                By.xpath("ul/li[" + count + "]/a"))
+                                .getAttribute("href"),
+                        fuElement.findElement(
+                                By.xpath("ul/li[" + count + "]/a"))
+                                .getAttribute("href"));
+            }
         }
     }
 
@@ -2192,28 +2398,73 @@ public class PaginationTest extends FunctionTestSupport {
             assertThat(driver.findElement(By.id("totalResults")).getText(),
                     is("100"));
             assertThat(driver.findElement(By.id("personId0")).getText(),
-                    is("300"));
+                    is("250"));
             assertThat(driver.findElement(By.id("personId9")).getText(),
-                    is("291"));
+                    is("241"));
         }
-        // move specified page(3 page)
+        // move specified page(2 page)
         {
             driver.findElement(
-                    By.id("paginationCombinationOfPathTmplAndQueryTmplAndCriteriaQueryAndFU"))
-                    .findElement(By.linkText("3")).click();
-            // assert 3 page
+                    By.id("paginationCombinationOfPathTmplAndQueryTmplAndCriteriaQueryAndFQuery"))
+                    .findElement(By.linkText("2")).click();
+            // assert 2 page
             assertThat(driver.findElement(By.id("pagePosition")).getText(),
-                    is("3"));
+                    is("2"));
             assertThat(driver.findElement(By.id("rangeStart")).getText(),
-                    is("21"));
+                    is("11"));
             assertThat(driver.findElement(By.id("rangeEnd")).getText(),
-                    is("30"));
+                    is("20"));
             assertThat(driver.findElement(By.id("totalResults")).getText(),
                     is("100"));
             assertThat(driver.findElement(By.id("personId0")).getText(),
-                    is("280"));
+                    is("240"));
             assertThat(driver.findElement(By.id("personId9")).getText(),
-                    is("271"));
+                    is("231"));
+
+            // wait
+            driver.findElement(By.tagName("body"));
+
+            // ページネーションのリンクのURLのパスが
+            // “/terasoluna-gfw-functionaltest-web/pagination/23_1/{page}/{size}”
+            // に変更されていること。
+            assertTrue(driver.getCurrentUrl().contains(
+                    "/terasoluna-gfw-functionaltest-web/pagination/23_1/1/10"));
+
+            // ページネーションのリンクのクエリが以下になっていること
+            // ?page=1&size=10&sort=firstname,DESC
+            assertTrue(driver.getCurrentUrl().contains(
+                    "?page=1&size=10&sort=firstname,DESC"));
+
+            // 検索条件に指定した値がURLエンコーディングされていること。
+            // (f:u)
+            WebElement fuElement = driver
+                    .findElement(By
+                            .id("paginationCombinationOfPathTmplAndQueryTmplAndCriteriaQueryAndFU"));
+
+            for (int count = 3; count <= 12; count++) {
+                assertTrue(fuElement
+                        .findElement(By.xpath("ul/li[" + count + "]/a"))
+                        .getAttribute("href").endsWith("name=%2B%20%26%3D"));
+            }
+
+            // 検索条件に指定した値がページ検索時に引き継がれること
+            assertThat(inputFieldAccessor.getValue(By.id("name"), driver),
+                    is("+ &="));
+
+            // encodeの確認 (f:query)と(f:query)で同じURLになること
+            WebElement fqueryElement = driver
+                    .findElement(By
+                            .id("paginationCombinationOfPathTmplAndQueryTmplAndCriteriaQueryAndFQuery"));
+
+            for (int count = 3; count <= 12; count++) {
+                assertEquals(
+                        fqueryElement.findElement(
+                                By.xpath("ul/li[" + count + "]/a"))
+                                .getAttribute("href"),
+                        fuElement.findElement(
+                                By.xpath("ul/li[" + count + "]/a"))
+                                .getAttribute("href"));
+            }
         }
     }
 

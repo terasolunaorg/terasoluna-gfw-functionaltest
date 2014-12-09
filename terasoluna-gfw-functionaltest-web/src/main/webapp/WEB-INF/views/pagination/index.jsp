@@ -232,7 +232,7 @@
 	</tr>
 	<tr>
 		<td>
-			<a id="search_22_2" href="${pageContext.request.contextPath}/pagination/22_2">searchWithQueryTmplAndCriteriaQuery_22_1</a>
+			<a id="search_22_2" href="${pageContext.request.contextPath}/pagination/22_2">searchWithQueryTmplAndCriteriaQuery_22_2</a>
 		</td>
 	</tr>
 	<tr>
@@ -242,7 +242,7 @@
 	</tr>
 	<tr>
 		<td>
-			<a id="search_23_2" href="${pageContext.request.contextPath}/pagination/23_2">searchWithPathTmplAndQueryTmplAndCriteriaQuery_23_1</a>
+			<a id="search_23_2" href="${pageContext.request.contextPath}/pagination/23_2">searchWithPathTmplAndQueryTmplAndCriteriaQuery_23_2</a>
 		</td>
 	</tr>
 </table>
