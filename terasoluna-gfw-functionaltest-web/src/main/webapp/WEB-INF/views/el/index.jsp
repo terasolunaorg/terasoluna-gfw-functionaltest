@@ -22,6 +22,10 @@
 		</td>
 	</tr>
 	<tr>
+		<td><a id="05_04" href="${pageContext.request.contextPath}/el/5_4">URL_Link(f:link() and f:u())</a>
+		</td>
+	</tr>
+	<tr>
 		<td><a id="06_01-02"
 			href="${pageContext.request.contextPath}/el/6_1-2">Query_Display(f:query(Map))</a>
 		</td>
