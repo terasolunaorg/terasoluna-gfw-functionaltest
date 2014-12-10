@@ -2006,14 +2006,11 @@ public class PaginationTest extends FunctionTestSupport {
             // wait
             driver.findElement(By.tagName("body"));
 
-            // ページネーションのリンクのURLのパスが
-            // “/terasoluna-gfw-functionaltest-web/pagination/21_1/{page}/{size}”
-            // に変更されていること。
+            // check include "/terasoluna-gfw-functionaltest-web/pagination/21_1/{page}/{size}" in URL. 
             assertTrue(driver.getCurrentUrl().contains(
                     "/terasoluna-gfw-functionaltest-web/pagination/21_1/2/10"));
 
-            // 検索条件に指定した値がURLエンコーディングされていること。
-            // (f:query)
+            // check output of <f:query>.
             WebElement fqueryElement = driver
                     .findElement(By
                             .id("paginationCombinationOfPathTmplAndCriteriaQueryAndFQuery"));
@@ -2024,11 +2021,11 @@ public class PaginationTest extends FunctionTestSupport {
                         .getAttribute("href").endsWith("name=%2B%20%26%3D"));
             }
 
-            // 検索条件に指定した値がページ検索時に引き継がれること
+            // check search condition parameter.
             assertThat(inputFieldAccessor.getValue(By.id("name"), driver),
                     is("+ &="));
 
-            // encodeの確認 (f:query)と(f:query)で同じURLになること
+            // check output of <f:query> and <f:u> are the same URL.
             WebElement fuElement = driver
                     .findElement(By
                             .id("paginationCombinationOfPathTmplAndCriteriaQueryAndFU"));
@@ -2089,14 +2086,11 @@ public class PaginationTest extends FunctionTestSupport {
             // wait
             driver.findElement(By.tagName("body"));
 
-            // ページネーションのリンクのURLのパスが
-            // “/terasoluna-gfw-functionaltest-web/pagination/21_1/{page}/{size}”
-            // に変更されていること。
+            // check include "/terasoluna-gfw-functionaltest-web/pagination/21_1/{page}/{size}" in URL. 
             assertTrue(driver.getCurrentUrl().contains(
                     "/terasoluna-gfw-functionaltest-web/pagination/21_1/2/10"));
 
-            // 検索条件に指定した値がURLエンコーディングされていること。
-            // (f:u)
+            // check output of <f:u>.
             WebElement fuElement = driver
                     .findElement(By
                             .id("paginationCombinationOfPathTmplAndCriteriaQueryAndFU"));
@@ -2107,11 +2101,11 @@ public class PaginationTest extends FunctionTestSupport {
                         .getAttribute("href").endsWith("name=%2B%20%26%3D"));
             }
 
-            // 検索条件に指定した値がページ検索時に引き継がれること
+            // check search condition parameter.
             assertThat(inputFieldAccessor.getValue(By.id("name"), driver),
                     is("+ &="));
 
-            // encodeの確認 (f:query)と(f:query)で同じURLになること
+            // check output of <f:query> and <f:u> are the same URL.
             WebElement fqueryElement = driver
                     .findElement(By
                             .id("paginationCombinationOfPathTmplAndCriteriaQueryAndFQuery"));
@@ -2172,13 +2166,11 @@ public class PaginationTest extends FunctionTestSupport {
             // wait
             driver.findElement(By.tagName("body"));
 
-            // ページネーションのリンクのクエリが以下になっていること
-            // ?page=1&size=10&sort=personId,DESC
+            // check include "?page=1&size=10&sort=personId,DESC" in URL. 
             assertTrue(driver.getCurrentUrl().contains(
                     "?page=1&size=10&sort=personId,DESC"));
 
-            // 検索条件に指定した値がURLエンコーディングされていること。
-            // (f:query)
+            // check output of <f:query>.
             WebElement fqueryElement = driver
                     .findElement(By
                             .id("paginationCombinationOfQueryTmplAndCriteriaQueryAndFQuery"));
@@ -2189,11 +2181,11 @@ public class PaginationTest extends FunctionTestSupport {
                         .getAttribute("href").endsWith("name=%2B%20%26%3D"));
             }
 
-            // 検索条件に指定した値がページ検索時に引き継がれること
+            // check search condition parameter.
             assertThat(inputFieldAccessor.getValue(By.id("name"), driver),
                     is("+ &="));
 
-            // encodeの確認 (f:query)と(f:query)で同じURLになること
+            // check output of <f:query> and <f:u> are the same URL.
             WebElement fuElement = driver
                     .findElement(By
                             .id("paginationCombinationOfQueryTmplAndCriteriaQueryAndFU"));
@@ -2255,13 +2247,11 @@ public class PaginationTest extends FunctionTestSupport {
         // wait
         driver.findElement(By.tagName("body"));
 
-        // ページネーションのリンクのクエリが以下になっていること
-        // ?page=1&size=10&sort=personId,DESC
+        // check include "?page=1&size=10&sort=personId,DESC" in URL. 
         assertTrue(driver.getCurrentUrl().contains(
                 "?page=1&size=10&sort=personId,DESC"));
 
-        // 検索条件に指定した値がURLエンコーディングされていること。
-        // (f;u)
+        // check output of <f:u>.
         WebElement fuElement = driver
                 .findElement(By
                         .id("paginationCombinationOfQueryTmplAndCriteriaQueryAndFU"));
@@ -2272,11 +2262,11 @@ public class PaginationTest extends FunctionTestSupport {
                     .getAttribute("href").endsWith("name=%2B%20%26%3D"));
         }
 
-        // 検索条件に指定した値がページ検索時に引き継がれること
+        // check search condition parameter.
         assertThat(inputFieldAccessor.getValue(By.id("name"), driver),
                 is("+ &="));
 
-        // encodeの確認 (f:query)と(f:query)で同じURLになること
+        // check output of <f:query> and <f:u> are the same URL.
         WebElement fqueryElement = driver
                 .findElement(By
                         .id("paginationCombinationOfQueryTmplAndCriteriaQueryAndFQuery"));
@@ -2336,19 +2326,15 @@ public class PaginationTest extends FunctionTestSupport {
             // wait
             driver.findElement(By.tagName("body"));
 
-            // ページネーションのリンクのURLのパスが
-            // “/terasoluna-gfw-functionaltest-web/pagination/23_1/{page}/{size}”
-            // に変更されていること。
+            // check include "/terasoluna-gfw-functionaltest-web/pagination/23_1/{page}/{size}" in URL. 
             assertTrue(driver.getCurrentUrl().contains(
                     "/terasoluna-gfw-functionaltest-web/pagination/23_1/1/10"));
 
-            // ページネーションのリンクのクエリが以下になっていること
-            // ?page=1&size=10&sort=firstname,DESC
+            // check include "?page=1&size=10&sort=firstname,DESC" in URL. 
             assertTrue(driver.getCurrentUrl().contains(
                     "?page=1&size=10&sort=firstname,DESC"));
 
-            // 検索条件に指定した値がURLエンコーディングされていること。
-            // (f:query)
+            // check output of <f:query>.
             WebElement fqueryElement = driver
                     .findElement(By
                             .id("paginationCombinationOfPathTmplAndQueryTmplAndCriteriaQueryAndFQuery"));
@@ -2359,11 +2345,11 @@ public class PaginationTest extends FunctionTestSupport {
                         .getAttribute("href").endsWith("name=%2B%20%26%3D"));
             }
 
-            // 検索条件に指定した値がページ検索時に引き継がれること
+            // check search condition parameter.
             assertThat(inputFieldAccessor.getValue(By.id("name"), driver),
                     is("+ &="));
 
-            // encodeの確認 (f:query)と(f:query)で同じURLになること
+            // check output of <f:query> and <f:u> are the same URL.
             WebElement fuElement = driver
                     .findElement(By
                             .id("paginationCombinationOfPathTmplAndQueryTmplAndCriteriaQueryAndFU"));
@@ -2424,19 +2410,15 @@ public class PaginationTest extends FunctionTestSupport {
             // wait
             driver.findElement(By.tagName("body"));
 
-            // ページネーションのリンクのURLのパスが
-            // “/terasoluna-gfw-functionaltest-web/pagination/23_1/{page}/{size}”
-            // に変更されていること。
+            // check include "/terasoluna-gfw-functionaltest-web/pagination/23_1/{page}/{size}" in URL. 
             assertTrue(driver.getCurrentUrl().contains(
                     "/terasoluna-gfw-functionaltest-web/pagination/23_1/1/10"));
 
-            // ページネーションのリンクのクエリが以下になっていること
-            // ?page=1&size=10&sort=firstname,DESC
+            // check include "?page=1&size=10&sort=firstname,DESC" in URL. 
             assertTrue(driver.getCurrentUrl().contains(
                     "?page=1&size=10&sort=firstname,DESC"));
 
-            // 検索条件に指定した値がURLエンコーディングされていること。
-            // (f:u)
+            // check output of <f:u>.
             WebElement fuElement = driver
                     .findElement(By
                             .id("paginationCombinationOfPathTmplAndQueryTmplAndCriteriaQueryAndFU"));
@@ -2447,11 +2429,11 @@ public class PaginationTest extends FunctionTestSupport {
                         .getAttribute("href").endsWith("name=%2B%20%26%3D"));
             }
 
-            // 検索条件に指定した値がページ検索時に引き継がれること
+            // check search condition parameter.
             assertThat(inputFieldAccessor.getValue(By.id("name"), driver),
                     is("+ &="));
 
-            // encodeの確認 (f:query)と(f:query)で同じURLになること
+            // check output of <f:query> and <f:u> are the same URL.
             WebElement fqueryElement = driver
                     .findElement(By
                             .id("paginationCombinationOfPathTmplAndQueryTmplAndCriteriaQueryAndFQuery"));

@@ -3,7 +3,7 @@
 
 <form class="center-content">
     <spring:nestedPath path="personSearchForm">
-        <form:input path="name"></form:input>
+        <form:input path="name" />
         <form:button id="searchButton">Search</form:button>
     </spring:nestedPath>
 </form>
