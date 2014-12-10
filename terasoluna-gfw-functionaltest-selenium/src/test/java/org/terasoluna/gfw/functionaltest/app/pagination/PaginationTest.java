@@ -18,7 +18,9 @@ package org.terasoluna.gfw.functionaltest.app.pagination;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.core.IsNull.notNullValue;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import java.util.concurrent.TimeUnit;
@@ -27,6 +29,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebElement;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.terasoluna.gfw.functionaltest.app.FunctionTestSupport;
@@ -1588,7 +1591,7 @@ public class PaginationTest extends FunctionTestSupport {
     }
     
     @Test
-    public void test20_01_searchWithCriteriaQuery() {
+    public void test20_01_searchWithCriteriaQueryAndFQuery() {
         driver.findElement(By.id("search_20_1")).click();
 
         // search
@@ -1611,7 +1614,7 @@ public class PaginationTest extends FunctionTestSupport {
         }
         // move specified page(3 page)
         {
-            driver.findElement(By.id("paginationTop")).findElement(
+            driver.findElement(By.id("paginationAndFQueryFunction")).findElement(
                     By.linkText("3")).click();
 
             // assert 3 page
@@ -1630,7 +1633,7 @@ public class PaginationTest extends FunctionTestSupport {
         }
         // move next page(4 page)
         {
-            driver.findElement(By.id("paginationTop")).findElement(
+            driver.findElement(By.id("paginationAndFQueryFunction")).findElement(
                     By.linkText(">")).click();
 
             // assert 4 page
@@ -1649,7 +1652,7 @@ public class PaginationTest extends FunctionTestSupport {
         }
         // move last page(10 page)
         {
-            driver.findElement(By.id("paginationTop")).findElement(
+            driver.findElement(By.id("paginationAndFQueryFunction")).findElement(
                     By.linkText(">>")).click();
 
             // assert 10 page
@@ -1668,7 +1671,7 @@ public class PaginationTest extends FunctionTestSupport {
         }
         // move previous page(9 page)
         {
-            driver.findElement(By.id("paginationTop")).findElement(
+            driver.findElement(By.id("paginationAndFQueryFunction")).findElement(
                     By.linkText("<")).click();
 
             // assert 9 page
@@ -1687,7 +1690,128 @@ public class PaginationTest extends FunctionTestSupport {
         }
         // move first page(1 page)
         {
-            driver.findElement(By.id("paginationTop")).findElement(
+            driver.findElement(By.id("paginationAndFQueryFunction")).findElement(
+                    By.linkText("<<")).click();
+
+            // assert 1 page
+            assertThat(driver.findElement(By.id("pagePosition")).getText(),
+                    is("1"));
+            assertThat(driver.findElement(By.id("rangeStart")).getText(),
+                    is("1"));
+            assertThat(driver.findElement(By.id("rangeEnd")).getText(),
+                    is("10"));
+            assertThat(driver.findElement(By.id("totalResults")).getText(),
+                    is("100"));
+            assertThat(driver.findElement(By.id("personId0")).getText(),
+                    is("201"));
+            assertThat(driver.findElement(By.id("personId9")).getText(),
+                    is("210"));
+        }
+        
+        
+    }
+
+    @Test
+    public void test20_02_searchWithCriteriaQueryAndFU() {
+        driver.findElement(By.id("search_20_2")).click();
+
+        // search
+        {
+            inputFieldAccessor.appendValue(By.id("name"), "+ &=", driver);
+            driver.findElement(By.id("searchButton")).click();
+            // assert 1 page
+            assertThat(driver.findElement(By.id("pagePosition")).getText(),
+                    is("1"));
+            assertThat(driver.findElement(By.id("rangeStart")).getText(),
+                    is("1"));
+            assertThat(driver.findElement(By.id("rangeEnd")).getText(),
+                    is("10"));
+            assertThat(driver.findElement(By.id("totalResults")).getText(),
+                    is("100"));
+            assertThat(driver.findElement(By.id("personId0")).getText(),
+                    is("201"));
+            assertThat(driver.findElement(By.id("personId9")).getText(),
+                    is("210"));
+        }
+        // move specified page(3 page)
+        {
+            driver.findElement(By.id("paginationAndFUFunction")).findElement(
+                    By.linkText("3")).click();
+
+            // assert 3 page
+            assertThat(driver.findElement(By.id("pagePosition")).getText(),
+                    is("3"));
+            assertThat(driver.findElement(By.id("rangeStart")).getText(),
+                    is("21"));
+            assertThat(driver.findElement(By.id("rangeEnd")).getText(),
+                    is("30"));
+            assertThat(driver.findElement(By.id("totalResults")).getText(),
+                    is("100"));
+            assertThat(driver.findElement(By.id("personId0")).getText(),
+                    is("221"));
+            assertThat(driver.findElement(By.id("personId9")).getText(),
+                    is("230"));
+        }
+        // move next page(4 page)
+        {
+            driver.findElement(By.id("paginationAndFUFunction")).findElement(
+                    By.linkText(">")).click();
+
+            // assert 4 page
+            assertThat(driver.findElement(By.id("pagePosition")).getText(),
+                    is("4"));
+            assertThat(driver.findElement(By.id("rangeStart")).getText(),
+                    is("31"));
+            assertThat(driver.findElement(By.id("rangeEnd")).getText(),
+                    is("40"));
+            assertThat(driver.findElement(By.id("totalResults")).getText(),
+                    is("100"));
+            assertThat(driver.findElement(By.id("personId0")).getText(),
+                    is("231"));
+            assertThat(driver.findElement(By.id("personId9")).getText(),
+                    is("240"));
+        }
+        // move last page(10 page)
+        {
+            driver.findElement(By.id("paginationAndFUFunction")).findElement(
+                    By.linkText(">>")).click();
+
+            // assert 10 page
+            assertThat(driver.findElement(By.id("pagePosition")).getText(),
+                    is("10"));
+            assertThat(driver.findElement(By.id("rangeStart")).getText(),
+                    is("91"));
+            assertThat(driver.findElement(By.id("rangeEnd")).getText(),
+                    is("100"));
+            assertThat(driver.findElement(By.id("totalResults")).getText(),
+                    is("100"));
+            assertThat(driver.findElement(By.id("personId0")).getText(),
+                    is("291"));
+            assertThat(driver.findElement(By.id("personId9")).getText(),
+                    is("300"));
+        }
+        // move previous page(9 page)
+        {
+            driver.findElement(By.id("paginationAndFUFunction")).findElement(
+                    By.linkText("<")).click();
+
+            // assert 9 page
+            assertThat(driver.findElement(By.id("pagePosition")).getText(),
+                    is("9"));
+            assertThat(driver.findElement(By.id("rangeStart")).getText(),
+                    is("81"));
+            assertThat(driver.findElement(By.id("rangeEnd")).getText(),
+                    is("90"));
+            assertThat(driver.findElement(By.id("totalResults")).getText(),
+                    is("100"));
+            assertThat(driver.findElement(By.id("personId0")).getText(),
+                    is("281"));
+            assertThat(driver.findElement(By.id("personId9")).getText(),
+                    is("290"));
+        }
+        // move first page(1 page)
+        {
+            driver.findElement(By.id("paginationAndFUFunction")).findElement(
                     By.linkText("<<")).click();
 
             // assert 1 page
@@ -1707,8 +1831,8 @@ public class PaginationTest extends FunctionTestSupport {
     }
 
     @Test
-    public void test20_02_searchWithCriteriaQueryAndDisableHtmlEscapeOfCriteriaQueryIsFalse() {
-        driver.findElement(By.id("search_20_2")).click();
+    public void test20_03_searchWithCriteriaQueryAndDisableHtmlEscapeOfCriteriaQueryIsFalse() {
+        driver.findElement(By.id("search_20_3")).click();
 
         // search
         {
@@ -1751,8 +1875,8 @@ public class PaginationTest extends FunctionTestSupport {
     }
 
     @Test
-    public void test20_03_searchWithCriteriaQueryAndDisableHtmlEscapeOfCriteriaQueryIsTrue() {
-        driver.findElement(By.id("search_20_3")).click();
+    public void test20_04_searchWithCriteriaQueryAndDisableHtmlEscapeByFQueryFunctionOfCriteriaQueryIsTrue() {
+        driver.findElement(By.id("search_20_4")).click();
 
         // search
         {
@@ -1775,7 +1899,7 @@ public class PaginationTest extends FunctionTestSupport {
         // move specified page(2 page)
         {
             driver.findElement(
-                    By.id("paginationDisableHtmlEscapeOfCriteriaQueryIsTrue"))
+                    By.id("paginationDisableHtmlEscapeByFQueryFunctionOfCriteriaQueryIsTrue"))
                     .findElement(By.linkText("2")).click();
 
             // assert 3 page
@@ -1791,6 +1915,538 @@ public class PaginationTest extends FunctionTestSupport {
                     is("191"));
             assertThat(driver.findElement(By.id("personId9")).getText(),
                     is("200"));
+        }
+    }
+
+    @Test
+    public void test20_05_searchWithCriteriaQueryAndDisableHtmlEscapeByFUFunctionOfCriteriaQueryIsTrue() {
+        driver.findElement(By.id("search_20_4")).click();
+
+        // search
+        {
+            inputFieldAccessor.appendValue(By.id("name"), "<>\"'", driver);
+            driver.findElement(By.id("searchButton")).click();
+            // assert 1 page
+            assertThat(driver.findElement(By.id("pagePosition")).getText(),
+                    is("1"));
+            assertThat(driver.findElement(By.id("rangeStart")).getText(),
+                    is("1"));
+            assertThat(driver.findElement(By.id("rangeEnd")).getText(),
+                    is("10"));
+            assertThat(driver.findElement(By.id("totalResults")).getText(),
+                    is("20"));
+            assertThat(driver.findElement(By.id("personId0")).getText(),
+                    is("181"));
+            assertThat(driver.findElement(By.id("personId9")).getText(),
+                    is("190"));
+        }
+        // move specified page(2 page)
+        {
+            driver.findElement(
+                    By.id("paginationDisableHtmlEscapeByFUFunctionOfCriteriaQueryIsTrue"))
+                    .findElement(By.linkText("2")).click();
+
+            // assert 3 page
+            assertThat(driver.findElement(By.id("pagePosition")).getText(),
+                    is("2"));
+            assertThat(driver.findElement(By.id("rangeStart")).getText(),
+                    is("11"));
+            assertThat(driver.findElement(By.id("rangeEnd")).getText(),
+                    is("20"));
+            assertThat(driver.findElement(By.id("totalResults")).getText(),
+                    is("20"));
+            assertThat(driver.findElement(By.id("personId0")).getText(),
+                    is("191"));
+            assertThat(driver.findElement(By.id("personId9")).getText(),
+                    is("200"));
+        }
+    }
+
+    @Test
+    public void test21_01_searchWithPathTmplAndCriteriaQueryByFQueryFunction() {
+        driver.findElement(By.id("search_21_1")).click();
+
+        // search
+        {
+            inputFieldAccessor.appendValue(By.id("name"), "+ &=", driver);
+            driver.findElement(By.id("searchButton")).click();
+            // assert 1 page
+            assertThat(driver.findElement(By.id("pagePosition")).getText(),
+                    is("1"));
+            assertThat(driver.findElement(By.id("rangeStart")).getText(),
+                    is("1"));
+            assertThat(driver.findElement(By.id("rangeEnd")).getText(),
+                    is("10"));
+            assertThat(driver.findElement(By.id("totalResults")).getText(),
+                    is("100"));
+            assertThat(driver.findElement(By.id("personId0")).getText(),
+                    is("201"));
+            assertThat(driver.findElement(By.id("personId9")).getText(),
+                    is("210"));
+        }
+        // move specified page(3 page)
+        {
+            driver.findElement(
+                    By.id("paginationCombinationOfPathTmplAndCriteriaQueryAndFQuery"))
+                    .findElement(By.linkText("3")).click();
+            // assert 3 page
+            assertThat(driver.findElement(By.id("pagePosition")).getText(),
+                    is("3"));
+            assertThat(driver.findElement(By.id("rangeStart")).getText(),
+                    is("21"));
+            assertThat(driver.findElement(By.id("rangeEnd")).getText(),
+                    is("30"));
+            assertThat(driver.findElement(By.id("totalResults")).getText(),
+                    is("100"));
+            assertThat(driver.findElement(By.id("personId0")).getText(),
+                    is("221"));
+            assertThat(driver.findElement(By.id("personId9")).getText(),
+                    is("230"));
+
+            // wait
+            driver.findElement(By.tagName("body"));
+
+            // check include "/terasoluna-gfw-functionaltest-web/pagination/21_1/{page}/{size}" in URL. 
+            assertTrue(driver.getCurrentUrl().contains(
+                    "/terasoluna-gfw-functionaltest-web/pagination/21_1/2/10"));
+
+            // check output of <f:query>.
+            WebElement fqueryElement = driver
+                    .findElement(By
+                            .id("paginationCombinationOfPathTmplAndCriteriaQueryAndFQuery"));
+
+            for (int count = 3; count <= 12; count++) {
+                assertTrue(fqueryElement
+                        .findElement(By.xpath("ul/li[" + count + "]/a"))
+                        .getAttribute("href").endsWith("name=%2B%20%26%3D"));
+            }
+
+            // check search condition parameter.
+            assertThat(inputFieldAccessor.getValue(By.id("name"), driver),
+                    is("+ &="));
+
+            // check output of <f:query> and <f:u> are the same URL.
+            WebElement fuElement = driver
+                    .findElement(By
+                            .id("paginationCombinationOfPathTmplAndCriteriaQueryAndFU"));
+
+            for (int count = 3; count <= 12; count++) {
+                assertEquals(
+                        fqueryElement.findElement(
+                                By.xpath("ul/li[" + count + "]/a"))
+                                .getAttribute("href"),
+                        fuElement.findElement(
+                                By.xpath("ul/li[" + count + "]/a"))
+                                .getAttribute("href"));
+            }
+        }
+    }
+
+    @Test
+    public void test21_02_searchWithPathTmplAndCriteriaQueryByFUFunction() {
+        driver.findElement(By.id("search_21_2")).click();
+
+        // search
+        {
+            inputFieldAccessor.appendValue(By.id("name"), "+ &=", driver);
+            driver.findElement(By.id("searchButton")).click();
+            // assert 1 page
+            assertThat(driver.findElement(By.id("pagePosition")).getText(),
+                    is("1"));
+            assertThat(driver.findElement(By.id("rangeStart")).getText(),
+                    is("1"));
+            assertThat(driver.findElement(By.id("rangeEnd")).getText(),
+                    is("10"));
+            assertThat(driver.findElement(By.id("totalResults")).getText(),
+                    is("100"));
+            assertThat(driver.findElement(By.id("personId0")).getText(),
+                    is("201"));
+            assertThat(driver.findElement(By.id("personId9")).getText(),
+                    is("210"));
+        }
+        // move specified page(3 page)
+        {
+            driver.findElement(
+                    By.id("paginationCombinationOfPathTmplAndCriteriaQueryAndFU"))
+                    .findElement(By.linkText("3")).click();
+            // assert 3 page
+            assertThat(driver.findElement(By.id("pagePosition")).getText(),
+                    is("3"));
+            assertThat(driver.findElement(By.id("rangeStart")).getText(),
+                    is("21"));
+            assertThat(driver.findElement(By.id("rangeEnd")).getText(),
+                    is("30"));
+            assertThat(driver.findElement(By.id("totalResults")).getText(),
+                    is("100"));
+            assertThat(driver.findElement(By.id("personId0")).getText(),
+                    is("221"));
+            assertThat(driver.findElement(By.id("personId9")).getText(),
+                    is("230"));
+
+            // wait
+            driver.findElement(By.tagName("body"));
+
+            // check include "/terasoluna-gfw-functionaltest-web/pagination/21_1/{page}/{size}" in URL. 
+            assertTrue(driver.getCurrentUrl().contains(
+                    "/terasoluna-gfw-functionaltest-web/pagination/21_1/2/10"));
+
+            // check output of <f:u>.
+            WebElement fuElement = driver
+                    .findElement(By
+                            .id("paginationCombinationOfPathTmplAndCriteriaQueryAndFU"));
+
+            for (int count = 3; count <= 12; count++) {
+                assertTrue(fuElement
+                        .findElement(By.xpath("ul/li[" + count + "]/a"))
+                        .getAttribute("href").endsWith("name=%2B%20%26%3D"));
+            }
+
+            // check search condition parameter.
+            assertThat(inputFieldAccessor.getValue(By.id("name"), driver),
+                    is("+ &="));
+
+            // check output of <f:query> and <f:u> are the same URL.
+            WebElement fqueryElement = driver
+                    .findElement(By
+                            .id("paginationCombinationOfPathTmplAndCriteriaQueryAndFQuery"));
+
+            for (int count = 3; count <= 12; count++) {
+                assertEquals(
+                        fqueryElement.findElement(
+                                By.xpath("ul/li[" + count + "]/a"))
+                                .getAttribute("href"),
+                        fuElement.findElement(
+                                By.xpath("ul/li[" + count + "]/a"))
+                                .getAttribute("href"));
+            }
+        }
+    }
+
+    @Test
+    public void test22_01_searchWithQueryTmplAndCriteriaQueryByFQueryFunction() {
+        driver.findElement(By.id("search_22_1")).click();
+
+        // search
+        {
+            inputFieldAccessor.appendValue(By.id("name"), "+ &=", driver);
+            driver.findElement(By.id("searchButton")).click();
+            // assert 1 page
+            assertThat(driver.findElement(By.id("pagePosition")).getText(),
+                    is("1"));
+            assertThat(driver.findElement(By.id("rangeStart")).getText(),
+                    is("1"));
+            assertThat(driver.findElement(By.id("rangeEnd")).getText(),
+                    is("10"));
+            assertThat(driver.findElement(By.id("totalResults")).getText(),
+                    is("100"));
+            assertThat(driver.findElement(By.id("personId0")).getText(),
+                    is("300"));
+            assertThat(driver.findElement(By.id("personId9")).getText(),
+                    is("291"));
+        }
+        // move specified page(2 page)
+        {
+            driver.findElement(
+                    By.id("paginationCombinationOfQueryTmplAndCriteriaQueryAndFQuery"))
+                    .findElement(By.linkText("2")).click();
+            // assert 2 page
+            assertThat(driver.findElement(By.id("pagePosition")).getText(),
+                    is("2"));
+            assertThat(driver.findElement(By.id("rangeStart")).getText(),
+                    is("11"));
+            assertThat(driver.findElement(By.id("rangeEnd")).getText(),
+                    is("20"));
+            assertThat(driver.findElement(By.id("totalResults")).getText(),
+                    is("100"));
+            assertThat(driver.findElement(By.id("personId0")).getText(),
+                    is("290"));
+            assertThat(driver.findElement(By.id("personId9")).getText(),
+                    is("281"));
+
+            // wait
+            driver.findElement(By.tagName("body"));
+
+            // check include "?page=1&size=10&sort=personId,DESC" in URL. 
+            assertTrue(driver.getCurrentUrl().contains(
+                    "?page=1&size=10&sort=personId,DESC"));
+
+            // check output of <f:query>.
+            WebElement fqueryElement = driver
+                    .findElement(By
+                            .id("paginationCombinationOfQueryTmplAndCriteriaQueryAndFQuery"));
+
+            for (int count = 3; count <= 12; count++) {
+                assertTrue(fqueryElement
+                        .findElement(By.xpath("ul/li[" + count + "]/a"))
+                        .getAttribute("href").endsWith("name=%2B%20%26%3D"));
+            }
+
+            // check search condition parameter.
+            assertThat(inputFieldAccessor.getValue(By.id("name"), driver),
+                    is("+ &="));
+
+            // check output of <f:query> and <f:u> are the same URL.
+            WebElement fuElement = driver
+                    .findElement(By
+                            .id("paginationCombinationOfQueryTmplAndCriteriaQueryAndFU"));
+
+            for (int count = 3; count <= 12; count++) {
+                assertEquals(
+                        fqueryElement.findElement(
+                                By.xpath("ul/li[" + count + "]/a"))
+                                .getAttribute("href"),
+                        fuElement.findElement(
+                                By.xpath("ul/li[" + count + "]/a"))
+                                .getAttribute("href"));
+            }
+        }
+    }
+
+    @Test
+    public void test22_02_searchWithQueryTmplAndCriteriaQueryByFUFunction() {
+        driver.findElement(By.id("search_22_2")).click();
+
+        // search
+        {
+            inputFieldAccessor.appendValue(By.id("name"), "+ &=", driver);
+            driver.findElement(By.id("searchButton")).click();
+            // assert 1 page
+            assertThat(driver.findElement(By.id("pagePosition")).getText(),
+                    is("1"));
+            assertThat(driver.findElement(By.id("rangeStart")).getText(),
+                    is("1"));
+            assertThat(driver.findElement(By.id("rangeEnd")).getText(),
+                    is("10"));
+            assertThat(driver.findElement(By.id("totalResults")).getText(),
+                    is("100"));
+            assertThat(driver.findElement(By.id("personId0")).getText(),
+                    is("300"));
+            assertThat(driver.findElement(By.id("personId9")).getText(),
+                    is("291"));
+        }
+        // move specified page(2 page)
+        {
+            driver.findElement(
+                    By.id("paginationCombinationOfQueryTmplAndCriteriaQueryAndFU"))
+                    .findElement(By.linkText("2")).click();
+            // assert 2 page
+            assertThat(driver.findElement(By.id("pagePosition")).getText(),
+                    is("2"));
+            assertThat(driver.findElement(By.id("rangeStart")).getText(),
+                    is("11"));
+            assertThat(driver.findElement(By.id("rangeEnd")).getText(),
+                    is("20"));
+            assertThat(driver.findElement(By.id("totalResults")).getText(),
+                    is("100"));
+            assertThat(driver.findElement(By.id("personId0")).getText(),
+                    is("290"));
+            assertThat(driver.findElement(By.id("personId9")).getText(),
+                    is("281"));
+        }
+
+        // wait
+        driver.findElement(By.tagName("body"));
+
+        // check include "?page=1&size=10&sort=personId,DESC" in URL. 
+        assertTrue(driver.getCurrentUrl().contains(
+                "?page=1&size=10&sort=personId,DESC"));
+
+        // check output of <f:u>.
+        WebElement fuElement = driver
+                .findElement(By
+                        .id("paginationCombinationOfQueryTmplAndCriteriaQueryAndFU"));
+
+        for (int count = 3; count <= 12; count++) {
+            assertTrue(fuElement
+                    .findElement(By.xpath("ul/li[" + count + "]/a"))
+                    .getAttribute("href").endsWith("name=%2B%20%26%3D"));
+        }
+
+        // check search condition parameter.
+        assertThat(inputFieldAccessor.getValue(By.id("name"), driver),
+                is("+ &="));
+
+        // check output of <f:query> and <f:u> are the same URL.
+        WebElement fqueryElement = driver
+                .findElement(By
+                        .id("paginationCombinationOfQueryTmplAndCriteriaQueryAndFQuery"));
+
+        for (int count = 3; count <= 12; count++) {
+            assertEquals(
+                    fqueryElement.findElement(
+                            By.xpath("ul/li[" + count + "]/a"))
+                            .getAttribute("href"),
+                    fuElement.findElement(
+                            By.xpath("ul/li[" + count + "]/a"))
+                            .getAttribute("href"));
+        }
+    }
+
+    @Test
+    public void test23_01_searchWithQueryTmplAndCriteriaQueryByFQueryFunction() {
+        driver.findElement(By.id("search_23_1")).click();
+
+        // search
+        {
+            inputFieldAccessor.appendValue(By.id("name"), "+ &=", driver);
+            driver.findElement(By.id("searchButton")).click();
+            // assert 1 page
+            assertThat(driver.findElement(By.id("pagePosition")).getText(),
+                    is("1"));
+            assertThat(driver.findElement(By.id("rangeStart")).getText(),
+                    is("1"));
+            assertThat(driver.findElement(By.id("rangeEnd")).getText(),
+                    is("10"));
+            assertThat(driver.findElement(By.id("totalResults")).getText(),
+                    is("100"));
+            assertThat(driver.findElement(By.id("personId0")).getText(),
+                    is("250"));
+            assertThat(driver.findElement(By.id("personId9")).getText(),
+                    is("241"));
+        }
+        // move specified page(2 page)
+        {
+            driver.findElement(
+                    By.id("paginationCombinationOfPathTmplAndQueryTmplAndCriteriaQueryAndFQuery"))
+                    .findElement(By.linkText("2")).click();
+            // assert 2 page
+            assertThat(driver.findElement(By.id("pagePosition")).getText(),
+                    is("2"));
+            assertThat(driver.findElement(By.id("rangeStart")).getText(),
+                    is("11"));
+            assertThat(driver.findElement(By.id("rangeEnd")).getText(),
+                    is("20"));
+            assertThat(driver.findElement(By.id("totalResults")).getText(),
+                    is("100"));
+            assertThat(driver.findElement(By.id("personId0")).getText(),
+                    is("240"));
+            assertThat(driver.findElement(By.id("personId9")).getText(),
+                    is("231"));
+
+            // wait
+            driver.findElement(By.tagName("body"));
+
+            // check include "/terasoluna-gfw-functionaltest-web/pagination/23_1/{page}/{size}" in URL. 
+            assertTrue(driver.getCurrentUrl().contains(
+                    "/terasoluna-gfw-functionaltest-web/pagination/23_1/1/10"));
+
+            // check include "?page=1&size=10&sort=firstname,DESC" in URL. 
+            assertTrue(driver.getCurrentUrl().contains(
+                    "?page=1&size=10&sort=firstname,DESC"));
+
+            // check output of <f:query>.
+            WebElement fqueryElement = driver
+                    .findElement(By
+                            .id("paginationCombinationOfPathTmplAndQueryTmplAndCriteriaQueryAndFQuery"));
+
+            for (int count = 3; count <= 12; count++) {
+                assertTrue(fqueryElement
+                        .findElement(By.xpath("ul/li[" + count + "]/a"))
+                        .getAttribute("href").endsWith("name=%2B%20%26%3D"));
+            }
+
+            // check search condition parameter.
+            assertThat(inputFieldAccessor.getValue(By.id("name"), driver),
+                    is("+ &="));
+
+            // check output of <f:query> and <f:u> are the same URL.
+            WebElement fuElement = driver
+                    .findElement(By
+                            .id("paginationCombinationOfPathTmplAndQueryTmplAndCriteriaQueryAndFU"));
+
+            for (int count = 3; count <= 12; count++) {
+                assertEquals(
+                        fqueryElement.findElement(
+                                By.xpath("ul/li[" + count + "]/a"))
+                                .getAttribute("href"),
+                        fuElement.findElement(
+                                By.xpath("ul/li[" + count + "]/a"))
+                                .getAttribute("href"));
+            }
+        }
+    }
+
+    @Test
+    public void test23_02_searchWithQueryTmplAndCriteriaQueryByFUFunction() {
+        driver.findElement(By.id("search_23_2")).click();
+
+        // search
+        {
+            inputFieldAccessor.appendValue(By.id("name"), "+ &=", driver);
+            driver.findElement(By.id("searchButton")).click();
+            // assert 1 page
+            assertThat(driver.findElement(By.id("pagePosition")).getText(),
+                    is("1"));
+            assertThat(driver.findElement(By.id("rangeStart")).getText(),
+                    is("1"));
+            assertThat(driver.findElement(By.id("rangeEnd")).getText(),
+                    is("10"));
+            assertThat(driver.findElement(By.id("totalResults")).getText(),
+                    is("100"));
+            assertThat(driver.findElement(By.id("personId0")).getText(),
+                    is("250"));
+            assertThat(driver.findElement(By.id("personId9")).getText(),
+                    is("241"));
+        }
+        // move specified page(2 page)
+        {
+            driver.findElement(
+                    By.id("paginationCombinationOfPathTmplAndQueryTmplAndCriteriaQueryAndFQuery"))
+                    .findElement(By.linkText("2")).click();
+            // assert 2 page
+            assertThat(driver.findElement(By.id("pagePosition")).getText(),
+                    is("2"));
+            assertThat(driver.findElement(By.id("rangeStart")).getText(),
+                    is("11"));
+            assertThat(driver.findElement(By.id("rangeEnd")).getText(),
+                    is("20"));
+            assertThat(driver.findElement(By.id("totalResults")).getText(),
+                    is("100"));
+            assertThat(driver.findElement(By.id("personId0")).getText(),
+                    is("240"));
+            assertThat(driver.findElement(By.id("personId9")).getText(),
+                    is("231"));
+
+            // wait
+            driver.findElement(By.tagName("body"));
+
+            // check include "/terasoluna-gfw-functionaltest-web/pagination/23_1/{page}/{size}" in URL. 
+            assertTrue(driver.getCurrentUrl().contains(
+                    "/terasoluna-gfw-functionaltest-web/pagination/23_1/1/10"));
+
+            // check include "?page=1&size=10&sort=firstname,DESC" in URL. 
+            assertTrue(driver.getCurrentUrl().contains(
+                    "?page=1&size=10&sort=firstname,DESC"));
+
+            // check output of <f:u>.
+            WebElement fuElement = driver
+                    .findElement(By
+                            .id("paginationCombinationOfPathTmplAndQueryTmplAndCriteriaQueryAndFU"));
+
+            for (int count = 3; count <= 12; count++) {
+                assertTrue(fuElement
+                        .findElement(By.xpath("ul/li[" + count + "]/a"))
+                        .getAttribute("href").endsWith("name=%2B%20%26%3D"));
+            }
+
+            // check search condition parameter.
+            assertThat(inputFieldAccessor.getValue(By.id("name"), driver),
+                    is("+ &="));
+
+            // check output of <f:query> and <f:u> are the same URL.
+            WebElement fqueryElement = driver
+                    .findElement(By
+                            .id("paginationCombinationOfPathTmplAndQueryTmplAndCriteriaQueryAndFQuery"));
+
+            for (int count = 3; count <= 12; count++) {
+                assertEquals(
+                        fqueryElement.findElement(
+                                By.xpath("ul/li[" + count + "]/a"))
+                                .getAttribute("href"),
+                        fuElement.findElement(
+                                By.xpath("ul/li[" + count + "]/a"))
+                                .getAttribute("href"));
+            }
         }
     }
 

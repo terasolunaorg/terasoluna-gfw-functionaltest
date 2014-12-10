@@ -474,7 +474,7 @@ public class PaginationController {
         return "pagination/pager";
     }
     
-    @RequestMapping(value = { "20_1", "20_2", "20_3" }, method = RequestMethod.GET)
+    @RequestMapping(value = { "20_1", "20_2", "20_3", "20_4", "20_5" }, method = RequestMethod.GET)
     public String fuinctionTest_20_x(PersonSearchForm form,
             @PageableDefault(sort = "personId") Pageable pageable, Model model) {
 
@@ -488,6 +488,54 @@ public class PaginationController {
         model.addAttribute("page", page);
 
         return "pagination/search";
+    }
+    
+    @RequestMapping(value = { "21_1", "21_1/{page}/{size}", "21_2", "21_2/{page}/{size}" }, method = RequestMethod.GET)
+    public String fuinctionTest_21_x(PersonSearchForm form,
+            @PageableDefault(sort = "personId") Pageable pageable, Model model) {
+
+        if (!StringUtils.hasLength(form.getName())) {
+            return "pagination/searchPathTmplAndCriteriaQuery";
+        }
+
+        Page<Person> page = paginationService.findPersonByName(form.getName(),
+                pageable);
+
+        model.addAttribute("page", page);
+
+        return "pagination/searchPathTmplAndCriteriaQuery";
+    }
+    
+    @RequestMapping(value = { "22_1", "22_2"}, method = RequestMethod.GET)
+    public String fuinctionTest_22_x(PersonSearchForm form,
+            @PageableDefault(sort = "personId", direction=Direction.DESC) Pageable pageable, Model model) {
+
+        if (!StringUtils.hasLength(form.getName())) {
+            return "pagination/searchQueryTmplAndCriteriaQuery";
+        }
+
+        Page<Person> page = paginationService.findPersonByName(form.getName(),
+                pageable);
+
+        model.addAttribute("page", page);
+
+        return "pagination/searchQueryTmplAndCriteriaQuery";
+    }
+    
+    @RequestMapping(value = { "23_1", "23_1/{page}/{size}","23_2", "23_2/{page}/{size}" }, method = RequestMethod.GET)
+    public String fuinctionTest_23_x(PersonSearchForm form,
+            @PageableDefault(sort = "firstname", direction=Direction.DESC) Pageable pageable, Model model) {
+
+        if (!StringUtils.hasLength(form.getName())) {
+            return "pagination/searchPathTmplAndQueryTmplAndCriteriaQuery";
+        }
+
+        Page<Person> page = paginationService.findPersonByName(form.getName(),
+                pageable);
+
+        model.addAttribute("page", page);
+
+        return "pagination/searchPathTmplAndQueryTmplAndCriteriaQuery";
     }
 
 }
