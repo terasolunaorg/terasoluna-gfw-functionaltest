@@ -687,6 +687,11 @@ input.mainbtn-wide {
   color: #ff971e;
   border-color: #ffdbb3;
 }
+.alert.alert-warning {
+  background: #ffe5c7;
+  color: #ff971e;
+  border-color: #ffdbb3;
+}
 .alert.alert-error {
   background: #f2dede;
   color: #b94a48;
