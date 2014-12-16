@@ -251,17 +251,8 @@ public class MessageController {
         return "message/panelClassBlankSpecified";
     }
     
-    @RequestMapping(value="5_1_1", method = RequestMethod.GET)
-    public String messagesTypeSpecified_05_01_01(Model model) {
-        
-        model.addAttribute("login_error_message", ResultMessages.warn().add(
-                ResultMessage.fromText("Warn Message!!")));
-        
-        return "message/messageTypeSpecified";
-    }
-    
-    @RequestMapping(value="5_1_2", method = RequestMethod.GET)
-    public String messagesTypeSpecified_05_01_02(Model model) {
+    @RequestMapping(value="5_1", method = RequestMethod.GET)
+    public String messagesTypeSpecified_05_01(Model model) {
         
         model.addAttribute("login_error_message", ResultMessages.warning().add(
                 ResultMessage.fromText("Warn Message!!")));

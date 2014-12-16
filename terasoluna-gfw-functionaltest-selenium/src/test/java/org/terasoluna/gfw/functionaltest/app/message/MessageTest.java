@@ -472,8 +472,8 @@ public class MessageTest extends FunctionTestSupport {
     }
 
     @Test
-    public void test05_01_01_messagesTypeSpecified() {
-        driver.findElement(By.id("messagesTypeSpecified_05_01_01")).click();
+    public void test05_01_messagesTypeSpecified() {
+        driver.findElement(By.id("messagesTypeSpecified_05_01")).click();
 
         // div ul li Tag confirm
         // Message Confirm
@@ -488,23 +488,6 @@ public class MessageTest extends FunctionTestSupport {
         screenCapture.save(driver);
     }
 
-    @Test
-    public void test05_01_02_messagesTypeSpecified() {
-        driver.findElement(By.id("messagesTypeSpecified_05_01_02")).click();
-
-        // div ul li Tag confirm
-        // Message Confirm
-        assertThat(driver.findElement(By.xpath("/html/body/div/div/ul/li"))
-                .getText(), is("Warn Message!!"));
-
-        // <div> Tag class is "alert alert-warn"
-        assertThat(driver.findElement(By.cssSelector("div.alert.alert-warn"))
-                .getText(), is("Warn Message!!"));
-
-        // screen capture
-        screenCapture.save(driver);
-    }
-    
     @Test
     public void test05_02_messagesTypeSpecified() {
         driver.findElement(By.id("messagesTypeSpecified_05_02")).click();

@@ -132,14 +132,9 @@
 	</tr>
 	<tr>
 		<td>
-			<a id="messagesTypeSpecified_05_01_01" href="${pageContext.request.contextPath}/message/5_1_1">messagesTypeSpecified_05_01_01</a>
+			<a id="messagesTypeSpecified_05_01" href="${pageContext.request.contextPath}/message/5_1">messagesTypeSpecified_05_01</a>
 		</td>
 	</tr>
-       <tr>
-        <td>
-            <a id="messagesTypeSpecified_05_01_02" href="${pageContext.request.contextPath}/message/5_1_2">messagesTypeSpecified_05_01_02</a>
-        </td>
-    </tr>
 	<tr>
 		<td>
 			<a id="messagesTypeSpecified_05_02" href="${pageContext.request.contextPath}/message/5_2">messagesTypeSpecified_05_02</a>
