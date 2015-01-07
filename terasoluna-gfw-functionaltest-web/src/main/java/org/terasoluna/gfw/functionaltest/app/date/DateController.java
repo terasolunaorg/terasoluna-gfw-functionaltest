@@ -28,8 +28,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.terasoluna.gfw.common.date.DateConvertUtils;
-import org.terasoluna.gfw.common.date.DateFactory;
-import org.terasoluna.gfw.common.date.JdbcAdjustedDateFactory;
+import org.terasoluna.gfw.common.date.ClassicDateFactory;
+import org.terasoluna.gfw.common.date.jodatime.JodaTimeDateTimeFactory;
+import org.terasoluna.gfw.common.date.jodatime.JdbcAdjustedJodaTimeDateFactory;
 import org.terasoluna.gfw.functionaltest.domain.service.date.DateService;
 
 @Controller
@@ -38,47 +39,55 @@ public class DateController {
 
     @Inject
     @Named("dateFactory")
-    protected DateFactory dateFactory;
+    protected ClassicDateFactory classicDateFactory;
+    
+    @Inject
+    @Named("dateFactory")
+    protected JodaTimeDateTimeFactory jodaTimeDateTimeFactory;
     
     @Inject
     @Named("jdbcFixedDateFactory")
-    protected DateFactory jdbcFixedDateFactory;
+    protected ClassicDateFactory classicjdbcFixedDateFactory;
+    
+    @Inject
+    @Named("jdbcFixedDateFactory")
+    protected JodaTimeDateTimeFactory jodaTimeDateTimeJdbcFixedDateFactory;
     
     @Inject
     @Named("dbErrorJdbcFixedDateFactory")
-    protected DateFactory dbErrorJdbcFixedDateFactory;
+    protected ClassicDateFactory dbErrorJdbcFixedDateFactory;
     
     @Inject
     @Named("msecJdbcAdjustedDateFactory")
-    protected JdbcAdjustedDateFactory msecJdbcAdjustedDateFactory;
+    protected JdbcAdjustedJodaTimeDateFactory msecJdbcAdjustedDateFactory;
     
     @Inject
     @Named("secJdbcAdjustedDateFactory")
-    protected JdbcAdjustedDateFactory secJdbcAdjustedDateFactory;
+    protected JdbcAdjustedJodaTimeDateFactory secJdbcAdjustedDateFactory;
     
     @Inject
     @Named("minuteJdbcAdjustedDateFactory")
-    protected JdbcAdjustedDateFactory minuteJdbcAdjustedDateFactory;
+    protected JdbcAdjustedJodaTimeDateFactory minuteJdbcAdjustedDateFactory;
     
     @Inject
     @Named("hourJdbcAdjustedDateFactory")
-    protected JdbcAdjustedDateFactory hourJdbcAdjustedDateFactory;
+    protected JdbcAdjustedJodaTimeDateFactory hourJdbcAdjustedDateFactory;
     
     @Inject
     @Named("dayJdbcAdjustedDateFactory")
-    protected JdbcAdjustedDateFactory dayJdbcAdjustedDateFactory;
+    protected JdbcAdjustedJodaTimeDateFactory dayJdbcAdjustedDateFactory;
     
     @Inject
     @Named("useCacheDayJdbcAdjustedDateFactory")
-    protected JdbcAdjustedDateFactory useCacheDayJdbcAdjustedDateFactory;
+    protected JdbcAdjustedJodaTimeDateFactory useCacheDayJdbcAdjustedDateFactory;
     
     @Inject
     @Named("noCacheJdbcAdjustedDateFactory")
-    protected JdbcAdjustedDateFactory noCacheJdbcAdjustedDateFactory;
+    protected JdbcAdjustedJodaTimeDateFactory noCacheJdbcAdjustedDateFactory;
     
     @Inject
     @Named("dbErrorJdbcAdjustedDateFactory")
-    protected JdbcAdjustedDateFactory dbErrorJdbcAdjustedDateFactory;
+    protected JdbcAdjustedJodaTimeDateFactory dbErrorJdbcAdjustedDateFactory;
     
     @Inject
     protected DateService dateService;
@@ -94,7 +103,7 @@ public class DateController {
 
         model.addAttribute("firstExpectedDate", new java.util.Date());
         
-        DateTime dateTime = dateFactory.newDateTime();
+        DateTime dateTime = jodaTimeDateTimeFactory.newDateTime();
         
         model.addAttribute("serverTime", dateTime);
         model.addAttribute("type", dateTime.getClass());
@@ -108,7 +117,7 @@ public class DateController {
 
         model.addAttribute("firstExpectedDate", new java.util.Date());
         
-        Timestamp timestamp = dateFactory.newTimestamp();
+        Timestamp timestamp = classicDateFactory.newTimestamp();
         
         model.addAttribute("serverTime", timestamp);
         model.addAttribute("type", timestamp.getClass());
@@ -122,7 +131,7 @@ public class DateController {
 
         model.addAttribute("firstExpectedDate", new java.util.Date());
         
-        java.util.Date date = dateFactory.newDate();
+        java.util.Date date = classicDateFactory.newDate();
         
         model.addAttribute("serverTime", date);
         model.addAttribute("type", date.getClass());
@@ -137,7 +146,7 @@ public class DateController {
         model.addAttribute("firstExpectedDate", 
                 DateConvertUtils.convertToSqlDate(new java.util.Date()));
         
-        java.sql.Date sqlDate = dateFactory.newSqlDate();
+        java.sql.Date sqlDate = classicDateFactory.newSqlDate();
         
         model.addAttribute("serverTime", sqlDate);
         model.addAttribute("type", sqlDate.getClass());
@@ -152,7 +161,7 @@ public class DateController {
 
         model.addAttribute("firstExpectedDate", new java.util.Date());
         
-        Time time = dateFactory.newTime();
+        Time time = classicDateFactory.newTime();
         
         model.addAttribute("serverTime", time);
         model.addAttribute("type", time.getClass());
@@ -164,7 +173,7 @@ public class DateController {
     @RequestMapping(value="2_1", method = RequestMethod.GET)
     public String dbFixationTimeReturn_02_01(Model model) {
 
-        DateTime dateTime = jdbcFixedDateFactory.newDateTime();
+        DateTime dateTime = jodaTimeDateTimeJdbcFixedDateFactory.newDateTime();
         
         model.addAttribute("serverTime", dateTime);
         model.addAttribute("type", dateTime.getClass());
@@ -175,7 +184,7 @@ public class DateController {
     @RequestMapping(value="2_2", method = RequestMethod.GET)
     public String dbFixationTimeReturn_02_02(Model model) {
 
-        Timestamp timestamp = jdbcFixedDateFactory.newTimestamp();
+        Timestamp timestamp = classicjdbcFixedDateFactory.newTimestamp();
         
         model.addAttribute("serverTime", timestamp);
         model.addAttribute("type", timestamp.getClass());
@@ -186,7 +195,7 @@ public class DateController {
     @RequestMapping(value="2_3", method = RequestMethod.GET)
     public String dbFixationTimeReturn_02_03(Model model) {
 
-        java.util.Date date = jdbcFixedDateFactory.newDate();
+        java.util.Date date = classicjdbcFixedDateFactory.newDate();
         
         model.addAttribute("serverTime", date);
         model.addAttribute("type", date.getClass());
@@ -197,7 +206,7 @@ public class DateController {
     @RequestMapping(value="2_4", method = RequestMethod.GET)
     public String dbFixationTimeReturn_02_04(Model model) {
 
-        java.sql.Date sqlDate = jdbcFixedDateFactory.newSqlDate();
+        java.sql.Date sqlDate = classicjdbcFixedDateFactory.newSqlDate();
         
         model.addAttribute("serverTime", sqlDate);
         model.addAttribute("type", sqlDate.getClass());
@@ -208,7 +217,7 @@ public class DateController {
     @RequestMapping(value="2_5", method = RequestMethod.GET)
     public String dbFixationTimeReturn_02_05(Model model) {
 
-        Time time = jdbcFixedDateFactory.newTime();
+        Time time = classicjdbcFixedDateFactory.newTime();
         
         model.addAttribute("serverTime", time);
         model.addAttribute("type", time.getClass());

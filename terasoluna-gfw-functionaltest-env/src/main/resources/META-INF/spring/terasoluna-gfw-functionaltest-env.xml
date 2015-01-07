@@ -11,7 +11,7 @@
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd">
 
-    <bean id="dateFactory" class="org.terasoluna.gfw.common.date.DefaultDateFactory" />
+    <bean id="dateFactory" class="org.terasoluna.gfw.common.date.jodatime.DefaultJodaTimeDateFactory" />
 
     <bean id="realDataSource" class="org.apache.commons.dbcp2.BasicDataSource"
         destroy-method="close">
