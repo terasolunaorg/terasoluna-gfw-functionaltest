@@ -28,8 +28,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.terasoluna.gfw.common.date.DateConvertUtils;
-import org.terasoluna.gfw.common.date.DateFactory;
-import org.terasoluna.gfw.common.date.JdbcAdjustedDateFactory;
+import org.terasoluna.gfw.common.date.jodatime.JodaTimeDateFactory;
+import org.terasoluna.gfw.common.date.jodatime.JdbcAdjustedJodaTimeDateFactory;
 import org.terasoluna.gfw.functionaltest.domain.service.date.DateService;
 
 @Controller
@@ -38,47 +38,47 @@ public class DateController {
 
     @Inject
     @Named("dateFactory")
-    protected DateFactory dateFactory;
+    protected JodaTimeDateFactory dateFactory;
     
     @Inject
     @Named("jdbcFixedDateFactory")
-    protected DateFactory jdbcFixedDateFactory;
+    protected JodaTimeDateFactory jdbcFixedDateFactory;
     
     @Inject
     @Named("dbErrorJdbcFixedDateFactory")
-    protected DateFactory dbErrorJdbcFixedDateFactory;
+    protected JodaTimeDateFactory dbErrorJdbcFixedDateFactory;
     
     @Inject
     @Named("msecJdbcAdjustedDateFactory")
-    protected JdbcAdjustedDateFactory msecJdbcAdjustedDateFactory;
+    protected JdbcAdjustedJodaTimeDateFactory msecJdbcAdjustedDateFactory;
     
     @Inject
     @Named("secJdbcAdjustedDateFactory")
-    protected JdbcAdjustedDateFactory secJdbcAdjustedDateFactory;
+    protected JdbcAdjustedJodaTimeDateFactory secJdbcAdjustedDateFactory;
     
     @Inject
     @Named("minuteJdbcAdjustedDateFactory")
-    protected JdbcAdjustedDateFactory minuteJdbcAdjustedDateFactory;
+    protected JdbcAdjustedJodaTimeDateFactory minuteJdbcAdjustedDateFactory;
     
     @Inject
     @Named("hourJdbcAdjustedDateFactory")
-    protected JdbcAdjustedDateFactory hourJdbcAdjustedDateFactory;
+    protected JdbcAdjustedJodaTimeDateFactory hourJdbcAdjustedDateFactory;
     
     @Inject
     @Named("dayJdbcAdjustedDateFactory")
-    protected JdbcAdjustedDateFactory dayJdbcAdjustedDateFactory;
+    protected JdbcAdjustedJodaTimeDateFactory dayJdbcAdjustedDateFactory;
     
     @Inject
     @Named("useCacheDayJdbcAdjustedDateFactory")
-    protected JdbcAdjustedDateFactory useCacheDayJdbcAdjustedDateFactory;
+    protected JdbcAdjustedJodaTimeDateFactory useCacheDayJdbcAdjustedDateFactory;
     
     @Inject
     @Named("noCacheJdbcAdjustedDateFactory")
-    protected JdbcAdjustedDateFactory noCacheJdbcAdjustedDateFactory;
+    protected JdbcAdjustedJodaTimeDateFactory noCacheJdbcAdjustedDateFactory;
     
     @Inject
     @Named("dbErrorJdbcAdjustedDateFactory")
-    protected JdbcAdjustedDateFactory dbErrorJdbcAdjustedDateFactory;
+    protected JdbcAdjustedJodaTimeDateFactory dbErrorJdbcAdjustedDateFactory;
     
     @Inject
     protected DateService dateService;
