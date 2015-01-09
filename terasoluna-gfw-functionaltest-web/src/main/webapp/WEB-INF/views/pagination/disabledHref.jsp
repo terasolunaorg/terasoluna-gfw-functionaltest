@@ -1,6 +1,16 @@
+<script type="text/javascript"
+        src="${pageContext.request.contextPath}/resources/vendor/js/jquery.js"></script>
+
+<script type="text/javascript">
+    $(function(){
+        $(document).on("click", ".disabled a, .active a", function(){
+            return false;
+        });
+    });
+</script>
 	<h1>${f:h(page.number) + 1} Page</h1>
 	<div class="pagination">
-		<t:pagination page="${page}" disabledHref="javascript:void(0);" />
+		<t:pagination page="${page}" disabledHref="#" />
 	</div>
 		<table class="maintable">
 			<thead>
@@ -19,5 +29,5 @@
 			</c:forEach>
 		</table>
 	<div class="pagination">
-		<t:pagination page="${page}" disabledHref="javascript:void(0);" />
+		<t:pagination page="${page}" disabledHref="#" />
 	</div>
