@@ -29,11 +29,11 @@ import org.terasoluna.gfw.functionaltest.domain.model.Todo;
 import org.terasoluna.gfw.functionaltest.domain.service.queryescape.QueryEscapeService;
 
 @Controller
-@RequestMapping("queryescape/MyBatis")
-public class QueryEscapeMybatisController {
+@RequestMapping("queryescape/MyBatisNewOracle")
+public class QueryEscapeMybatisNewOracleController {
 
     @Inject
-    @Named("queryEscapeMybatisService")
+    @Named("queryEscapeMybatisNewOracleService")
     QueryEscapeService queryEscapeService;
 
     @Inject
@@ -47,15 +47,12 @@ public class QueryEscapeMybatisController {
 
     @ModelAttribute("targetORMapper")
     public String setUpTargetORMapper() {
-        return "MyBatis";
+        return "MyBatisNewOracle";
     }
 
     @RequestMapping(method = RequestMethod.GET)
     public String index(Model model) {
-        if (queryEscapeHelper.isNeedFullWidthToLikeEscapeForOracle()) {
-            return "redirect:/queryescape/MyBatisNewOracle/";
-        }
-        return "queryescape/todoList";
+        return "queryescape/todoListNewOracle";
     }
 
     @RequestMapping(value = "search", method = RequestMethod.GET, params = "prefix")
@@ -66,7 +63,7 @@ public class QueryEscapeMybatisController {
 
         queryEscapeHelper.bindToModel("prefix search", list, model);
 
-        return "queryescape/todoList";
+        return "queryescape/todoListNewOracle";
     }
 
     @RequestMapping(value = "search", method = RequestMethod.GET, params = "suffix")
@@ -77,7 +74,7 @@ public class QueryEscapeMybatisController {
 
         queryEscapeHelper.bindToModel("suffix search", list, model);
 
-        return "queryescape/todoList";
+        return "queryescape/todoListNewOracle";
     }
 
     @RequestMapping(value = "search", method = RequestMethod.GET, params = "partical")
@@ -88,7 +85,7 @@ public class QueryEscapeMybatisController {
 
         queryEscapeHelper.bindToModel("partical search", list, model);
 
-        return "queryescape/todoList";
+        return "queryescape/todoListNewOracle";
     }
 
     @RequestMapping(value = "search", method = RequestMethod.GET, params = "nullTodoTitle")
@@ -98,7 +95,7 @@ public class QueryEscapeMybatisController {
 
         queryEscapeHelper.bindToModel("null todo title search", list, model);
 
-        return "queryescape/todoList";
+        return "queryescape/todoListNewOracle";
     }
 
 }
