@@ -464,6 +464,38 @@ public class PaginationTest extends FunctionTestSupport {
     }
     
     @Test
+    public void test01_11_defaultSpecified (){
+        driver.findElement(By.id("defaultSpecified_1_11")).click();
+        
+        // default page
+        String orgXtrack = driver.findElement(By.id("xtrack")).getText();
+        
+        // firstLink disabled click
+        driver.findElement(By.linkText("<<")).click();
+        String firstLinkXtrack = driver.findElement(By.id("xtrack")).getText();
+        // not change xtrack
+        assertThat(orgXtrack, is(firstLinkXtrack));
+        
+        // previousLink disabled click
+        driver.findElement(By.linkText("<")).click();
+        String previousLinkXtrack = driver.findElement(By.id("xtrack")).getText();
+        // not change xtrack
+        assertThat(orgXtrack, is(previousLinkXtrack));
+        
+        // currentPage(1Page) active click
+        driver.findElement(By.linkText("<")).click();
+        String currentPageXtrack = driver.findElement(By.id("xtrack")).getText();
+        // not change xtrack
+        assertThat(orgXtrack, is(currentPageXtrack));
+        
+        // nextLink click
+        driver.findElement(By.linkText(">")).click();
+        String nextLinkXtrack = driver.findElement(By.id("xtrack")).getText();
+        // change xtrack
+        assertThat(orgXtrack, is(not(nextLinkXtrack)));
+    }
+    
+    @Test
     public void test02_01_pathTmplSpecified (){
         driver.findElement(By.id("pathTmplSpecified_2_1")).click();
 
@@ -1123,7 +1155,6 @@ public class PaginationTest extends FunctionTestSupport {
             driver.findElement(By.linkText(">")).click();
         }
     }
-    
     
     @Test
     public void test11_02_disabledHrefSpecified (){
@@ -2486,4 +2517,60 @@ public class PaginationTest extends FunctionTestSupport {
         }
     }
 
+    @Test
+    public void test24_01_enableLinkOfCurrentPage (){
+        driver.findElement(By.id("enableLinkOfCurrentPage_24_1")).click();
+        
+        // default page
+        String orgXtrack = driver.findElement(By.id("xtrack")).getText();
+        
+        // currentPage(1Page) active click
+        driver.findElement(By.linkText("1")).click();
+        String currentPageXtrack = driver.findElement(By.id("xtrack")).getText();
+        // not change xtrack
+        assertThat(orgXtrack, is(not(currentPageXtrack)));
+        
+    }
+    
+    @Test
+    public void test25_01_disabledPageLinkWithJavaScript (){
+        driver.findElement(By.id("disabledPageLinkWithJavaScript_25_1")).click();
+        
+        // firstLink, previousLink, current page value "#" check
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[1]/ul/li[1]/a")).getAttribute("href"),
+                is(not("javascript:void(0)")));
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[1]/ul/li[2]/a")).getAttribute("href"),
+                is(not("javascript:void(0)")));
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[1]/ul/li[3]/a")).getAttribute("href"),
+                is(not("javascript:void(0)")));
+
+        // default page
+        String orgXtrack = driver.findElement(By.id("xtrack")).getText();
+        
+        // firstLink disabled click
+        driver.findElement(By.linkText("<<")).click();
+        String firstLinkXtrack = driver.findElement(By.id("xtrack")).getText();
+        // not change xtrack
+        assertThat(orgXtrack, is(firstLinkXtrack));
+        
+        // previousLink disabled click
+        driver.findElement(By.linkText("<")).click();
+        String previousLinkXtrack = driver.findElement(By.id("xtrack")).getText();
+        // not change xtrack
+        assertThat(orgXtrack, is(previousLinkXtrack));
+        
+        // currentPage(1Page) active click
+        driver.findElement(By.linkText("<")).click();
+        String currentPageXtrack = driver.findElement(By.id("xtrack")).getText();
+        // not change xtrack
+        assertThat(orgXtrack, is(currentPageXtrack));
+        
+        // nextLink click
+        driver.findElement(By.linkText(">")).click();
+        String nextLinkXtrack = driver.findElement(By.id("xtrack")).getText();
+        // change xtrack
+        assertThat(orgXtrack, is(not(nextLinkXtrack)));
+
+    }
+ 
 }
