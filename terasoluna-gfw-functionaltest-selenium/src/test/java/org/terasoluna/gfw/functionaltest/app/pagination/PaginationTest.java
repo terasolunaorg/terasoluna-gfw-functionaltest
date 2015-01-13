@@ -2524,6 +2524,9 @@ public class PaginationTest extends FunctionTestSupport {
         // default page
         String orgXtrack = driver.findElement(By.id("xtrack")).getText();
         
+        // currentPage(1Page) link check
+        assertThat(driver.findElement(By.xpath("(//a[contains(@href, '?page=0&size=15')])[1]")).getText(), is("1"));
+
         // currentPage(1Page) active click
         driver.findElement(By.linkText("1")).click();
         String currentPageXtrack = driver.findElement(By.id("xtrack")).getText();
