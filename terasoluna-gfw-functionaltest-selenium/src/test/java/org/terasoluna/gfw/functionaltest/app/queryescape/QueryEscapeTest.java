@@ -828,7 +828,7 @@ public class QueryEscapeTest extends FunctionTestSupport {
             String databaseVersion = driver.findElement(
                     By.id("databaseVersion")).getText();
             String[] destStrArray = databaseVersion.split("\\.");
-            String[] srcStrArray = "11.2".split("\\.");
+            String[] srcStrArray = "11.2.0.1.0".split("\\.");
 
             int max = destStrArray.length >= srcStrArray.length ? destStrArray.length
                     : srcStrArray.length;
@@ -847,7 +847,7 @@ public class QueryEscapeTest extends FunctionTestSupport {
                     return true;
                 }
             }
-            return false;
+            return true;
         }
         return false;
     }
