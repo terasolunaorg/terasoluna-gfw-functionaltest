@@ -56,7 +56,7 @@ public class QueryEscapeHelper {
 
             List<VersionInfo> versionInfoList = versionInfoService.findAll();
 
-            Pattern pattern = Pattern.compile("\\d+\\.\\d+\\.\\d+");
+            Pattern pattern = Pattern.compile("\\d+\\.\\d+\\.\\d+\\.\\d+\\.\\d+");
 
             for (VersionInfo versionInfo : versionInfoList) {
 
