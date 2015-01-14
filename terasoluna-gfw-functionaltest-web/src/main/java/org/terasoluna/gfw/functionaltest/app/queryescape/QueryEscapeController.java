@@ -15,16 +15,23 @@
  */
 package org.terasoluna.gfw.functionaltest.app.queryescape;
 
+import javax.inject.Inject;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 @RequestMapping("queryescape")
 public class QueryEscapeController {
+    @Inject
+    QueryEscapeHelper queryEscapeHelper;
 
     @RequestMapping(method = RequestMethod.GET)
-    public String index() {
+    public String index(Model model) {
+        model.addAttribute("databaseId", queryEscapeHelper.getDatabaseId());
+        model.addAttribute("databaseVersion", queryEscapeHelper.getDatabaseVersion());
         return "queryescape/index";
     }
 }

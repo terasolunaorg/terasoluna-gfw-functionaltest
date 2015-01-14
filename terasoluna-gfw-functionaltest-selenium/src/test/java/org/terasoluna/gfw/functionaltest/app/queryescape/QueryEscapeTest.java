@@ -31,7 +31,12 @@ public class QueryEscapeTest extends FunctionTestSupport {
 
     @Test
     public void test01_01_searchWithPrefixUsingMybatis() {
-        driver.findElement(By.id("link1")).click();
+        
+        if( isMyBatisWithFullWidth() ){
+            driver.findElement(By.id("link3")).click();
+        }else{
+            driver.findElement(By.id("link1")).click();
+        }
 
         // search with prefix test
         inputFieldAccessor.overrideValue(By.id("todoTitle"), "AB%", driver);
@@ -50,7 +55,11 @@ public class QueryEscapeTest extends FunctionTestSupport {
 
     @Test
     public void test01_02_searchWithPrefixUsingMybatis() {
-        driver.findElement(By.id("link1")).click();
+        if( isMyBatisWithFullWidth() ){
+            driver.findElement(By.id("link3")).click();
+        }else{
+            driver.findElement(By.id("link1")).click();
+        }
 
         // search with prefix test
         inputFieldAccessor.overrideValue(By.id("todoTitle"), "AB_", driver);
@@ -69,7 +78,11 @@ public class QueryEscapeTest extends FunctionTestSupport {
 
     @Test
     public void test01_03_searchWithPrefixUsingMybatis() {
-        driver.findElement(By.id("link1")).click();
+        if( isMyBatisWithFullWidth() ){
+            driver.findElement(By.id("link3")).click();
+        }else{
+            driver.findElement(By.id("link1")).click();
+        }
 
         // search with prefix test
         inputFieldAccessor.overrideValue(By.id("todoTitle"), "AB％", driver);
@@ -88,7 +101,11 @@ public class QueryEscapeTest extends FunctionTestSupport {
 
     @Test
     public void test01_04_searchWithPrefixUsingMybatis() {
-        driver.findElement(By.id("link1")).click();
+        if( isMyBatisWithFullWidth() ){
+            driver.findElement(By.id("link3")).click();
+        }else{
+            driver.findElement(By.id("link1")).click();
+        }
 
         // search with prefix test
         inputFieldAccessor.overrideValue(By.id("todoTitle"), "AB＿", driver);
@@ -107,7 +124,11 @@ public class QueryEscapeTest extends FunctionTestSupport {
 
     @Test
     public void test01_05_searchWithPrefixUsingMybatis() {
-        driver.findElement(By.id("link1")).click();
+        if( isMyBatisWithFullWidth() ){
+            driver.findElement(By.id("link3")).click();
+        }else{
+            driver.findElement(By.id("link1")).click();
+        }
 
         // search with prefix test
         inputFieldAccessor.overrideValue(By.id("todoTitle"), "ABC", driver);
@@ -126,7 +147,11 @@ public class QueryEscapeTest extends FunctionTestSupport {
 
     @Test
     public void test01_06_searchWithPrefixUsingMybatis() {
-        driver.findElement(By.id("link1")).click();
+        if( isMyBatisWithFullWidth() ){
+            driver.findElement(By.id("link3")).click();
+        }else{
+            driver.findElement(By.id("link1")).click();
+        }
 
         // search with prefix test
         inputFieldAccessor.overrideValue(By.id("todoTitle"), "AB~", driver);
@@ -145,7 +170,11 @@ public class QueryEscapeTest extends FunctionTestSupport {
 
     @Test
     public void test01_07_searchWithPrefixUsingMybatis() {
-        driver.findElement(By.id("link1")).click();
+        if( isMyBatisWithFullWidth() ){
+            driver.findElement(By.id("link3")).click();
+        }else{
+            driver.findElement(By.id("link1")).click();
+        }
 
         // search with prefix test
         driver.findElement(By.id("prefix")).click();
@@ -183,7 +212,11 @@ public class QueryEscapeTest extends FunctionTestSupport {
 
     @Test
     public void test01_08_searchWithPrefixUsingMybatis() {
-        driver.findElement(By.id("link1")).click();
+        if( isMyBatisWithFullWidth() ){
+            driver.findElement(By.id("link3")).click();
+        }else{
+            driver.findElement(By.id("link1")).click();
+        }
 
         // search with prefix test
         driver.findElement(By.id("nullTodoTitle")).click();
@@ -197,7 +230,11 @@ public class QueryEscapeTest extends FunctionTestSupport {
 
     @Test
     public void test02_01_searchWithSuffixUsingMybatis() {
-        driver.findElement(By.id("link1")).click();
+        if( isMyBatisWithFullWidth() ){
+            driver.findElement(By.id("link3")).click();
+        }else{
+            driver.findElement(By.id("link1")).click();
+        }
 
         // search with suffix test
         inputFieldAccessor.overrideValue(By.id("todoTitle"), "%DE1", driver);
@@ -214,7 +251,11 @@ public class QueryEscapeTest extends FunctionTestSupport {
 
     @Test
     public void test02_02_searchWithSuffixUsingMybatis() {
-        driver.findElement(By.id("link1")).click();
+        if( isMyBatisWithFullWidth() ){
+            driver.findElement(By.id("link3")).click();
+        }else{
+            driver.findElement(By.id("link1")).click();
+        }
 
         // search with suffix test
         inputFieldAccessor.overrideValue(By.id("todoTitle"), "_DE1", driver);
@@ -231,7 +272,11 @@ public class QueryEscapeTest extends FunctionTestSupport {
 
     @Test
     public void test02_03_searchWithSuffixUsingMybatis() {
-        driver.findElement(By.id("link1")).click();
+        if( isMyBatisWithFullWidth() ){
+            driver.findElement(By.id("link3")).click();
+        }else{
+            driver.findElement(By.id("link1")).click();
+        }
 
         // search with suffix test
         inputFieldAccessor.overrideValue(By.id("todoTitle"), "％DE1", driver);
@@ -248,7 +293,11 @@ public class QueryEscapeTest extends FunctionTestSupport {
 
     @Test
     public void test02_04_searchWithSuffixUsingMybatis() {
-        driver.findElement(By.id("link1")).click();
+        if( isMyBatisWithFullWidth() ){
+            driver.findElement(By.id("link3")).click();
+        }else{
+            driver.findElement(By.id("link1")).click();
+        }
 
         // search with suffix test
         inputFieldAccessor.overrideValue(By.id("todoTitle"), "＿DE1", driver);
@@ -265,7 +314,11 @@ public class QueryEscapeTest extends FunctionTestSupport {
 
     @Test
     public void test02_05_searchWithSuffixUsingMybatis() {
-        driver.findElement(By.id("link1")).click();
+        if( isMyBatisWithFullWidth() ){
+            driver.findElement(By.id("link3")).click();
+        }else{
+            driver.findElement(By.id("link1")).click();
+        }
 
         // search with suffix test
         inputFieldAccessor.overrideValue(By.id("todoTitle"), "CDE1", driver);
@@ -282,7 +335,11 @@ public class QueryEscapeTest extends FunctionTestSupport {
 
     @Test
     public void test02_06_searchWithSuffixUsingMybatis() {
-        driver.findElement(By.id("link1")).click();
+        if( isMyBatisWithFullWidth() ){
+            driver.findElement(By.id("link3")).click();
+        }else{
+            driver.findElement(By.id("link1")).click();
+        }
 
         // search with suffix test
         inputFieldAccessor.overrideValue(By.id("todoTitle"), "~DE1", driver);
@@ -299,7 +356,11 @@ public class QueryEscapeTest extends FunctionTestSupport {
 
     @Test
     public void test03_01_searchWithParticalUsingMybatis() {
-        driver.findElement(By.id("link1")).click();
+        if( isMyBatisWithFullWidth() ){
+            driver.findElement(By.id("link3")).click();
+        }else{
+            driver.findElement(By.id("link1")).click();
+        }
 
         // search with partical test
         inputFieldAccessor.overrideValue(By.id("todoTitle"), "B%D", driver);
@@ -318,7 +379,11 @@ public class QueryEscapeTest extends FunctionTestSupport {
 
     @Test
     public void test03_02_searchWithParticalUsingMybatis() {
-        driver.findElement(By.id("link1")).click();
+        if( isMyBatisWithFullWidth() ){
+            driver.findElement(By.id("link3")).click();
+        }else{
+            driver.findElement(By.id("link1")).click();
+        }
 
         // search with partical test
         inputFieldAccessor.overrideValue(By.id("todoTitle"), "B_D", driver);
@@ -337,7 +402,11 @@ public class QueryEscapeTest extends FunctionTestSupport {
 
     @Test
     public void test03_03_searchWithParticalUsingMybatis() {
-        driver.findElement(By.id("link1")).click();
+        if( isMyBatisWithFullWidth() ){
+            driver.findElement(By.id("link3")).click();
+        }else{
+            driver.findElement(By.id("link1")).click();
+        }
 
         // search with partical test
         inputFieldAccessor.overrideValue(By.id("todoTitle"), "B％D", driver);
@@ -356,7 +425,11 @@ public class QueryEscapeTest extends FunctionTestSupport {
 
     @Test
     public void test03_04_searchWithParticalUsingMybatis() {
-        driver.findElement(By.id("link1")).click();
+        if( isMyBatisWithFullWidth() ){
+            driver.findElement(By.id("link3")).click();
+        }else{
+            driver.findElement(By.id("link1")).click();
+        }
 
         // search with partical test
         inputFieldAccessor.overrideValue(By.id("todoTitle"), "B＿D", driver);
@@ -375,7 +448,11 @@ public class QueryEscapeTest extends FunctionTestSupport {
 
     @Test
     public void test03_05_searchWithParticalUsingMybatis() {
-        driver.findElement(By.id("link1")).click();
+        if( isMyBatisWithFullWidth() ){
+            driver.findElement(By.id("link3")).click();
+        }else{
+            driver.findElement(By.id("link1")).click();
+        }
 
         // search with partical test
         inputFieldAccessor.overrideValue(By.id("todoTitle"), "BCD", driver);
@@ -394,7 +471,11 @@ public class QueryEscapeTest extends FunctionTestSupport {
 
     @Test
     public void test03_06_searchWithParticalUsingMybatis() {
-        driver.findElement(By.id("link1")).click();
+        if( isMyBatisWithFullWidth() ){
+            driver.findElement(By.id("link3")).click();
+        }else{
+            driver.findElement(By.id("link1")).click();
+        }
 
         // search with partical test
         inputFieldAccessor.overrideValue(By.id("todoTitle"), "B~D", driver);
@@ -739,5 +820,35 @@ public class QueryEscapeTest extends FunctionTestSupport {
                 is("AB~DE2"));
 
         // screen capture (Automatic capture conducted at the end)
+    }
+    
+    private boolean isMyBatisWithFullWidth() {
+        String databaseId = driver.findElement(By.id("databaseId")).getText();
+        if ("oracle".equals(databaseId)) {
+            String databaseVersion = driver.findElement(
+                    By.id("databaseVersion")).getText();
+            String[] destStrArray = databaseVersion.split("\\.");
+            String[] srcStrArray = "11.2".split("\\.");
+
+            int max = destStrArray.length >= srcStrArray.length ? destStrArray.length
+                    : srcStrArray.length;
+
+            for (int i = 0; i < max; i++) {
+                String dest = i < destStrArray.length ? destStrArray[i] : "";
+                String src = i < srcStrArray.length ? srcStrArray[i] : "";
+
+                int compareResult = dest.compareTo(src);
+
+                if (compareResult > 0) {
+                    return true;
+                }
+
+                if (compareResult < 0) {
+                    return false;
+                }
+            }
+            return true;
+        }
+        return false;
     }
 }

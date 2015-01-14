@@ -52,9 +52,6 @@ public class QueryEscapeMybatisController {
 
     @RequestMapping(method = RequestMethod.GET)
     public String index(Model model) {
-        if (queryEscapeHelper.isNeedFullWidthToLikeEscapeForOracle()) {
-            return "redirect:/queryescape/MyBatisNewOracle/";
-        }
         return "queryescape/todoList";
     }
 
@@ -81,7 +78,8 @@ public class QueryEscapeMybatisController {
     }
 
     @RequestMapping(value = "search", method = RequestMethod.GET, params = "partical")
-    public String searchWithPartical_03_XX(TodoForm form, Model model) {
+    public String searchWithPartical_03_XX(TodoForm form,
+            Model model) {
 
         List<Todo> list = queryEscapeService.findAllByTitleLikePartical(form
                 .getTodoTitle());

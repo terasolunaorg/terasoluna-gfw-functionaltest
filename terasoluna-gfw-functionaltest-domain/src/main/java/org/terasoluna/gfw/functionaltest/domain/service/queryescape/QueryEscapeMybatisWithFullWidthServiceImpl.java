@@ -23,31 +23,31 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.terasoluna.gfw.functionaltest.domain.TransactionManagers;
 import org.terasoluna.gfw.functionaltest.domain.model.Todo;
-import org.terasoluna.gfw.functionaltest.domain.repository.queryescape.TodoMybatisNewOracleRepository;
+import org.terasoluna.gfw.functionaltest.domain.repository.queryescape.TodoMybatisWithFullWidthRepository;
 
 @Transactional(value = TransactionManagers.DATASOURCE, readOnly = true)
-@Service("queryEscapeMybatisNewOracleService")
-public class QueryEscapeMybatisNewOracleServiceImpl implements
+@Service("queryEscapeMybatisWithFullWidthService")
+public class QueryEscapeMybatisWithFullWidthServiceImpl implements
         QueryEscapeService {
 
     @Inject
-    TodoMybatisNewOracleRepository queryEscapeMybatisNewOracleRepository;
+    TodoMybatisWithFullWidthRepository queryEscapeMybatisWithFullWidthRepository;
 
     @Override
     public List<Todo> findAllByTitleLikePrefix(String title) {
-        return queryEscapeMybatisNewOracleRepository
+        return queryEscapeMybatisWithFullWidthRepository
                 .findAllByTitleLikePrefix(title);
     }
 
     @Override
     public List<Todo> findAllByTitleLikeSuffix(String title) {
-        return queryEscapeMybatisNewOracleRepository
+        return queryEscapeMybatisWithFullWidthRepository
                 .findAllByTitleLikeSuffix(title);
     }
 
     @Override
     public List<Todo> findAllByTitleLikePartical(String title) {
-        return queryEscapeMybatisNewOracleRepository
+        return queryEscapeMybatisWithFullWidthRepository
                 .findAllByTitleLikePartical(title);
     }
 }

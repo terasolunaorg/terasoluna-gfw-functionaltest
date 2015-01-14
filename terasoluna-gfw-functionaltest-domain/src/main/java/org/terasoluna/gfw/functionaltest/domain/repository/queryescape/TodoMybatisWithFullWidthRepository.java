@@ -19,7 +19,7 @@ import java.util.List;
 
 import org.terasoluna.gfw.functionaltest.domain.model.Todo;
 
-public interface TodoMybatisNewOracleRepository {
+public interface TodoMybatisWithFullWidthRepository {
 
     List<Todo> findAllByTitleLikePrefix(String todoTitle);
     List<Todo> findAllByTitleLikeSuffix(String todoTitle);
