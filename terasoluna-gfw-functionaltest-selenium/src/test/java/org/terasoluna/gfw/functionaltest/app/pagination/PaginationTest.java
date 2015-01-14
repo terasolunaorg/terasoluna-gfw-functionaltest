@@ -474,25 +474,25 @@ public class PaginationTest extends FunctionTestSupport {
         driver.findElement(By.linkText("<<")).click();
         String firstLinkXtrack = driver.findElement(By.id("xtrack")).getText();
         // not change xtrack
-        assertThat(orgXtrack, is(firstLinkXtrack));
+        assertThat(firstLinkXtrack, is(orgXtrack));
         
         // previousLink disabled click
         driver.findElement(By.linkText("<")).click();
         String previousLinkXtrack = driver.findElement(By.id("xtrack")).getText();
         // not change xtrack
-        assertThat(orgXtrack, is(previousLinkXtrack));
+        assertThat(previousLinkXtrack, is(orgXtrack));
         
         // currentPage(1Page) active click
         driver.findElement(By.linkText("<")).click();
         String currentPageXtrack = driver.findElement(By.id("xtrack")).getText();
         // not change xtrack
-        assertThat(orgXtrack, is(currentPageXtrack));
+        assertThat(currentPageXtrack, is(orgXtrack));
         
         // nextLink click
         driver.findElement(By.linkText(">")).click();
         String nextLinkXtrack = driver.findElement(By.id("xtrack")).getText();
         // change xtrack
-        assertThat(orgXtrack, is(not(nextLinkXtrack)));
+        assertThat(nextLinkXtrack, is(not(orgXtrack)));
     }
     
     @Test
@@ -2531,7 +2531,7 @@ public class PaginationTest extends FunctionTestSupport {
         driver.findElement(By.linkText("1")).click();
         String currentPageXtrack = driver.findElement(By.id("xtrack")).getText();
         // not change xtrack
-        assertThat(orgXtrack, is(not(currentPageXtrack)));
+        assertThat(currentPageXtrack, is(not(orgXtrack)));
         
     }
     
@@ -2554,25 +2554,25 @@ public class PaginationTest extends FunctionTestSupport {
         driver.findElement(By.linkText("<<")).click();
         String firstLinkXtrack = driver.findElement(By.id("xtrack")).getText();
         // not change xtrack
-        assertThat(orgXtrack, is(firstLinkXtrack));
+        assertThat(firstLinkXtrack, is(orgXtrack));
         
         // previousLink disabled click
         driver.findElement(By.linkText("<")).click();
         String previousLinkXtrack = driver.findElement(By.id("xtrack")).getText();
         // not change xtrack
-        assertThat(orgXtrack, is(previousLinkXtrack));
+        assertThat(previousLinkXtrack, is(orgXtrack));
         
         // currentPage(1Page) active click
         driver.findElement(By.linkText("<")).click();
         String currentPageXtrack = driver.findElement(By.id("xtrack")).getText();
         // not change xtrack
-        assertThat(orgXtrack, is(currentPageXtrack));
+        assertThat(currentPageXtrack, is(orgXtrack));
         
         // nextLink click
         driver.findElement(By.linkText(">")).click();
         String nextLinkXtrack = driver.findElement(By.id("xtrack")).getText();
         // change xtrack
-        assertThat(orgXtrack, is(not(nextLinkXtrack)));
+        assertThat(nextLinkXtrack, is(not(orgXtrack)));
 
     }
  
