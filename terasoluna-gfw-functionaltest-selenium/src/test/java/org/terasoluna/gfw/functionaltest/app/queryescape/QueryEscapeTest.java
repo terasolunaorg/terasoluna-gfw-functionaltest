@@ -840,14 +840,14 @@ public class QueryEscapeTest extends FunctionTestSupport {
                 int compareResult = dest.compareTo(src);
 
                 if (compareResult > 0) {
-                    return true;
+                    return false;
                 }
 
                 if (compareResult < 0) {
-                    return false;
+                    return true;
                 }
             }
-            return true;
+            return false;
         }
         return false;
     }
