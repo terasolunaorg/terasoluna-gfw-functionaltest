@@ -52,6 +52,11 @@
 	</tr>
 	<tr>
 		<td>
+			<a id="defaultSpecified_1_11" href="${pageContext.request.contextPath}/pagination/1_11">defaultSpecified_1_11</a>
+		</td>
+	</tr>
+	<tr>
+		<td>
 			<a id="pathTmplSpecified_2_1" href="${pageContext.request.contextPath}/pagination/2_1">pathTmplSpecified_2_1</a>
 		</td>
 	</tr>
@@ -243,6 +248,16 @@
 	<tr>
 		<td>
 			<a id="search_23_2" href="${pageContext.request.contextPath}/pagination/23_2">searchWithPathTmplAndQueryTmplAndCriteriaQuery_23_2</a>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<a id="enableLinkOfCurrentPage_24_1" href="${pageContext.request.contextPath}/pagination/24_1">enableLinkOfCurrentPage=true_24_1</a>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<a id="disabledPageLinkWithJavaScript_25_1" href="${pageContext.request.contextPath}/pagination/25_1">disabledPageLinkWithJavaScript_25_1</a>
 		</td>
 	</tr>
 </table>

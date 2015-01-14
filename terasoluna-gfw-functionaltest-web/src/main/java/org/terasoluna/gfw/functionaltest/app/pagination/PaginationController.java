@@ -155,6 +155,17 @@ public class PaginationController {
         return "pagination/pagination";
     }
     
+    @RequestMapping(value="1_11", method = RequestMethod.GET)
+    public String fuinctionTest_1_11(Model model,
+                @PageableDefault(value=15) Pageable pageable) {
+        
+        Page<Person> page = paginationService.findPerson(pageable);
+        
+        model.addAttribute("page", page);
+        
+        return "pagination/pagination";
+    }
+    
     @RequestMapping(value="2_1", method = RequestMethod.GET)
     public String fuinctionTest_2_1(Model model,
                 @PageableDefault(value=100) Pageable pageable) {
@@ -536,6 +547,28 @@ public class PaginationController {
         model.addAttribute("page", page);
 
         return "pagination/searchPathTmplAndQueryTmplAndCriteriaQuery";
+    }
+
+    @RequestMapping(value="24_1", method = RequestMethod.GET)
+    public String fuinctionTest_24_1(Model model,
+                @PageableDefault(value=15) Pageable pageable) {
+        
+        Page<Person> page = paginationService.findPerson(pageable);
+        
+        model.addAttribute("page", page);
+        
+        return "pagination/enableLinkOfCurrentPage";
+    }
+
+    @RequestMapping(value="25_1", method = RequestMethod.GET)
+    public String fuinctionTest_25_1(Model model,
+                @PageableDefault(value=15) Pageable pageable) {
+        
+        Page<Person> page = paginationService.findPerson(pageable);
+        
+        model.addAttribute("page", page);
+        
+        return "pagination/disabledPageLinkWithJavaScript";
     }
 
 }

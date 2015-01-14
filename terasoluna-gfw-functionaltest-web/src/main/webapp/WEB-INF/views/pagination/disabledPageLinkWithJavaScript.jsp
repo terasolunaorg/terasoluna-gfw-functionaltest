@@ -8,9 +8,10 @@
         });
     });
 </script>
+
 	<h1>${f:h(page.number) + 1} Page</h1>
 	<div class="pagination">
-		<t:pagination page="${page}" disabledHref="#" />
+		<t:pagination page="${page}" disabledHref="#"/>
 	</div>
 		<table class="maintable">
 			<thead>
@@ -29,5 +30,5 @@
 			</c:forEach>
 		</table>
 	<div class="pagination">
-		<t:pagination page="${page}" disabledHref="#" />
+		<t:pagination page="${page}" disabledHref="#"/>
 	</div>
