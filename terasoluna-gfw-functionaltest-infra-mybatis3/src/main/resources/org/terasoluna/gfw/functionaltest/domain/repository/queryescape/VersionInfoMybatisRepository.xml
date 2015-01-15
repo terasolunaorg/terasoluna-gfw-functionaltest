@@ -5,8 +5,10 @@
 <mapper
     namespace="org.terasoluna.gfw.functionaltest.domain.repository.queryescape.VersionInfoMybatisRepository">
 
-    <select id="findAll" resultType="VersionInfo">
-        <![CDATA[select * from v$version]]>
+    <select id="findOne" resultType="string">
+        <![CDATA[
+            SELECT version FROM PRODUCT_COMPONENT_VERSION WHERE product LIKE 'Oracle%'
+        ]]>
     </select>
 
 </mapper>

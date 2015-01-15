@@ -15,11 +15,7 @@
  */
 package org.terasoluna.gfw.functionaltest.domain.service.queryescape;
 
-import java.util.List;
-
-import org.terasoluna.gfw.functionaltest.domain.model.VersionInfo;
-
 public interface VersionInfoService {
 
-    List<VersionInfo> findAll();
+    String findOne();
 }

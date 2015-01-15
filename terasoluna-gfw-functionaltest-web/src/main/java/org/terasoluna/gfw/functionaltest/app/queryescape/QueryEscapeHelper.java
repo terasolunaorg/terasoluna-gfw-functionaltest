@@ -16,17 +16,15 @@
 package org.terasoluna.gfw.functionaltest.app.queryescape;
 
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
+import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.ui.Model;
 import org.terasoluna.gfw.functionaltest.domain.model.Todo;
-import org.terasoluna.gfw.functionaltest.domain.model.VersionInfo;
+import org.terasoluna.gfw.functionaltest.domain.service.queryescape.DatabaseIdService;
 import org.terasoluna.gfw.functionaltest.domain.service.queryescape.VersionInfoService;
 
 @Component
@@ -37,7 +35,14 @@ public class QueryEscapeHelper {
     VersionInfoService versionInfoService;
 
     @Inject
-    SqlSessionFactory sqlSessionFactory;
+    DatabaseIdService databaseIdService;
+
+    private String databaseVersion = null;
+
+    @PostConstruct
+    public void init() {
+        this.databaseVersion = getDatabaseVersion();
+    }
 
     public void bindToModel(String searchPattern, List<Todo> todoList,
             Model model) {
@@ -47,28 +52,19 @@ public class QueryEscapeHelper {
     }
 
     public String getDatabaseId() {
-        return sqlSessionFactory.getConfiguration().getDatabaseId();
+        return databaseIdService.getDatabaseId();
     }
 
     public String getDatabaseVersion() {
+        if (this.databaseVersion != null) {
+            return this.databaseVersion;
+        }
 
         if ("oracle".equals(getDatabaseId())) {
-
-            List<VersionInfo> versionInfoList = versionInfoService.findAll();
-
-            Pattern pattern = Pattern.compile("\\d+\\.\\d+\\.\\d+\\.\\d+\\.\\d+");
-
-            for (VersionInfo versionInfo : versionInfoList) {
-
-                Matcher m = pattern.matcher(versionInfo.getBanner());
-                if (m.find()) {
-                    return m.group();
-                }
-            }
+            return versionInfoService.findOne();
         }
 
         return "";
     }
-
 
 }
