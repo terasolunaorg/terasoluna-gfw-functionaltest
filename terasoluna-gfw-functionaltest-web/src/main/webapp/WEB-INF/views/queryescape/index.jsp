@@ -24,7 +24,12 @@
 		</tr>
         <tr>
             <td><a id="link3"
-                    href="${pageContext.request.contextPath}/queryescape/MyBatisWithFullWidth/">QueryEscapeUtil Function Test Using MyBatisWithFullWidth</a>
+                    href="${pageContext.request.contextPath}/queryescape/MyBatisWithFullWidth/">QueryEscapeUtil Function Test Using MyBatis WithFullWidth</a>
+            </td>
+        </tr>
+        <tr>
+            <td><a id="link4"
+                    href="${pageContext.request.contextPath}/queryescape/JPAWithFullWidth/">QueryEscapeUtil Function Test Using JPA WithFullWidth</a>
             </td>
         </tr>
 	</table>
