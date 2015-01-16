@@ -30,23 +30,54 @@ import org.terasoluna.gfw.functionaltest.domain.repository.queryescape.TodoMybat
 public class TodoMybatis2RepositoryImpl implements TodoMybatisRepository {
 
     @Inject
-    protected QueryDAO queryDAO;
+    QueryDAO queryDAO;
 
     @Override
     public List<Todo> findAllByTitleLikePrefix(String title) {
         String todoTitle = QueryEscapeUtils.toStartingWithCondition(title);
-        return queryDAO.executeForObjectList("queryescape.findAllByTitleLike", todoTitle);
+        return queryDAO.executeForObjectList("queryescape.findAllByTitleLike",
+                todoTitle);
     }
 
     @Override
     public List<Todo> findAllByTitleLikeSuffix(String title) {
         String todoTitle = QueryEscapeUtils.toEndingWithCondition(title);
-        return queryDAO.executeForObjectList("queryescape.findAllByTitleLike", todoTitle);
+        return queryDAO.executeForObjectList("queryescape.findAllByTitleLike",
+                todoTitle);
     }
-    
+
     @Override
     public List<Todo> findAllByTitleLikePartical(String title) {
         String todoTitle = QueryEscapeUtils.toContainingCondition(title);
-        return queryDAO.executeForObjectList("queryescape.findAllByTitleLike", todoTitle);
+        return queryDAO.executeForObjectList("queryescape.findAllByTitleLike",
+                todoTitle);
     }
+
+    @Override
+    public List<Todo> findAllByTitleLikePrefixEscapingFullWidthWildCard(
+            String title) {
+        String todoTitle = QueryEscapeUtils.withFullWidth()
+                .toStartingWithCondition(title);
+        return queryDAO.executeForObjectList("queryescape.findAllByTitleLike",
+                todoTitle);
+    }
+
+    @Override
+    public List<Todo> findAllByTitleLikeSuffixEscapingFullWidthWildCard(
+            String title) {
+        String todoTitle = QueryEscapeUtils.withFullWidth()
+                .toEndingWithCondition(title);
+        return queryDAO.executeForObjectList("queryescape.findAllByTitleLike",
+                todoTitle);
+    }
+
+    @Override
+    public List<Todo> findAllByTitleLikeParticalEscapingFullWidthWildCard(
+            String title) {
+        String todoTitle = QueryEscapeUtils.withFullWidth()
+                .toContainingCondition(title);
+        return queryDAO.executeForObjectList("queryescape.findAllByTitleLike",
+                todoTitle);
+    }
+
 }
