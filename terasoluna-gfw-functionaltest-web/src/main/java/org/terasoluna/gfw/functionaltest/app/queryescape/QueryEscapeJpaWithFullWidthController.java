@@ -33,7 +33,7 @@ import org.terasoluna.gfw.functionaltest.domain.service.queryescape.QueryEscapeS
 public class QueryEscapeJpaWithFullWidthController {
 
     @Inject
-    @Named("queryEscapeJpaWithFullWidthService")
+    @Named("queryEscapeJpaService")
     QueryEscapeService queryEscapeService;
 
     @Inject
@@ -58,8 +58,9 @@ public class QueryEscapeJpaWithFullWidthController {
     @RequestMapping(value = "search", method = RequestMethod.GET, params = "prefix")
     public String searchWithPrefix_04_XX(TodoForm form, Model model) {
 
-        List<Todo> list = queryEscapeService.findAllByTitleLikePrefix(form
-                .getTodoTitle());
+        List<Todo> list = queryEscapeService
+                .findAllByTitleLikePrefixEscapingFullWidthWildCard(form
+                        .getTodoTitle());
 
         queryEscapeHelper.bindToModel("prefix search", list, model);
 
@@ -69,8 +70,9 @@ public class QueryEscapeJpaWithFullWidthController {
     @RequestMapping(value = "search", method = RequestMethod.GET, params = "suffix")
     public String searchWithSuffix_05_XX(TodoForm form, Model model) {
 
-        List<Todo> list = queryEscapeService.findAllByTitleLikeSuffix(form
-                .getTodoTitle());
+        List<Todo> list = queryEscapeService
+                .findAllByTitleLikeSuffixEscapingFullWidthWildCard(form
+                        .getTodoTitle());
 
         queryEscapeHelper.bindToModel("suffix search", list, model);
 
@@ -80,8 +82,9 @@ public class QueryEscapeJpaWithFullWidthController {
     @RequestMapping(value = "search", method = RequestMethod.GET, params = "partical")
     public String searchWithPartical_06_XX(TodoForm form, Model model) {
 
-        List<Todo> list = queryEscapeService.findAllByTitleLikePartical(form
-                .getTodoTitle());
+        List<Todo> list = queryEscapeService
+                .findAllByTitleLikeParticalEscapingFullWidthWildCard(form
+                        .getTodoTitle());
 
         queryEscapeHelper.bindToModel("partical search", list, model);
 
@@ -91,7 +94,8 @@ public class QueryEscapeJpaWithFullWidthController {
     @RequestMapping(value = "search", method = RequestMethod.GET, params = "nullTodoTitle")
     public String searchWithPrefix_XX_YY(Model model) {
 
-        List<Todo> list = queryEscapeService.findAllByTitleLikePrefix(null);
+        List<Todo> list = queryEscapeService
+                .findAllByTitleLikePrefixEscapingFullWidthWildCard(null);
 
         queryEscapeHelper.bindToModel("null todo title search", list, model);
 

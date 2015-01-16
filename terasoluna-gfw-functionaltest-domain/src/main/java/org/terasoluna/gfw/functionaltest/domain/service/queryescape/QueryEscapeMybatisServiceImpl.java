@@ -46,4 +46,25 @@ public class QueryEscapeMybatisServiceImpl implements QueryEscapeService {
     public List<Todo> findAllByTitleLikePartical(String title) {
         return queryEscapeMybatisRepository.findAllByTitleLikePartical(title);
     }
+
+    @Override
+    public List<Todo> findAllByTitleLikePrefixEscapingFullWidthWildCard(
+            String todoTitle) {
+        return queryEscapeMybatisRepository
+                .findAllByTitleLikePrefixEscapingFullWidthWildCard(todoTitle);
+    }
+
+    @Override
+    public List<Todo> findAllByTitleLikeSuffixEscapingFullWidthWildCard(
+            String todoTitle) {
+        return queryEscapeMybatisRepository
+                .findAllByTitleLikeSuffixEscapingFullWidthWildCard(todoTitle);
+    }
+
+    @Override
+    public List<Todo> findAllByTitleLikeParticalEscapingFullWidthWildCard(
+            String todoTitle) {
+        return queryEscapeMybatisRepository
+                .findAllByTitleLikeParticalEscapingFullWidthWildCard(todoTitle);
+    }
 }
