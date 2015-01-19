@@ -42,6 +42,8 @@ public abstract class AbstractDatabaseMetaInfoService implements
     @PostConstruct
     public void init() {
         this.databaseId = getDatabaseIdInternal();
-        this.oracleVersion = oracleVersionRetriever.getVersion();
+        if ("oracle".equalsIgnoreCase(this.databaseId)) {
+            this.oracleVersion = oracleVersionRetriever.getVersion();
+        }
     }
 }
