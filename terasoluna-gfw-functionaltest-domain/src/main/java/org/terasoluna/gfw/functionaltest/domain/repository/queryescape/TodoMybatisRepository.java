@@ -22,6 +22,17 @@ import org.terasoluna.gfw.functionaltest.domain.model.Todo;
 public interface TodoMybatisRepository {
 
     List<Todo> findAllByTitleLikePrefix(String todoTitle);
+
     List<Todo> findAllByTitleLikeSuffix(String todoTitle);
+
     List<Todo> findAllByTitleLikePartical(String todoTitle);
+
+    List<Todo> findAllByTitleLikePrefixEscapingFullWidthWildCard(
+            String todoTitle);
+
+    List<Todo> findAllByTitleLikeSuffixEscapingFullWidthWildCard(
+            String todoTitle);
+
+    List<Todo> findAllByTitleLikeParticalEscapingFullWidthWildCard(
+            String todoTitle);
 }
