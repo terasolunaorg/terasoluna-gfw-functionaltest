@@ -21,9 +21,18 @@ import org.terasoluna.gfw.functionaltest.domain.model.Todo;
 
 public interface QueryEscapeService {
 
-	List<Todo> findAllByTitleLikePrefix(String title);
-	
-	List<Todo> findAllByTitleLikeSuffix(String title);
-	
-	List<Todo> findAllByTitleLikePartical(String title);
+    List<Todo> findAllByTitleLikePrefix(String title);
+
+    List<Todo> findAllByTitleLikeSuffix(String title);
+
+    List<Todo> findAllByTitleLikePartical(String title);
+
+    List<Todo> findAllByTitleLikePrefixEscapingFullWidthWildCard(
+            String todoTitle);
+
+    List<Todo> findAllByTitleLikeSuffixEscapingFullWidthWildCard(
+            String todoTitle);
+
+    List<Todo> findAllByTitleLikeParticalEscapingFullWidthWildCard(
+            String todoTitle);
 }
