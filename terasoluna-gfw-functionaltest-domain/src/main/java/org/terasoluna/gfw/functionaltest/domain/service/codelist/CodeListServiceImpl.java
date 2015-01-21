@@ -39,7 +39,7 @@ public class CodeListServiceImpl implements CodeListService {
     protected ReloadableCodeList clCodeListItem1;
 
     @Override
-    @Transactional(readOnly = true)
+    @Transactional(value = TransactionManagers.JPA, readOnly = true)
     public List<ItemCode> findCodeList() {
         return codeListRepository.findAll();
     }

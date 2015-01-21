@@ -86,7 +86,9 @@
         <property name="dataSource" ref="dataSource" />
     </bean>
 
-    <bean id="jpaTransactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+    <!-- Workaround for SPR-12577 -->
+    <!-- https://github.com/spring-projects/spring-data-jpa/commit/1b03b6dcf3fc862f11981b3ba15773b202b9d116 -->
+    <bean id="jpaTransactionManager" class="org.springframework.orm.jpa.JpaTransactionManager" primary="true">
         <property name="entityManagerFactory" ref="entityManagerFactory" />
     </bean>
 
