@@ -181,14 +181,6 @@
     <dependencyManagement>
         <dependencies>
 
-            <!-- == Begin Servlet API/ JSP API == -->
-            <dependency>
-                <groupId>org.apache.tomcat</groupId>
-                <artifactId>tomcat-jsp-api</artifactId>
-                <version>${tomcat.version}</version>
-            </dependency>
-            <!-- == End Servlet API/ JSP API == -->
-
             <!-- == Begin Database == -->
             <dependency>
                 <groupId>org.postgresql</groupId>
