@@ -5,7 +5,7 @@
     <artifactId>terasoluna-gfw-functionaltest-selenium</artifactId>
     <packaging>jar</packaging>
     <parent>
-        <version>5.0.0-SNAPSHOT</version>
+        <version>5.0.0.RELEASE</version>
         <artifactId>terasoluna-gfw-functionaltest-parent</artifactId>
         <groupId>org.terasoluna.gfw.functionaltest</groupId>
         <relativePath>../terasoluna-gfw-functionaltest-parent/pom.xml</relativePath>
