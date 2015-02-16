@@ -12,8 +12,8 @@
         <relativePath />
     </parent>
 
-    <name>TERASOLUNA Global Framework - Functionality Test Application - Parent</name>
-    <description>Parent POM of Functionality Test Application using TERASOLUNA Global Framework</description>
+    <name>TERASOLUNA Server Framework for Java (5.x) - Functionality Test Application - Parent</name>
+    <description>Parent POM of Functionality Test Application using TERASOLUNA Server Framework for Java (5.x)</description>
     <version>5.0.0-SNAPSHOT</version>
     <url>http://terasoluna.org</url>
     <inceptionYear>2013</inceptionYear>
