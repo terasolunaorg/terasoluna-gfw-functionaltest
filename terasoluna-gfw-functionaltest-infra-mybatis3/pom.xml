@@ -16,7 +16,6 @@
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>terasoluna-gfw-functionaltest-domain</artifactId>
-            <version>${project.version}</version>
             <exclusions>
                 <exclusion>
                     <groupId>org.terasoluna.gfw</groupId>
@@ -35,22 +34,6 @@
             <artifactId>terasoluna-gfw-mybatis3</artifactId>
         </dependency>
         <!-- == End TERASOLUNA == -->
-
-        <!-- == Begin Database == -->
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-        </dependency>
-        <!-- <dependency> -->
-        <!-- <groupId>com.oracle</groupId> -->
-        <!-- <artifactId>ojdbc6</artifactId> -->
-        <!-- </dependency> -->
-        <!-- == End Database == -->
 
         <!-- == Begin Unit Test == -->
         <dependency>
