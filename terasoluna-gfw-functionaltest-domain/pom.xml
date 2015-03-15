@@ -17,7 +17,6 @@
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>terasoluna-gfw-functionaltest-env</artifactId>
-            <version>${project.version}</version>
         </dependency>
 
         <!-- == Begin TERASOLUNA == -->
@@ -48,16 +47,18 @@
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <scope>test</scope>
+            <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
+            <scope>runtime</scope>
         </dependency>
-        <!-- <dependency> -->
-        <!-- <groupId>com.oracle</groupId> -->
-        <!-- <artifactId>ojdbc6</artifactId> -->
-        <!-- </dependency> -->
+         <dependency>
+             <groupId>com.oracle</groupId>
+             <artifactId>ojdbc6</artifactId>
+             <scope>runtime</scope>
+         </dependency>
         <!-- == End Database == -->
 
         <!-- == Begin Unit Test == -->
