@@ -69,6 +69,9 @@
     <profiles>
         <profile>
             <id>local</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
             <properties>
                 <resource.directory>src/main/resources</resource.directory>
                 <buildFinalName>${project.artifactId}-${project.version}</buildFinalName>
@@ -90,9 +93,6 @@
         </profile>
         <profile>
             <id>tomcat8-postgresql</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
             <properties>
                 <resource.directory>${basedir}/configs/tomcat8-postgresql/resources</resource.directory>
                 <buildFinalName>${project.artifactId}-${project.version}-tomcat8-postgresql</buildFinalName>
