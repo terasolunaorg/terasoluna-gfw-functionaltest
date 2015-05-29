@@ -112,6 +112,13 @@
                 <buildFinalName>${project.artifactId}-${project.version}-weblogic-oracle</buildFinalName>
             </properties>
         </profile>
+        <profile>
+            <id>jboss-postgresql</id>
+            <properties>
+                <resource.directory>${basedir}/configs/jboss-postgresql/resources</resource.directory>
+                <buildFinalName>${project.artifactId}-${project.version}-jboss-postgresql</buildFinalName>
+            </properties>
+        </profile>
     </profiles>
 
     <properties>
