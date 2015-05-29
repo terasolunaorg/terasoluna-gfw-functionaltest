@@ -1,0 +1,14 @@
+<jboss-deployment-structure>
+    <deployment>
+        <exclusions>
+            <module name="javaee.api" />
+            <module name="org.slf4j" />
+        </exclusions>
+        <dependencies>
+            <module name="javax.annotation.api" />
+        </dependencies>
+        <exclude-subsystems>
+          <subsystem name="jpa" />
+        </exclude-subsystems>
+    </deployment>
+</jboss-deployment-structure>
