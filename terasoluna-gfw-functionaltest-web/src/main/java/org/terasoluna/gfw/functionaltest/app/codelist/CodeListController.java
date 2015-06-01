@@ -33,7 +33,7 @@ import org.terasoluna.gfw.functionaltest.domain.service.codelist.CodeListService
 
 @Controller
 @RequestMapping(value = "codelist")
-public class CodeListContoller {
+public class CodeListController {
 
     @Inject
     CodeListService codeListService;
