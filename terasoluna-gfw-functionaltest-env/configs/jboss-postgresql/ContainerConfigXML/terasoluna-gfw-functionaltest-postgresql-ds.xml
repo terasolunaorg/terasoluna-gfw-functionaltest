@@ -1,0 +1,11 @@
+<datasources>
+  <datasource jta="true" jndi-name="jdbc/dataSource" pool-name="jdbc/dataSource" enabled="true">
+      <connection-url>jdbc:postgresql://localhost:5432/terasoluna-gfw-functionaltest</connection-url>
+      <driver-class>org.postgresql.Driver</driver-class>
+      <driver>postgresql.jar</driver>
+      <security>
+          <user-name>postgres</user-name>
+          <password>P0stgres</password>
+      </security>
+  </datasource>
+</datasources>
