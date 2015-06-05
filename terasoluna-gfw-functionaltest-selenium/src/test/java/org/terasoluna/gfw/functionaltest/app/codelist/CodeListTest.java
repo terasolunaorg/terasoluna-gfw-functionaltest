@@ -653,4 +653,19 @@ public class CodeListTest extends FunctionTestSupport {
         assertThat(driver.findElement(By.id("output")).getText(), is("12"));
         driver.findElement(By.id("btnback")).click();
     }
+
+    @Test
+    public void test10_01_form() {
+        driver.findElement(By.linkText("CodeListInterceptor Test (Exception occurs)")).click();
+        assertThat(driver.findElement(By.cssSelector("option[value=\"key1\"]"))
+                .getText(), is("label1"));
+        assertThat(driver.findElement(By.cssSelector("option[value=\"key2\"]"))
+                .getText(), is("label2"));
+        assertThat(driver.findElement(By.cssSelector("option[value=\"key3\"]"))
+                .getText(), is("label3"));
+        driver.findElement(By.id("btn1")).click();
+        assertThat(driver.findElement(By.id("output")).getText(), is("key1"));
+        driver.findElement(By.id("btnback")).click();
+    }
+    
 }
