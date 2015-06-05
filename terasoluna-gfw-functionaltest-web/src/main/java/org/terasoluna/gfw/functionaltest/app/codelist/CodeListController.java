@@ -20,14 +20,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ExtendedModelMap;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.servlet.ModelAndView;
 import org.terasoluna.gfw.common.codelist.CodeList;
+import org.terasoluna.gfw.common.exception.BusinessException;
 import org.terasoluna.gfw.functionaltest.domain.model.ItemCode;
 import org.terasoluna.gfw.functionaltest.domain.service.codelist.CodeListService;
 
@@ -322,4 +328,21 @@ public class CodeListController {
     public String test09_01_form(CodeListForm form, Model model) {
         return "codelist/09_01_form";
     }
+    
+    // test case 10_01
+    @RequestMapping(value = "10_01_form", method = RequestMethod.GET)
+    public String test10_01_form(CodeListForm form, Model model) {
+        return "codelist/10_01_form";
+    }
+
+    // Exception handler for test10_01_form
+    @ExceptionHandler(BusinessException.class)
+    @ResponseStatus(HttpStatus.CONFLICT)
+    public ModelAndView handleBusinessException(BusinessException e) {
+        ExtendedModelMap modelMap = new ExtendedModelMap();
+        modelMap.addAttribute(e.getResultMessages());
+        modelMap.addAttribute(setUpCodeListForm());
+        return new ModelAndView("codelist/10_01_form", modelMap);
+    }
+
 }
