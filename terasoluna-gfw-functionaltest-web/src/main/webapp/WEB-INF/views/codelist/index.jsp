@@ -119,4 +119,7 @@
   <tr>
     <td><a href="${pageContext.request.contextPath}/codelist/09_01_form">EnumCodeList Test</a></td>
   </tr>
+  <tr>
+    <td><a href="${pageContext.request.contextPath}/codelist/10_01_form">CodeListInterceptor Test (Exception occurs)</a></td>
+  </tr>
 </table>
