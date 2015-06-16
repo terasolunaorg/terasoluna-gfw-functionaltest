@@ -212,6 +212,12 @@
                 <version>${ojdbc6.version}</version>
             </dependency>
             <!-- == End Database == -->
+            <dependency>
+            	<groupId>xml-apis</groupId>
+            	<artifactId>xml-apis</artifactId>
+            	<version>1.4.01</version>
+            	<scope>runtime</scope>
+            </dependency>
         </dependencies>
     </dependencyManagement>
     <distributionManagement>
