@@ -61,6 +61,24 @@
         </pluginManagement>
     </build>
     <repositories>
+    
+    	 <repository>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>http://repo.spring.io/milestone</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>spring-snapshots</id>
+            <name>Spring Snapshots</name>
+            <url>http://repo.spring.io/snapshot</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+        
         <repository>
             <releases>
                 <enabled>true</enabled>
@@ -230,6 +248,7 @@
         <org.apache.tomcat.maven.version>2.0-SNAPSHOT</org.apache.tomcat.maven.version>
         <org.codehaus.mojo.emma-maven-plugin.version>1.0-alpha-3</org.codehaus.mojo.emma-maven-plugin.version>
         <org.codehaus.mojo.version>2.5</org.codehaus.mojo.version>
+        <io.spring.platform.version>2.0.0.BUILD-SNAPSHOT</io.spring.platform.version>
         <org.springframework.build.aws.version>3.0.0.RELEASE</org.springframework.build.aws.version>
         <postgresql.version>9.3-1102-jdbc41</postgresql.version>
         <ojdbc6.version>11.2.0.2.0</ojdbc6.version>
