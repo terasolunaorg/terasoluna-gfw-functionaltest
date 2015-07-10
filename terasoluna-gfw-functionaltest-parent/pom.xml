@@ -83,11 +83,6 @@
                 <artifactId>terasoluna-gfw-functionaltest-infra-mybatis3</artifactId>
                 <version>${project.version}</version>
             </dependency>
-            <dependency>
-                <groupId>${project.groupId}</groupId>
-                <artifactId>terasoluna-gfw-functionaltest-infra-mybatis2</artifactId>
-                <version>${project.version}</version>
-            </dependency>
 
             <!-- == Begin Database == -->
             <dependency>
