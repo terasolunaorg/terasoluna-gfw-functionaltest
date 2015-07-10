@@ -25,27 +25,11 @@
                     <artifactId>terasoluna-gfw-functionaltest-env</artifactId>
                     <version>${project.version}</version>
                 </dependency>
-                <dependency>
-                    <groupId>${project.groupId}</groupId>
-                    <artifactId>terasoluna-gfw-functionaltest-infra-mybatis2</artifactId>
-                    <version>${project.version}</version>
-                </dependency>
             </dependencies>
         </profile>
         <profile>
             <id>warpack</id>
             <dependencies>
-                <dependency>
-                    <groupId>${project.groupId}</groupId>
-                    <artifactId>terasoluna-gfw-functionaltest-infra-mybatis2</artifactId>
-                    <version>${project.version}</version>
-                    <exclusions>
-                        <exclusion>
-                            <groupId>${project.groupId}</groupId>
-                            <artifactId>terasoluna-gfw-functionaltest-env</artifactId>
-                        </exclusion>
-                    </exclusions>
-                </dependency>
             </dependencies>
         </profile>
         <profile>

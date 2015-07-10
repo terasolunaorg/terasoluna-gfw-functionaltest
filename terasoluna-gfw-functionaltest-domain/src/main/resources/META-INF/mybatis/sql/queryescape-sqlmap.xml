@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap 
+            PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+            "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+ 
+<sqlMap namespace="queryescape">
+
+    <resultMap id="todo" class="org.terasoluna.gfw.functionaltest.domain.model.Todo">
+        <result property="id" column="id" />
+        <result property="todoTitle" column="todo_title" />
+    </resultMap>
+
+    <select id="findAllByTitleLike" parameterClass="java.lang.String" resultMap="todo">
+    <![CDATA[
+        SELECT
+            id, 
+            todo_title
+        FROM
+            todo 
+        WHERE
+            todo_title LIKE #todoTitle# ESCAPE '~'
+        ORDER BY
+            id
+    ]]>
+    </select>
+
+</sqlMap>
