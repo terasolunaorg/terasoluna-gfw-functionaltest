@@ -87,20 +87,6 @@
             </properties>
         </profile>
         <profile>
-            <id>resin-postgresql</id>
-            <properties>
-                <resource.directory>${basedir}/configs/resin-postgresql/resources</resource.directory>
-                <buildFinalName>${project.artifactId}-${project.version}-resin-postgresql</buildFinalName>
-            </properties>
-        </profile>
-        <profile>
-            <id>resin-oracle</id>
-            <properties>
-                <resource.directory>${basedir}/configs/resin-oracle/resources</resource.directory>
-                <buildFinalName>${project.artifactId}-${project.version}-resin-oracle</buildFinalName>
-            </properties>
-        </profile>
-        <profile>
             <id>weblogic-oracle</id>
             <properties>
                 <resource.directory>${basedir}/configs/weblogic-oracle/resources</resource.directory>
