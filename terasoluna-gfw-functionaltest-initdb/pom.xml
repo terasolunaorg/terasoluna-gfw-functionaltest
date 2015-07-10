@@ -12,10 +12,6 @@
     <description>DB initialization scripts of Functionality Test Application using TERASOLUNA Server Framework for Java (5.x)</description>
     <artifactId>terasoluna-gfw-functionaltest-initdb</artifactId>
 
-    <properties>
-        <postgresql.version>9.3-1102-jdbc41</postgresql.version>
-    </properties>
-
     <profiles>
         <profile>
             <id>local-postgres</id>
