@@ -99,6 +99,13 @@
             </properties>
         </profile>
         <profile>
+            <id>tomcat8-oracle</id>
+            <properties>
+                <resource.directory>${basedir}/configs/tomcat8-oracle/resources</resource.directory>
+                <buildFinalName>${project.artifactId}-${project.version}-tomcat8-oracle</buildFinalName>
+            </properties>
+        </profile>
+        <profile>
             <id>resin-postgresql</id>
             <properties>
                 <resource.directory>${basedir}/configs/resin-postgresql/resources</resource.directory>
