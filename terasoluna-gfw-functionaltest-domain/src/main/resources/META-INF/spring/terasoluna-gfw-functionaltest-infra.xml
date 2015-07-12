@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jpa="http://www.springframework.org/schema/data/jpa"
-    xmlns:util="http://www.springframework.org/schema/util" xmlns:context="http://www.springframework.org/schema/context"
     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
-        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
         http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 
     <import resource="classpath:/META-INF/spring/terasoluna-gfw-functionaltest-env.xml" />
@@ -46,8 +43,17 @@
         </constructor-arg>
     </bean>
 
-    <import resource="classpath:META-INF/spring/terasoluna-gfw-functionaltest-infra-mybatis.xml" />
+    <bean id="sqlMapClient"
+          class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+        <property name="configLocations"
+                  value="classpath*:/META-INF/mybatis/config/*sqlMapConfig.xml" />
+        <property name="mappingLocations"
+                  value="classpath*:/META-INF/mybatis/sql/**/*-sqlmap.xml" />
+        <property name="dataSource" ref="dataSource" />
+    </bean>
 
-    <context:component-scan base-package="org.terasoluna.gfw.functionaltest.infra" />
+    <bean id="queryDAO" class="jp.terasoluna.fw.dao.ibatis.QueryDAOiBatisImpl">
+        <property name="sqlMapClient" ref="sqlMapClient" />
+    </bean>
 
 </beans>
