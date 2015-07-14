@@ -400,6 +400,70 @@ public class ElTest extends FunctionTestSupport {
                 driver.findElement(
                         By.xpath("//a[contains(@href, '?page=1&size=10&age=0&countries=&dateOfBirth=&main=false&name=TEST%255B%255D%2523%252B%253D%2526TEST')]"))
                         .getText(), is("2"));
+
+        driver.get(applicationContextUrl);
+        driver.findElement(By.id("EL")).click();
+        driver.findElement(By.id("06_09")).click();
+        driver.findElement(By.id("NestedJavaBean")).click();
+
+        driver.get(applicationContextUrl);
+        driver.findElement(By.id("EL")).click();
+        driver.findElement(By.id("06_09")).click();
+        driver.findElement(By.id("NestedJavaBean")).click();
+
+        // output 06_09 Test
+        assertThat(
+                driver.findElement(By.id("queryOutput")).getText(),
+                is("criteria.age=20&criteria.name=yamada&rememberCriteria=true"));
+
+        driver.get(applicationContextUrl);
+        driver.findElement(By.id("EL")).click();
+        driver.findElement(By.id("06_10")).click();
+        driver.findElement(By.id("ListOfJavaBean")).click();
+
+        // output 06_10 Test
+        assertThat(
+                driver.findElement(By.id("queryOutput")).getText(),
+                is("criteria%5B0%5D.age=20&criteria%5B0%5D.name=yamada&criteria%5B1%5D.age=50&criteria%5B1%5D.name=tanaka&operator=AND"));
+
+        driver.get(applicationContextUrl);
+        driver.findElement(By.id("EL")).click();
+        driver.findElement(By.id("06_11")).click();
+        driver.findElement(By.id("SimpleJavaBeanAndListOfJavaBean")).click();
+
+        // output 06_11 Test
+        assertThat(
+                driver.findElement(By.id("queryOutput")).getText(),
+                is("criteria.age=30&criteria.name=suzuki&users%5B0%5D.age=20&users%5B0%5D.name=yamada&users%5B1%5D.age=50&users%5B1%5D.name=tanaka"));
+
+        driver.get(applicationContextUrl);
+        driver.findElement(By.id("EL")).click();
+        driver.findElement(By.id("06_12")).click();
+        driver.findElement(By.id("MapOfJavaBean")).click();
+
+        // output 06_12 Test
+        assertThat(driver.findElement(By.id("queryOutput")).getText(),
+                is("etc%5Baaa%5D=111&etc%5Bbbb%5D=222&etc%5Bccc%5D=333"));
+
+        driver.get(applicationContextUrl);
+        driver.findElement(By.id("EL")).click();
+        driver.findElement(By.id("06_13")).click();
+        driver.findElement(By.id("DateTimeFormat")).click();
+
+        // output 06_13 Test
+        assertThat(
+                driver.findElement(By.id("queryOutput")).getText(),
+                is("date=2015-04-01&item.date=2015-05-01&item.localDate=2015-07-10&localDate=2015-06-10"));
+
+        driver.get(applicationContextUrl);
+        driver.findElement(By.id("EL")).click();
+        driver.findElement(By.id("06_14")).click();
+        driver.findElement(By.id("Array")).click();
+
+        // output 06_14 Test
+        assertThat(
+                driver.findElement(By.id("queryOutput")).getText(),
+                is("array1%5B0%5D=1&array1%5B1%5D=2&array1%5B2%5D=3&array2%5B0%5D=1.1&array2%5B1%5D=1.2&array3%5B0%5D=4&array3%5B1%5D=5&array3%5B2%5D=6&array4%5B0%5D=a&array4%5B1%5D=b&array4%5B2%5D=c&item.array1%5B0%5D=11&item.array1%5B1%5D=12&item.array1%5B2%5D=13&item.array2%5B0%5D=11.1&item.array2%5B1%5D=11.2&item.array3%5B0%5D=14&item.array3%5B1%5D=15&item.array3%5B2%5D=16&item.array4%5B0%5D=d&item.array4%5B1%5D=e&item.array4%5B2%5D=f"));
     }
 
     @Test
