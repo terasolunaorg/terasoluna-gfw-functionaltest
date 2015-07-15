@@ -400,6 +400,255 @@ public class ElTest extends FunctionTestSupport {
                 driver.findElement(
                         By.xpath("//a[contains(@href, '?page=1&size=10&age=0&countries=&dateOfBirth=&main=false&name=TEST%255B%255D%2523%252B%253D%2526TEST')]"))
                         .getText(), is("2"));
+
+        driver.get(applicationContextUrl);
+        driver.findElement(By.id("EL")).click();
+        driver.findElement(By.id("06_09")).click();
+
+        inputFieldAccessor.overrideValue(By.id("criteria.name"), "yamada",
+                driver);
+        inputFieldAccessor.overrideValue(By.id("criteria.age"), "20", driver);
+        inputFieldAccessor.overrideValue(By.id("rememberCriteria"), "true",
+                driver);
+
+        driver.findElement(By.id("searchButton")).click();
+        driver.findElement(By.id("pagination")).findElement(By.linkText("2"))
+                .click();
+
+        // output 06_09 Test
+        assertThat(
+                driver.findElement(By.id("criteria.name"))
+                        .getAttribute("value"), is("yamada"));
+        assertThat(
+                driver.findElement(By.id("criteria.age")).getAttribute("value"),
+                is("20"));
+        assertThat(
+                driver.findElement(By.id("rememberCriteria")).getAttribute(
+                        "value"), is("true"));
+
+        // screen capture
+        screenCapture.save(driver);
+
+        driver.get(applicationContextUrl);
+        driver.findElement(By.id("EL")).click();
+        driver.findElement(By.id("06_10")).click();
+
+        inputFieldAccessor.overrideValue(By.id("criteria0.name"), "yamada",
+                driver);
+        inputFieldAccessor.overrideValue(By.id("criteria0.age"), "20", driver);
+        inputFieldAccessor.overrideValue(By.id("criteria1.name"), "tanaka",
+                driver);
+        inputFieldAccessor.overrideValue(By.id("criteria1.age"), "50", driver);
+        inputFieldAccessor.overrideValue(By.id("operator"), "AND", driver);
+
+        driver.findElement(By.id("searchButton")).click();
+        driver.findElement(By.id("pagination")).findElement(By.linkText("2"))
+                .click();
+
+        // output 06_10 Test
+        assertThat(
+                driver.findElement(By.id("criteria0.name")).getAttribute(
+                        "value"), is("yamada"));
+        assertThat(
+                driver.findElement(By.id("criteria0.age"))
+                        .getAttribute("value"), is("20"));
+        assertThat(
+                driver.findElement(By.id("criteria1.name")).getAttribute(
+                        "value"), is("tanaka"));
+        assertThat(
+                driver.findElement(By.id("criteria1.age"))
+                        .getAttribute("value"), is("50"));
+        assertThat(driver.findElement(By.id("operator")).getAttribute("value"),
+                is("AND"));
+
+        // screen capture
+        screenCapture.save(driver);
+
+        driver.get(applicationContextUrl);
+        driver.findElement(By.id("EL")).click();
+        driver.findElement(By.id("06_11")).click();
+
+        inputFieldAccessor.overrideValue(By.id("criteria.name"), "suzuki",
+                driver);
+        inputFieldAccessor.overrideValue(By.id("criteria.age"), "30", driver);
+        inputFieldAccessor
+                .overrideValue(By.id("users0.name"), "yamada", driver);
+        inputFieldAccessor.overrideValue(By.id("users0.age"), "20", driver);
+        inputFieldAccessor
+                .overrideValue(By.id("users1.name"), "tanaka", driver);
+        inputFieldAccessor.overrideValue(By.id("users1.age"), "50", driver);
+
+        driver.findElement(By.id("searchButton")).click();
+        driver.findElement(By.id("pagination")).findElement(By.linkText("2"))
+                .click();
+
+        // output 06_11 Test
+        assertThat(
+                driver.findElement(By.id("criteria.name"))
+                        .getAttribute("value"), is("suzuki"));
+        assertThat(
+                driver.findElement(By.id("criteria.age")).getAttribute("value"),
+                is("30"));
+        assertThat(
+                driver.findElement(By.id("users0.name")).getAttribute("value"),
+                is("yamada"));
+        assertThat(driver.findElement(By.id("users0.age"))
+                .getAttribute("value"), is("20"));
+        assertThat(
+                driver.findElement(By.id("users1.name")).getAttribute("value"),
+                is("tanaka"));
+        assertThat(driver.findElement(By.id("users1.age"))
+                .getAttribute("value"), is("50"));
+
+        // screen capture
+        screenCapture.save(driver);
+
+        driver.get(applicationContextUrl);
+        driver.findElement(By.id("EL")).click();
+        driver.findElement(By.id("06_12")).click();
+
+        inputFieldAccessor.overrideValue(By.id("etcaaa"), "111", driver);
+        inputFieldAccessor.overrideValue(By.id("etcbbb"), "222", driver);
+        inputFieldAccessor.overrideValue(By.id("etcccc"), "333", driver);
+
+        driver.findElement(By.id("searchButton")).click();
+        driver.findElement(By.id("pagination")).findElement(By.linkText("2"))
+                .click();
+
+        // output 06_12 Test
+        assertThat(driver.findElement(By.id("etcaaa")).getAttribute("value"),
+                is("111"));
+        assertThat(driver.findElement(By.id("etcbbb")).getAttribute("value"),
+                is("222"));
+        assertThat(driver.findElement(By.id("etcccc")).getAttribute("value"),
+                is("333"));
+
+        // screen capture
+        screenCapture.save(driver);
+
+        driver.get(applicationContextUrl);
+        driver.findElement(By.id("EL")).click();
+        driver.findElement(By.id("06_13")).click();
+
+        inputFieldAccessor.overrideValue(By.id("date"), "2015-04-01", driver);
+        inputFieldAccessor.overrideValue(By.id("localDate"), "2015-06-10",
+                driver);
+        inputFieldAccessor.overrideValue(By.id("item.date"), "2015-05-01",
+                driver);
+        inputFieldAccessor.overrideValue(By.id("item.localDate"), "2015-07-10",
+                driver);
+
+        driver.findElement(By.id("searchButton")).click();
+        driver.findElement(By.id("pagination")).findElement(By.linkText("2"))
+                .click();
+
+        // output 06_13 Test
+        assertThat(driver.findElement(By.id("date")).getAttribute("value"),
+                is("2015-04-01"));
+        assertThat(
+                driver.findElement(By.id("localDate")).getAttribute("value"),
+                is("2015-06-10"));
+        assertThat(
+                driver.findElement(By.id("item.date")).getAttribute("value"),
+                is("2015-05-01"));
+        assertThat(
+                driver.findElement(By.id("item.localDate")).getAttribute(
+                        "value"), is("2015-07-10"));
+
+        // screen capture
+        screenCapture.save(driver);
+
+        driver.get(applicationContextUrl);
+        driver.findElement(By.id("EL")).click();
+        driver.findElement(By.id("06_14")).click();
+
+        inputFieldAccessor.overrideValue(By.id("array10"), "1", driver);
+        inputFieldAccessor.overrideValue(By.id("array11"), "2", driver);
+        inputFieldAccessor.overrideValue(By.id("array12"), "3", driver);
+        inputFieldAccessor.overrideValue(By.id("array20"), "1.1", driver);
+        inputFieldAccessor.overrideValue(By.id("array21"), "1.2", driver);
+        inputFieldAccessor.overrideValue(By.id("array30"), "4", driver);
+        inputFieldAccessor.overrideValue(By.id("array31"), "5", driver);
+        inputFieldAccessor.overrideValue(By.id("array32"), "6", driver);
+        inputFieldAccessor.overrideValue(By.id("array40"), "a", driver);
+        inputFieldAccessor.overrideValue(By.id("array41"), "b", driver);
+        inputFieldAccessor.overrideValue(By.id("array42"), "c", driver);
+        inputFieldAccessor.overrideValue(By.id("item.array10"), "11", driver);
+        inputFieldAccessor.overrideValue(By.id("item.array11"), "12", driver);
+        inputFieldAccessor.overrideValue(By.id("item.array12"), "13", driver);
+        inputFieldAccessor.overrideValue(By.id("item.array20"), "11.1", driver);
+        inputFieldAccessor.overrideValue(By.id("item.array21"), "11.2", driver);
+        inputFieldAccessor.overrideValue(By.id("item.array30"), "14", driver);
+        inputFieldAccessor.overrideValue(By.id("item.array31"), "15", driver);
+        inputFieldAccessor.overrideValue(By.id("item.array32"), "16", driver);
+        inputFieldAccessor.overrideValue(By.id("item.array40"), "d", driver);
+        inputFieldAccessor.overrideValue(By.id("item.array41"), "e", driver);
+        inputFieldAccessor.overrideValue(By.id("item.array42"), "f", driver);
+
+        driver.findElement(By.id("searchButton")).click();
+        driver.findElement(By.id("pagination")).findElement(By.linkText("2"))
+                .click();
+
+        // output 06_14 Test
+        assertThat(driver.findElement(By.id("array10")).getAttribute("value"),
+                is("1"));
+        assertThat(driver.findElement(By.id("array11")).getAttribute("value"),
+                is("2"));
+        assertThat(driver.findElement(By.id("array12")).getAttribute("value"),
+                is("3"));
+        assertThat(driver.findElement(By.id("array20")).getAttribute("value"),
+                is("1.1"));
+        assertThat(driver.findElement(By.id("array21")).getAttribute("value"),
+                is("1.2"));
+        assertThat(driver.findElement(By.id("array30")).getAttribute("value"),
+                is("4"));
+        assertThat(driver.findElement(By.id("array31")).getAttribute("value"),
+                is("5"));
+        assertThat(driver.findElement(By.id("array32")).getAttribute("value"),
+                is("6"));
+        assertThat(driver.findElement(By.id("array40")).getAttribute("value"),
+                is("a"));
+        assertThat(driver.findElement(By.id("array41")).getAttribute("value"),
+                is("b"));
+        assertThat(driver.findElement(By.id("array42")).getAttribute("value"),
+                is("c"));
+        assertThat(
+                driver.findElement(By.id("item.array10")).getAttribute("value"),
+                is("11"));
+        assertThat(
+                driver.findElement(By.id("item.array11")).getAttribute("value"),
+                is("12"));
+        assertThat(
+                driver.findElement(By.id("item.array12")).getAttribute("value"),
+                is("13"));
+        assertThat(
+                driver.findElement(By.id("item.array20")).getAttribute("value"),
+                is("11.1"));
+        assertThat(
+                driver.findElement(By.id("item.array21")).getAttribute("value"),
+                is("11.2"));
+        assertThat(
+                driver.findElement(By.id("item.array30")).getAttribute("value"),
+                is("14"));
+        assertThat(
+                driver.findElement(By.id("item.array31")).getAttribute("value"),
+                is("15"));
+        assertThat(
+                driver.findElement(By.id("item.array32")).getAttribute("value"),
+                is("16"));
+        assertThat(
+                driver.findElement(By.id("item.array40")).getAttribute("value"),
+                is("d"));
+        assertThat(
+                driver.findElement(By.id("item.array41")).getAttribute("value"),
+                is("e"));
+        assertThat(
+                driver.findElement(By.id("item.array42")).getAttribute("value"),
+                is("f"));
+
+        // screen capture
+        screenCapture.save(driver);
+
     }
 
     @Test
