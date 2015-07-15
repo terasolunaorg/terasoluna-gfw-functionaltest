@@ -73,6 +73,12 @@
             authentication-failure-handler-ref="redirectErrorHandler"
             authentication-success-handler-ref="redirectHandler" />
     </sec:http>
+    
+    <!-- Add http setting for ajax request path -->
+    <sec:http pattern="/csrf/ajax" auto-config="true"
+              use-expressions="true" request-matcher="ant">
+        <sec:custom-filter ref="csrfFilterErrorPageNotSet" before="LOGOUT_FILTER" />
+    </sec:http>
 
     <sec:http pattern="/**" auto-config="true"
         use-expressions="true" request-matcher="ant">
