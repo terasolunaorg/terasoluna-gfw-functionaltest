@@ -5,10 +5,12 @@
 <form:form action="${pageContext.request.contextPath}/el/6_12/search"
 	method="GET" modelAttribute="searchForm4">
 	<table>
-		<tr>
-			<th>Key</th>
-			<th>Value</th>
-		</tr>
+		<thead>
+			<tr>
+				<th>Key</th>
+				<th>Value(String)</th>
+			</tr>
+		</thead>
 		<tr>
 			<td>aaa</td>
 			<td><form:input path="etc[aaa]" /></td>

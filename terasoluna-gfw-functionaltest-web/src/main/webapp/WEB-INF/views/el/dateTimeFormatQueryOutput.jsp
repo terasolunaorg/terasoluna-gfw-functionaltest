@@ -5,16 +5,22 @@
 <form:form action="${pageContext.request.contextPath}/el/6_13/search"
 	method="GET" modelAttribute="dateForm5">
 	<fieldset>
-		<span>Date</span>
-		<form:input path="date" />
-		<span>LocalDate</span>
-		<form:input path="localDate" />
-	</fieldset>
-	<fieldset>
-		<span>Date</span>
-		<form:input path="item.date" />
-		<span>LocalDate</span>
-		<form:input path="item.localDate" />
+		<legend>Nested Bean(Parent)</legend>
+		<p>
+			<span>Date</span>
+			<form:input path="date" />
+			<span>LocalDate</span>
+			<form:input path="localDate" />
+		</p>
+		<fieldset>
+			<legend>Nested Bean(Child)</legend>
+			<p>
+				<span>Date</span>
+				<form:input path="item.date" />
+				<span>LocalDate</span>
+				<form:input path="item.localDate" />
+			</p>
+		</fieldset>
 	</fieldset>
 	<input type="submit" value="search" id="searchButton" />
 </form:form>

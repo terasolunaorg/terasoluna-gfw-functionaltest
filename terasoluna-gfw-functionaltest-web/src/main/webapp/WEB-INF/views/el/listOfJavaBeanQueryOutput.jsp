@@ -5,15 +5,20 @@
 <form:form action="${pageContext.request.contextPath}/el/6_10/search"
 	method="GET" modelAttribute="batchUpdateUserForm2">
 	<table>
+		<thead>
+			<tr>
+				<th>Index</th>
+				<th>Name</th>
+				<th>Age</th>
+			</tr>
+		</thead>
 		<tr>
-			<th>Name</th>
-			<th>Age</th>
-		</tr>
-		<tr>
+			<td>0</td>
 			<td><form:input path="criteria[0].name" /></td>
 			<td><form:input path="criteria[0].age" /></td>
 		</tr>
 		<tr>
+			<td>1</td>
 			<td><form:input path="criteria[1].name" /></td>
 			<td><form:input path="criteria[1].age" /></td>
 		</tr>
