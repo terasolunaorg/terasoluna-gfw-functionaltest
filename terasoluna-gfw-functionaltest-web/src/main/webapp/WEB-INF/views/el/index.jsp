@@ -54,7 +54,7 @@
 	</tr>
 	<tr>
 		<td><a id="06_12"
-			href="${pageContext.request.contextPath}/el/6_12">Query_Display(f:query(MapOfJavaBean))</a></td>
+			href="${pageContext.request.contextPath}/el/6_12">Query_Display(f:query(MapOfSimpleValue))</a></td>
 	</tr>
 	<tr>
 		<td><a id="06_13"

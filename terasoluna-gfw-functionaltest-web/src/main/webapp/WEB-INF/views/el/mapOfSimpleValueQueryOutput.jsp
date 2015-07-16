@@ -1,5 +1,5 @@
 
-<h2>Query Display f:query(MapOfJavaBean)</h2>
+<h2>Query Display f:query(MapOfSimpleValue)</h2>
 
 <span>Input Data</span>
 <form:form action="${pageContext.request.contextPath}/el/6_12/search"

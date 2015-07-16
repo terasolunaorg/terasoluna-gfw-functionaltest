@@ -30,7 +30,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 @RequestMapping(value = "el")
-public class ElMapOfJavaBeanController {
+public class ElMapOfSimpleValueController {
 
     @ModelAttribute
     public SearchForm4 setUpForm() {
@@ -41,7 +41,7 @@ public class ElMapOfJavaBeanController {
     @RequestMapping(value = "6_12", method = RequestMethod.GET)
     public String init(Model model) {
 
-        return "el/mapOfJavaBeanQueryOutput";
+        return "el/mapOfSimpleValueQueryOutput";
     }
 
     @RequestMapping(value = "6_12/search", method = RequestMethod.GET)
@@ -57,6 +57,6 @@ public class ElMapOfJavaBeanController {
         Page<String> dummyPage = new PageImpl<String>(dummyList, pageable, 100);
         model.addAttribute("page", dummyPage);
 
-        return "el/mapOfJavaBeanQueryOutput";
+        return "el/mapOfSimpleValueQueryOutput";
     }
 }

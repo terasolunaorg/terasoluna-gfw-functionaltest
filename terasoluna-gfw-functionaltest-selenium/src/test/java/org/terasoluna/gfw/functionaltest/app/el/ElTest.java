@@ -514,7 +514,7 @@ public class ElTest extends FunctionTestSupport {
     }
 
     @Test
-    public void test06_12_MapOfJavaBean() {
+    public void test06_12_MapOfSimpleValue() {
         driver.get(applicationContextUrl);
         driver.findElement(By.id("EL")).click();
         driver.findElement(By.id("06_12")).click();
