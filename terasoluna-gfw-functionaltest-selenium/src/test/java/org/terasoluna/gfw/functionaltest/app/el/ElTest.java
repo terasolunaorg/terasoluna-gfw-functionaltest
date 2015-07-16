@@ -403,7 +403,7 @@ public class ElTest extends FunctionTestSupport {
     }
 
     @Test
-    public void test06_9_NestedJavaBean() {
+    public void test06_09_NestedJavaBean() {
         driver.get(applicationContextUrl);
         driver.findElement(By.id("EL")).click();
         driver.findElement(By.id("06_09")).click();
