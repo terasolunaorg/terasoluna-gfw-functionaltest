@@ -400,7 +400,10 @@ public class ElTest extends FunctionTestSupport {
                 driver.findElement(
                         By.xpath("//a[contains(@href, '?page=1&size=10&age=0&countries=&dateOfBirth=&main=false&name=TEST%255B%255D%2523%252B%253D%2526TEST')]"))
                         .getText(), is("2"));
+    }
 
+    @Test
+    public void test06_9_NestedJavaBean() {
         driver.get(applicationContextUrl);
         driver.findElement(By.id("EL")).click();
         driver.findElement(By.id("06_09")).click();
@@ -428,7 +431,10 @@ public class ElTest extends FunctionTestSupport {
 
         // screen capture
         screenCapture.save(driver);
+    }
 
+    @Test
+    public void test06_10_ListOfJavaBean() {
         driver.get(applicationContextUrl);
         driver.findElement(By.id("EL")).click();
         driver.findElement(By.id("06_10")).click();
@@ -463,7 +469,10 @@ public class ElTest extends FunctionTestSupport {
 
         // screen capture
         screenCapture.save(driver);
+    }
 
+    @Test
+    public void test06_11_SimpleJavaBeanAndListOfJavaBean() {
         driver.get(applicationContextUrl);
         driver.findElement(By.id("EL")).click();
         driver.findElement(By.id("06_11")).click();
@@ -502,7 +511,10 @@ public class ElTest extends FunctionTestSupport {
 
         // screen capture
         screenCapture.save(driver);
+    }
 
+    @Test
+    public void test06_12_MapOfJavaBean() {
         driver.get(applicationContextUrl);
         driver.findElement(By.id("EL")).click();
         driver.findElement(By.id("06_12")).click();
@@ -525,7 +537,10 @@ public class ElTest extends FunctionTestSupport {
 
         // screen capture
         screenCapture.save(driver);
+    }
 
+    @Test
+    public void test06_13_DateTimeFormat() {
         driver.get(applicationContextUrl);
         driver.findElement(By.id("EL")).click();
         driver.findElement(By.id("06_13")).click();
@@ -557,7 +572,10 @@ public class ElTest extends FunctionTestSupport {
 
         // screen capture
         screenCapture.save(driver);
+    }
 
+    @Test
+    public void test06_14_Array() {
         driver.get(applicationContextUrl);
         driver.findElement(By.id("EL")).click();
         driver.findElement(By.id("06_14")).click();
@@ -648,7 +666,6 @@ public class ElTest extends FunctionTestSupport {
 
         // screen capture
         screenCapture.save(driver);
-
     }
 
     @Test
