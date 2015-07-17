@@ -404,8 +404,6 @@ public class ElTest extends FunctionTestSupport {
 
     @Test
     public void test06_09_NestedJavaBean() {
-        driver.get(applicationContextUrl);
-        driver.findElement(By.id("EL")).click();
         driver.findElement(By.id("06_09")).click();
 
         inputFieldAccessor.overrideValue(By.id("criteria.name"), "yamada",
@@ -428,15 +426,10 @@ public class ElTest extends FunctionTestSupport {
         assertThat(
                 driver.findElement(By.id("rememberCriteria")).getAttribute(
                         "value"), is("true"));
-
-        // screen capture
-        screenCapture.save(driver);
     }
 
     @Test
     public void test06_10_ListOfJavaBean() {
-        driver.get(applicationContextUrl);
-        driver.findElement(By.id("EL")).click();
         driver.findElement(By.id("06_10")).click();
 
         inputFieldAccessor.overrideValue(By.id("criteria0.name"), "yamada",
@@ -466,15 +459,10 @@ public class ElTest extends FunctionTestSupport {
                         .getAttribute("value"), is("50"));
         assertThat(driver.findElement(By.id("operator")).getAttribute("value"),
                 is("AND"));
-
-        // screen capture
-        screenCapture.save(driver);
     }
 
     @Test
     public void test06_11_SimpleJavaBeanAndListOfJavaBean() {
-        driver.get(applicationContextUrl);
-        driver.findElement(By.id("EL")).click();
         driver.findElement(By.id("06_11")).click();
 
         inputFieldAccessor.overrideValue(By.id("criteria.name"), "suzuki",
@@ -508,15 +496,10 @@ public class ElTest extends FunctionTestSupport {
                 is("tanaka"));
         assertThat(driver.findElement(By.id("users1.age"))
                 .getAttribute("value"), is("50"));
-
-        // screen capture
-        screenCapture.save(driver);
     }
 
     @Test
     public void test06_12_MapOfSimpleValue() {
-        driver.get(applicationContextUrl);
-        driver.findElement(By.id("EL")).click();
         driver.findElement(By.id("06_12")).click();
 
         inputFieldAccessor.overrideValue(By.id("etcaaa"), "111", driver);
@@ -534,15 +517,10 @@ public class ElTest extends FunctionTestSupport {
                 is("222"));
         assertThat(driver.findElement(By.id("etcccc")).getAttribute("value"),
                 is("333"));
-
-        // screen capture
-        screenCapture.save(driver);
     }
 
     @Test
     public void test06_13_DateTimeFormat() {
-        driver.get(applicationContextUrl);
-        driver.findElement(By.id("EL")).click();
         driver.findElement(By.id("06_13")).click();
 
         inputFieldAccessor.overrideValue(By.id("date"), "2015-04-01", driver);
@@ -569,15 +547,10 @@ public class ElTest extends FunctionTestSupport {
         assertThat(
                 driver.findElement(By.id("item.localDate")).getAttribute(
                         "value"), is("2015-07-10"));
-
-        // screen capture
-        screenCapture.save(driver);
     }
 
     @Test
     public void test06_14_Array() {
-        driver.get(applicationContextUrl);
-        driver.findElement(By.id("EL")).click();
         driver.findElement(By.id("06_14")).click();
 
         inputFieldAccessor.overrideValue(By.id("array10"), "1", driver);
@@ -663,9 +636,6 @@ public class ElTest extends FunctionTestSupport {
         assertThat(
                 driver.findElement(By.id("item.array42")).getAttribute("value"),
                 is("f"));
-
-        // screen capture
-        screenCapture.save(driver);
     }
 
     @Test
