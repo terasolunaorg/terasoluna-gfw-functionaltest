@@ -75,7 +75,7 @@
 				<td><p id="mapA0String">${f:h(mapA0String)}</p></td>
 				<td><p id="mapA1String">${f:h(mapA1String)}</p></td>
 				<td><p id="mapA2String">${f:h(mapA2String)}</p></td>
-				<td><p id="mapBStirng">${f:h(mapBString)}</p></td>
+				<td><p id="mapBString">${f:h(mapBString)}</p></td>
 			</tr>
 		</table>
 		<fieldset>
@@ -93,7 +93,7 @@
 					<td><p id="mapA0StringItem">${f:h(mapA0StringItem)}</p></td>
 					<td><p id="mapA1StringItem">${f:h(mapA1StringItem)}</p></td>
 					<td><p id="mapA2StringItem">${f:h(mapA2StringItem)}</p></td>
-					<td><p id="mapBStirngItem">${f:h(mapBStringItem)}</p></td>
+					<td><p id="mapBStringItem">${f:h(mapBStringItem)}</p></td>
 				</tr>
 			</table>
 		</fieldset>
