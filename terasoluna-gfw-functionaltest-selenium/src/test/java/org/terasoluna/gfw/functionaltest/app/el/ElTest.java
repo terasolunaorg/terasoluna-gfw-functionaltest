@@ -325,7 +325,7 @@ public class ElTest extends FunctionTestSupport {
         // output 06_03 Test
         assertThat(
                 driver.findElement(
-                        By.xpath("//a[contains(@href, '?page=1&size=10&age=10&countries=JA&dateOfBirth=2000-01-01&main=true&name=hoge')]"))
+                        By.xpath("//a[contains(@href, '?page=1&size=10&age=10&countries%5B0%5D=JA&dateOfBirth=2000-01-01&main=true&name=hoge')]"))
                         .getText(), is("2"));
 
         // screen capture
@@ -339,7 +339,7 @@ public class ElTest extends FunctionTestSupport {
         // output 06_04 Test
         assertThat(
                 driver.findElement(
-                        By.xpath("//a[contains(@href, '?page=1&size=10&age=0&countries=&dateOfBirth=&main=false&name=')]"))
+                        By.xpath("//a[contains(@href, '?page=1&size=10&age=0&_countries=&_dateOfBirth=&main=false&name=')]"))
                         .getText(), is("2"));
 
         // screen capture
@@ -356,7 +356,7 @@ public class ElTest extends FunctionTestSupport {
         // output 06_05 Test
         assertThat(
                 driver.findElement(
-                        By.xpath("//a[contains(@href, \"?page=1&size=10&age=0&countries=&dateOfBirth=&main=false&name=%253Cscript%253Ealert('XSS%2520Attack')%253C/script%253E\")]"))
+                        By.xpath("//a[contains(@href, \"?page=1&size=10&age=0&_countries=&_dateOfBirth=&main=false&name=%3Cscript%3Ealert('XSS%20Attack')%3C/script%3E\")]"))
                         .getText(), is("2"));
 
         // screen capture
@@ -372,7 +372,7 @@ public class ElTest extends FunctionTestSupport {
         // output 06_06 Test
         assertThat(
                 driver.findElement(
-                        By.xpath("//a[contains(@href, '?page=1&size=10&age=0&countries=&dateOfBirth=&main=false&name=%25E3%2581%2582%25E3%2581%2584%25E3%2581%2586%25E3%2581%2588%25E3%2581%258A')]"))
+                        By.xpath("//a[contains(@href, '?page=1&size=10&age=0&_countries=&_dateOfBirth=&main=false&name=%E3%81%82%E3%81%84%E3%81%86%E3%81%88%E3%81%8A')]"))
                         .getText(), is("2"));
 
         // screen capture
@@ -398,7 +398,7 @@ public class ElTest extends FunctionTestSupport {
         // output 06_08 Test
         assertThat(
                 driver.findElement(
-                        By.xpath("//a[contains(@href, '?page=1&size=10&age=0&countries=&dateOfBirth=&main=false&name=TEST%255B%255D%2523%252B%253D%2526TEST')]"))
+                        By.xpath("//a[contains(@href, '?page=1&size=10&age=0&_countries=&_dateOfBirth=&main=false&name=TEST%5B%5D%23%2B%3D%26TEST')]"))
                         .getText(), is("2"));
     }
 

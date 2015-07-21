@@ -34,8 +34,7 @@
     
     <c:if test="${page != null}">
         <div class="pagination">
-            <t:pagination page="${page}" 
-                queryTmpl="page={page}&size={size}&${f:query(customerSearchCriteria)}" />
+            <t:pagination page="${page}" criteriaQuery="${f:query(customerSearchCriteria)}" />
         </div>
         <table class="maintable">
             <thead>
@@ -52,7 +51,6 @@
             </c:forEach>
         </table>
         <div class="pagination">
-            <t:pagination page="${page}" 
-                queryTmpl="page={page}&size={size}&${f:query(customerSearchCriteria)}" />
+            <t:pagination page="${page}" criteriaQuery="${f:query(customerSearchCriteria)}" />
         </div>
     </c:if>
