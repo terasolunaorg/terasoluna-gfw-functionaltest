@@ -65,6 +65,18 @@
 			href="${pageContext.request.contextPath}/el/6_14">Query_Display(f:query(Array))</a></td>
 	</tr>
 	<tr>
+		<td><a id="06_15"
+			href="${pageContext.request.contextPath}/el/6_15">Query_Display(f:query(SimpleJavaBean)) with StringTrimmerEditor</a></td>
+	</tr>
+	<tr>
+		<td><a id="06_16"
+			href="${pageContext.request.contextPath}/el/6_16">Query_Display(f:query(ListOfSimpleValue)) with StringTrimmerEditor</a></td>
+	</tr>
+	<tr>
+		<td><a id="06_17"
+			href="${pageContext.request.contextPath}/el/6_17">Query_Display(f:query(MapOfSimpleValue)) with StringTrimmerEditor</a></td>
+	</tr>
+	<tr>
 		<td><a id="07_01"
 			href="${pageContext.request.contextPath}/el/7_1">JavaScript_XSS_Measures(f:js(''))</a>
 		</td>

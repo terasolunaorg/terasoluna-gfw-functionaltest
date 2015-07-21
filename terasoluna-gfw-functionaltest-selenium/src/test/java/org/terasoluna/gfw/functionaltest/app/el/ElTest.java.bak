@@ -137,8 +137,8 @@ public class ElTest extends FunctionTestSupport {
 
         // output data 03_01 Test
         WebElement newLineOutput = driver.findElement(By.id("newLineOutput"));
-        BufferedReader newLineOutputTextReader = new BufferedReader(new StringReader(
-                newLineOutput.getText()));
+        BufferedReader newLineOutputTextReader = new BufferedReader(
+                new StringReader(newLineOutput.getText()));
         try {
             assertThat(newLineOutputTextReader.readLine(), is("Spring"));
             assertThat(newLineOutputTextReader.readLine(), is("mvc"));
@@ -260,16 +260,22 @@ public class ElTest extends FunctionTestSupport {
         inputFieldAccessor.overrideValue(By.id("text-outputQueryParam"),
                 "tera&1", driver);
         driver.findElement(By.id("btn-output")).click();
-        
+
         // output 05_04 Test
-        assertThat(driver.findElement(By.id("linkUOutput")).getText(),
+        assertThat(
+                driver.findElement(By.id("linkUOutput")).getText(),
                 is("http://localhost:8080/terasoluna-gfw-functionaltest-web/el/output_05_04?name=tera%261"));
         // output link
-        assertThat(driver.findElement(By.linkText("http://localhost:8080/terasoluna-gfw-functionaltest-web/el/output_05_04?name=tera%261"))
-                .getText(), is("http://localhost:8080/terasoluna-gfw-functionaltest-web/el/output_05_04?name=tera%261"));
+        assertThat(
+                driver.findElement(
+                        By.linkText("http://localhost:8080/terasoluna-gfw-functionaltest-web/el/output_05_04?name=tera%261"))
+                        .getText(),
+                is("http://localhost:8080/terasoluna-gfw-functionaltest-web/el/output_05_04?name=tera%261"));
         // inheriting of query Test
-        driver.findElement(By.id("linkUOutput")).findElement(
-                By.linkText("http://localhost:8080/terasoluna-gfw-functionaltest-web/el/output_05_04?name=tera%261")).click();
+        driver.findElement(By.id("linkUOutput"))
+                .findElement(
+                        By.linkText("http://localhost:8080/terasoluna-gfw-functionaltest-web/el/output_05_04?name=tera%261"))
+                .click();
     }
 
     @Test(expected = NoSuchElementException.class)
@@ -317,7 +323,8 @@ public class ElTest extends FunctionTestSupport {
         new Select(driver.findElement(By.id("main")))
                 .selectByVisibleText("YES");
         inputFieldAccessor.overrideValue(By.id("age"), "10", driver);
-        inputFieldAccessor.overrideValue(By.id("dateOfBirth"), "2000-01-01", driver);
+        inputFieldAccessor.overrideValue(By.id("dateOfBirth"), "2000-01-01",
+                driver);
         new Select(driver.findElement(By.id("countries")))
                 .selectByVisibleText("JA");
         driver.findElement(By.id("btn-output")).click();
@@ -384,15 +391,16 @@ public class ElTest extends FunctionTestSupport {
 
         // output 06_07 Test
         assertThat(driver.findElement(By.id("queryOutput")).getText(), is(""));
-        
+
         // screen capture
         screenCapture.save(driver);
 
         driver.get(applicationContextUrl);
         driver.findElement(By.id("EL")).click();
         driver.findElement(By.id("06_03-")).click();
-        
-        inputFieldAccessor.overrideValue(By.id("name"), "TEST[]#+=&TEST", driver);
+
+        inputFieldAccessor.overrideValue(By.id("name"), "TEST[]#+=&TEST",
+                driver);
         driver.findElement(By.id("btn-output")).click();
 
         // output 06_08 Test
@@ -759,67 +767,6 @@ public class ElTest extends FunctionTestSupport {
                 is("null"));
         assertThat(driver.findElement(By.id("listCStringItem")).getText(),
                 is("[]"));
-    }
-
-    @Test
-    public void test06_17_MapOfSimpleValueDefaultTrim() {
-        driver.findElement(By.id("06_17")).click();
-
-        inputFieldAccessor.overrideValue(By.id("mapAa"), "", driver);
-        inputFieldAccessor.overrideValue(By.id("mapAb"), "", driver);
-        inputFieldAccessor.overrideValue(By.id("mapAc"), "", driver);
-        driver.findElement(By.id("mapB")).click();
-
-        inputFieldAccessor.overrideValue(By.id("item.mapAd"), "", driver);
-        inputFieldAccessor.overrideValue(By.id("item.mapAe"), "", driver);
-        inputFieldAccessor.overrideValue(By.id("item.mapAf"), "", driver);
-        driver.findElement(By.id("item.mapB")).click();
-
-        driver.findElement(By.id("searchButton")).click();
-        driver.findElement(By.id("pagination")).findElement(By.linkText("2"))
-                .click();
-
-        // output 06_17 Test
-        assertThat(driver.findElement(By.id("mapAa")).getAttribute("value"),
-                is(""));
-        assertThat(driver.findElement(By.id("mapAb")).getAttribute("value"),
-                is(""));
-        assertThat(driver.findElement(By.id("mapAc")).getAttribute("value"),
-                is(""));
-        assertThat(driver.findElement(By.id("mapBaa1")).isSelected(), is(false));
-        assertThat(driver.findElement(By.id("mapBbb1")).isSelected(), is(false));
-        assertThat(driver.findElement(By.id("mapBcc1")).isSelected(), is(false));
-
-        assertThat(driver.findElement(By.id("item.mapAd"))
-                .getAttribute("value"), is(""));
-        assertThat(driver.findElement(By.id("item.mapAe"))
-                .getAttribute("value"), is(""));
-        assertThat(driver.findElement(By.id("item.mapAf"))
-                .getAttribute("value"), is(""));
-        assertThat(driver.findElement(By.id("item.mapBdd1")).isSelected(),
-                is(false));
-        assertThat(driver.findElement(By.id("item.mapBee1")).isSelected(),
-                is(false));
-        assertThat(driver.findElement(By.id("item.mapBff1")).isSelected(),
-                is(false));
-
-        assertThat(driver.findElement(By.id("mapA0String")).getText(),
-                is("null"));
-        assertThat(driver.findElement(By.id("mapA1String")).getText(),
-                is("null"));
-        assertThat(driver.findElement(By.id("mapA2String")).getText(),
-                is("null"));
-        assertThat(driver.findElement(By.id("mapBString")).getText(),
-                is("null"));
-
-        assertThat(driver.findElement(By.id("mapA0StringItem")).getText(),
-                is("null"));
-        assertThat(driver.findElement(By.id("mapA1StringItem")).getText(),
-                is("null"));
-        assertThat(driver.findElement(By.id("mapA2StringItem")).getText(),
-                is("null"));
-        assertThat(driver.findElement(By.id("mapBStringItem")).getText(),
-                is("null"));
     }
 
     @Test
