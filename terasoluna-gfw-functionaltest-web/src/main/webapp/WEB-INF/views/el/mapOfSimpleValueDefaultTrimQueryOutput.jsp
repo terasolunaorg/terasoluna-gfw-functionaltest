@@ -46,7 +46,7 @@
 					<td><form:checkbox path="item.mapB[dd]" value="44" label="dd" /><br>
 						<form:checkbox path="item.mapB[ee]" value="55" label="ee" /><br>
 						<form:checkbox path="item.mapB[ff]" value="66" label="ff" /><br> <input
-					id="item.mapB" type="checkbox" name="_item.mapB" value="-" /> <label
+					id="item.mapB" type="checkbox" name="_item.mapB" /> <label
 					for="item.mapB">初期化（Null）</label><br></td>
 					</td>
 				</tr>
