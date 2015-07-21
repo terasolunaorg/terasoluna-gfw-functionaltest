@@ -3,6 +3,9 @@
 	StringTrimmerEditor</h2>
 
 <span>Input Data</span>
+<!-- In the case of using f:query for Map(null) after form tag, Map is changing not null and query parameter is not existing.-->
+<!-- Workaround:Use f:query for Map(null) before form tag, and Save query parameter in the temporary variable. -->
+<c:set var="querytemp" value="${f:query(mapForm)}" />
 <form:form action="${pageContext.request.contextPath}/el/6_17/search"
 	method="GET" modelAttribute="mapForm">
 	<fieldset>
@@ -99,7 +102,7 @@
 <c:if test="${page != null}">
 	<div id="pagination" class="pagination">
 		<t:pagination page="${page}"
-			criteriaQuery="${f:query(mapForm)}" />
+			criteriaQuery="${querytemp}" />
 	</div>
 	<table class="maintable">
 		<thead>
