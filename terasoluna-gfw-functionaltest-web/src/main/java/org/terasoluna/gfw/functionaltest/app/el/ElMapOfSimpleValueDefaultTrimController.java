@@ -50,23 +50,11 @@ public class ElMapOfSimpleValueDefaultTrimController {
                 put("b", "2");
                 put("c", "3");
             }
-        }, new LinkedHashMap<String, String>() {
-            {
-                put("aa", "11");
-                put("bb", "22");
-                put("cc", "33");
-            }
         }, new MapFormItem(new LinkedHashMap<String, String>() {
             {
                 put("d", "4");
                 put("e", "5");
                 put("f", "6");
-            }
-        }, new LinkedHashMap<String, String>() {
-            {
-                put("dd", "44");
-                put("ee", "55");
-                put("ff", "66");
             }
         }));
 
@@ -95,12 +83,10 @@ public class ElMapOfSimpleValueDefaultTrimController {
         String mapA0String = Objects.toString(mapForm.getMapA().get("a"));
         String mapA1String = Objects.toString(mapForm.getMapA().get("b"));
         String mapA2String = Objects.toString(mapForm.getMapA().get("c"));
-        String mapBString = Objects.toString(mapForm.getMapB());
 
         model.addAttribute("mapA0String", mapA0String);
         model.addAttribute("mapA1String", mapA1String);
         model.addAttribute("mapA2String", mapA2String);
-        model.addAttribute("mapBString", mapBString);
 
         String mapA0StringItem = Objects.toString(mapForm.getItem().getMapA()
                 .get("d"));
@@ -108,12 +94,10 @@ public class ElMapOfSimpleValueDefaultTrimController {
                 .get("e"));
         String mapA2StringItem = Objects.toString(mapForm.getItem().getMapA()
                 .get("f"));
-        String mapBStringItem = Objects.toString(mapForm.getItem().getMapB());
 
         model.addAttribute("mapA0StringItem", mapA0StringItem);
         model.addAttribute("mapA1StringItem", mapA1StringItem);
         model.addAttribute("mapA2StringItem", mapA2StringItem);
-        model.addAttribute("mapBStringItem", mapBStringItem);
 
         return "el/mapOfSimpleValueDefaultTrimQueryOutput";
     }

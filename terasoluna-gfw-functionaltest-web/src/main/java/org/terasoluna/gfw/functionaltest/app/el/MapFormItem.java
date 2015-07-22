@@ -25,11 +25,8 @@ public class MapFormItem implements Serializable {
 
     private Map<String, String> mapA;
 
-    private Map<String, String> mapB;
-
-    public MapFormItem(Map<String, String> mapA, Map<String, String> mapB) {
+    public MapFormItem(Map<String, String> mapA) {
         this.mapA = mapA;
-        this.mapB = mapB;
     }
 
     public MapFormItem() {
@@ -41,14 +38,6 @@ public class MapFormItem implements Serializable {
 
     public void setMapA(Map<String, String> mapA) {
         this.mapA = mapA;
-    }
-
-    public Map<String, String> getMapB() {
-        return mapB;
-    }
-
-    public void setMapB(Map<String, String> mapB) {
-        this.mapB = mapB;
     }
 
     public String toString() {

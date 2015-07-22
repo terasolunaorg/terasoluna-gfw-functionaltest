@@ -768,12 +768,10 @@ public class ElTest extends FunctionTestSupport {
         inputFieldAccessor.overrideValue(By.id("mapAa"), "", driver);
         inputFieldAccessor.overrideValue(By.id("mapAb"), "", driver);
         inputFieldAccessor.overrideValue(By.id("mapAc"), "", driver);
-        driver.findElement(By.id("mapB")).click();
 
         inputFieldAccessor.overrideValue(By.id("item.mapAd"), "", driver);
         inputFieldAccessor.overrideValue(By.id("item.mapAe"), "", driver);
         inputFieldAccessor.overrideValue(By.id("item.mapAf"), "", driver);
-        driver.findElement(By.id("item.mapB")).click();
 
         driver.findElement(By.id("searchButton")).click();
         driver.findElement(By.id("pagination")).findElement(By.linkText("2"))
@@ -786,9 +784,6 @@ public class ElTest extends FunctionTestSupport {
                 is(""));
         assertThat(driver.findElement(By.id("mapAc")).getAttribute("value"),
                 is(""));
-        assertThat(driver.findElement(By.id("mapBaa1")).isSelected(), is(false));
-        assertThat(driver.findElement(By.id("mapBbb1")).isSelected(), is(false));
-        assertThat(driver.findElement(By.id("mapBcc1")).isSelected(), is(false));
 
         assertThat(driver.findElement(By.id("item.mapAd"))
                 .getAttribute("value"), is(""));
@@ -796,12 +791,6 @@ public class ElTest extends FunctionTestSupport {
                 .getAttribute("value"), is(""));
         assertThat(driver.findElement(By.id("item.mapAf"))
                 .getAttribute("value"), is(""));
-        assertThat(driver.findElement(By.id("item.mapBdd1")).isSelected(),
-                is(false));
-        assertThat(driver.findElement(By.id("item.mapBee1")).isSelected(),
-                is(false));
-        assertThat(driver.findElement(By.id("item.mapBff1")).isSelected(),
-                is(false));
 
         assertThat(driver.findElement(By.id("mapA0String")).getText(),
                 is("null"));
@@ -809,16 +798,12 @@ public class ElTest extends FunctionTestSupport {
                 is("null"));
         assertThat(driver.findElement(By.id("mapA2String")).getText(),
                 is("null"));
-        assertThat(driver.findElement(By.id("mapBString")).getText(),
-                is("null"));
 
         assertThat(driver.findElement(By.id("mapA0StringItem")).getText(),
                 is("null"));
         assertThat(driver.findElement(By.id("mapA1StringItem")).getText(),
                 is("null"));
         assertThat(driver.findElement(By.id("mapA2StringItem")).getText(),
-                is("null"));
-        assertThat(driver.findElement(By.id("mapBStringItem")).getText(),
                 is("null"));
     }
 
