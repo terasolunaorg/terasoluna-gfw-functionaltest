@@ -41,6 +41,42 @@
 				Support Object))</a></td>
 	</tr>
 	<tr>
+		<td><a id="06_09"
+			href="${pageContext.request.contextPath}/el/6_9">Query_Display(f:query(NestedJavaBean))</a></td>
+	</tr>
+	<tr>
+		<td><a id="06_10"
+			href="${pageContext.request.contextPath}/el/6_10">Query_Display(f:query(ListOfJavaBean))</a></td>
+	</tr>
+	<tr>
+		<td><a id="06_11"
+			href="${pageContext.request.contextPath}/el/6_11">Query_Display(f:query(SimpleJavaBeanAndListOfJavaBean))</a></td>
+	</tr>
+	<tr>
+		<td><a id="06_12"
+			href="${pageContext.request.contextPath}/el/6_12">Query_Display(f:query(MapOfSimpleValue))</a></td>
+	</tr>
+	<tr>
+		<td><a id="06_13"
+			href="${pageContext.request.contextPath}/el/6_13">Query_Display(f:query(DateTimeFormat))</a></td>
+	</tr>
+	<tr>
+		<td><a id="06_14"
+			href="${pageContext.request.contextPath}/el/6_14">Query_Display(f:query(Array))</a></td>
+	</tr>
+	<tr>
+		<td><a id="06_15"
+			href="${pageContext.request.contextPath}/el/6_15">Query_Display(f:query(SimpleJavaBean)) with StringTrimmerEditor</a></td>
+	</tr>
+	<tr>
+		<td><a id="06_16"
+			href="${pageContext.request.contextPath}/el/6_16">Query_Display(f:query(ListOfSimpleValue)) with StringTrimmerEditor</a></td>
+	</tr>
+	<tr>
+		<td><a id="06_17"
+			href="${pageContext.request.contextPath}/el/6_17">Query_Display(f:query(MapOfSimpleValue)) with StringTrimmerEditor</a></td>
+	</tr>
+	<tr>
 		<td><a id="07_01"
 			href="${pageContext.request.contextPath}/el/7_1">JavaScript_XSS_Measures(f:js(''))</a>
 		</td>

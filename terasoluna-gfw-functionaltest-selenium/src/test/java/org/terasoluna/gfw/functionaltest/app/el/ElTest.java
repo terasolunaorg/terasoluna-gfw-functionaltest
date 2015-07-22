@@ -403,6 +403,411 @@ public class ElTest extends FunctionTestSupport {
     }
 
     @Test
+    public void test06_09_NestedJavaBean() {
+        driver.findElement(By.id("06_09")).click();
+
+        inputFieldAccessor.overrideValue(By.id("criteria.name"), "yamada",
+                driver);
+        inputFieldAccessor.overrideValue(By.id("criteria.age"), "20", driver);
+        inputFieldAccessor.overrideValue(By.id("rememberCriteria"), "true",
+                driver);
+
+        driver.findElement(By.id("searchButton")).click();
+        driver.findElement(By.id("pagination")).findElement(By.linkText("2"))
+                .click();
+
+        // output 06_09 Test
+        assertThat(
+                driver.findElement(By.id("criteria.name"))
+                        .getAttribute("value"), is("yamada"));
+        assertThat(
+                driver.findElement(By.id("criteria.age")).getAttribute("value"),
+                is("20"));
+        assertThat(
+                driver.findElement(By.id("rememberCriteria")).getAttribute(
+                        "value"), is("true"));
+    }
+
+    @Test
+    public void test06_10_ListOfJavaBean() {
+        driver.findElement(By.id("06_10")).click();
+
+        inputFieldAccessor.overrideValue(By.id("criteria0.name"), "yamada",
+                driver);
+        inputFieldAccessor.overrideValue(By.id("criteria0.age"), "20", driver);
+        inputFieldAccessor.overrideValue(By.id("criteria1.name"), "tanaka",
+                driver);
+        inputFieldAccessor.overrideValue(By.id("criteria1.age"), "50", driver);
+        inputFieldAccessor.overrideValue(By.id("operator"), "AND", driver);
+
+        driver.findElement(By.id("searchButton")).click();
+        driver.findElement(By.id("pagination")).findElement(By.linkText("2"))
+                .click();
+
+        // output 06_10 Test
+        assertThat(
+                driver.findElement(By.id("criteria0.name")).getAttribute(
+                        "value"), is("yamada"));
+        assertThat(
+                driver.findElement(By.id("criteria0.age"))
+                        .getAttribute("value"), is("20"));
+        assertThat(
+                driver.findElement(By.id("criteria1.name")).getAttribute(
+                        "value"), is("tanaka"));
+        assertThat(
+                driver.findElement(By.id("criteria1.age"))
+                        .getAttribute("value"), is("50"));
+        assertThat(driver.findElement(By.id("operator")).getAttribute("value"),
+                is("AND"));
+    }
+
+    @Test
+    public void test06_11_SimpleJavaBeanAndListOfJavaBean() {
+        driver.findElement(By.id("06_11")).click();
+
+        inputFieldAccessor.overrideValue(By.id("criteria.name"), "suzuki",
+                driver);
+        inputFieldAccessor.overrideValue(By.id("criteria.age"), "30", driver);
+        inputFieldAccessor
+                .overrideValue(By.id("users0.name"), "yamada", driver);
+        inputFieldAccessor.overrideValue(By.id("users0.age"), "20", driver);
+        inputFieldAccessor
+                .overrideValue(By.id("users1.name"), "tanaka", driver);
+        inputFieldAccessor.overrideValue(By.id("users1.age"), "50", driver);
+
+        driver.findElement(By.id("searchButton")).click();
+        driver.findElement(By.id("pagination")).findElement(By.linkText("2"))
+                .click();
+
+        // output 06_11 Test
+        assertThat(
+                driver.findElement(By.id("criteria.name"))
+                        .getAttribute("value"), is("suzuki"));
+        assertThat(
+                driver.findElement(By.id("criteria.age")).getAttribute("value"),
+                is("30"));
+        assertThat(
+                driver.findElement(By.id("users0.name")).getAttribute("value"),
+                is("yamada"));
+        assertThat(driver.findElement(By.id("users0.age"))
+                .getAttribute("value"), is("20"));
+        assertThat(
+                driver.findElement(By.id("users1.name")).getAttribute("value"),
+                is("tanaka"));
+        assertThat(driver.findElement(By.id("users1.age"))
+                .getAttribute("value"), is("50"));
+    }
+
+    @Test
+    public void test06_12_MapOfSimpleValue() {
+        driver.findElement(By.id("06_12")).click();
+
+        inputFieldAccessor.overrideValue(By.id("etcaaa"), "111", driver);
+        inputFieldAccessor.overrideValue(By.id("etcbbb"), "222", driver);
+        inputFieldAccessor.overrideValue(By.id("etcccc"), "333", driver);
+
+        driver.findElement(By.id("searchButton")).click();
+        driver.findElement(By.id("pagination")).findElement(By.linkText("2"))
+                .click();
+
+        // output 06_12 Test
+        assertThat(driver.findElement(By.id("etcaaa")).getAttribute("value"),
+                is("111"));
+        assertThat(driver.findElement(By.id("etcbbb")).getAttribute("value"),
+                is("222"));
+        assertThat(driver.findElement(By.id("etcccc")).getAttribute("value"),
+                is("333"));
+    }
+
+    @Test
+    public void test06_13_DateTimeFormat() {
+        driver.findElement(By.id("06_13")).click();
+
+        inputFieldAccessor.overrideValue(By.id("date"), "2015-04-01", driver);
+        inputFieldAccessor.overrideValue(By.id("localDate"), "2015-06-10",
+                driver);
+        inputFieldAccessor.overrideValue(By.id("item.date"), "2015-05-01",
+                driver);
+        inputFieldAccessor.overrideValue(By.id("item.localDate"), "2015-07-10",
+                driver);
+
+        driver.findElement(By.id("searchButton")).click();
+        driver.findElement(By.id("pagination")).findElement(By.linkText("2"))
+                .click();
+
+        // output 06_13 Test
+        assertThat(driver.findElement(By.id("date")).getAttribute("value"),
+                is("2015-04-01"));
+        assertThat(
+                driver.findElement(By.id("localDate")).getAttribute("value"),
+                is("2015-06-10"));
+        assertThat(
+                driver.findElement(By.id("item.date")).getAttribute("value"),
+                is("2015-05-01"));
+        assertThat(
+                driver.findElement(By.id("item.localDate")).getAttribute(
+                        "value"), is("2015-07-10"));
+    }
+
+    @Test
+    public void test06_14_Array() {
+        driver.findElement(By.id("06_14")).click();
+
+        inputFieldAccessor.overrideValue(By.id("array10"), "1", driver);
+        inputFieldAccessor.overrideValue(By.id("array11"), "2", driver);
+        inputFieldAccessor.overrideValue(By.id("array12"), "3", driver);
+        inputFieldAccessor.overrideValue(By.id("array20"), "1.1", driver);
+        inputFieldAccessor.overrideValue(By.id("array21"), "1.2", driver);
+        inputFieldAccessor.overrideValue(By.id("array30"), "4", driver);
+        inputFieldAccessor.overrideValue(By.id("array31"), "5", driver);
+        inputFieldAccessor.overrideValue(By.id("array32"), "6", driver);
+        inputFieldAccessor.overrideValue(By.id("array40"), "a", driver);
+        inputFieldAccessor.overrideValue(By.id("array41"), "b", driver);
+        inputFieldAccessor.overrideValue(By.id("array42"), "c", driver);
+        inputFieldAccessor.overrideValue(By.id("item.array10"), "11", driver);
+        inputFieldAccessor.overrideValue(By.id("item.array11"), "12", driver);
+        inputFieldAccessor.overrideValue(By.id("item.array12"), "13", driver);
+        inputFieldAccessor.overrideValue(By.id("item.array20"), "11.1", driver);
+        inputFieldAccessor.overrideValue(By.id("item.array21"), "11.2", driver);
+        inputFieldAccessor.overrideValue(By.id("item.array30"), "14", driver);
+        inputFieldAccessor.overrideValue(By.id("item.array31"), "15", driver);
+        inputFieldAccessor.overrideValue(By.id("item.array32"), "16", driver);
+        inputFieldAccessor.overrideValue(By.id("item.array40"), "d", driver);
+        inputFieldAccessor.overrideValue(By.id("item.array41"), "e", driver);
+        inputFieldAccessor.overrideValue(By.id("item.array42"), "f", driver);
+
+        driver.findElement(By.id("searchButton")).click();
+        driver.findElement(By.id("pagination")).findElement(By.linkText("2"))
+                .click();
+
+        // output 06_14 Test
+        assertThat(driver.findElement(By.id("array10")).getAttribute("value"),
+                is("1"));
+        assertThat(driver.findElement(By.id("array11")).getAttribute("value"),
+                is("2"));
+        assertThat(driver.findElement(By.id("array12")).getAttribute("value"),
+                is("3"));
+        assertThat(driver.findElement(By.id("array20")).getAttribute("value"),
+                is("1.1"));
+        assertThat(driver.findElement(By.id("array21")).getAttribute("value"),
+                is("1.2"));
+        assertThat(driver.findElement(By.id("array30")).getAttribute("value"),
+                is("4"));
+        assertThat(driver.findElement(By.id("array31")).getAttribute("value"),
+                is("5"));
+        assertThat(driver.findElement(By.id("array32")).getAttribute("value"),
+                is("6"));
+        assertThat(driver.findElement(By.id("array40")).getAttribute("value"),
+                is("a"));
+        assertThat(driver.findElement(By.id("array41")).getAttribute("value"),
+                is("b"));
+        assertThat(driver.findElement(By.id("array42")).getAttribute("value"),
+                is("c"));
+        assertThat(
+                driver.findElement(By.id("item.array10")).getAttribute("value"),
+                is("11"));
+        assertThat(
+                driver.findElement(By.id("item.array11")).getAttribute("value"),
+                is("12"));
+        assertThat(
+                driver.findElement(By.id("item.array12")).getAttribute("value"),
+                is("13"));
+        assertThat(
+                driver.findElement(By.id("item.array20")).getAttribute("value"),
+                is("11.1"));
+        assertThat(
+                driver.findElement(By.id("item.array21")).getAttribute("value"),
+                is("11.2"));
+        assertThat(
+                driver.findElement(By.id("item.array30")).getAttribute("value"),
+                is("14"));
+        assertThat(
+                driver.findElement(By.id("item.array31")).getAttribute("value"),
+                is("15"));
+        assertThat(
+                driver.findElement(By.id("item.array32")).getAttribute("value"),
+                is("16"));
+        assertThat(
+                driver.findElement(By.id("item.array40")).getAttribute("value"),
+                is("d"));
+        assertThat(
+                driver.findElement(By.id("item.array41")).getAttribute("value"),
+                is("e"));
+        assertThat(
+                driver.findElement(By.id("item.array42")).getAttribute("value"),
+                is("f"));
+    }
+
+    @Test
+    public void test06_15_SimpleJavaBeanDefaultTrim() {
+        driver.findElement(By.id("06_15")).click();
+
+        inputFieldAccessor.overrideValue(By.id("name"), "", driver);
+        inputFieldAccessor.overrideValue(By.id("age"), "", driver);
+
+        inputFieldAccessor.overrideValue(By.id("item.name"), "", driver);
+        inputFieldAccessor.overrideValue(By.id("item.age"), "", driver);
+
+        driver.findElement(By.id("searchButton")).click();
+        driver.findElement(By.id("pagination")).findElement(By.linkText("2"))
+                .click();
+
+        // output 06_15 Test
+        assertThat(driver.findElement(By.id("name")).getAttribute("value"),
+                is(""));
+        assertThat(driver.findElement(By.id("age")).getAttribute("value"),
+                is(""));
+
+        assertThat(
+                driver.findElement(By.id("item.name")).getAttribute("value"),
+                is(""));
+        assertThat(driver.findElement(By.id("item.age")).getAttribute("value"),
+                is(""));
+
+        assertThat(driver.findElement(By.id("nameString")).getText(),
+                is("null"));
+        assertThat(driver.findElement(By.id("ageString")).getText(), is("null"));
+
+        assertThat(driver.findElement(By.id("nameStringItem")).getText(),
+                is("null"));
+        assertThat(driver.findElement(By.id("ageStringItem")).getText(),
+                is("null"));
+    }
+
+    @Test
+    public void test06_16_ListOfSimpleValueDefaultTrim() {
+        driver.findElement(By.id("06_16")).click();
+
+        inputFieldAccessor.overrideValue(By.id("listA0"), "", driver);
+        inputFieldAccessor.overrideValue(By.id("listA1"), "", driver);
+        inputFieldAccessor.overrideValue(By.id("listA2"), "", driver);
+        driver.findElement(By.id("listB1")).click();
+        driver.findElement(By.id("listB2")).click();
+        driver.findElement(By.id("listB3")).click();
+        Select select = new Select(driver.findElement(By.id("listC")));
+        select.deselectAll();
+        select.selectByValue("");
+
+        inputFieldAccessor.overrideValue(By.id("item.listA0"), "", driver);
+        inputFieldAccessor.overrideValue(By.id("item.listA1"), "", driver);
+        inputFieldAccessor.overrideValue(By.id("item.listA2"), "", driver);
+        driver.findElement(By.id("item.listB1")).click();
+        driver.findElement(By.id("item.listB2")).click();
+        driver.findElement(By.id("item.listB3")).click();
+        Select selectItem = new Select(driver.findElement(By.id("item.listC")));
+        selectItem.deselectAll();
+        selectItem.selectByValue("");
+
+        driver.findElement(By.id("searchButton")).click();
+        driver.findElement(By.id("pagination")).findElement(By.linkText("2"))
+                .click();
+
+        // output 06_16 Test
+        assertThat(driver.findElement(By.id("listA0")).getAttribute("value"),
+                is(""));
+        assertThat(driver.findElement(By.id("listA1")).getAttribute("value"),
+                is(""));
+        assertThat(driver.findElement(By.id("listA2")).getAttribute("value"),
+                is(""));
+        assertThat(driver.findElement(By.id("listB1")).isSelected(), is(false));
+        assertThat(driver.findElement(By.id("listB2")).isSelected(), is(false));
+        assertThat(driver.findElement(By.id("listB3")).isSelected(), is(false));
+        Select selectResult = new Select(driver.findElement(By.id("listC")));
+        assertThat(selectResult.getAllSelectedOptions().size(), is(1));
+        assertThat(selectResult.getFirstSelectedOption().getAttribute("value"),
+                is(""));
+
+        assertThat(
+                driver.findElement(By.id("item.listA0")).getAttribute("value"),
+                is(""));
+        assertThat(
+                driver.findElement(By.id("item.listA1")).getAttribute("value"),
+                is(""));
+        assertThat(
+                driver.findElement(By.id("item.listA2")).getAttribute("value"),
+                is(""));
+        assertThat(driver.findElement(By.id("item.listB1")).isSelected(),
+                is(false));
+        assertThat(driver.findElement(By.id("item.listB2")).isSelected(),
+                is(false));
+        assertThat(driver.findElement(By.id("item.listB3")).isSelected(),
+                is(false));
+        Select selectItemResult = new Select(driver.findElement(By
+                .id("item.listC")));
+        assertThat(selectItemResult.getAllSelectedOptions().size(), is(1));
+        assertThat(
+                selectItemResult.getFirstSelectedOption().getAttribute("value"),
+                is(""));
+
+        assertThat(driver.findElement(By.id("listA0String")).getText(),
+                is("null"));
+        assertThat(driver.findElement(By.id("listA1String")).getText(),
+                is("null"));
+        assertThat(driver.findElement(By.id("listA2String")).getText(),
+                is("null"));
+        assertThat(driver.findElement(By.id("listBString")).getText(),
+                is("null"));
+        assertThat(driver.findElement(By.id("listCString")).getText(), is("[]"));
+
+        assertThat(driver.findElement(By.id("listA0StringItem")).getText(),
+                is("null"));
+        assertThat(driver.findElement(By.id("listA1StringItem")).getText(),
+                is("null"));
+        assertThat(driver.findElement(By.id("listA2StringItem")).getText(),
+                is("null"));
+        assertThat(driver.findElement(By.id("listBStringItem")).getText(),
+                is("null"));
+        assertThat(driver.findElement(By.id("listCStringItem")).getText(),
+                is("[]"));
+    }
+
+    @Test
+    public void test06_17_MapOfSimpleValueDefaultTrim() {
+        driver.findElement(By.id("06_17")).click();
+
+        inputFieldAccessor.overrideValue(By.id("mapAa"), "", driver);
+        inputFieldAccessor.overrideValue(By.id("mapAb"), "", driver);
+        inputFieldAccessor.overrideValue(By.id("mapAc"), "", driver);
+
+        inputFieldAccessor.overrideValue(By.id("item.mapAd"), "", driver);
+        inputFieldAccessor.overrideValue(By.id("item.mapAe"), "", driver);
+        inputFieldAccessor.overrideValue(By.id("item.mapAf"), "", driver);
+
+        driver.findElement(By.id("searchButton")).click();
+        driver.findElement(By.id("pagination")).findElement(By.linkText("2"))
+                .click();
+
+        // output 06_17 Test
+        assertThat(driver.findElement(By.id("mapAa")).getAttribute("value"),
+                is(""));
+        assertThat(driver.findElement(By.id("mapAb")).getAttribute("value"),
+                is(""));
+        assertThat(driver.findElement(By.id("mapAc")).getAttribute("value"),
+                is(""));
+
+        assertThat(driver.findElement(By.id("item.mapAd"))
+                .getAttribute("value"), is(""));
+        assertThat(driver.findElement(By.id("item.mapAe"))
+                .getAttribute("value"), is(""));
+        assertThat(driver.findElement(By.id("item.mapAf"))
+                .getAttribute("value"), is(""));
+
+        assertThat(driver.findElement(By.id("mapA0String")).getText(),
+                is("null"));
+        assertThat(driver.findElement(By.id("mapA1String")).getText(),
+                is("null"));
+        assertThat(driver.findElement(By.id("mapA2String")).getText(),
+                is("null"));
+
+        assertThat(driver.findElement(By.id("mapA0StringItem")).getText(),
+                is("null"));
+        assertThat(driver.findElement(By.id("mapA1StringItem")).getText(),
+                is("null"));
+        assertThat(driver.findElement(By.id("mapA2StringItem")).getText(),
+                is("null"));
+    }
+
+    @Test
     public void test07_JavaScript_XSS_Measures() {
         driver.findElement(By.id("07_01")).click();
         driver.findElement(By.id("write")).click();
