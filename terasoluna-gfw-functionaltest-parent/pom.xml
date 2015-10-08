@@ -124,8 +124,8 @@
             </dependency>
             <dependency>
                 <groupId>com.oracle</groupId>
-                <artifactId>ojdbc6</artifactId>
-                <version>${ojdbc6.version}</version>
+                <artifactId>ojdbc7</artifactId>
+                <version>${ojdbc7.version}</version>
             </dependency>
             <!-- == End Database == -->
         </dependencies>
@@ -134,7 +134,7 @@
         <encoding>UTF-8</encoding>
         <java-version>1.6</java-version>
         <postgresql.version>9.3-1102-jdbc41</postgresql.version>
-        <ojdbc6.version>11.2.0.2.0</ojdbc6.version>
+        <ojdbc7.version>12.1.0.2</ojdbc7.version>
         <org.codehaus.cargo.cargo-maven2-plugin.version>1.4.16</org.codehaus.cargo.cargo-maven2-plugin.version>
         <cargo.jvmargs>-Xms512m -Xmx1024m -Duser.language=ja -Duser.country=JP -Duser.timezone=JST</cargo.jvmargs>
         <cargo.daemon.url>http://localhost:18000</cargo.daemon.url>
