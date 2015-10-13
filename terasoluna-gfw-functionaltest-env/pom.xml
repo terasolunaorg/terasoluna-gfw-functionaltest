@@ -51,14 +51,14 @@
                 <artifactId>maven-install-plugin</artifactId>
                 <executions>
                     <execution>
-                        <id>install-ojdbc6</id>
+                        <id>install-ojdbc7</id>
                         <phase>install</phase>
                         <goals>
                             <goal>install-file</goal>
                         </goals>
                         <configuration>
-                            <file>${basedir}/3rdparty/com/oracle/ojdbc6/${ojdbc6.version}/ojdbc6-${ojdbc6.version}.jar</file>
-                            <pomFile>${basedir}/3rdparty/com/oracle/ojdbc6/${ojdbc6.version}/ojdbc6-${ojdbc6.version}.pom</pomFile>
+                            <file>${basedir}/3rdparty/com/oracle/ojdbc7/${ojdbc7.version}/ojdbc7-${ojdbc7.version}.jar</file>
+                            <pomFile>${basedir}/3rdparty/com/oracle/ojdbc7/${ojdbc7.version}/ojdbc7-${ojdbc7.version}.pom</pomFile>
                         </configuration>
                     </execution>
                 </executions>
