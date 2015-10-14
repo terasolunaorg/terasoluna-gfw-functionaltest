@@ -1,6 +1,19 @@
+sudo: false
 language: java
 jdk:
   - oraclejdk8
+cache:
+  directories:
+    - $HOME/.m2
+
+install:
+  - pushd `pwd`
+  - cd $HOME/build
+  - if [[ -z $GFW_BRANCH ]]; then GFW_BRANCH=master; fi
+  - git clone --depth=1 --branch=$GFW_BRANCH https://github.com/terasolunaorg/terasoluna-gfw.git terasolunaorg/terasoluna-gfw
+  - cd terasolunaorg/terasoluna-gfw
+  - sh ./mvn-build-all.sh install -Dmaven.test.skip=true -Dmaven.javadoc.skip=true -Dsource.skip=true
+  - popd
 
 before_script:
   - export DISPLAY=:99.0
@@ -10,8 +23,8 @@ before_script:
   - java -jar ./target/cargo-daemon-webapp-${CARGO_DAEMON_WEBAPP_VERSION}.war &
 
 script:
-  - mvn install -f terasoluna-gfw-functionaltest-parent/pom.xml
-  - mvn install -f terasoluna-gfw-functionaltest-env/pom.xml
-  - mvn install -f terasoluna-gfw-functionaltest-domain/pom.xml
-  - mvn install cargo:daemon-start -f terasoluna-gfw-functionaltest-web/pom.xml
-  - mvn test -f terasoluna-gfw-functionaltest-selenium/pom.xml
+  - mvn -U install -f terasoluna-gfw-functionaltest-parent/pom.xml
+  - mvn -U install -f terasoluna-gfw-functionaltest-env/pom.xml
+  - mvn -U install -f terasoluna-gfw-functionaltest-domain/pom.xml
+  - mvn -U install cargo:daemon-start -f terasoluna-gfw-functionaltest-web/pom.xml
+  - mvn -U test -f terasoluna-gfw-functionaltest-selenium/pom.xml
