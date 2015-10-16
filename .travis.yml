@@ -2,6 +2,8 @@ sudo: false
 language: java
 jdk:
   - oraclejdk8
+addons:
+  postgresql: "9.3"
 cache:
   directories:
     - $HOME/.m2
@@ -16,6 +18,7 @@ install:
   - popd
 
 before_script:
+  - createdb terasoluna-gfw-functionaltest --locale=C --encoding=UTF8 --template=template0
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
   - export CARGO_DAEMON_WEBAPP_VERSION=1.4.16
@@ -24,7 +27,8 @@ before_script:
 
 script:
   - mvn -U install -f terasoluna-gfw-functionaltest-parent/pom.xml
-  - mvn -U install -f terasoluna-gfw-functionaltest-env/pom.xml
+  - mvn -U sql:execute -f terasoluna-gfw-functionaltest-initdb/pom.xml
+  - mvn -U install -f terasoluna-gfw-functionaltest-env/pom.xml -P tomcat8-postgresql
   - mvn -U install -f terasoluna-gfw-functionaltest-domain/pom.xml
-  - mvn -U install cargo:daemon-start -f terasoluna-gfw-functionaltest-web/pom.xml
+  - mvn -U install cargo:daemon-start -f terasoluna-gfw-functionaltest-web/pom.xml -P warpack-env,travis
   - mvn -U test -f terasoluna-gfw-functionaltest-selenium/pom.xml
