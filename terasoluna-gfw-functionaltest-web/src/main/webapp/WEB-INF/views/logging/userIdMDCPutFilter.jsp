@@ -2,8 +2,8 @@
 	
 	after authentication test
 	<form:form action="${pageContext.request.contextPath}/logging/j_spring_security_check" method="post">
-    	userId:<input type="text" id="username" name="j_username">
-    	password:<input type="password" id="password" name="j_password">
+    	userId:<input type="text" id="username" name="username">
+    	password:<input type="password" id="password" name="password">
     	<input type="submit" id="btn1" class="mainbtn" style="width: 100px;" value="Login" />
     	<input type="hidden" name="redirectTo" value="${pageContext.request.contextPath}/logging/userIdMDCPutFilter/login" />
 	</form:form>
