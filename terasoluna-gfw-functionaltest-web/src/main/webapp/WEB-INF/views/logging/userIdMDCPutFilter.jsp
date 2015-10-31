@@ -1,7 +1,7 @@
 <h2>logging Function Test UserIdMDCPutFilter</h2>
 	
 	after authentication test
-	<form:form action="${pageContext.request.contextPath}/logging/j_spring_security_check" method="post">
+	<form:form action="${pageContext.request.contextPath}/logging/login" method="post">
     	userId:<input type="text" id="username" name="username">
     	password:<input type="password" id="password" name="password">
     	<input type="submit" id="btn1" class="mainbtn" style="width: 100px;" value="Login" />
