@@ -12,7 +12,7 @@
 
     <bean id="dateFactory" class="org.terasoluna.gfw.common.date.jodatime.DefaultJodaTimeDateFactory" />
 
-    <jee:jndi-lookup id="realDataSource" jndi-name="jdbc/dataSource"
+    <jee:jndi-lookup id="realDataSource" jndi-name="jdbc/gfwFunctionaltestDataSource"
         expected-type="javax.sql.DataSource" />
 
     <bean id="dataSource" class="net.sf.log4jdbc.Log4jdbcProxyDataSource">
