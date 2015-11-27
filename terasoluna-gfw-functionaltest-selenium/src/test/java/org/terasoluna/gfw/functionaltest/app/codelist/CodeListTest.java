@@ -543,7 +543,27 @@ public class CodeListTest extends FunctionTestSupport {
 
         driver.findElement(By.id("btnback")).click();
     }
-    
+
+    @Test
+    public void test08_08_form() {
+        driver.findElement(
+                By.linkText("@ExistInCodeList Test (Used as param annotation)"))
+                .click();
+
+        // not error occured
+        inputFieldAccessor.overrideValue(By.id("item1"), "key1", driver);
+        driver.findElement(By.id("btn1")).click();
+        assertThat(driver.findElement(By.id("item1Error")).getText(), is(""));
+        assertThat(driver.findElement(By.id("item1Label")).getText(), is("label1"));
+
+        // error occured
+        inputFieldAccessor.overrideValue(By.id("item1"), "key5", driver);
+        driver.findElement(By.id("btn1")).click();
+        assertThat(driver.findElement(By.id("item1Error")).getText(),
+                is("Does not exist in CL_CODELIST08_08"));
+        assertThat(driver.findElement(By.id("item1Label")).getText(), is(""));
+    }
+
     @Test
     public void test09_01_form() {
         driver.findElement(By.linkText("EnumCodeList Test")).click();
