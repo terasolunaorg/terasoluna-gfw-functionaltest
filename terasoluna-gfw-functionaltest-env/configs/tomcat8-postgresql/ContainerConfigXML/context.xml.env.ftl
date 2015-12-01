@@ -17,7 +17,7 @@
 
   <Resources className="org.apache.catalina.webresources.StandardRoot">
     <PreResources className="org.apache.catalina.webresources.DirResourceSet"
-      base="/opt/tomcat/tomcat/webapps-env-jars/terasoluna-gfw-functionaltest-env-tomcat8-postgresql/"
+      base="${VM_TOMCAT_ENV_JAR_DIR!'/opt/tomcat/tomcat/webapps-env-jars/terasoluna-gfw-functionaltest-env-tomcat8-postgresql'}/"
       internalPath="/"
       webAppMount="/WEB-INF/lib" />
   </Resources>

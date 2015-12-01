@@ -16,7 +16,7 @@
     maxActive="96"/>
 
   <Loader className="org.apache.catalina.loader.VirtualWebappLoader"
-    virtualClasspath="/opt/tomcat/tomcat/webapps-env-jars/terasoluna-gfw-functionaltest-env-tomcat-oracle/*.jar" />
+    virtualClasspath="${VM_TOMCAT_ENV_JAR_DIR!'/opt/tomcat/tomcat/webapps-env-jars/terasoluna-gfw-functionaltest-env-tomcat-oracle'}/*.jar" />
   <JarScanner scanAllDirectories="true" />
 
 </Context>
