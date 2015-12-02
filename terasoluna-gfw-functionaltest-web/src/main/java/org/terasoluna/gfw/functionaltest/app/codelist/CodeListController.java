@@ -17,6 +17,7 @@ package org.terasoluna.gfw.functionaltest.app.codelist;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -36,6 +37,7 @@ import org.terasoluna.gfw.common.codelist.CodeList;
 import org.terasoluna.gfw.common.exception.BusinessException;
 import org.terasoluna.gfw.functionaltest.domain.model.ItemCode;
 import org.terasoluna.gfw.functionaltest.domain.service.codelist.CodeListService;
+import org.terasoluna.gfw.functionaltest.domain.service.codelist.ExistInCodeListService;
 
 @Controller
 @RequestMapping(value = "codelist")
@@ -43,6 +45,9 @@ public class CodeListController {
 
     @Inject
     CodeListService codeListService;
+
+    @Inject
+    ExistInCodeListService existInCodeListService;
 
     @Inject
     @Qualifier("CODELIST_WRONG_ITEM")
@@ -323,6 +328,27 @@ public class CodeListController {
         return "codelist/08_07_form";
     }
     
+
+    // test case 08_08
+    @RequestMapping(value = "/08_08_form", method = RequestMethod.GET)
+    public String test08_08_form(CodeListForm form, Model model) {
+        return "codelist/08_08_form";
+    }
+
+    // test case 08_08
+    @RequestMapping(value = "next", method = RequestMethod.GET, params = "existInCheckParamAnnotation")
+    public String test08_08_check(CodeListForm form, Model model) {
+        try {
+            model.addAttribute("item1Label", existInCodeListService
+                    .getLabel(form.getItem1()));
+        } catch (ConstraintViolationException e) {
+            model.addAttribute("item1Error", e.getConstraintViolations()
+                    .iterator().next().getMessage());
+            return "codelist/08_08_form";
+        }
+        return "codelist/08_08_form";
+    }
+
     // test case 09_01
     @RequestMapping(value = "09_01_form", method = RequestMethod.GET)
     public String test09_01_form(CodeListForm form, Model model) {

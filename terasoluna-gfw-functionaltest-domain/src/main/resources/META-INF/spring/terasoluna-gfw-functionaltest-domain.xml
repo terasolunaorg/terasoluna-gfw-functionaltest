@@ -87,6 +87,13 @@
             value="SELECT diff * 24 * 60 * 60 * 1000 FROM operation_date where operation_date_id='2'" />
     </bean>
 
+    <bean id="validator"
+          class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean"/>
+
+    <bean class="org.springframework.validation.beanvalidation.MethodValidationPostProcessor">
+        <property name="validator" ref="validator" />
+    </bean>
+
     <!-- AOP. -->
     <bean id="resultMessagesLoggingInterceptor"
         class="org.terasoluna.gfw.common.exception.ResultMessagesLoggingInterceptor">
