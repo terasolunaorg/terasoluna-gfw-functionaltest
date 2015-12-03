@@ -51,7 +51,7 @@ public class ValidationTest extends FunctionTestSupport {
         setText(By.id("userName"), "あいu");
         click(By.id("btn_validate"));
         assertThat(getText(By.id("userName.errors")),
-                is("must be grater than or equal 6 Bytes"));
+                is("must be greater than or equal to 6 Bytes"));
     }
 
     @Test
@@ -70,7 +70,7 @@ public class ValidationTest extends FunctionTestSupport {
         setText(By.id("userName"), "あいうe");
         click(By.id("btn_validate"));
         assertThat(getText(By.id("userName.errors")),
-                is("must be less than or equal 6 Bytes"));
+                is("must be less than or equal to 6 Bytes"));
     }
 
     @Test
@@ -116,7 +116,7 @@ public class ValidationTest extends FunctionTestSupport {
     }
 
     @Test
-    public void test03_05_Compare_Operator_GraterThan_valid() {
+    public void test03_05_Compare_Operator_GreaterThan_valid() {
         click(By.linkText("@Compare Test"));
 
         setText(By.id("left"), "100");
@@ -126,7 +126,7 @@ public class ValidationTest extends FunctionTestSupport {
     }
 
     @Test
-    public void test03_06_Compare_Operator_GraterThan_invalid() {
+    public void test03_06_Compare_Operator_GreaterThan_invalid() {
         click(By.linkText("@Compare Test"));
 
         {
@@ -147,7 +147,7 @@ public class ValidationTest extends FunctionTestSupport {
     }
 
     @Test
-    public void test03_07_Compare_Operator_GraterThanOrEqual_valid() {
+    public void test03_07_Compare_Operator_GreaterThanOrEqual_valid() {
         click(By.linkText("@Compare Test"));
 
         {
@@ -166,7 +166,7 @@ public class ValidationTest extends FunctionTestSupport {
     }
 
     @Test
-    public void test03_08_Compare_Operator_GraterThanOrEqual_invalid() {
+    public void test03_08_Compare_Operator_GreaterThanOrEqual_invalid() {
         click(By.linkText("@Compare Test"));
 
         setText(By.id("left"), "100");

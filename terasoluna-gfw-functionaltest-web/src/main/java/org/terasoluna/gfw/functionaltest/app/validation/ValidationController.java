@@ -103,16 +103,16 @@ public class ValidationController {
     }
 
     @RequestMapping(value = "compare", method = RequestMethod.POST, params = "gt")
-    public String validateCompareOperatorGraterThan(
-            @Validated({ ValidationForm.ValidateCompareOperatorGraterThan.class }) ValidationForm form,
+    public String validateCompareOperatorGreaterThan(
+            @Validated({ ValidationForm.ValidateCompareOperatorGreaterThan.class }) ValidationForm form,
             BindingResult bindingResult, Model model,
             RedirectAttributes attributes) {
         return internalValidateCompare(form, bindingResult, model, attributes);
     }
 
     @RequestMapping(value = "compare", method = RequestMethod.POST, params = "ge")
-    public String validateCompareGraterThanOrEqual(
-            @Validated({ ValidationForm.ValidateCompareOperatorGraterThanOrEqual.class }) ValidationForm form,
+    public String validateCompareGreaterThanOrEqual(
+            @Validated({ ValidationForm.ValidateCompareOperatorGreaterThanOrEqual.class }) ValidationForm form,
             BindingResult bindingResult, Model model,
             RedirectAttributes attributes) {
         return internalValidateCompare(form, bindingResult, model, attributes);

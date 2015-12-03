@@ -27,8 +27,8 @@ import org.terasoluna.gfw.common.validator.constraints.Compare;
 @Compare.List({
         @Compare(left = "left", right = "right", operator = Compare.Operator.EQUAL, requireBoth = true, node = Compare.Node.PROPERTY, groups = { ValidationForm.ValidateCompare.class }),
         @Compare(left = "left", right = "right", operator = Compare.Operator.EQUAL, groups = { ValidationForm.ValidateCompareOperatorEqual.class }),
-        @Compare(left = "left", right = "right", operator = Compare.Operator.GRATER_THAN, groups = { ValidationForm.ValidateCompareOperatorGraterThan.class }),
-        @Compare(left = "left", right = "right", operator = Compare.Operator.GRATER_THAN_OR_EQUAL, groups = { ValidationForm.ValidateCompareOperatorGraterThanOrEqual.class }),
+        @Compare(left = "left", right = "right", operator = Compare.Operator.GREATER_THAN, groups = { ValidationForm.ValidateCompareOperatorGreaterThan.class }),
+        @Compare(left = "left", right = "right", operator = Compare.Operator.GREATER_THAN_OR_EQUAL, groups = { ValidationForm.ValidateCompareOperatorGreaterThanOrEqual.class }),
         @Compare(left = "left", right = "right", operator = Compare.Operator.LESS_THAN, groups = { ValidationForm.ValidateCompareOperatorLessThan.class }),
         @Compare(left = "left", right = "right", operator = Compare.Operator.LESS_THAN_OR_EQUAL, groups = { ValidationForm.ValidateCompareOperatorLessThanOrEqual.class }),
         @Compare(left = "left", right = "right", operator = Compare.Operator.EQUAL, node = Compare.Node.PROPERTY, groups = { ValidationForm.ValidateCompareNodeProperty.class }),
@@ -50,10 +50,10 @@ public class ValidationForm implements Serializable {
     static interface ValidateCompareOperatorEqual {
     };
 
-    static interface ValidateCompareOperatorGraterThan {
+    static interface ValidateCompareOperatorGreaterThan {
     };
 
-    static interface ValidateCompareOperatorGraterThanOrEqual {
+    static interface ValidateCompareOperatorGreaterThanOrEqual {
     };
 
     static interface ValidateCompareOperatorLessThan {

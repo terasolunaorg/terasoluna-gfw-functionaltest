@@ -4,7 +4,7 @@
 <form:form action="${pageContext.request.contextPath}/validation/bytemin" method="post" modelAttribute="validationForm">
     <table>
         <tr>
-            <td colspan="2"><label for="userName">Input string with the byte length grater than or equal 6:</label></td>
+            <td colspan="2"><label for="userName">Input string with the byte length is greater than or equal to 6:</label></td>
         </tr>
         <tr>
             <td><form:input type="text" path="userName" /></td>
