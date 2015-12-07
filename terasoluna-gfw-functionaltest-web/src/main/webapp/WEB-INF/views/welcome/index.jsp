@@ -60,6 +60,10 @@
 			<td><a id="EL" href="${pageContext.request.contextPath}/el">EL
 					Function Test</a></td>
 		</tr>
+        <tr>
+            <td><a id="Validation" href="${pageContext.request.contextPath}/validation">Validation
+                    Function Test</a></td>
+        </tr>
 	</table>
 </body>
 </html>
