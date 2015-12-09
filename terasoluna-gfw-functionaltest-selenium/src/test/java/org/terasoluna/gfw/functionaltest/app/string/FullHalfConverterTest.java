@@ -3,8 +3,6 @@ package org.terasoluna.gfw.functionaltest.app.string;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-import java.text.Normalizer;
-
 import org.junit.Test;
 import org.terasoluna.gfw.common.fullhalf.DefaultFullHalf;
 import org.terasoluna.gfw.common.fullhalf.FullHalfPairsBuilder;
@@ -20,30 +18,6 @@ public class FullHalfConverterTest {
     @Test
     public void fullHalfConverterTest02() {
         assertThat(DefaultFullHalf.INSTANCE.toHalfwidth("Ａ！アガｻ"), is("A!ｱｶﾞｻ"));
-    }
-
-    @Test
-    public void normalizeTest01() {
-        assertThat(Normalizer.normalize("モジﾓｼﾞ", Normalizer.Form.NFD),
-                is("モシ\u3099ﾓｼﾞ"));
-    }
-
-    @Test
-    public void normalizeTest02() {
-        assertThat(Normalizer.normalize("モシ\u3099ﾓｼﾞ", Normalizer.Form.NFC),
-                is("モジﾓｼﾞ"));
-    }
-
-    @Test
-    public void normalizeTest03() {
-        assertThat(Normalizer.normalize("モジﾓｼﾞ", Normalizer.Form.NFKD),
-                is("モシ\u3099モシ\u3099"));
-    }
-
-    @Test
-    public void normalizeTest04() {
-        assertThat(Normalizer.normalize("モシ\u3099ﾓｼﾞ", Normalizer.Form.NFKC),
-                is("モジモジ"));
     }
 
     @Test
