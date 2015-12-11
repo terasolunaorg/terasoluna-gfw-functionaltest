@@ -11,10 +11,10 @@ public class CustomFullHalf {
 
     static {
         FullHalfPairsBuilder builder = new FullHalfPairsBuilder();
+        
+        builder.pair("ー", "-");
+        
         for (char c = '!'; c <= '~'; c++) {
-            if (c == '-') {
-                continue;
-            }
             String fullwidth = String.valueOf((char) (c + FULL_HALF_CODE_DIFF));
             builder.pair(fullwidth, String.valueOf(c));
         }
@@ -43,8 +43,7 @@ public class CustomFullHalf {
                 .pair("べ", "ﾍﾞ").pair("ボ", "ﾎﾞ").pair("パ", "ﾊﾟ")
                 .pair("ピ", "ﾋﾟ").pair("プ", "ﾌﾟ").pair("ペ", "ﾍﾟ")
                 .pair("ポ", "ﾎﾟ").pair("ヴ", "ｳﾞ").pair("\u30f7", "ﾜﾞ")
-                .pair("\u30fa", "ｦﾞ").pair("゛", "ﾞ").pair("゜", "ﾟ").pair("　", " ")
-                .pair("ー", "-");
+                .pair("\u30fa", "ｦﾞ").pair("゛", "ﾞ").pair("゜", "ﾟ").pair("　", " ");
 
         INSTANCE = new FullHalfConverter(builder.build());
     }
