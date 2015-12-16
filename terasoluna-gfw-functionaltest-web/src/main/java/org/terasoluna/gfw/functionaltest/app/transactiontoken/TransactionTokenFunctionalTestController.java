@@ -40,4 +40,10 @@ public class TransactionTokenFunctionalTestController {
         return "transactiontoken/flowAllStep1";
     }
 
+    // flow @AliasFor namespace testing
+    @RequestMapping(value = "flow_namespace", method = RequestMethod.GET)
+    public String functionTestFlowNamespace() {
+        return "transactiontoken/flowAllNamespaceStep1";
+    }
+
 }

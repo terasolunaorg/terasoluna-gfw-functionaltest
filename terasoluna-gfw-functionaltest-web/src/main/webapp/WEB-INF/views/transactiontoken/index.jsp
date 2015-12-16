@@ -28,6 +28,13 @@
 				href="${pageContext.request.contextPath}/transactiontoken/customTransactionStoreSize1/index">Transaction
 					Store Custom Size Testing- Global Namespace</a></td>
 		</tr>
+
+        <!-- Transaction token type scenarios @AliasFor namespace-->
+        <tr>
+            <td><a id="link5"
+                href="${pageContext.request.contextPath}/transactiontoken/flow_namespace">TransactionTokenType
+                    : BEGIN-IN-END @AliasFor namespace</a></td>
+        </tr>
 	</table>
 </body>
 </html>

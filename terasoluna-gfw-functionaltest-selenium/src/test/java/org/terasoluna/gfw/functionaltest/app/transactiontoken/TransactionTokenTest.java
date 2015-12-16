@@ -143,7 +143,40 @@ public class TransactionTokenTest extends FunctionTestSupport {
     }
 
     @Test
-    public void test02_02_normalBeginInEndScenarioWithGlobalNamespace() {
+    public void test02_02_normalBeginInEndScenarioNamespaceAttribute() {
+        driver.findElement(By.id("link5")).click();
+
+        driver.findElement(By.id("btn-flow1")).click();
+        assertThat(driver.findElement(By.name("_TRANSACTION_TOKEN")),
+                notNullValue());
+
+        String currentToken = driver.findElement(By.name("_TRANSACTION_TOKEN"))
+                .getAttribute("value");
+
+        driver.findElement(By.id("btn-in")).click();
+        assertThat(driver.findElement(By.name("_TRANSACTION_TOKEN")),
+                notNullValue());
+        String newToken = driver.findElement(By.name("_TRANSACTION_TOKEN"))
+                .getAttribute("value");
+
+        String currentTokenName = currentToken.split("~")[0];
+        String newTokenName = newToken.split("~")[0];
+        String currentTokenKey = currentToken.split("~")[1];
+        String newTokenKey = newToken.split("~")[1];
+        String currentTokenValue = currentToken.split("~")[2];
+        String newTokenValue = newToken.split("~")[2];
+
+        assertThat(newTokenName, is(currentTokenName));
+        assertThat(newTokenKey, is(currentTokenKey));
+        assertThat(newTokenValue, is(not(currentTokenValue)));
+
+        driver.findElement(By.id("btn-end")).click();
+        assertFalse(webDriverOperations.exists(By.name("_TRANSACTION_TOKEN")));
+
+    }
+
+    @Test
+    public void test02_03_normalBeginInEndScenarioWithGlobalNamespace() {
         driver.findElement(By.id("link2")).click();
 
         driver.findElement(By.id("btn-flow2")).click();
@@ -174,7 +207,7 @@ public class TransactionTokenTest extends FunctionTestSupport {
     }
 
     @Test
-    public void test02_03_normalBeginEndScenario() {
+    public void test02_04_normalBeginEndScenario() {
         driver.findElement(By.id("link2")).click();
 
         driver.findElement(By.id("btn-flow1")).click();
@@ -187,7 +220,7 @@ public class TransactionTokenTest extends FunctionTestSupport {
     }
 
     @Test
-    public void test02_04_normalBeginInScenarioWithTokenRemove() {
+    public void test02_05_normalBeginInScenarioWithTokenRemove() {
         driver.findElement(By.id("link2")).click();
 
         driver.findElement(By.id("btn-flow1")).click();
@@ -200,7 +233,7 @@ public class TransactionTokenTest extends FunctionTestSupport {
     }
 
     @Test
-    public void test02_05_normalBeginInEndScenarioWithBack() {
+    public void test02_06_normalBeginInEndScenarioWithBack() {
         driver.findElement(By.id("link2")).click();
 
         driver.findElement(By.id("btn-flow1")).click();
@@ -266,7 +299,7 @@ public class TransactionTokenTest extends FunctionTestSupport {
     }
 
     @Test
-    public void test02_06_normalBeginInputErrorBegin() {
+    public void test02_07_normalBeginInputErrorBegin() {
         driver.findElement(By.id("link2")).click();
 
         driver.findElement(By.id("btn-flow5_1")).click();
@@ -295,7 +328,7 @@ public class TransactionTokenTest extends FunctionTestSupport {
     }
 
     @Test
-    public void test02_07_beginAndEndWithError() {
+    public void test02_08_beginAndEndWithError() {
         driver.findElement(By.id("link2")).click();
 
         // token generation
@@ -309,7 +342,7 @@ public class TransactionTokenTest extends FunctionTestSupport {
     }
 
     @Test
-    public void test02_08_beginAndInWithError() {
+    public void test02_09_beginAndInWithError() {
         driver.findElement(By.id("link2")).click();
 
         // token generation
@@ -344,7 +377,7 @@ public class TransactionTokenTest extends FunctionTestSupport {
     }
 
     @Test
-    public void test02_09_inWithoutBegin() {
+    public void test02_10_inWithoutBegin() {
         driver.findElement(By.id("link2")).click();
         driver.findElement(By.id("btn-flow3")).click();
         assertThat(driver.findElement(By.cssSelector("h2")).getText(),
@@ -352,7 +385,7 @@ public class TransactionTokenTest extends FunctionTestSupport {
     }
 
     @Test
-    public void test02_10_beginAndInWithBrowserBackAndError() {
+    public void test02_11_beginAndInWithBrowserBackAndError() {
 
         driver.findElement(By.id("link2")).click();
 
@@ -385,7 +418,7 @@ public class TransactionTokenTest extends FunctionTestSupport {
     }
 
     @Test
-    public void test02_11_beginInWithTokenMismatch() {
+    public void test02_12_beginInWithTokenMismatch() {
         driver.findElement(By.id("link2")).click();
 
         driver.findElement(By.id("btn-flow7")).click();
@@ -399,7 +432,7 @@ public class TransactionTokenTest extends FunctionTestSupport {
     }
 
     @Test
-    public void test02_12_endWithoutBegin() {
+    public void test02_13_endWithoutBegin() {
         driver.findElement(By.id("link2")).click();
         driver.findElement(By.id("btn-flow4")).click();
         assertThat(driver.findElement(By.cssSelector("h2")).getText(),
@@ -407,7 +440,7 @@ public class TransactionTokenTest extends FunctionTestSupport {
     }
 
     @Test
-    public void test02_13_beginEndWithTokenMismatch() {
+    public void test02_14_beginEndWithTokenMismatch() {
         driver.findElement(By.id("link2")).click();
 
         driver.findElement(By.id("btn-flow7")).click();
@@ -420,7 +453,7 @@ public class TransactionTokenTest extends FunctionTestSupport {
     }
 
     @Test
-    public void test02_14_normalBeginInOnly() {
+    public void test02_15_normalBeginInOnly() {
         driver.findElement(By.id("link2")).click();
 
         driver.findElement(By.id("btn-flow1")).click();
@@ -666,5 +699,4 @@ public class TransactionTokenTest extends FunctionTestSupport {
                 .getAttribute("value").matches(
                         "globalToken~[0-9a-z]{32}~[0-9a-z]{32}"));
     }
-
 }
