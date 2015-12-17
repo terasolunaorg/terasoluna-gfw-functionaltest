@@ -1,7 +1,7 @@
   <h2>Redirect</h2>
   <br>
   <form:form action="${pageContext.request.contextPath}/redirect/withgoto/login" method="post">
-    <c:if test="${param.error}">
+    <c:if test="${!(empty param.error)}">
       <t:messagesPanel messagesAttributeName="SPRING_SECURITY_LAST_EXCEPTION" />
     </c:if>
     
