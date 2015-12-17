@@ -90,6 +90,11 @@
                 <artifactId>ojdbc7</artifactId>
                 <version>${ojdbc7.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.ibm</groupId>
+                <artifactId>db2jcc4</artifactId>
+                <version>${db2jcc4.version}</version>
+            </dependency>
             <!-- == End Database == -->
         </dependencies>
     </dependencyManagement>
@@ -98,6 +103,8 @@
         <java-version>1.6</java-version>
         <postgresql.version>9.4-1205-jdbc41</postgresql.version>
         <ojdbc7.version>12.1.0.2</ojdbc7.version>
+        <db2jcc4.version>4.19.26</db2jcc4.version>
+        <org.codehaus.cargo.cargo-maven2-plugin.version>1.4.16</org.codehaus.cargo.cargo-maven2-plugin.version>
         <cargo.jvmargs>-Xms512m -Xmx1024m -Duser.language=ja -Duser.country=JP -Duser.timezone=Asia/Tokyo</cargo.jvmargs>
     </properties>
     <profiles>
