@@ -21,6 +21,7 @@ import static org.junit.Assert.assertThat;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.terasoluna.gfw.functionaltest.app.FunctionTestSupport;
@@ -919,6 +920,8 @@ public class QueryEscapeTest extends FunctionTestSupport {
                     return true;
                 }
             }
+            return true;
+        } else if ("db2".equals(databaseId)) {
             return true;
         }
         return false;
