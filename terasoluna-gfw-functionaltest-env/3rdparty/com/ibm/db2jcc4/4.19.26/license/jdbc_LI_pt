@@ -1,0 +1,302 @@
+Contrato Internacional de Licença de Programa
+
+Parte 1 - Termos Gerais
+
+AO FAZER O DOWNLOAD, INSTALAR, COPIAR, ACESSAR, CLICAR EM UM BOTÃO "ACEITAR" OU UTILIZAR O PROGRAMA DE QUALQUER OUTRA FORMA, O LICENCIADO CONCORDA COM OS TERMOS DESTE CONTRATO. SE UM TERCEIRO ACEITAR ESTES TERMOS EM NOME DO LICENCIADO, O TERCEIRO DECLARA E GARANTE QUE POSSUI TOTAL AUTORIDADE PARA VINCULAR O LICENCIADO A ESTES TERMOS. CASO O CLIENTE NÃO CONCORDE COM ESTES TERMOS,
+
+* NÃO DEVERÁ FAZER DOWNLOAD, INSTALAR, COPIAR, ACESSAR, CLICAR EM UM BOTÃO "ACEITAR" NEM UTILIZAR O PROGRAMA; E
+
+* DEVERÁ RETORNAR IMEDIATAMENTE A MÍDIA NÃO-UTILIZADA, A DOCUMENTAÇÃO E O CERTIFICADO DE TITULARIDADE PARA A PARTE DA QUAL FORAM OBTIDOS PARA TER UM REEMBOLSO DO VALOR PAGO. SE O PROGRAMA FOI TRANSFERIDO POR DOWNLOAD, TODAS AS CÓPIAS DO PROGRAMA DEVERÃO SER DESTRUÍDAS.
+
+1. Definições
+
+"Uso Autorizado" - o nível especificado no qual o Licenciado está autorizado a executar ou operar o Programa. Tal nível pode ser medido pelo número de usuários, por milhões de unidades de serviço ("MSUs"), por Unidades de Valor do Processador ("PVUs") ou por outro nível de uso especificado pela IBM.
+
+"IBM" - International Business Machines Corporation ou uma de suas subsidiárias.
+
+"Informações sobre Licença" ("LI") - um documento que fornece informações e quaisquer termos adicionais específicos para um Programa. A LI do Programa está disponível no endereço www.ibm.com/software/sla. A LI também pode ser encontrada no diretório do Programa, através da utilização de um comando do sistema ou como um folheto incluído com o Programa.
+
+"Programa" - os itens a seguir, incluindo o original e todas as cópias integrais ou parciais: 1) instruções e dados legíveis por máquinas; 2) componentes, arquivos e módulos; 3) conteúdo audiovisual (tais como imagens, texto, registros ou ilustrações) e 4) materiais licenciados relacionados (tais como chaves e documentação).
+
+"Certificado de Titularidade" ("PoE") - evidência do Uso Autorizado do Licenciado. A PoE também é a evidência da elegibilidade do Licenciado para garantia, futuras atualizações de preços, se houver, e possíveis oportunidades especiais ou promocionais. Se a IBM não fornecer uma PoE ao Licenciado, então a IBM pode aceitar como PoE o recibo de venda original pago ou outro registro de venda da parte (ou a IBM ou seu revendedor) da qual o Licenciado obteve o Programa, contanto que este especifique o nome do Programa e o Uso Autorizado obtido.
+
+"Período de Garantia" - um ano, a partir da data em que o Licenciado original tenha recebido a licença.
+
+2. Estrutura do Contrato
+
+Este Contrato inclui a Parte 1 - Termos Gerais, a Parte 2 - Termos Exclusivos do País (se houver algum), a LI e a PoE, e representa o acordo completo entre o Licenciado e a IBM relativo ao uso do Programa. Ele substitui qualquer comunicação prévia verbal ou escrita entre o Licenciado e a IBM relativa ao uso do Programa pelo Licenciado. Os termos da Parte 2 podem substituir ou modificar os termos da Parte 1. Em caso de conflito, a LI prevalece sobre ambas as Partes.
+
+3. Concessão de Licença
+
+O Programa é de propriedade da IBM ou de um fornecedor da IBM, é sujeito a direito autoral e é licenciado, não vendido.
+
+A IBM concede ao Licenciado uma licença não-exclusiva para 1) o uso do Programa até o limite do Uso Autorizado especificado na PoE, 2) fazer e instalar cópias de acordo com o nível de Uso Autorizado e 3) fazer uma cópia de "backup", tudo isso desde que
+
+a. o Licenciado tenha obtido o Programa legalmente e cumpra com os termos deste Contrato;
+
+b. a cópia de "backup" não seja executada a menos que o Programa do qual foi feito "backup" não possa ser executado;
+
+c. o Licenciado reproduza todos os avisos de direitos autorais e outras indicações de propriedade em cada cópia total ou parcial do Programa;
+
+d. o Licenciado garanta que qualquer pessoa que use o Programa (via acesso local ou remoto) 1) o faça apenas em nome do Licenciado e 2) cumpra com todos os termos deste Contrato;
+
+e. o Licenciado não 1) utilize, copie, modifique ou distribua o Programa, exceto conforme expressamente permitido neste Contrato; 2) reverta a montagem, reverta a compilação, ou de qualquer outra forma, traduza o Programa, exceto conforme expressamente permitido pela lei, sem a possibilidade de renúncia contratual; 3) use nenhum dos componentes, arquivos, módulos, conteúdo audiovisual ou materiais licenciados correlatos do Programa separadamente de tal Programa; ou 4) sublicencie, alugue ou arrende o Programa; e
+
+f. caso o Licenciado obtiver este Programa como um Programa de Suporte, que o Licenciado use este Programa apenas para suportar o Programa Principal e sujeito a quaisquer limitações na licença para o Programa Principal, ou, caso o Licenciado obtiver este Programa como um Programa Principal, que o Licenciado use todos os Programas de Suporte apenas para suportar este Programa e sujeito a quaisquer limitações neste Contrato. Para os propósitos deste Item "f," um "Programa de Suporte" é um Programa que faz parte de outro Programa IBM ("Programa Principal") e identificado como um Programa de Suporte na LI do Programa Principal. (Para obter uma licença separada para um Programa de Suporte sem estas restrições, o Licenciado deve entrar em contato com a parte da qual obteve o Programa de Suporte).
+
+Esta licença é aplicável a cada cópia do Programa que o Licenciado fizer.
+
+3.1 Trocas ("Trade-ups"), Atualizações, Correções e Patches
+
+3.1.1 Trade-ups
+
+Se o Programa for substituído por um Programa trade-up, a licença do Programa substituído será imediatamente rescindida.
+
+3.1.2 Atualizações, Correções e Patches
+
+Quando o Licenciado recebe uma atualização, uma correção ou um patch para um Programa, aceita quaisquer termos adicionais ou diferentes que são aplicáveis a tal atualização, correção ou patch que são especificados em sua LI. Se nenhum termo adicional ou diferente for fornecido, então a atualização, a correção ou o patch estarão exclusivamente sujeitos a este Contrato. Se o Programa for substituído por uma atualização, o Licenciado concorda em interromper imediatamente o uso do Programa substituído.
+
+3.2 Licença de Prazo Fixo
+
+Se a IBM licenciar o Programa por um prazo fixo, a licença do Licenciado será rescindida ao final do prazo fixo, a menos que o Licenciado e a IBM concordem em renová-la.
+
+3.3 Termo e Rescisão
+
+Este Contrato permanece em vigor até a sua rescisão.
+
+A IBM pode rescindir a licença do Licenciado caso este falhe em cumprir com os termos deste Contrato.
+
+Se a licença for rescindida por qualquer motivo por qualquer uma das partes, o Licenciado concorda em interromper imediatamente o uso e destruir todas as cópias do Programa. Quaisquer termos deste Contrato que por sua natureza se estendam além do término deste Contrato permanecem em vigor até que sejam cumpridos e aplicam-se aos respectivos sucessores e cessionários de ambas as partes.
+
+4. Encargos
+
+Os encargos são baseados no Uso Autorizado obtido, que é especificado na PoE. A IBM não concede créditos ou reembolsos para encargos já devidos ou pagos, salvo se especificado de outra forma neste Contrato.
+
+Se o Licenciado desejar aumentar seu Uso Autorizado, deverá notificar a IBM ou um revendedor IBM autorizado com antecedência e pagar quaisquer encargos aplicáveis.
+
+5. Tributos
+
+Se qualquer autoridade impuser ao Programa um tributo, imposto, taxa ou contribuição, excluindo os baseados na renda líquida da IBM, o Licenciado concorda em pagar tais valores, conforme especificado em uma fatura ou fornecer documentos de isenção. O Licenciado é responsável por quaisquer tributos sobre a propriedade pessoal de cada Programa a partir da data que o obtiver. Se qualquer autoridade impuser um tributo, imposto, taxa ou contribuição aduaneira para a importação, exportação, transferência, acesso ou uso do Programa fora do país no qual o Licenciado original recebeu a concessão da licença, o Licenciado concorda que é responsável e pagará qualquer valor imposto.
+
+6. Garantia de Reembolso
+
+Se o Licenciado não estiver satisfeito com o Programa por qualquer motivo e for o Licenciado original, este pode rescindir a licença e obter um reembolso do valor pago pelo Programa, desde que devolva o Programa e a PoE para a parte da qual os obteve dentro de 30 dias da data em que a PoE foi emitida. Se a licença for para um prazo fixo que está sujeito a renovação, então o Licenciado poderá obter um reembolso apenas se o Programa e sua PoE forem devolvidos dentro dos primeiros 30 dias do prazo inicial. Se o Licenciado tiver transferido o Programa por download, deverá entrar em contato com a parte da qual o adquiriu para obter instruções sobre como obter o reembolso.
+
+7. Transferência do Programa
+
+O Licenciado pode transferir o Programa e todos os seus direitos de licença e obrigações para outra parte apenas se esta parte concordar com os termos deste Contrato. Se a licença for rescindida por qualquer motivo por qualquer uma das partes, o Licenciado está proibido de transferir o Programa para outra parte. O Licenciado não pode transferir uma parte 1) do Programa ou 2) o Uso Autorizado do Programa. Quando o Licenciado transferir o Programa, também deverá transferir uma cópia física deste Contrato, incluindo a LI e a PoE. Imediatamente após a transferência, a licença do Licenciado é rescindida.
+
+8. Garantia e Exclusões
+
+8.1 Garantia Limitada
+
+Durante um ano após o licenciamento ao Licenciado, a IBM garante que o Programa, quando utilizado em seu ambiente operacional especificado, estará de acordo com suas especificações. As especificações do Programa e as informações do ambiente operacional especificado podem ser encontradas na documentação que acompanha o Programa (tal como um arquivo "leia-me") ou outras informações publicadas pela IBM (tal como uma carta de anúncio). O Licenciado concorda que tal documentação e outro conteúdo do Programa pode ser fornecido apenas no idioma inglês, a menos que exigido de outra forma pela lei local, sem a possibilidade de renúncia ou limitação contratual.
+
+A garantia é aplicável somente à parte não-modificada do Programa. A IBM não garante a operação ininterrupta nem livre de erros do Programa, e também não garante que poderá corrigir todos os defeitos do Programa. O Licenciado é responsável pelos resultados obtidos do uso do Programa.
+
+Durante o Período de Garantia, a IBM fornece ao Licenciado acesso aos bancos de dados IBM contendo informações sobre defeitos conhecidos do Programa, correções de defeitos, restrições e medidas de contorno sem encargos adicionais. Consulte o documento IBM Software Support Handbook para obter informações adicionais no endereço www.ibm.com/software/support.
+
+Se o Programa não funcionar conforme garantido durante o primeiro ano após a aquisição da respectiva licença e a IBM não for capaz de fazê-lo funcionar, o Licenciado poderá devolver o Programa e sua PoE para a parte (seja a IBM ou seu revendedor) da qual os obteve e esta lhe reembolsará o valor pago pelo mesmo. Após retornar o Programa, a licença do Licenciado é rescindida. Se o Licenciado tiver transferido o Programa por download, deverá entrar em contato com a parte da qual o adquiriu para obter instruções sobre como obter o reembolso.
+
+8.2 Exclusões
+
+ESTAS GARANTIAS SÃO AS ÚNICAS GARANTIAS EXCLUSIVAS DO LICENCIADO E SUBSTITUEM TODAS AS DEMAIS GARANTIAS OU CONDIÇÕES, EXPRESSAS OU IMPLÍCITAS, INCLUINDO, MAS NÃO SE LIMITANDO, ÀS GARANTIAS IMPLÍCITAS OU CONDIÇÕES DE USO, QUALIDADE SATISFATÓRIA, ADEQUAÇÃO A UM FIM ESPECÍFICO, TÍTULO E QUALQUER GARANTIA OU CONDIÇÃO DE NÃO-VIOLAÇÃO. ALGUNS ESTADOS OU JURISDIÇÕES NÃO PERMITEM A EXCLUSÃO DE GARANTIAS EXPRESSAS OU IMPLÍCITAS, PORTANTO, A EXCLUSÃO ACIMA PODE NÃO SE APLICAR AO LICENCIADO. NESTE CASO, TAIS GARANTIAS ESTÃO LIMITADAS À DURAÇÃO DO PERÍODO DE GARANTIA. NENHUMA GARANTIA É APLICÁVEL APÓS TAL PERÍODO. ALGUNS ESTADOS OU JURISDIÇÕES NÃO PERMITEM LIMITAÇÕES SOBRE QUANTO DURA UMA GARANTIA IMPLÍCITA, PORTANTO A LIMITAÇÃO ACIMA PODE NÃO SE APLICAR AO LICENCIADO.
+
+ESTAS GARANTIAS FORNECEM AO LICENCIADO DIREITOS LEGAIS ESPECÍFICOS. O LICENCIADO TAMBÉM PODE TER OUTROS DIREITOS QUE VARIAM DE ESTADO PARA ESTADO OU DE JURISDIÇÃO PARA JURISDIÇÃO.
+
+AS GARANTIAS NESTA SEÇÃO 8 (GARANTIA E EXCLUSÕES) SÃO FORNECIDAS EXCLUSIVAMENTE PELA IBM. ENTRETANTO, AS RENÚNCIAS DE RESPONSABILIDADE NESTA SUBSEÇÃO 8.2 (EXCLUSÕES), TAMBÉM SÃO APLICÁVEIS AOS FORNECEDORES DE CÓDIGOS DE TERCEIROS DA IBM. TAIS FORNECEDORES FORNECEM TAL CÓDIGO SEM GARANTIAS OU CONDIÇÕES DE QUALQUER TIPO. ESTE PARÁGRAFO NÃO ANULA AS OBRIGAÇÕES DE GARANTIA DA IBM SOB ESTE CONTRATO.
+
+9. Dados e Bancos de Dados do Licenciado
+
+Para auxiliar o Licenciado no isolamento da causa de um problema com o Programa, a IBM pode solicitar que o Licenciado 1) permita que a IBM acesse seu sistema remotamente ou 2) envie informações ou dados do seu sistema para a IBM. Entretanto, a IBM não tem a obrigação de fornecer tal assistência, a menos que a IBM e o Licenciado estabeleçam um contrato por escrito e separado sob o qual a IBM concorde em fornecer ao Licenciado tal tipo de suporte, que está além das obrigações de garantia da IBM neste Contrato. Neste caso, a IBM utilizará informações sobre erros e problemas para aprimorar seus produtos e serviços, além de auxiliar com o fornecimento de ofertas de suporte relacionadas. Para estes propósitos, a IBM pode utilizar entidades e subcontratados da IBM (incluindo um ou mais países que não aquele no qual o Licenciado está localizado) e o Licenciado autoriza a IBM a fazê-lo.
+
+O Licenciado permanece responsável por 1) quaisquer dados e pelo conteúdo de qualquer banco de dados que disponibilize para a IBM, 2) pela seleção e implementação de procedimentos e controles relativos ao acesso, à segurança, à criptografia, ao uso e à transmissão de dados (incluindo quaisquer dados pessoalmente identificáveis) e 3) pelo "backup" e pela recuperação de qualquer banco de dados e quaisquer dados armazenados. O Licenciado não enviará ou fornecerá à IBM acesso a quaisquer informações pessoalmente identificáveis, seja no formato de dados ou em qualquer outro formato e será responsável pelas despesas razoáveis e outros valores que a IBM possa incorrer em relação a qualquer uma destas informações erroneamente fornecidas para a IBM ou pela perda ou divulgação de tais informações pela IBM, incluindo aqueles valores decorrentes de qualquer reclamação de terceiros.
+
+10. Limitação de Responsabilidade
+
+Exceto conforme expressamente exigido por lei, sem possibilidade de renúncia contratual, o Licenciado e a IBM concordam que a limitação de responsabilidade desta Seção 10 (Limitação de Responsabilidade) aplica-se a danos resultantes de quaisquer tipos de ações judiciais e reivindicações. Se qualquer limitação ou exclusão de responsabilidade estabelecida nesta seção for considerada nula ou sem efeito em Juízo em um caso específico, as partes concordam que as disposições desta seção permanecerão aplicáveis para as demais reivindicações sob esta seção.
+
+10.1 Itens pelos Quais a IBM Pode Ser Responsável
+
+Podem ocorrer circunstâncias em que o Licenciado possa reivindicar ressarcimentos por danos causados pela IBM sob este Contrato. Independentemente do fundamento que faculta o Licenciado a reivindicar ressarcimentos por danos causados pela IBM, a responsabilidade total da IBM pela soma de todas as demandas advindas de ou relacionadas a cada Programa ou de outra forma oriunda deste Contrato não excederá o valor de quaisquer 1) danos por lesão corporal (inclusive morte) e danos a bens móveis e imóveis e 2) outros danos reais diretos até o limite dos encargos que o Licenciado pagou pelo Programa que é o objeto da demanda. Na hipótese de encargos de prazo fixo serão considerados os valores relativos aos últimos 12 (doze) meses.
+
+Este limite também se aplica a qualquer desenvolvedor e fornecedor de Programas da IBM. É o máximo pelo qual a IBM e seus desenvolvedores e fornecedores de Programas são coletivamente responsáveis.
+
+10.2 Itens Pelos Quais a IBM Não Se Responsabiliza
+
+EXCETO CONFORME EXPRESSAMENTE EXIGIDO POR LEI, SEM POSSIBILIDADE DE RENÚNCIA CONTRATUAL, A IBM, SEUS DESENVOLVEDORES OU FORNECEDORES DE PROGRAMAS NÃO SERÃO RESPONSÁVEIS, EM QUALQUER CIRCUNSTÂNCIA, POR QUALQUER DAS SEGUINTES HIPÓTESES, AINDA QUE TENHAM SIDO INFORMADOS SOBRE TAIS POSSIBILIDADES:
+
+a. PERDA DE OU DANOS A DADOS;
+
+b. DANOS INDIRETOS; OU
+
+c. LUCROS CESSANTES.
+
+11. Verificação de Adequação
+
+Para os propósitos desta Seção 11 (Verificação de Adequação), "Termos do Programa IPLA" significam 1) este Contrato e os termos de aditamento e os documentos de transação aplicáveis fornecidos pela IBM e 2) políticas de software IBM que podem ser localizados no "Web site" IBM Software Policy (www.ibm.com/softwarepolicies), incluindo mas não se limitando a tais políticas relativas a "backup", preços de sub-capacidade e migração.
+
+Os direitos e obrigações estabelecidos nesta Seção 11 permanecem em efeito durante o período em que o Programa está licenciado ao Licenciado e por dois anos após esse período.
+
+11.1 Processo de Verificação
+
+O Licenciado concorda em criar, reter e fornecer à IBM e aos seus auditores registros precisos e por escrito, relatórios de ferramentas de sistema e outras informações de sistema que sejam suficientes para possibilitar a verificação auditável de que o uso de todos os Programas pelo Licenciado esteja adequado com os Termos do Programa IPLA, incluindo, sem limitação, todos os termos aplicáveis de licenciamento e de qualificação de preços da IBM. O Licenciado é responsável por 1) garantir que não excederá seu Uso Autorizado e 2) permanecerá em conformidade com os Termos do Programa IPLA.
+
+Mediante notificação com prazo razoável, a IBM poderá verificar a adequação do Licenciado aos Termos do Programa IPLA em todos os locais e para todos os ambientes no qual o Licenciado usa (para qualquer propósito) Programas sujeito aos Termos do Programa IPLA. Esta verificação será realizada nas instalações do Cliente durante o seu horário comercial e de forma a minimizar o impacto nos negócios do Licenciado. A IBM pode usar um auditor independente para fazer esta verificação, desde que a IBM e o auditor tenham assinado um contrato de confidencialidade.
+
+11.2 Resolução
+
+A IBM notificará o Licenciado por escrito se qualquer uma destas verificações indicar que o Licenciado utilizou qualquer Programa além de seu Uso Autorizado ou de qualquer outra forma, não estiver em conformidade com os Termos do Programa IPLA. O Licenciado concorda em pagar imediatamente e diretamente à IBM pelos encargos que a IBM especificar em uma fatura por 1) qualquer uso em excesso, 2) suporte para tal uso em excesso para o menor período entre a duração de tal uso em excesso ou dois anos e 3) quaisquer encargos adicionais e outras obrigações, apurados como resultado de tal verificação.
+
+12. Aviso de Terceiros
+
+O Programa pode incluir código de terceiros que a IBM, e não o terceiro, licencia para o Licenciado sob este Contrato. Os Avisos, se houver algum, para o código de terceiros ("Avisos de Terceiros") são incluídos apenas para informação do Licenciado. Estes avisos podem ser localizados no(s) arquivo(s) NOTICES do Programa. Informações sobre como obter o código fonte para determinado código de terceiros podem ser encontradas nos Avisos de Terceiros. Se nos Avisos de Terceiros, a IBM identificar o código de terceiros como "Código de Terceiros Modificável," a IBM autoriza o Licenciado a 1) modificar o Código de Terceiros Modificável e 2) reverter a engenharia dos módulos do Programa que estabelecem interface diretamente com o Código de Terceiros Modificável contanto que seja apenas com o propósito de depurar as modificações do Licenciado em tal código de terceiros. As obrigações de serviço e suporte da IBM, se houver, aplicam-se apenas ao Programa não-modificado.
+
+13. Geral
+
+a. Nada neste Contrato afeta quaisquer direitos legais dos consumidores que não sejam passíveis de renúncia ou limitação contratual.
+
+b. Em relação a Programas que a IBM fornece ao Licenciado por meio de mídia (forma tangível), a IBM terá cumprido suas obrigações de remessa e envio mediante a entrega de tais Programas à transportadora designada pela IBM, salvo se acordado de outra forma por escrito entre o Licenciado e a IBM.
+
+c. Se qualquer provisão deste Contrato for considerada inválida ou inexequível, as demais provisões deste Contrato permanecerão totalmente em pleno vigor e efeito.
+
+d. O Licenciado concorda em cumprir com todas as leis e regulamentos de exportação e importação aplicáveis, incluindo regulamentos de embargo e sanções e proibições dos Estados Unidos relativos à exportação para certos usos finais ou certos usuários.
+
+e. O Licenciado autoriza a International Business Machines Corporation e suas subsidiárias (e seus sucessores e cessionários, contratados e Parceiros Comerciais IBM) a armazenar e usar informações de contato comercial do Licenciado em qualquer lugar em que conduzam negócios, com relação a produtos e serviços IBM ou na promoção do relacionamento comercial da IBM com o Licenciado.
+
+f. Cada uma das partes concederá à outra oportunidade razoável para cumprir suas obrigações sob este Contrato antes de reclamar seu cumprimento. As partes tentarão resolver de boa-fé todas as disputas, discordâncias ou demandas entre elas relativas a este Contrato.
+
+g. Os prazos prescricionais observarão o disposto nos artigos 205 e 206 do Código Civil Brasileiro, Lei nº 10.406 de 10 de janeiro de 2002.
+
+h. Nenhuma das partes é responsável por falhas no cumprimento de quaisquer obrigações devido a causas fora do seu controle.
+
+i. Este Contrato não criará quaisquer ações judiciais e reivindicações para qualquer terceiro, nem a IBM será responsável por quaisquer demandas de terceiros contra o Licenciado, exceto conforme permitido na Subseção 10.1 (Itens pelo Quais a IBM Pode Ser Responsável) acima para lesões corporais (incluindo morte) ou danos a bens móveis ou imóveis pelos quais a IBM seja legalmente responsável perante aquele terceiro. Desta forma, o Licenciado não poderá requerer responsabilidades da IBM por danos que o Licenciado vier incorrer em razão de reivindicações de terceiros.
+
+j. Ao celebrar este Contrato, nenhuma das partes está se baseando em qualquer declaração que não esteja especificada neste Contrato, incluindo, sem se limitar a, qualquer declaração relativa: 1) ao desempenho ou funcionalidade do Programa, que não tenha sido expressamente garantido na Seção 8 (Garantia e Exclusões) acima; 2) às experiências ou recomendações de outras partes; ou 3) a quaisquer resultados ou economias que o Licenciado possa obter.
+
+k. A IBM assinou contratos com algumas organizações (denominadas "Parceiros Comerciais IBM") para promover, comercializar e prestar suporte a determinados Programas. Os Parceiros Comerciais IBM permanecem independentes e separados da IBM. A IBM não é responsável por ações ou declarações dos Parceiros Comerciais ou por quaisquer obrigações destes com o Licenciado.
+
+l. Os termos da licença e da indenização da propriedade intelectual de outros contratos do Licenciado com a IBM (tal como o Contrato de Produtos e Serviços IBM) não se aplicam às licenças do Programa concedidas sob este Contrato.
+
+14. Escopo Geográfico e Legislação Aplicável
+
+14.1 Legislação Aplicável
+
+Ambas as partes concordam com a aplicação das leis do país no qual o Licenciado obteve a licença do Programa para reger, interpretar e executar todos os direitos, deveres e obrigações do Licenciado e da IBM decorrentes de ou relacionados de qualquer maneira ao objeto deste Contrato, não obstante conflitos de princípios legais.
+
+A Convenção das Nações Unidas não se aplica nos Contratos para Venda Internacional de Bens.
+
+14.2 Jurisdição
+
+Todos os direitos, deveres e obrigações estão sujeitos aos tribunais do país no qual o Licenciado obteve a licença do Programa.
+
+Parte 2 - Termos Exclusivos do País
+
+Para licenças concedidas nos países especificados abaixo, os termos a seguir substituem ou modificam os termos citados na Parte 1. Todos os termos na Parte 1 que não são alterados por estes termos de aditamento permanecem inalterados e em vigor. Esta Parte 2 é organizada da seguinte forma:
+
+* Termos de aditamento para a Parte 1, Seção 14 (Legislação Aplicável e Jurisdição) de vários países;
+
+* Termos de aditamento para outros termos do Contrato de países das Américas; e
+
+* Termos de aditamento para outros termos do Contrato de países da Europa, Oriente Médio e África.
+
+Termos de aditamento para a Parte 1, Seção 14 (Legislação Aplicável e Jurisdição) de vários países
+
+14.1 Legislação Aplicável
+
+A frase "as leis do país no qual o Licenciado obteve a licença do Programa" no primeiro parágrafo de 14.1 Lei Aplicável é substituída pelas seguintes frases nos países abaixo:
+
+EUROPA, ORIENTE MÉDIO E ÁFRICA
+
+(1) na Guiné-Bissau: as leis da França; e
+
+(2) em Angola e em Moçambique: as leis da Inglaterra.
+
+14.2 Jurisdição
+
+O seguinte parágrafo é relativo à jurisdição e substitui a Subseção 14.2 (Jurisdição) já que é aplicável a tais países identificados abaixo:
+
+Todos os direitos, deveres e obrigações estão sujeitos aos tribunais do país no qual o Licenciado obteve a licença do Programa, exceto nos países identificados abaixo, nos quais todas as disputas decorrentes ou relacionados a este Contrato, incluindo procedimentos sumários, serão iniciados e estarão sujeitos à jurisdição exclusiva dos seguintes tribunais da jurisdição competente:
+
+AMÉRICAS
+
+(1) no Brasil: As partes elegem o foro central da cidade do Rio de Janeiro, estado do Rio de Janeiro, para dirimir questões advindas deste Contrato;
+
+EUROPA, ORIENTE MÉDIO E ÁFRICA
+
+(2) na Guiné-Bissau: o Tribunal Comercial de Paris;
+
+(3) em Angola, Moçambique, São Tomé e Príncipe: os tribunais da Inglaterra;
+
+(4) em Portugal: os tribunais de Lisboa.
+
+TERMOS DE ADITAMENTO DE PAÍSES DA EMEA (EUROPA, ORIENTE MÉDIO, ÁFRICA)
+
+ESTADOS MEMBROS DA UNIÃO EUROPEIA
+
+8. Garantia e Exclusões
+
+O seguinte é incluído na Seção 8 (Garantia e Exclusão):
+
+Na União Europeia ("EU"), os consumidores possuem direitos legais sob a legislação nacional aplicável que rege a venda de bens de consumo. Tais direitos não são afetados pelas provisões definidas nesta Seção 8 Garantia e Exclusões. O escopo territorial da Garantia Limitada é mundial.
+
+13. Geral
+
+O seguinte substitui o Item 13.e:
+
+(1) Definições - Para os propósitos deste Item 13.e, as seguintes definições adicionais são aplicáveis:
+
+(a) Informação de Contacto Comercial - significa informação de contacto de caráter comercial divulgada pelo Licenciado à IBM, incluindo nomes, títulos profissionais, endereços profissionais, números de telefone e endereços de e-mail dos empregados e subcontratados do Licenciado. Para Áustria, Itália e Suíça, a Informação de Contacto Comercial também inclui informação sobre a Licença e seus subcontratados como pessoas jurídicas (por exemplo, dados da receita da Licença e outra informação transaccional)
+
+(b) Pessoal de Contato Comercial - funcionários e contratados do Licenciado aos quais as Informações de Contato Comercial se relacionam.
+
+(c) Autoridade de Proteção de Dados - a autoridade estabelecida pela Legislação de Proteção de Dados e Comunicações de Dados no país aplicável, ou para países não pertencentes à EU, a autoridade responsável pela supervisão de dados pessoais em tal país ou (para qualquer um dos anteriores) qualquer entidade sucessora convenientemente apontada para isso.
+
+(d) Legislação de Proteção de Dados e Comunicações Eletrônicas - (i) a legislação e os regulamentos locais aplicáveis em vigor que implementam os requisitos da EU Directive 95/46/EC (na proteção de indivíduos com relação ao processamento de dados pessoais na livre movimentação de tais dados) e da EU Directive 2002/58/EC (relativa ao processamento de dados pessoais e a proteção da privacidade no setor de comunicações eletrônicas); ou (ii) para países não pertencentes à EU, a legislação e/ou os regulamentos transmitidos no país aplicável em relação à proteção de dados pessoais e o regulamento das comunicações eletrônicas envolvendo dados pessoais, incluindo (para qualquer um dos anteriores) qualquer substituição ou modificação estatutária.
+
+(e) Grupo IBM - International Business Machines Corporation de Armonk, Nova York, EUA, suas subsidiárias e seus respectivos Parceiros Comerciais e subcontratados.
+
+(2) O Licenciado autoriza a IBM:
+
+(a) a processar e utilizar Informações de Contato Comercial no Grupo IBM no suporte do Licenciado, incluindo o fornecimento de serviços de suporte e para o propósito do favorecimento do relacionamento de negócios entre o Licenciado e o Grupo IBM, incluindo, sem limitação, entrar em contato com o Pessoal de Contato Comercial (por e-mail ou de qualquer outra forma) e comercializar produtos e serviços do Grupo IBM (o "Propósito Especificado"); e
+
+(b) divulgar Informações de Contato Comercial para outros membros do Grupo IBM apenas em busca do Propósito Especificado.
+
+(3) A IBM concorda que todas as Informações de Contato Comercial serão processadas de acordo com a Legislação de Proteção de Dados e Comunicações Eletrônicas e serão utilizadas apenas para o Propósito Especificado.
+
+(4) Até o limite exigido pela Legislação de Proteção de Dados e Comunicações Eletrônicas, o Licenciado declara que (a) obteve (ou obterá) quaisquer consentimentos do (e que emitiu (ou emitirá) quaisquer avisos para) Pessoal de Contato Comercial conforme necessários para possibilitar que o Grupo IBM processe e utilize as Informações de Contato Comercial para o Propósito Especificado.
+
+(5) O Licenciado autoriza a IBM a transferir Informações de Contato Comercial fora da Área Econômica Europeia, contanto que a transferência seja feita em termos contratuais aprovados pela Autoridade de Proteção de Dados ou que a transferência seja de qualquer outra forma permitida sob a Legislação de Proteção de Dados e Comunicações Eletrônicas.
+
+Z125-3301-14 (07/2011)
+
+
+INFORMAÇÕES DA LICENÇA
+
+Os Programas listados abaixo são licenciados sob os/ao abrigo dos termos e condições a seguir, além daqueles do IBM Contrato Internacional de Licença de Programa (form number da IBM n.° Z125-3301-14).
+
+Nome do Programa: IBM Data Server Driver for JDBC and SQLJ V3.69
+Número do Programa: Tool
+
+Conforme descrito no Contrato de Licença Internacional de Programas ("IPLA") e nesta Informação sobre a Licença, a IBM concede ao Licenciado um direito limitado para usar/utilizar o Programa. Esse direito está limitado ao nível de Uso Autorizado/Utilização Autorizada, tal como um Processor Value Unit ("PVU"), uma Value Unit ("VU") ou outro nível de uso/utilização especificado, pago pelo Licenciado, conforme evidenciado na Prova de Titularidade. O uso/A utilização do licenciado também pode ser limitado/a ao uma máquina especificada ou apenas a um Programa de Suporte ou estar sujeito/a a outras restrições. Como o Licenciado não pagou por todo o valor económico do Programa, nenhum outro uso/nenhuma outra utilização lhe é permitido/a sem o pagamento de encargos adicionais. Além disso, conforme definido no IPLA, o Licenciado não está autorizado a usar/utilizar o Programa para comercializar serviços de IT a terceiros, a fornecer hosting ou timesharing comercial ou a sublicenciar ou alugar o Programa, a menos que expressamente definido nos contratos/acordos aplicáveis sob os quais/ao abrigo dos quais o Licenciado obtém/adquire autorizações para usar/utilizar o Programa. Direitos adicionais podem ser disponibilizados ao Licenciado mediante o pagamento de encargos adicionais ou sob/ao abrigo de termos diferentes ou complementares. A IBM reserva-se o direito de determinar se disponibilizará tais direitos adicionais ao Licenciado.
+
+Especificações do Programa podem ser localizadas nas seções/secções coletivas/colectivas de Descrição e Informações Técnicas das Cartas de Anúncio do Programa.
+
+Redistribuíveis
+
+Se o Programa incluir componentes que são Redistribuíveis, eles serão identificados no arquivo/ficheiro REDIST que acompanha o Programa. Além dos direitos de licença concedidos no Contrato/Acordo, o Licenciado pode distribuir os Redistribuíveis sujeitos aos seguintes termos:
+1) A redistribuição deve ser apenas em formato de código objeto/objecto e deve estar em conformidade com todas as orientações, instruções e especificações no REDIST ou na documentação que acompanha o Programa;
+2) Se a documentação que acompanha o Programa permitir expressamente que o Licenciado modifique os Redistribuíveis, tal modificação deve estar em conformidade com todas as orientações, instruções e especificações contidas naquela documentação, e essas modificações, caso existam, devem ser tratadas como Redistribuíveis;
+3) Os Redistribuíveis podem ser distribuídos apenas como parte do aplicativo/da aplicação do Licenciado que foi desenvolvido(a) usando o Programa ("Aplicativo/Aplicação do Licenciado") e apenas para suportar os clientes do Licenciado com respeito ao uso que fizerem do Aplicativo/da Aplicação do Licenciado. O Aplicativo/a Aplicação do Licenciado deve constituir um significativo valor acrescentado tal, que os Redistribuíveis não sejam uma motivação substancial para a aquisição, pelos usuários/utilizadores finais, do produto de software do Licenciado;
+4) Se os Redistribuíveis incluírem um Java Runtime Environment, o Licenciado deve também incluir outros Redistribuíveis não Java ao Aplicativo/à Aplicação do Licenciado, salvo se o Aplicativo/a Aplicação for concebido(a) para ser executado(a) apenas em recursos informáticos em geral (por exemplo: laptops, desktops e servidores) e não em dispositivos portáteis ou outras patentes (isto é, dispositivos que contêm um microprocessador, mas que não têm o uso de computador como o seu propósito/fim primário);
+5) O Licenciado não pode remover quaisquer arquivos/ficheiros de avisos ou de copyright contidos nos Redistribuíveis;
+6) O Licenciado deve defender a IBM, os seus fornecedores ou distribuidores de e contra qualquer reclamação advinda do uso ou distribuição do Aplicativo/da Aplicação do Licenciado;
+7) O Licenciado não pode usar o mesmo nome de caminho que os arquivos/ficheiros/módulos originais dos Redistribuíveis;
+8) O Licenciado não pode usar os nomes ou marcas registradas/registadas da IBM, de seus fornecedores ou distribuidores com respeito à comercialização do Aplicativo/da Aplicação do Licenciado sem o prévio consentimento por escrito da IBM ou daquele fornecedor ou distribuidor;
+9) A IBM, seus fornecedores e distribuidores fornecem os Redistribuíveis e a documentação relacionada sem obrigação de suporte e "NO ESTADO EM QUE SE ENCONTRAM (""AS IS"")", SEM GARANTIA DE QUALQUER ESPÉCIE, SEJA EXPRESSA OU IMPLÍCITA, INCLUINDO/INCLUSIVE A GARANTIA DE TÍTULO, DE NÃO VIOLAÇÃO OU DE NÃO INTERFERÊNCIA E AS GARANTIAS E CONDIÇÕES IMPLÍCITAS DE COMERCIALIZAÇÃO E ADEQUAÇÃO A UM DETERMINADO PROPÓSITO/FIM;
+10) O Licenciado é responsável por toda a assistência técnica para o Aplicativo/a Aplicação do Licenciado e por quaisquer modificações aos Redistribuíveis; e
+11) O contrato de licença/acordo de licenciamento do Licenciado com o usuário/utilizador final do Aplicativo/da Aplicação do Licenciado deve informar o usuário/utilizador final que os Redistribuíveis ou as suas modificações não podem ser i) usados para qualquer propósito/fim que não seja ativar/activar o Aplicativo/a Aplicação do Licenciado, ii) copiados (exceto/excepto para propósitos/fins de backup), iii) redistribuídos ou transferidos sem o Aplicativo/a Aplicação do Licenciado ou iv) montados de forma inversa, compilados de forma inversa ou, de qualquer forma, serem convertidos exceto/excepto conforme especificamente permitido pela lei e sem a possibilidade de uma renúncia contratual. Além disso, o contrato de licença/acordo de licenciamento do Licenciado deve, pelo menos, proteger a IBM tanto quanto os termos deste Contrato/Acordo.
+
+L/N:  L-LKSA-9PX554
+D/N:  L-LKSA-9PX554
+P/N:  L-LKSA-9PX554 
