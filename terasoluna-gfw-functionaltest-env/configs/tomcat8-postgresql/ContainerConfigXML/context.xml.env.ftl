@@ -9,14 +9,18 @@
     driverClassName="org.postgresql.Driver"
     username="postgres"
     password="P0stgres"
-    url="jdbc:postgresql://localhost:5432/terasoluna-gfw-functionaltest"
+    url="jdbc:postgresql://${HOST_IP!'localhost'}:${DBSRV_DB_PORT!'5432'}/terasoluna-gfw-functionaltest"
     maxIdle="16"
     minIdle="0"
     maxWait="60000"
     maxActive="96"/>
 
-  <Loader className="org.apache.catalina.loader.VirtualWebappLoader"
-    virtualClasspath="/opt/tomcat/tomcat/webapps-env-jars/terasoluna-gfw-functionaltest-env-tomcat-postgresql/*.jar" />
+  <Resources className="org.apache.catalina.webresources.StandardRoot">
+    <PreResources className="org.apache.catalina.webresources.DirResourceSet"
+      base="${VM_TOMCAT_ENV_JAR_DIR!'/opt/tomcat/tomcat/webapps-env-jars/terasoluna-gfw-functionaltest-env-tomcat8-postgresql'}/"
+      internalPath="/"
+      webAppMount="/WEB-INF/lib" />
+  </Resources>
   <JarScanner scanAllDirectories="true" />
 
 </Context>
