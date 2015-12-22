@@ -6,17 +6,17 @@
   <Resource
     name="jdbc/gfwFunctionaltestDataSource"
     type="javax.sql.DataSource"
-    driverClassName="org.postgresql.Driver"
-    username="postgres"
-    password="P0stgres"
-    url="jdbc:postgresql://localhost:5432/terasoluna-gfw-functionaltest"
+    driverClassName="oracle.jdbc.OracleDriver"
+    username="gfw"
+    password="gfw"
+    url="jdbc:oracle:thin:@${HOST_IP!'localhost'}:${DBSRV_DB_PORT!'1521'}:teradb"
     maxIdle="16"
     minIdle="0"
     maxWait="60000"
     maxActive="96"/>
 
   <Loader className="org.apache.catalina.loader.VirtualWebappLoader"
-    virtualClasspath="/opt/tomcat/tomcat/webapps-env-jars/terasoluna-gfw-functionaltest-env-tomcat-postgresql/*.jar" />
+    virtualClasspath="${VM_TOMCAT_ENV_JAR_DIR!'/opt/tomcat/tomcat/webapps-env-jars/terasoluna-gfw-functionaltest-env-tomcat-oracle'}/*.jar" />
   <JarScanner scanAllDirectories="true" />
 
 </Context>
