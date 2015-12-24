@@ -2,7 +2,7 @@
 
   <web-app id="/terasoluna-gfw-functionaltest-web" root-directory="webapps/terasoluna-gfw-functionaltest-web">
     <!-- settings of DataSource -->
-    <database jndi-name="jdbc/dataSource">
+    <database jndi-name="jdbc/gfwFunctionaltestDataSource">
       <driver>
         <type>org.postgresql.Driver</type>
         <url>jdbc:postgresql://${HOST_IP!'localhost'}:${DBSRV_DB_PORT!'5432'}/terasoluna-gfw-functionaltest</url>

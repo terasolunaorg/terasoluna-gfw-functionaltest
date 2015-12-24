@@ -2,7 +2,7 @@
 
   <web-app id="/terasoluna-gfw-functionaltest-web" root-directory="webapps/terasoluna-gfw-functionaltest-web">
     <!-- settings of DataSource -->
-    <database jndi-name="jdbc/dataSource">
+    <database jndi-name="jdbc/gfwFunctionaltestDataSource">
       <driver>
         <type>oracle.jdbc.OracleDriver</type>
         <url>jdbc:oracle:thin:@localhost:1521:teradb</url>
