@@ -47,6 +47,7 @@
             </properties>
         </profile>
         <profile>
+            <!-- db2jcc4.jar must be pre-installed in local repository. -->
             <id>db2</id>
             <properties>
                 <db.encoding>UTF8</db.encoding>

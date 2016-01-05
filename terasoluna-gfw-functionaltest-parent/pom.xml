@@ -91,6 +91,7 @@
                 <version>${ojdbc7.version}</version>
             </dependency>
             <dependency>
+                <!-- db2jcc4.jar must be pre-installed in local repository. --> 
                 <groupId>com.ibm</groupId>
                 <artifactId>db2jcc4</artifactId>
                 <version>${db2jcc4.version}</version>
