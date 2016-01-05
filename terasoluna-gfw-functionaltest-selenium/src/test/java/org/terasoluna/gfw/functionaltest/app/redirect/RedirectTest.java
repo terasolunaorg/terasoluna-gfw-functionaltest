@@ -33,6 +33,9 @@ public class RedirectTest extends FunctionTestSupport {
 
     @Value("${app.redirect.allowed.externalUrl}")
     String redirectionAllowedExternalUrl;
+    
+    @Value("${app.redirect.pageTitle.404Error}")
+    String pageTitle404Error;
 
     @Test
     public void test01_01_redirectToValidInternalLink() {
@@ -106,7 +109,7 @@ public class RedirectTest extends FunctionTestSupport {
 
         // confirms that 404 error occurred after login transition
         assertThat(driver.findElement(By.xpath("/html/body/div/h2")).getText(),
-                is("Page Not Found"));
+                is(pageTitle404Error));
 
     }
 

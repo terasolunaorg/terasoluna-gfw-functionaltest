@@ -31,7 +31,11 @@ public class ExceptionLevelResolverFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request,
             HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
 
+        // Workaround for application servers that don't provide getServletPath(), eg. WebSphere Liberty Profile 8.5.
         String path = request.getServletPath();
+        if (path == null || path.length() == 0) {
+            path = request.getPathInfo();
+        }
 
         if (path.equals("/exceptionhandling/5_1")) {
             throw new BusinessTestException("n.cc.0000", "Error");
@@ -40,7 +44,6 @@ public class ExceptionLevelResolverFilter extends OncePerRequestFilter {
         } else if (path.equals("/exceptionhandling/5_3")) {
             throw new BusinessTestException("d.cc.0000", "Error");
         }
-
     }
 
 }

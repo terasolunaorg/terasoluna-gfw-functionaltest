@@ -21,7 +21,7 @@
 	<c:if test="${!(empty xTrackMDC)}">
 	${f:h(attributeName)}：<div id="xTrackMDC">${f:h(xTrackMDC)}</div>
 	</c:if>
-	<c:if test="${checkResponseHeaderXTrack}">
+	<c:if test="${!(empty checkResponseHeaderXTrack)}">
 	response header X-Track：<div id="responseHeaderXTrack">${f:h(requestScope["X-Track"])}</div>
 	</c:if>
 	<br />
