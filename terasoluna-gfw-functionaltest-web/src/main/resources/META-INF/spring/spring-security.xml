@@ -7,7 +7,7 @@
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
     ">
 
-    <sec:http pattern="/logging/**" auto-config="true">
+    <sec:http pattern="/logging/**">
         <sec:access-denied-handler ref="accessDeniedHandler"/>
         <sec:form-login
             login-page="/logging/userIdMDCPutFilter"
@@ -20,7 +20,7 @@
             delete-cookies="JSESSIONID"/>
     </sec:http>
     
-    <sec:http pattern="/redirect/withgoto/**" auto-config="true">
+    <sec:http pattern="/redirect/withgoto/**">
         <sec:access-denied-handler ref="accessDeniedHandler"/>
         <sec:form-login
             login-processing-url="/redirect/withgoto/login"
@@ -29,7 +29,7 @@
             authentication-success-handler-ref="redirectHandlerWithGoTo" />
     </sec:http>
     
-    <sec:http pattern="/redirect/withwhitelist/**" auto-config="true">
+    <sec:http pattern="/redirect/withwhitelist/**">
         <sec:access-denied-handler ref="accessDeniedHandler"/>
         <sec:form-login
             login-processing-url="/redirect/withwhitelist/login"
@@ -38,7 +38,7 @@
             authentication-success-handler-ref="redirectHandlerWithWhiteList" />
     </sec:http>
 
-    <sec:http pattern="/**" auto-config="true">
+    <sec:http pattern="/**">
         <sec:access-denied-handler ref="accessDeniedHandler"/>
         <sec:form-login
             login-page="/redirect/login"
