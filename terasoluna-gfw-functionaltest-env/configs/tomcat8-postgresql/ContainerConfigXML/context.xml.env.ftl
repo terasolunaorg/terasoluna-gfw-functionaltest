@@ -12,8 +12,8 @@
     url="jdbc:postgresql://${HOST_IP!'localhost'}:${DBSRV_DB_PORT!'5432'}/terasoluna-gfw-functionaltest"
     maxIdle="16"
     minIdle="0"
-    maxWait="60000"
-    maxActive="96"/>
+    maxWaitMillis="60000"
+    maxTotal="96"/>
 
   <Resources className="org.apache.catalina.webresources.StandardRoot">
     <PreResources className="org.apache.catalina.webresources.DirResourceSet"
