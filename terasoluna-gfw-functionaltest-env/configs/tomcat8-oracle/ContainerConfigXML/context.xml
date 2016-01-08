@@ -9,7 +9,7 @@
     driverClassName="oracle.jdbc.OracleDriver"
     username="gfw"
     password="gfw"
-    url="jdbc:oracle:thin:@localhost:1521:teradb"
+    url="jdbc:oracle:thin:@localhost:1521/teradb"
     maxIdle="16"
     minIdle="0"
     maxWaitMillis="60000"
