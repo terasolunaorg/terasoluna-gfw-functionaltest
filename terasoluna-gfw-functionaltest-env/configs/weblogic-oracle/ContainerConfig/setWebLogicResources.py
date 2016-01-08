@@ -13,7 +13,8 @@ startEdit()
 
 
 ######  DataSource Settings  ######
-dbPort=1521
+dbPort='1521'
+hostIp='localhost'
 jndiNameList = ['gfwFunctionaltestDataSource', 'springFunctionaltestDataSource', 'springFunctionaltestDataSourceOpen', 'springFunctionaltestDataSourceClose']
 userIdList = ['gfw', 'cfw', 'cfw_open', 'cfw_close']
 passwordList = ['gfw', 'cfw', 'cfw_open', 'cfw_close']
@@ -24,7 +25,7 @@ for i in range(len(jndiNameList)):
     cd('/JDBCSystemResources/' + jndiNameList[i] + '/JDBCResource/' + jndiNameList[i] + '/JDBCDriverParams/' + jndiNameList[i])
 
     ### Connection Setting
-    cmo.setUrl('jdbc:oracle:thin:@terasoluna-vm:' + dbPort + '/teradb')
+    cmo.setUrl('jdbc:oracle:thin:@' + hostIp + ':' + dbPort + '/teradb')
 
     ### Password Setting
     set('Password', passwordList[i])
