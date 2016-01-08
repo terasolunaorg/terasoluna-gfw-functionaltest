@@ -14,7 +14,7 @@ startEdit()
 
 ######  DataSource Settings  ######
 dbPort='${DBSRV_DB_PORT!'1521'}'
-hostIp='${HOST_IP!localhost}'
+hostIp='${HOST_IP!'localhost'}'
 jndiNameList = ['gfwFunctionaltestDataSource', 'springFunctionaltestDataSource', 'springFunctionaltestDataSourceOpen', 'springFunctionaltestDataSourceClose']
 userIdList = ['gfw', 'cfw', 'cfw_open', 'cfw_close']
 passwordList = ['gfw', 'cfw', 'cfw_open', 'cfw_close']
