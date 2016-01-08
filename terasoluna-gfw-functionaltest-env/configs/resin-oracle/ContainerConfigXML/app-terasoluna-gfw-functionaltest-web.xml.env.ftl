@@ -5,7 +5,7 @@
     <database jndi-name="jdbc/gfwFunctionaltestDataSource">
       <driver>
         <type>oracle.jdbc.OracleDriver</type>
-        <url>jdbc:oracle:thin:@${HOST_IP!'localhost'}:${DBSRV_DB_PORT!'1521'}:teradb</url>
+        <url>jdbc:oracle:thin:@${HOST_IP!'localhost'}:${DBSRV_DB_PORT!'1521'}/teradb</url>
         <user>gfw</user>
         <password>gfw</password>
       </driver>
