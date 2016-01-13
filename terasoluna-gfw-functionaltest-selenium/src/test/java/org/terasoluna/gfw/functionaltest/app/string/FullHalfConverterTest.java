@@ -79,6 +79,11 @@ public class FullHalfConverterTest {
 
     }
     
+    @Test
+    public void customFullHalfTest02() {
+        assertThat(CustomFullHalf.INSTANCE.toHalfwidth("ハローワールド！"), is("ﾊﾛ-ﾜ-ﾙﾄﾞ!"));
+    }
+    
     @Test(expected = IllegalArgumentException.class)
     public void fullHalfPairsBuilderErrorTest01() {
         new FullHalfPairsBuilder().pair("", "a");
