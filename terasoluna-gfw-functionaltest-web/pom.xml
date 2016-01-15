@@ -105,5 +105,37 @@
             <scope>test</scope>
         </dependency>
         <!-- == End Unit Test == -->
+        <dependency>
+            <groupId>org.terasoluna.gfw</groupId>
+            <artifactId>terasoluna-gfw-codepoints</artifactId>
+            <version>${terasoluna.gfw.codepoints.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.terasoluna.gfw.codepoints</groupId>
+            <artifactId>terasoluna-gfw-codepoints-jisx0201</artifactId>
+            <version>${terasoluna.gfw.codepoints.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.terasoluna.gfw.codepoints</groupId>
+            <artifactId>terasoluna-gfw-codepoints-jisx0208</artifactId>
+            <version>${terasoluna.gfw.codepoints.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.terasoluna.gfw.codepoints</groupId>
+            <artifactId>
+                terasoluna-gfw-codepoints-jisx0208kanji
+            </artifactId>
+            <version>${terasoluna.gfw.codepoints.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.terasoluna.gfw.codepoints</groupId>
+            <artifactId>
+                terasoluna-gfw-codepoints-jisx0213kanji
+            </artifactId>
+            <version>${terasoluna.gfw.codepoints.version}</version>
+        </dependency>
     </dependencies>
+    <properties>
+        <terasoluna.gfw.codepoints.version>5.1.0-SNAPSHOT</terasoluna.gfw.codepoints.version>
+    </properties>
 </project>

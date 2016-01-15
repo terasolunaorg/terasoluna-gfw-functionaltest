@@ -23,6 +23,11 @@
 					Function Test</a></td>
 		</tr>
 		<tr>
+			<td><a id="CodePoints"
+				href="${pageContext.request.contextPath}/codepoints">CodePoints
+					Function Test</a></td>
+		</tr>
+		<tr>
 			<td><a id="Exception"
 				href="${pageContext.request.contextPath}/exceptionhandling">Exception
 					Function Test</a></td>
