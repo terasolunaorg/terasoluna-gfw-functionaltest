@@ -76,6 +76,7 @@
         <dependency>
             <groupId>org.terasoluna.gfw</groupId>
             <artifactId>terasoluna-gfw-string</artifactId>
+            <scope>test</scope>
         </dependency>
 
     </dependencies>
