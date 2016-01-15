@@ -72,6 +72,13 @@
             <version>${terasoluna.gfw.codepoints.version}</version>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.terasoluna.gfw</groupId>
+            <artifactId>terasoluna-gfw-string</artifactId>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
     <properties>
