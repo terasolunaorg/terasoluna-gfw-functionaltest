@@ -96,7 +96,7 @@
     <properties>
         <encoding>UTF-8</encoding>
         <java-version>1.6</java-version>
-        <postgresql.version>9.4-1205-jdbc41</postgresql.version>
+        <postgresql.version>9.4-1206-jdbc41</postgresql.version>
         <ojdbc7.version>12.1.0.2</ojdbc7.version>
         <cargo.jvmargs>-Xms512m -Xmx1024m -Duser.language=ja -Duser.country=JP -Duser.timezone=Asia/Tokyo</cargo.jvmargs>
     </properties>
