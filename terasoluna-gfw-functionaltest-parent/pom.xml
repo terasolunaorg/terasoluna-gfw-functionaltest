@@ -102,7 +102,7 @@
     <properties>
         <encoding>UTF-8</encoding>
         <java-version>1.6</java-version>
-        <postgresql.version>9.4-1205-jdbc41</postgresql.version>
+        <postgresql.version>9.4-1206-jdbc41</postgresql.version>
         <ojdbc7.version>12.1.0.2</ojdbc7.version>
         <db2jcc4.version>4.19.26</db2jcc4.version>
         <org.codehaus.cargo.cargo-maven2-plugin.version>1.4.16</org.codehaus.cargo.cargo-maven2-plugin.version>
