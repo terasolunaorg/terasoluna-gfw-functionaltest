@@ -9,6 +9,7 @@
         </dependencies>
         <exclude-subsystems>
           <subsystem name="jpa" />
+          <subsystem name="org.hibernate" />
         </exclude-subsystems>
     </deployment>
 </jboss-deployment-structure>
