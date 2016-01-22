@@ -6,7 +6,6 @@
     <settings>
         <setting name="mapUnderscoreToCamelCase" value="true" />
         <setting name="jdbcTypeForNull" value="NULL" />
-        <setting name="proxyFactory" value="CGLIB"/>
     </settings>
 
     <typeAliases>
