@@ -80,7 +80,7 @@ public class ConsistOfCheckTest extends FunctionTestSupport {
 		
 		for (String[] testData : testDatas) {
 			this.check(testData[0] + ".errors",
-					"Input value is a character type that is not allowed.");
+					"not consist of specified code points");
 		}
 	}
 	
