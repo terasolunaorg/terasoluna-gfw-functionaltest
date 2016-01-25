@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nec-web-app>
+    <context-root>terasoluna-gfw-functionaltest-web</context-root>
+    <class-loader delegate="false">
+        <property name="overrideablejavaxpackages" value="org,javax,sun,com"/>
+    </class-loader>
+</nec-web-app>
