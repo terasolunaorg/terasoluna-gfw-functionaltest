@@ -107,6 +107,13 @@
                 <buildFinalName>${project.artifactId}-${project.version}-websphere-db2</buildFinalName>
             </properties>
         </profile>
+        <profile>
+            <id>webotx-oracle</id>
+            <properties>
+                <resource.directory>${basedir}/configs/webotx-oracle/resources</resource.directory>
+                <buildFinalName>${project.artifactId}-${project.version}-webotx-oracle</buildFinalName>
+            </properties>
+        </profile>
     </profiles>
 
     <dependencies>
