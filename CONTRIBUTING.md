@@ -90,7 +90,7 @@ Commit a modification as follow.
 
 > **Note: Commit comment format**
 >
-> "#{issue number}: {modification overview}"
+> "{modification overview} #{issue number}"
 
 > **Note: Supported language**
 >
@@ -99,7 +99,7 @@ Commit a modification as follow.
 e.g.)
 
 ```console
-$ git commit -a -m "#999: Add configuration files and maven profile for WAS 8.5 + DB2"
+$ git commit -a -m "Add configuration files and maven profile for WAS 8.5 + DB2 #999"
 ```
 
 
@@ -123,7 +123,7 @@ For details, refer to the [GitHub document-Creating a pull request-](https://hel
 >
 > English only.
 
-* Write the modification overview into the title area. (Default is commit comment or work branch name)
+* Write the modification overview into the title area and end with `#{issue number}`. (Default is commit comment or work branch name)
 * Write the modification detail into the comment area. (If needed)
 * Include the issue number(`#{issue number}` format) to track a modification into the comment area.
 
@@ -131,5 +131,5 @@ e.g.)
 
 | Area | Content | Remark |
 | ---- | ------- | ------ |
-| Title | #999: Add configuration files and maven profile for WAS 8.5 + DB2 | - |
+| Title | Add configuration files and maven profile for WAS 8.5 + DB2 #999 | - |
 | Comment | Please review #999 .| If needed, write more informations. |
