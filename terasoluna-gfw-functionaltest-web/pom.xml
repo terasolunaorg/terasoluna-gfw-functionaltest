@@ -7,7 +7,7 @@
     <parent>
         <groupId>org.terasoluna.gfw.functionaltest</groupId>
         <artifactId>terasoluna-gfw-functionaltest-parent</artifactId>
-        <version>5.1.0-SNAPSHOT</version>
+        <version>5.1.0.RC3</version>
         <relativePath>../terasoluna-gfw-functionaltest-parent/pom.xml</relativePath>
     </parent>
     <name>TERASOLUNA Server Framework for Java (5.x) - Functionality Test Application - Web Layer</name>
@@ -136,6 +136,6 @@
         </dependency>
     </dependencies>
     <properties>
-        <terasoluna.gfw.codepoints.version>5.1.0-SNAPSHOT</terasoluna.gfw.codepoints.version>
+        <terasoluna.gfw.codepoints.version>5.1.0.RC3</terasoluna.gfw.codepoints.version>
     </properties>
 </project>
