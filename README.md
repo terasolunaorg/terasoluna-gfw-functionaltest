@@ -1,0 +1,134 @@
+# Functional Test of TERASOLUNA Server Framework for Java (5.x) Common Library
+This project provides functional tests of [TERASOLUNA Server Framework for Java (5.x) Common Library](https://github.com/terasolunaorg/terasoluna-gfw).
+
+[![Build Status](https://travis-ci.org/terasolunaorg/terasoluna-gfw-functionaltest.png?branch=master)](https://travis-ci.org/terasolunaorg/terasoluna-gfw-functionaltest)
+
+## How to contribute
+**Contributing (bug report, pull request, any comments etc.) is welcome !!** Please see the [contributing guideline](https://github.com/terasolunaorg/terasoluna-gfw-functionaltest/blob/master/CONTRIBUTING.md) for details.
+
+## Test case design
+
+Test case scenarios are managed at [wiki pages](https://github.com/terasolunaorg/terasoluna-gfw-functionaltest/wiki).
+
+> **Note:**
+>
+> Currently, support language is Japanese only. (Will translate to English as soon as possible)
+
+## Tested environments at the time of release
+
+Tested environments are managed at [wiki page](https://github.com/terasolunaorg/terasoluna-gfw-functionaltest/wiki/Tested-Environment).
+
+## How to perform functional test
+
+**Preconditions are as follow:**
+
+* [JDK 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) or [JDK 7](http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html) installed (`JAVA_HOME` defined as environment variable)
+* [Maven](https://maven.apache.org/download.cgi) installed (Can run `mvn` command)
+* Firefox([for personal](https://www.mozilla.org/en-US/firefox/all/) or [ESR](https://www.mozilla.org/en-US/firefox/organizations/all/)) installed (ESR is used on our CI environment)
+
+### [Step 1] Create database of PostgreSQL (Optional)
+If [PostgreSQL](http://www.postgresql.org/) use as database , you need to create database of PostgreSQL into local machine. (PostgreSQL can download via [here site](http://www.postgresql.org/download/)).
+
+> **Note:**
+>
+> If [H2](http://www.h2database.com/) use as database, you can skip this step.
+
+#### Download & install
+By default, database owner is `postgres` user, and password of `postgres` user is `'P0stgres'`.
+
+#### Create database
+```console
+$ createdb -U postgres terasoluna-gfw-functionaltest --locale=C --encoding=UTF8 --template=template0
+```
+
+### [Step 2] Clone a repository
+Clone the `terasolunaorg/terasoluna-gfw-functionaltest` repository into local machine.
+
+```console
+$ git clone https://github.com/terasolunaorg/terasoluna-gfw-functionaltest.git
+```
+
+### [Step 3] Build artifacts
+Build artifacts using maven commands as follows.
+
+#### Case that use embedded H2 as database
+
+```console
+$ cd {your repository directory}
+$ git checkout {target branch}
+$ mvn -U install -f terasoluna-gfw-functionaltest-parent/pom.xml
+$ mvn -U install -f terasoluna-gfw-functionaltest-env/pom.xml
+$ mvn -U install -f terasoluna-gfw-functionaltest-domain/pom.xml
+$ mvn -U package -f terasoluna-gfw-functionaltest-web/pom.xml
+```
+
+#### Case that use PostgreSQL as database
+
+```console
+$ cd {your repository directory}
+$ git checkout {target branch}
+$ mvn -U install -f terasoluna-gfw-functionaltest-parent/pom.xml
+$ mvn -U install -f terasoluna-gfw-functionaltest-env/pom.xml -P tomcat8-postgresql
+$ mvn -U install -f terasoluna-gfw-functionaltest-domain/pom.xml
+$ mvn -U package -f terasoluna-gfw-functionaltest-web/pom.xml -P warpack-env,travis
+```
+
+> **Note:**
+>
+> If you not use default user(`postgres`) or password(`P0stgres`), you should modify settings in `terasoluna-gfw-functionaltest-env/configs/travis/ContainerConfigXML/context.xml`.
+
+### [Step 4] Initialize database (Optional)
+If PostgreSQL use as database, initialize database before run functional test.
+
+```console
+$ mvn -U sql:execute -f terasoluna-gfw-functionaltest-initdb/pom.xml
+```
+
+> **Note:**
+>
+> If you not use default user(`postgres`) or password(`P0stgres`), you should specify `-Ddb.username={your user}` or `-Ddb.password={your password}` or both.
+
+### [Step 5] Startup Tomcat8 and deploy war file
+Startup Tomcat8 and deploy war file using [CARGO maven plugin](https://codehaus-cargo.github.io/cargo/Maven2+plugin.html).
+
+```console
+$ cd {your repository directory}
+$ mvn -U cargo:run -f terasoluna-gfw-functionaltest-web/pom.xml
+```
+
+> **Note:**
+>
+> Shutdown trigger is "Ctrl + C" on console.
+
+### [Step 6] Run functional tests
+Run tests using Selenium(`WebDriver`) on JUnit.
+
+```console
+$ cd {your repository directory}
+$ mvn -U test -f terasoluna-gfw-functionaltest-selenium/pom.xml
+```
+
+> **Note:**
+>
+> If functional test is failed, try again using latest Selenium(specify with `-Dselenium.version={latest version}`).
+
+
+## Appendix
+
+### How to use latest or any branch snapshot of Common Library
+
+If latest or any branch snapshot of Common Library want to use, install latest or any branch snapshot before build and test.
+
+#### Clone terasoluna-gfw repository into local machine
+
+```console
+$ git clone https://github.com/terasolunaorg/terasoluna-gfw.git
+```
+
+#### Install latest or any branch snapshot of Common Library into local machine
+
+```console
+$ cd {your repository directory of terasoluna-gfw}
+$ git checkout {target branch}
+$ sh ./mvn-build-all.sh
+```
