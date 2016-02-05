@@ -4,10 +4,11 @@
 . /etc/rc.d/init.d/functions
 
 # set environment
+source /etc/profile.d/java.sh
 source /etc/profile.d/interstage.sh
 
-asadmin=${IS_HOME!'/opt/interstage'}/bin/asadmin
-clusterName=${IS_CLUSTER_NAME!'Cluster001'}
+asadmin=${INTERSTAGE_HOME!'/opt/interstage'}/bin/asadmin
+clusterName=${INTERSTAGE_CLUSTER_NAME!'Cluster001'}
 hostIP=${HOST_IP!'localhost'}
 dbPort=${DBSRV_DB_PORT!'1521'}
 
@@ -15,7 +16,7 @@ dbPort=${DBSRV_DB_PORT!'1521'}
     if [ -f ${asadmin} ]; then
         :
     else
-        echo "file not found. ${asadmin}"
+        echo "file not found. ${asadmin}" >&2
         exit 300
     fi
 
