@@ -23,8 +23,6 @@ clusterName=${INTERSTAGE_CLUSTER_NAME!'Cluster001'}
 
     ${asadmin} delete-jdbc-connection-pool gfwFunctionaltestDataSourcePool
     ######  Delete DataSource & Connection Pool  ######
-
 </#noparse>
-
 
 exit 0

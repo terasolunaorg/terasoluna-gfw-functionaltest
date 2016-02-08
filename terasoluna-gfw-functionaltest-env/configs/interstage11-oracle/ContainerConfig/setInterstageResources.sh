@@ -32,7 +32,6 @@ dbPort=1521
         --target ${clusterName} \
         --connectionpoolid gfwFunctionaltestDataSourcePool \
         jdbc/gfwFunctionaltestDataSource
-
     ######  DataSource Settings  ######
 
 exit 0

@@ -34,7 +34,6 @@ dbPort=${DBSRV_DB_PORT!'1521'}
         --connectionpoolid gfwFunctionaltestDataSourcePool \
         jdbc/gfwFunctionaltestDataSource
     ######  DataSource Settings  ######
-
 </#noparse>
 
 exit 0
