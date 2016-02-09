@@ -4,6 +4,7 @@
 . /etc/rc.d/init.d/functions
 
 # set environment
+source /etc/profile.d/java.sh
 source /etc/profile.d/interstage.sh
 
 asadmin=/opt/interstage/bin/asadmin
@@ -14,7 +15,7 @@ dbPort=1521
     if [ -f ${asadmin} ]; then
         :
     else
-        echo "file not found. ${asadmin}"
+        echo "file not found. ${asadmin}" >&2
         exit 300
     fi
 
@@ -31,7 +32,6 @@ dbPort=1521
         --target ${clusterName} \
         --connectionpoolid gfwFunctionaltestDataSourcePool \
         jdbc/gfwFunctionaltestDataSource
-
     ######  DataSource Settings  ######
 
 exit 0
