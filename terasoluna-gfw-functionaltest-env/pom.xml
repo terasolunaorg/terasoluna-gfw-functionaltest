@@ -121,6 +121,13 @@
                 <buildFinalName>${project.artifactId}-${project.version}-interstage11-oracle</buildFinalName>
             </properties>
         </profile>
+        <profile>
+            <id>oracle-cloud</id>
+            <properties>
+                <resource.directory>${basedir}/configs/oracle-cloud/resources</resource.directory>
+                <buildFinalName>${project.artifactId}-${project.version}-oracle-cloud</buildFinalName>
+            </properties>
+        </profile>
     </profiles>
 
     <dependencies>
