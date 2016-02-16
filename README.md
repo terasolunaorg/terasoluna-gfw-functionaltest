@@ -1,10 +1,10 @@
-# Functional Test of TERASOLUNA Server Framework for Java (5.x) Common Library
-This project provides functional tests of [TERASOLUNA Server Framework for Java (5.x) Common Library](https://github.com/terasolunaorg/terasoluna-gfw).
+# Functional Test of TERASOLUNA Global Framework Common Library
+This project provides functional tests of [TERASOLUNA Global Framework Common Library](https://github.com/terasolunaorg/terasoluna-gfw).
 
-[![Build Status](https://travis-ci.org/terasolunaorg/terasoluna-gfw-functionaltest.png?branch=master)](https://travis-ci.org/terasolunaorg/terasoluna-gfw-functionaltest)
+[![Build Status](https://travis-ci.org/terasolunaorg/terasoluna-gfw-functionaltest.png?branch=1.0.x)](https://travis-ci.org/terasolunaorg/terasoluna-gfw-functionaltest)
 
 ## How to contribute
-**Contributing (bug report, pull request, any comments etc.) is welcome !!** Please see the [contributing guideline](https://github.com/terasolunaorg/terasoluna-gfw-functionaltest/blob/master/CONTRIBUTING.md) for details.
+**Contributing (bug report, pull request, any comments etc.) is welcome !!** Please see the [contributing guideline](https://github.com/terasolunaorg/terasoluna-gfw-functionaltest/blob/1.0.x/CONTRIBUTING.md) for details.
 
 ## Test case design
 

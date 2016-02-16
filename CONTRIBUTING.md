@@ -67,7 +67,7 @@ Create a work branch on the master branch into your local repository.
 e.g.)
 
 ```console
-$ git checkout master
+$ git checkout 1.0.x
 $ git checkout -b issues/999_support-was8-db2
 ```
 
