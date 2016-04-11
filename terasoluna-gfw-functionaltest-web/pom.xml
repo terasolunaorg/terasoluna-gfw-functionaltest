@@ -24,6 +24,11 @@
                     <groupId>${project.groupId}</groupId>
                     <artifactId>terasoluna-gfw-functionaltest-env</artifactId>
                 </dependency>
+                <!-- Add for local (Tomcat or Tc Server)  -->
+                <dependency>
+                    <groupId>org.apache.taglibs</groupId>
+                    <artifactId>taglibs-standard-jstlel</artifactId>
+                </dependency>
             </dependencies>
         </profile>
         <profile>
@@ -40,11 +45,9 @@
                 </dependency>
             </dependencies>
         </profile>
+        <!-- Add profile for packaging JSTL jars -->
         <profile>
-            <id>include-jstlel</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
+            <id>warpack-jstl</id>
             <dependencies>
                 <dependency>
                     <groupId>org.apache.taglibs</groupId>
