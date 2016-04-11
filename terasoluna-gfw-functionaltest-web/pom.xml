@@ -40,6 +40,18 @@
                 </dependency>
             </dependencies>
         </profile>
+        <profile>
+            <id>include-jstlel</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <dependencies>
+                <dependency>
+                    <groupId>org.apache.taglibs</groupId>
+                    <artifactId>taglibs-standard-jstlel</artifactId>
+                </dependency>
+            </dependencies>
+        </profile>
     </profiles>
 
     <dependencies>
