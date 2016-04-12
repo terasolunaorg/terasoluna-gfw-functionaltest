@@ -105,6 +105,37 @@ public class SequencerTest extends FunctionTestSupport {
                 is("Sequencer Function Test (GET CURRENT VALUE)"));
         assertThat(driver.findElement(By.id("currval")).getText(), is("4"));
 
+        // Display Same Transaction. 
+        driver.findElement(By.id("1_1_same_transaction")).click();
+
+        // Check page
+        assertThat(driver.findElement(By.id("next_value1")).getText(),
+                is("5"));
+
+        assertThat(driver.findElement(By.id("current_value1")).getText(),
+                is("5"));
+
+        assertThat(driver.findElement(By.id("current_value2")).getText(),
+                is("5"));
+
+        assertThat(driver.findElement(By.id("next_value2")).getText(),
+                is("6"));
+
+        assertThat(driver.findElement(By.id("next_value3")).getText(),
+                is("7"));
+
+        assertThat(driver.findElement(By.id("current_value3")).getText(),
+                is("7"));
+
+        assertThat(driver.findElement(By.id("next_value4")).getText(),
+                is("8"));
+
+        assertThat(driver.findElement(By.id("current_value4")).getText(),
+                is("8"));
+
+        assertThat(driver.findElement(By.id("mode")).getText(),
+                is("Integer"));
+
         // screen capture (Automatic capture conducted at the end)
 
     }
@@ -184,6 +215,37 @@ public class SequencerTest extends FunctionTestSupport {
         assertThat(driver.findElement(By.cssSelector("h2")).getText(),
                 is("Sequencer Function Test (GET CURRENT VALUE)"));
         assertThat(driver.findElement(By.id("currval")).getText(), is("4"));
+
+        // Display Same Transaction.
+        driver.findElement(By.id("1_2_same_transaction")).click();
+
+        // Check page
+        assertThat(driver.findElement(By.id("next_value1")).getText(),
+                is("5"));
+
+        assertThat(driver.findElement(By.id("current_value1")).getText(),
+                is("5"));
+
+        assertThat(driver.findElement(By.id("current_value2")).getText(),
+                is("5"));
+
+        assertThat(driver.findElement(By.id("next_value2")).getText(),
+                is("6"));
+
+        assertThat(driver.findElement(By.id("next_value3")).getText(),
+                is("7"));
+
+        assertThat(driver.findElement(By.id("current_value3")).getText(),
+                is("7"));
+
+        assertThat(driver.findElement(By.id("next_value4")).getText(),
+                is("8"));
+
+        assertThat(driver.findElement(By.id("current_value4")).getText(),
+                is("8"));
+
+        assertThat(driver.findElement(By.id("mode")).getText(),
+                is("Long"));
 
         // screen capture (Automatic capture conducted at the end)
 
@@ -265,6 +327,37 @@ public class SequencerTest extends FunctionTestSupport {
                 is("Sequencer Function Test (GET CURRENT VALUE)"));
         assertThat(driver.findElement(By.id("currval")).getText(), is("4"));
 
+        // Display SmaeTransaction.
+        driver.findElement(By.id("1_3_same_transaction")).click();
+
+        // Check page
+        assertThat(driver.findElement(By.id("next_value1")).getText(),
+                is("5"));
+
+        assertThat(driver.findElement(By.id("current_value1")).getText(),
+                is("5"));
+
+        assertThat(driver.findElement(By.id("current_value2")).getText(),
+                is("5"));
+
+        assertThat(driver.findElement(By.id("next_value2")).getText(),
+                is("6"));
+
+        assertThat(driver.findElement(By.id("next_value3")).getText(),
+                is("7"));
+
+        assertThat(driver.findElement(By.id("current_value3")).getText(),
+                is("7"));
+
+        assertThat(driver.findElement(By.id("next_value4")).getText(),
+                is("8"));
+
+        assertThat(driver.findElement(By.id("current_value4")).getText(),
+                is("8"));
+
+        assertThat(driver.findElement(By.id("mode")).getText(),
+                is("BigInteger"));
+        
         // screen capture (Automatic capture conducted at the end)
 
     }
@@ -353,6 +446,37 @@ public class SequencerTest extends FunctionTestSupport {
         assertThat(driver.findElement(By.id("currval")).getText(),
                 is("0000000004"));
 
+        // Display SameTransaction.
+        driver.findElement(By.id("1_4_same_transaction")).click();
+
+        // Check page
+        assertThat(driver.findElement(By.id("next_value1")).getText(),
+                is("0000000005"));
+
+        assertThat(driver.findElement(By.id("current_value1")).getText(),
+                is("0000000005"));
+
+        assertThat(driver.findElement(By.id("current_value2")).getText(),
+                is("0000000005"));
+
+        assertThat(driver.findElement(By.id("next_value2")).getText(),
+                is("0000000006"));
+
+        assertThat(driver.findElement(By.id("next_value3")).getText(),
+                is("0000000007"));
+
+        assertThat(driver.findElement(By.id("current_value3")).getText(),
+                is("0000000007"));
+
+        assertThat(driver.findElement(By.id("next_value4")).getText(),
+                is("0000000008"));
+
+        assertThat(driver.findElement(By.id("current_value4")).getText(),
+                is("0000000008"));
+
+        assertThat(driver.findElement(By.id("mode")).getText(),
+                is("String"));
+
         // screen capture (Automatic capture conducted at the end)
 
     }
@@ -381,4 +505,5 @@ public class SequencerTest extends FunctionTestSupport {
         // screen capture (Automatic capture conducted at the end)
 
     }
+
 }
