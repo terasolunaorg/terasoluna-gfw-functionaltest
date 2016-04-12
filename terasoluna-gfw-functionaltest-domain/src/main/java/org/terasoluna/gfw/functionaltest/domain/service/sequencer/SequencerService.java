@@ -16,6 +16,7 @@
 package org.terasoluna.gfw.functionaltest.domain.service.sequencer;
 
 import java.math.BigInteger;
+import java.util.LinkedHashMap;
 
 public interface SequencerService {
 
@@ -38,4 +39,13 @@ public interface SequencerService {
 	Integer getNotFoundSequenceNext();
 
 	Integer getNotFoundSequenceCurrent();
+
+    LinkedHashMap<String, BigInteger> getSequencerBigIntegers();
+
+    LinkedHashMap<String, Integer> getSequencerIntegers();
+
+    LinkedHashMap<String, Long> getSequencerLongs();
+
+    LinkedHashMap<String, String> getSequencerStrings();
+
 }
