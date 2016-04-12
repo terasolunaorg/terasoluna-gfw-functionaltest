@@ -32,7 +32,9 @@ public class ConsistOfCheckTest extends FunctionTestSupport {
 	@Test
 	public void consistOfCheckSuccessTest() {
 		
-		String[][] testDatas = {{"jisX208Hiragana", "しめい"},
+        driver.findElement(By.id("consistOfCheck")).click();
+
+        String[][] testDatas = {{"jisX208Hiragana", "しめい"},
 				{"jisX208HiraganaKatakana", "メモめも"},
 				{"asciiCtrlChars", "\u0007\b\t\u000b\r\n" }, //\a\b\t\v\r\n
 				{"asciiPrntChars", " 012abcABC~" },
@@ -65,6 +67,8 @@ public class ConsistOfCheckTest extends FunctionTestSupport {
 	@Test
 	public void consistOfCheckErrorTest() {
 		
+        driver.findElement(By.id("consistOfCheck")).click();
+
 		String[][] testDatas = {{"jisX208Hiragana", "しメい"},
 				{"jisX208HiraganaKatakana", "メモめもmemo"},
 				{"asciiCtrlChars", "\u0007\b\tM\u000b\r\n" }, //\a\b\tM\v\r\n
