@@ -30,5 +30,5 @@ script:
   - mvn -U sql:execute -f terasoluna-gfw-functionaltest-initdb/pom.xml
   - mvn -U install -f terasoluna-gfw-functionaltest-env/pom.xml -P tomcat8-postgresql
   - mvn -U install -f terasoluna-gfw-functionaltest-domain/pom.xml
-  - mvn -U install cargo:daemon-start -f terasoluna-gfw-functionaltest-web/pom.xml -P warpack-env,travis
+  - mvn -U install cargo:daemon-start -f terasoluna-gfw-functionaltest-web/pom.xml -P warpack-env,warpack-jstl,travis
   - mvn -U test -f terasoluna-gfw-functionaltest-selenium/pom.xml
