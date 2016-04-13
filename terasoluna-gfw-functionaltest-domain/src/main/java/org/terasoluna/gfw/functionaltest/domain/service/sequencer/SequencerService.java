@@ -20,25 +20,9 @@ import java.util.LinkedHashMap;
 
 public interface SequencerService {
 
-	Integer getNextValueByInteger();
-	
-	Integer getCurrentValueByInteger();
+    Integer getNotFoundSequenceNext();
 
-	Long getNextValueByLong();
-	
-	Long getCurrentValueByLong();
-
-	BigInteger getNextValueByBigInteger();
-	
-	BigInteger getCurrentValueByBigIneter();
-	
-	String getNextValueByString();
-	
-	String getCurrentValueByString();
-	
-	Integer getNotFoundSequenceNext();
-
-	Integer getNotFoundSequenceCurrent();
+    Integer getNotFoundSequenceCurrent();
 
     LinkedHashMap<String, BigInteger> getSequencerBigIntegers();
 
