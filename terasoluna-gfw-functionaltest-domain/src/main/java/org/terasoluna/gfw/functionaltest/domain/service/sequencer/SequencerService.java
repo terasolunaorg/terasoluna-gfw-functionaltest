@@ -16,26 +16,20 @@
 package org.terasoluna.gfw.functionaltest.domain.service.sequencer;
 
 import java.math.BigInteger;
+import java.util.LinkedHashMap;
 
 public interface SequencerService {
 
-	Integer getNextValueByInteger();
-	
-	Integer getCurrentValueByInteger();
+    Integer getNotFoundSequenceNext();
 
-	Long getNextValueByLong();
-	
-	Long getCurrentValueByLong();
+    Integer getNotFoundSequenceCurrent();
 
-	BigInteger getNextValueByBigInteger();
-	
-	BigInteger getCurrentValueByBigIneter();
-	
-	String getNextValueByString();
-	
-	String getCurrentValueByString();
-	
-	Integer getNotFoundSequenceNext();
+    LinkedHashMap<String, BigInteger> getSequencerBigIntegers();
 
-	Integer getNotFoundSequenceCurrent();
+    LinkedHashMap<String, Integer> getSequencerIntegers();
+
+    LinkedHashMap<String, Long> getSequencerLongs();
+
+    LinkedHashMap<String, String> getSequencerStrings();
+
 }

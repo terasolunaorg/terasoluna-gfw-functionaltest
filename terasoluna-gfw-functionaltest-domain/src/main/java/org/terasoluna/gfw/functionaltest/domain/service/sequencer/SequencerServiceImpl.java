@@ -16,88 +16,84 @@
 package org.terasoluna.gfw.functionaltest.domain.service.sequencer;
 
 import java.math.BigInteger;
+import java.util.LinkedHashMap;
 
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.terasoluna.gfw.common.sequencer.Sequencer;
+import org.terasoluna.gfw.functionaltest.domain.TransactionManagers;
 
 @Service
+@Transactional(value = TransactionManagers.DATASOURCE)
 public class SequencerServiceImpl implements SequencerService {
 
-	@Resource
+    @Resource
     protected Sequencer<Integer> integerSeq;
 
-	@Resource
+    @Resource
     protected Sequencer<Long> longSeq;
 
-	@Resource
+    @Resource
     protected Sequencer<BigInteger> bigIntegerSeq;
-	
-	@Resource
+
+    @Resource
     protected Sequencer<String> stringSeq;
-	
-	@Resource
+
+    @Resource
     protected Sequencer<Integer> notFoundSeq;
 
-	@Override
-	public Integer getNextValueByInteger() {
-		Integer integerSequence = integerSeq.getNext();
-		return integerSequence;
-	}
+    @Override
+    public Integer getNotFoundSequenceNext() {
+        Integer integerSequence = notFoundSeq.getNext();
+        return integerSequence;
+    }
 
-	@Override
-	public Integer getCurrentValueByInteger() {
-		Integer integerSequence = integerSeq.getCurrent();
-		return integerSequence;
-	}
+    @Override
+    public Integer getNotFoundSequenceCurrent() {
+        Integer integerSequence = notFoundSeq.getCurrent();
+        return integerSequence;
+    }
 
-	@Override
-	public Long getNextValueByLong() {
-		Long longSequence = longSeq.getNext();
-		return longSequence;
-	}
+    @Override
+    public LinkedHashMap<String, BigInteger> getSequencerBigIntegers() {
+        LinkedHashMap<String, BigInteger> output = new LinkedHashMap<String, BigInteger>();
+        setSequencerValuesOutput(bigIntegerSeq, output);
+        return output;
+    }
 
-	@Override
-	public Long getCurrentValueByLong() {
-		Long longSequence = longSeq.getCurrent();
-		return longSequence;
-	}
+    @Override
+    public LinkedHashMap<String, Integer> getSequencerIntegers() {
+        LinkedHashMap<String, Integer> output = new LinkedHashMap<String, Integer>();
+        setSequencerValuesOutput(integerSeq, output);
+        return output;
+    }
 
-	@Override
-	public BigInteger getNextValueByBigInteger() {
-		BigInteger bigIntegerSequence = bigIntegerSeq.getNext();
-		return bigIntegerSequence;
-	}
+    @Override
+    public LinkedHashMap<String, Long> getSequencerLongs() {
+        LinkedHashMap<String, Long> output = new LinkedHashMap<String, Long>();
+        setSequencerValuesOutput(longSeq, output);
+        return output;
+    }
 
-	@Override
-	public BigInteger getCurrentValueByBigIneter() {
-		BigInteger bigIntegerSequence = bigIntegerSeq.getCurrent();
-		return bigIntegerSequence;
-	}
+    @Override
+    public LinkedHashMap<String, String> getSequencerStrings() {
+        LinkedHashMap<String, String> output = new LinkedHashMap<String, String>();
+        setSequencerValuesOutput(stringSeq, output);
+        return output;
+    }
 
-	@Override
-	public String getNextValueByString() {
-		String stringSequence = stringSeq.getNext();
-		return stringSequence;
-	}
-
-	@Override
-	public String getCurrentValueByString() {
-		String stringSequence = stringSeq.getCurrent();
-		return stringSequence;
-	}
-
-	@Override
-	public Integer getNotFoundSequenceNext() {
-		Integer integerSequence = notFoundSeq.getNext();
-		return integerSequence;
-	}
-	
-	@Override
-	public Integer getNotFoundSequenceCurrent() {
-		Integer integerSequence = notFoundSeq.getCurrent();
-		return integerSequence;
-	}
-
+    @SuppressWarnings("unchecked")
+    private <T, E> void setSequencerValuesOutput(Sequencer<T> sequencer,
+            LinkedHashMap<String, E> output) {
+        output.put("next_value1", (E) sequencer.getNext());
+        output.put("current_value1", (E) sequencer.getCurrent());
+        output.put("current_value2", (E) sequencer.getCurrent());
+        output.put("next_value2", (E) sequencer.getNext());
+        output.put("next_value3", (E) sequencer.getNext());
+        output.put("current_value3", (E) sequencer.getCurrent());
+        output.put("next_value4", (E) sequencer.getNext());
+        output.put("current_value4", (E) sequencer.getCurrent());
+    }
 }
