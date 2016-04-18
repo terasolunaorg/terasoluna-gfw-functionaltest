@@ -28,6 +28,27 @@
         <name>TERASOLUNA Framework Team</name>
         <url>http://terasoluna.org</url>
     </organization>
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <configuration>
+                        <webResources>
+                            <resource>
+                                <directory>${project.basedir}/../terasoluna-gfw-functionaltest-env/${profile.directory}/webapp/WEB-INF</directory>
+                                <targetPath>WEB-INF</targetPath>
+                                <filtering>true</filtering>
+                                <excludes>
+                                    <exclude>**/.gitkeep</exclude>
+                                </excludes>
+                            </resource>
+                        </webResources>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
     <repositories>
         <repository>
             <releases>
@@ -100,6 +121,7 @@
         </dependencies>
     </dependencyManagement>
     <properties>
+        <profile.directory>src/main</profile.directory>
         <encoding>UTF-8</encoding>
         <java-version>1.6</java-version>
         <postgresql.version>9.4-1206-jdbc41</postgresql.version>
@@ -123,6 +145,60 @@
                     </plugins>
                 </pluginManagement>
             </build>
+        </profile>
+        <profile>
+            <id>interstage11-oracle</id>
+            <properties>
+                <profile.directory>configs/interstage11-oracle</profile.directory>
+            </properties>
+        </profile>
+        <profile>
+            <id>jboss-postgresql</id>
+            <properties>
+                <profile.directory>configs/jboss-postgresql</profile.directory>
+            </properties>
+        </profile>
+        <profile>
+            <id>tomcat-oracle</id>
+            <properties>
+                <profile.directory>configs/tomcat-oracle</profile.directory>
+            </properties>
+        </profile>
+        <profile>
+            <id>tomcat-postgresql</id>
+            <properties>
+                <profile.directory>configs/tomcat-postgresql</profile.directory>
+            </properties>
+        </profile>
+        <profile>
+            <id>tomcat8-oracle</id>
+            <properties>
+                <profile.directory>configs/tomcat8-oracle</profile.directory>
+            </properties>
+        </profile>
+        <profile>
+            <id>tomcat8-postgresql</id>
+            <properties>
+                <profile.directory>configs/tomcat8-postgresql</profile.directory>
+            </properties>
+        </profile>
+        <profile>
+            <id>weblogic-oracle</id>
+            <properties>
+                <profile.directory>configs/weblogic-oracle</profile.directory>
+            </properties>
+        </profile>
+        <profile>
+            <id>webotx-oracle</id>
+            <properties>
+                <profile.directory>configs/webotx-oracle</profile.directory>
+            </properties>
+        </profile>
+        <profile>
+            <id>websphere-db2</id>
+            <properties>
+                <profile.directory>configs/websphere-db2</profile.directory>
+            </properties>
         </profile>
     </profiles>
 </project>
