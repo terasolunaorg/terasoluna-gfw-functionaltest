@@ -16,6 +16,7 @@
 package org.terasoluna.gfw.functionaltest.app.sequencer;
 
 import java.math.BigInteger;
+import java.util.LinkedHashMap;
 
 import javax.inject.Inject;
 
@@ -28,82 +29,62 @@ import org.terasoluna.gfw.functionaltest.domain.service.sequencer.SequencerServi
 @Controller
 @RequestMapping(value = "sequencer")
 public class SequencerController {
-	
-	@Inject
+
+    @Inject
     protected SequencerService sequencerService;
-	
-	@RequestMapping(method = RequestMethod.GET)
+
+    @RequestMapping(method = RequestMethod.GET)
     public String index() {
         return "sequencer/index";
     }
 
-	@RequestMapping(value = "1_1", params = "next", method = RequestMethod.GET)
-	public String fuinctionTest_1_1_get_next(Model model) {
-		Integer nextval = sequencerService.getNextValueByInteger();
-		model.addAttribute("nextval", nextval);
-		return "sequencer/showNextval";
-	}
-	
-	@RequestMapping(value = "1_1", params = "current", method = RequestMethod.GET)
-	public String fuinctionTest_1_1_get_current(Model model) {
-		Integer currval = sequencerService.getCurrentValueByInteger();
-		model.addAttribute("currval", currval);
-		return "sequencer/showCurrval";
-	}
+    @RequestMapping(value = "2_1", params = "next", method = RequestMethod.GET)
+    public String fuinctionTest_2_1_get_next(Model model) {
+        Integer nextval = sequencerService.getNotFoundSequenceNext();
+        model.addAttribute("nextval", nextval);
+        return "sequencer/showNextval";
+    }
 
-	@RequestMapping(value = "1_2", params = "next", method = RequestMethod.GET)
-	public String fuinctionTest_1_2_get_next(Model model) {
-		Long nextval = sequencerService.getNextValueByLong();
-		model.addAttribute("nextval", nextval);
-		return "sequencer/showNextval";
-	}
-	
-	@RequestMapping(value = "1_2", params = "current", method = RequestMethod.GET)
-	public String fuinctionTest_1_2_get_current(Model model) {
-		Long currval = sequencerService.getCurrentValueByLong();
-		model.addAttribute("currval", currval);
-		return "sequencer/showCurrval";
-	}
+    @RequestMapping(value = "2_1", params = "current", method = RequestMethod.GET)
+    public String fuinctionTest_2_1_get_current(Model model) {
+        Integer currval = sequencerService.getNotFoundSequenceCurrent();
+        model.addAttribute("currval", currval);
+        return "sequencer/showCurrval";
+    }
 
-	@RequestMapping(value = "1_3", params = "next", method = RequestMethod.GET)
-	public String fuinctionTest_1_3_get_next(Model model) {
-		BigInteger nextval = sequencerService.getNextValueByBigInteger();
-		model.addAttribute("nextval", nextval);
-		return "sequencer/showNextval";
-	}
-	
-	@RequestMapping(value = "1_3", params = "current", method = RequestMethod.GET)
-	public String fuinctionTest_1_3_get_current(Model model) {
-		BigInteger currval = sequencerService.getCurrentValueByBigIneter();
-		model.addAttribute("currval", currval);
-		return "sequencer/showCurrval";
-	}
-	
-	@RequestMapping(value = "1_4", params = "next", method = RequestMethod.GET)
-	public String fuinctionTest_1_4_get_next(Model model) {
-		String nextval = sequencerService.getNextValueByString();
-		model.addAttribute("nextval", nextval);
-		return "sequencer/showNextval";
-	}
-	
-	@RequestMapping(value = "1_4", params = "current", method = RequestMethod.GET)
-	public String fuinctionTest_1_4_get_current(Model model) {
-		String currval = sequencerService.getCurrentValueByString();
-		model.addAttribute("currval", currval);
-		return "sequencer/showCurrval";
-	}
+    @RequestMapping(value = "1_1", params = "sameTransaction", method = RequestMethod.GET)
+    public String fuinctionTest_1_1_sameTransaction(Model model) {
+        LinkedHashMap<String, Integer> resultMap = sequencerService
+                .getSequencerIntegers();
+        model.addAttribute("mode", "Integer");
+        model.addAttribute("valuesMap", resultMap);
+        return "sequencer/showSameTransaction";
+    }
 
-	@RequestMapping(value = "2_1", params = "next", method = RequestMethod.GET)
-	public String fuinctionTest_2_1_get_next(Model model) {
-		Integer nextval = sequencerService.getNotFoundSequenceNext();
-		model.addAttribute("nextval", nextval);
-		return "sequencer/showNextval";
-	}
-	
-	@RequestMapping(value = "2_1", params = "current", method = RequestMethod.GET)
-	public String fuinctionTest_2_1_get_current(Model model) {
-		Integer currval = sequencerService.getNotFoundSequenceCurrent();
-		model.addAttribute("currval", currval);
-		return "sequencer/showCurrval";
-	}
+    @RequestMapping(value = "1_2", params = "sameTransaction", method = RequestMethod.GET)
+    public String fuinctionTest_1_2_sameTransaction(Model model) {
+        LinkedHashMap<String, Long> resultMap = sequencerService
+                .getSequencerLongs();
+        model.addAttribute("mode", "Long");
+        model.addAttribute("valuesMap", resultMap);
+        return "sequencer/showSameTransaction";
+    }
+
+    @RequestMapping(value = "1_3", params = "sameTransaction", method = RequestMethod.GET)
+    public String fuinctionTest_1_3_sameTransaction(Model model) {
+        LinkedHashMap<String, BigInteger> resultMap = sequencerService
+                .getSequencerBigIntegers();
+        model.addAttribute("mode", "BigInteger");
+        model.addAttribute("valuesMap", resultMap);
+        return "sequencer/showSameTransaction";
+    }
+
+    @RequestMapping(value = "1_4", params = "sameTransaction", method = RequestMethod.GET)
+    public String fuinctionTest_1_4_sameTransaction(Model model) {
+        LinkedHashMap<String, String> resultMap = sequencerService
+                .getSequencerStrings();
+        model.addAttribute("mode", "String");
+        model.addAttribute("valuesMap", resultMap);
+        return "sequencer/showSameTransaction";
+    }
 }

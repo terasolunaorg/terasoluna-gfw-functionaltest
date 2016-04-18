@@ -33,77 +33,36 @@ public class SequencerTest extends FunctionTestSupport {
     public void test01_01_getSequenceByInteger() {
         // Initial value is 0.
 
-        // Get 1st sequence (NextValue By Integer)
-        driver.findElement(By.id("1_1_next")).click();
+        // Display Same Transaction. 
+        driver.findElement(By.id("1_1_same_transaction")).click();
 
-        // Check page and sequence value.
-        // Sequence value is 1.
-        assertThat(driver.findElement(By.cssSelector("h2")).getText(),
-                is("Sequencer Function Test (GET NEXT VALUE)"));
-        assertThat(driver.findElement(By.id("nextval")).getText(), is("1"));
+        // Check page
+        assertThat(driver.findElement(By.id("1_next_value1")).getText(),
+                is("1"));
 
-        // Get 2nd sequence (CurrentValue By Integer)
-        driver.findElement(By.id("1_1_current")).click();
+        assertThat(driver.findElement(By.id("2_current_value1")).getText(),
+                is("1"));
 
-        // Check page and sequence
-        // Sequence value is 1.
-        assertThat(driver.findElement(By.cssSelector("h2")).getText(),
-                is("Sequencer Function Test (GET CURRENT VALUE)"));
-        assertThat(driver.findElement(By.id("currval")).getText(), is("1"));
+        assertThat(driver.findElement(By.id("3_current_value2")).getText(),
+                is("1"));
 
-        // Get 3rd sequence (CurrentValue By Integer)
-        driver.findElement(By.id("1_1_current")).click();
+        assertThat(driver.findElement(By.id("4_next_value2")).getText(),
+                is("2"));
 
-        // Check page and sequence
-        // Sequence value is 1.
-        assertThat(driver.findElement(By.cssSelector("h2")).getText(),
-                is("Sequencer Function Test (GET CURRENT VALUE)"));
-        assertThat(driver.findElement(By.id("currval")).getText(), is("1"));
+        assertThat(driver.findElement(By.id("5_next_value3")).getText(),
+                is("3"));
 
-        // Get 4th sequence (NextValue By Integer)
-        driver.findElement(By.id("1_1_next")).click();
+        assertThat(driver.findElement(By.id("6_current_value3")).getText(),
+                is("3"));
 
-        // Check page and sequence
-        // Sequence value is 2. (initial + 2)
-        assertThat(driver.findElement(By.cssSelector("h2")).getText(),
-                is("Sequencer Function Test (GET NEXT VALUE)"));
-        assertThat(driver.findElement(By.id("nextval")).getText(), is("2"));
+        assertThat(driver.findElement(By.id("7_next_value4")).getText(),
+                is("4"));
 
-        // Get 5th sequence (NextValue By Integer)
-        driver.findElement(By.id("1_1_next")).click();
+        assertThat(driver.findElement(By.id("8_current_value4")).getText(),
+                is("4"));
 
-        // Check page and sequence
-        // Sequence value is 3. (initial + 3)
-        assertThat(driver.findElement(By.cssSelector("h2")).getText(),
-                is("Sequencer Function Test (GET NEXT VALUE)"));
-        assertThat(driver.findElement(By.id("nextval")).getText(), is("3"));
-
-        // Get 6th sequence (CurrentValue By Integer)
-        driver.findElement(By.id("1_1_current")).click();
-
-        // Check page and sequence
-        // Sequence value is 3. (initial + 3)
-        assertThat(driver.findElement(By.cssSelector("h2")).getText(),
-                is("Sequencer Function Test (GET CURRENT VALUE)"));
-        assertThat(driver.findElement(By.id("currval")).getText(), is("3"));
-
-        // Get 7th sequence (NextValue By Integer)
-        driver.findElement(By.id("1_1_next")).click();
-
-        // Check page and sequence
-        // Sequence value is 4. (initial + 4)
-        assertThat(driver.findElement(By.cssSelector("h2")).getText(),
-                is("Sequencer Function Test (GET NEXT VALUE)"));
-        assertThat(driver.findElement(By.id("nextval")).getText(), is("4"));
-
-        // Get 8th sequence (CurrentValue By Integer)
-        driver.findElement(By.id("1_1_current")).click();
-
-        // Check page and sequence
-        // Sequence value is 4. (initial + 4)
-        assertThat(driver.findElement(By.cssSelector("h2")).getText(),
-                is("Sequencer Function Test (GET CURRENT VALUE)"));
-        assertThat(driver.findElement(By.id("currval")).getText(), is("4"));
+        assertThat(driver.findElement(By.id("mode")).getText(),
+                is("Integer"));
 
         // screen capture (Automatic capture conducted at the end)
 
@@ -113,77 +72,36 @@ public class SequencerTest extends FunctionTestSupport {
     public void test01_02_getSequenceByLong() {
         // Initial value is 0.
 
-        // Get 1st sequence (NextValue By Long)
-        driver.findElement(By.id("1_2_next")).click();
+        // Display Same Transaction.
+        driver.findElement(By.id("1_2_same_transaction")).click();
 
-        // Check page and sequence value.
-        // Sequence value is 1.
-        assertThat(driver.findElement(By.cssSelector("h2")).getText(),
-                is("Sequencer Function Test (GET NEXT VALUE)"));
-        assertThat(driver.findElement(By.id("nextval")).getText(), is("1"));
+        // Check page
+        assertThat(driver.findElement(By.id("1_next_value1")).getText(),
+                is("1"));
 
-        // Get 2nd sequence (CurrentValue By Long)
-        driver.findElement(By.id("1_2_current")).click();
+        assertThat(driver.findElement(By.id("2_current_value1")).getText(),
+                is("1"));
 
-        // Check page and sequence
-        // Sequence value is 1.
-        assertThat(driver.findElement(By.cssSelector("h2")).getText(),
-                is("Sequencer Function Test (GET CURRENT VALUE)"));
-        assertThat(driver.findElement(By.id("currval")).getText(), is("1"));
+        assertThat(driver.findElement(By.id("3_current_value2")).getText(),
+                is("1"));
 
-        // Get 3rd sequence (CurrentValue By Long)
-        driver.findElement(By.id("1_2_current")).click();
+        assertThat(driver.findElement(By.id("4_next_value2")).getText(),
+                is("2"));
 
-        // Check page and sequence
-        // Sequence value is 1.
-        assertThat(driver.findElement(By.cssSelector("h2")).getText(),
-                is("Sequencer Function Test (GET CURRENT VALUE)"));
-        assertThat(driver.findElement(By.id("currval")).getText(), is("1"));
+        assertThat(driver.findElement(By.id("5_next_value3")).getText(),
+                is("3"));
 
-        // Get 4th sequence (NextValue By Long)
-        driver.findElement(By.id("1_2_next")).click();
+        assertThat(driver.findElement(By.id("6_current_value3")).getText(),
+                is("3"));
 
-        // Check page and sequence
-        // Sequence value is 2. (initial + 2)
-        assertThat(driver.findElement(By.cssSelector("h2")).getText(),
-                is("Sequencer Function Test (GET NEXT VALUE)"));
-        assertThat(driver.findElement(By.id("nextval")).getText(), is("2"));
+        assertThat(driver.findElement(By.id("7_next_value4")).getText(),
+                is("4"));
 
-        // Get 5th sequence (NextValue By Long)
-        driver.findElement(By.id("1_2_next")).click();
+        assertThat(driver.findElement(By.id("8_current_value4")).getText(),
+                is("4"));
 
-        // Check page and sequence
-        // Sequence value is 3. (initial + 3)
-        assertThat(driver.findElement(By.cssSelector("h2")).getText(),
-                is("Sequencer Function Test (GET NEXT VALUE)"));
-        assertThat(driver.findElement(By.id("nextval")).getText(), is("3"));
-
-        // Get 6th sequence (CurrentValue By Long)
-        driver.findElement(By.id("1_2_current")).click();
-
-        // Check page and sequence
-        // Sequence value is 3. (initial + 3)
-        assertThat(driver.findElement(By.cssSelector("h2")).getText(),
-                is("Sequencer Function Test (GET CURRENT VALUE)"));
-        assertThat(driver.findElement(By.id("currval")).getText(), is("3"));
-
-        // Get 7th sequence (NextValue By Integer)
-        driver.findElement(By.id("1_2_next")).click();
-
-        // Check page and sequence
-        // Sequence value is 4. (initial + 4)
-        assertThat(driver.findElement(By.cssSelector("h2")).getText(),
-                is("Sequencer Function Test (GET NEXT VALUE)"));
-        assertThat(driver.findElement(By.id("nextval")).getText(), is("4"));
-
-        // Get 8th sequence (CurrentValue By Integer)
-        driver.findElement(By.id("1_2_current")).click();
-
-        // Check page and sequence
-        // Sequence value is 4. (initial + 4)
-        assertThat(driver.findElement(By.cssSelector("h2")).getText(),
-                is("Sequencer Function Test (GET CURRENT VALUE)"));
-        assertThat(driver.findElement(By.id("currval")).getText(), is("4"));
+        assertThat(driver.findElement(By.id("mode")).getText(),
+                is("Long"));
 
         // screen capture (Automatic capture conducted at the end)
 
@@ -193,78 +111,37 @@ public class SequencerTest extends FunctionTestSupport {
     public void test01_03_getSequenceByBigInteger() {
         // Initial value is 0.
 
-        // Get 1st sequence (NextValue By BigInteger)
-        driver.findElement(By.id("1_3_next")).click();
+        // Display SmaeTransaction.
+        driver.findElement(By.id("1_3_same_transaction")).click();
 
-        // Check page and sequence value.
-        // Sequence value is 1.
-        assertThat(driver.findElement(By.cssSelector("h2")).getText(),
-                is("Sequencer Function Test (GET NEXT VALUE)"));
-        assertThat(driver.findElement(By.id("nextval")).getText(), is("1"));
+        // Check page
+        assertThat(driver.findElement(By.id("1_next_value1")).getText(),
+                is("1"));
 
-        // Get 2nd sequence (CurrentValue By BigInteger)
-        driver.findElement(By.id("1_3_current")).click();
+        assertThat(driver.findElement(By.id("2_current_value1")).getText(),
+                is("1"));
 
-        // Check page and sequence
-        // Sequence value is 1.
-        assertThat(driver.findElement(By.cssSelector("h2")).getText(),
-                is("Sequencer Function Test (GET CURRENT VALUE)"));
-        assertThat(driver.findElement(By.id("currval")).getText(), is("1"));
+        assertThat(driver.findElement(By.id("3_current_value2")).getText(),
+                is("1"));
 
-        // Get 3rd sequence (CurrentValue By BigInteger)
-        driver.findElement(By.id("1_3_current")).click();
+        assertThat(driver.findElement(By.id("4_next_value2")).getText(),
+                is("2"));
 
-        // Check page and sequence
-        // Sequence value is 1.
-        assertThat(driver.findElement(By.cssSelector("h2")).getText(),
-                is("Sequencer Function Test (GET CURRENT VALUE)"));
-        assertThat(driver.findElement(By.id("currval")).getText(), is("1"));
+        assertThat(driver.findElement(By.id("5_next_value3")).getText(),
+                is("3"));
 
-        // Get 4th sequence (NextValue By BigInteger)
-        driver.findElement(By.id("1_3_next")).click();
+        assertThat(driver.findElement(By.id("6_current_value3")).getText(),
+                is("3"));
 
-        // Check page and sequence
-        // Sequence value is 2. (initial + 2)
-        assertThat(driver.findElement(By.cssSelector("h2")).getText(),
-                is("Sequencer Function Test (GET NEXT VALUE)"));
-        assertThat(driver.findElement(By.id("nextval")).getText(), is("2"));
+        assertThat(driver.findElement(By.id("7_next_value4")).getText(),
+                is("4"));
 
-        // Get 5th sequence (NextValue By BigInteger)
-        driver.findElement(By.id("1_3_next")).click();
+        assertThat(driver.findElement(By.id("8_current_value4")).getText(),
+                is("4"));
 
-        // Check page and sequence
-        // Sequence value is 3. (initial + 3)
-        assertThat(driver.findElement(By.cssSelector("h2")).getText(),
-                is("Sequencer Function Test (GET NEXT VALUE)"));
-        assertThat(driver.findElement(By.id("nextval")).getText(), is("3"));
-
-        // Get 6th sequence (CurrentValue By BigInteger)
-        driver.findElement(By.id("1_3_current")).click();
-
-        // Check page and sequence
-        // Sequence value is 3. (initial + 3)
-        assertThat(driver.findElement(By.cssSelector("h2")).getText(),
-                is("Sequencer Function Test (GET CURRENT VALUE)"));
-        assertThat(driver.findElement(By.id("currval")).getText(), is("3"));
-
-        // Get 7th sequence (NextValue By BigInteger)
-        driver.findElement(By.id("1_3_next")).click();
-
-        // Check page and sequence
-        // Sequence value is 4. (initial + 4)
-        assertThat(driver.findElement(By.cssSelector("h2")).getText(),
-                is("Sequencer Function Test (GET NEXT VALUE)"));
-        assertThat(driver.findElement(By.id("nextval")).getText(), is("4"));
-
-        // Get 8th sequence (CurrentValue By BigInteger)
-        driver.findElement(By.id("1_3_current")).click();
-
-        // Check page and sequence
-        // Sequence value is 4. (initial + 4)
-        assertThat(driver.findElement(By.cssSelector("h2")).getText(),
-                is("Sequencer Function Test (GET CURRENT VALUE)"));
-        assertThat(driver.findElement(By.id("currval")).getText(), is("4"));
-
+        assertThat(driver.findElement(By.id("mode")).getText(),
+                is("BigInteger"));
+        
         // screen capture (Automatic capture conducted at the end)
 
     }
@@ -273,85 +150,36 @@ public class SequencerTest extends FunctionTestSupport {
     public void test01_04_getSequenceByString() {
         // Initial value is 0.
 
-        // Get 1st sequence (NextValue By String)
-        driver.findElement(By.id("1_4_next")).click();
+        // Display SameTransaction.
+        driver.findElement(By.id("1_4_same_transaction")).click();
 
-        // Check page and sequence value.
-        // Sequence value is 0000000001.
-        assertThat(driver.findElement(By.cssSelector("h2")).getText(),
-                is("Sequencer Function Test (GET NEXT VALUE)"));
-        assertThat(driver.findElement(By.id("nextval")).getText(),
+        // Check page
+        assertThat(driver.findElement(By.id("1_next_value1")).getText(),
                 is("0000000001"));
 
-        // Get 2nd sequence (CurrentValue By String)
-        driver.findElement(By.id("1_4_current")).click();
-
-        // Check page and sequence
-        // Sequence value is 0000000001.
-        assertThat(driver.findElement(By.cssSelector("h2")).getText(),
-                is("Sequencer Function Test (GET CURRENT VALUE)"));
-        assertThat(driver.findElement(By.id("currval")).getText(),
+        assertThat(driver.findElement(By.id("2_current_value1")).getText(),
                 is("0000000001"));
 
-        // Get 3rd sequence (CurrentValue By String)
-        driver.findElement(By.id("1_4_current")).click();
-
-        // Check page and sequence
-        // Sequence value is 0000000001.
-        assertThat(driver.findElement(By.cssSelector("h2")).getText(),
-                is("Sequencer Function Test (GET CURRENT VALUE)"));
-        assertThat(driver.findElement(By.id("currval")).getText(),
+        assertThat(driver.findElement(By.id("3_current_value2")).getText(),
                 is("0000000001"));
 
-        // Get 4th sequence (NextValue By String)
-        driver.findElement(By.id("1_4_next")).click();
-
-        // Check page and sequence
-        // Sequence value is 0000000002. (initial + 2)
-        assertThat(driver.findElement(By.cssSelector("h2")).getText(),
-                is("Sequencer Function Test (GET NEXT VALUE)"));
-        assertThat(driver.findElement(By.id("nextval")).getText(),
+        assertThat(driver.findElement(By.id("4_next_value2")).getText(),
                 is("0000000002"));
 
-        // Get 5th sequence (NextValue By String)
-        driver.findElement(By.id("1_4_next")).click();
-
-        // Check page and sequence
-        // Sequence value is 0000000003. (initial + 3)
-        assertThat(driver.findElement(By.cssSelector("h2")).getText(),
-                is("Sequencer Function Test (GET NEXT VALUE)"));
-        assertThat(driver.findElement(By.id("nextval")).getText(),
+        assertThat(driver.findElement(By.id("5_next_value3")).getText(),
                 is("0000000003"));
 
-        // Get 6th sequence (CurrentValue By String)
-        driver.findElement(By.id("1_4_current")).click();
-
-        // Check page and sequence
-        // Sequence value is 0000000003. (initial + 3)
-        assertThat(driver.findElement(By.cssSelector("h2")).getText(),
-                is("Sequencer Function Test (GET CURRENT VALUE)"));
-        assertThat(driver.findElement(By.id("currval")).getText(),
+        assertThat(driver.findElement(By.id("6_current_value3")).getText(),
                 is("0000000003"));
 
-        // Get 7th sequence (NextValue By String)
-        driver.findElement(By.id("1_4_next")).click();
-
-        // Check page and sequence
-        // Sequence value is 0000000004. (initial + 4)
-        assertThat(driver.findElement(By.cssSelector("h2")).getText(),
-                is("Sequencer Function Test (GET NEXT VALUE)"));
-        assertThat(driver.findElement(By.id("nextval")).getText(),
+        assertThat(driver.findElement(By.id("7_next_value4")).getText(),
                 is("0000000004"));
 
-        // Get 8th sequence (CurrentValue By String)
-        driver.findElement(By.id("1_4_current")).click();
-
-        // Check page and sequence
-        // Sequence value is 0000000004. (initial + 4)
-        assertThat(driver.findElement(By.cssSelector("h2")).getText(),
-                is("Sequencer Function Test (GET CURRENT VALUE)"));
-        assertThat(driver.findElement(By.id("currval")).getText(),
+        assertThat(driver.findElement(By.id("8_current_value4")).getText(),
                 is("0000000004"));
+
+        assertThat(driver.findElement(By.id("mode")).getText(),
+                is("String"));
 
         // screen capture (Automatic capture conducted at the end)
 
@@ -381,4 +209,5 @@ public class SequencerTest extends FunctionTestSupport {
         // screen capture (Automatic capture conducted at the end)
 
     }
+
 }
