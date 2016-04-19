@@ -139,12 +139,6 @@
             </build>
         </profile>
         <profile>
-            <id>interstage11-oracle</id>
-            <properties>
-                <profile.directory>configs/interstage11-oracle</profile.directory>
-            </properties>
-        </profile>
-        <profile>
             <id>jboss-postgresql</id>
             <properties>
                 <profile.directory>configs/jboss-postgresql</profile.directory>
@@ -178,18 +172,6 @@
             <id>weblogic-oracle</id>
             <properties>
                 <profile.directory>configs/weblogic-oracle</profile.directory>
-            </properties>
-        </profile>
-        <profile>
-            <id>webotx-oracle</id>
-            <properties>
-                <profile.directory>configs/webotx-oracle</profile.directory>
-            </properties>
-        </profile>
-        <profile>
-            <id>websphere-db2</id>
-            <properties>
-                <profile.directory>configs/websphere-db2</profile.directory>
             </properties>
         </profile>
     </profiles>
