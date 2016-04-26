@@ -26,9 +26,7 @@ before_script:
   - java -jar ./target/cargo-daemon-webapp-${CARGO_DAEMON_WEBAPP_VERSION}.war &
 
 script:
-  - mvn -U install -f terasoluna-gfw-functionaltest-parent/pom.xml
-  - mvn -U sql:execute -f terasoluna-gfw-functionaltest-initdb/pom.xml
-  - mvn -U install -f terasoluna-gfw-functionaltest-env/pom.xml -P tomcat8-postgresql
-  - mvn -U install -f terasoluna-gfw-functionaltest-domain/pom.xml
-  - mvn -U install cargo:daemon-start -f terasoluna-gfw-functionaltest-web/pom.xml -P warpack-env,travis
-  - mvn -U test -f terasoluna-gfw-functionaltest-selenium/pom.xml
+  - mvn -U sql:execute -pl terasoluna-gfw-functionaltest-initdb
+  - mvn -U install -am -pl terasoluna-gfw-functionaltest-web -P tomcat8-postgresql,warpack-env,travis
+  - mvn -U cargo:daemon-start -pl terasoluna-gfw-functionaltest-web
+  - mvn -U test -pl terasoluna-gfw-functionaltest-selenium

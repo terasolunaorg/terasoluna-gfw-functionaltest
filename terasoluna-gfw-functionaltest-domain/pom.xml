@@ -6,20 +6,14 @@
     <packaging>jar</packaging>
     <parent>
         <groupId>org.terasoluna.gfw.functionaltest</groupId>
-        <artifactId>terasoluna-gfw-functionaltest-parent</artifactId>
+        <artifactId>terasoluna-gfw-functionaltest</artifactId>
         <version>1.0.5-SNAPSHOT</version>
-        <relativePath>../terasoluna-gfw-functionaltest-parent/pom.xml</relativePath>
+        <relativePath>../pom.xml</relativePath>
     </parent>
     <name>TERASOLUNA Global Framework - Functionality Test Application - Domain Layer</name>
     <description>Domain layer of Functionality Test Application using TERASOLUNA Global Framework</description>
 
     <dependencies>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>terasoluna-gfw-functionaltest-env</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-
         <!-- == Begin TERASOLUNA == -->
         <dependency>
             <groupId>org.terasoluna.gfw</groupId>
