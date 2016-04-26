@@ -5,10 +5,10 @@
     <artifactId>terasoluna-gfw-functionaltest-selenium</artifactId>
     <packaging>jar</packaging>
     <parent>
-        <version>5.1.1-SNAPSHOT</version>
-        <artifactId>terasoluna-gfw-functionaltest-parent</artifactId>
         <groupId>org.terasoluna.gfw.functionaltest</groupId>
-        <relativePath>../terasoluna-gfw-functionaltest-parent/pom.xml</relativePath>
+        <artifactId>terasoluna-gfw-functionaltest</artifactId>
+        <version>5.1.1-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
     <name>TERASOLUNA Server Framework for Java (5.x) - Functionality Test Application - Selenium</name>
     <description>Selenium tests of Functionality Test Application using TERASOLUNA Server Framework for Java (5.x)</description>
@@ -16,9 +16,33 @@
     <dependencies>
         <dependency>
             <groupId>${project.groupId}</groupId>
+            <artifactId>terasoluna-gfw-functionaltest-env</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
             <artifactId>terasoluna-gfw-functionaltest-domain</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <!-- == Begin TERASOLUNA == -->
+        <dependency>
+            <groupId>org.terasoluna.gfw</groupId>
+            <artifactId>terasoluna-gfw-codepoints</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.terasoluna.gfw.codepoints</groupId>
+            <artifactId>terasoluna-gfw-codepoints-jisx0208</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.terasoluna.gfw</groupId>
+            <artifactId>terasoluna-gfw-string</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <!-- == End TERASOLUNA == -->
+
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
@@ -58,30 +82,5 @@
             <artifactId>h2</artifactId>
             <scope>test</scope>
         </dependency>
-        
-        <dependency>
-            <groupId>org.terasoluna.gfw</groupId>
-            <artifactId>terasoluna-gfw-codepoints</artifactId>
-            <version>${terasoluna.gfw.codepoints.version}</version>
-            <scope>test</scope>
-        </dependency>
-        
-        <dependency>
-            <groupId>org.terasoluna.gfw.codepoints</groupId>
-            <artifactId>terasoluna-gfw-codepoints-jisx0208</artifactId>
-            <version>${terasoluna.gfw.codepoints.version}</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.terasoluna.gfw</groupId>
-            <artifactId>terasoluna-gfw-string</artifactId>
-            <scope>test</scope>
-        </dependency>
-
     </dependencies>
-
-    <properties>
-        <terasoluna.gfw.codepoints.version>5.1.1-SNAPSHOT</terasoluna.gfw.codepoints.version>
-    </properties>
 </project>
