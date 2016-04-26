@@ -6,9 +6,9 @@
     <packaging>war</packaging>
     <parent>
         <groupId>org.terasoluna.gfw.functionaltest</groupId>
-        <artifactId>terasoluna-gfw-functionaltest-parent</artifactId>
+        <artifactId>terasoluna-gfw-functionaltest</artifactId>
         <version>5.2.0-SNAPSHOT</version>
-        <relativePath>../terasoluna-gfw-functionaltest-parent/pom.xml</relativePath>
+        <relativePath>../pom.xml</relativePath>
     </parent>
     <name>TERASOLUNA Server Framework for Java (5.x) - Functionality Test Application - Web Layer</name>
     <description>Web layer of Functionality Test Application using TERASOLUNA Server Framework for Java (5.x)</description>
@@ -60,13 +60,12 @@
     <dependencies>
         <dependency>
             <groupId>${project.groupId}</groupId>
+            <artifactId>terasoluna-gfw-functionaltest-env</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
             <artifactId>terasoluna-gfw-functionaltest-domain</artifactId>
-            <exclusions>
-                <exclusion>
-                    <groupId>${project.groupId}</groupId>
-                    <artifactId>terasoluna-gfw-functionaltest-env</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
 
         <!-- == Begin TERASOLUNA == -->
@@ -81,6 +80,30 @@
         <dependency>
             <groupId>org.terasoluna.gfw</groupId>
             <artifactId>terasoluna-gfw-validator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.terasoluna.gfw</groupId>
+            <artifactId>terasoluna-gfw-codepoints</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.terasoluna.gfw.codepoints</groupId>
+            <artifactId>terasoluna-gfw-codepoints-jisx0201</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.terasoluna.gfw.codepoints</groupId>
+            <artifactId>terasoluna-gfw-codepoints-jisx0208</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.terasoluna.gfw.codepoints</groupId>
+            <artifactId>
+                terasoluna-gfw-codepoints-jisx0208kanji
+            </artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.terasoluna.gfw.codepoints</groupId>
+            <artifactId>
+                terasoluna-gfw-codepoints-jisx0213kanji
+            </artifactId>
         </dependency>
         <dependency>
             <groupId>org.terasoluna.gfw</groupId>
@@ -120,37 +143,5 @@
             <scope>test</scope>
         </dependency>
         <!-- == End Unit Test == -->
-        <dependency>
-            <groupId>org.terasoluna.gfw</groupId>
-            <artifactId>terasoluna-gfw-codepoints</artifactId>
-            <version>${terasoluna.gfw.codepoints.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.terasoluna.gfw.codepoints</groupId>
-            <artifactId>terasoluna-gfw-codepoints-jisx0201</artifactId>
-            <version>${terasoluna.gfw.codepoints.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.terasoluna.gfw.codepoints</groupId>
-            <artifactId>terasoluna-gfw-codepoints-jisx0208</artifactId>
-            <version>${terasoluna.gfw.codepoints.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.terasoluna.gfw.codepoints</groupId>
-            <artifactId>
-                terasoluna-gfw-codepoints-jisx0208kanji
-            </artifactId>
-            <version>${terasoluna.gfw.codepoints.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.terasoluna.gfw.codepoints</groupId>
-            <artifactId>
-                terasoluna-gfw-codepoints-jisx0213kanji
-            </artifactId>
-            <version>${terasoluna.gfw.codepoints.version}</version>
-        </dependency>
     </dependencies>
-    <properties>
-        <terasoluna.gfw.codepoints.version>5.2.0-SNAPSHOT</terasoluna.gfw.codepoints.version>
-    </properties>
 </project>
