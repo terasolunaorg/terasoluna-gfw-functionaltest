@@ -1,10 +1,17 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.terasoluna.gfw.functionaltest</groupId>
-    <artifactId>terasoluna-gfw-functionaltest-parent</artifactId>
+    <artifactId>terasoluna-gfw-functionaltest</artifactId>
+    <version>5.0.3-SNAPSHOT</version>
     <packaging>pom</packaging>
+    <modules>
+        <module>terasoluna-gfw-functionaltest-env</module>
+        <module>terasoluna-gfw-functionaltest-domain</module>
+        <module>terasoluna-gfw-functionaltest-web</module>
+        <module>terasoluna-gfw-functionaltest-initdb</module>
+        <module>terasoluna-gfw-functionaltest-selenium</module>
+    </modules>
     <parent>
         <groupId>org.terasoluna.gfw</groupId>
         <artifactId>terasoluna-gfw-parent</artifactId>
@@ -12,9 +19,8 @@
         <relativePath />
     </parent>
 
-    <name>TERASOLUNA Server Framework for Java (5.x) - Functionality Test Application - Parent</name>
+    <name>TERASOLUNA Server Framework for Java (5.x) - Functionality Test Application - Multi Project</name>
     <description>Parent POM of Functionality Test Application using TERASOLUNA Server Framework for Java (5.x)</description>
-    <version>5.0.3-SNAPSHOT</version>
     <url>http://terasoluna.org</url>
     <inceptionYear>2013</inceptionYear>
     <licenses>
@@ -28,27 +34,6 @@
         <name>TERASOLUNA Framework Team</name>
         <url>http://terasoluna.org</url>
     </organization>
-    <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <artifactId>maven-war-plugin</artifactId>
-                    <configuration>
-                        <webResources>
-                            <resource>
-                                <directory>${project.basedir}/../terasoluna-gfw-functionaltest-env/${profile.directory}/webapp/WEB-INF</directory>
-                                <targetPath>WEB-INF</targetPath>
-                                <filtering>true</filtering>
-                                <excludes>
-                                    <exclude>**/.gitkeep</exclude>
-                                </excludes>
-                            </resource>
-                        </webResources>
-                    </configuration>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-    </build>
     <repositories>
         <repository>
             <releases>
@@ -81,9 +66,67 @@
             <url>http://repo.terasoluna.org/nexus/content/repositories/terasoluna-gfw-3rdparty/</url>
         </repository>
     </repositories>
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>build-helper-maven-plugin</artifactId>
+                    <version>${org.codehaus.mojo.build-helper-maven-plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <id>add-source</id>
+                            <phase>generate-sources</phase>
+                            <goals>
+                                <goal>add-source</goal>
+                            </goals>
+                            <configuration>
+                                <sources>
+                                    <source>src/generated/java</source>
+                                </sources>
+                            </configuration>
+                        </execution>
+                        <execution>
+                            <id>add-resource</id>
+                            <phase>generate-resources</phase>
+                            <goals>
+                                <goal>add-resource</goal>
+                            </goals>
+                            <configuration>
+                                <resources>
+                                    <resource>
+                                        <directory>src/generated/resources</directory>
+                                    </resource>
+                                </resources>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <configuration>
+                        <webResources>
+                            <resource>
+                                <directory>${project.basedir}/../terasoluna-gfw-functionaltest-env/${profile.directory}/webapp/WEB-INF</directory>
+                                <targetPath>WEB-INF</targetPath>
+                                <filtering>true</filtering>
+                                <excludes>
+                                    <exclude>**/.gitkeep</exclude>
+                                </excludes>
+                            </resource>
+                        </webResources>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>sql-maven-plugin</artifactId>
+                    <version>${org.codehaus.mojo.sql-maven-plugin.version}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
     <dependencyManagement>
         <dependencies>
-
             <dependency>
                 <groupId>${project.groupId}</groupId>
                 <artifactId>terasoluna-gfw-functionaltest-domain</artifactId>
@@ -112,15 +155,19 @@
                 <version>${ojdbc7.version}</version>
             </dependency>
             <!-- == End Database == -->
+
         </dependencies>
     </dependencyManagement>
     <properties>
         <profile.directory>src/main</profile.directory>
         <encoding>UTF-8</encoding>
         <java-version>1.6</java-version>
+        <org.codehaus.mojo.build-helper-maven-plugin.version>1.9.1</org.codehaus.mojo.build-helper-maven-plugin.version>
+        <org.codehaus.mojo.sql-maven-plugin.version>1.5</org.codehaus.mojo.sql-maven-plugin.version>
+        <org.codehaus.cargo.cargo-maven2-plugin.version>1.4.16</org.codehaus.cargo.cargo-maven2-plugin.version>
+        <cargo.jvmargs>-Xms512m -Xmx1024m -Duser.language=ja -Duser.country=JP -Duser.timezone=Asia/Tokyo</cargo.jvmargs>
         <postgresql.version>9.4-1206-jdbc41</postgresql.version>
         <ojdbc7.version>12.1.0.2</ojdbc7.version>
-        <cargo.jvmargs>-Xms512m -Xmx1024m -Duser.language=ja -Duser.country=JP -Duser.timezone=Asia/Tokyo</cargo.jvmargs>
     </properties>
     <profiles>
         <profile>

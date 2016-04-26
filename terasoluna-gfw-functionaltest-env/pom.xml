@@ -5,9 +5,9 @@
     <packaging>jar</packaging>
     <parent>
         <groupId>org.terasoluna.gfw.functionaltest</groupId>
-        <artifactId>terasoluna-gfw-functionaltest-parent</artifactId>
+        <artifactId>terasoluna-gfw-functionaltest</artifactId>
         <version>5.0.3-SNAPSHOT</version>
-        <relativePath>../terasoluna-gfw-functionaltest-parent/pom.xml</relativePath>
+        <relativePath>../pom.xml</relativePath>
     </parent>
     <name>TERASOLUNA Server Framework for Java (5.x) - Functionality Test Application - Environment Layer</name>
     <description>Environment dependent layer of Functionality Test Application using TERASOLUNA Server Framework for Java (5.x)</description>
