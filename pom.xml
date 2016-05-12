@@ -107,7 +107,7 @@
                     <configuration>
                         <webResources>
                             <resource>
-                                <directory>${project.basedir}/../terasoluna-gfw-functionaltest-env/${profile.directory}/webapp/WEB-INF</directory>
+                                <directory>${project.basedir}/../terasoluna-gfw-functionaltest-env/${project.env.main.directory}/webapp/WEB-INF</directory>
                                 <targetPath>WEB-INF</targetPath>
                                 <filtering>true</filtering>
                                 <excludes>
@@ -159,7 +159,8 @@
         </dependencies>
     </dependencyManagement>
     <properties>
-        <profile.directory>src/main</profile.directory>
+        <project.env.main.directory>src/main</project.env.main.directory>
+        <project.env.buildFinalName>${project.artifactId}-${project.version}</project.env.buildFinalName>
         <encoding>UTF-8</encoding>
         <java-version>1.6</java-version>
         <org.codehaus.mojo.build-helper-maven-plugin.version>1.9.1</org.codehaus.mojo.build-helper-maven-plugin.version>
@@ -188,37 +189,43 @@
         <profile>
             <id>jboss-postgresql</id>
             <properties>
-                <profile.directory>configs/jboss-postgresql</profile.directory>
+                <project.env.main.directory>configs/jboss-postgresql</project.env.main.directory>
+                <project.env.buildFinalName>${project.artifactId}-${project.version}-jboss-postgresql</project.env.buildFinalName>
             </properties>
         </profile>
         <profile>
             <id>tomcat-oracle</id>
             <properties>
-                <profile.directory>configs/tomcat-oracle</profile.directory>
+                <project.env.main.directory>configs/tomcat-oracle</project.env.main.directory>
+                <project.env.buildFinalName>${project.artifactId}-${project.version}-tomcat-oracle</project.env.buildFinalName>
             </properties>
         </profile>
         <profile>
             <id>tomcat-postgresql</id>
             <properties>
-                <profile.directory>configs/tomcat-postgresql</profile.directory>
+                <project.env.main.directory>${basedir}/configs/tomcat-postgresql/resources</project.env.main.directory>
+                <project.env.buildFinalName>${project.artifactId}-${project.version}-tomcat-postgresql</project.env.buildFinalName>
             </properties>
         </profile>
         <profile>
             <id>tomcat8-oracle</id>
             <properties>
-                <profile.directory>configs/tomcat8-oracle</profile.directory>
+                <project.env.main.directory>configs/tomcat8-oracle</project.env.main.directory>
+                <project.env.buildFinalName>${project.artifactId}-${project.version}-tomcat8-oracle</project.env.buildFinalName>
             </properties>
         </profile>
         <profile>
             <id>tomcat8-postgresql</id>
             <properties>
-                <profile.directory>configs/tomcat8-postgresql</profile.directory>
+                <project.env.main.directory>configs/tomcat8-postgresql</project.env.main.directory>
+                <project.env.buildFinalName>${project.artifactId}-${project.version}-tomcat8-postgresql</project.env.buildFinalName>
             </properties>
         </profile>
         <profile>
             <id>weblogic-oracle</id>
             <properties>
-                <profile.directory>configs/weblogic-oracle</profile.directory>
+                <project.env.main.directory>configs/weblogic-oracle</project.env.main.directory>
+                <project.env.buildFinalName>${project.artifactId}-${project.version}-weblogic-oracle</project.env.buildFinalName>
             </properties>
         </profile>
     </profiles>
