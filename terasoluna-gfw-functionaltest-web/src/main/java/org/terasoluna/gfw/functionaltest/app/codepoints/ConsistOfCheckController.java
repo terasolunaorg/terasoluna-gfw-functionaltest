@@ -31,7 +31,7 @@ public class ConsistOfCheckController {
 		return new ConsistOfCheckForm();
 	}
 
-	@RequestMapping(method = RequestMethod.GET)
+	@RequestMapping(value="input", method = RequestMethod.GET)
 	public String consistOfCheckInput() {
 		
 		return "codepoints/input";

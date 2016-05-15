@@ -18,127 +18,214 @@ package org.terasoluna.gfw.functionaltest.app.codepoints;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.openqa.selenium.By;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.terasoluna.gfw.common.codepoints.CodePoints;
-import org.terasoluna.gfw.common.codepoints.catalog.JIS_X_0208_Katakana;
+import org.terasoluna.gfw.functionaltest.app.FunctionTestSupport;
 
-public class CodepointsTest {
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = { "classpath:META-INF/spring/seleniumContext.xml" })
+public class CodepointsTest extends FunctionTestSupport {
 
 	@Test
 	public void codePointsTest_01() {
-		CodePoints codepoints1 = CodePoints.of(JIS_X_0208_Katakana.class);
-		CodePoints codepoints2 = CodePoints.of(JIS_X_0208_Katakana.class);
+
+        driver.findElement(By.id("codepoints01")).click();
 		
-		assertThat(codepoints1, is(codepoints2));
-		assertThat(codepoints1.containsAll("カナ"), is(true));
+		String instanceCheck = driver.findElement(By.id("instanceCheck")).getText();
+        String containsAll = driver.findElement(By.id("containsAll")).getText();
+
+        assertThat(instanceCheck, is("true"));
+		assertThat(containsAll, is("true"));
 	}
 
 	@Test
 	public void codePointsTest_02() {
-		CodePoints codepoints = new JIS_X_0208_Katakana();
+
+		driver.findElement(By.id("codepoints02")).click();
 		
-		assertThat(codepoints.containsAll("カナ"), is(true));
+		String containsAll = driver.findElement(By.id("containsAll")).getText();
+
+        assertThat(containsAll, is("true"));
 	}
 
 	@Test
 	public void codePointsTest_03() {
-		CodePoints codepoints = new CodePoints(0x0061, 0x0062);
+
+		driver.findElement(By.id("codepoints03")).click();
+
+        String containsAll = driver.findElement(By.id("containsAll")).getText();
 		
-		assertThat(codepoints.containsAll("ab"), is(true));
+		assertThat(containsAll, is("true"));
 	}
 
 	@Test
 	public void codePointsTest_04() {
-		Set<Integer> set = new HashSet<Integer>();
-		set.add(0x0061);
-		set.add(0x0062);
-		CodePoints codepoints = new CodePoints(set);
+
+		driver.findElement(By.id("codepoints04")).click();
 		
-		assertThat(codepoints.containsAll("ab"), is(true));
+		String containsAll = driver.findElement(By.id("containsAll")).getText();
+		
+		assertThat(containsAll, is("true"));
 	}
 	
 	@Test
 	public void codePointsTest_05() {
-		CodePoints codepoints = new CodePoints("ab");
+
+		driver.findElement(By.id("codepoints05")).click();
+
+        String containsAll = driver.findElement(By.id("containsAll")).getText();
 		
-		assertThat(codepoints.containsAll("ab"), is(true));
+		assertThat(containsAll, is("true"));
 	}
 	
 	@Test
 	public void codePointsTest_06() {
-		CodePoints codepoints = new CodePoints("a", "b");
+
+		driver.findElement(By.id("codepoints06")).click();
 		
-		assertThat(codepoints.containsAll("ab"), is(true));
+		String containsAll = driver.findElement(By.id("containsAll")).getText();
+
+        assertThat(containsAll, is("true"));
 	}
 	
 	@Test
 	public void codePointsTest_07() {
-		CodePoints abCp = new CodePoints(0x0061 /* a */, 0x0062 /* b */);
-		CodePoints cdCp = new CodePoints(0x0063 /* c */, 0x0064 /* d */);
 
-		CodePoints abcdCp = abCp.union(cdCp);
+		driver.findElement(By.id("codepoints07")).click();
 		
-		assertThat(abcdCp.containsAll("abcd"), is(true));
+        String containsAll = driver.findElement(By.id("containsAll")).getText();
+		
+		assertThat(containsAll, is("true"));
 	}
 	
 	@Test
 	public void codePointsTest_08() {
-		CodePoints abcdCp = new CodePoints(0x0061 /* a */, 0x0062 /* b */,
-				0x0063 /* c */, 0x0064 /* d */);
-		CodePoints cdCp = new CodePoints(0x0063 /* c */, 0x0064 /* d */);
 
-		CodePoints abCp = abcdCp.subtract(cdCp);
-
-		assertThat(abCp.containsAll("ab"), is(true));
+		driver.findElement(By.id("codepoints08")).click();
+		
+        String containsAll = driver.findElement(By.id("containsAll")).getText();
+		
+		assertThat(containsAll, is("true"));
 	}
 
 	@Test
 	public void codePointsTest_09() {
-		CodePoints abcdCp = new CodePoints(0x0061 /* a */, 0x0062 /* b */,
-		        0x0063 /* c */, 0x0064 /* d */);
-		CodePoints cdeCp = new CodePoints(0x0063 /* c */, 0x0064 /* d */, 0x0064 /* e */);
 
-		CodePoints cdCp = abcdCp.intersect(cdeCp);
+		driver.findElement(By.id("codepoints09")).click();
 		
-		assertThat(cdCp.containsAll("cd"), is(true));
+        String containsAll = driver.findElement(By.id("containsAll")).getText();
+		
+		assertThat(containsAll, is("true"));
 	}
 
 	@Test
-	public void codePointsTest_10_11_12() {
-		CodePoints jisX208KanaCp = CodePoints.of(JIS_X_0208_Katakana.class);
+	public void codePointsTest_10() {
 
-		assertThat(jisX208KanaCp.containsAll("カ"), is(true));
-		assertThat(jisX208KanaCp.containsAll("カナ"), is(true));
-		assertThat(jisX208KanaCp.containsAll("カナa"), is(false));
+		driver.findElement(By.id("codepoints10")).click();
+		
+        String containsAll = driver.findElement(By.id("containsAll")).getText();
+		
+		assertThat(containsAll, is("true"));
 	}
 
 	@Test
-	public void codePointsTest_13_14_15_16() {
-		CodePoints jisX208KanaCp = CodePoints.of(JIS_X_0208_Katakana.class);
+	public void codePointsTest_11() {
 
-		assertThat(jisX208KanaCp.firstExcludedCodePoint("カナ"), is(CodePoints.NOT_FOUND));
-		assertThat(jisX208KanaCp.firstExcludedCodePoint("aカナ"), is(0x0061));
-		assertThat(jisX208KanaCp.firstExcludedCodePoint("カaナ"), is(0x0061));
-		assertThat(jisX208KanaCp.firstExcludedCodePoint("カナa"), is(0x0061));
+		driver.findElement(By.id("codepoints11")).click();
+		
+        String containsAll = driver.findElement(By.id("containsAll")).getText();
+		
+		assertThat(containsAll, is("true"));
 	}
 
 	@Test
-	public void codePointsTest_17_18_19() {
-		CodePoints jisX208KanaCp = CodePoints.of(JIS_X_0208_Katakana.class);
+	public void codePointsTest_12() {
 
-		Set<Integer> result;
-		result = jisX208KanaCp.allExcludedCodePoints("カナ");
-		assertThat(result.size(), is(0));
-		result = jisX208KanaCp.allExcludedCodePoints("カナa");  // [0x0061 (a)]
-		assertThat(result.size(), is(1));
-		assertThat(result.contains(0x0061), is(true));
-		result = jisX208KanaCp.allExcludedCodePoints("カaナb"); // [0x0061 (a), 0x0062 (b)]
-		assertThat(result.size(), is(2));
-		assertThat(result.contains(0x0061), is(true));
-		assertThat(result.contains(0x0062), is(true));
+		driver.findElement(By.id("codepoints12")).click();
+		
+        String containsAll = driver.findElement(By.id("containsAll")).getText();
+		
+		assertThat(containsAll, is("false"));
+	}
+
+	@Test
+	public void codePointsTest_13() {
+
+		driver.findElement(By.id("codepoints13")).click();
+		
+        String codepoints = driver.findElement(By.id("codepoints")).getText();
+		
+		assertThat(Integer.parseInt(codepoints), is(CodePoints.NOT_FOUND));
+	}
+
+	@Test
+	public void codePointsTest_14() {
+
+		driver.findElement(By.id("codepoints14")).click();
+		
+        String codepoints = driver.findElement(By.id("codepoints")).getText();
+		
+		assertThat(Integer.parseInt(codepoints), is(0x0061));
+	}
+
+	@Test
+	public void codePointsTest_15() {
+
+		driver.findElement(By.id("codepoints15")).click();
+		
+        String codepoints = driver.findElement(By.id("codepoints")).getText();
+		
+		assertThat(Integer.parseInt(codepoints), is(0x0061));
+	}
+
+	@Test
+	public void codePointsTest_16() {
+
+		driver.findElement(By.id("codepoints16")).click();
+		
+        String codepoints = driver.findElement(By.id("codepoints")).getText();
+		
+		assertThat(Integer.parseInt(codepoints), is(0x0061));
+	}
+
+	@Test
+	public void codePointsTest_17() {
+
+		driver.findElement(By.id("codepoints17")).click();
+		
+        String size = driver.findElement(By.id("size")).getText();
+		
+		assertThat(Integer.parseInt(size), is(0));
+	}
+
+	@Test
+	public void codePointsTest_18() {
+
+		driver.findElement(By.id("codepoints18")).click();
+		
+        String size = driver.findElement(By.id("size")).getText();
+        String contains1 = driver.findElement(By.id("contains1")).getText();
+		
+		assertThat(Integer.parseInt(size), is(1));
+		assertThat(contains1, is("true"));
+	}
+
+	@Test
+	public void codePointsTest_19() {
+
+		driver.findElement(By.id("codepoints19")).click();
+		
+        String size = driver.findElement(By.id("size")).getText();
+        String contains1 = driver.findElement(By.id("contains1")).getText();
+        String contains2 = driver.findElement(By.id("contains2")).getText();
+		
+		assertThat(Integer.parseInt(size), is(2));
+		assertThat(contains1, is("true"));
+		assertThat(contains2, is("true"));
 	}
 
 }
