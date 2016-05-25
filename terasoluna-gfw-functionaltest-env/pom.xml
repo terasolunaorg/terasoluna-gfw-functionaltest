@@ -5,17 +5,20 @@
     <packaging>jar</packaging>
     <parent>
         <groupId>org.terasoluna.gfw.functionaltest</groupId>
-        <artifactId>terasoluna-gfw-functionaltest-parent</artifactId>
+        <artifactId>terasoluna-gfw-functionaltest</artifactId>
         <version>1.0.5-SNAPSHOT</version>
-        <relativePath>../terasoluna-gfw-functionaltest-parent/pom.xml</relativePath>
+        <relativePath>../pom.xml</relativePath>
     </parent>
     <name>TERASOLUNA Global Framework - Functionality Test Application - Environment Layer</name>
     <description>Environment dependent layer of Functionality Test Application using TERASOLUNA Global Framework</description>
     <build>
-        <finalName>${buildFinalName}</finalName>
+        <finalName>${project.env.buildFinalName}</finalName>
         <resources>
             <resource>
-                <directory>${resource.directory}</directory>
+                <directory>${project.env.main.directory}/resources</directory>
+                <excludes>
+                    <exclude>**/*.env.ftl</exclude>
+                </excludes>
             </resource>
         </resources>
         <plugins>
@@ -65,82 +68,4 @@
             </plugin>
         </plugins>
     </build>
-
-    <profiles>
-        <profile>
-            <id>local</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <properties>
-                <resource.directory>src/main/resources</resource.directory>
-                <buildFinalName>${project.artifactId}-${project.version}</buildFinalName>
-            </properties>
-        </profile>
-        <profile>
-            <id>tomcat-postgresql</id>
-            <properties>
-                <resource.directory>${basedir}/configs/tomcat-postgresql/resources</resource.directory>
-                <buildFinalName>${project.artifactId}-${project.version}-tomcat-postgresql</buildFinalName>
-            </properties>
-        </profile>
-        <profile>
-            <id>tomcat8-postgresql</id>
-            <properties>
-                <resource.directory>${basedir}/configs/tomcat8-postgresql/resources</resource.directory>
-                <buildFinalName>${project.artifactId}-${project.version}-tomcat8-postgresql</buildFinalName>
-            </properties>
-        </profile>
-        <profile>
-            <id>tomcat-oracle</id>
-            <properties>
-                <resource.directory>${basedir}/configs/tomcat-oracle/resources</resource.directory>
-                <buildFinalName>${project.artifactId}-${project.version}-tomcat-oracle</buildFinalName>
-            </properties>
-        </profile>
-        <profile>
-            <id>resin-postgresql</id>
-            <properties>
-                <resource.directory>${basedir}/configs/resin-postgresql/resources</resource.directory>
-                <buildFinalName>${project.artifactId}-${project.version}-resin-postgresql</buildFinalName>
-            </properties>
-        </profile>
-        <profile>
-            <id>resin-oracle</id>
-            <properties>
-                <resource.directory>${basedir}/configs/resin-oracle/resources</resource.directory>
-                <buildFinalName>${project.artifactId}-${project.version}-resin-oracle</buildFinalName>
-            </properties>
-        </profile>
-        <profile>
-            <id>weblogic-oracle</id>
-            <properties>
-                <resource.directory>${basedir}/configs/weblogic-oracle/resources</resource.directory>
-                <buildFinalName>${project.artifactId}-${project.version}-weblogic-oracle</buildFinalName>
-            </properties>
-        </profile>
-    </profiles>
-
-    <properties>
-        <encoding>UTF-8</encoding>
-        <java-version>1.6</java-version>
-    </properties>
-
-    <dependencies>
-        <!-- == Begin TERASOLUNA == -->
-        <dependency>
-            <groupId>org.terasoluna.gfw</groupId>
-            <artifactId>terasoluna-gfw-common</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.terasoluna.gfw</groupId>
-            <artifactId>terasoluna-gfw-jpa</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.terasoluna.gfw</groupId>
-            <artifactId>terasoluna-gfw-recommended-dependencies</artifactId>
-            <type>pom</type>
-        </dependency>
-        <!-- == End TERASOLUNA == -->
-    </dependencies>
 </project>
