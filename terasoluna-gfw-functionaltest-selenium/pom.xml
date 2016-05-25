@@ -5,15 +5,20 @@
     <artifactId>terasoluna-gfw-functionaltest-selenium</artifactId>
     <packaging>jar</packaging>
     <parent>
-        <version>5.0.3-SNAPSHOT</version>
-        <artifactId>terasoluna-gfw-functionaltest-parent</artifactId>
         <groupId>org.terasoluna.gfw.functionaltest</groupId>
-        <relativePath>../terasoluna-gfw-functionaltest-parent/pom.xml</relativePath>
+        <artifactId>terasoluna-gfw-functionaltest</artifactId>
+        <version>5.0.3-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
     <name>TERASOLUNA Server Framework for Java (5.x) - Functionality Test Application - Selenium</name>
     <description>Selenium tests of Functionality Test Application using TERASOLUNA Server Framework for Java (5.x)</description>
 
     <dependencies>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>terasoluna-gfw-functionaltest-env</artifactId>
+            <scope>test</scope>
+        </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>terasoluna-gfw-functionaltest-domain</artifactId>
@@ -59,5 +64,4 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
 </project>
