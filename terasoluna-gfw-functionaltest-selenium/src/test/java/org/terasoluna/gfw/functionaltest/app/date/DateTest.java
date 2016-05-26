@@ -369,11 +369,11 @@ public class DateTest extends FunctionTestSupport {
         long millisecZeroOclock = timeFormat.parseDateTime("00:00:00.000").getMillis();
         long millisecOneOclock = timeFormat.parseDateTime("01:00:00.000").getMillis();
         long millisecTwentythreeOclock = timeFormat.parseDateTime("23:00:00.000").getMillis();
-        int millsecTwentythreeHors = 82800000;
+        int millsecTwentyfourHours = 86400000;
         //  00:00:00.000 <= firstExpectedDate < 01:00:00.000 & 23:00:00.000 <= actualDate
         if( millisecZeroOclock <= firstExpectedDate && firstExpectedDate < millisecOneOclock
                 && millisecTwentythreeOclock <= actualDate ){
-            actualDate = actualDate - millsecTwentythreeHors;
+            actualDate = actualDate - millsecTwentyfourHours;
         }
         
         // check Date
