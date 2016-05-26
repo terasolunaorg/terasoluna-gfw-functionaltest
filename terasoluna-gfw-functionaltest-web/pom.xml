@@ -24,7 +24,7 @@
                     <groupId>${project.groupId}</groupId>
                     <artifactId>terasoluna-gfw-functionaltest-env</artifactId>
                 </dependency>
-                <!-- Add for local (Tomcat or Tc Server)  -->
+                <!-- Add for local (Tomcat or Tc Server) -->
                 <dependency>
                     <groupId>org.apache.taglibs</groupId>
                     <artifactId>taglibs-standard-jstlel</artifactId>
@@ -71,11 +71,13 @@
         <!-- == Begin TERASOLUNA == -->
         <dependency>
             <groupId>org.terasoluna.gfw</groupId>
-            <artifactId>terasoluna-gfw-web-jsp</artifactId>
+            <artifactId>terasoluna-gfw-dependencies-web-jsp</artifactId>
+            <type>pom</type>
         </dependency>
         <dependency>
             <groupId>org.terasoluna.gfw</groupId>
-            <artifactId>terasoluna-gfw-security-web</artifactId>
+            <artifactId>terasoluna-gfw-dependencies-security-web</artifactId>
+            <type>pom</type>
         </dependency>
         <dependency>
             <groupId>org.terasoluna.gfw</groupId>
