@@ -64,7 +64,7 @@ $ mvn -U package -am -pl terasoluna-gfw-functionaltest-web
 ```console
 $ cd {your repository directory}
 $ git checkout {target branch}
-$ mvn -U package -am -pl terasoluna-gfw-functionaltest-web -P tomcat8-postgresql,warpack-env,warpack-jstl,travis
+$ mvn -U package -am -pl terasoluna-gfw-functionaltest-web -P tomcat8-postgresql,warpack-env,travis
 ```
 
 > **Note:**
