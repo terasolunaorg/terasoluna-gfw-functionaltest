@@ -56,10 +56,7 @@ Build artifacts using maven commands as follows.
 ```console
 $ cd {your repository directory}
 $ git checkout {target branch}
-$ mvn -U install -f terasoluna-gfw-functionaltest-parent/pom.xml
-$ mvn -U install -f terasoluna-gfw-functionaltest-env/pom.xml
-$ mvn -U install -f terasoluna-gfw-functionaltest-domain/pom.xml
-$ mvn -U package -f terasoluna-gfw-functionaltest-web/pom.xml
+$ mvn -U package -am -pl terasoluna-gfw-functionaltest-web
 ```
 
 #### Case that use PostgreSQL as database
@@ -67,10 +64,7 @@ $ mvn -U package -f terasoluna-gfw-functionaltest-web/pom.xml
 ```console
 $ cd {your repository directory}
 $ git checkout {target branch}
-$ mvn -U install -f terasoluna-gfw-functionaltest-parent/pom.xml
-$ mvn -U install -f terasoluna-gfw-functionaltest-env/pom.xml -P tomcat8-postgresql
-$ mvn -U install -f terasoluna-gfw-functionaltest-domain/pom.xml
-$ mvn -U package -f terasoluna-gfw-functionaltest-web/pom.xml -P warpack-env,travis
+$ mvn -U package -am -pl terasoluna-gfw-functionaltest-web -P tomcat8-postgresql,warpack-env,warpack-jstl,travis
 ```
 
 > **Note:**
@@ -81,7 +75,7 @@ $ mvn -U package -f terasoluna-gfw-functionaltest-web/pom.xml -P warpack-env,tra
 If PostgreSQL use as database, initialize database before run functional test.
 
 ```console
-$ mvn -U sql:execute -f terasoluna-gfw-functionaltest-initdb/pom.xml
+$ mvn -U sql:execute -pl terasoluna-gfw-functionaltest-initdb
 ```
 
 > **Note:**
@@ -93,7 +87,7 @@ Startup Tomcat8 and deploy war file using [CARGO maven plugin](https://codehaus-
 
 ```console
 $ cd {your repository directory}
-$ mvn -U cargo:run -f terasoluna-gfw-functionaltest-web/pom.xml
+$ mvn -U cargo:run -pl terasoluna-gfw-functionaltest-web
 ```
 
 > **Note:**
@@ -105,7 +99,7 @@ Run tests using Selenium(`WebDriver`) on JUnit.
 
 ```console
 $ cd {your repository directory}
-$ mvn -U test -f terasoluna-gfw-functionaltest-selenium/pom.xml
+$ mvn -U test -pl terasoluna-gfw-functionaltest-selenium
 ```
 
 > **Note:**
