@@ -22,7 +22,7 @@ public class FirefoxDriverFactoryBean implements FactoryBean<FirefoxDriver> {
 
     @Override
     public boolean isSingleton() {
-        return true;
+        return false;
     }
 
 }
