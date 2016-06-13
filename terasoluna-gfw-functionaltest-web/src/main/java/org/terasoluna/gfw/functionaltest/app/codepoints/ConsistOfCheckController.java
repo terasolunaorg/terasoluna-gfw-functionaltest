@@ -25,26 +25,26 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 @RequestMapping(value = "codepoints")
 public class ConsistOfCheckController {
-	
-	@ModelAttribute
-	public ConsistOfCheckForm setConsistOfCheckForm() {
-		return new ConsistOfCheckForm();
-	}
 
-	@RequestMapping(method = RequestMethod.GET)
-	public String consistOfCheckInput() {
-		
-		return "codepoints/input";
-	}
-	
-	@RequestMapping(method = RequestMethod.POST)
-	public String consistOfCheck(@Validated ConsistOfCheckForm form,
-			BindingResult result) {
-		
-		if (result.hasErrors()) {
-			return "codepoints/input";
-		}
+    @ModelAttribute
+    public ConsistOfCheckForm setConsistOfCheckForm() {
+        return new ConsistOfCheckForm();
+    }
 
-		return "codepoints/result";
-	}
+    @RequestMapping(value = "consistOfCheck", method = RequestMethod.GET, params = { "form" })
+    public String consistOfCheck_form() {
+
+        return "codepoints/consistOfCheck_form";
+    }
+
+    @RequestMapping(value = "consistOfCheck", method = RequestMethod.POST)
+    public String consistOfCheck(@Validated ConsistOfCheckForm form,
+            BindingResult result) {
+
+        if (result.hasErrors()) {
+            return consistOfCheck_form();
+        }
+
+        return "codepoints/result_consistOfCheck";
+    }
 }
