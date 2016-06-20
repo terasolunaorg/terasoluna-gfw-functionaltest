@@ -69,6 +69,10 @@
             <td><a id="Validation" href="${pageContext.request.contextPath}/validation">Validation
                     Function Test</a></td>
         </tr>
+        <tr>
+            <td><a id="String" href="${pageContext.request.contextPath}/string">String Processes
+                    Function Test</a></td>
+        </tr>
 	</table>
 </body>
 </html>
