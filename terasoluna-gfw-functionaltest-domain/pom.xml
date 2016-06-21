@@ -46,11 +46,15 @@
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
+            <scope>provided</scope>
+            <optional>true</optional>
         </dependency>
-        <!-- <dependency> -->
-        <!-- <groupId>com.oracle</groupId> -->
-        <!-- <artifactId>ojdbc6</artifactId> -->
-        <!-- </dependency> -->
+        <dependency>
+            <groupId>com.oracle</groupId>
+            <artifactId>ojdbc6</artifactId>
+            <scope>provided</scope>
+            <optional>true</optional>
+        </dependency>
         <!-- == End Database == -->
 
         <!-- == Begin Unit Test == -->

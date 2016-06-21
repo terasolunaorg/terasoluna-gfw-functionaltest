@@ -242,7 +242,6 @@
                 <groupId>com.h2database</groupId>
                 <artifactId>h2</artifactId>
                 <version>${com.h2database.version}</version>
-                <scope>test</scope>
             </dependency>
             <dependency>
                 <groupId>org.postgresql</groupId>
@@ -310,6 +309,13 @@
     <profiles>
         <profile>
             <id>travis</id>
+            <dependencies>
+                <dependency>
+                    <groupId>org.postgresql</groupId>
+                    <artifactId>postgresql</artifactId>
+                    <scope>provided</scope>
+                </dependency>
+            </dependencies>
             <build>
                 <pluginManagement>
                     <plugins>
@@ -317,6 +323,20 @@
                             <artifactId>maven-war-plugin</artifactId>
                             <configuration>
                                 <containerConfigXML>${project.basedir}/../terasoluna-gfw-functionaltest-env/configs/travis/ContainerConfigXML/context.xml</containerConfigXML>
+                            </configuration>
+                        </plugin>
+                        <plugin>
+                            <groupId>org.codehaus.cargo</groupId>
+                            <artifactId>cargo-maven2-plugin</artifactId>
+                            <configuration>
+                                <container>
+                                    <dependencies>
+                                        <dependency>
+                                            <groupId>org.postgresql</groupId>
+                                            <artifactId>postgresql</artifactId>
+                                        </dependency>
+                                    </dependencies>
+                                </container>
                             </configuration>
                         </plugin>
                     </plugins>
