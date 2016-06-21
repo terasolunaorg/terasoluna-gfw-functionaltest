@@ -56,7 +56,7 @@ Build artifacts using maven commands as follows.
 ```console
 $ cd {your repository directory}
 $ git checkout {target branch}
-$ mvn -U package -am -pl terasoluna-gfw-functionaltest-web
+$ mvn -U install -am -pl terasoluna-gfw-functionaltest-web
 ```
 
 #### Case that use PostgreSQL as database
@@ -64,7 +64,7 @@ $ mvn -U package -am -pl terasoluna-gfw-functionaltest-web
 ```console
 $ cd {your repository directory}
 $ git checkout {target branch}
-$ mvn -U package -am -pl terasoluna-gfw-functionaltest-web -P tomcat8-postgresql,warpack-env,travis
+$ mvn -U install -am -pl terasoluna-gfw-functionaltest-web -P tomcat8-postgresql,warpack-env,travis
 ```
 
 > **Note:**
@@ -85,10 +85,18 @@ $ mvn -U sql:execute -pl terasoluna-gfw-functionaltest-initdb
 ### [Step 5] Startup Tomcat8 and deploy war file
 Startup Tomcat8 and deploy war file using [CARGO maven plugin](https://codehaus-cargo.github.io/cargo/Maven2+plugin.html).
 
+#### Case that use embedded H2 as database
+
 ```console
 $ cd {your repository directory}
 $ mvn -U cargo:run -pl terasoluna-gfw-functionaltest-web
 ```
+
+#### Case that use PostgreSQL as database (use Tomcat JNDI Resource)
+
+```console
+$ cd {your repository directory}
+$ mvn -U cargo:run -pl terasoluna-gfw-functionaltest-web -P travis
 
 > **Note:**
 >
