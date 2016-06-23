@@ -28,5 +28,5 @@ before_script:
 script:
   - mvn -U sql:execute -pl terasoluna-gfw-functionaltest-initdb
   - mvn -U install -am -pl terasoluna-gfw-functionaltest-web -P tomcat8-postgresql,warpack-env,warpack-jstl,travis
-  - mvn -U cargo:daemon-start -pl terasoluna-gfw-functionaltest-web
+  - mvn -U cargo:daemon-start -pl terasoluna-gfw-functionaltest-web -P travis
   - mvn -U test -pl terasoluna-gfw-functionaltest-selenium
