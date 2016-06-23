@@ -97,6 +97,7 @@ $ mvn -U cargo:run -pl terasoluna-gfw-functionaltest-web
 ```console
 $ cd {your repository directory}
 $ mvn -U cargo:run -pl terasoluna-gfw-functionaltest-web -P travis
+```
 
 > **Note:**
 >
