@@ -144,6 +144,31 @@
                     <artifactId>sql-maven-plugin</artifactId>
                     <version>${org.codehaus.mojo.sql-maven-plugin.version}</version>
                 </plugin>
+                <plugin>
+                    <groupId>net.revelc.code</groupId>
+                    <artifactId>formatter-maven-plugin</artifactId>
+                    <version>${formatter-maven-plugin.version}</version>
+                    <configuration>
+                        <configFile>${project.root.basedir}/eclipse/formatter.xml
+                        </configFile>
+                        <lineEnding>CRLF</lineEnding>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>com.google.code.maven-license-plugin</groupId>
+                    <artifactId>maven-license-plugin</artifactId>
+                    <version>${com.google.code.maven-license-plugin.version}</version>
+                    <configuration>
+                        <header>${project.root.basedir}/license/header.txt</header>
+                        <includes>
+                            <include>src/**/*.java</include>
+                        </includes>
+                        <encoding>${encoding}</encoding>
+                        <headerDefinitions>
+                            <headerDefinition>${project.root.basedir}/license/header-definition.xml</headerDefinition>
+                        </headerDefinitions>
+                    </configuration>
+                </plugin>
             </plugins>
         </pluginManagement>
     </build>
@@ -200,9 +225,12 @@
         <org.codehaus.mojo.build-helper-maven-plugin.version>1.9.1</org.codehaus.mojo.build-helper-maven-plugin.version>
         <org.codehaus.mojo.sql-maven-plugin.version>1.5</org.codehaus.mojo.sql-maven-plugin.version>
         <maven-failsafe-plugin.version>2.19</maven-failsafe-plugin.version>
+        <formatter-maven-plugin.version>0.5.2</formatter-maven-plugin.version>
+        <com.google.code.maven-license-plugin.version>1.4.0</com.google.code.maven-license-plugin.version>
         <!-- == Other Properties== -->
         <project.env.main.directory>src/main</project.env.main.directory>
         <project.env.buildFinalName>${project.artifactId}-${project.version}</project.env.buildFinalName>
+        <project.root.basedir>${project.basedir}</project.root.basedir>
         <encoding>UTF-8</encoding>
         <java-version>1.7</java-version>
         <postgresql.version>9.4-1206-jdbc41</postgresql.version>
