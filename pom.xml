@@ -115,7 +115,9 @@
                     </executions>
                 </plugin>
                 <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-war-plugin</artifactId>
+                    <version>${maven-war-plugin.version}</version>
                     <configuration>
                         <webResources>
                             <resource>
@@ -127,6 +129,14 @@
                                 </excludes>
                             </resource>
                         </webResources>
+                        <warName>${project.artifactId}</warName>
+                        <archive>
+                            <addMavenDescriptor>false</addMavenDescriptor>
+                            <manifest>
+                                <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                            </manifest>
+                        </archive>
+
                     </configuration>
                 </plugin>
                 <plugin>
@@ -155,6 +165,14 @@
                 <version>${project.version}</version>
             </dependency>
 
+            <!-- == Begin Test == -->
+            <dependency>
+                <groupId>org.seleniumhq.selenium</groupId>
+                <artifactId>selenium-java</artifactId>
+                <version>${selenium.version}</version>
+            </dependency>
+            <!-- == End Test == -->
+
             <!-- == Begin Database == -->
             <dependency>
                 <groupId>org.postgresql</groupId>
@@ -167,7 +185,7 @@
                 <version>${ojdbc7.version}</version>
             </dependency>
             <dependency>
-                <!-- db2jcc4.jar must be pre-installed in local repository. --> 
+                <!-- db2jcc4.jar must be pre-installed in local repository. -->
                 <groupId>com.ibm</groupId>
                 <artifactId>db2jcc4</artifactId>
                 <version>${db2jcc4.version}</version>
@@ -177,18 +195,23 @@
         </dependencies>
     </dependencyManagement>
     <properties>
+        <!-- == Maven Plugins == -->
+        <maven-war-plugin.version>2.5</maven-war-plugin.version>
+        <org.codehaus.mojo.build-helper-maven-plugin.version>1.9.1</org.codehaus.mojo.build-helper-maven-plugin.version>
+        <org.codehaus.mojo.sql-maven-plugin.version>1.5</org.codehaus.mojo.sql-maven-plugin.version>
+        <maven-failsafe-plugin.version>2.19</maven-failsafe-plugin.version>
+        <!-- == Other Properties== -->
         <project.env.main.directory>src/main</project.env.main.directory>
         <project.env.buildFinalName>${project.artifactId}-${project.version}</project.env.buildFinalName>
         <encoding>UTF-8</encoding>
-        <java-version>1.6</java-version>
-        <maven-failsafe-plugin.version>2.19</maven-failsafe-plugin.version>
-        <org.codehaus.mojo.build-helper-maven-plugin.version>1.9.1</org.codehaus.mojo.build-helper-maven-plugin.version>
-        <org.codehaus.mojo.sql-maven-plugin.version>1.5</org.codehaus.mojo.sql-maven-plugin.version>
-        <org.codehaus.cargo.cargo-maven2-plugin.version>1.4.16</org.codehaus.cargo.cargo-maven2-plugin.version>
-        <cargo.jvmargs>-Xms512m -Xmx1024m -Duser.language=ja -Duser.country=JP -Duser.timezone=Asia/Tokyo</cargo.jvmargs>
+        <java-version>1.7</java-version>
         <postgresql.version>9.4-1206-jdbc41</postgresql.version>
         <ojdbc7.version>12.1.0.2</ojdbc7.version>
         <db2jcc4.version>4.19.26</db2jcc4.version>
+        <selenium.version>2.46.0</selenium.version>
+        <org.codehaus.cargo.cargo-maven2-plugin.version>1.4.16</org.codehaus.cargo.cargo-maven2-plugin.version>
+        <cargo.jvmargs>-Xms512m -Xmx1024m -Duser.language=ja
+            -Duser.country=JP -Duser.timezone=Asia/Tokyo</cargo.jvmargs>
     </properties>
     <profiles>
         <profile>
