@@ -220,24 +220,25 @@
         </dependencies>
     </dependencyManagement>
     <properties>
-        <!-- == Maven Plugins == -->
+        <!-- == Maven Plugin Versions == -->
         <maven-war-plugin.version>2.5</maven-war-plugin.version>
         <org.codehaus.mojo.build-helper-maven-plugin.version>1.9.1</org.codehaus.mojo.build-helper-maven-plugin.version>
         <org.codehaus.mojo.sql-maven-plugin.version>1.5</org.codehaus.mojo.sql-maven-plugin.version>
         <maven-failsafe-plugin.version>2.19</maven-failsafe-plugin.version>
         <formatter-maven-plugin.version>0.5.2</formatter-maven-plugin.version>
         <com.google.code.maven-license-plugin.version>1.4.0</com.google.code.maven-license-plugin.version>
-        <!-- == Other Properties== -->
+        <org.codehaus.cargo.cargo-maven2-plugin.version>1.4.16</org.codehaus.cargo.cargo-maven2-plugin.version>
+        <!-- == Dependency Versions == -->
+        <postgresql.version>9.4-1206-jdbc41</postgresql.version>
+        <ojdbc7.version>12.1.0.2</ojdbc7.version>
+        <db2jcc4.version>4.19.26</db2jcc4.version>
+        <selenium.version>2.46.0</selenium.version>
+        <!-- == Project Properties == -->
         <project.env.main.directory>src/main</project.env.main.directory>
         <project.env.buildFinalName>${project.artifactId}-${project.version}</project.env.buildFinalName>
         <project.root.basedir>${project.basedir}</project.root.basedir>
         <encoding>UTF-8</encoding>
         <java-version>1.7</java-version>
-        <postgresql.version>9.4-1206-jdbc41</postgresql.version>
-        <ojdbc7.version>12.1.0.2</ojdbc7.version>
-        <db2jcc4.version>4.19.26</db2jcc4.version>
-        <selenium.version>2.46.0</selenium.version>
-        <org.codehaus.cargo.cargo-maven2-plugin.version>1.4.16</org.codehaus.cargo.cargo-maven2-plugin.version>
         <cargo.jvmargs>-Xms512m -Xmx1024m -Duser.language=ja
             -Duser.country=JP -Duser.timezone=Asia/Tokyo</cargo.jvmargs>
     </properties>
