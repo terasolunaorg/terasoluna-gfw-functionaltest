@@ -260,4 +260,9 @@
 			<a id="disabledPageLinkWithJavaScript_25_1" href="${pageContext.request.contextPath}/pagination/25_1">disabledPageLinkWithJavaScript_25_1</a>
 		</td>
 	</tr>
+	<tr>
+		<td>
+			<a id="tagConfiguration_26_1" href="${pageContext.request.contextPath}/pagination/26_1">tagConfiguration_26_1</a>
+		</td>
+	</tr>
 </table>

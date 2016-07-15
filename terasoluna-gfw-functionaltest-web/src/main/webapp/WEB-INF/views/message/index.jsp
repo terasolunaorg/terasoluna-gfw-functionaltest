@@ -205,4 +205,19 @@
 			<a id="disableHtmlEscape_09_02" href="${pageContext.request.contextPath}/message/9_2">disableHtmlEscape_09_02</a>
 		</td>
 	</tr>
+	<tr>
+		<td>
+			<a id="tagConfiguration_10_01" href="${pageContext.request.contextPath}/message/10_1">tagConfiguration_10_01</a>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<a id="tagConfiguration_10_02" href="${pageContext.request.contextPath}/message/10_2">tagConfiguration_10_02</a>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<a id="tagConfiguration_10_03" href="${pageContext.request.contextPath}/message/10_3">tagConfiguration_10_03</a>
+		</td>
+	</tr>
 </table>

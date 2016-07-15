@@ -571,4 +571,15 @@ public class PaginationController {
         return "pagination/disabledPageLinkWithJavaScript";
     }
 
+    @RequestMapping(value = "26_1", method = RequestMethod.GET)
+    public String fuinctionTest_26_1(Model model,
+            @PageableDefault(value = 100) Pageable pageable) {
+
+        Page<Person> page = paginationService.findPerson(pageable);
+
+        model.addAttribute("page", page);
+
+        return "pagination/tagConfiguration";
+    }
+
 }
