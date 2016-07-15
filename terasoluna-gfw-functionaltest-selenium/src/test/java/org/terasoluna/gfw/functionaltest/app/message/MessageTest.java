@@ -732,4 +732,41 @@ public class MessageTest extends FunctionTestSupport {
         screenCapture.save(driver);
     }
 
+    @Test
+    public void test10_01_tagConfiguration() {
+        driver.findElement(By.id("tagConfiguration_10_01")).click();
+
+        // innerElement close with </li> confirm
+        assertThat(driver.getPageSource().contains(
+                "<div class=\"alert alert-success\"><ul><li></li></ul></div>"),
+                is(true));
+
+        // screen capture
+        screenCapture.save(driver);
+    }
+
+    @Test
+    public void test10_02_tagConfiguration() {
+        driver.findElement(By.id("tagConfiguration_10_02")).click();
+
+        // outerElement close with </ul> confirm
+        assertThat(driver.getPageSource().contains(
+                "<div class=\"alert alert-success\"><ul></ul></div>"), is(true));
+
+        // screen capture
+        screenCapture.save(driver);
+    }
+
+    @Test
+    public void test10_03_tagConfiguration() {
+        driver.findElement(By.id("tagConfiguration_10_03")).click();
+
+        // panelElement close with </div> confirm
+        assertThat(driver.getPageSource().contains(
+                "<div class=\"alert alert-success\"></div>"), is(true));
+
+        // screen capture
+        screenCapture.save(driver);
+    }
+
 }

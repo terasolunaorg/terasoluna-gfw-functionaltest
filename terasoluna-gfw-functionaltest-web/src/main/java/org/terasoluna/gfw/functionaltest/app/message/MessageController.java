@@ -382,4 +382,30 @@ public class MessageController {
         return "message/disableHtmlEscapeSpecifiedTrue";
     }
     
+    @RequestMapping(value = "10_1", method = RequestMethod.GET)
+    public String tagConfiguration_10_01(Model model) {
+
+        model.addAttribute(ResultMessages.success().add("i.gt.me.0007"));
+
+        return "message/tagConfiguration";
+    }
+
+    @RequestMapping(value = "10_2", method = RequestMethod.GET)
+    public String tagConfiguration_10_02(Model model) {
+
+        List<ResultMessage> resultMessageList = new ArrayList<ResultMessage>();
+        model.addAttribute(ResultMessages.success().addAll(resultMessageList));
+
+        return "message/tagConfiguration";
+    }
+
+    @RequestMapping(value = "10_3", method = RequestMethod.GET)
+    public String tagConfiguration_10_03(Model model) {
+
+        List<ResultMessage> resultMessageList = new ArrayList<ResultMessage>();
+        model.addAttribute(ResultMessages.success().addAll(resultMessageList));
+
+        return "message/tagConfigurationPanelElement";
+    }
+
 }
