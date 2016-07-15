@@ -741,8 +741,8 @@ public class MessageTest extends FunctionTestSupport {
                 "<div class=\"alert alert-success\"><ul><li></li></ul></div>"),
                 is(true));
 
-        // screen capture
-        screenCapture.save(driver);
+        // page source 
+        pageSource.save(driver);
     }
 
     @Test
@@ -753,8 +753,8 @@ public class MessageTest extends FunctionTestSupport {
         assertThat(driver.getPageSource().contains(
                 "<div class=\"alert alert-success\"><ul></ul></div>"), is(true));
 
-        // screen capture
-        screenCapture.save(driver);
+        // page source
+        pageSource.save(driver);
     }
 
     @Test
@@ -765,8 +765,8 @@ public class MessageTest extends FunctionTestSupport {
         assertThat(driver.getPageSource().contains(
                 "<div class=\"alert alert-success\"></div>"), is(true));
 
-        // screen capture
-        screenCapture.save(driver);
+        // page source
+        pageSource.save(driver);
     }
 
 }

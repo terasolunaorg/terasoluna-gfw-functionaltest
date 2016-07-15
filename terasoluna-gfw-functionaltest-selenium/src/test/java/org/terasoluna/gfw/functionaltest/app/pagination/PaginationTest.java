@@ -2582,6 +2582,9 @@ public class PaginationTest extends FunctionTestSupport {
 
         // outerElement close with </ul> confirm
         assertThat(driver.getPageSource().contains("<ul></ul>"), is(true));
+
+        // page soruce
+        pageSource.save(driver);
     }
- 
+
 }
