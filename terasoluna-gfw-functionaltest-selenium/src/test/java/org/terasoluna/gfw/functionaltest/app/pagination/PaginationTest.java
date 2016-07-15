@@ -2575,5 +2575,13 @@ public class PaginationTest extends FunctionTestSupport {
         assertThat(nextLinkXtrack, is(not(orgXtrack)));
 
     }
+
+    @Test
+    public void test26_01_tagConfiguration() {
+        driver.findElement(By.id("tagConfiguration_26_1")).click();
+
+        // outerElement close with </ul> confirm
+        assertThat(driver.getPageSource().contains("<ul></ul>"), is(true));
+    }
  
 }
