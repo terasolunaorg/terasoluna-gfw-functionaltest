@@ -53,4 +53,23 @@ public class TransactionTokenFlow2Controller {
     public String flow2Step4() {
         return "transactiontoken/flow2Step4";
     }
+
+    @RequestMapping(value = "flow2", method = RequestMethod.POST, params = "check")
+    @TransactionTokenCheck(type = TransactionTokenType.CHECK)
+    public String flow1Step2Check() {
+        return "transactiontoken/flow2Step3";
+    }
+
+    @RequestMapping(value = "flow2", method = RequestMethod.POST, params = "keep")
+    @TransactionTokenCheck(type = TransactionTokenType.KEEP)
+    String flow1Step2Keep() {
+        return "transactiontoken/flow2Step3";
+    }
+
+    @RequestMapping(value = "flow2", method = RequestMethod.POST, params = "update")
+    @TransactionTokenCheck(type = TransactionTokenType.UPDATE)
+    String flow1Step2Update() {
+        return "transactiontoken/flow2Step3";
+    }
+
 }
