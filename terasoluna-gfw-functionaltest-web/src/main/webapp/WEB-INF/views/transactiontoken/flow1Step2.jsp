@@ -21,6 +21,12 @@
 	<input id="btn-end-error" name="finalizeError" class="mainbtn"
 		style="width: 200px;" type="submit" value="Finish with Error" />
 	<br>
+    <input id="btn-download01" name="download01" class="mainbtn"
+        style="width: 200px;" type="button" value="File download (CHECK)" />
+    <br>
+    <input id="btn-download02" name="download02" class="mainbtn"
+        style="width: 200px;" type="button" value="File download (KEEP)" />
+    <br>
 	<input name="redo1" class="mainbtn" style="width: 200px;" type="submit"
 		value="Back" />
 </form:form>
@@ -30,6 +36,29 @@
 </form>
 
 <script type="text/javascript">
-	document.getElementById("result").innerHTML = document
+document.getElementById("result").innerHTML = document
 			.getElementsByName('_TRANSACTION_TOKEN')[0].value;
+
+
 </script>
+
+<script type="text/javascript">
+function dummyDownload ( buttonId ) {
+	var param = {};
+    param[$(buttonId).attr('name')]=$(buttonId).attr('value');
+    param["_TRANSACTION_TOKEN"]=$('input[name="_TRANSACTION_TOKEN"]').attr('value')
+	$.get(
+            $('#command').attr('action'), param);
+    return false;
+};
+
+$(document).ready(
+		function(){
+            console.log('ready 1');
+			$('#btn-download01').on('click', function(){dummyDownload('#btn-download01');});
+            $('#btn-download02').on('click', function(){dummyDownload('#btn-download02');});
+            console.log('ready 2');
+		}
+	);
+</script>
+
