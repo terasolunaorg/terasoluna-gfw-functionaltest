@@ -19,6 +19,7 @@
             <bean
                 class="org.terasoluna.gfw.web.token.transaction.TransactionTokenContextHandlerMethodArgumentResolver" />
         </mvc:argument-resolvers>
+        <mvc:path-matching path-matcher="pathMatcher" />
     </mvc:annotation-driven>
 
     <mvc:default-servlet-handler />
@@ -179,6 +180,10 @@
                     class="org.terasoluna.gfw.web.token.transaction.TransactionTokenRequestDataValueProcessor" />
             </util:list>
         </constructor-arg>
+    </bean>
+
+    <bean id="pathMatcher" class="org.springframework.util.AntPathMatcher">
+        <property name="trimTokens" value="false" />
     </bean>
 
 </beans>
