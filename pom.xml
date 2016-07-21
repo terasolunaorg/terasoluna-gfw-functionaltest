@@ -367,7 +367,7 @@
         <profile>
             <id>tomcat-postgresql</id>
             <properties>
-                <project.env.main.directory>${basedir}/configs/tomcat-postgresql/resources</project.env.main.directory>
+                <project.env.main.directory>configs/tomcat-postgresql</project.env.main.directory>
                 <project.env.buildFinalName>${project.artifactId}-${project.version}-tomcat-postgresql</project.env.buildFinalName>
             </properties>
         </profile>
