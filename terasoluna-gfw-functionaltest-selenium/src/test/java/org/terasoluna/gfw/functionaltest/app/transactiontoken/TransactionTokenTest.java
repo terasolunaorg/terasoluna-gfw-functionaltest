@@ -125,18 +125,35 @@ public class TransactionTokenTest extends FunctionTestSupport {
                 notNullValue());
         String newToken = driver.findElement(By.name("_TRANSACTION_TOKEN"))
                 .getAttribute("value");
+        assertUpdateTokenValue(newToken, currentToken);
 
-        String currentTokenName = currentToken.split("~")[0];
-        String newTokenName = newToken.split("~")[0];
-        String currentTokenKey = currentToken.split("~")[1];
-        String newTokenKey = newToken.split("~")[1];
-        String currentTokenValue = currentToken.split("~")[2];
-        String newTokenValue = newToken.split("~")[2];
+        // check
+        currentToken = newToken;
+        assertThat(driver.findElement(By.name("_TRANSACTION_TOKEN")),
+                notNullValue());
+        driver.findElement(By.id("btn-check")).click();
+        newToken = driver.findElement(By.name("_TRANSACTION_TOKEN"))
+                .getAttribute("value");
+        assertThat(newToken, is(currentToken));
 
-        assertThat(newTokenName, is(currentTokenName));
-        assertThat(newTokenKey, is(currentTokenKey));
-        assertThat(newTokenValue, is(not(currentTokenValue)));
-
+        // keep
+        currentToken = newToken;
+        driver.findElement(By.id("btn-keep")).click();
+        assertThat(driver.findElement(By.name("_TRANSACTION_TOKEN")),
+                notNullValue());
+        newToken = driver.findElement(By.name("_TRANSACTION_TOKEN"))
+                .getAttribute("value");
+        assertThat(newToken, is(currentToken));
+        
+        // update
+        currentToken = newToken;
+        driver.findElement(By.id("btn-update")).click();
+        assertThat(driver.findElement(By.name("_TRANSACTION_TOKEN")),
+                notNullValue());
+        newToken = driver.findElement(By.name("_TRANSACTION_TOKEN"))
+                .getAttribute("value");
+        assertUpdateTokenValue(newToken, currentToken);
+        
         driver.findElement(By.id("btn-end")).click();
         assertFalse(webDriverOperations.exists(By.name("_TRANSACTION_TOKEN")));
 
@@ -158,18 +175,35 @@ public class TransactionTokenTest extends FunctionTestSupport {
                 notNullValue());
         String newToken = driver.findElement(By.name("_TRANSACTION_TOKEN"))
                 .getAttribute("value");
+        assertUpdateTokenValue(newToken, currentToken);
 
-        String currentTokenName = currentToken.split("~")[0];
-        String newTokenName = newToken.split("~")[0];
-        String currentTokenKey = currentToken.split("~")[1];
-        String newTokenKey = newToken.split("~")[1];
-        String currentTokenValue = currentToken.split("~")[2];
-        String newTokenValue = newToken.split("~")[2];
+        // check
+        currentToken = newToken;
+        driver.findElement(By.id("btn-check")).click();
+        assertThat(driver.findElement(By.name("_TRANSACTION_TOKEN")),
+                notNullValue());
+        newToken = driver.findElement(By.name("_TRANSACTION_TOKEN"))
+                .getAttribute("value");
+        assertThat(newToken, is(currentToken));
 
-        assertThat(newTokenName, is(currentTokenName));
-        assertThat(newTokenKey, is(currentTokenKey));
-        assertThat(newTokenValue, is(not(currentTokenValue)));
-
+        // keep
+        currentToken = newToken;
+        driver.findElement(By.id("btn-keep")).click();
+        assertThat(driver.findElement(By.name("_TRANSACTION_TOKEN")),
+                notNullValue());
+        newToken = driver.findElement(By.name("_TRANSACTION_TOKEN"))
+                .getAttribute("value");
+        assertThat(newToken, is(currentToken));
+        
+        // update
+        currentToken = newToken;
+        driver.findElement(By.id("btn-update")).click();
+        assertThat(driver.findElement(By.name("_TRANSACTION_TOKEN")),
+                notNullValue());
+        newToken = driver.findElement(By.name("_TRANSACTION_TOKEN"))
+                .getAttribute("value");
+        assertUpdateTokenValue(newToken, currentToken);
+        
         driver.findElement(By.id("btn-end")).click();
         assertFalse(webDriverOperations.exists(By.name("_TRANSACTION_TOKEN")));
 
@@ -190,18 +224,36 @@ public class TransactionTokenTest extends FunctionTestSupport {
                 notNullValue());
         String newToken = driver.findElement(By.name("_TRANSACTION_TOKEN"))
                 .getAttribute("value");
+        assertThat(currentToken.split("~")[0], is("globalToken"));
+        assertUpdateTokenValue(newToken, currentToken);
 
-        String currentTokenName = currentToken.split("~")[0];
-        String newTokenName = newToken.split("~")[0];
-        String currentTokenKey = currentToken.split("~")[1];
-        String newTokenKey = newToken.split("~")[1];
-        String currentTokenValue = currentToken.split("~")[2];
-        String newTokenValue = newToken.split("~")[2];
-        assertThat(currentTokenName, is("globalToken"));
-        assertThat(newTokenName, is(currentTokenName));
-        assertThat(newTokenKey, is(currentTokenKey));
-        assertThat(newTokenValue, is(not(currentTokenValue)));
+        // check
+        currentToken = newToken;
+        driver.findElement(By.id("btn-check")).click();
+        assertThat(driver.findElement(By.name("_TRANSACTION_TOKEN")),
+                notNullValue());
+        newToken = driver.findElement(By.name("_TRANSACTION_TOKEN"))
+                .getAttribute("value");
+        assertThat(newToken, is(currentToken));
 
+        // keep
+        currentToken = newToken;
+        driver.findElement(By.id("btn-keep")).click();
+        assertThat(driver.findElement(By.name("_TRANSACTION_TOKEN")),
+                notNullValue());
+        newToken = driver.findElement(By.name("_TRANSACTION_TOKEN"))
+                .getAttribute("value");
+        assertThat(newToken, is(currentToken));
+
+        // update
+        currentToken = newToken;
+        driver.findElement(By.id("btn-update")).click();
+        assertThat(driver.findElement(By.name("_TRANSACTION_TOKEN")),
+                notNullValue());
+        newToken = driver.findElement(By.name("_TRANSACTION_TOKEN"))
+                .getAttribute("value");
+        assertUpdateTokenValue(newToken, currentToken);
+        
         driver.findElement(By.id("btn-end")).click();
         assertFalse(webDriverOperations.exists(By.name("_TRANSACTION_TOKEN")));
     }
@@ -480,6 +532,204 @@ public class TransactionTokenTest extends FunctionTestSupport {
     }
 
     @Test
+    public void test02_16_normalBeginCheckInScenario() {
+        driver.findElement(By.id("link2")).click();
+
+        // begin
+        driver.findElement(By.id("btn-flow1")).click();
+        assertThat(driver.findElement(By.name("_TRANSACTION_TOKEN")),
+                notNullValue());
+
+        String currentToken = driver.findElement(By.name("_TRANSACTION_TOKEN"))
+                .getAttribute("value");
+
+        // filedownload (check)
+        driver.findElement(By.id("btn-download01")).click();
+
+        // in
+        driver.findElement(By.id("btn-in")).click();
+        assertThat(driver.findElement(By.name("_TRANSACTION_TOKEN")),
+                notNullValue());
+        String newToken = driver.findElement(By.name("_TRANSACTION_TOKEN"))
+                .getAttribute("value");
+        assertUpdateTokenValue(newToken, currentToken);
+
+    }
+
+
+    @Test
+    public void test02_17_normalBeginKeepInScenario() {
+        driver.findElement(By.id("link2")).click();
+
+        // begin
+        driver.findElement(By.id("btn-flow1")).click();
+        assertThat(driver.findElement(By.name("_TRANSACTION_TOKEN")),
+                notNullValue());
+
+        String currentToken = driver.findElement(By.name("_TRANSACTION_TOKEN"))
+                .getAttribute("value");
+
+        // filedownload (keep)
+        driver.findElement(By.id("btn-download02")).click();
+
+        // in
+        driver.findElement(By.id("btn-in")).click();
+        assertThat(driver.findElement(By.name("_TRANSACTION_TOKEN")),
+                notNullValue());
+        String newToken = driver.findElement(By.name("_TRANSACTION_TOKEN"))
+                .getAttribute("value");
+        assertUpdateTokenValue(newToken, currentToken);
+
+    }
+
+    @Test
+    public void test02_18_beginInBackKeepScenario() {
+        driver.findElement(By.id("link2")).click();
+
+        // begin
+        driver.findElement(By.id("btn-flow1")).click();
+        assertThat(driver.findElement(By.name("_TRANSACTION_TOKEN")),
+                notNullValue());
+
+        String currentToken = driver.findElement(By.name("_TRANSACTION_TOKEN"))
+                .getAttribute("value");
+
+        // in
+        driver.findElement(By.id("btn-in")).click();
+        assertThat(driver.findElement(By.name("_TRANSACTION_TOKEN")),
+                notNullValue());
+        String newToken = driver.findElement(By.name("_TRANSACTION_TOKEN"))
+                .getAttribute("value");
+        assertUpdateTokenValue(newToken, currentToken);
+
+        // Browser Back Simulation
+        // consider that back button is clicked and old token is sent again for UPDATE request
+        // As Browser back in not working, request is sent to UPDATE method with oldtoken
+        // Expected Flow : BEGIN -> IN -> Browser Back -> UPDATE 
+        // Actual implemented flow : BEGIN -> IN -> UPDATE(old token)
+
+        JavascriptExecutor jse = (JavascriptExecutor) driver;
+        jse.executeScript("document.getElementsByName('_TRANSACTION_TOKEN')[0].setAttribute('type', 'text');");
+        jse.executeScript("document.getElementsByName('_TRANSACTION_TOKEN')[0].value = '"
+                + currentToken + "';");
+
+        // keep
+        driver.findElement(By.id("btn-keep")).click();
+        assertThat(driver.findElement(By.name("_TRANSACTION_TOKEN")),
+                notNullValue());
+        newToken = driver.findElement(By.name("_TRANSACTION_TOKEN"))
+                .getAttribute("value");
+        assertThat(newToken, is(currentToken));
+        
+    }
+
+
+    @Test
+    public void test02_19_beginInBackUpdateScenario() {
+        driver.findElement(By.id("link2")).click();
+
+        // begin
+        driver.findElement(By.id("btn-flow1")).click();
+        assertThat(driver.findElement(By.name("_TRANSACTION_TOKEN")),
+                notNullValue());
+
+        String currentToken = driver.findElement(By.name("_TRANSACTION_TOKEN"))
+                .getAttribute("value");
+
+        // in
+        driver.findElement(By.id("btn-in")).click();
+        assertThat(driver.findElement(By.name("_TRANSACTION_TOKEN")),
+                notNullValue());
+        String newToken = driver.findElement(By.name("_TRANSACTION_TOKEN"))
+                .getAttribute("value");
+        assertUpdateTokenValue(newToken, currentToken);
+
+        // Browser Back Simulation
+        // consider that back button is clicked and old token is sent again for UPDATE request
+        // As Browser back in not working, request is sent to UPDATE method with oldtoken
+        // Expected Flow : BEGIN -> IN -> Browser Back -> UPDATE 
+        // Actual implemented flow : BEGIN -> IN -> UPDATE(old token)
+
+        JavascriptExecutor jse = (JavascriptExecutor) driver;
+        jse.executeScript("document.getElementsByName('_TRANSACTION_TOKEN')[0].setAttribute('type', 'text');");
+        jse.executeScript("document.getElementsByName('_TRANSACTION_TOKEN')[0].value = '"
+                + currentToken + "';");
+
+        
+        // update
+        driver.findElement(By.id("btn-update")).click();
+        currentToken = newToken;
+        assertThat(driver.findElement(By.name("_TRANSACTION_TOKEN")),
+                notNullValue());
+        newToken = driver.findElement(By.name("_TRANSACTION_TOKEN"))
+                .getAttribute("value");
+        assertUpdateTokenValue(newToken, currentToken);
+
+    }
+
+    @Test
+    public void test02_20_beginInBackCheckScenario() {
+        driver.findElement(By.id("link2")).click();
+
+        // begin
+        driver.findElement(By.id("btn-flow1")).click();
+        assertThat(driver.findElement(By.name("_TRANSACTION_TOKEN")),
+                notNullValue());
+
+        String currentToken = driver.findElement(By.name("_TRANSACTION_TOKEN"))
+                .getAttribute("value");
+
+        // in
+        driver.findElement(By.id("btn-in")).click();
+        assertThat(driver.findElement(By.name("_TRANSACTION_TOKEN")),
+                notNullValue());
+        String newToken = driver.findElement(By.name("_TRANSACTION_TOKEN"))
+                .getAttribute("value");
+        assertUpdateTokenValue(newToken, currentToken);
+
+        // Browser Back Simulation
+        // consider that back button is clicked and old token is sent again for UPDATE request
+        // As Browser back in not working, request is sent to UPDATE method with oldtoken
+        // Expected Flow : BEGIN -> IN -> Browser Back -> UPDATE 
+        // Actual implemented flow : BEGIN -> IN -> UPDATE(old token)
+
+        JavascriptExecutor jse = (JavascriptExecutor) driver;
+        jse.executeScript("document.getElementsByName('_TRANSACTION_TOKEN')[0].setAttribute('type', 'text');");
+        jse.executeScript("document.getElementsByName('_TRANSACTION_TOKEN')[0].value = '"
+                + currentToken + "';");
+
+        // check
+        driver.findElement(By.id("btn-check")).click();
+        assertThat(driver.findElement(By.cssSelector("h2")).getText(),
+                is("Transaction Token Error"));
+        
+    }
+
+    @Test
+    public void test02_21_checkWithoutBegin() {
+        driver.findElement(By.id("link2")).click();
+        driver.findElement(By.id("btn-flow8")).click();
+        assertThat(driver.findElement(By.cssSelector("h2")).getText(),
+                is("Transaction Token Error"));
+    }
+
+    @Test
+    public void test02_22_keepWithoutBegin() {
+        driver.findElement(By.id("link2")).click();
+        driver.findElement(By.id("btn-flow9")).click();
+        assertThat(driver.findElement(By.cssSelector("h2")).getText(),
+                is("System Error..."));
+    }
+
+    @Test
+    public void test02_23_updateWithoutBegin() {
+        driver.findElement(By.id("link2")).click();
+        driver.findElement(By.id("btn-flow10")).click();
+        assertThat(driver.findElement(By.cssSelector("h2")).getText(),
+                is("System Error..."));
+    }
+
+    @Test
     public void test03_01_defaultTokenStoreSizeOver() {
 
         if (driver.getWrappedDriver() instanceof InternetExplorerDriver) {
@@ -699,4 +949,19 @@ public class TransactionTokenTest extends FunctionTestSupport {
                 .getAttribute("value").matches(
                         "globalToken~[0-9a-z]{32}~[0-9a-z]{32}"));
     }
+
+    
+    private void assertUpdateTokenValue(String token1, String token2){
+        String token1Name = token1.split("~")[0];
+        String token2Name = token2.split("~")[0];
+        String token1Key = token1.split("~")[1];
+        String token2Key = token2.split("~")[1];
+        String token1Value = token1.split("~")[2];
+        String token2Value = token2.split("~")[2];
+
+        assertThat(token2Name, is(token1Name));
+        assertThat(token2Key, is(token1Key));
+        assertThat(token2Value, is(not(token1Value)));
+    }
+
 }
