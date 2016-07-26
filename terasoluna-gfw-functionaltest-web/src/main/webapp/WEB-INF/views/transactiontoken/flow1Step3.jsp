@@ -9,6 +9,15 @@
 	<input id="btn-end" name="finalize" class="mainbtn"
 		style="width: 200px;" type="submit" value="Next" />
 	<br>
+    <input id="btn-check" name="check" class="mainbtn"
+        style="width: 200px;" type="submit" value="Check" />
+    <br>
+    <input id="btn-keep" name="keep" class="mainbtn"
+        style="width: 200px;" type="submit" value="Keep" />
+    <br>
+    <input id="btn-update" name="update" class="mainbtn"
+        style="width: 200px;" type="submit" value="Update" />
+    <br>
 	<input id="btn-back" name="redo2" class="mainbtn" style="width: 200px;" type="submit"
 		value="Back" />
 </form:form>
