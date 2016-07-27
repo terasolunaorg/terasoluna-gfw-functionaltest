@@ -49,17 +49,4 @@ public class TransactionTokenFlow7Controller {
     public String flow1Step2Check() {
         return "transactiontoken/flow1NamespaceStep3";
     }
-
-    @RequestMapping(value = "flow1_namespace", method = RequestMethod.POST, params = "keep")
-    @TransactionTokenCheck(type = TransactionTokenType.KEEP)
-    String flow1Step2Keep() {
-        return "transactiontoken/flow1NamespaceStep3";
-    }
-
-    @RequestMapping(value = "flow1_namespace", method = RequestMethod.POST, params = "update")
-    @TransactionTokenCheck(type = TransactionTokenType.UPDATE)
-    String flow1Step2Update() {
-        return "transactiontoken/flow1NamespaceStep3";
-    }
-
 }

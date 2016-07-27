@@ -99,27 +99,10 @@ public class TransactionTokenFlow1Controller {
         return "imageFileDownloadView";
     }
 
-    @RequestMapping(value = "flow1", method = RequestMethod.GET, params = "download02")
-    @TransactionTokenCheck(type = TransactionTokenType.KEEP)
-    public String flow1Step2Download_02() {
-        return "imageFileDownloadView";
-    }
-
     @RequestMapping(value = "flow1", method = RequestMethod.POST, params = "check")
     @TransactionTokenCheck(type = TransactionTokenType.CHECK)
     public String flow1Step2Check() {
         return "transactiontoken/flow1Step3";
     }
 
-    @RequestMapping(value = "flow1", method = RequestMethod.POST, params = "keep")
-    @TransactionTokenCheck(type = TransactionTokenType.KEEP)
-    String flow1Step2Keep() {
-        return "transactiontoken/flow1Step3";
-    }
-
-    @RequestMapping(value = "flow1", method = RequestMethod.POST, params = "update")
-    @TransactionTokenCheck(type = TransactionTokenType.UPDATE)
-    String flow1Step2Update() {
-        return "transactiontoken/flow1Step3";
-    }
 }
