@@ -14,7 +14,7 @@
 		<tr>
 			<td><a id="link2"
 				href="${pageContext.request.contextPath}/transactiontoken/flow">TransactionTokenType
-					: BEGIN-IN-CHECK-KEEP-UPDATE-END</a></td>
+					: BEGIN-IN-CHECK-END</a></td>
 		</tr>
 
 		<!-- Transaction token store custom size scenarios -->
@@ -33,7 +33,7 @@
         <tr>
             <td><a id="link5"
                 href="${pageContext.request.contextPath}/transactiontoken/flow_namespace">TransactionTokenType
-                    : BEGIN-IN-CHECK-KEEP-UPDATE-END @AliasFor namespace</a></td>
+                    : BEGIN-IN-CHECK-END @AliasFor namespace</a></td>
         </tr>
 	</table>
 </body>
