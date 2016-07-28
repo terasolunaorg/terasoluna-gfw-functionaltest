@@ -133,5 +133,5 @@ $ git clone https://github.com/terasolunaorg/terasoluna-gfw.git
 ```console
 $ cd {your repository directory of terasoluna-gfw}
 $ git checkout {target branch}
-$ sh ./mvn-build-all.sh
+$ mvn clean install
 ```
