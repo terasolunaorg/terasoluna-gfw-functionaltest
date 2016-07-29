@@ -6,6 +6,6 @@
 	method="post">
 	<input id="btn-flow1" name="confirm" class="mainbtn"
 		style="width: 400px;" type="submit"
-		value="BEGIN-IN-CHECK-KEEP-UPDATE-END (Custom namespace)" />
+		value="BEGIN-IN-CHECK-END (Custom namespace)" />
 </form:form>
 <br>

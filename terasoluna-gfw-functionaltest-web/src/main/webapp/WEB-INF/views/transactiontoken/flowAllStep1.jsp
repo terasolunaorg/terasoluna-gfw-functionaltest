@@ -6,7 +6,7 @@
 	method="post">
 	<input id="btn-flow1" name="confirm" class="mainbtn"
 		style="width: 400px;" type="submit"
-		value="BEGIN-IN-CHECK-KEEP-UPDATE-END (Custom namespace)" />
+		value="BEGIN-IN-CHECK-END (Custom namespace)" />
 </form:form>
 <br>
 <form:form
@@ -14,7 +14,7 @@
 	method="post">
 	<input id="btn-flow2" name="confirm" class="mainbtn"
 		style="width: 400px;" type="submit"
-		value="BEGIN-IN-CHECK-KEEP-UPDATE-END (GlobalToken)" />
+		value="BEGIN-IN-CHECK-END (GlobalToken)" />
 </form:form>
 <br>
 <form:form
@@ -39,22 +39,6 @@
     <input id="btn-flow8" name="check" class="mainbtn"
         style="width: 400px;" type="submit"
         value="CHECK Without BEGIN" />
-</form:form>
-<br>
-<form:form
-    action="${pageContext.request.contextPath}/transactiontoken/flow1/"
-    method="post">
-    <input id="btn-flow9" name="keep" class="mainbtn"
-        style="width: 400px;" type="submit"
-        value="KEEP Without BEGIN" />
-</form:form>
-<br>
-<form:form
-    action="${pageContext.request.contextPath}/transactiontoken/flow1/"
-    method="post">
-    <input id="btn-flow10" name="update" class="mainbtn"
-        style="width: 400px;" type="submit"
-        value="UPDATE Without BEGIN" />
 </form:form>
 <br>
 <form:form
