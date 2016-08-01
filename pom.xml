@@ -79,6 +79,11 @@
                     </configuration>
                 </plugin>
                 <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-install-plugin</artifactId>
+                    <version>${org.apache.maven.plugins.maven-install-plugin.version}</version>
+                </plugin>
+                <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>sql-maven-plugin</artifactId>
                     <version>${org.codehaus.mojo.sql-maven-plugin.version}</version>
@@ -292,6 +297,7 @@
         <org.apache.maven.plugins.maven-source-plugin.version>2.2</org.apache.maven.plugins.maven-source-plugin.version>
         <org.apache.maven.plugins.maven-surefire-report-plugin.version>2.4.3</org.apache.maven.plugins.maven-surefire-report-plugin.version>
         <org.apache.maven.plugins.maven-war-plugin.version>2.2</org.apache.maven.plugins.maven-war-plugin.version>
+        <org.apache.maven.plugins.maven-install-plugin.version>2.5.2</org.apache.maven.plugins.maven-install-plugin.version>
         <org.apache.maven.plugins.version>2.5</org.apache.maven.plugins.version>
         <org.apache.maven.wagon.version>1.0-beta-7</org.apache.maven.wagon.version>
         <org.apache.tomcat.maven.version>2.0-SNAPSHOT</org.apache.tomcat.maven.version>
