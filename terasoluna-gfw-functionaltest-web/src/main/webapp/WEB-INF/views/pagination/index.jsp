@@ -265,4 +265,9 @@
 			<a id="tagConfiguration_26_1" href="${pageContext.request.contextPath}/pagination/26_1">tagConfiguration_26_1</a>
 		</td>
 	</tr>
+	<tr>
+		<td>
+			<a id="search_27_1" href="${pageContext.request.contextPath}/pagination/27_1">searchWithSessionAttributes_27_1</a>
+		</td>
+	</tr>
 </table>
