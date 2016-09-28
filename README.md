@@ -4,7 +4,7 @@ This project provides functional tests of [TERASOLUNA Server Framework for Java 
 [![Build Status](https://travis-ci.org/terasolunaorg/terasoluna-gfw-functionaltest.png?branch=5.2.x)](https://travis-ci.org/terasolunaorg/terasoluna-gfw-functionaltest)
 
 ## How to contribute
-**Contributing (bug report, pull request, any comments etc.) is welcome !!** Please see the [contributing guideline](https://github.com/terasolunaorg/terasoluna-gfw-functionaltest/blob/master/CONTRIBUTING.md) for details.
+**Contributing (bug report, pull request, any comments etc.) is welcome !!** Please see the [contributing guideline](https://github.com/terasolunaorg/terasoluna-gfw-functionaltest/blob/5.2.x/CONTRIBUTING.md) for details.
 
 ## Test case design
 
