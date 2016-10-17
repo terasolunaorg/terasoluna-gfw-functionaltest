@@ -56,8 +56,8 @@
                 <db.encoding>UTF8</db.encoding>
                 <db.basedir>${project.basedir}/src/main/sqls/db2</db.basedir>
                 <db.url>jdbc:db2://localhost:50000/teradb</db.url>
-                <db.username>gfw</db.username>
-                <db.password>gfw</db.password>
+                <db.username>db2inst1</db.username>
+                <db.password>db2inst1</db.password>
                 <db.driver>com.ibm.db2.jcc.DB2Driver</db.driver>
                 <db.groupId>com.ibm</db.groupId>
                 <db.artifactId>db2jcc4</db.artifactId>
