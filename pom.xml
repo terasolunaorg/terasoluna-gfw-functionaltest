@@ -333,7 +333,7 @@
             <properties>
                 <project.env.main.directory>configs/tomcat85-postgresql</project.env.main.directory>
                 <project.env.buildFinalName>${project.artifactId}-${project.version}-tomcat85-postgresql</project.env.buildFinalName>
-        </properties>
+            </properties>
         </profile>
         <profile>
             <id>weblogic-oracle</id>
