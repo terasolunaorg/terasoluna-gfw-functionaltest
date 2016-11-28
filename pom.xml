@@ -322,6 +322,20 @@
             </properties>
         </profile>
         <profile>
+            <id>tomcat85-oracle</id>
+            <properties>
+                <project.env.main.directory>configs/tomcat85-oracle</project.env.main.directory>
+                <project.env.buildFinalName>${project.artifactId}-${project.version}-tomcat85-oracle</project.env.buildFinalName>
+            </properties>
+        </profile>
+        <profile>
+            <id>tomcat85-postgresql</id>
+            <properties>
+                <project.env.main.directory>configs/tomcat85-postgresql</project.env.main.directory>
+                <project.env.buildFinalName>${project.artifactId}-${project.version}-tomcat85-postgresql</project.env.buildFinalName>
+            </properties>
+        </profile>
+        <profile>
             <id>weblogic-oracle</id>
             <properties>
                 <project.env.main.directory>configs/weblogic-oracle</project.env.main.directory>
