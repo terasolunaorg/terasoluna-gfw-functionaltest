@@ -114,7 +114,7 @@ $ mvn -U test -pl terasoluna-gfw-functionaltest-selenium
 > **Note:**
 >
 > If functional test is failed, try again using latest Selenium(specify with `-Dselenium.version={latest version}`).
-> Please also refer [tested environment](https://github.com/terasolunaorg/terasoluna-gfw-functionaltest/wiki/Tested-Environment) for more information about out tested environment. At last, please check [selenium changelog](https://github.com/SeleniumHQ/selenium/blob/master/java/CHANGELOG) to make sure your Firefox version is supported.
+> Please also refer [tested environment](https://github.com/terasolunaorg/terasoluna-gfw-functionaltest/wiki/Tested-Environment) for more information about our tested environment. At last, please check [selenium changelog](https://github.com/SeleniumHQ/selenium/blob/master/java/CHANGELOG) to make sure your Firefox version is supported.
 
 ## Appendix
 
