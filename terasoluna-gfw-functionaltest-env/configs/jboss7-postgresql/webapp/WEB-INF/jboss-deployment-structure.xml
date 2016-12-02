@@ -2,7 +2,6 @@
 	<deployment>
 		<exclusions>
 			<module name="javaee.api" />
-			<module name="javax.faces.api" />
 			<module name="org.hibernate.validator" />
 			<module name="org.slf4j" />
 			<module name="org.apache.commons.logging" />
