@@ -188,7 +188,7 @@
         <cargo.jvmargs>-Xms512m -Xmx1024m -Duser.language=ja -Duser.country=JP -Duser.timezone=Asia/Tokyo</cargo.jvmargs>
         <postgresql.version>9.4-1206-jdbc41</postgresql.version>
         <ojdbc7.version>12.1.0.2</ojdbc7.version>
-        <db2jcc4.version>4.19.26</db2jcc4.version>
+        <db2jcc4.version>4.21.29</db2jcc4.version>
     </properties>
     <profiles>
         <profile>
