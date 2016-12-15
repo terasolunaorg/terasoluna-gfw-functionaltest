@@ -294,6 +294,13 @@
             </properties>
         </profile>
         <profile>
+            <id>jboss7-postgresql</id>
+            <properties>
+                <project.env.main.directory>configs/jboss7-postgresql</project.env.main.directory>
+                <project.env.buildFinalName>${project.artifactId}-${project.version}-jboss7-postgresql</project.env.buildFinalName>
+            </properties>
+        </profile>
+        <profile>
             <id>tomcat-oracle</id>
             <properties>
                 <project.env.main.directory>configs/tomcat-oracle</project.env.main.directory>
