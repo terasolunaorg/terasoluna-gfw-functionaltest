@@ -83,4 +83,12 @@ public abstract class WebDriverEventListenerAdapter implements
     public void onException(Throwable arg0, WebDriver arg1) {
     }
 
+    @Override
+    public void afterNavigateRefresh(WebDriver arg0) {
+    }
+
+    @Override
+    public void beforeNavigateRefresh(WebDriver arg0) {
+    }
+
 }
