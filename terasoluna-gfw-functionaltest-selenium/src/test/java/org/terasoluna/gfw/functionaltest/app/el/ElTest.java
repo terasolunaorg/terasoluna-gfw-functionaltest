@@ -746,7 +746,7 @@ public class ElTest extends FunctionTestSupport {
         assertThat(driver.findElement(By.id("listA2String")).getText(),
                 is("null"));
         assertThat(driver.findElement(By.id("listBString")).getText(),
-                is("null"));
+                is("[]"));
         assertThat(driver.findElement(By.id("listCString")).getText(), is("[]"));
 
         assertThat(driver.findElement(By.id("listA0StringItem")).getText(),
@@ -756,7 +756,7 @@ public class ElTest extends FunctionTestSupport {
         assertThat(driver.findElement(By.id("listA2StringItem")).getText(),
                 is("null"));
         assertThat(driver.findElement(By.id("listBStringItem")).getText(),
-                is("null"));
+                is("[]"));
         assertThat(driver.findElement(By.id("listCStringItem")).getText(),
                 is("[]"));
     }
