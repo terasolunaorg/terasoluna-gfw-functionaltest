@@ -52,6 +52,11 @@ public class RedirectController {
     public DetailForm setUpDetailForm() {
         return new DetailForm();
     }
+    
+    @RequestMapping(value = "login")
+    public String viewLoginForm() {
+        return "redirect/login";
+    }
 
     @RequestMapping(value = "listWithInternalPath", method = RequestMethod.GET)
     public String listWithInternalPath(Model model) {
