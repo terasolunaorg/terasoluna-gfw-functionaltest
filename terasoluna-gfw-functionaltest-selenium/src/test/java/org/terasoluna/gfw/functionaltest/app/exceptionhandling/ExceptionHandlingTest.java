@@ -415,7 +415,7 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
 
         // error page screen
         assertThat(driver.findElement(By.cssSelector("h2")).getText(),
-                is("Servlet Error..."));
+                is("System Error..."));
 
     }
 
