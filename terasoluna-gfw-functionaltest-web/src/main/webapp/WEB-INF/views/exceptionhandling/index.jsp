@@ -88,6 +88,11 @@
 	</tr>
 	<tr>
 		<td>
+			<a id="servletFrameworkHandling_03_11" href="${pageContext.request.contextPath}/exceptionhandling/3_11">servletFrameworkHandling_03_11</a>
+		</td>
+	</tr>
+	<tr>
+		<td>
 			<a id="webApplicationHandling_04_01" href="${pageContext.request.contextPath}/exceptionhandling/4_1">webApplicationHandling_04_01</a>
 		</td>
 	</tr>
@@ -99,11 +104,6 @@
 	<tr>
 		<td>
 			<a id="webApplicationHandling_04_03" href="${pageContext.request.contextPath}/exceptionhandling/4_3">webApplicationHandling_04_03</a>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<a id="webApplicationHandling_04_04" href="${pageContext.request.contextPath}/exceptionhandling/4_4">webApplicationHandling_04_04</a>
 		</td>
 	</tr>
 	<tr>
