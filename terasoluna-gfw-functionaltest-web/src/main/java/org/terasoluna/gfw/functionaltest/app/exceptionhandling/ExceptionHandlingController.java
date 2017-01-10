@@ -227,6 +227,14 @@ public class ExceptionHandlingController {
         return "exceptionhandling/index";
     }
 
+    @RequestMapping(value = "3_11", method = RequestMethod.GET)
+    public String servletFrameworkHandling_03_11() {
+
+        exceptionHandlingService.throwAssertionError();
+
+        return "exceptionhandling/index";
+    }
+
     @RequestMapping(value = "4_1", method = RequestMethod.GET)
     public String webApplicationHandling_04_01() {
 
@@ -236,19 +244,11 @@ public class ExceptionHandlingController {
     @RequestMapping(value = "4_2", method = RequestMethod.GET)
     public String webApplicationHandling_04_02() {
 
-        exceptionHandlingService.throwAssertionError();
-
         return "exceptionhandling/index";
     }
 
     @RequestMapping(value = "4_3", method = RequestMethod.GET)
     public String webApplicationHandling_04_03() {
-
-        return "exceptionhandling/index";
-    }
-
-    @RequestMapping(value = "4_4", method = RequestMethod.GET)
-    public String webApplicationHandling_04_04() {
 
         return "exceptionhandling/index";
     }
