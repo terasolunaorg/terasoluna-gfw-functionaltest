@@ -2,6 +2,11 @@
 	<deployment>
 		<exclusions>
 			<module name="org.slf4j" />
+			<module name="org.hibernate.validator" />
+			<module name="javax.inject.api" />
+			<module name="javax.validation.api" />
+			<module name="org.javassist" />
+			<module name="org.jboss.logging" />
 		</exclusions>
 	</deployment>
 </jboss-deployment-structure>
