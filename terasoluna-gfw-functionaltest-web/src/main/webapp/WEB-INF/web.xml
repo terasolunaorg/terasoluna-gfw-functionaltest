@@ -134,7 +134,7 @@
 	</filter>
 	<filter-mapping>
 		<filter-name>ThrowIndexOutOfBoundsExceptionFilter</filter-name>
-		<url-pattern>/exceptionhandling/4_2</url-pattern>
+		<url-pattern>/exceptionhandling/4_3</url-pattern>
 	</filter-mapping>
 
 	<filter>
@@ -143,7 +143,7 @@
 	</filter>
 	<filter-mapping>
 		<filter-name>ThrowIOExceptionFilter</filter-name>
-		<url-pattern>/exceptionhandling/4_3</url-pattern>
+		<url-pattern>/exceptionhandling/4_4</url-pattern>
 	</filter-mapping>
 
 	<servlet>
