@@ -394,19 +394,6 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
     }
 
     @Test
-    public void test03_11_servletFrameworkHandling() {
-
-        driver.findElement(By.id("servletFrameworkHandling_03_11")).click();
-
-        // TODO Assert Output Log
-
-        // error page screen
-        assertThat(driver.findElement(By.cssSelector("h2")).getText(),
-                is("System Error..."));
-
-    }
-
-    @Test
     public void test04_01_webApplicationHandling() {
 
         driver.findElement(By.id("webApplicationHandling_04_01")).click();
@@ -428,7 +415,7 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
 
         // error page screen
         assertThat(driver.findElement(By.cssSelector("h2")).getText(),
-                is("UnHandled System Error!!"));
+                is("Servlet Error..."));
 
     }
 
@@ -436,6 +423,19 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
     public void test04_03_webApplicationHandling() {
 
         driver.findElement(By.id("webApplicationHandling_04_03")).click();
+
+        // TODO Assert Output Log
+
+        // error page screen
+        assertThat(driver.findElement(By.cssSelector("h2")).getText(),
+                is("UnHandled System Error!!"));
+
+    }
+
+    @Test
+    public void test04_04_webApplicationHandling() {
+
+        driver.findElement(By.id("webApplicationHandling_04_04")).click();
 
         // TODO Assert Output Log
 

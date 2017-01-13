@@ -37,6 +37,7 @@
         </property>
         <property name="defaultErrorView" value="common/error/systemError" />
         <property name="defaultStatusCode" value="500" />
+        <property name="excludedExceptions" value="org.springframework.web.util.NestedServletException" />
     </bean>
     <!-- AOP. -->
     <bean id="handlerExceptionResolverLoggingInterceptor"
