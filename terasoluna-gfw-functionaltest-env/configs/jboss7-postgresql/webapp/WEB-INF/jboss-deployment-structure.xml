@@ -1,18 +1,15 @@
 <jboss-deployment-structure>
 	<deployment>
 		<exclusions>
-			<module name="javaee.api" />
-			<module name="org.hibernate.validator" />
 			<module name="org.slf4j" />
-			<module name="org.apache.commons.logging" />
+			<module name="org.hibernate.validator" />
+			<module name="javax.inject.api" />
+			<module name="javax.validation.api" />
+			<module name="org.jboss.logging" />
 		</exclusions>
-		<dependencies>
-			<module name="javax.servlet.api" />
-			<module name="javax.servlet.jsp.api" />
-			<module name="javax.annotation.api" />
-		</dependencies>
 		<exclude-subsystems>
 			<subsystem name="jpa" />
+			<subsystem name="jaxrs" />
 		</exclude-subsystems>
 	</deployment>
 </jboss-deployment-structure>
