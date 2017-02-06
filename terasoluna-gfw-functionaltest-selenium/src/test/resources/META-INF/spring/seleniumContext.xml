@@ -25,6 +25,7 @@
 
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSourceForLogging" />
+        <property name="rollbackOnCommitFailure" value="true" />
     </bean>
     
     <tx:annotation-driven/>

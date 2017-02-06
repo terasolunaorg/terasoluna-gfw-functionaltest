@@ -59,6 +59,7 @@
     <bean id="dataSourceTransactionManager"
         class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource" />
+        <property name="rollbackOnCommitFailure" value="true" />
     </bean>
 
     <bean id="jpaTransactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
