@@ -9,7 +9,7 @@ public class FirefoxDriverFactoryBean implements FactoryBean<FirefoxDriver> {
     @Override
     public FirefoxDriver getObject() {
         FirefoxProfile profile = new FirefoxProfile();
-        profile.setPreference("brouser.startup.homepage_override.mstone",
+        profile.setPreference("browser.startup.homepage_override.mstone",
                 "ignore");
         profile.setPreference("network.proxy.type", 0);
         return new FirefoxDriver(profile);
