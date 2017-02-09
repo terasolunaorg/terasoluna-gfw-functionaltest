@@ -65,7 +65,7 @@ $ mvn -U install -am -pl terasoluna-gfw-functionaltest-web
 > you must compile with the target version 1.7 in accordance with the runtime environment JVM.
 > You can set the target version using `java-version` property.
 > ```console
-> $ mvn -U install -am -pl terasoluna-gfw-functionaltest-web -D java-version=1.7
+> $ mvn -U install -am -pl terasoluna-gfw-functionaltest-web -Djava-version=1.7
 > ```
 
 #### Case that use PostgreSQL as database
@@ -129,7 +129,7 @@ $ mvn -U test -pl terasoluna-gfw-functionaltest-selenium
 >
 > When using JDK 7,  please build as follows.
 >```console
-> $ mvn -U test -pl terasoluna-gfw-functionaltest-selenium -D java-version=1.7
+> $ mvn -U test -pl terasoluna-gfw-functionaltest-selenium -Djava-version=1.7
 >```
 
 ## Appendix
