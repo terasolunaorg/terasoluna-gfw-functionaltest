@@ -36,9 +36,9 @@
             </map>
         </property>
         <property name="excludedExceptions">
-            <set>
+            <array>
                 <value>org.springframework.web.util.NestedServletException</value>
-            </set>
+            </array>
         </property>
         <property name="defaultErrorView" value="common/error/systemError" />
         <property name="defaultStatusCode" value="500" />
