@@ -59,6 +59,15 @@ $ git checkout {target branch}
 $ mvn -U install -am -pl terasoluna-gfw-functionaltest-web
 ```
 
+> **Note:**
+> 
+> When using JDK 7, build as follows.
+> you must compile with the target version 1.7 in accordance with the runtime environment JVM.
+> You can set the target version using `java-version` property.
+> ```console
+> $ mvn -U install -am -pl terasoluna-gfw-functionaltest-web -Djava-version=1.7
+> ```
+
 #### Case that use PostgreSQL as database
 
 ```console
@@ -115,6 +124,13 @@ $ mvn -U test -pl terasoluna-gfw-functionaltest-selenium
 >
 > If functional test is failed, try again using latest Selenium(specify with `-Dselenium.version={latest version}`).
 > Please also refer [tested environment](https://github.com/terasolunaorg/terasoluna-gfw-functionaltest/wiki/Tested-Environment) for more information about our tested environment. At last, please check [selenium changelog](https://github.com/SeleniumHQ/selenium/blob/master/java/CHANGELOG) to make sure your Firefox version is supported.
+
+> **Note:**
+>
+> When using JDK 7,  please build as follows.
+>```console
+> $ mvn -U test -pl terasoluna-gfw-functionaltest-selenium -Djava-version=1.7
+>```
 
 ## Appendix
 
