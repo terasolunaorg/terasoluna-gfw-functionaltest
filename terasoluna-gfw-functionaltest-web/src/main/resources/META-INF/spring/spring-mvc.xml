@@ -35,9 +35,13 @@
                 <entry key="common/error/businessError" value="409" />
             </map>
         </property>
+        <property name="excludedExceptions">
+            <array>
+                <value>org.springframework.web.util.NestedServletException</value>
+            </array>
+        </property>
         <property name="defaultErrorView" value="common/error/systemError" />
         <property name="defaultStatusCode" value="500" />
-        <property name="excludedExceptions" value="org.springframework.web.util.NestedServletException" />
     </bean>
     <!-- AOP. -->
     <bean id="handlerExceptionResolverLoggingInterceptor"
