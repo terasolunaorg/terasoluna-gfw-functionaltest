@@ -10,7 +10,6 @@
     username="gfw"
     password="gfw"
     url="jdbc:oracle:thin:@${HOST_IP!'localhost'}:${DBSRV_DB_PORT!'1521'}/teradb"
-    defaultAutoCommit="false"
     maxIdle="16"
     minIdle="0"
     maxWait="60000"
