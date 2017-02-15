@@ -165,7 +165,6 @@
         <java-version>1.8</java-version>
         <org.codehaus.mojo.build-helper-maven-plugin.version>1.9.1</org.codehaus.mojo.build-helper-maven-plugin.version>
         <org.codehaus.mojo.sql-maven-plugin.version>1.5</org.codehaus.mojo.sql-maven-plugin.version>
-        <org.codehaus.cargo.cargo-maven2-plugin.version>1.4.16</org.codehaus.cargo.cargo-maven2-plugin.version>
         <cargo.jvmargs>-Xms512m -Xmx1024m -Duser.language=ja -Duser.country=JP -Duser.timezone=Asia/Tokyo</cargo.jvmargs>
         <postgresql.version>9.4.1212.jre7</postgresql.version>
         <ojdbc7.version>12.1.0.2</ojdbc7.version>
