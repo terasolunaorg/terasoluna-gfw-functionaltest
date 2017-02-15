@@ -123,7 +123,7 @@
             <url>http://repo.terasoluna.org/nexus/content/repositories/terasoluna-gfw-3rdparty/</url>
         </repository>
         <!-- <repository> -->
-        <!-- for ojdbc6.jar (oracle ojdbc driver does not exists on public 
+        <!-- for ojdbc7.jar (oracle ojdbc driver does not exists on public 
             maven repository -->
         <!-- <id>your-project-3rdparty</id> -->
         <!-- This shuld be <url>http://your-project-local-nexus.example.com/.../3rdpatty/</url> -->
@@ -256,8 +256,8 @@
             </dependency>
             <dependency>
                 <groupId>com.oracle</groupId>
-                <artifactId>ojdbc6</artifactId>
-                <version>${ojdbc6.version}</version>
+                <artifactId>ojdbc7</artifactId>
+                <version>${ojdbc7.version}</version>
             </dependency>
             <!-- == End Database == -->
 
@@ -307,7 +307,7 @@
         <org.mockito.version>1.9.0</org.mockito.version>
         <org.springframework.build.aws.version>3.0.0.RELEASE</org.springframework.build.aws.version>
         <postgresql.version>9.4.1212.jre7</postgresql.version>
-        <ojdbc6.version>11.2.0.2.0</ojdbc6.version>
+        <ojdbc7.version>12.1.0.2</ojdbc7.version>
         <tiles.version>2.2.2</tiles.version>
         <tomcat.api.version>7.0.40</tomcat.api.version>
         <cargo.jvmargs>-Xms512m -Xmx1024m -Duser.language=ja -Duser.country=JP -Duser.timezone=Asia/Tokyo</cargo.jvmargs>
