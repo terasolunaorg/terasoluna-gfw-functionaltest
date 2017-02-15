@@ -243,7 +243,6 @@
         <maven-failsafe-plugin.version>2.19</maven-failsafe-plugin.version>
         <formatter-maven-plugin.version>0.5.2</formatter-maven-plugin.version>
         <com.google.code.maven-license-plugin.version>1.4.0</com.google.code.maven-license-plugin.version>
-        <org.codehaus.cargo.cargo-maven2-plugin.version>1.4.16</org.codehaus.cargo.cargo-maven2-plugin.version>
         <!-- == Dependency Versions == -->
         <postgresql.version>9.4.1212.jre7</postgresql.version>
         <ojdbc7.version>12.1.0.2</ojdbc7.version>
