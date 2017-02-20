@@ -33,7 +33,7 @@ public class SequencerTest extends FunctionTestSupport {
     public void test01_01_getSequenceByInteger() {
         // Initial value is 0.
 
-        // Display Same Transaction. 
+        // Display Same Transaction.
         driver.findElement(By.id("1_1_same_transaction")).click();
 
         // Check page
@@ -61,8 +61,7 @@ public class SequencerTest extends FunctionTestSupport {
         assertThat(driver.findElement(By.id("8_current_value4")).getText(),
                 is("4"));
 
-        assertThat(driver.findElement(By.id("mode")).getText(),
-                is("Integer"));
+        assertThat(driver.findElement(By.id("mode")).getText(), is("Integer"));
 
         // screen capture (Automatic capture conducted at the end)
 
@@ -100,8 +99,7 @@ public class SequencerTest extends FunctionTestSupport {
         assertThat(driver.findElement(By.id("8_current_value4")).getText(),
                 is("4"));
 
-        assertThat(driver.findElement(By.id("mode")).getText(),
-                is("Long"));
+        assertThat(driver.findElement(By.id("mode")).getText(), is("Long"));
 
         // screen capture (Automatic capture conducted at the end)
 
@@ -141,7 +139,7 @@ public class SequencerTest extends FunctionTestSupport {
 
         assertThat(driver.findElement(By.id("mode")).getText(),
                 is("BigInteger"));
-        
+
         // screen capture (Automatic capture conducted at the end)
 
     }
@@ -178,8 +176,7 @@ public class SequencerTest extends FunctionTestSupport {
         assertThat(driver.findElement(By.id("8_current_value4")).getText(),
                 is("0000000004"));
 
-        assertThat(driver.findElement(By.id("mode")).getText(),
-                is("String"));
+        assertThat(driver.findElement(By.id("mode")).getText(), is("String"));
 
         // screen capture (Automatic capture conducted at the end)
 

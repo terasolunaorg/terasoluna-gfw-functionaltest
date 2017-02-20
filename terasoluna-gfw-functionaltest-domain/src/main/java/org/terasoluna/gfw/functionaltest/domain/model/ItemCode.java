@@ -30,25 +30,25 @@ import javax.validation.constraints.Size;
 public class ItemCode implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    
+
     @Id
     @Basic(optional = false)
     @NotNull
     @Column(name = "item1_id")
     private Integer id;
-    
+
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 25)
     @Column(name = "code")
     private String code;
-    
+
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 25)
     @Column(name = "label")
     private String label;
-    
+
     public ItemCode() {
     }
 
@@ -72,7 +72,7 @@ public class ItemCode implements Serializable {
     public void setLabel(String label) {
         this.label = label;
     }
-    
+
     public Integer getId() {
         return id;
     }
@@ -81,6 +81,4 @@ public class ItemCode implements Serializable {
         this.id = id;
     }
 
-    
-    
 }

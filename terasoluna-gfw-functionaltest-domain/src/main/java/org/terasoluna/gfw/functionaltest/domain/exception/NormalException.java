@@ -22,11 +22,11 @@ public class NormalException extends RuntimeException {
     public NormalException(String message, Throwable cause) {
         super(message, cause);
     }
-    
+
     public NormalException(Throwable cause) {
         super(cause);
     }
-    
+
     public NormalException(String message) {
         super(message);
     }

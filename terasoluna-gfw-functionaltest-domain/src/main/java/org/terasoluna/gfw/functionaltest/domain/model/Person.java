@@ -30,25 +30,25 @@ import javax.validation.constraints.Size;
 public class Person implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    
+
     @Id
     @Basic(optional = false)
     @NotNull
     @Column(name = "person_id")
     private Integer personId;
-    
+
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 25)
     @Column(name = "firstname")
     private String firstname;
-    
+
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 25)
     @Column(name = "lastname")
     private String lastname;
-    
+
     public Person() {
     }
 
@@ -85,5 +85,5 @@ public class Person implements Serializable {
     public void setLastname(String lastname) {
         this.lastname = lastname;
     }
-    
+
 }

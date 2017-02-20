@@ -31,7 +31,7 @@ public class TransactionTokenCreateControllerWithUnderscore {
     public String functionTest1_1_Create() {
         return "transactiontoken/createOutputUnderscore";
     }
-    
+
     @RequestMapping(value = "1_2", method = RequestMethod.POST)
     @TransactionTokenCheck(type = TransactionTokenType.IN)
     public String functionTest1_2_Create() {
