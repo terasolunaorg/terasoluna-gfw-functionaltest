@@ -33,7 +33,7 @@ public class RedirectTest extends FunctionTestSupport {
 
     @Value("${app.redirect.allowed.externalUrl}")
     String redirectionAllowedExternalUrl;
-    
+
     @Value("${app.redirect.pageTitle.404Error}")
     String pageTitle404Error;
 
@@ -197,8 +197,8 @@ public class RedirectTest extends FunctionTestSupport {
         driver.findElement(By.id("btn1")).click();
 
         // confirms that transition is made to external link
-        assertThat(driver.getCurrentUrl()
-                .startsWith(redirectionAllowedExternalUrl), is(true));
+        assertThat(driver.getCurrentUrl().startsWith(
+                redirectionAllowedExternalUrl), is(true));
     }
 
     @Test

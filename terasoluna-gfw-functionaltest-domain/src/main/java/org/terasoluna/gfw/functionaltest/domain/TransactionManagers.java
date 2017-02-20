@@ -17,5 +17,6 @@ package org.terasoluna.gfw.functionaltest.domain;
 
 public class TransactionManagers {
     public static final String JPA = "jpaTransactionManager";
+
     public static final String DATASOURCE = "dataSourceTransactionManager";
 }

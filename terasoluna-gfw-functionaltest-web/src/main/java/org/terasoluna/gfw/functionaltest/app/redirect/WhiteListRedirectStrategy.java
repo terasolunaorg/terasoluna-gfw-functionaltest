@@ -30,13 +30,14 @@ import org.terasoluna.gfw.common.codelist.CodeList;
 public class WhiteListRedirectStrategy implements RedirectStrategy {
 
     protected final Log logger = LogFactory.getLog(getClass());
-    
+
     @Inject
     @Qualifier("CL_REDIRECTWHITELIST")
-    CodeList redirectWhiteList; 
+    CodeList redirectWhiteList;
 
-    public void sendRedirect(HttpServletRequest request, HttpServletResponse response, String url) throws IOException {
-        if(checkWhiteList(url)) {
+    public void sendRedirect(HttpServletRequest request,
+            HttpServletResponse response, String url) throws IOException {
+        if (checkWhiteList(url)) {
             String redirectUrl = response.encodeRedirectURL(url);
 
             if (logger.isDebugEnabled()) {
@@ -51,7 +52,7 @@ public class WhiteListRedirectStrategy implements RedirectStrategy {
     }
 
     private boolean checkWhiteList(String url) {
-        if (redirectWhiteList.asMap().containsValue(url)) 
+        if (redirectWhiteList.asMap().containsValue(url))
             return true;
         return false;
     }

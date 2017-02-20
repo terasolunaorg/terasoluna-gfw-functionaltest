@@ -28,28 +28,27 @@ import org.terasoluna.gfw.functionaltest.domain.service.download.DownloadService
 @Controller
 @RequestMapping(value = "download")
 public class DownloadController {
-    
+
     @Inject
     protected DownloadService downloadService;
-    
+
     @RequestMapping(method = RequestMethod.GET)
     public String index() {
-        
+
         return "download/index";
     }
-    
-    @RequestMapping(value="1_1", method = RequestMethod.GET)
+
+    @RequestMapping(value = "1_1", method = RequestMethod.GET)
     public String fileDownload_01_01() {
         return "imageFileDownloadView";
     }
-    
-    @RequestMapping(value="1_2", method = RequestMethod.GET)
+
+    @RequestMapping(value = "1_2", method = RequestMethod.GET)
     public String fileDownload_01_02(Model model) {
-        
-        InputStream contentsStream =
-                downloadService.findContentsById(1);
+
+        InputStream contentsStream = downloadService.findContentsById(1);
         model.addAttribute("contents", contentsStream);
-        
+
         return "textFileDownloadView";
     }
 }

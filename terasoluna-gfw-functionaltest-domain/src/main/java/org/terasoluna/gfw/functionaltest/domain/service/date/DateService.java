@@ -16,13 +16,13 @@
 package org.terasoluna.gfw.functionaltest.domain.service.date;
 
 public interface DateService {
-    
+
     public void insertOperationDate(String id, String diffTime);
-    
+
     public void updateOperationDate(String id, String diffTime);
-    
+
     public void deleteOperationDate(int id);
-    
+
     public void deleteSystemDate(int id);
-    
+
 }

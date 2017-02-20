@@ -137,8 +137,8 @@ public class ElTest extends FunctionTestSupport {
 
         // output data 03_01 Test
         WebElement newLineOutput = driver.findElement(By.id("newLineOutput"));
-        BufferedReader newLineOutputTextReader = new BufferedReader(new StringReader(
-                newLineOutput.getText()));
+        BufferedReader newLineOutputTextReader = new BufferedReader(new StringReader(newLineOutput
+                .getText()));
         try {
             assertThat(newLineOutputTextReader.readLine(), is("Spring"));
             assertThat(newLineOutputTextReader.readLine(), is("mvc"));
@@ -260,16 +260,22 @@ public class ElTest extends FunctionTestSupport {
         inputFieldAccessor.overrideValue(By.id("text-outputQueryParam"),
                 "tera&1", driver);
         driver.findElement(By.id("btn-output")).click();
-        
+
         // output 05_04 Test
-        assertThat(driver.findElement(By.id("linkUOutput")).getText(),
+        assertThat(
+                driver.findElement(By.id("linkUOutput")).getText(),
                 is("http://localhost:8080/terasoluna-gfw-functionaltest-web/el/output_05_04?name=tera%261"));
         // output link
-        assertThat(driver.findElement(By.linkText("http://localhost:8080/terasoluna-gfw-functionaltest-web/el/output_05_04?name=tera%261"))
-                .getText(), is("http://localhost:8080/terasoluna-gfw-functionaltest-web/el/output_05_04?name=tera%261"));
+        assertThat(
+                driver.findElement(
+                        By.linkText("http://localhost:8080/terasoluna-gfw-functionaltest-web/el/output_05_04?name=tera%261"))
+                        .getText(),
+                is("http://localhost:8080/terasoluna-gfw-functionaltest-web/el/output_05_04?name=tera%261"));
         // inheriting of query Test
-        driver.findElement(By.id("linkUOutput")).findElement(
-                By.linkText("http://localhost:8080/terasoluna-gfw-functionaltest-web/el/output_05_04?name=tera%261")).click();
+        driver.findElement(By.id("linkUOutput"))
+                .findElement(
+                        By.linkText("http://localhost:8080/terasoluna-gfw-functionaltest-web/el/output_05_04?name=tera%261"))
+                .click();
     }
 
     @Test(expected = NoSuchElementException.class)
@@ -317,7 +323,8 @@ public class ElTest extends FunctionTestSupport {
         new Select(driver.findElement(By.id("main")))
                 .selectByVisibleText("YES");
         inputFieldAccessor.overrideValue(By.id("age"), "10", driver);
-        inputFieldAccessor.overrideValue(By.id("dateOfBirth"), "2000-01-01", driver);
+        inputFieldAccessor.overrideValue(By.id("dateOfBirth"), "2000-01-01",
+                driver);
         new Select(driver.findElement(By.id("countries")))
                 .selectByVisibleText("JA");
         driver.findElement(By.id("btn-output")).click();
@@ -384,15 +391,16 @@ public class ElTest extends FunctionTestSupport {
 
         // output 06_07 Test
         assertThat(driver.findElement(By.id("queryOutput")).getText(), is(""));
-        
+
         // screen capture
         screenCapture.save(driver);
 
         driver.get(applicationContextUrl);
         driver.findElement(By.id("EL")).click();
         driver.findElement(By.id("06_03-")).click();
-        
-        inputFieldAccessor.overrideValue(By.id("name"), "TEST[]#+=&TEST", driver);
+
+        inputFieldAccessor.overrideValue(By.id("name"), "TEST[]#+=&TEST",
+                driver);
         driver.findElement(By.id("btn-output")).click();
 
         // output 06_08 Test
@@ -417,15 +425,12 @@ public class ElTest extends FunctionTestSupport {
                 .click();
 
         // output 06_09 Test
-        assertThat(
-                driver.findElement(By.id("criteria.name"))
-                        .getAttribute("value"), is("yamada"));
-        assertThat(
-                driver.findElement(By.id("criteria.age")).getAttribute("value"),
-                is("20"));
-        assertThat(
-                driver.findElement(By.id("rememberCriteria")).getAttribute(
-                        "value"), is("true"));
+        assertThat(driver.findElement(By.id("criteria.name")).getAttribute(
+                "value"), is("yamada"));
+        assertThat(driver.findElement(By.id("criteria.age")).getAttribute(
+                "value"), is("20"));
+        assertThat(driver.findElement(By.id("rememberCriteria")).getAttribute(
+                "value"), is("true"));
     }
 
     @Test
@@ -445,18 +450,14 @@ public class ElTest extends FunctionTestSupport {
                 .click();
 
         // output 06_10 Test
-        assertThat(
-                driver.findElement(By.id("criteria0.name")).getAttribute(
-                        "value"), is("yamada"));
-        assertThat(
-                driver.findElement(By.id("criteria0.age"))
-                        .getAttribute("value"), is("20"));
-        assertThat(
-                driver.findElement(By.id("criteria1.name")).getAttribute(
-                        "value"), is("tanaka"));
-        assertThat(
-                driver.findElement(By.id("criteria1.age"))
-                        .getAttribute("value"), is("50"));
+        assertThat(driver.findElement(By.id("criteria0.name")).getAttribute(
+                "value"), is("yamada"));
+        assertThat(driver.findElement(By.id("criteria0.age")).getAttribute(
+                "value"), is("20"));
+        assertThat(driver.findElement(By.id("criteria1.name")).getAttribute(
+                "value"), is("tanaka"));
+        assertThat(driver.findElement(By.id("criteria1.age")).getAttribute(
+                "value"), is("50"));
         assertThat(driver.findElement(By.id("operator")).getAttribute("value"),
                 is("AND"));
     }
@@ -480,20 +481,16 @@ public class ElTest extends FunctionTestSupport {
                 .click();
 
         // output 06_11 Test
-        assertThat(
-                driver.findElement(By.id("criteria.name"))
-                        .getAttribute("value"), is("suzuki"));
-        assertThat(
-                driver.findElement(By.id("criteria.age")).getAttribute("value"),
-                is("30"));
-        assertThat(
-                driver.findElement(By.id("users0.name")).getAttribute("value"),
-                is("yamada"));
+        assertThat(driver.findElement(By.id("criteria.name")).getAttribute(
+                "value"), is("suzuki"));
+        assertThat(driver.findElement(By.id("criteria.age")).getAttribute(
+                "value"), is("30"));
+        assertThat(driver.findElement(By.id("users0.name")).getAttribute(
+                "value"), is("yamada"));
         assertThat(driver.findElement(By.id("users0.age"))
                 .getAttribute("value"), is("20"));
-        assertThat(
-                driver.findElement(By.id("users1.name")).getAttribute("value"),
-                is("tanaka"));
+        assertThat(driver.findElement(By.id("users1.name")).getAttribute(
+                "value"), is("tanaka"));
         assertThat(driver.findElement(By.id("users1.age"))
                 .getAttribute("value"), is("50"));
     }
@@ -544,9 +541,8 @@ public class ElTest extends FunctionTestSupport {
         assertThat(
                 driver.findElement(By.id("item.date")).getAttribute("value"),
                 is("2015-05-01"));
-        assertThat(
-                driver.findElement(By.id("item.localDate")).getAttribute(
-                        "value"), is("2015-07-10"));
+        assertThat(driver.findElement(By.id("item.localDate")).getAttribute(
+                "value"), is("2015-07-10"));
     }
 
     @Test
@@ -603,39 +599,28 @@ public class ElTest extends FunctionTestSupport {
                 is("b"));
         assertThat(driver.findElement(By.id("array42")).getAttribute("value"),
                 is("c"));
-        assertThat(
-                driver.findElement(By.id("item.array10")).getAttribute("value"),
-                is("11"));
-        assertThat(
-                driver.findElement(By.id("item.array11")).getAttribute("value"),
-                is("12"));
-        assertThat(
-                driver.findElement(By.id("item.array12")).getAttribute("value"),
-                is("13"));
-        assertThat(
-                driver.findElement(By.id("item.array20")).getAttribute("value"),
-                is("11.1"));
-        assertThat(
-                driver.findElement(By.id("item.array21")).getAttribute("value"),
-                is("11.2"));
-        assertThat(
-                driver.findElement(By.id("item.array30")).getAttribute("value"),
-                is("14"));
-        assertThat(
-                driver.findElement(By.id("item.array31")).getAttribute("value"),
-                is("15"));
-        assertThat(
-                driver.findElement(By.id("item.array32")).getAttribute("value"),
-                is("16"));
-        assertThat(
-                driver.findElement(By.id("item.array40")).getAttribute("value"),
-                is("d"));
-        assertThat(
-                driver.findElement(By.id("item.array41")).getAttribute("value"),
-                is("e"));
-        assertThat(
-                driver.findElement(By.id("item.array42")).getAttribute("value"),
-                is("f"));
+        assertThat(driver.findElement(By.id("item.array10")).getAttribute(
+                "value"), is("11"));
+        assertThat(driver.findElement(By.id("item.array11")).getAttribute(
+                "value"), is("12"));
+        assertThat(driver.findElement(By.id("item.array12")).getAttribute(
+                "value"), is("13"));
+        assertThat(driver.findElement(By.id("item.array20")).getAttribute(
+                "value"), is("11.1"));
+        assertThat(driver.findElement(By.id("item.array21")).getAttribute(
+                "value"), is("11.2"));
+        assertThat(driver.findElement(By.id("item.array30")).getAttribute(
+                "value"), is("14"));
+        assertThat(driver.findElement(By.id("item.array31")).getAttribute(
+                "value"), is("15"));
+        assertThat(driver.findElement(By.id("item.array32")).getAttribute(
+                "value"), is("16"));
+        assertThat(driver.findElement(By.id("item.array40")).getAttribute(
+                "value"), is("d"));
+        assertThat(driver.findElement(By.id("item.array41")).getAttribute(
+                "value"), is("e"));
+        assertThat(driver.findElement(By.id("item.array42")).getAttribute(
+                "value"), is("f"));
     }
 
     @Test
@@ -717,15 +702,12 @@ public class ElTest extends FunctionTestSupport {
         assertThat(selectResult.getFirstSelectedOption().getAttribute("value"),
                 is(""));
 
-        assertThat(
-                driver.findElement(By.id("item.listA0")).getAttribute("value"),
-                is(""));
-        assertThat(
-                driver.findElement(By.id("item.listA1")).getAttribute("value"),
-                is(""));
-        assertThat(
-                driver.findElement(By.id("item.listA2")).getAttribute("value"),
-                is(""));
+        assertThat(driver.findElement(By.id("item.listA0")).getAttribute(
+                "value"), is(""));
+        assertThat(driver.findElement(By.id("item.listA1")).getAttribute(
+                "value"), is(""));
+        assertThat(driver.findElement(By.id("item.listA2")).getAttribute(
+                "value"), is(""));
         assertThat(driver.findElement(By.id("item.listB1")).isSelected(),
                 is(false));
         assertThat(driver.findElement(By.id("item.listB2")).isSelected(),
@@ -735,9 +717,8 @@ public class ElTest extends FunctionTestSupport {
         Select selectItemResult = new Select(driver.findElement(By
                 .id("item.listC")));
         assertThat(selectItemResult.getAllSelectedOptions().size(), is(1));
-        assertThat(
-                selectItemResult.getFirstSelectedOption().getAttribute("value"),
-                is(""));
+        assertThat(selectItemResult.getFirstSelectedOption().getAttribute(
+                "value"), is(""));
 
         assertThat(driver.findElement(By.id("listA0String")).getText(),
                 is("null"));

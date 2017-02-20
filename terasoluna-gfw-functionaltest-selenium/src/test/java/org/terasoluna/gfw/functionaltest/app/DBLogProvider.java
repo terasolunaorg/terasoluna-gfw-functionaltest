@@ -25,7 +25,7 @@ public class DBLogProvider {
 
     private final NamedParameterJdbcOperations jdbcOperations;
 
-    public DBLogProvider (JdbcOperations jdbcOperations) {
+    public DBLogProvider(JdbcOperations jdbcOperations) {
         this.jdbcOperations = new NamedParameterJdbcTemplate(jdbcOperations);
     }
 
@@ -85,7 +85,8 @@ public class DBLogProvider {
         return countContainsMessageAndLevelsAndLogger(message, level, null);
     }
 
-    public long countContainsMessageAndLevelsAndLogger(String message, String level, String loggerName) {
+    public long countContainsMessageAndLevelsAndLogger(String message,
+            String level, String loggerName) {
 
         StringBuilder sql = new StringBuilder();
         sql.append("SELECT COUNT(e.*) FROM logging_event e WHERE e.formatted_message REGEXP :message AND e.level_string = :level");
@@ -93,15 +94,15 @@ public class DBLogProvider {
         if (StringUtils.hasText(loggerName)) {
             sql.append(" AND e.logger_name = :loggerName");
         }
-        
+
         MapSqlParameterSource params = new MapSqlParameterSource();
         params.addValue("message", message);
         params.addValue("level", level);
         params.addValue("loggerName", loggerName);
-        
+
         Long count = jdbcOperations.queryForObject(sql.toString(), params,
                 Long.class);
         return count;
     }
-    
+
 }

@@ -525,7 +525,7 @@ public class TransactionTokenTest extends FunctionTestSupport {
         // Browser Back Simulation
         // consider that back button is clicked and old token is sent again for UPDATE request
         // As Browser back in not working, request is sent to UPDATE method with oldtoken
-        // Expected Flow : BEGIN -> IN -> Browser Back -> UPDATE 
+        // Expected Flow : BEGIN -> IN -> Browser Back -> UPDATE
         // Actual implemented flow : BEGIN -> IN -> UPDATE(old token)
 
         JavascriptExecutor jse = (JavascriptExecutor) driver;
@@ -537,7 +537,7 @@ public class TransactionTokenTest extends FunctionTestSupport {
         driver.findElement(By.id("btn-check")).click();
         assertThat(driver.findElement(By.cssSelector("h2")).getText(),
                 is("Transaction Token Error"));
-        
+
     }
 
     @Test
@@ -769,8 +769,7 @@ public class TransactionTokenTest extends FunctionTestSupport {
                         "globalToken~[0-9a-z]{32}~[0-9a-z]{32}"));
     }
 
-    
-    private void assertUpdateTokenValue(String token1, String token2){
+    private void assertUpdateTokenValue(String token1, String token2) {
         String token1Name = token1.split("~")[0];
         String token2Name = token2.split("~")[0];
         String token1Key = token1.split("~")[1];

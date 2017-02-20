@@ -26,7 +26,7 @@ import org.terasoluna.gfw.web.token.transaction.TransactionTokenType;
 @RequestMapping("transactiontoken")
 @TransactionTokenCheck("transactiontoken")
 public class TransactionTokenFlow1Controller {
-    
+
     @RequestMapping(value = "flow1", method = RequestMethod.POST, params = "confirm")
     @TransactionTokenCheck(type = TransactionTokenType.BEGIN)
     public String flow1Step2() {
@@ -44,7 +44,7 @@ public class TransactionTokenFlow1Controller {
     public String flow1Step2_toDifferentNamespace() {
         return "transactiontoken/flow1Step2ToDifferentNamespace";
     }
-    
+
     @RequestMapping(value = "flow1", method = RequestMethod.POST, params = "redo1")
     public String flow1Step2Back() {
         return "transactiontoken/flowAllStep1";
@@ -69,11 +69,11 @@ public class TransactionTokenFlow1Controller {
     @TransactionTokenCheck(type = TransactionTokenType.IN)
     public String flow1Step3_withFinishError(
             TransactionTokenContext transactionTokenContext) {
-            // Navigate to intermediate screen again
-            // Transaction token will be updated
-            return "transactiontoken/flow1Step2";
+        // Navigate to intermediate screen again
+        // Transaction token will be updated
+        return "transactiontoken/flow1Step2";
     }
-    
+
     @RequestMapping(value = "flow1", method = RequestMethod.POST, params = "redo2")
     @TransactionTokenCheck
     public String flow1Step3Back() {
@@ -85,7 +85,7 @@ public class TransactionTokenFlow1Controller {
     public String flow1Step4() {
         return "transactiontoken/flow1Step4";
     }
-    
+
     @RequestMapping(value = "flow1", method = RequestMethod.POST, params = "finalizeError")
     @TransactionTokenCheck(type = TransactionTokenType.END)
     public String flow1Step4_withError() {
