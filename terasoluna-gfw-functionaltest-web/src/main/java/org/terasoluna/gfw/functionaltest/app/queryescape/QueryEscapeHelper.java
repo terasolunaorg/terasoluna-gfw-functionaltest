@@ -31,7 +31,7 @@ public class QueryEscapeHelper {
     DatabaseMetaInfoService databaseMetaInfoService;
 
     public void bindToModel(String searchPattern, List<Todo> todoList,
-                            Model model) {
+            Model model) {
         model.addAttribute("searchPattern", searchPattern);
         model.addAttribute("hitNumber", todoList.size());
         model.addAttribute("todoList", todoList);

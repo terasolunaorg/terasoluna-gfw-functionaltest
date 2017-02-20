@@ -32,9 +32,9 @@ public class QueryEscapeTest extends FunctionTestSupport {
     @Test
     public void test01_01_searchWithPrefixUsingMybatis() {
 
-        if( isWithFullWidth() ){
+        if (isWithFullWidth()) {
             driver.findElement(By.id("link3")).click();
-        }else{
+        } else {
             driver.findElement(By.id("link1")).click();
         }
 
@@ -55,9 +55,9 @@ public class QueryEscapeTest extends FunctionTestSupport {
 
     @Test
     public void test01_02_searchWithPrefixUsingMybatis() {
-        if( isWithFullWidth() ){
+        if (isWithFullWidth()) {
             driver.findElement(By.id("link3")).click();
-        }else{
+        } else {
             driver.findElement(By.id("link1")).click();
         }
 
@@ -78,9 +78,9 @@ public class QueryEscapeTest extends FunctionTestSupport {
 
     @Test
     public void test01_03_searchWithPrefixUsingMybatis() {
-        if( isWithFullWidth() ){
+        if (isWithFullWidth()) {
             driver.findElement(By.id("link3")).click();
-        }else{
+        } else {
             driver.findElement(By.id("link1")).click();
         }
 
@@ -101,9 +101,9 @@ public class QueryEscapeTest extends FunctionTestSupport {
 
     @Test
     public void test01_04_searchWithPrefixUsingMybatis() {
-        if( isWithFullWidth() ){
+        if (isWithFullWidth()) {
             driver.findElement(By.id("link3")).click();
-        }else{
+        } else {
             driver.findElement(By.id("link1")).click();
         }
 
@@ -124,9 +124,9 @@ public class QueryEscapeTest extends FunctionTestSupport {
 
     @Test
     public void test01_05_searchWithPrefixUsingMybatis() {
-        if( isWithFullWidth() ){
+        if (isWithFullWidth()) {
             driver.findElement(By.id("link3")).click();
-        }else{
+        } else {
             driver.findElement(By.id("link1")).click();
         }
 
@@ -147,9 +147,9 @@ public class QueryEscapeTest extends FunctionTestSupport {
 
     @Test
     public void test01_06_searchWithPrefixUsingMybatis() {
-        if( isWithFullWidth() ){
+        if (isWithFullWidth()) {
             driver.findElement(By.id("link3")).click();
-        }else{
+        } else {
             driver.findElement(By.id("link1")).click();
         }
 
@@ -170,9 +170,9 @@ public class QueryEscapeTest extends FunctionTestSupport {
 
     @Test
     public void test01_07_searchWithPrefixUsingMybatis() {
-        if( isWithFullWidth() ){
+        if (isWithFullWidth()) {
             driver.findElement(By.id("link3")).click();
-        }else{
+        } else {
             driver.findElement(By.id("link1")).click();
         }
 
@@ -212,9 +212,9 @@ public class QueryEscapeTest extends FunctionTestSupport {
 
     @Test
     public void test01_08_searchWithPrefixUsingMybatis() {
-        if( isWithFullWidth() ){
+        if (isWithFullWidth()) {
             driver.findElement(By.id("link3")).click();
-        }else{
+        } else {
             driver.findElement(By.id("link1")).click();
         }
 
@@ -230,9 +230,9 @@ public class QueryEscapeTest extends FunctionTestSupport {
 
     @Test
     public void test02_01_searchWithSuffixUsingMybatis() {
-        if( isWithFullWidth() ){
+        if (isWithFullWidth()) {
             driver.findElement(By.id("link3")).click();
-        }else{
+        } else {
             driver.findElement(By.id("link1")).click();
         }
 
@@ -251,9 +251,9 @@ public class QueryEscapeTest extends FunctionTestSupport {
 
     @Test
     public void test02_02_searchWithSuffixUsingMybatis() {
-        if( isWithFullWidth() ){
+        if (isWithFullWidth()) {
             driver.findElement(By.id("link3")).click();
-        }else{
+        } else {
             driver.findElement(By.id("link1")).click();
         }
 
@@ -272,9 +272,9 @@ public class QueryEscapeTest extends FunctionTestSupport {
 
     @Test
     public void test02_03_searchWithSuffixUsingMybatis() {
-        if( isWithFullWidth() ){
+        if (isWithFullWidth()) {
             driver.findElement(By.id("link3")).click();
-        }else{
+        } else {
             driver.findElement(By.id("link1")).click();
         }
 
@@ -293,9 +293,9 @@ public class QueryEscapeTest extends FunctionTestSupport {
 
     @Test
     public void test02_04_searchWithSuffixUsingMybatis() {
-        if( isWithFullWidth() ){
+        if (isWithFullWidth()) {
             driver.findElement(By.id("link3")).click();
-        }else{
+        } else {
             driver.findElement(By.id("link1")).click();
         }
 
@@ -314,9 +314,9 @@ public class QueryEscapeTest extends FunctionTestSupport {
 
     @Test
     public void test02_05_searchWithSuffixUsingMybatis() {
-        if( isWithFullWidth() ){
+        if (isWithFullWidth()) {
             driver.findElement(By.id("link3")).click();
-        }else{
+        } else {
             driver.findElement(By.id("link1")).click();
         }
 
@@ -335,9 +335,9 @@ public class QueryEscapeTest extends FunctionTestSupport {
 
     @Test
     public void test02_06_searchWithSuffixUsingMybatis() {
-        if( isWithFullWidth() ){
+        if (isWithFullWidth()) {
             driver.findElement(By.id("link3")).click();
-        }else{
+        } else {
             driver.findElement(By.id("link1")).click();
         }
 
@@ -356,9 +356,9 @@ public class QueryEscapeTest extends FunctionTestSupport {
 
     @Test
     public void test03_01_searchWithParticalUsingMybatis() {
-        if( isWithFullWidth() ){
+        if (isWithFullWidth()) {
             driver.findElement(By.id("link3")).click();
-        }else{
+        } else {
             driver.findElement(By.id("link1")).click();
         }
 
@@ -379,9 +379,9 @@ public class QueryEscapeTest extends FunctionTestSupport {
 
     @Test
     public void test03_02_searchWithParticalUsingMybatis() {
-        if( isWithFullWidth() ){
+        if (isWithFullWidth()) {
             driver.findElement(By.id("link3")).click();
-        }else{
+        } else {
             driver.findElement(By.id("link1")).click();
         }
 
@@ -402,9 +402,9 @@ public class QueryEscapeTest extends FunctionTestSupport {
 
     @Test
     public void test03_03_searchWithParticalUsingMybatis() {
-        if( isWithFullWidth() ){
+        if (isWithFullWidth()) {
             driver.findElement(By.id("link3")).click();
-        }else{
+        } else {
             driver.findElement(By.id("link1")).click();
         }
 
@@ -425,9 +425,9 @@ public class QueryEscapeTest extends FunctionTestSupport {
 
     @Test
     public void test03_04_searchWithParticalUsingMybatis() {
-        if( isWithFullWidth() ){
+        if (isWithFullWidth()) {
             driver.findElement(By.id("link3")).click();
-        }else{
+        } else {
             driver.findElement(By.id("link1")).click();
         }
 
@@ -448,9 +448,9 @@ public class QueryEscapeTest extends FunctionTestSupport {
 
     @Test
     public void test03_05_searchWithParticalUsingMybatis() {
-        if( isWithFullWidth() ){
+        if (isWithFullWidth()) {
             driver.findElement(By.id("link3")).click();
-        }else{
+        } else {
             driver.findElement(By.id("link1")).click();
         }
 
@@ -471,9 +471,9 @@ public class QueryEscapeTest extends FunctionTestSupport {
 
     @Test
     public void test03_06_searchWithParticalUsingMybatis() {
-        if( isWithFullWidth() ){
+        if (isWithFullWidth()) {
             driver.findElement(By.id("link3")).click();
-        }else{
+        } else {
             driver.findElement(By.id("link1")).click();
         }
 
@@ -494,9 +494,9 @@ public class QueryEscapeTest extends FunctionTestSupport {
 
     @Test
     public void test04_01_searchWithPrefixUsingJpa() {
-        if( isWithFullWidth() ){
+        if (isWithFullWidth()) {
             driver.findElement(By.id("link4")).click();
-        }else{
+        } else {
             driver.findElement(By.id("link2")).click();
         }
 
@@ -517,9 +517,9 @@ public class QueryEscapeTest extends FunctionTestSupport {
 
     @Test
     public void test04_02_searchWithPrefixUsingJpa() {
-        if( isWithFullWidth() ){
+        if (isWithFullWidth()) {
             driver.findElement(By.id("link4")).click();
-        }else{
+        } else {
             driver.findElement(By.id("link2")).click();
         }
 
@@ -540,9 +540,9 @@ public class QueryEscapeTest extends FunctionTestSupport {
 
     @Test
     public void test04_03_searchWithPrefixUsingJpa() {
-        if( isWithFullWidth() ){
+        if (isWithFullWidth()) {
             driver.findElement(By.id("link4")).click();
-        }else{
+        } else {
             driver.findElement(By.id("link2")).click();
         }
 
@@ -563,9 +563,9 @@ public class QueryEscapeTest extends FunctionTestSupport {
 
     @Test
     public void test04_04_searchWithPrefixUsingJpa() {
-        if( isWithFullWidth() ){
+        if (isWithFullWidth()) {
             driver.findElement(By.id("link4")).click();
-        }else{
+        } else {
             driver.findElement(By.id("link2")).click();
         }
 
@@ -586,9 +586,9 @@ public class QueryEscapeTest extends FunctionTestSupport {
 
     @Test
     public void test04_05_searchWithPrefixUsingJpa() {
-        if( isWithFullWidth() ){
+        if (isWithFullWidth()) {
             driver.findElement(By.id("link4")).click();
-        }else{
+        } else {
             driver.findElement(By.id("link2")).click();
         }
 
@@ -609,9 +609,9 @@ public class QueryEscapeTest extends FunctionTestSupport {
 
     @Test
     public void test04_06_searchWithPrefixUsingJpa() {
-        if( isWithFullWidth() ){
+        if (isWithFullWidth()) {
             driver.findElement(By.id("link4")).click();
-        }else{
+        } else {
             driver.findElement(By.id("link2")).click();
         }
 
@@ -632,9 +632,9 @@ public class QueryEscapeTest extends FunctionTestSupport {
 
     @Test
     public void test05_01_searchWithSuffixUsingJpa() {
-        if( isWithFullWidth() ){
+        if (isWithFullWidth()) {
             driver.findElement(By.id("link4")).click();
-        }else{
+        } else {
             driver.findElement(By.id("link2")).click();
         }
 
@@ -653,9 +653,9 @@ public class QueryEscapeTest extends FunctionTestSupport {
 
     @Test
     public void test05_02_searchWithSuffixUsingJpa() {
-        if( isWithFullWidth() ){
+        if (isWithFullWidth()) {
             driver.findElement(By.id("link4")).click();
-        }else{
+        } else {
             driver.findElement(By.id("link2")).click();
         }
 
@@ -674,9 +674,9 @@ public class QueryEscapeTest extends FunctionTestSupport {
 
     @Test
     public void test05_03_searchWithSuffixUsingJpa() {
-        if( isWithFullWidth() ){
+        if (isWithFullWidth()) {
             driver.findElement(By.id("link4")).click();
-        }else{
+        } else {
             driver.findElement(By.id("link2")).click();
         }
 
@@ -695,9 +695,9 @@ public class QueryEscapeTest extends FunctionTestSupport {
 
     @Test
     public void test05_04_searchWithSuffixUsingJpa() {
-        if( isWithFullWidth() ){
+        if (isWithFullWidth()) {
             driver.findElement(By.id("link4")).click();
-        }else{
+        } else {
             driver.findElement(By.id("link2")).click();
         }
 
@@ -716,9 +716,9 @@ public class QueryEscapeTest extends FunctionTestSupport {
 
     @Test
     public void test05_05_searchWithSuffixUsingJpa() {
-        if( isWithFullWidth() ){
+        if (isWithFullWidth()) {
             driver.findElement(By.id("link4")).click();
-        }else{
+        } else {
             driver.findElement(By.id("link2")).click();
         }
 
@@ -737,9 +737,9 @@ public class QueryEscapeTest extends FunctionTestSupport {
 
     @Test
     public void test05_06_searchWithSuffixUsingJpa() {
-        if( isWithFullWidth() ){
+        if (isWithFullWidth()) {
             driver.findElement(By.id("link4")).click();
-        }else{
+        } else {
             driver.findElement(By.id("link2")).click();
         }
 
@@ -758,9 +758,9 @@ public class QueryEscapeTest extends FunctionTestSupport {
 
     @Test
     public void test06_01_searchWithParticalUsingJpa() {
-        if( isWithFullWidth() ){
+        if (isWithFullWidth()) {
             driver.findElement(By.id("link4")).click();
-        }else{
+        } else {
             driver.findElement(By.id("link2")).click();
         }
 
@@ -781,9 +781,9 @@ public class QueryEscapeTest extends FunctionTestSupport {
 
     @Test
     public void test06_02_searchWithParticalUsingJpa() {
-        if( isWithFullWidth() ){
+        if (isWithFullWidth()) {
             driver.findElement(By.id("link4")).click();
-        }else{
+        } else {
             driver.findElement(By.id("link2")).click();
         }
 
@@ -804,9 +804,9 @@ public class QueryEscapeTest extends FunctionTestSupport {
 
     @Test
     public void test06_03_searchWithParticalUsingJpa() {
-        if( isWithFullWidth() ){
+        if (isWithFullWidth()) {
             driver.findElement(By.id("link4")).click();
-        }else{
+        } else {
             driver.findElement(By.id("link2")).click();
         }
 
@@ -827,9 +827,9 @@ public class QueryEscapeTest extends FunctionTestSupport {
 
     @Test
     public void test06_04_searchWithParticalUsingJpa() {
-        if( isWithFullWidth() ){
+        if (isWithFullWidth()) {
             driver.findElement(By.id("link4")).click();
-        }else{
+        } else {
             driver.findElement(By.id("link2")).click();
         }
 
@@ -850,9 +850,9 @@ public class QueryEscapeTest extends FunctionTestSupport {
 
     @Test
     public void test06_05_searchWithParticalUsingJpa() {
-        if( isWithFullWidth() ){
+        if (isWithFullWidth()) {
             driver.findElement(By.id("link4")).click();
-        }else{
+        } else {
             driver.findElement(By.id("link2")).click();
         }
 
@@ -873,9 +873,9 @@ public class QueryEscapeTest extends FunctionTestSupport {
 
     @Test
     public void test06_06_searchWithParticalUsingJpa() {
-        if( isWithFullWidth() ){
+        if (isWithFullWidth()) {
             driver.findElement(By.id("link4")).click();
-        }else{
+        } else {
             driver.findElement(By.id("link2")).click();
         }
 

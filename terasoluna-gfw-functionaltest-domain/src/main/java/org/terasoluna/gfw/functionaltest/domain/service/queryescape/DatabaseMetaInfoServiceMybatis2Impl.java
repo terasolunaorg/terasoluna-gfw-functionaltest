@@ -22,7 +22,7 @@ import org.terasoluna.gfw.functionaltest.domain.service.queryescape.AbstractData
 @Service
 @Transactional(readOnly = true)
 public class DatabaseMetaInfoServiceMybatis2Impl extends
-        AbstractDatabaseMetaInfoService {
+                                                AbstractDatabaseMetaInfoService {
 
     @Override
     protected String getDatabaseIdInternal() {

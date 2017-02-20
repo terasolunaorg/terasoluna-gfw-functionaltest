@@ -18,7 +18,5 @@ package org.terasoluna.gfw.functionaltest.domain.repository.user;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.terasoluna.gfw.functionaltest.domain.model.UserInfo;
 
-
-
 public interface UserRepository extends JpaRepository<UserInfo, String> {
 }

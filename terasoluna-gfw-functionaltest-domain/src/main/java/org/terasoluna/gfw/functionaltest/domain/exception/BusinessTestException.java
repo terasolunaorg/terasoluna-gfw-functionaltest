@@ -22,7 +22,7 @@ import org.terasoluna.gfw.common.message.ResultMessages;
 public class BusinessTestException extends ResultMessagesNotificationException {
 
     private static final long serialVersionUID = 1L;
-    
+
     public BusinessTestException(String message) {
         super(ResultMessages.warn().add(ResultMessage.fromText(message)));
     }
@@ -30,5 +30,5 @@ public class BusinessTestException extends ResultMessagesNotificationException {
     public BusinessTestException(String code, String message) {
         super(ResultMessages.warn().add(ResultMessage.fromCode(code, message)));
     }
-    
+
 }

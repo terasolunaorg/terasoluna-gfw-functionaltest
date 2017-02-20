@@ -194,8 +194,8 @@ public class RedirectTest extends FunctionTestSupport {
         driver.findElement(By.id("btn1")).click();
 
         // confirms that transition is made to external link
-        assertThat(driver.getCurrentUrl()
-                .startsWith(redirectionAllowedExternalUrl), is(true));
+        assertThat(driver.getCurrentUrl().startsWith(
+                redirectionAllowedExternalUrl), is(true));
     }
 
     @Test

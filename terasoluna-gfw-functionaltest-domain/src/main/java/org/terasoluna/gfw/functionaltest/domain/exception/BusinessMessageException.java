@@ -22,11 +22,11 @@ public class BusinessMessageException extends RuntimeException {
     public BusinessMessageException(String message, Throwable cause) {
         super(message, cause);
     }
-    
+
     public BusinessMessageException(Throwable cause) {
         super(cause);
     }
-    
+
     public BusinessMessageException(String message) {
         super(message);
     }
