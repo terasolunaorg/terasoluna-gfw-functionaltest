@@ -98,7 +98,7 @@ public class CsrfController {
     @ResponseBody
     @ResponseStatus(value = HttpStatus.OK)
     public String headCsrfTokenSend() {
-    	return "OK";
+        return "OK";
     }
 
     @RequestMapping(value = "fileUpload", method = RequestMethod.POST)

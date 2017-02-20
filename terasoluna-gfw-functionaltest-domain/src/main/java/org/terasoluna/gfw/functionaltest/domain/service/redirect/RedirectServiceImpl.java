@@ -30,7 +30,7 @@ public class RedirectServiceImpl implements RedirectService {
 
     @Inject
     protected UserRepository userRepository;
-    
+
     @Override
     @Transactional(readOnly = true)
     public List<UserInfo> findUserInfo() {

@@ -166,7 +166,7 @@ public class CsrfTest extends FunctionTestSupport {
         // 2.1 Test start
         driver.findElement(By.id("csrf_2_1")).click();
         driver.findElement(By.id("ajaxButton")).click();
-        
+
         // HttpStatusCode 200 return
         assertThat(getStatusCodeInAjaxRequest(), is("200"));
         screenCapture.save(driver);
@@ -219,7 +219,7 @@ public class CsrfTest extends FunctionTestSupport {
         // HttpStatusCode 200 return
         assertThat(getStatusCodeInAjaxRequest(), is("200"));
         screenCapture.save(driver);
-        
+
         // 2.6 Test start
         driver.get(applicationContextUrl);
         driver.findElement(By.id("CSRF")).click();
@@ -242,7 +242,7 @@ public class CsrfTest extends FunctionTestSupport {
         // HttpStatusCode 403 return
         assertThat(getStatusCodeInAjaxRequest(), is("403"));
         screenCapture.save(driver);
-        
+
         // 2.8 Test start
         driver.get(applicationContextUrl);
         driver.findElement(By.id("CSRF")).click();
@@ -265,7 +265,7 @@ public class CsrfTest extends FunctionTestSupport {
         // HttpStatusCode 403 return
         assertThat(getStatusCodeInAjaxRequest(), is("403"));
         screenCapture.save(driver);
-        
+
         // 2.10 Test start
         driver.get(applicationContextUrl);
         driver.findElement(By.id("CSRF")).click();
@@ -299,93 +299,98 @@ public class CsrfTest extends FunctionTestSupport {
         } catch (IOException e) {
             fail(e.toString());
         }
-        
+
         // 3.1 Test start
         driver.findElement(By.id("csrf_3_1")).click();
         driver.findElement(By.id("springFormFileBtn")).sendKeys(imagePath);
-        
+
         // CsrfToken setting check
         jse.executeScript("document.getElementsByName('_csrf')[0].setAttribute('type', 'text');");
-        
+
         driver.findElement(By.id("springFormSubmitBtn")).click();
-        
+
         // upload finish
-        assertThat(driver.findElement(By.cssSelector("h2")).getText(), is("CSRF Test"));
+        assertThat(driver.findElement(By.cssSelector("h2")).getText(),
+                is("CSRF Test"));
         screenCapture.save(driver);
-        
+
         // 3.2 Test start
         driver.get(applicationContextUrl);
         driver.findElement(By.id("CSRF")).click();
         driver.findElement(By.id("csrf_3_2")).click();
         driver.findElement(By.id("springFormFileBtn")).sendKeys(imagePath);
-        
+
         // CsrfToken setting check
         jse.executeScript("document.getElementsByName('_csrf')[0].setAttribute('type', 'text');");
         jse.executeScript("document.getElementsByName('_csrf')[0].value = '123456abc9876abc';");
 
         driver.findElement(By.id("springFormSubmitBtn")).click();
-        
+
         // CSRFToken Not Match
         assertThat(driver.findElement(By.xpath("/html/body/div/h2")).getText(),
                 is("CSRF Attack Token Detected"));
         screenCapture.save(driver);
-        
+
         // 3.3 Test start
         driver.get(applicationContextUrl);
         driver.findElement(By.id("CSRF")).click();
         driver.findElement(By.id("csrf_3_3")).click();
         driver.findElement(By.id("formFileBtn")).sendKeys(imagePath);
-        
+
         // CsrfToken setting check
         jse.executeScript("document.getElementsByName('_csrf')[1].setAttribute('type', 'text');");
-        
+
         driver.findElement(By.id("formSubmitBtn")).click();
-        
+
         // upload finish
-        assertThat(driver.findElement(By.cssSelector("h2")).getText(), is("CSRF Test"));
+        assertThat(driver.findElement(By.cssSelector("h2")).getText(),
+                is("CSRF Test"));
         screenCapture.save(driver);
-        
+
         // 3.4 Test start
         driver.get(applicationContextUrl);
         driver.findElement(By.id("CSRF")).click();
         driver.findElement(By.id("csrf_3_4")).click();
         driver.findElement(By.id("formFileBtn")).sendKeys(imagePath);
-        
+
         // CsrfToken setting check
         jse.executeScript("document.getElementsByName('_csrf')[1].setAttribute('type', 'text');");
         jse.executeScript("document.getElementsByName('_csrf')[1].value = '123456abc9876abc';");
 
         driver.findElement(By.id("formSubmitBtn")).click();
-        
+
         // CSRFToken Not Match
         assertThat(driver.findElement(By.xpath("/html/body/div/h2")).getText(),
                 is("CSRF Attack Token Detected"));
         screenCapture.save(driver);
-        
+
         // 3.5 Test start
         driver.get(applicationContextUrl);
         driver.findElement(By.id("CSRF")).click();
         driver.findElement(By.id("csrf_3_5")).click();
         driver.findElement(By.id("queryFileBtn")).sendKeys(imagePath);
-        
+
         driver.findElement(By.id("querySubmitBtn")).click();
-        
+
         // upload finish
-        assertThat(driver.findElement(By.cssSelector("h2")).getText(), is("CSRF Test"));
+        assertThat(driver.findElement(By.cssSelector("h2")).getText(),
+                is("CSRF Test"));
         screenCapture.save(driver);
-        
+
         // 3.6 Test start
         driver.get(applicationContextUrl);
         driver.findElement(By.id("CSRF")).click();
         driver.findElement(By.id("csrf_3_6")).click();
         driver.findElement(By.id("queryFileBtn")).sendKeys(imagePath);
-        
+
         // CsrfToken setting check
-        String alterUrI = "/" + contextName + "/csrf/fileUpload?_csrf=123456789abcdef9876";
-        jse.executeScript("document.getElementById('queryFileForm').setAttribute('action', '" + alterUrI + "');");
+        String alterUrI = "/" + contextName
+                + "/csrf/fileUpload?_csrf=123456789abcdef9876";
+        jse.executeScript("document.getElementById('queryFileForm').setAttribute('action', '"
+                + alterUrI + "');");
 
         driver.findElement(By.id("querySubmitBtn")).click();
-        
+
         // CSRFToken Not Match
         assertThat(driver.findElement(By.xpath("/html/body/div/h2")).getText(),
                 is("CSRF Attack Token Detected"));
@@ -400,41 +405,41 @@ public class CsrfTest extends FunctionTestSupport {
         jse.executeScript("document.getElementsByName('_csrf')[6].value = '123456abc9876abc';");
 
         driver.findElement(By.id("csrf_4_1")).click();
-        
-        // Access Denied Screen 
+
+        // Access Denied Screen
         assertThat(driver.findElement(By.xpath("/html/body/div/h2")).getText(),
                 is("Access Denied"));
         screenCapture.save(driver);
-        
+
         try {
-            restTemplate.exchange(applicationContextUrl + "/csrf/errorPageNotSet/4_1",
-                    HttpMethod.POST, new HttpEntity<byte[]>(new HttpHeaders()),
-                    byte[].class);
+            restTemplate.exchange(applicationContextUrl
+                    + "/csrf/errorPageNotSet/4_1", HttpMethod.POST,
+                    new HttpEntity<byte[]>(new HttpHeaders()), byte[].class);
             fail("error route");
         } catch (HttpClientErrorException e) {
             // HttpStatusCode 403 return
             assertThat(e.getStatusCode(), is(HttpStatus.FORBIDDEN));
         }
-        
+
         // 4.2 Test Start
         driver.get(applicationContextUrl);
         driver.findElement(By.id("CSRF")).click();
-        
+
         // CsrfToken setting check
         jse.executeScript("document.getElementsByName('_csrf')[7].setAttribute('type', 'text');");
         jse.executeScript("document.getElementsByName('_csrf')[7].value = '123456abc9876abc';");
 
         driver.findElement(By.id("csrf_4_2")).click();
-        
+
         // CSRFToken Not Match
         assertThat(driver.findElement(By.xpath("/html/body/div/h2")).getText(),
                 is("CSRF Attack Token Detected"));
         screenCapture.save(driver);
-        
+
         try {
-            restTemplate.exchange(applicationContextUrl + "/csrf/notAcceptable/4_2",
-                    HttpMethod.POST, new HttpEntity<byte[]>(new HttpHeaders()),
-                    byte[].class);
+            restTemplate.exchange(applicationContextUrl
+                    + "/csrf/notAcceptable/4_2", HttpMethod.POST,
+                    new HttpEntity<byte[]>(new HttpHeaders()), byte[].class);
             fail("error route");
         } catch (HttpClientErrorException e) {
             // HttpStatusCode 406 return
@@ -443,7 +448,8 @@ public class CsrfTest extends FunctionTestSupport {
     }
 
     private String getStatusCodeInAjaxRequest() {
-        return driver.findElement(By.id("result")).findElement(By.tagName("span")).getText();
+        return driver.findElement(By.id("result")).findElement(
+                By.tagName("span")).getText();
     }
 
 }

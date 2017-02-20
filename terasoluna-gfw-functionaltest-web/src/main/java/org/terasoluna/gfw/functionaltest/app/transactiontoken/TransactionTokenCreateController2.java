@@ -27,11 +27,11 @@ public class TransactionTokenCreateController2 {
 
     // Transaction token with method value only
     @RequestMapping(value = "1_3", method = RequestMethod.POST)
-    @TransactionTokenCheck(value="create", type = TransactionTokenType.BEGIN)
+    @TransactionTokenCheck(value = "create", type = TransactionTokenType.BEGIN)
     public String functionTest1_3_Create() {
         return "transactiontoken/createOutput";
     }
-    
+
     // Transaction token neither with method value nor class value
     // This will generate token with global namespace
     @RequestMapping(value = "1_4", method = RequestMethod.POST)

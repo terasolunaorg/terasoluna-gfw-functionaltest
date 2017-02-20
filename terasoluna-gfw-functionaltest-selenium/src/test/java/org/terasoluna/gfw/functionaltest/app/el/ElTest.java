@@ -137,8 +137,8 @@ public class ElTest extends FunctionTestSupport {
 
         // output data 03_01 Test
         WebElement newLineOutput = driver.findElement(By.id("newLineOutput"));
-        BufferedReader newLineOutputTextReader = new BufferedReader(new StringReader(
-                newLineOutput.getText()));
+        BufferedReader newLineOutputTextReader = new BufferedReader(new StringReader(newLineOutput
+                .getText()));
         try {
             assertThat(newLineOutputTextReader.readLine(), is("Spring"));
             assertThat(newLineOutputTextReader.readLine(), is("mvc"));
@@ -260,16 +260,22 @@ public class ElTest extends FunctionTestSupport {
         inputFieldAccessor.overrideValue(By.id("text-outputQueryParam"),
                 "tera&1", driver);
         driver.findElement(By.id("btn-output")).click();
-        
+
         // output 05_04 Test
-        assertThat(driver.findElement(By.id("linkUOutput")).getText(),
+        assertThat(
+                driver.findElement(By.id("linkUOutput")).getText(),
                 is("http://localhost:8080/terasoluna-gfw-functionaltest-web/el/output_05_04?name=tera%261"));
         // output link
-        assertThat(driver.findElement(By.linkText("http://localhost:8080/terasoluna-gfw-functionaltest-web/el/output_05_04?name=tera%261"))
-                .getText(), is("http://localhost:8080/terasoluna-gfw-functionaltest-web/el/output_05_04?name=tera%261"));
+        assertThat(
+                driver.findElement(
+                        By.linkText("http://localhost:8080/terasoluna-gfw-functionaltest-web/el/output_05_04?name=tera%261"))
+                        .getText(),
+                is("http://localhost:8080/terasoluna-gfw-functionaltest-web/el/output_05_04?name=tera%261"));
         // inheriting of query Test
-        driver.findElement(By.id("linkUOutput")).findElement(
-                By.linkText("http://localhost:8080/terasoluna-gfw-functionaltest-web/el/output_05_04?name=tera%261")).click();
+        driver.findElement(By.id("linkUOutput"))
+                .findElement(
+                        By.linkText("http://localhost:8080/terasoluna-gfw-functionaltest-web/el/output_05_04?name=tera%261"))
+                .click();
     }
 
     @Test(expected = NoSuchElementException.class)
@@ -317,7 +323,8 @@ public class ElTest extends FunctionTestSupport {
         new Select(driver.findElement(By.id("main")))
                 .selectByVisibleText("YES");
         inputFieldAccessor.overrideValue(By.id("age"), "10", driver);
-        inputFieldAccessor.overrideValue(By.id("dateOfBirth"), "2000-01-01", driver);
+        inputFieldAccessor.overrideValue(By.id("dateOfBirth"), "2000-01-01",
+                driver);
         new Select(driver.findElement(By.id("countries")))
                 .selectByVisibleText("JA");
         driver.findElement(By.id("btn-output")).click();
@@ -384,15 +391,16 @@ public class ElTest extends FunctionTestSupport {
 
         // output 06_07 Test
         assertThat(driver.findElement(By.id("queryOutput")).getText(), is(""));
-        
+
         // screen capture
         screenCapture.save(driver);
 
         driver.get(applicationContextUrl);
         driver.findElement(By.id("EL")).click();
         driver.findElement(By.id("06_03-")).click();
-        
-        inputFieldAccessor.overrideValue(By.id("name"), "TEST[]#+=&TEST", driver);
+
+        inputFieldAccessor.overrideValue(By.id("name"), "TEST[]#+=&TEST",
+                driver);
         driver.findElement(By.id("btn-output")).click();
 
         // output 06_08 Test
