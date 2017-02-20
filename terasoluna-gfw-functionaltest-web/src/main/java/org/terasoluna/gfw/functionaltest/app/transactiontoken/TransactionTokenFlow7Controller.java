@@ -25,7 +25,7 @@ import org.terasoluna.gfw.web.token.transaction.TransactionTokenType;
 @RequestMapping("transactiontoken")
 @TransactionTokenCheck(namespace = "testTokenAttrByNameSpace")
 public class TransactionTokenFlow7Controller {
-    
+
     @RequestMapping(value = "flow1_namespace", method = RequestMethod.POST, params = "confirm")
     @TransactionTokenCheck(type = TransactionTokenType.BEGIN)
     public String flow1NamespaceStep2() {

@@ -31,9 +31,9 @@ public class TextFileDownloadView extends AbstractFileDownloadView {
     @Override
     protected InputStream getInputStream(Map<String, Object> model,
             HttpServletRequest request) throws IOException {
-        
+
         InputStream contents = (InputStream) model.get("contents");
-        
+
         return contents;
     }
 

@@ -20,7 +20,7 @@ import org.springframework.data.domain.Pageable;
 import org.terasoluna.gfw.functionaltest.domain.model.Person;
 
 public interface PaginationService {
-    
+
     Page<Person> findPerson(Pageable pageable);
 
     Page<Person> findPersonByName(String name, Pageable pageable);

@@ -37,7 +37,7 @@ public class RedirectController {
 
     @Value("${app.redirect.allowed.externalUrl}")
     String redirectionAllowedExternalUrl;
-    
+
     @RequestMapping(method = RequestMethod.GET)
     public String index() {
         return "redirect/index";
@@ -47,12 +47,12 @@ public class RedirectController {
     public ListForm setUpListForm() {
         return new ListForm();
     }
-    
+
     @ModelAttribute
     public DetailForm setUpDetailForm() {
         return new DetailForm();
     }
-    
+
     @RequestMapping(value = "login")
     public String viewLoginForm() {
         return "redirect/login";
@@ -63,25 +63,25 @@ public class RedirectController {
         model.addAttribute("users", redirectService.findUserInfo());
         return "redirect/listWithInternalPath";
     }
-    
+
     @RequestMapping(value = "listWithNoPath", method = RequestMethod.GET)
     public String listWithNoPath(Model model) {
         model.addAttribute("users", redirectService.findUserInfo());
         return "redirect/listWithNoPath";
     }
-    
+
     @RequestMapping(value = "listWithExternalPath", method = RequestMethod.GET)
     public String listWithExternalPath(Model model) {
         model.addAttribute("users", redirectService.findUserInfo());
         return "redirect/listWithExternalPath";
     }
-    
+
     @RequestMapping(value = "listWithGoTo", method = RequestMethod.GET)
     public String listWithGoTo(Model model) {
         model.addAttribute("users", redirectService.findUserInfo());
         return "redirect/listWithGoTo";
     }
-    
+
     @RequestMapping(value = "listWithLinkInWhiteList", method = RequestMethod.GET)
     public String listWithLinkInWhiteList(Model model) {
         model.addAttribute("users", redirectService.findUserInfo());
@@ -89,13 +89,13 @@ public class RedirectController {
                 redirectionAllowedExternalUrl);
         return "redirect/listWithLinkInWhiteList";
     }
-    
+
     @RequestMapping(value = "listWithLinkNotInWhiteList", method = RequestMethod.GET)
     public String listWithLinkNotInWhiteList(Model model) {
         model.addAttribute("users", redirectService.findUserInfo());
         return "redirect/listWithLinkNotInWhiteList";
     }
-    
+
     @RequestMapping(value = "detail/{id}", method = RequestMethod.GET)
     public String detail(Principal principal, DetailForm form, Model model) {
         UserInfo user = redirectService.findOne(principal.getName());
