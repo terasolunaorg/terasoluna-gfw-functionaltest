@@ -543,7 +543,7 @@ public class CodeListTest extends FunctionTestSupport {
 
         driver.findElement(By.id("btnback")).click();
     }
-    
+
     @Test
     public void test09_01_form() {
         driver.findElement(By.linkText("EnumCodeList Test")).click();
@@ -571,18 +571,18 @@ public class CodeListTest extends FunctionTestSupport {
                 .getText(), is("November"));
         assertThat(driver.findElement(By.cssSelector("option[value=\"12\"]"))
                 .getText(), is("December"));
-        
+
         driver.findElement(By.id("btn1")).click();
         assertThat(driver.findElement(By.id("output")).getText(), is("1"));
         driver.findElement(By.id("btnback")).click();
-        
+
         driver.findElement(By.linkText("EnumCodeList Test")).click();
         new Select(driver.findElement(By.id("item1")))
                 .selectByVisibleText("February");
         driver.findElement(By.id("btn1")).click();
         assertThat(driver.findElement(By.id("output")).getText(), is("2"));
         driver.findElement(By.id("btnback")).click();
-        
+
         driver.findElement(By.linkText("EnumCodeList Test")).click();
         new Select(driver.findElement(By.id("item1")))
                 .selectByVisibleText("March");
@@ -656,7 +656,9 @@ public class CodeListTest extends FunctionTestSupport {
 
     @Test
     public void test10_01_form() {
-        driver.findElement(By.linkText("CodeListInterceptor Test (Exception occurs)")).click();
+        driver.findElement(
+                By.linkText("CodeListInterceptor Test (Exception occurs)"))
+                .click();
         assertThat(driver.findElement(By.cssSelector("option[value=\"key1\"]"))
                 .getText(), is("label1"));
         assertThat(driver.findElement(By.cssSelector("option[value=\"key2\"]"))
@@ -667,5 +669,5 @@ public class CodeListTest extends FunctionTestSupport {
         assertThat(driver.findElement(By.id("output")).getText(), is("key1"));
         driver.findElement(By.id("btnback")).click();
     }
-    
+
 }

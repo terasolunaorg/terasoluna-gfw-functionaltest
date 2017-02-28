@@ -44,12 +44,11 @@ public class ElListOfSimpleValueDefaultTrimController {
 
     @ModelAttribute
     public ListForm setUpForm() {
-        ListForm listForm = new ListForm(Arrays.asList("a0", "a1", "a2"),
-                Arrays.asList("b0", "b1", "b2"),
-                Arrays.asList("c0", "c1", "c2"), new ListFormItem(
-                        Arrays.asList("aa0", "aa1", "aa2"), Arrays.asList(
-                                "bb0", "bb1", "bb2"), Arrays.asList("cc0",
-                                "cc1", "cc2")));
+        ListForm listForm = new ListForm(Arrays.asList("a0", "a1", "a2"), Arrays
+                .asList("b0", "b1", "b2"), Arrays.asList("c0", "c1", "c2"), new ListFormItem(Arrays
+                .asList("aa0", "aa1", "aa2"), Arrays
+                .asList("bb0", "bb1", "bb2"), Arrays
+                .asList("cc0", "cc1", "cc2")));
         return listForm;
     }
 
@@ -72,12 +71,9 @@ public class ElListOfSimpleValueDefaultTrimController {
         Page<String> dummyPage = new PageImpl<String>(dummyList, pageable, 100);
         model.addAttribute("page", dummyPage);
 
-        String listA0String = Objects
-                .toString(listForm.getListA().get(0));
-        String listA1String = Objects
-                .toString(listForm.getListA().get(1));
-        String listA2String = Objects
-                .toString(listForm.getListA().get(2));
+        String listA0String = Objects.toString(listForm.getListA().get(0));
+        String listA1String = Objects.toString(listForm.getListA().get(1));
+        String listA2String = Objects.toString(listForm.getListA().get(2));
         String listBString = Objects.toString(listForm.getListB());
         String listCString = Objects.toString(listForm.getListC());
 
@@ -93,10 +89,10 @@ public class ElListOfSimpleValueDefaultTrimController {
                 .getListA().get(1));
         String listA2StringItem = Objects.toString(listForm.getItem()
                 .getListA().get(2));
-        String listBStringItem = Objects.toString(listForm.getItem()
-                .getListB());
-        String listCStringItem = Objects.toString(listForm.getItem()
-                .getListC());
+        String listBStringItem = Objects
+                .toString(listForm.getItem().getListB());
+        String listCStringItem = Objects
+                .toString(listForm.getItem().getListC());
 
         model.addAttribute("listA0StringItem", listA0StringItem);
         model.addAttribute("listA1StringItem", listA1StringItem);

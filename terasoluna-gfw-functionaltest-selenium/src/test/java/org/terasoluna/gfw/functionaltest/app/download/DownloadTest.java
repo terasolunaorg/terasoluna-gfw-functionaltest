@@ -39,7 +39,7 @@ public class DownloadTest extends FunctionTestSupport {
     @Inject
     protected RestTemplate restTemplate;
 
-    public DownloadTest(){
+    public DownloadTest() {
         disableSetupDefaultWebDriver();
     }
 

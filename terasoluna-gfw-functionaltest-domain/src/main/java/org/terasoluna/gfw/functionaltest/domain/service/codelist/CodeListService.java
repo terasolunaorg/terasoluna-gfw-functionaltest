@@ -22,9 +22,9 @@ import org.terasoluna.gfw.functionaltest.domain.model.ItemCode;
 public interface CodeListService {
 
     List<ItemCode> findCodeList();
-    
+
     ItemCode findOne(Integer code);
-    
+
     ItemCode save(ItemCode row);
 
     void refresh();

@@ -34,7 +34,7 @@ public class MessageTest extends FunctionTestSupport {
     }
 
     @Before
-    public void setupDefaultLanguage(){
+    public void setupDefaultLanguage() {
         driver.findElement(By.id("English")).click();
     }
 
@@ -137,7 +137,8 @@ public class MessageTest extends FunctionTestSupport {
                 .getText(), is("Hello World!!"));
 
         // <div> Tag class is "alert alert-warn"
-        assertThat(driver.findElement(By.cssSelector("div.alert.alert-warning"))
+        assertThat(driver
+                .findElement(By.cssSelector("div.alert.alert-warning"))
                 .getText(), is("Hello World!!"));
 
         // screen capture
@@ -481,7 +482,8 @@ public class MessageTest extends FunctionTestSupport {
                 .getText(), is("Warn Message!!"));
 
         // <div> Tag class is "alert alert-warn"
-        assertThat(driver.findElement(By.cssSelector("div.alert.alert-warning"))
+        assertThat(driver
+                .findElement(By.cssSelector("div.alert.alert-warning"))
                 .getText(), is("Warn Message!!"));
 
         // screen capture
@@ -498,7 +500,8 @@ public class MessageTest extends FunctionTestSupport {
                 .getText(), is("Warn Message!!"));
 
         // <div> Tag class is "alert alert-warn"
-        assertThat(driver.findElement(By.cssSelector("div.alert.alert-warning"))
+        assertThat(driver
+                .findElement(By.cssSelector("div.alert.alert-warning"))
                 .getText(), is("Warn Message!!"));
 
         // screen capture
@@ -517,7 +520,8 @@ public class MessageTest extends FunctionTestSupport {
                 .getText(), is("Error Message!!"));
 
         // <div> Tag class is "alert alert-warn"
-        assertThat(driver.findElement(By.cssSelector("div.alert.alert-warning"))
+        assertThat(driver
+                .findElement(By.cssSelector("div.alert.alert-warning"))
                 .getTagName(), is("div"));
 
         // screen capture
@@ -701,31 +705,27 @@ public class MessageTest extends FunctionTestSupport {
         // screen capture
         screenCapture.save(driver);
     }
-    
-    
+
     @Test
     public void test09_01_disableHtmlEscape() {
         driver.findElement(By.id("disableHtmlEscape_09_01")).click();
 
         // div ul li Tag confirm
         // Message Confirm
-        assertThat(
-                driver.findElement(By.id("messagesPanel")).getText(),
+        assertThat(driver.findElement(By.id("messagesPanel")).getText(),
                 is("<div>Hello World!!</div>"));
 
         // screen capture
         screenCapture.save(driver);
     }
 
-    
     @Test
     public void test09_02_disableHtmlEscape() {
         driver.findElement(By.id("disableHtmlEscape_09_02")).click();
 
         // div ul li Tag confirm
         // Message Confirm
-        assertThat(
-                driver.findElement(By.id("messagesPanel")).getText(),
+        assertThat(driver.findElement(By.id("messagesPanel")).getText(),
                 is("Hello World!!"));
 
         // screen capture

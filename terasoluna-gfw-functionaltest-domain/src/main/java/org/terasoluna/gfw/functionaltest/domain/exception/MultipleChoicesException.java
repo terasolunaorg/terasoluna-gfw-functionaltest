@@ -22,11 +22,11 @@ public class MultipleChoicesException extends RuntimeException {
     public MultipleChoicesException(String message, Throwable cause) {
         super(message, cause);
     }
-    
+
     public MultipleChoicesException(Throwable cause) {
         super(cause);
     }
-    
+
     public MultipleChoicesException(String message) {
         super(message);
     }

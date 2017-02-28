@@ -43,8 +43,7 @@ public class ElSimpleJavaBeanDefaultTrimController {
 
     @ModelAttribute
     public UserForm setUpForm() {
-        UserForm userForm = new UserForm("yamada", 20, new UserFormItem(
-                "tanaka", 50));
+        UserForm userForm = new UserForm("yamada", 20, new UserFormItem("tanaka", 50));
         return userForm;
     }
 
