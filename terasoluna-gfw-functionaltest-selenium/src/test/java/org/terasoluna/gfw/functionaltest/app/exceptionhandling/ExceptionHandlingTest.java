@@ -73,13 +73,17 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
         // INFO Level Log
         dbLogProvider.waitForAssertion();
         assertThat(dbLogProvider.countContainsMessageAndLevelsAndLogger(
-                "\\[e.xx.9999\\] 2_1 Continue", "INFO", "org.terasoluna.gfw.common.exception.ExceptionLogger"), is(1L));
-        assertThat(dbLogProvider.countContainsMessageAndLevelsAndLogger(
-                "\\[e.xx.9999\\] 2_1 Continue", "INFO", "org.terasoluna.gfw.common.exception.ExceptionLogger.Monitoring"), is(1L));
+                "\\[e.xx.9999\\] 2_1 Continue", "INFO",
+                "org.terasoluna.gfw.common.exception.ExceptionLogger"), is(1L));
+        assertThat(
+                dbLogProvider
+                        .countContainsMessageAndLevelsAndLogger(
+                                "\\[e.xx.9999\\] 2_1 Continue", "INFO",
+                                "org.terasoluna.gfw.common.exception.ExceptionLogger.Monitoring"),
+                is(1L));
 
-        assertThat(dbLogProvider
-                .countContainsByRegexExceptionMessage(null, null,
-                        "2_1 Continue*", "..*ContinueException..*"), is(1L));
+        assertThat(dbLogProvider.countContainsByRegexExceptionMessage(null,
+                null, "2_1 Continue*", "..*ContinueException..*"), is(1L));
     }
 
     @Test
