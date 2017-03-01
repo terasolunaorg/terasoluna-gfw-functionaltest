@@ -25,6 +25,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.terasoluna.gfw.functionaltest.app.ApServerName;
 import org.terasoluna.gfw.functionaltest.app.FunctionTestSupport;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -33,9 +34,6 @@ public class RedirectTest extends FunctionTestSupport {
 
     @Value("${app.redirect.allowed.externalUrl}")
     String redirectionAllowedExternalUrl;
-
-    @Value("${app.redirect.pageTitle.404Error}")
-    String pageTitle404Error;
 
     @Test
     public void test01_01_redirectToValidInternalLink() {
@@ -105,12 +103,21 @@ public class RedirectTest extends FunctionTestSupport {
         // screen capture
         screenCapture.save(driver);
 
+        ApServerName apServerName = webDriverOperations.getApServerName();
+        String apServerVersion = webDriverOperations.getApServerVersion();
+
         driver.findElement(By.id("btn1")).click();
 
+        // Unlike other application servers, WebSphere Liberty Profile 16 wraps an unexpected exception of ServletException.
+        // So the expected error page is different.
         // confirms that 404 error occurred after login transition
-        assertThat(driver.findElement(By.xpath("/html/body/div/h2")).getText(),
-                is(pageTitle404Error));
-
+        if (apServerName == ApServerName.WEBSPHERELP && "16".equals(apServerVersion)) {
+            assertThat(driver.findElement(By.xpath("/html/body/div/h2")).getText(),
+                    is("System Error..."));
+        } else {
+            assertThat(driver.findElement(By.xpath("/html/body/div/h2")).getText(),
+                    is("Page Not Found"));
+        }
     }
 
     @Test
