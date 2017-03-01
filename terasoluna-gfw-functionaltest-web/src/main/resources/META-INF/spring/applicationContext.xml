@@ -103,4 +103,6 @@
         <property name="exceptionLogger" ref="variationExceptionLogger" />
     </bean>
 
+    <context:component-scan base-package="org.terasoluna.gfw.functionaltest.config" />
+
 </beans>
