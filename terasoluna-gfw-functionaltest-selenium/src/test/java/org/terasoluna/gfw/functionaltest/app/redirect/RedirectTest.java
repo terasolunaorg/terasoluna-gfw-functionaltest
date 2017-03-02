@@ -89,6 +89,8 @@ public class RedirectTest extends FunctionTestSupport {
     @Test
     public void test01_03_redirectToExternalLink() {
 
+    	ApServerName apServerName = webDriverOperations.getApServerName();
+
         driver.findElement(By.id("listWithExternalPath")).click();
         driver.findElement(By.id("btn1")).click();
 
@@ -103,21 +105,21 @@ public class RedirectTest extends FunctionTestSupport {
         // screen capture
         screenCapture.save(driver);
 
-        ApServerName apServerName = webDriverOperations.getApServerName();
-        String apServerVersion = webDriverOperations.getApServerVersion();
-
         driver.findElement(By.id("btn1")).click();
+
+        String expectedErrorMessage;
 
         // Unlike other application servers, WebSphere Liberty Profile 16 wraps an unexpected exception of ServletException.
         // So the expected error page is different.
-        // confirms that 404 error occurred after login transition
-        if (apServerName == ApServerName.WEBSPHERELP && "16".equals(apServerVersion)) {
-            assertThat(driver.findElement(By.xpath("/html/body/div/h2")).getText(),
-                    is("System Error..."));
+        if (apServerName == ApServerName.WEBSPHERELP) {
+        	expectedErrorMessage = "System Error...";
         } else {
-            assertThat(driver.findElement(By.xpath("/html/body/div/h2")).getText(),
-                    is("Page Not Found"));
+        	expectedErrorMessage = "Page Not Found";
         }
+
+        // confirms that 404 error occurred after login transition
+        assertThat(driver.findElement(By.xpath("/html/body/div/h2")).getText(),
+                is(expectedErrorMessage));
     }
 
     @Test
