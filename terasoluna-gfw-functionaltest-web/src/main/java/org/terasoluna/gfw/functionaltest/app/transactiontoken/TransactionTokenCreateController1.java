@@ -31,9 +31,9 @@ public class TransactionTokenCreateController1 {
     public String functionTest1_1_Create() {
         return "transactiontoken/createOutput";
     }
-    
+
     @RequestMapping(value = "1_2", method = RequestMethod.POST)
-    @TransactionTokenCheck(value="create", type = TransactionTokenType.BEGIN)
+    @TransactionTokenCheck(value = "create", type = TransactionTokenType.BEGIN)
     public String functionTest1_2_Create() {
         return "transactiontoken/createOutput";
     }

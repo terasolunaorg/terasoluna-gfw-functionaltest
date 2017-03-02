@@ -122,15 +122,16 @@ public class CodeListController {
 
     // test case 03_01
     @RequestMapping(value = "next", method = RequestMethod.GET, params = "jdbcCodeListTestSelectCodeList")
-    public String testJdbcCodeListTestSelectCodeList(CodeListForm form, Model model) {
+    public String testJdbcCodeListTestSelectCodeList(CodeListForm form,
+            Model model) {
         model.addAttribute("jdbcCodeList", codeListService.findCodeList());
         return "codelist/jdbcCodeListTestSelectCodeList";
     }
 
     // test case 03_01
     @RequestMapping(value = "next/{id}", method = RequestMethod.GET)
-    public String testJdbcCodeListTestEditCodeList(@PathVariable("id")
-    Integer id, CodeListMngForm form, Model model) {
+    public String testJdbcCodeListTestEditCodeList(
+            @PathVariable("id") Integer id, CodeListMngForm form, Model model) {
         ItemCode code = codeListService.findOne(id);
         form.setCode(code.getCode());
         form.setValue(code.getLabel());
@@ -138,7 +139,8 @@ public class CodeListController {
     }
 
     @RequestMapping(value = "next", method = RequestMethod.POST, params = "jdbcCodeListTestUpdateCodeList")
-    public String testJdbcCodeListTestUpdateCodeList(CodeListMngForm form, Model model) {
+    public String testJdbcCodeListTestUpdateCodeList(CodeListMngForm form,
+            Model model) {
         ItemCode row = codeListService.findOne(form.getId());
         row.setCode(form.getCode());
         row.setLabel(form.getValue());
@@ -147,21 +149,23 @@ public class CodeListController {
     }
 
     @RequestMapping(value = "next", method = RequestMethod.GET, params = "jdbcCodeListTestRefreshCodeList")
-    public String testJdbcCodeListTestRefreshCodeList(CodeListMngForm form, Model model) {
+    public String testJdbcCodeListTestRefreshCodeList(CodeListMngForm form,
+            Model model) {
         codeListService.refresh();
         return "codelist/jdbcCodeListTestReflesh";
     }
 
     // test case 03_02
     @RequestMapping(value = "jdbcCodeListTestCodeListIsEmpty", method = RequestMethod.GET)
-    public String testJdbcCodeListTestCodeListIsEmpty(CodeListForm form, Model model) {
+    public String testJdbcCodeListTestCodeListIsEmpty(CodeListForm form,
+            Model model) {
         return "codelist/jdbcCodeListTestCodeListIsEmpty";
     }
 
     // test case 03_03
     @RequestMapping(value = "jdbcCodeListTestDBError", method = RequestMethod.GET)
-    public String testJdbcCodeListTestDBError(CodeListForm form, HttpServletRequest request,
-            Model model) {
+    public String testJdbcCodeListTestDBError(CodeListForm form,
+            HttpServletRequest request, Model model) {
         request.setAttribute("clCodeListWrongItem", codeList.asMap());
         return "codelist/jdbcCodeListTestDBError";
     }
@@ -240,8 +244,8 @@ public class CodeListController {
 
     // test case 08_01
     @RequestMapping(value = "next", method = RequestMethod.GET, params = "existInCheckString")
-    public String test08_01_check(@Valid
-    ExistInCheckForm form, BindingResult result, Model model) {
+    public String test08_01_check(@Valid ExistInCheckForm form,
+            BindingResult result, Model model) {
         return "codelist/08_01_form";
     }
 
@@ -253,8 +257,8 @@ public class CodeListController {
 
     // test case 08_02
     @RequestMapping(value = "next", method = RequestMethod.GET, params = "existInCheckCharacter")
-    public String test08_02_check(@Valid
-    ExistInCheckForm form, BindingResult result, Model model) {
+    public String test08_02_check(@Valid ExistInCheckForm form,
+            BindingResult result, Model model) {
         return "codelist/08_02_form";
     }
 
@@ -266,8 +270,8 @@ public class CodeListController {
 
     // test case 08_03
     @RequestMapping(value = "next", method = RequestMethod.GET, params = "existInCheckWrongCodeList")
-    public String test08_03_check(@Valid
-            ExistInCheckWrongCodeListForm form, BindingResult result, Model model) {
+    public String test08_03_check(@Valid ExistInCheckWrongCodeListForm form,
+            BindingResult result, Model model) {
         return "codelist/08_03_form";
     }
 
@@ -279,8 +283,8 @@ public class CodeListController {
 
     // test case 08_04
     @RequestMapping(value = "next", method = RequestMethod.GET, params = "existInCheckMethodAnnotation")
-    public String test08_04_check(@Valid
-    ExistInCheckForm form, BindingResult result, Model model) {
+    public String test08_04_check(@Valid ExistInCheckForm form,
+            BindingResult result, Model model) {
         return "codelist/08_04_form";
     }
 
@@ -292,8 +296,8 @@ public class CodeListController {
 
     // test case 08_05
     @RequestMapping(value = "next", method = RequestMethod.GET, params = "existInCheckCustomMessage")
-    public String test08_05_check(@Valid
-    ExistInCheckForm form, BindingResult result, Model model) {
+    public String test08_05_check(@Valid ExistInCheckForm form,
+            BindingResult result, Model model) {
         return "codelist/08_05_form";
     }
 
@@ -305,30 +309,30 @@ public class CodeListController {
 
     // test case 08_06
     @RequestMapping(value = "next", method = RequestMethod.GET, params = "existInCheckExtendedCodeList")
-    public String test08_06_check(@Valid
-    ExistInCheckForm form, BindingResult result, Model model) {
+    public String test08_06_check(@Valid ExistInCheckForm form,
+            BindingResult result, Model model) {
         return "codelist/08_06_form";
     }
-    
+
     // test case 08_06
     @RequestMapping(value = "/08_07_form", method = RequestMethod.GET)
     public String test08_07_form(ExistInCheckForm form, Model model) {
         return "codelist/08_07_form";
     }
-    
+
     // test case 08_07
     @RequestMapping(value = "next", method = RequestMethod.GET, params = "existInCheckMultipleCustomCodeList")
-    public String test08_07_check(@Valid
-    ExistInCheckForm form, BindingResult result, Model model) {
+    public String test08_07_check(@Valid ExistInCheckForm form,
+            BindingResult result, Model model) {
         return "codelist/08_07_form";
     }
-    
+
     // test case 09_01
     @RequestMapping(value = "09_01_form", method = RequestMethod.GET)
     public String test09_01_form(CodeListForm form, Model model) {
         return "codelist/09_01_form";
     }
-    
+
     // test case 10_01
     @RequestMapping(value = "10_01_form", method = RequestMethod.GET)
     public String test10_01_form(CodeListForm form, Model model) {

@@ -18,7 +18,8 @@ package org.terasoluna.gfw.functionaltest.domain.exception;
 import org.terasoluna.gfw.common.exception.ResultMessagesLoggingInterceptor;
 import org.terasoluna.gfw.common.exception.ResultMessagesNotificationException;
 
-public class ResultMessagesInfoLoggingInterceptor extends ResultMessagesLoggingInterceptor {
+public class ResultMessagesInfoLoggingInterceptor extends
+                                                 ResultMessagesLoggingInterceptor {
 
     @Override
     protected void logResultMessagesNotificationException(

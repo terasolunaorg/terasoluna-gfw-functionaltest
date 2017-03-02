@@ -25,79 +25,79 @@ import org.terasoluna.gfw.common.sequencer.Sequencer;
 @Service
 public class SequencerServiceImpl implements SequencerService {
 
-	@Resource
+    @Resource
     protected Sequencer<Integer> integerSeq;
 
-	@Resource
+    @Resource
     protected Sequencer<Long> longSeq;
 
-	@Resource
+    @Resource
     protected Sequencer<BigInteger> bigIntegerSeq;
-	
-	@Resource
+
+    @Resource
     protected Sequencer<String> stringSeq;
-	
-	@Resource
+
+    @Resource
     protected Sequencer<Integer> notFoundSeq;
 
-	@Override
-	public Integer getNextValueByInteger() {
-		Integer integerSequence = integerSeq.getNext();
-		return integerSequence;
-	}
+    @Override
+    public Integer getNextValueByInteger() {
+        Integer integerSequence = integerSeq.getNext();
+        return integerSequence;
+    }
 
-	@Override
-	public Integer getCurrentValueByInteger() {
-		Integer integerSequence = integerSeq.getCurrent();
-		return integerSequence;
-	}
+    @Override
+    public Integer getCurrentValueByInteger() {
+        Integer integerSequence = integerSeq.getCurrent();
+        return integerSequence;
+    }
 
-	@Override
-	public Long getNextValueByLong() {
-		Long longSequence = longSeq.getNext();
-		return longSequence;
-	}
+    @Override
+    public Long getNextValueByLong() {
+        Long longSequence = longSeq.getNext();
+        return longSequence;
+    }
 
-	@Override
-	public Long getCurrentValueByLong() {
-		Long longSequence = longSeq.getCurrent();
-		return longSequence;
-	}
+    @Override
+    public Long getCurrentValueByLong() {
+        Long longSequence = longSeq.getCurrent();
+        return longSequence;
+    }
 
-	@Override
-	public BigInteger getNextValueByBigInteger() {
-		BigInteger bigIntegerSequence = bigIntegerSeq.getNext();
-		return bigIntegerSequence;
-	}
+    @Override
+    public BigInteger getNextValueByBigInteger() {
+        BigInteger bigIntegerSequence = bigIntegerSeq.getNext();
+        return bigIntegerSequence;
+    }
 
-	@Override
-	public BigInteger getCurrentValueByBigIneter() {
-		BigInteger bigIntegerSequence = bigIntegerSeq.getCurrent();
-		return bigIntegerSequence;
-	}
+    @Override
+    public BigInteger getCurrentValueByBigIneter() {
+        BigInteger bigIntegerSequence = bigIntegerSeq.getCurrent();
+        return bigIntegerSequence;
+    }
 
-	@Override
-	public String getNextValueByString() {
-		String stringSequence = stringSeq.getNext();
-		return stringSequence;
-	}
+    @Override
+    public String getNextValueByString() {
+        String stringSequence = stringSeq.getNext();
+        return stringSequence;
+    }
 
-	@Override
-	public String getCurrentValueByString() {
-		String stringSequence = stringSeq.getCurrent();
-		return stringSequence;
-	}
+    @Override
+    public String getCurrentValueByString() {
+        String stringSequence = stringSeq.getCurrent();
+        return stringSequence;
+    }
 
-	@Override
-	public Integer getNotFoundSequenceNext() {
-		Integer integerSequence = notFoundSeq.getNext();
-		return integerSequence;
-	}
-	
-	@Override
-	public Integer getNotFoundSequenceCurrent() {
-		Integer integerSequence = notFoundSeq.getCurrent();
-		return integerSequence;
-	}
+    @Override
+    public Integer getNotFoundSequenceNext() {
+        Integer integerSequence = notFoundSeq.getNext();
+        return integerSequence;
+    }
+
+    @Override
+    public Integer getNotFoundSequenceCurrent() {
+        Integer integerSequence = notFoundSeq.getCurrent();
+        return integerSequence;
+    }
 
 }

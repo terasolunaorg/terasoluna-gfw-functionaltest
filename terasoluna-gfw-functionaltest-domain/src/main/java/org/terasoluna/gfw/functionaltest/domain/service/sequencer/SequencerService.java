@@ -19,23 +19,23 @@ import java.math.BigInteger;
 
 public interface SequencerService {
 
-	Integer getNextValueByInteger();
-	
-	Integer getCurrentValueByInteger();
+    Integer getNextValueByInteger();
 
-	Long getNextValueByLong();
-	
-	Long getCurrentValueByLong();
+    Integer getCurrentValueByInteger();
 
-	BigInteger getNextValueByBigInteger();
-	
-	BigInteger getCurrentValueByBigIneter();
-	
-	String getNextValueByString();
-	
-	String getCurrentValueByString();
-	
-	Integer getNotFoundSequenceNext();
+    Long getNextValueByLong();
 
-	Integer getNotFoundSequenceCurrent();
+    Long getCurrentValueByLong();
+
+    BigInteger getNextValueByBigInteger();
+
+    BigInteger getCurrentValueByBigIneter();
+
+    String getNextValueByString();
+
+    String getCurrentValueByString();
+
+    Integer getNotFoundSequenceNext();
+
+    Integer getNotFoundSequenceCurrent();
 }
