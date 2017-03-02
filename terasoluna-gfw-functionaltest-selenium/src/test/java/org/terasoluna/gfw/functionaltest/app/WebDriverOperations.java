@@ -48,15 +48,6 @@ public class WebDriverOperations {
     }
 
     /**
-     * Get the text (display value) set for the specified element.
-     * @param by Identifier to look for elements
-     * @return And returns the text (display value)
-     */
-    public String getText(By by) {
-    	return webDriver.findElement(by).getText();
-    }
-
-    /**
      * Check the specified element exists.
      * @param by Identifier to look for elements
      * @return And returns true if the specified element is present.
@@ -95,7 +86,7 @@ public class WebDriverOperations {
      * @return application server name
      */
     public ApServerName getApServerName() {
-        String serverName = getText(By.id("apServerName")).toUpperCase();
+        String serverName = webDriver.findElement(By.id("apServerName")).getText().toUpperCase();
         try {
     	    return ApServerName.valueOf(serverName);
         } catch (IllegalArgumentException e) {
@@ -110,6 +101,6 @@ public class WebDriverOperations {
      * @return application server version
      */
     public String getApServerVersion() {
-    	return getText(By.id("apServerVersion"));
+        return webDriver.findElement(By.id("apServerVersion")).getText();
     }
 }
