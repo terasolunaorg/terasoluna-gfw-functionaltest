@@ -28,11 +28,11 @@ import org.slf4j.LoggerFactory;
  */
 public class WebDriverOperations {
 
+    private static final Logger logger = LoggerFactory.getLogger(WebDriverOperations.class);
+
     protected final WebDriver webDriver;
 
     protected long defaultTimeoutSecForImplicitlyWait = 5;
-
-    private static final Logger logger = LoggerFactory.getLogger(WebDriverOperations.class);
 
     public WebDriverOperations(WebDriver webDriver) {
         this.webDriver = webDriver;
