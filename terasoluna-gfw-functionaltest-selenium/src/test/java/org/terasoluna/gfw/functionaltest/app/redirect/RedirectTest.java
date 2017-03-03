@@ -109,7 +109,7 @@ public class RedirectTest extends FunctionTestSupport {
 
         String expectedErrorMessage;
 
-        // Unlike other application servers, WebSphere Liberty Profile 16 wraps an unexpected exception of ServletException.
+        // Unlike other application servers, WebSphere Liberty Profile wraps an unexpected exception of ServletException.
         // So the expected error page is different.
         if (apServerName == ApServerName.WEBSPHERELP) {
         	expectedErrorMessage = "System Error...";
