@@ -107,10 +107,9 @@ public class RedirectTest extends FunctionTestSupport {
 
         driver.findElement(By.id("btn1")).click();
 
-        String expectedErrorMessage;
-
         // Unlike other application servers, WebSphere Liberty Profile & WebSphere traditional wraps an unexpected exception of ServletException.
         // So the expected error page is different.
+        String expectedErrorMessage;
         if (apServerName == ApServerName.WEBSPHERELP || apServerName == ApServerName.WEBSPHERETR) {
         	expectedErrorMessage = "System Error...";
         } else {
