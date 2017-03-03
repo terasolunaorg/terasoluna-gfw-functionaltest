@@ -66,13 +66,13 @@ public class FunctionTestSupport extends ApplicationObjectSupport {
 
     @Inject
     protected DBLogProvider dbLogProvider;
-    
+
     @Inject
     private DBLog dbLog;
-    
+
     @Inject
     private DBLogCleaner dbLogCleaner;
-    
+
     @Rule
     public TestName testName = new TestName();
 
@@ -135,7 +135,7 @@ public class FunctionTestSupport extends ApplicationObjectSupport {
 
         screenCapture.setUp(evidenceSavingDirectory);
         pageSource.setUp(evidenceSavingDirectory);
-        
+
         dbLog.setUp(evidenceSavingDirectory);
     }
 
@@ -151,7 +151,7 @@ public class FunctionTestSupport extends ApplicationObjectSupport {
     public final void setUpDBLog() {
         dbLogCleaner.cleanupAll();
     }
-    
+
     protected void bindWebDriver(WebDriver webDriver) {
         webDrivers.add(webDriver);
     }
@@ -167,7 +167,7 @@ public class FunctionTestSupport extends ApplicationObjectSupport {
         driver.manage().timeouts().implicitlyWait(
                 defaultTimeoutSecForImplicitlyWait, TimeUnit.SECONDS);
         driver.get(getPackageRootUrl());
-        
+
         this.webDriverOperations = new WebDriverOperations(driver);
         this.webDriverOperations
                 .setDefaultTimeoutForImplicitlyWait(defaultTimeoutSecForImplicitlyWait);

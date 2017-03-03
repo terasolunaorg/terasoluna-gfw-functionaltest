@@ -34,12 +34,13 @@ public class FullHalfConverterTest extends FunctionTestSupport {
 
         driver.findElement(By.id("fullHalfConverter01")).click();
 
-        inputFieldAccessor.overrideValue(By.id("halfwidth"), "ｱﾞ!A8ｶﾞザ",
-                driver);
+        inputFieldAccessor
+                .overrideValue(By.id("halfwidth"), "ｱﾞ!A8ｶﾞザ", driver);
         driver.findElement(By.id("toFullwidth")).click();
 
-        assertThat(driver.findElement(By.id("fullwidth")).getAttribute(
-                "value"), is("ア゛！Ａ８ガザ"));
+        assertThat(
+                driver.findElement(By.id("fullwidth")).getAttribute("value"),
+                is("ア゛！Ａ８ガザ"));
     }
 
     @Test
@@ -47,12 +48,12 @@ public class FullHalfConverterTest extends FunctionTestSupport {
 
         driver.findElement(By.id("fullHalfConverter01")).click();
 
-        inputFieldAccessor
-                .overrideValue(By.id("fullwidth"), "Ａ！アガｻ", driver);
+        inputFieldAccessor.overrideValue(By.id("fullwidth"), "Ａ！アガｻ", driver);
         driver.findElement(By.id("toHalfwidth")).click();
 
-        assertThat(driver.findElement(By.id("halfwidth")).getAttribute(
-                "value"), is("A!ｱｶﾞｻ"));
+        assertThat(
+                driver.findElement(By.id("halfwidth")).getAttribute("value"),
+                is("A!ｱｶﾞｻ"));
     }
 
     @Test
@@ -110,8 +111,8 @@ public class FullHalfConverterTest extends FunctionTestSupport {
 
         for (String testData[] : testDatas) {
 
-            inputFieldAccessor.overrideValue(By.id("halfwidth"),
-                    testData[1], driver);
+            inputFieldAccessor.overrideValue(By.id("halfwidth"), testData[1],
+                    driver);
             driver.findElement(By.id("toFullwidth")).click();
 
             assertThat(driver.findElement(By.id("fullwidth")).getAttribute(
@@ -130,12 +131,13 @@ public class FullHalfConverterTest extends FunctionTestSupport {
 
         driver.findElement(By.id("customFullHalfConverter02")).click();
 
-        inputFieldAccessor.overrideValue(By.id("fullwidth"), "ハローワールド！",
-                driver);
+        inputFieldAccessor
+                .overrideValue(By.id("fullwidth"), "ハローワールド！", driver);
         driver.findElement(By.id("toHalfwidth")).click();
 
-        assertThat(driver.findElement(By.id("halfwidth")).getAttribute(
-                "value"), is("ﾊﾛ-ﾜ-ﾙﾄﾞ!"));
+        assertThat(
+                driver.findElement(By.id("halfwidth")).getAttribute("value"),
+                is("ﾊﾛ-ﾜ-ﾙﾄﾞ!"));
     }
 
     @Test

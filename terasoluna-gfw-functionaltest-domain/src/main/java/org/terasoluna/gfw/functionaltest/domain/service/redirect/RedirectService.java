@@ -22,9 +22,9 @@ import org.terasoluna.gfw.functionaltest.domain.model.UserInfo;
 public interface RedirectService {
 
     List<UserInfo> findUserInfo();
-    
+
     UserInfo findOne(String username);
-    
+
     UserInfo save(UserInfo row);
 
 }

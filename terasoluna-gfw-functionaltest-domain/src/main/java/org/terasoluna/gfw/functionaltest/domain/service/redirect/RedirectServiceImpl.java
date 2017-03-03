@@ -31,7 +31,7 @@ public class RedirectServiceImpl implements RedirectService {
 
     @Inject
     protected UserRepository userRepository;
-    
+
     @Override
     @Transactional(value = TransactionManagers.JPA, readOnly = true)
     public List<UserInfo> findUserInfo() {

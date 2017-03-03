@@ -18,5 +18,5 @@ package org.terasoluna.gfw.functionaltest.domain.service.download;
 import java.io.InputStream;
 
 public interface DownloadService {
-    InputStream findContentsById (int documentId);
+    InputStream findContentsById(int documentId);
 }

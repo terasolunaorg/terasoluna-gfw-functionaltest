@@ -22,11 +22,11 @@ public class ContinueException extends RuntimeException {
     public ContinueException(String message, Throwable cause) {
         super(message, cause);
     }
-    
+
     public ContinueException(Throwable cause) {
         super(cause);
     }
-    
+
     public ContinueException(String message) {
         super(message);
     }

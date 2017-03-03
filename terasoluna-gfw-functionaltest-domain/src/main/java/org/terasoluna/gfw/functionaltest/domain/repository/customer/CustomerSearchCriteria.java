@@ -22,20 +22,20 @@ import java.util.List;
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class CustomerSearchCriteria implements Serializable {
-    
+
     private static final long serialVersionUID = -2007417506389590890L;
-    
+
     private String name;
-    
+
     private List<String> countries;
-    
+
     private boolean main;
-    
+
     private int age;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dateOfBirth;
-    
+
     public String getName() {
         return name;
     }
@@ -75,6 +75,5 @@ public class CustomerSearchCriteria implements Serializable {
     public void setDateOfBirth(Date dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
-    
-}
 
+}
