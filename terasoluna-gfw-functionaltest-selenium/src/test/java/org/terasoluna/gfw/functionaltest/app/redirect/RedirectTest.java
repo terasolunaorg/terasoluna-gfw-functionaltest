@@ -89,7 +89,7 @@ public class RedirectTest extends FunctionTestSupport {
     @Test
     public void test01_03_redirectToExternalLink() {
 
-    	ApServerName apServerName = webDriverOperations.getApServerName();
+        ApServerName apServerName = webDriverOperations.getApServerName();
 
         driver.findElement(By.id("listWithExternalPath")).click();
         driver.findElement(By.id("btn1")).click();
@@ -111,9 +111,9 @@ public class RedirectTest extends FunctionTestSupport {
         // So the expected error page is different.
         String expectedErrorMessage;
         if (apServerName == ApServerName.WEBSPHERELP) {
-        	expectedErrorMessage = "System Error...";
+            expectedErrorMessage = "System Error...";
         } else {
-        	expectedErrorMessage = "Page Not Found";
+            expectedErrorMessage = "Page Not Found";
         }
 
         // confirms that 404 error occurred after login transition
