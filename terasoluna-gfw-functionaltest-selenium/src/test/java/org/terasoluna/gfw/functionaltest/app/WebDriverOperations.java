@@ -20,11 +20,16 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Class that provides a (logic for WebDriver) browser operation.
  */
 public class WebDriverOperations {
+
+    private static final Logger logger = LoggerFactory
+            .getLogger(WebDriverOperations.class);
 
     protected final WebDriver webDriver;
 
@@ -75,5 +80,30 @@ public class WebDriverOperations {
      */
     public void setTimeoutForImplicitlyWait(long timeout, TimeUnit timeUnit) {
         webDriver.manage().timeouts().implicitlyWait(timeout, timeUnit);
+    }
+
+    /**
+     * Get application server name.
+     * @return application server name
+     */
+    public ApServerName getApServerName() {
+        String serverName = webDriver.findElement(By.id("apServerName"))
+                .getText().toUpperCase();
+        try {
+            return ApServerName.valueOf(serverName);
+        } catch (IllegalArgumentException e) {
+            logger.warn("Unkown application server name:{} is detected.",
+                    serverName);
+            // If server name not defined in the ApServerName class, set it to UNKNOWN.
+            return ApServerName.UNKNOWN;
+        }
+    }
+
+    /**
+     * Get application server version.
+     * @return application server version
+     */
+    public String getApServerVersion() {
+        return webDriver.findElement(By.id("apServerVersion")).getText();
     }
 }

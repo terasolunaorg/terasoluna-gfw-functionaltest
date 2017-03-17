@@ -25,6 +25,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.terasoluna.gfw.functionaltest.app.ApServerName;
 import org.terasoluna.gfw.functionaltest.app.FunctionTestSupport;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -33,9 +34,6 @@ public class RedirectTest extends FunctionTestSupport {
 
     @Value("${app.redirect.allowed.externalUrl}")
     String redirectionAllowedExternalUrl;
-
-    @Value("${app.redirect.pageTitle.404Error}")
-    String pageTitle404Error;
 
     @Test
     public void test01_01_redirectToValidInternalLink() {
@@ -91,6 +89,8 @@ public class RedirectTest extends FunctionTestSupport {
     @Test
     public void test01_03_redirectToExternalLink() {
 
+        ApServerName apServerName = webDriverOperations.getApServerName();
+
         driver.findElement(By.id("listWithExternalPath")).click();
         driver.findElement(By.id("btn1")).click();
 
@@ -107,10 +107,20 @@ public class RedirectTest extends FunctionTestSupport {
 
         driver.findElement(By.id("btn1")).click();
 
+        // Unlike other application servers, WebSphere Liberty Profile & WebSphere traditional wraps an unexpected exception of
+        // ServletException.
+        // So the expected error page is different.
+        String expectedErrorMessage;
+        if (apServerName == ApServerName.WEBSPHERELP
+                || apServerName == ApServerName.WEBSPHERETR) {
+            expectedErrorMessage = "System Error...";
+        } else {
+            expectedErrorMessage = "Page Not Found";
+        }
+
         // confirms that 404 error occurred after login transition
         assertThat(driver.findElement(By.xpath("/html/body/div/h2")).getText(),
-                is(pageTitle404Error));
-
+                is(expectedErrorMessage));
     }
 
     @Test

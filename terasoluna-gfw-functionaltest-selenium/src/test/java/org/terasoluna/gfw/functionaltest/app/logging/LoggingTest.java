@@ -50,7 +50,7 @@ public class LoggingTest extends FunctionTestSupport {
 
         // cut x-Track MDC
         String targetMdc = driver.findElement(By.id("xTrackMDC")).getText();
-        String footerMdc = driver.findElement(By.cssSelector("p")).getText();
+        String footerMdc = driver.findElement(By.id("xtrack")).getText();
         footerMdc = footerMdc.substring(footerMdc.indexOf(":") + 1, footerMdc
                 .indexOf(":") + 33);
         // check default x-Track MDC
@@ -67,7 +67,7 @@ public class LoggingTest extends FunctionTestSupport {
 
         // cut x-Track MDC
         String targetMdc = driver.findElement(By.id("xTrackMDC")).getText();
-        String footerMdc = driver.findElement(By.cssSelector("p")).getText();
+        String footerMdc = driver.findElement(By.id("xtrack")).getText();
         footerMdc = footerMdc.substring(footerMdc.indexOf(":") + 1, footerMdc
                 .indexOf(":") + 33);
         // check custom x-Track MDC
