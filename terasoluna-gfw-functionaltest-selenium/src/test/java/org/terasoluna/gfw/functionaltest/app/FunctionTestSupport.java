@@ -29,6 +29,8 @@ import org.junit.rules.TestName;
 import org.junit.rules.TestWatcher;
 import org.junit.runner.Description;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxProfile;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -174,7 +176,10 @@ public class FunctionTestSupport extends ApplicationObjectSupport {
     }
 
     private WebDriver newWebDriver() {
-        WebDriver webDriver = getApplicationContext().getBean(WebDriver.class);
+        FirefoxProfile profile = new FirefoxProfile();
+        profile.setPreference("browser.startup.homepage_override.mstone", "ignore");
+        profile.setPreference("network.proxy.type", 0);
+        WebDriver webDriver = new FirefoxDriver(profile);
         webDrivers.add(webDriver);
         return webDriver;
     }
