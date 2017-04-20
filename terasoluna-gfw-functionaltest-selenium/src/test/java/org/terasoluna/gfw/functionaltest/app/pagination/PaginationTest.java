@@ -30,6 +30,7 @@ import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.terasoluna.gfw.functionaltest.app.FunctionTestSupport;
@@ -2976,6 +2977,127 @@ public class PaginationTest extends FunctionTestSupport {
 
         // page soruce
         pageSource.save(driver);
+    }
+
+    @Test
+    public void test27_01_searchWithSession() {
+        driver.findElement(By.id("search_27_1")).click();
+
+        // search
+        {
+            inputFieldAccessor.appendValue(By.id("name"), "+ &=", driver);
+            Select element = new Select(driver.findElement(By.id("sort")));
+            element.selectByIndex(1);
+            driver.findElement(By.id("searchButton")).click();
+            // assert 1 page
+            assertThat(driver.findElement(By.id("pagePosition")).getText(),
+                    is("1"));
+            assertThat(driver.findElement(By.id("rangeStart")).getText(),
+                    is("1"));
+            assertThat(driver.findElement(By.id("rangeEnd")).getText(),
+                    is("10"));
+            assertThat(driver.findElement(By.id("totalResults")).getText(),
+                    is("100"));
+            assertThat(driver.findElement(By.id("personId0")).getText(),
+                    is("201"));
+            assertThat(driver.findElement(By.id("personId9")).getText(),
+                    is("210"));
+        }
+        // move specified page(3 page)
+        {
+            driver.findElement(By.id("paginationAndSessionFunction")).findElement(
+                    By.linkText("3")).click();
+
+            // assert 3 page
+            assertThat(driver.findElement(By.id("pagePosition")).getText(),
+                    is("3"));
+            assertThat(driver.findElement(By.id("rangeStart")).getText(),
+                    is("21"));
+            assertThat(driver.findElement(By.id("rangeEnd")).getText(),
+                    is("30"));
+            assertThat(driver.findElement(By.id("totalResults")).getText(),
+                    is("100"));
+            assertThat(driver.findElement(By.id("personId0")).getText(),
+                    is("221"));
+            assertThat(driver.findElement(By.id("personId9")).getText(),
+                    is("230"));
+        }
+        // move next page(4 page)
+        {
+            driver.findElement(By.id("paginationAndSessionFunction")).findElement(
+                    By.linkText(">")).click();
+
+            // assert 4 page
+            assertThat(driver.findElement(By.id("pagePosition")).getText(),
+                    is("4"));
+            assertThat(driver.findElement(By.id("rangeStart")).getText(),
+                    is("31"));
+            assertThat(driver.findElement(By.id("rangeEnd")).getText(),
+                    is("40"));
+            assertThat(driver.findElement(By.id("totalResults")).getText(),
+                    is("100"));
+            assertThat(driver.findElement(By.id("personId0")).getText(),
+                    is("231"));
+            assertThat(driver.findElement(By.id("personId9")).getText(),
+                    is("240"));
+        }
+        // move last page(10 page)
+        {
+            driver.findElement(By.id("paginationAndSessionFunction")).findElement(
+                    By.linkText(">>")).click();
+
+            // assert 10 page
+            assertThat(driver.findElement(By.id("pagePosition")).getText(),
+                    is("10"));
+            assertThat(driver.findElement(By.id("rangeStart")).getText(),
+                    is("91"));
+            assertThat(driver.findElement(By.id("rangeEnd")).getText(),
+                    is("100"));
+            assertThat(driver.findElement(By.id("totalResults")).getText(),
+                    is("100"));
+            assertThat(driver.findElement(By.id("personId0")).getText(),
+                    is("291"));
+            assertThat(driver.findElement(By.id("personId9")).getText(),
+                    is("300"));
+        }
+        // move previous page(9 page)
+        {
+            driver.findElement(By.id("paginationAndSessionFunction")).findElement(
+                    By.linkText("<")).click();
+
+            // assert 9 page
+            assertThat(driver.findElement(By.id("pagePosition")).getText(),
+                    is("9"));
+            assertThat(driver.findElement(By.id("rangeStart")).getText(),
+                    is("81"));
+            assertThat(driver.findElement(By.id("rangeEnd")).getText(),
+                    is("90"));
+            assertThat(driver.findElement(By.id("totalResults")).getText(),
+                    is("100"));
+            assertThat(driver.findElement(By.id("personId0")).getText(),
+                    is("281"));
+            assertThat(driver.findElement(By.id("personId9")).getText(),
+                    is("290"));
+        }
+        // move first page(1 page)
+        {
+            driver.findElement(By.id("paginationAndSessionFunction")).findElement(
+                    By.linkText("<<")).click();
+
+            // assert 1 page
+            assertThat(driver.findElement(By.id("pagePosition")).getText(),
+                    is("1"));
+            assertThat(driver.findElement(By.id("rangeStart")).getText(),
+                    is("1"));
+            assertThat(driver.findElement(By.id("rangeEnd")).getText(),
+                    is("10"));
+            assertThat(driver.findElement(By.id("totalResults")).getText(),
+                    is("100"));
+            assertThat(driver.findElement(By.id("personId0")).getText(),
+                    is("201"));
+            assertThat(driver.findElement(By.id("personId9")).getText(),
+                    is("210"));
+        }
     }
 
 }
