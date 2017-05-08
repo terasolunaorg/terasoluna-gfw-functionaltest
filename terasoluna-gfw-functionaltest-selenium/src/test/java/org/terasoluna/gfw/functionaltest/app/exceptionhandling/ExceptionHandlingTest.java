@@ -65,7 +65,6 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
     }
 
     @Test
-    @Ignore("different result by ap server. does not work in weblogic.")
     public void test02_01_useCaseControllerHandling() {
 
         driver.findElement(By.id("useCaseControllerHandling_02_01")).click();
