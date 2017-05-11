@@ -14,7 +14,7 @@
 	<br />
 	
 	<c:if test="${!(empty searchPattern)}">
-		<div id="searchresult">${f:h(searchPattern)} result ${f:h(hitNumber)}</div>
+		<div id="searchresult">${f:h(searchPattern)}&nbsp;result ${f:h(hitNumber)}</div>
 	</c:if>
 	<c:if test="${!(empty todoList)}">
 		<table>
