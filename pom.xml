@@ -151,6 +151,26 @@
                         </headerDefinitions>
                     </configuration>
                 </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>xml-maven-plugin</artifactId>
+                    <version>${xml-maven-plugin.version}</version>
+                    <configuration>
+                        <indentSize>2</indentSize>
+                        <formatFileSets>
+                            <formatFileSet>
+                                <directory>${project.basedir}</directory>
+                                <includes>
+                                    <include>**/*.xml</include>
+                                </includes>
+                                <excludes>
+                                    <exclude>**/.*</exclude>
+                                </excludes>
+                            </formatFileSet>
+                        </formatFileSets>
+                        <useDefaultFormatFileSet>false</useDefaultFormatFileSet>
+                    </configuration>
+                </plugin>
             </plugins>
         </pluginManagement>
     </build>
@@ -243,6 +263,7 @@
         <org.codehaus.mojo.sql-maven-plugin.version>1.5</org.codehaus.mojo.sql-maven-plugin.version>
         <maven-failsafe-plugin.version>2.19</maven-failsafe-plugin.version>
         <formatter-maven-plugin.version>2.0.1</formatter-maven-plugin.version>
+        <xml-maven-plugin.version>1.0.1</xml-maven-plugin.version>
         <com.google.code.maven-license-plugin.version>1.4.0</com.google.code.maven-license-plugin.version>
         <!-- == Dependency Versions == -->
         <postgresql.version>9.4.1212.jre7</postgresql.version>
