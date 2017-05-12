@@ -7,4 +7,5 @@ function setTag() {
 </script>
 
 <div id="message"></div>
-<input id="write" type="button" value="write" class="mainbtn" onclick="setTag()">
+<input id="write" type="button" value="write" class="mainbtn"
+  onclick="setTag()">

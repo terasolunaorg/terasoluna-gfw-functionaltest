@@ -5,10 +5,12 @@
 <body>
   <h2>Codelist</h2>
   <br>
-  <form:form action="${pageContext.request.contextPath}/codelist/next" method="get" modelAttribute="existInCheckForm">
-   <table>
+  <form:form action="${pageContext.request.contextPath}/codelist/next"
+    method="get" modelAttribute="existInCheckForm">
+    <table>
       <tr>
-        <td><span id="errors"><form:errors path="item2" style="color:red" /></span></td>
+        <td><span id="errors"><form:errors path="item2"
+              style="color:red" /></span></td>
       </tr>
     </table>
     <table>
@@ -17,17 +19,19 @@
         <td><form:input path="item2" /></td>
       </tr>
       <tr>
-        <td><input id="btn1" class="mainbtn" style="width: 200px;" type="submit" value="Confirm"
-          name="existInCheckCharacter" />
+        <td><input id="btn1" class="mainbtn" style="width: 200px;"
+          type="submit" value="Confirm" name="existInCheckCharacter" />
         <td>
         <td></td>
       </tr>
     </table>
   </form:form>
-  <form:form action="${pageContext.request.contextPath}/codelist" method="get">
+  <form:form action="${pageContext.request.contextPath}/codelist"
+    method="get">
     <table>
       <tr>
-        <td><input id="btnback" class="mainbtn" style="width: 200px;" type="submit" value="Back to menu" /></td>
+        <td><input id="btnback" class="mainbtn"
+          style="width: 200px;" type="submit" value="Back to menu" /></td>
       </tr>
     </table>
   </form:form>
