@@ -67,15 +67,16 @@ public enum WebDriverInputFieldAccessor {
 
         private void setValue(By by, String value, WebDriver webDriver) {
             String scriptCode = "arguments[0].value = '" + js(value) + "';";
-            ((JavascriptExecutor) webDriver).executeScript(scriptCode,
-                    webDriver.findElement(by));
+            ((JavascriptExecutor) webDriver).executeScript(scriptCode, webDriver
+                    .findElement(by));
         }
 
     };
 
     public abstract void appendValue(By by, String value, WebDriver webDriver);
 
-    public abstract void overrideValue(By by, String value, WebDriver webDriver);
+    public abstract void overrideValue(By by, String value,
+            WebDriver webDriver);
 
     public String getValue(By by, WebDriver webDriver) {
         return webDriver.findElement(by).getAttribute("value");

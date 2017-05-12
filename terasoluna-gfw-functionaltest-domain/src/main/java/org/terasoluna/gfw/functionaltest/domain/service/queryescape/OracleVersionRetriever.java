@@ -26,9 +26,8 @@ public class OracleVersionRetriever {
     JdbcTemplate jdbcTemplate;
 
     public String getVersion() {
-        return jdbcTemplate
-                .queryForObject(
-                        "SELECT version FROM PRODUCT_COMPONENT_VERSION WHERE product LIKE 'Oracle%' AND ROWNUM <= 1",
-                        String.class);
+        return jdbcTemplate.queryForObject(
+                "SELECT version FROM PRODUCT_COMPONENT_VERSION WHERE product LIKE 'Oracle%' AND ROWNUM <= 1",
+                String.class);
     }
 }

@@ -269,7 +269,8 @@ public class CodeListController {
 
     // test case 08_03
     @RequestMapping(value = "/08_03_form", method = RequestMethod.GET)
-    public String test08_03_form(ExistInCheckWrongCodeListForm form, Model model) {
+    public String test08_03_form(ExistInCheckWrongCodeListForm form,
+            Model model) {
         return "codelist/08_03_form";
     }
 
@@ -342,8 +343,8 @@ public class CodeListController {
     @RequestMapping(value = "next", method = RequestMethod.GET, params = "existInCheckParamAnnotation")
     public String test08_08_check(CodeListForm form, Model model) {
         try {
-            model.addAttribute("item1Label", existInCodeListService
-                    .getLabel(form.getItem1()));
+            model.addAttribute("item1Label", existInCodeListService.getLabel(
+                    form.getItem1()));
         } catch (ConstraintViolationException e) {
             model.addAttribute("item1Error", e.getConstraintViolations()
                     .iterator().next().getMessage());
