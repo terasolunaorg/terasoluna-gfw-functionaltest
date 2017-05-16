@@ -134,6 +134,9 @@
             </configFile>
             <lineEnding>CRLF</lineEnding>
             <sourceDirectory>${project.basedir}</sourceDirectory>
+            <excludes>
+              <exclude>**/target/**</exclude>
+            </excludes>
           </configuration>
         </plugin>
         <plugin>
@@ -150,6 +153,7 @@
                 </includes>
                 <excludes>
                   <exclude>**/.*</exclude>
+                  <exclude>**/target/**</exclude>
                 </excludes>
               </formatFileSet>
             </formatFileSets>
