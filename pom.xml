@@ -133,7 +133,9 @@
             <configFile>${project.root.basedir}/eclipse/formatter.xml
             </configFile>
             <lineEnding>CRLF</lineEnding>
-            <sourceDirectory>${project.basedir}</sourceDirectory>
+            <directories>
+              <directory>${project.basedir}</directory>
+            </directories>
             <excludes>
               <exclude>**/target/**</exclude>
             </excludes>
