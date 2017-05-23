@@ -136,9 +136,10 @@
             <directories>
               <directory>${project.basedir}</directory>
             </directories>
-            <excludes>
-              <exclude>**/target/**</exclude>
-            </excludes>
+            <includes>
+              <include>**/src/main/java/**/*.java</include>
+              <include>**/src/test/java/**/*.java</include>
+            </includes>
           </configuration>
         </plugin>
         <plugin>
@@ -151,15 +152,12 @@
               <formatFileSet>
                 <directory>${project.basedir}</directory>
                 <includes>
-                  <include>**/*.xml</include>
+                  <include>src/**/*.xml</include>
+                  <include>eclipse/**/*.xml</include>
+                  <include>license/**/*.xml</include>
                 </includes>
-                <excludes>
-                  <exclude>**/.*</exclude>
-                  <exclude>**/target/**</exclude>
-                </excludes>
               </formatFileSet>
             </formatFileSets>
-            <useDefaultFormatFileSet>false</useDefaultFormatFileSet>
           </configuration>
         </plugin>
         <plugin>
