@@ -13,7 +13,7 @@ input todoTitle search word and push button. choose search pattern.
 <br />
 
 <c:if test="${!(empty searchPattern)}">
-  <div id="searchresult">${f:h(searchPattern)}&nbsp;result${f:h(hitNumber)}</div>
+  <div id="searchresult">${f:h(searchPattern)}&nbsp;result&nbsp;${f:h(hitNumber)}</div>
 </c:if>
 <c:if test="${!(empty todoList)}">
   <table>
