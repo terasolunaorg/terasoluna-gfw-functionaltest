@@ -3,18 +3,18 @@
 <table>
   <tr>
     <td><a id="xTrackMDCPutFilterDefault"
-      href="${pageContext.request.contextPath}/logging/xTrackMDCPutFilter/1_1">default
-        attribute name</a></td>
+      href="${pageContext.request.contextPath}/logging/xTrackMDCPutFilter/1_1">default attribute
+        name</a></td>
   </tr>
   <tr>
     <td><a id="xTrackMDCPutFilterCustom"
-      href="${pageContext.request.contextPath}/logging/xTrackMDCPutFilter/1_2">custom
-        attribute name</a></td>
+      href="${pageContext.request.contextPath}/logging/xTrackMDCPutFilter/1_2">custom attribute
+        name</a></td>
   </tr>
   <tr>
     <td><a id="xTrackMDCPutFilterCustom"
-      href="${pageContext.request.contextPath}/logging/xTrackMDCPutFilter/1_4">Check
-        consistency HTTP Request Header to Response Header</a></td>
+      href="${pageContext.request.contextPath}/logging/xTrackMDCPutFilter/1_4">Check consistency
+        HTTP Request Header to Response Header</a></td>
   </tr>
 </table>
 

@@ -10,8 +10,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta name="viewport" content="width=device-width" />
 
-<link rel="stylesheet"
-  href="${pageContext.request.contextPath}/resources/app/css/style.css"
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/app/css/style.css"
   type="text/css" media="screen, projection">
 <script type="text/javascript"
   src="${pageContext.request.contextPath}/resources/vendor/js/jquery-1.7.2.js"></script>
@@ -19,8 +18,7 @@
 <c:set var="titleKey">
   <tiles:insertAttribute name="title" ignore="true" />
 </c:set>
-<title><spring:message code="${titleKey}"
-    text="terasoluna-gfw-functionaltest" /></title>
+<title><spring:message code="${titleKey}" text="terasoluna-gfw-functionaltest" /></title>
 </head>
 <body>
   <div class="wrapper">
@@ -29,8 +27,8 @@
     <hr>
     <p align="right">
       Application Server : <span id="apServerName"><spring:eval
-          expression="@environment.getProperty('application.server.name')" /></span>
-      <span id="apServerVersion"><spring:eval
+          expression="@environment.getProperty('application.server.name')" /></span> <span
+        id="apServerVersion"><spring:eval
           expression="@environment.getProperty('application.server.version')" /></span>
     </p>
     <p style="text-align: center; background: #e5eCf9;">

@@ -2,8 +2,8 @@
 <h2>Query Display f:query(MapOfSimpleValue)</h2>
 
 <span>Input Data</span>
-<form:form action="${pageContext.request.contextPath}/el/6_12/search"
-  method="GET" modelAttribute="searchForm4">
+<form:form action="${pageContext.request.contextPath}/el/6_12/search" method="GET"
+  modelAttribute="searchForm4">
   <table>
     <thead>
       <tr>

@@ -1,8 +1,7 @@
 
 <h1>${f:h(page.number) + 1}&nbsp;Page</h1>
 <div class="pagination">
-  <t:pagination page="${page}" firstLinkText="" lastLinkText=""
-    previousLinkText="" nextLinkText="" />
+  <t:pagination page="${page}" firstLinkText="" lastLinkText="" previousLinkText="" nextLinkText="" />
 </div>
 <table class="maintable">
   <thead>
@@ -21,6 +20,5 @@
   </c:forEach>
 </table>
 <div class="pagination">
-  <t:pagination page="${page}" firstLinkText="" lastLinkText=""
-    previousLinkText="" nextLinkText="" />
+  <t:pagination page="${page}" firstLinkText="" lastLinkText="" previousLinkText="" nextLinkText="" />
 </div>

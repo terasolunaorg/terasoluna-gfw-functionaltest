@@ -3,8 +3,7 @@
 
 <span>First Expected Date</span>
 <p id="firstExpectedDate">
-  <fmt:formatDate value="${firstExpectedDate}"
-    pattern="yyyy-MM-dd HH:mm:ss.SSS" />
+  <fmt:formatDate value="${firstExpectedDate}" pattern="yyyy-MM-dd HH:mm:ss.SSS" />
 </p>
 <span>Server Time</span>
 <p id="serverTime">
@@ -12,8 +11,7 @@
 </p>
 <span>Last Expected Date</span>
 <p id="lastExpectedDate">
-  <fmt:formatDate value="${lastExpectedDate}"
-    pattern="yyyy-MM-dd HH:mm:ss.SSS" />
+  <fmt:formatDate value="${lastExpectedDate}" pattern="yyyy-MM-dd HH:mm:ss.SSS" />
 </p>
 
 <span>Class Type</span>

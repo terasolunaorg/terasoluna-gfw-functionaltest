@@ -5,15 +5,13 @@
 
     <!-- Transaction token generation test scenarios -->
     <tr>
-      <td><a id="link1"
-        href="${pageContext.request.contextPath}/transactiontoken/create">Transaction
+      <td><a id="link1" href="${pageContext.request.contextPath}/transactiontoken/create">Transaction
           Token Contents Confirmation</a></td>
     </tr>
 
     <!-- Transaction token type scenarios -->
     <tr>
-      <td><a id="link2"
-        href="${pageContext.request.contextPath}/transactiontoken/flow">TransactionTokenType
+      <td><a id="link2" href="${pageContext.request.contextPath}/transactiontoken/flow">TransactionTokenType
           : BEGIN-IN-CHECK-END</a></td>
     </tr>
 

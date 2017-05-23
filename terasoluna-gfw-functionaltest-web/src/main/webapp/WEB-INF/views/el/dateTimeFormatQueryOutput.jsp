@@ -2,8 +2,8 @@
 <h2>Query Display f:query(DateTimeFormat)</h2>
 
 <span>Input Data</span>
-<form:form action="${pageContext.request.contextPath}/el/6_13/search"
-  method="GET" modelAttribute="dateForm5">
+<form:form action="${pageContext.request.contextPath}/el/6_13/search" method="GET"
+  modelAttribute="dateForm5">
   <fieldset>
     <legend>Nested Bean(Parent)</legend>
     <p>

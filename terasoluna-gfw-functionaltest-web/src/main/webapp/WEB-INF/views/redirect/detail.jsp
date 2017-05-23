@@ -1,14 +1,13 @@
 
 <h2>Redirect</h2>
 <br>
-<form:form action="${pageContext.request.contextPath}/redirect"
-  method="get" modelAttribute="detailForm">
+<form:form action="${pageContext.request.contextPath}/redirect" method="get"
+  modelAttribute="detailForm">
 
   <table class="maintable">
     <tr>
       <td>UserName</td>
-      <td><label id="username"><sec:authentication
-            property="principal.username" /></label></td>
+      <td><label id="username"><sec:authentication property="principal.username" /></label></td>
     </tr>
     <tr>
       <td>Name</td>

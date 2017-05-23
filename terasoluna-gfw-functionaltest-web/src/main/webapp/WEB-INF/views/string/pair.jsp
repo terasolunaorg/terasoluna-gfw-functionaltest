@@ -1,7 +1,6 @@
 <h2 id="page_title">${f:h(targetTitle)}</h2>
 
-<form:form
-  action="${pageContext.request.contextPath}/string/${f:h(targetPath)}"
+<form:form action="${pageContext.request.contextPath}/string/${f:h(targetPath)}"
   modelAttribute="fullHalfPairForm" method="post">
 
   <table>

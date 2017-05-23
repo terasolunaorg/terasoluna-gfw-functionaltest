@@ -1,7 +1,6 @@
 <h2 id="page_title">CodePoints Test</h2>
 
-<form:form
-  action="${pageContext.request.contextPath}/codepoints/excludedCodePoints"
+<form:form action="${pageContext.request.contextPath}/codepoints/excludedCodePoints"
   modelAttribute="excludedCodePointsForm" method="post">
 
   <table>

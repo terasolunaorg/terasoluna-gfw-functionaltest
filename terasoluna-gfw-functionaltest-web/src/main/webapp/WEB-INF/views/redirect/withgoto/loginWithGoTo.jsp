@@ -1,12 +1,9 @@
 
 <h2>Redirect</h2>
 <br>
-<form:form
-  action="${pageContext.request.contextPath}/redirect/withgoto/login"
-  method="post">
+<form:form action="${pageContext.request.contextPath}/redirect/withgoto/login" method="post">
   <c:if test="${!(empty param.error)}">
-    <t:messagesPanel
-      messagesAttributeName="SPRING_SECURITY_LAST_EXCEPTION" />
+    <t:messagesPanel messagesAttributeName="SPRING_SECURITY_LAST_EXCEPTION" />
   </c:if>
 
   <fieldset>
@@ -18,8 +15,7 @@
       PassWord:<input type="password" id="password" name="password">
     </p>
 
-    <input id="redirect" type="hidden" name="goTo"
-      value="${f:h(param.goTo)}" />
+    <input id="redirect" type="hidden" name="goTo" value="${f:h(param.goTo)}" />
     <div class="right">
       <input type="submit" id="btn1" class="mainbtn" value="Login" />
     </div>

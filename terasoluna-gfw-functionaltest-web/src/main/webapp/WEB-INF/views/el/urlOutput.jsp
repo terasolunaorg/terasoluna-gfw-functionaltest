@@ -1,8 +1,7 @@
 
 <h2>URL Encoding f:u()</h2>
 
-<form:form action="${pageContext.request.contextPath}/el/output_02"
-  method="post">
+<form:form action="${pageContext.request.contextPath}/el/output_02" method="post">
   <span>Input Data</span>
   <br />
   <input id="text-output" type="text" class="text" name="outputData" />

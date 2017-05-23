@@ -1,10 +1,9 @@
 
-<h2>Query Display f:query(MapOfSimpleValue) with
-  StringTrimmerEditor</h2>
+<h2>Query Display f:query(MapOfSimpleValue) with StringTrimmerEditor</h2>
 
 <span>Input Data</span>
-<form:form action="${pageContext.request.contextPath}/el/6_17/search"
-  method="GET" modelAttribute="mapForm">
+<form:form action="${pageContext.request.contextPath}/el/6_17/search" method="GET"
+  modelAttribute="mapForm">
   <fieldset>
     <legend>Nested Bean(Parent)</legend>
     <table>

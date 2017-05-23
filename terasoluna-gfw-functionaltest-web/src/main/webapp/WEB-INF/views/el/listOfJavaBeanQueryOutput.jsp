@@ -2,8 +2,8 @@
 <h2>Query Display f:query(ListOfJavaBean)</h2>
 
 <span>Input Data</span>
-<form:form action="${pageContext.request.contextPath}/el/6_10/search"
-  method="GET" modelAttribute="batchUpdateUserForm2">
+<form:form action="${pageContext.request.contextPath}/el/6_10/search" method="GET"
+  modelAttribute="batchUpdateUserForm2">
   <table>
     <thead>
       <tr>
@@ -31,8 +31,7 @@
 </form:form>
 <c:if test="${page != null}">
   <div id="pagination" class="pagination">
-    <t:pagination page="${page}"
-      criteriaQuery="${f:query(batchUpdateUserForm2)}" />
+    <t:pagination page="${page}" criteriaQuery="${f:query(batchUpdateUserForm2)}" />
   </div>
   <table class="maintable">
     <thead>

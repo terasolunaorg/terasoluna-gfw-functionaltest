@@ -12,22 +12,18 @@
 
 <c:if test="${not empty page and page.totalElements != 0}">
   <h2 class="center-content">
-    <span id="pagePosition">${f:h(page.number) + 1}</span> Page ( <span
-      id="rangeStart">${(page.number * page.size) + 1}</span>-<span
+    <span id="pagePosition">${f:h(page.number) + 1}</span> Page ( <span id="rangeStart">${(page.number * page.size) + 1}</span>-<span
       id="rangeEnd">${(page.number * page.size) +
-            page.numberOfElements}</span>
-    / <span id="totalResults">${page.totalElements}</span> results )
+            page.numberOfElements}</span> / <span
+      id="totalResults">${page.totalElements}</span> results )
   </h2>
-  <h3 class="center-content">URL Encoding is done in f:quey
-    Function</h3>
+  <h3 class="center-content">URL Encoding is done in f:quey Function</h3>
   <div id="paginationAndFQueryFunction" class="pagination">
-    <t:pagination page="${page}"
-      criteriaQuery="${f:query(personSearchForm)}" />
+    <t:pagination page="${page}" criteriaQuery="${f:query(personSearchForm)}" />
   </div>
   <h3 class="center-content">URL Encoding is done in f:u Function</h3>
   <div id="paginationAndFUFunction" class="pagination">
-    <t:pagination page="${page}"
-      criteriaQuery="name=${f:u(personSearchForm.name)}" />
+    <t:pagination page="${page}" criteriaQuery="name=${f:u(personSearchForm.name)}" />
   </div>
   <table class="maintable">
     <thead>
@@ -38,8 +34,7 @@
         <th>Last Name</th>
       </tr>
     </thead>
-    <c:forEach var="person" items="${page.content}"
-      varStatus="rowStatus">
+    <c:forEach var="person" items="${page.content}" varStatus="rowStatus">
       <tr>
         <td>${page.number * page.size + rowStatus.index +
                     1}</td>
@@ -50,28 +45,21 @@
     </c:forEach>
   </table>
 
-  <h3 class="center-content">URL Encoding is not done +
-    disableHtmlEscapeOfCriteriaQuery is false</h3>
-  <div id="paginationDisableHtmlEscapeOfCriteriaQueryIsFalse"
-    class="pagination">
-    <t:pagination page="${page}"
-      criteriaQuery="dummyParam=xxx&name=${param.name}" />
+  <h3 class="center-content">URL Encoding is not done + disableHtmlEscapeOfCriteriaQuery is
+    false</h3>
+  <div id="paginationDisableHtmlEscapeOfCriteriaQueryIsFalse" class="pagination">
+    <t:pagination page="${page}" criteriaQuery="dummyParam=xxx&name=${param.name}" />
   </div>
-  <h3 class="center-content">URL Encoding is done + FQueryFunction
-    + disableHtmlEscapeOfCriteriaQuery is true</h3>
-  <div
-    id="paginationDisableHtmlEscapeByFQueryFunctionOfCriteriaQueryIsTrue"
-    class="pagination">
-    <t:pagination page="${page}"
-      criteriaQuery="${f:query(personSearchForm)}"
+  <h3 class="center-content">URL Encoding is done + FQueryFunction +
+    disableHtmlEscapeOfCriteriaQuery is true</h3>
+  <div id="paginationDisableHtmlEscapeByFQueryFunctionOfCriteriaQueryIsTrue" class="pagination">
+    <t:pagination page="${page}" criteriaQuery="${f:query(personSearchForm)}"
       disableHtmlEscapeOfCriteriaQuery="true" />
   </div>
   <h3 class="center-content">URL Encoding is done + FUFunction +
     disableHtmlEscapeOfCriteriaQuery is true</h3>
-  <div id="paginationDisableHtmlEscapeByFUFunctionOfCriteriaQueryIsTrue"
-    class="pagination">
-    <t:pagination page="${page}"
-      criteriaQuery="name=${f:u(personSearchForm.name)}"
+  <div id="paginationDisableHtmlEscapeByFUFunctionOfCriteriaQueryIsTrue" class="pagination">
+    <t:pagination page="${page}" criteriaQuery="name=${f:u(personSearchForm.name)}"
       disableHtmlEscapeOfCriteriaQuery="true" />
   </div>
 </c:if>

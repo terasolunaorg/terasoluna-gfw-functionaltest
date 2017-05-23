@@ -1,12 +1,10 @@
 <h2 id="page_title">CodePoints Test</h2>
 
-<form:form
-  action="${pageContext.request.contextPath}/codepoints/consistOfCheck"
+<form:form action="${pageContext.request.contextPath}/codepoints/consistOfCheck"
   modelAttribute="consistOfCheckForm" method="post">
 
   <table>
-    <c:forEach var="fieldName"
-      items="${consistOfCheckForm.getFieldNames()}">
+    <c:forEach var="fieldName" items="${consistOfCheckForm.getFieldNames()}">
       <tr>
         <td><form:label path="${f:h(fieldName)}">${f:h(fieldName)}</form:label></td>
         <td><c:choose>

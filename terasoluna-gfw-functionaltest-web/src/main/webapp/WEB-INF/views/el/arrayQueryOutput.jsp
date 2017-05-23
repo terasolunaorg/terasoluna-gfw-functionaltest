@@ -2,8 +2,8 @@
 <h2>Query Display f:query(Array)</h2>
 
 <span>Input Data</span>
-<form:form action="${pageContext.request.contextPath}/el/6_14/search"
-  method="GET" modelAttribute="arrayForm6">
+<form:form action="${pageContext.request.contextPath}/el/6_14/search" method="GET"
+  modelAttribute="arrayForm6">
   <fieldset>
     <table>
       <caption>Nested Bean(Parent)</caption>

@@ -1,7 +1,6 @@
 <h2 id="page_title">CodePoints Test</h2>
 
-<form:form
-  action="${pageContext.request.contextPath}/codepoints/containsAll"
+<form:form action="${pageContext.request.contextPath}/codepoints/containsAll"
   modelAttribute="containsAllForm1" method="post">
 
   <table>
@@ -16,8 +15,7 @@
     </tr>
     <tr>
       <td><form:select path="useInstanceKind">
-          <form:option value="codePointsOf"
-            label="created by \"method of CodePoints\"" />
+          <form:option value="codePointsOf" label="created by \"method of CodePoints\"" />
           <form:option value="newJIS_X_0208_Katakana"
             label="created by \"new instance of existing code point set(JIS_X_0208_Katakana)\"" />
           <form:option value="newCodePonitsWithString"

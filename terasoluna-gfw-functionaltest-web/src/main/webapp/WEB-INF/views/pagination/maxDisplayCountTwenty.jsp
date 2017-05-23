@@ -2,8 +2,7 @@
   href="${pageContext.request.contextPath}/resources/vendor/bootstrap-3.0.0/css/bootstrap.css" />
 <h1>${f:h(page.number) + 1}&nbsp;Page</h1>
 <div class="pagination">
-  <t:pagination page="${page}" maxDisplayCount="20"
-    outerElementClass="pagination-sm" />
+  <t:pagination page="${page}" maxDisplayCount="20" outerElementClass="pagination-sm" />
 </div>
 <table class="maintable">
   <thead>
@@ -22,6 +21,5 @@
   </c:forEach>
 </table>
 <div class="pagination">
-  <t:pagination page="${page}" maxDisplayCount="20"
-    outerElementClass="pagination-sm" />
+  <t:pagination page="${page}" maxDisplayCount="20" outerElementClass="pagination-sm" />
 </div>

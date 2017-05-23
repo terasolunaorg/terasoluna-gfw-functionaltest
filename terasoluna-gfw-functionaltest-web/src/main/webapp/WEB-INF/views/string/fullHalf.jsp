@@ -1,7 +1,6 @@
 <h2 id="page_title">${f:h(targetTitle)}</h2>
 
-<form:form
-  action="${pageContext.request.contextPath}/string/${f:h(targetPath)}"
+<form:form action="${pageContext.request.contextPath}/string/${f:h(targetPath)}"
   modelAttribute="fullHalfForm" method="post">
 
   <table>
@@ -12,8 +11,8 @@
     </tr>
     <tr>
       <td><form:input type="text" path="halfwidth" /></td>
-      <td><form:button id="toFullwidth" name="full">toFullwidth--&gt;</form:button><br>
-        <form:button id="toHalfwidth" name="half">&lt;--toHalfwidth</form:button></td>
+      <td><form:button id="toFullwidth" name="full">toFullwidth--&gt;</form:button><br> <form:button
+          id="toHalfwidth" name="half">&lt;--toHalfwidth</form:button></td>
       <td><form:input type="text" path="fullwidth" /></td>
     </tr>
   </table>

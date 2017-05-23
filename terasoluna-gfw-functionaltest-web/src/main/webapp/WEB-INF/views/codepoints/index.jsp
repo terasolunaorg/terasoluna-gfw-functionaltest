@@ -3,33 +3,27 @@
 <table>
   <tr>
     <td><a id="codepoints01_01"
-      href="${pageContext.request.contextPath}/codepoints/containsAll?form1">containsAll_01_01</a>
-    </td>
+      href="${pageContext.request.contextPath}/codepoints/containsAll?form1">containsAll_01_01</a></td>
   </tr>
   <tr>
     <td><a id="codepoints01_02"
-      href="${pageContext.request.contextPath}/codepoints/containsAll?form1">containsAll_01_02</a>
-    </td>
+      href="${pageContext.request.contextPath}/codepoints/containsAll?form1">containsAll_01_02</a></td>
   </tr>
   <tr>
     <td><a id="codepoints01_03"
-      href="${pageContext.request.contextPath}/codepoints/containsAll?form2">containsAll_01_03</a>
-    </td>
+      href="${pageContext.request.contextPath}/codepoints/containsAll?form2">containsAll_01_03</a></td>
   </tr>
   <tr>
     <td><a id="codepoints01_04"
-      href="${pageContext.request.contextPath}/codepoints/containsAll?form2">containsAll_01_04</a>
-    </td>
+      href="${pageContext.request.contextPath}/codepoints/containsAll?form2">containsAll_01_04</a></td>
   </tr>
   <tr>
     <td><a id="codepoints01_05"
-      href="${pageContext.request.contextPath}/codepoints/containsAll?form1">containsAll_01_05</a>
-    </td>
+      href="${pageContext.request.contextPath}/codepoints/containsAll?form1">containsAll_01_05</a></td>
   </tr>
   <tr>
     <td><a id="codepoints01_06"
-      href="${pageContext.request.contextPath}/codepoints/containsAll?form3">containsAll_01_06</a>
-    </td>
+      href="${pageContext.request.contextPath}/codepoints/containsAll?form3">containsAll_01_06</a></td>
   </tr>
   <tr>
     <td><a id="codepoints01_07"
@@ -48,18 +42,15 @@
   </tr>
   <tr>
     <td><a id="codepoints01_10"
-      href="${pageContext.request.contextPath}/codepoints/containsAll?form1">containsAll_01_10</a>
-    </td>
+      href="${pageContext.request.contextPath}/codepoints/containsAll?form1">containsAll_01_10</a></td>
   </tr>
   <tr>
     <td><a id="codepoints01_11"
-      href="${pageContext.request.contextPath}/codepoints/containsAll?form1">containsAll_01_11</a>
-    </td>
+      href="${pageContext.request.contextPath}/codepoints/containsAll?form1">containsAll_01_11</a></td>
   </tr>
   <tr>
     <td><a id="codepoints01_12"
-      href="${pageContext.request.contextPath}/codepoints/containsAll?form1">containsAll_01_12</a>
-    </td>
+      href="${pageContext.request.contextPath}/codepoints/containsAll?form1">containsAll_01_12</a></td>
   </tr>
   <tr>
     <td><a id="codepoints01_13"

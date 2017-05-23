@@ -1,6 +1,5 @@
 <html>
-<h2>Sequencer Function Test (GET NEXT VALUE AND CURRENT VALUE BY
-  SAME TRANSACTION)</h2>
+<h2>Sequencer Function Test (GET NEXT VALUE AND CURRENT VALUE BY SAME TRANSACTION)</h2>
 <body>
   <table>
     <tr>

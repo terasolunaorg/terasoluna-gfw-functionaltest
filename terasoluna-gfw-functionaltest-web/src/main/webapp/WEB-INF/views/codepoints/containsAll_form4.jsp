@@ -1,7 +1,6 @@
 <h2 id="page_title">CodePoints Test</h2>
 
-<form:form
-  action="${pageContext.request.contextPath}/codepoints/containsAll"
+<form:form action="${pageContext.request.contextPath}/codepoints/containsAll"
   modelAttribute="containsAllForm4" method="post">
 
   <table>
@@ -14,25 +13,19 @@
     <tr>
       <td colspan="2"><form:label path="codePointsA">Input codePointsA (Integer):</form:label></td>
     </tr>
-    <c:forEach items="${containsAllForm4.codePointsA}"
-      varStatus="status">
+    <c:forEach items="${containsAllForm4.codePointsA}" varStatus="status">
       <tr>
-        <td><form:input type="text"
-            path="codePointsA[${status.index}]" /></td>
-        <td><form:errors path="codePointsA[${status.index}]"
-            style="color:red" /></td>
+        <td><form:input type="text" path="codePointsA[${status.index}]" /></td>
+        <td><form:errors path="codePointsA[${status.index}]" style="color:red" /></td>
       </tr>
     </c:forEach>
     <tr>
       <td colspan="2"><form:label path="codePointsB">Input codePointsB (Integer):</form:label></td>
     </tr>
-    <c:forEach items="${containsAllForm4.codePointsB}"
-      varStatus="status">
+    <c:forEach items="${containsAllForm4.codePointsB}" varStatus="status">
       <tr>
-        <td><form:input type="text"
-            path="codePointsB[${status.index}]" /></td>
-        <td><form:errors path="codePointsB[${status.index}]"
-            style="color:red" /></td>
+        <td><form:input type="text" path="codePointsB[${status.index}]" /></td>
+        <td><form:errors path="codePointsB[${status.index}]" style="color:red" /></td>
       </tr>
     </c:forEach>
     <tr>

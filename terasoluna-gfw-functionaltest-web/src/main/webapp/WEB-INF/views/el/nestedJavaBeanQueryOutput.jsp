@@ -2,8 +2,8 @@
 <h2>Query Display f:query(NestedJavaBean)</h2>
 
 <span>Input Data</span>
-<form:form action="${pageContext.request.contextPath}/el/6_9/search"
-  method="GET" modelAttribute="searchUserForm1">
+<form:form action="${pageContext.request.contextPath}/el/6_9/search" method="GET"
+  modelAttribute="searchUserForm1">
   <fieldset>
     <span>Name</span>
     <form:input path="criteria.name" />
@@ -19,8 +19,7 @@
 </form:form>
 <c:if test="${page != null}">
   <div id="pagination" class="pagination">
-    <t:pagination page="${page}"
-      criteriaQuery="${f:query(searchUserForm1)}" />
+    <t:pagination page="${page}" criteriaQuery="${f:query(searchUserForm1)}" />
   </div>
   <table class="maintable">
     <thead>

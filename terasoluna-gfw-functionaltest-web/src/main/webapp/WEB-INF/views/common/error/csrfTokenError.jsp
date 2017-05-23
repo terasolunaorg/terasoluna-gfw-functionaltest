@@ -2,8 +2,7 @@
 <html>
 <head>
 <title>CSRF Error</title>
-<link rel="stylesheet"
-  href="${pageContext.request.contextPath}/resources/app/css/style.css"
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/app/css/style.css"
   type="text/css" media="screen, projection">
 </head>
 <body>

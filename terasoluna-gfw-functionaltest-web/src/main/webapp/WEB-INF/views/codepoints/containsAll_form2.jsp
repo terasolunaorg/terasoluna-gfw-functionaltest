@@ -1,7 +1,6 @@
 <h2 id="page_title">CodePoints Test</h2>
 
-<form:form
-  action="${pageContext.request.contextPath}/codepoints/containsAll"
+<form:form action="${pageContext.request.contextPath}/codepoints/containsAll"
   modelAttribute="containsAllForm2" method="post">
 
   <table>
@@ -16,10 +15,8 @@
     </tr>
     <c:forEach items="${containsAllForm2.codePoints}" varStatus="status">
       <tr>
-        <td><form:input type="text"
-            path="codePoints[${status.index}]" /></td>
-        <td><form:errors path="codePoints[${status.index}]"
-            style="color:red" /></td>
+        <td><form:input type="text" path="codePoints[${status.index}]" /></td>
+        <td><form:errors path="codePoints[${status.index}]" style="color:red" /></td>
       </tr>
     </c:forEach>
     <tr>

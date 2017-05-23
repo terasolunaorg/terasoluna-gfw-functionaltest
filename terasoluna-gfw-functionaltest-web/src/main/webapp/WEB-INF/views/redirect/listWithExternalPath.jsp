@@ -13,13 +13,10 @@
     <tr>
       <td>${f:h(user.username)}</td>
       <td>${f:h(user.name)}</td>
-      <td><form:form
-          action="${pageContext.request.contextPath}/redirect/login"
-          method="GET">
+      <td><form:form action="${pageContext.request.contextPath}/redirect/login" method="GET">
           <input type="hidden" id="hdn1" name="redirectTo"
             value="http://www.google.com/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa">
-          <input type="submit" id="btn1" class="mainbtn"
-            value="Login to Detail" />
+          <input type="submit" id="btn1" class="mainbtn" value="Login to Detail" />
         </form:form></td>
     </tr>
   </c:forEach>

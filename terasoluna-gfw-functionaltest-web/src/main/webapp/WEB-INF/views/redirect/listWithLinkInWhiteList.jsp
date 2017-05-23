@@ -18,8 +18,7 @@
           method="GET">
           <input type="hidden" id="hdn1" name="redirectTo"
             value="${f:h(redirectionAllowedExternalUrl)}">
-          <input type="submit" id="btn1" class="mainbtn"
-            value="Login to Detail" />
+          <input type="submit" id="btn1" class="mainbtn" value="Login to Detail" />
         </form:form></td>
     </tr>
   </c:forEach>

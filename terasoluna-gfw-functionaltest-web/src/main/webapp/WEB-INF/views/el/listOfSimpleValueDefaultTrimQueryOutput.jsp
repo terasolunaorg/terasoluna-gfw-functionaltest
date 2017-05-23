@@ -1,10 +1,9 @@
 
-<h2>Query Display f:query(ListOfSimpleValue) with
-  StringTrimmerEditor</h2>
+<h2>Query Display f:query(ListOfSimpleValue) with StringTrimmerEditor</h2>
 
 <span>Input Data</span>
-<form:form action="${pageContext.request.contextPath}/el/6_16/search"
-  method="GET" modelAttribute="listForm">
+<form:form action="${pageContext.request.contextPath}/el/6_16/search" method="GET"
+  modelAttribute="listForm">
   <fieldset>
     <legend>Nested Bean(Parent)</legend>
     <table>
@@ -21,10 +20,9 @@
         <td><form:input path="listA[0]" /></td>
         <td><form:input path="listA[1]" /></td>
         <td><form:input path="listA[2]" /></td>
-        <td><form:checkbox path="listB" value="b0" label="b0" /><br>
-          <form:checkbox path="listB" value="b1" label="b1" /><br>
-          <form:checkbox path="listB" value="b2" label="b2" /><br>
-        </td>
+        <td><form:checkbox path="listB" value="b0" label="b0" /><br> <form:checkbox
+            path="listB" value="b1" label="b1" /><br> <form:checkbox path="listB" value="b2"
+            label="b2" /><br></td>
         <td><form:select path="listC">
             <form:option value="" label="--Please Select(Multiple)" />
             <form:option value="c0">c0</form:option>
@@ -49,9 +47,8 @@
           <td><form:input path="item.listA[0]" /></td>
           <td><form:input path="item.listA[1]" /></td>
           <td><form:input path="item.listA[2]" /></td>
-          <td><form:checkbox path="item.listB" value="bb0"
-              label="bb0" /><br> <form:checkbox path="item.listB"
-              value="bb1" label="bb1" /><br> <form:checkbox
+          <td><form:checkbox path="item.listB" value="bb0" label="bb0" /><br> <form:checkbox
+              path="item.listB" value="bb1" label="bb1" /><br> <form:checkbox
               path="item.listB" value="bb2" label="bb2" /><br></td>
           <td><form:select path="item.listC">
               <form:option value="" label="--Please Select(Multiple)" />

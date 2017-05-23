@@ -1,8 +1,7 @@
 
 <h2>New Line f:br()</h2>
 
-<form:form action="${pageContext.request.contextPath}/el/output_03"
-  method="post">
+<form:form action="${pageContext.request.contextPath}/el/output_03" method="post">
   <span>Input Data</span>
   <br />
   <textarea id="text-output" name="outputData"></textarea>

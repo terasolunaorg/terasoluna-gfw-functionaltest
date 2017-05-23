@@ -1,8 +1,7 @@
 
 <h2>URL link f:link()</h2>
 
-<form:form action="${pageContext.request.contextPath}/el/output_05"
-  method="post">
+<form:form action="${pageContext.request.contextPath}/el/output_05" method="post">
   <span>Input Data</span>
   <br />
   <input id="text-output" type="text" class="text" name="outputData" />

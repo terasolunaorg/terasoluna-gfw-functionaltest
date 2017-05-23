@@ -1,10 +1,8 @@
-<h2>Query Escape Function Test Using ${f:h(targetORMapper)} with
-  Full-Width escape</h2>
+<h2>Query Escape Function Test Using ${f:h(targetORMapper)} with Full-Width escape</h2>
 
 input todoTitle search word and push button. choose search pattern.
 
-<form:form
-  action="${pageContext.request.contextPath}/queryescape/${f:h(targetORMapper)}/search"
+<form:form action="${pageContext.request.contextPath}/queryescape/${f:h(targetORMapper)}/search"
   method="get" modelAttribute="todoForm" enctype="UTF-8">
 		TodoTitle:<form:input path="todoTitle" />
   <form:button name="prefix">prefix</form:button>
@@ -15,8 +13,7 @@ input todoTitle search word and push button. choose search pattern.
 <br />
 
 <c:if test="${!(empty searchPattern)}">
-  <div id="searchresult">${f:h(searchPattern)}&nbsp;result
-    ${f:h(hitNumber)}</div>
+  <div id="searchresult">${f:h(searchPattern)}&nbsp;result${f:h(hitNumber)}</div>
 </c:if>
 <c:if test="${!(empty todoList)}">
   <table>

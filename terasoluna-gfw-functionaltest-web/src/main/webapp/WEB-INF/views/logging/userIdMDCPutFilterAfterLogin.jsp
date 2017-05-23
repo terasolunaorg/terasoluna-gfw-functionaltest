@@ -4,12 +4,11 @@ after authentication test
 <table>
   <tr>
     <td><a id="userIdMDCPutFilterDefault"
-      href="${pageContext.request.contextPath}/logging/userIdMDCPutFilter/2_4">default
-        attribute name</a></td>
+      href="${pageContext.request.contextPath}/logging/userIdMDCPutFilter/2_4">default attribute
+        name</a></td>
   </tr>
   <tr>
-    <td><a id="logout"
-      href="javascript:document.dummyForm.submit()">logout</a></td>
+    <td><a id="logout" href="javascript:document.dummyForm.submit()">logout</a></td>
   </tr>
 </table>
 <form:form name="dummyForm" method="POST"

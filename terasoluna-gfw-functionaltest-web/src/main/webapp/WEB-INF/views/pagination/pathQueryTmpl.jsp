@@ -2,8 +2,7 @@
 <h1>${f:h(page.number) + 1}&nbsp;Page</h1>
 <div class="pagination">
   <t:pagination page="${page}"
-    pathTmpl="${pageContext.request.contextPath}/pagination/14_1/{page}/{size}"
-    queryTmpl="" />
+    pathTmpl="${pageContext.request.contextPath}/pagination/14_1/{page}/{size}" queryTmpl="" />
 </div>
 <table class="maintable">
   <thead>
@@ -23,6 +22,5 @@
 </table>
 <div class="pagination">
   <t:pagination page="${page}"
-    pathTmpl="${pageContext.request.contextPath}/pagination/14_1/{page}/{size}"
-    queryTmpl="" />
+    pathTmpl="${pageContext.request.contextPath}/pagination/14_1/{page}/{size}" queryTmpl="" />
 </div>

@@ -2,8 +2,8 @@
 <h2>Query Display f:query(SimpleJavaBean) with StringTrimmerEditor</h2>
 
 <span>Input Data</span>
-<form:form action="${pageContext.request.contextPath}/el/6_15/search"
-  method="GET" modelAttribute="userForm">
+<form:form action="${pageContext.request.contextPath}/el/6_15/search" method="GET"
+  modelAttribute="userForm">
   <fieldset>
     <legend>Nested Bean(Parent)</legend>
     <table>

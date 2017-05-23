@@ -7,8 +7,7 @@
     <tr>
       <th>excludedCodePoint(s)</th>
     </tr>
-    <c:forEach var="excludedCodePoint" items="${excludedCodePoints}"
-      varStatus="status">
+    <c:forEach var="excludedCodePoint" items="${excludedCodePoints}" varStatus="status">
       <tr>
         <td><span id="excludedCodePoint${status.count}">${f:h(excludedCodePoint)}</span></td>
       </tr>

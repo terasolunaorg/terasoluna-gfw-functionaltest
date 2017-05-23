@@ -1,8 +1,8 @@
 
 <h2>Bean Query Display f:query()</h2>
 
-<form:form action="${pageContext.request.contextPath}/el/search"
-  method="GET" modelAttribute="customerSearchCriteria">
+<form:form action="${pageContext.request.contextPath}/el/search" method="GET"
+  modelAttribute="customerSearchCriteria">
   <fieldset>
     <span>Name</span>
     <form:input path="name" type="text" />
@@ -25,16 +25,14 @@
       <form:option value="FR">FR</form:option>
     </form:select>
 
-    <input id="btn-output" class="mainbtn-left" type="submit"
-      value="search" />
+    <input id="btn-output" class="mainbtn-left" type="submit" value="search" />
 
   </fieldset>
 </form:form>
 
 <c:if test="${page != null}">
   <div class="pagination">
-    <t:pagination page="${page}"
-      criteriaQuery="${f:query(customerSearchCriteria)}" />
+    <t:pagination page="${page}" criteriaQuery="${f:query(customerSearchCriteria)}" />
   </div>
   <table class="maintable">
     <thead>
@@ -51,7 +49,6 @@
     </c:forEach>
   </table>
   <div class="pagination">
-    <t:pagination page="${page}"
-      criteriaQuery="${f:query(customerSearchCriteria)}" />
+    <t:pagination page="${page}" criteriaQuery="${f:query(customerSearchCriteria)}" />
   </div>
 </c:if>
