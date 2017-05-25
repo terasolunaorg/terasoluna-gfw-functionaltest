@@ -153,8 +153,6 @@
                 <directory>${project.basedir}</directory>
                 <includes>
                   <include>src/**/*.xml</include>
-                  <include>eclipse/**/*.xml</include>
-                  <include>license/**/*.xml</include>
                 </includes>
               </formatFileSet>
             </formatFileSets>
