@@ -152,7 +152,6 @@
               <formatFileSet>
                 <directory>${project.basedir}</directory>
                 <includes>
-                  <include>src/**/*.xml</include>
                   <include>configs/**/*.xml</include>
                   <include>configs/**/*.xml.env.ftl</include>
                 </includes>
