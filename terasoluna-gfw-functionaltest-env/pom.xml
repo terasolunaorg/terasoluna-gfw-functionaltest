@@ -47,6 +47,23 @@
           </execution>
         </executions>
       </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>xml-maven-plugin</artifactId>
+        <version>${xml-maven-plugin.version}</version>
+        <configuration>
+          <indentSize>2</indentSize>
+          <formatFileSets>
+            <formatFileSet>
+              <directory>${project.basedir}</directory>
+              <includes>
+                <include>configs/**/*.xml</include>
+                <include>configs/**/*.xml.env.ftl</include>
+              </includes>
+            </formatFileSet>
+          </formatFileSets>
+        </configuration>
+      </plugin>
     </plugins>
   </build>
   <properties>
