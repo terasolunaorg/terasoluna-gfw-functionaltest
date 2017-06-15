@@ -52,7 +52,6 @@
         <artifactId>xml-maven-plugin</artifactId>
         <version>${xml-maven-plugin.version}</version>
         <configuration>
-          <indentSize>2</indentSize>
           <formatFileSets>
             <formatFileSet>
               <directory>${project.basedir}</directory>
