@@ -1,4 +1,4 @@
-<h2>Query Escape Function Test Using ${f:h(targetORMapper)}</h2>
+<h2>Query Escape Function Test Using&nbsp;${f:h(targetORMapper)}</h2>
 
 input todoTitle search word and push button. choose search pattern.
 
