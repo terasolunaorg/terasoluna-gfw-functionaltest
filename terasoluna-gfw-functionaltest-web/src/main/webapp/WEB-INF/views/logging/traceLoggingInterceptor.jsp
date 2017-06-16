@@ -26,6 +26,6 @@
 <c:if test="${!(empty processingTime)}">
 	 ${f:h(requestType)}
 	<br />
-	server proccessing time is ： ${f:h(processingTime)}ms
+	server proccessing time is ：&nbsp;${f:h(processingTime)}ms
 </c:if>
 
