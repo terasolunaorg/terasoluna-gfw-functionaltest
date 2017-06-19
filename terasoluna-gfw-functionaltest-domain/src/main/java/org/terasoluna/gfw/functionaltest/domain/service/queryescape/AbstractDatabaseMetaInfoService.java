@@ -19,7 +19,7 @@ import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
 public abstract class AbstractDatabaseMetaInfoService implements
-                                                     DatabaseMetaInfoService {
+                                                      DatabaseMetaInfoService {
     private String databaseId;
 
     private String oracleVersion;
