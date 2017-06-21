@@ -1,3 +1,4 @@
-    <h2>Output Message</h2>
-    <t:messagesPanel/>
+
+<h2>Output Message</h2>
+<t:messagesPanel />
 
