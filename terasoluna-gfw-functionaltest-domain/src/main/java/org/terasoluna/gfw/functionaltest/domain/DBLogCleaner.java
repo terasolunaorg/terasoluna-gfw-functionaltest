@@ -31,8 +31,8 @@ import org.springframework.transaction.annotation.Transactional;
 @Component
 public class DBLogCleaner {
 
-    private static final Logger LOGGER = LoggerFactory
-            .getLogger(DBLogCleaner.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(
+            DBLogCleaner.class);
 
     private long savedPeriodMinutes = TimeUnit.MINUTES.toHours(24);
 
@@ -76,22 +76,21 @@ public class DBLogCleaner {
         // decide max event id of unnecessary log.
         MapSqlParameterSource queryParameters = new MapSqlParameterSource();
         queryParameters.addValue("cutoffDateMillis", cutoffDate.getTime());
-        Long maxEventId = namedParameterJdbcTemplate
-                .queryForObject(
-                        "SELECT MAX(event_id) FROM logging_event WHERE timestmp < :cutoffDateMillis",
-                        queryParameters, Long.class);
+        Long maxEventId = namedParameterJdbcTemplate.queryForObject(
+                "SELECT MAX(event_id) FROM logging_event WHERE timestmp < :cutoffDateMillis",
+                queryParameters, Long.class);
 
         // delete unnecessary log.
         int deletedCount = 0;
         if (maxEventId != null) {
             MapSqlParameterSource deleteParameters = new MapSqlParameterSource();
             deleteParameters.addValue("eventId", maxEventId);
-            namedParameterJdbcTemplate
-                    .update("DELETE FROM logging_event_exception WHERE event_id <= :eventId",
-                            deleteParameters);
-            namedParameterJdbcTemplate
-                    .update("DELETE FROM logging_event_property WHERE event_id <= :eventId",
-                            deleteParameters);
+            namedParameterJdbcTemplate.update(
+                    "DELETE FROM logging_event_exception WHERE event_id <= :eventId",
+                    deleteParameters);
+            namedParameterJdbcTemplate.update(
+                    "DELETE FROM logging_event_property WHERE event_id <= :eventId",
+                    deleteParameters);
             deletedCount = namedParameterJdbcTemplate.update(
                     "DELETE FROM logging_event WHERE event_id <= :eventId",
                     deleteParameters);

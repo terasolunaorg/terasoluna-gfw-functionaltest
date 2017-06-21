@@ -39,7 +39,8 @@ public class ElMapOfSimpleValueDefaultTrimController {
 
     @InitBinder
     public void bindTrimmingEditor(WebDataBinder binder) {
-        binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
+        binder.registerCustomEditor(String.class,
+                new StringTrimmerEditor(true));
     }
 
     @ModelAttribute

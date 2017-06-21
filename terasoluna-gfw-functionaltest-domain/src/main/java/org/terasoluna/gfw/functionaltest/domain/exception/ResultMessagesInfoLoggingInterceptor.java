@@ -19,7 +19,7 @@ import org.terasoluna.gfw.common.exception.ResultMessagesLoggingInterceptor;
 import org.terasoluna.gfw.common.exception.ResultMessagesNotificationException;
 
 public class ResultMessagesInfoLoggingInterceptor extends
-                                                 ResultMessagesLoggingInterceptor {
+                                                  ResultMessagesLoggingInterceptor {
 
     @Override
     protected void logResultMessagesNotificationException(
