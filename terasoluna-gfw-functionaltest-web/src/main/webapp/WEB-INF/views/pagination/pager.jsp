@@ -1,4 +1,4 @@
-	<h1>${f:h(page.number) + 1} Page</h1>
+	<h1>${f:h(page.number) + 1}&nbsp;Page</h1>
 	<t:pagination page="${page}" firstLinkText=""
 		 lastLinkText="" maxDisplayCount="0" nextLinkText="next" previousLinkText="prev"
 		 outerElementClass="pager" />
