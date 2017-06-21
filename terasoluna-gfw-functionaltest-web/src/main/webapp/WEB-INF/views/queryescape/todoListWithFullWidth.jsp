@@ -1,4 +1,4 @@
-<h2>Query Escape Function Test Using ${f:h(targetORMapper)} with Full-Width escape</h2>
+<h2>Query Escape Function Test Using&nbsp;${f:h(targetORMapper)}&nbsp;with Full-Width escape</h2>
 
 	input todoTitle search word and push button. choose search pattern.
 	
@@ -14,7 +14,7 @@
 	<br />
 	
 	<c:if test="${!(empty searchPattern)}">
-		<div id="searchresult">${f:h(searchPattern)} result ${f:h(hitNumber)}</div>
+		<div id="searchresult">${f:h(searchPattern)}&nbsp;result&nbsp;${f:h(hitNumber)}</div>
 	</c:if>
 	<c:if test="${!(empty todoList)}">
 		<table>
