@@ -4,10 +4,9 @@
 <Context>
 
   <Resource name="jdbc/gfwFunctionaltestDataSource" type="javax.sql.DataSource"
-    driverClassName="org.postgresql.Driver" username="postgres"
-    password="P0stgres"
-    url="jdbc:postgresql://localhost:5432/terasoluna-gfw-functionaltest"
-    maxIdle="16" minIdle="0" maxWaitMillis="60000" maxTotal="96" />
+    driverClassName="org.postgresql.Driver" username="postgres" password="P0stgres"
+    url="jdbc:postgresql://localhost:5432/terasoluna-gfw-functionaltest" maxIdle="16" minIdle="0"
+    maxWaitMillis="60000" maxTotal="96" />
 
   <Resources className="org.apache.catalina.webresources.StandardRoot">
     <PreResources className="org.apache.catalina.webresources.DirResourceSet"

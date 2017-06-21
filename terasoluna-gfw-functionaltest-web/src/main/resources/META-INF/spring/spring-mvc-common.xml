@@ -1,21 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
-  xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:util="http://www.springframework.org/schema/util"
-  xmlns:aop="http://www.springframework.org/schema/aop"
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:context="http://www.springframework.org/schema/context" xmlns:mvc="http://www.springframework.org/schema/mvc"
+  xmlns:util="http://www.springframework.org/schema/util" xmlns:aop="http://www.springframework.org/schema/aop"
   xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
         http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
-  <context:property-placeholder
-    location="classpath*:/META-INF/spring/*.properties" />
+  <context:property-placeholder location="classpath*:/META-INF/spring/*.properties" />
 
   <mvc:annotation-driven validator="validator">
     <mvc:argument-resolvers>
-      <bean
-        class="org.springframework.data.web.PageableHandlerMethodArgumentResolver" />
+      <bean class="org.springframework.data.web.PageableHandlerMethodArgumentResolver" />
       <bean
         class="org.terasoluna.gfw.web.token.transaction.TransactionTokenContextHandlerMethodArgumentResolver" />
     </mvc:argument-resolvers>
@@ -26,41 +23,35 @@
 
   <context:component-scan base-package="org.terasoluna.gfw.functionaltest.app" />
 
-  <mvc:view-controller path="redirect/withgoto/loginWithGoTo"
-    view-name="redirect/withgoto/loginWithGoTo" />
+  <mvc:view-controller path="redirect/withgoto/loginWithGoTo" view-name="redirect/withgoto/loginWithGoTo" />
 
   <mvc:view-controller path="redirect/withwhitelist/loginWithWhiteList"
     view-name="redirect/withwhitelist/loginWithWhiteList" />
 
-  <mvc:resources mapping="/resources/**"
-    location="/resources/,classpath:META-INF/resources/" cache-period="#{60 * 60}" />
+  <mvc:resources mapping="/resources/**" location="/resources/,classpath:META-INF/resources/"
+    cache-period="#{60 * 60}" />
 
   <mvc:interceptors>
     <mvc:interceptor>
       <mvc:mapping path="/**" />
       <mvc:exclude-mapping path="/resources/**" />
       <mvc:exclude-mapping path="/**/*.html" />
-      <mvc:exclude-mapping
-        path="/logging/traceLoggingInterceptor/customWarnHandling/**" />
+      <mvc:exclude-mapping path="/logging/traceLoggingInterceptor/customWarnHandling/**" />
       <bean class="org.terasoluna.gfw.web.logging.TraceLoggingInterceptor" />
     </mvc:interceptor>
     <mvc:interceptor>
       <mvc:mapping path="/**" />
       <mvc:exclude-mapping path="/resources/**" />
       <mvc:exclude-mapping path="/**/*.html" />
-      <mvc:exclude-mapping
-        path="/transactiontoken/customTransactionStoreSize2/**" />
-      <mvc:exclude-mapping
-        path="/transactiontoken/customTransactionStoreSize1/**" />
-      <bean
-        class="org.terasoluna.gfw.web.token.transaction.TransactionTokenInterceptor" />
+      <mvc:exclude-mapping path="/transactiontoken/customTransactionStoreSize2/**" />
+      <mvc:exclude-mapping path="/transactiontoken/customTransactionStoreSize1/**" />
+      <bean class="org.terasoluna.gfw.web.token.transaction.TransactionTokenInterceptor" />
     </mvc:interceptor>
     <mvc:interceptor>
       <mvc:mapping path="/transactiontoken/customTransactionStoreSize2/**" />
       <mvc:exclude-mapping path="/resources/**" />
       <mvc:exclude-mapping path="/**/*.html" />
-      <bean
-        class="org.terasoluna.gfw.web.token.transaction.TransactionTokenInterceptor">
+      <bean class="org.terasoluna.gfw.web.token.transaction.TransactionTokenInterceptor">
         <constructor-arg value="2" />
       </bean>
     </mvc:interceptor>
@@ -68,8 +59,7 @@
       <mvc:mapping path="/transactiontoken/customTransactionStoreSize1/**" />
       <mvc:exclude-mapping path="/resources/**" />
       <mvc:exclude-mapping path="/**/*.html" />
-      <bean
-        class="org.terasoluna.gfw.web.token.transaction.TransactionTokenInterceptor">
+      <bean class="org.terasoluna.gfw.web.token.transaction.TransactionTokenInterceptor">
         <constructor-arg value="1" />
       </bean>
     </mvc:interceptor>
@@ -78,15 +68,13 @@
       <mvc:mapping path="/**" />
       <mvc:exclude-mapping path="/resources/**" />
       <mvc:exclude-mapping path="/**/*.html" />
-      <bean
-        class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" />
+      <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" />
     </mvc:interceptor>
     <mvc:interceptor>
       <mvc:mapping path="/**" />
       <mvc:exclude-mapping path="/resources/**" />
       <mvc:exclude-mapping path="/**/*.html" />
-      <bean
-        class="org.springframework.orm.jpa.support.OpenEntityManagerInViewInterceptor" />
+      <bean class="org.springframework.orm.jpa.support.OpenEntityManagerInViewInterceptor" />
     </mvc:interceptor>
     <mvc:interceptor>
       <mvc:mapping path="/**" />
@@ -138,8 +126,7 @@
       </bean>
     </mvc:interceptor>
     <mvc:interceptor>
-      <mvc:mapping
-        path="/logging/traceLoggingInterceptor/customWarnHandling/**" />
+      <mvc:mapping path="/logging/traceLoggingInterceptor/customWarnHandling/**" />
       <mvc:exclude-mapping path="/resources/**" />
       <mvc:exclude-mapping path="/**/*.html" />
       <bean class="org.terasoluna.gfw.web.logging.TraceLoggingInterceptor">
@@ -158,23 +145,18 @@
     <mvc:definitions location="/WEB-INF/tiles/tiles-definitions.xml" />
   </mvc:tiles-configurer>
 
-  <bean id="localeResolver"
-    class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
+  <bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
     <property name="defaultLocale" value="en" />
   </bean>
 
-  <bean id="multipartResolver"
-    class="org.springframework.web.multipart.support.StandardServletMultipartResolver"> <!-- (1) -->
+  <bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver"> <!-- (1) -->
   </bean>
 
-  <bean id="requestDataValueProcessor"
-    class="org.terasoluna.gfw.web.mvc.support.CompositeRequestDataValueProcessor">
+  <bean id="requestDataValueProcessor" class="org.terasoluna.gfw.web.mvc.support.CompositeRequestDataValueProcessor">
     <constructor-arg>
       <util:list>
-        <bean
-          class="org.springframework.security.web.servlet.support.csrf.CsrfRequestDataValueProcessor" />
-        <bean
-          class="org.terasoluna.gfw.web.token.transaction.TransactionTokenRequestDataValueProcessor" />
+        <bean class="org.springframework.security.web.servlet.support.csrf.CsrfRequestDataValueProcessor" />
+        <bean class="org.terasoluna.gfw.web.token.transaction.TransactionTokenRequestDataValueProcessor" />
       </util:list>
     </constructor-arg>
   </bean>

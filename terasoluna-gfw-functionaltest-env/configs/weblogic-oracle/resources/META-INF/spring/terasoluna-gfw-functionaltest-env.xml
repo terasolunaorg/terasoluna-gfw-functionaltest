@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jee="http://www.springframework.org/schema/jee"
-  xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:tx="http://www.springframework.org/schema/tx"
-  xmlns:util="http://www.springframework.org/schema/util"
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:jee="http://www.springframework.org/schema/jee" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+  xmlns:tx="http://www.springframework.org/schema/tx" xmlns:util="http://www.springframework.org/schema/util"
   xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
         http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd
         http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
         http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-  <bean id="dateFactory"
-    class="org.terasoluna.gfw.common.date.jodatime.DefaultJodaTimeDateFactory" />
+  <bean id="dateFactory" class="org.terasoluna.gfw.common.date.jodatime.DefaultJodaTimeDateFactory" />
 
   <jee:jndi-lookup id="realDataSource" jndi-name="jdbc/gfwFunctionaltestDataSource"
     expected-type="javax.sql.DataSource" />
@@ -23,10 +21,8 @@
   <bean id="integerSeq" class="org.terasoluna.gfw.common.sequencer.JdbcSequencer">
     <property name="dataSource" ref="dataSource" />
     <property name="sequenceClass" value="java.lang.Integer" />
-    <property name="nextValueQuery"
-      value="SELECT INTEGER_SEQ.nextval AS seq FROM DUAL" />
-    <property name="currentValueQuery"
-      value="SELECT INTEGER_SEQ.currval AS seq FROM DUAL" />
+    <property name="nextValueQuery" value="SELECT INTEGER_SEQ.nextval AS seq FROM DUAL" />
+    <property name="currentValueQuery" value="SELECT INTEGER_SEQ.currval AS seq FROM DUAL" />
   </bean>
 
   <bean id="longSeq" class="org.terasoluna.gfw.common.sequencer.JdbcSequencer">
@@ -39,28 +35,22 @@
   <bean id="bigIntegerSeq" class="org.terasoluna.gfw.common.sequencer.JdbcSequencer">
     <property name="dataSource" ref="dataSource" />
     <property name="sequenceClass" value="java.math.BigInteger" />
-    <property name="nextValueQuery"
-      value="SELECT BIG_INTEGER_SEQ.nextval AS seq FROM DUAL" />
-    <property name="currentValueQuery"
-      value="SELECT BIG_INTEGER_SEQ.currval AS seq FROM DUAL" />
+    <property name="nextValueQuery" value="SELECT BIG_INTEGER_SEQ.nextval AS seq FROM DUAL" />
+    <property name="currentValueQuery" value="SELECT BIG_INTEGER_SEQ.currval AS seq FROM DUAL" />
   </bean>
 
   <bean id="stringSeq" class="org.terasoluna.gfw.common.sequencer.JdbcSequencer">
     <property name="dataSource" ref="dataSource" />
     <property name="sequenceClass" value="java.lang.String" />
-    <property name="nextValueQuery"
-      value="SELECT LPAD(STRING_SEQ.nextval, 10, '0') AS seq FROM DUAL" />
-    <property name="currentValueQuery"
-      value="SELECT LPAD(STRING_SEQ.currval, 10, '0') AS seq FROM DUAL" />
+    <property name="nextValueQuery" value="SELECT LPAD(STRING_SEQ.nextval, 10, '0') AS seq FROM DUAL" />
+    <property name="currentValueQuery" value="SELECT LPAD(STRING_SEQ.currval, 10, '0') AS seq FROM DUAL" />
   </bean>
 
   <bean id="notFoundSeq" class="org.terasoluna.gfw.common.sequencer.JdbcSequencer">
     <property name="dataSource" ref="dataSource" />
     <property name="sequenceClass" value="java.lang.Integer" />
-    <property name="nextValueQuery"
-      value="SELECT NOT_FOUND_SEQ.nextval AS seq FROM DUAL" />
-    <property name="currentValueQuery"
-      value="SELECT NOT_FOUND_SEQ.currval AS seq FROM DUAL" />
+    <property name="nextValueQuery" value="SELECT NOT_FOUND_SEQ.nextval AS seq FROM DUAL" />
+    <property name="currentValueQuery" value="SELECT NOT_FOUND_SEQ.currval AS seq FROM DUAL" />
   </bean>
 
   <!-- Settings of PlatformTransactionManager. -->
@@ -69,14 +59,12 @@
   <alias alias="jpaTransactionManager" name="transactionManager" />
 
   <!-- Settings of EntityManager. -->
-  <bean
-    class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
-    id="entityManagerFactory" parent="abstractEntityManagerFactory">
+  <bean class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" id="entityManagerFactory"
+    parent="abstractEntityManagerFactory">
     <property name="jtaDataSource" ref="dataSource" />
     <property name="jpaPropertyMap">
       <map merge="true">
-        <entry key="hibernate.transaction.jta.platform"
-          value="org.hibernate.service.jta.platform.internal.WeblogicJtaPlatform" />
+        <entry key="hibernate.transaction.jta.platform" value="org.hibernate.service.jta.platform.internal.WeblogicJtaPlatform" />
       </map>
     </property>
   </bean>

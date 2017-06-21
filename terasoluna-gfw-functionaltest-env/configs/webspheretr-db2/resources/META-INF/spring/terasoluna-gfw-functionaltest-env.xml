@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jee="http://www.springframework.org/schema/jee"
-  xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:task="http://www.springframework.org/schema/task"
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:jee="http://www.springframework.org/schema/jee" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+  xmlns:task="http://www.springframework.org/schema/task"
   xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
         http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd">
 
-  <bean id="dateFactory"
-    class="org.terasoluna.gfw.common.date.jodatime.DefaultJodaTimeDateFactory" />
+  <bean id="dateFactory" class="org.terasoluna.gfw.common.date.jodatime.DefaultJodaTimeDateFactory" />
 
   <jee:jndi-lookup id="realDataSource" jndi-name="jdbc/gfwFunctionaltestDataSource"
     expected-type="javax.sql.DataSource" />
@@ -36,17 +35,14 @@
     <property name="dataSource" ref="dataSource" />
     <property name="sequenceClass" value="java.math.BigInteger" />
     <property name="nextValueQuery" value="values (NEXT VALUE FOR big_integer_seq)" />
-    <property name="currentValueQuery"
-      value="values (PREVIOUS VALUE FOR big_integer_seq)" />
+    <property name="currentValueQuery" value="values (PREVIOUS VALUE FOR big_integer_seq)" />
   </bean>
 
   <bean id="stringSeq" class="org.terasoluna.gfw.common.sequencer.JdbcSequencer">
     <property name="dataSource" ref="dataSource" />
     <property name="sequenceClass" value="java.lang.String" />
-    <property name="nextValueQuery"
-      value="values TO_CHAR(NEXT VALUE FOR string_seq,'0000000000')" />
-    <property name="currentValueQuery"
-      value="values TO_CHAR(PREVIOUS VALUE FOR string_seq,'0000000000')" />
+    <property name="nextValueQuery" value="values TO_CHAR(NEXT VALUE FOR string_seq,'0000000000')" />
+    <property name="currentValueQuery" value="values TO_CHAR(PREVIOUS VALUE FOR string_seq,'0000000000')" />
   </bean>
 
   <bean id="notFoundSeq" class="org.terasoluna.gfw.common.sequencer.JdbcSequencer">
@@ -56,8 +52,7 @@
     <property name="currentValueQuery" value="values (PREVIOUS VALUE FOR not_found_seq)" />
   </bean>
 
-  <bean id="dataSourceTransactionManager"
-    class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+  <bean id="dataSourceTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
     <property name="dataSource" ref="dataSource" />
     <property name="rollbackOnCommitFailure" value="true" />
   </bean>
@@ -66,9 +61,8 @@
     <property name="entityManagerFactory" ref="entityManagerFactory" />
   </bean>
 
-  <bean
-    class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
-    id="entityManagerFactory" parent="abstractEntityManagerFactory">
+  <bean class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" id="entityManagerFactory"
+    parent="abstractEntityManagerFactory">
     <property name="dataSource" ref="dataSource" />
   </bean>
 
@@ -76,8 +70,7 @@
   <bean id="realDataSourceForLogging" class="org.apache.commons.dbcp2.BasicDataSource"
     destroy-method="close">
     <property name="driverClassName" value="org.h2.Driver" />
-    <property name="url"
-      value="jdbc:h2:mem:terasoluna-gfw-functionaltest;DB_CLOSE_DELAY=-1" />
+    <property name="url" value="jdbc:h2:mem:terasoluna-gfw-functionaltest;DB_CLOSE_DELAY=-1" />
     <property name="username" value="sa" />
     <property name="password" value="" />
     <property name="defaultAutoCommit" value="false" />
@@ -93,8 +86,7 @@
 
   <task:scheduler id="dbLogCleanupTaskScheduler" />
   <task:scheduled-tasks scheduler="dbLogCleanupTaskScheduler">
-    <task:scheduled ref="dbLogCleaner" method="cleanup"
-      cron="0 0 6 * * ?" />
+    <task:scheduled ref="dbLogCleaner" method="cleanup" cron="0 0 6 * * ?" />
   </task:scheduled-tasks>
 
 </beans>
