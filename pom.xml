@@ -145,13 +145,20 @@
                     <version>${org.codehaus.mojo.sql-maven-plugin.version}</version>
                 </plugin>
                 <plugin>
-                    <groupId>net.revelc.code</groupId>
+                    <groupId>net.revelc.code.formatter</groupId>
                     <artifactId>formatter-maven-plugin</artifactId>
                     <version>${formatter-maven-plugin.version}</version>
                     <configuration>
                         <configFile>${project.root.basedir}/eclipse/formatter.xml
                         </configFile>
                         <lineEnding>CRLF</lineEnding>
+                        <directories>
+                            <directory>${project.basedir}</directory>
+                        </directories>
+                        <includes>
+                            <include>**/src/main/java/**/*.java</include>
+                            <include>**/src/test/java/**/*.java</include>
+                        </includes>
                     </configuration>
                 </plugin>
                 <plugin>
@@ -225,7 +232,7 @@
         <org.codehaus.mojo.build-helper-maven-plugin.version>1.9.1</org.codehaus.mojo.build-helper-maven-plugin.version>
         <org.codehaus.mojo.sql-maven-plugin.version>1.5</org.codehaus.mojo.sql-maven-plugin.version>
         <maven-failsafe-plugin.version>2.19</maven-failsafe-plugin.version>
-        <formatter-maven-plugin.version>0.5.2</formatter-maven-plugin.version>
+        <formatter-maven-plugin.version>2.0.1</formatter-maven-plugin.version>
         <com.google.code.maven-license-plugin.version>1.4.0</com.google.code.maven-license-plugin.version>
         <!-- == Dependency Versions == -->
         <postgresql.version>9.4.1212.jre7</postgresql.version>
