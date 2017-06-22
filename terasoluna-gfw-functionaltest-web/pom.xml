@@ -80,15 +80,11 @@
     </dependency>
     <dependency>
       <groupId>org.terasoluna.gfw.codepoints</groupId>
-      <artifactId>
-                terasoluna-gfw-codepoints-jisx0208kanji
-            </artifactId>
+      <artifactId>terasoluna-gfw-codepoints-jisx0208kanji</artifactId>
     </dependency>
     <dependency>
       <groupId>org.terasoluna.gfw.codepoints</groupId>
-      <artifactId>
-                terasoluna-gfw-codepoints-jisx0213kanji
-            </artifactId>
+      <artifactId>terasoluna-gfw-codepoints-jisx0213kanji</artifactId>
     </dependency>
     <dependency>
       <groupId>org.terasoluna.gfw</groupId>
