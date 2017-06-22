@@ -12,7 +12,8 @@
         <td><form:select path="item1" items="${clCodeListWrongItem}" /></td>
       </tr>
       <tr>
-        <td><input id="btn1" class="mainbtn" style="width: 200px;" type="submit" value="Confirm" name="confirm"/></td>
+        <td><input id="btn1" class="mainbtn" style="width: 200px;" type="submit"
+          value="Confirm" name="confirm" /></td>
       </tr>
     </table>
   </form:form>

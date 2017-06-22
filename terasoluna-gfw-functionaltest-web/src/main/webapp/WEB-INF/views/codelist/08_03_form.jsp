@@ -5,7 +5,8 @@
 <body>
   <h2>Codelist</h2>
   <br>
-  <form:form action="${pageContext.request.contextPath}/codelist/next" method="get" modelAttribute="existInCheckWrongCodeListForm">
+  <form:form action="${pageContext.request.contextPath}/codelist/next" method="get"
+    modelAttribute="existInCheckWrongCodeListForm">
     <table>
       <tr>
         <td><span id="errors"><form:errors path="item3" style="color:red" /></span></td>
@@ -18,8 +19,8 @@
         <td><form:input path="item3" /></td>
       </tr>
       <tr>
-        <td><input id="btn1" class="mainbtn" style="width: 200px;" type="submit" value="Confirm"
-          name="existInCheckWrongCodeList" />
+        <td><input id="btn1" class="mainbtn" style="width: 200px;" type="submit"
+          value="Confirm" name="existInCheckWrongCodeList" />
         <td>
         <td></td>
       </tr>
@@ -28,7 +29,8 @@
   <form:form action="${pageContext.request.contextPath}/codelist" method="get">
     <table>
       <tr>
-        <td><input id="btnback" class="mainbtn" style="width: 200px;" type="submit" value="Back to menu" /></td>
+        <td><input id="btnback" class="mainbtn" style="width: 200px;" type="submit"
+          value="Back to menu" /></td>
       </tr>
     </table>
   </form:form>

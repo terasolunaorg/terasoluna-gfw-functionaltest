@@ -1,13 +1,10 @@
 <h2>Transaction token is generated !!!</h2>
-<form:form
-	action="${pageContext.request.contextPath}/transactiontoken/create"
-	method="get">
+<form:form action="${pageContext.request.contextPath}/transactiontoken/create" method="get">
 
-	<b>Transaction token value is : <span id="result"></span></b>
-	<br>
-	<br>
-	<input id="btnback" class="mainbtn" style="width: 200px;" type="submit"
-		value="Back to menu " />
+  <b>Transaction token value is : <span id="result"></span></b>
+  <br>
+  <br>
+  <input id="btnback" class="mainbtn" style="width: 200px;" type="submit" value="Back to menu " />
 </form:form>
 
 <script type="text/javascript">
