@@ -34,7 +34,8 @@ import org.springframework.web.client.RestTemplate;
 import org.terasoluna.gfw.functionaltest.app.FunctionTestSupport;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath:META-INF/spring/seleniumContext.xml" })
+@ContextConfiguration(locations = {
+        "classpath:META-INF/spring/seleniumContext.xml" })
 public class DownloadTest extends FunctionTestSupport {
     @Inject
     protected RestTemplate restTemplate;
@@ -52,10 +53,10 @@ public class DownloadTest extends FunctionTestSupport {
         byte[] expected = StreamUtils.copyToByteArray(images.getInputStream());
 
         HttpHeaders headers = response.getHeaders();
-        System.out.println("test01_01_fileDownload: X-Track="
-                + headers.getFirst("X-Track"));
-        assertThat(headers.getFirst("Content-Disposition"),
-                is("attachment; filename=Duke.png"));
+        System.out.println("test01_01_fileDownload: X-Track=" + headers
+                .getFirst("X-Track"));
+        assertThat(headers.getFirst("Content-Disposition"), is(
+                "attachment; filename=Duke.png"));
 
         MediaType contentType = headers.getContentType();
         assertThat(contentType.getType(), is("image"));
@@ -70,17 +71,17 @@ public class DownloadTest extends FunctionTestSupport {
                 applicationContextUrl + "/download/1_2", String.class);
 
         HttpHeaders headers = response.getHeaders();
-        System.out.println("test01_02_fileDownload: X-Track="
-                + headers.getFirst("X-Track"));
+        System.out.println("test01_02_fileDownload: X-Track=" + headers
+                .getFirst("X-Track"));
 
-        assertThat(headers.getFirst("Content-Disposition"),
-                is("attachment; filename=framework.txt"));
+        assertThat(headers.getFirst("Content-Disposition"), is(
+                "attachment; filename=framework.txt"));
 
         MediaType contentType = headers.getContentType();
         assertThat(contentType.getType(), is("text"));
         assertThat(contentType.getSubtype(), is("plain"));
-        assertThat(contentType.getParameter("charset"),
-                equalToIgnoringCase("UTF-8"));
+        assertThat(contentType.getParameter("charset"), equalToIgnoringCase(
+                "UTF-8"));
 
         assertThat(response.getBody(), is("Spring Framework"));
 

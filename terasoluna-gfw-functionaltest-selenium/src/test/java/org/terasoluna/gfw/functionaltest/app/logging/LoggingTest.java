@@ -35,7 +35,8 @@ import org.springframework.web.client.RestTemplate;
 import org.terasoluna.gfw.functionaltest.app.FunctionTestSupport;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath:META-INF/spring/seleniumContext.xml" })
+@ContextConfiguration(locations = {
+        "classpath:META-INF/spring/seleniumContext.xml" })
 public class LoggingTest extends FunctionTestSupport {
 
     @Inject
@@ -86,8 +87,8 @@ public class LoggingTest extends FunctionTestSupport {
                 byte[].class);
 
         HttpHeaders headers = response.getHeaders();
-        assertThat(headers.getFirst("X-Track"),
-                is("12345678901234567890123456789012"));
+        assertThat(headers.getFirst("X-Track"), is(
+                "12345678901234567890123456789012"));
     }
 
     @Test
@@ -138,8 +139,8 @@ public class LoggingTest extends FunctionTestSupport {
         driver.findElement(By.id("userIdMDCPutFilterDefault")).click();
 
         // check default userId MDC
-        assertThat(driver.findElement(By.id("userIdMDC")).getText(),
-                is("anonymousUser"));
+        assertThat(driver.findElement(By.id("userIdMDC")).getText(), is(
+                "anonymousUser"));
     }
 
     @Test
@@ -156,8 +157,8 @@ public class LoggingTest extends FunctionTestSupport {
         driver.findElement(By.id("userIdMDCPutFilterCustom")).click();
 
         // check custom userId MDC
-        assertThat(driver.findElement(By.id("userIdMDC")).getText(),
-                is("anonymousUser"));
+        assertThat(driver.findElement(By.id("userIdMDC")).getText(), is(
+                "anonymousUser"));
     }
 
     @Test
@@ -173,8 +174,8 @@ public class LoggingTest extends FunctionTestSupport {
         driver.findElement(By.id("userIdMDCPutFilterDefault")).click();
 
         // check default userId MDC
-        assertThat(driver.findElement(By.id("userIdMDC")).getText(),
-                is("user1"));
+        assertThat(driver.findElement(By.id("userIdMDC")).getText(), is(
+                "user1"));
     }
 
     @Test
@@ -196,8 +197,8 @@ public class LoggingTest extends FunctionTestSupport {
         driver.findElement(By.id("userIdMDCPutFilterDefault")).click();
 
         // check default userId MDC
-        assertThat(driver.findElement(By.id("userIdMDC")).getText(),
-                is("user1"));
+        assertThat(driver.findElement(By.id("userIdMDC")).getText(), is(
+                "user1"));
 
         // check trace logging
         // check visually the log file

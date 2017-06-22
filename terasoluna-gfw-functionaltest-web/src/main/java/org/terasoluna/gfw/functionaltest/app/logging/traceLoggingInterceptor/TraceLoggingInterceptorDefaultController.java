@@ -32,8 +32,8 @@ public class TraceLoggingInterceptorDefaultController {
     @Inject
     protected TraceLoggingInterceptorService traceLoggingInterceptorService;
 
-    private static final Logger logger = LoggerFactory
-            .getLogger(TraceLoggingInterceptorDefaultController.class);
+    private static final Logger logger = LoggerFactory.getLogger(
+            TraceLoggingInterceptorDefaultController.class);
 
     @RequestMapping(value = "4_1", method = RequestMethod.GET)
     public String defaultTraceLoggingAsTraceLevel_04_01(Model model) {

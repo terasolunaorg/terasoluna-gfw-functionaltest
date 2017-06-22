@@ -28,8 +28,8 @@ import org.springframework.util.StringUtils;
 
 public class PageSource {
 
-    private static final Logger logger = LoggerFactory
-            .getLogger(PageSource.class);
+    private static final Logger logger = LoggerFactory.getLogger(
+            PageSource.class);
 
     @Value("${selenium.enablePageSource}")
     protected boolean enablePageSource;
