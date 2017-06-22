@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
-  xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:context="http://www.springframework.org/schema/context" xmlns:aop="http://www.springframework.org/schema/aop"
+  xmlns:tx="http://www.springframework.org/schema/tx"
   xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
@@ -11,96 +11,77 @@
   <tx:annotation-driven transaction-manager="jpaTransactionManager" />
   <tx:annotation-driven transaction-manager="dataSourceTransactionManager" />
 
-  <import
-    resource="classpath:META-INF/spring/terasoluna-gfw-functionaltest-infra.xml" />
+  <import resource="classpath:META-INF/spring/terasoluna-gfw-functionaltest-infra.xml" />
   <import resource="classpath*:META-INF/spring/**/*-codelist.xml" />
   <context:component-scan base-package="org.terasoluna.gfw.functionaltest.domain" />
-  <bean id="dateFactory"
-    class="org.terasoluna.gfw.common.date.jodatime.DefaultJodaTimeDateFactory" />
+  <bean id="dateFactory" class="org.terasoluna.gfw.common.date.jodatime.DefaultJodaTimeDateFactory" />
 
-  <bean id="jdbcFixedDateFactory"
-    class="org.terasoluna.gfw.common.date.jodatime.JdbcFixedJodaTimeDateFactory">
+  <bean id="jdbcFixedDateFactory" class="org.terasoluna.gfw.common.date.jodatime.JdbcFixedJodaTimeDateFactory">
     <property name="dataSource" ref="dataSource" />
-    <property name="currentTimestampQuery"
-      value="SELECT now FROM system_date where system_date_id='1'" />
+    <property name="currentTimestampQuery" value="SELECT now FROM system_date where system_date_id='1'" />
   </bean>
 
-  <bean id="dbErrorJdbcFixedDateFactory"
-    class="org.terasoluna.gfw.common.date.jodatime.JdbcFixedJodaTimeDateFactory">
+  <bean id="dbErrorJdbcFixedDateFactory" class="org.terasoluna.gfw.common.date.jodatime.JdbcFixedJodaTimeDateFactory">
     <property name="dataSource" ref="dataSource" />
-    <property name="currentTimestampQuery"
-      value="SELECT now FROM system_date where system_date_id='2'" />
+    <property name="currentTimestampQuery" value="SELECT now FROM system_date where system_date_id='2'" />
   </bean>
 
-  <bean id="msecJdbcAdjustedDateFactory"
-    class="org.terasoluna.gfw.common.date.jodatime.JdbcAdjustedJodaTimeDateFactory">
+  <bean id="msecJdbcAdjustedDateFactory" class="org.terasoluna.gfw.common.date.jodatime.JdbcAdjustedJodaTimeDateFactory">
     <property name="dataSource" ref="dataSource" />
-    <property name="adjustedValueQuery"
-      value="SELECT diff FROM operation_date where operation_date_id='1'" />
+    <property name="adjustedValueQuery" value="SELECT diff FROM operation_date where operation_date_id='1'" />
   </bean>
 
-  <bean id="secJdbcAdjustedDateFactory"
-    class="org.terasoluna.gfw.common.date.jodatime.JdbcAdjustedJodaTimeDateFactory">
+  <bean id="secJdbcAdjustedDateFactory" class="org.terasoluna.gfw.common.date.jodatime.JdbcAdjustedJodaTimeDateFactory">
     <property name="dataSource" ref="dataSource" />
-    <property name="adjustedValueQuery"
-      value="SELECT diff * 1000 FROM operation_date where operation_date_id='1'" />
+    <property name="adjustedValueQuery" value="SELECT diff * 1000 FROM operation_date where operation_date_id='1'" />
   </bean>
 
-  <bean id="minuteJdbcAdjustedDateFactory"
-    class="org.terasoluna.gfw.common.date.jodatime.JdbcAdjustedJodaTimeDateFactory">
+  <bean id="minuteJdbcAdjustedDateFactory" class="org.terasoluna.gfw.common.date.jodatime.JdbcAdjustedJodaTimeDateFactory">
     <property name="dataSource" ref="dataSource" />
     <property name="adjustedValueQuery"
       value="SELECT diff * 60 * 1000 FROM operation_date where operation_date_id='1'" />
   </bean>
 
-  <bean id="hourJdbcAdjustedDateFactory"
-    class="org.terasoluna.gfw.common.date.jodatime.JdbcAdjustedJodaTimeDateFactory">
+  <bean id="hourJdbcAdjustedDateFactory" class="org.terasoluna.gfw.common.date.jodatime.JdbcAdjustedJodaTimeDateFactory">
     <property name="dataSource" ref="dataSource" />
     <property name="adjustedValueQuery"
       value="SELECT diff * 60 * 60 * 1000 FROM operation_date where operation_date_id='1'" />
   </bean>
 
-  <bean id="dayJdbcAdjustedDateFactory"
-    class="org.terasoluna.gfw.common.date.jodatime.JdbcAdjustedJodaTimeDateFactory">
+  <bean id="dayJdbcAdjustedDateFactory" class="org.terasoluna.gfw.common.date.jodatime.JdbcAdjustedJodaTimeDateFactory">
     <property name="dataSource" ref="dataSource" />
     <property name="adjustedValueQuery"
       value="SELECT diff * 24 * 60 * 60 * 1000 FROM operation_date where operation_date_id='1'" />
   </bean>
 
-  <bean id="useCacheDayJdbcAdjustedDateFactory"
-    class="org.terasoluna.gfw.common.date.jodatime.JdbcAdjustedJodaTimeDateFactory">
+  <bean id="useCacheDayJdbcAdjustedDateFactory" class="org.terasoluna.gfw.common.date.jodatime.JdbcAdjustedJodaTimeDateFactory">
     <property name="dataSource" ref="dataSource" />
     <property name="useCache" value="true" />
     <property name="adjustedValueQuery"
       value="SELECT diff * 24 * 60 * 60 * 1000 FROM operation_date where operation_date_id='1'" />
   </bean>
 
-  <bean id="noCacheJdbcAdjustedDateFactory"
-    class="org.terasoluna.gfw.common.date.jodatime.JdbcAdjustedJodaTimeDateFactory">
+  <bean id="noCacheJdbcAdjustedDateFactory" class="org.terasoluna.gfw.common.date.jodatime.JdbcAdjustedJodaTimeDateFactory">
     <property name="dataSource" ref="dataSource" />
     <property name="useCache" value="false" />
     <property name="adjustedValueQuery"
       value="SELECT diff * 24 * 60 * 60 * 1000 FROM operation_date where operation_date_id='1'" />
   </bean>
 
-  <bean id="dbErrorJdbcAdjustedDateFactory"
-    class="org.terasoluna.gfw.common.date.jodatime.JdbcAdjustedJodaTimeDateFactory">
+  <bean id="dbErrorJdbcAdjustedDateFactory" class="org.terasoluna.gfw.common.date.jodatime.JdbcAdjustedJodaTimeDateFactory">
     <property name="dataSource" ref="dataSource" />
     <property name="adjustedValueQuery"
       value="SELECT diff * 24 * 60 * 60 * 1000 FROM operation_date where operation_date_id='2'" />
   </bean>
 
-  <bean id="validator"
-    class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />
+  <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />
 
-  <bean
-    class="org.springframework.validation.beanvalidation.MethodValidationPostProcessor">
+  <bean class="org.springframework.validation.beanvalidation.MethodValidationPostProcessor">
     <property name="validator" ref="validator" />
   </bean>
 
   <!-- AOP. -->
-  <bean id="resultMessagesLoggingInterceptor"
-    class="org.terasoluna.gfw.common.exception.ResultMessagesLoggingInterceptor">
+  <bean id="resultMessagesLoggingInterceptor" class="org.terasoluna.gfw.common.exception.ResultMessagesLoggingInterceptor">
     <property name="exceptionLogger" ref="exceptionLogger" />
   </bean>
   <bean id="resultMessagesInfoLoggingInterceptor"
