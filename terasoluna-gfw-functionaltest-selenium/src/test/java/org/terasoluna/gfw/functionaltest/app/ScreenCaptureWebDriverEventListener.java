@@ -24,7 +24,7 @@ import org.openqa.selenium.WebElement;
  * behavior as per requirement
  */
 public class ScreenCaptureWebDriverEventListener extends
-                                                WebDriverEventListenerAdapter {
+                                                 WebDriverEventListenerAdapter {
 
     protected ScreenCapture screenCapture;
 

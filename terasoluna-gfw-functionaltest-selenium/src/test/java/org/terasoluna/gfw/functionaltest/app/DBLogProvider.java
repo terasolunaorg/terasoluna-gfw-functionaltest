@@ -58,12 +58,16 @@ public class DBLogProvider {
         sql.append("SELECT COUNT(e.*) FROM logging_event e");
         where.append(" WHERE e.formatted_message REGEXP :message");
 
-        sql.append(" JOIN logging_event_exception ee ON ee.event_id = e.event_id");
-        where.append(" AND ee.I = '0' AND ee.TRACE_LINE REGEXP :exceptionMessage");
+        sql.append(
+                " JOIN logging_event_exception ee ON ee.event_id = e.event_id");
+        where.append(
+                " AND ee.I = '0' AND ee.TRACE_LINE REGEXP :exceptionMessage");
 
         if (StringUtils.hasText(xTrack)) {
-            sql.append(" JOIN logging_event_property ep ON ep.event_id = e.event_id");
-            where.append(" AND ep.mapped_key = 'X-Track' AND ep.mapped_value = :xTrack");
+            sql.append(
+                    " JOIN logging_event_property ep ON ep.event_id = e.event_id");
+            where.append(
+                    " AND ep.mapped_key = 'X-Track' AND ep.mapped_value = :xTrack");
         }
         if (StringUtils.hasText(loggerNamePattern)) {
             where.append(" AND e.logger_name REGEXP :loggerName");
@@ -89,7 +93,8 @@ public class DBLogProvider {
             String level, String loggerName) {
 
         StringBuilder sql = new StringBuilder();
-        sql.append("SELECT COUNT(e.*) FROM logging_event e WHERE e.formatted_message REGEXP :message AND e.level_string = :level");
+        sql.append(
+                "SELECT COUNT(e.*) FROM logging_event e WHERE e.formatted_message REGEXP :message AND e.level_string = :level");
 
         if (StringUtils.hasText(loggerName)) {
             sql.append(" AND e.logger_name = :loggerName");

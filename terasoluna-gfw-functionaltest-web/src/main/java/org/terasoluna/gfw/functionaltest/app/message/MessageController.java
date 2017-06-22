@@ -46,9 +46,9 @@ public class MessageController {
     @RequestMapping(value = "1_2", method = RequestMethod.GET)
     public String defaultSpecified_01_02(Model model) {
 
-        model.addAttribute(ResultMessages.success().addAll(
-                ResultMessage.fromCode("i.gt.me.0001"),
-                ResultMessage.fromCode("i.gt.me.0002")));
+        model.addAttribute(ResultMessages.success().addAll(ResultMessage
+                .fromCode("i.gt.me.0001"), ResultMessage.fromCode(
+                        "i.gt.me.0002")));
 
         return "message/default";
     }
@@ -56,8 +56,8 @@ public class MessageController {
     @RequestMapping(value = "1_3", method = RequestMethod.GET)
     public String defaultSpecified_01_03(Model model) {
 
-        model.addAttribute(ResultMessages.error().add(
-                ResultMessage.fromText("Error Message!!")));
+        model.addAttribute(ResultMessages.error().add(ResultMessage.fromText(
+                "Error Message!!")));
 
         return "message/default";
     }
@@ -105,8 +105,8 @@ public class MessageController {
     @RequestMapping(value = "1_8", method = RequestMethod.GET)
     public String defaultSpecified_01_08(Model model) {
 
-        throw new BusinessException(ResultMessages.error().add(
-                ResultMessage.fromText("Error Message!!")));
+        throw new BusinessException(ResultMessages.error().add(ResultMessage
+                .fromText("Error Message!!")));
     }
 
     @RequestMapping(value = "1_9", method = RequestMethod.GET)
@@ -129,8 +129,8 @@ public class MessageController {
     @RequestMapping(value = "1_11", method = RequestMethod.GET)
     public String defaultSpecified_01_11(Model model) {
 
-        model.addAttribute(ResultMessages.success().add(
-                ResultMessage.fromCode("i.gt.me.0005", "Terasoluna")));
+        model.addAttribute(ResultMessages.success().add(ResultMessage.fromCode(
+                "i.gt.me.0005", "Terasoluna")));
 
         return "message/default";
     }
@@ -272,8 +272,8 @@ public class MessageController {
     public String messagesTypeSpecified_05_03(Model model) {
 
         model.addAttribute("login_error_messages", ResultMessages.error()
-                .addAll(ResultMessage.fromCode("w.gt.me.0001"),
-                        ResultMessage.fromCode("e.gt.me.0001")));
+                .addAll(ResultMessage.fromCode("w.gt.me.0001"), ResultMessage
+                        .fromCode("e.gt.me.0001")));
 
         return "message/messagesTypeSpecified";
     }
@@ -299,8 +299,9 @@ public class MessageController {
     @RequestMapping(value = "6_3", method = RequestMethod.GET)
     public String customResultMessageTypeImpl_06_03(Model model) {
 
-        model.addAttribute(new ResultMessages(BlueprintResultMessageType.SUCCESS)
-                .add("i.gt.me.0003"));
+        model.addAttribute(
+                new ResultMessages(BlueprintResultMessageType.SUCCESS).add(
+                        "i.gt.me.0003"));
 
         return "message/resultMessageType";
     }
@@ -317,9 +318,9 @@ public class MessageController {
     @RequestMapping(value = "7_1", method = RequestMethod.GET)
     public String outputMessage_07_01(Model model) {
 
-        model.addAttribute(ResultMessages.success().addAll(
-                ResultMessage.fromText("Hello World!!"),
-                ResultMessage.fromText("Hello Message!!")));
+        model.addAttribute(ResultMessages.success().addAll(ResultMessage
+                .fromText("Hello World!!"), ResultMessage.fromText(
+                        "Hello Message!!")));
 
         return "message/outputMessage";
     }

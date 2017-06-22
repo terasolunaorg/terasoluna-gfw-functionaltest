@@ -28,8 +28,8 @@ public class BusinessTestException extends ResultMessagesNotificationException {
     }
 
     public BusinessTestException(String code, String message) {
-        super(ResultMessages.warning().add(
-                ResultMessage.fromCode(code, message)));
+        super(ResultMessages.warning().add(ResultMessage.fromCode(code,
+                message)));
     }
 
 }
