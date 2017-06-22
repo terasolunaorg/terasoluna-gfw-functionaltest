@@ -65,10 +65,9 @@
       <scope>provided</scope>
       <optional>true</optional>
     </dependency>
-    <!-- Once you have installed db2jcc4.jar into local repository, please 
-      remove this comment out. -->
-    <!-- <dependency> <groupId>com.ibm</groupId> <artifactId>db2jcc4</artifactId> 
-      <scope>provided</scope> <optional>true</optional> </dependency> -->
+    <!-- Once you have installed db2jcc4.jar into local repository, please remove this comment out. -->
+    <!-- <dependency> <groupId>com.ibm</groupId> <artifactId>db2jcc4</artifactId> <scope>provided</scope> 
+      <optional>true</optional> </dependency> -->
     <!-- == End Database == -->
 
     <!-- == Begin Unit Test == -->

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sec="http://www.springframework.org/schema/security"
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:sec="http://www.springframework.org/schema/security"
   xsi:schemaLocation="
         http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
@@ -8,89 +8,73 @@
 
   <sec:http pattern="/logging/**">
     <sec:access-denied-handler ref="accessDeniedHandler" />
-    <sec:form-login login-page="/logging/userIdMDCPutFilter"
-      login-processing-url="/logging/login" authentication-failure-url="/logging/userIdMDCPutFilter"
-      authentication-success-handler-ref="redirectHandler" />
-    <sec:logout logout-url="/logging/userIdMDCPutFilter/logout"
-      logout-success-url="/logging/userIdMDCPutFilter" delete-cookies="JSESSIONID" />
+    <sec:form-login login-page="/logging/userIdMDCPutFilter" login-processing-url="/logging/login"
+      authentication-failure-url="/logging/userIdMDCPutFilter" authentication-success-handler-ref="redirectHandler" />
+    <sec:logout logout-url="/logging/userIdMDCPutFilter/logout" logout-success-url="/logging/userIdMDCPutFilter"
+      delete-cookies="JSESSIONID" />
   </sec:http>
 
   <sec:http pattern="/redirect/withgoto/**">
     <sec:access-denied-handler ref="accessDeniedHandler" />
-    <sec:form-login login-processing-url="/redirect/withgoto/login"
-      login-page="/redirect/withgoto/loginWithGoTo"
+    <sec:form-login login-processing-url="/redirect/withgoto/login" login-page="/redirect/withgoto/loginWithGoTo"
       authentication-failure-handler-ref="redirectErrorHandlerWithGoTo"
       authentication-success-handler-ref="redirectHandlerWithGoTo" />
   </sec:http>
 
   <sec:http pattern="/redirect/withwhitelist/**">
     <sec:access-denied-handler ref="accessDeniedHandler" />
-    <sec:form-login login-processing-url="/redirect/withwhitelist/login"
-      login-page="/redirect/withwhitelist/loginWithWhiteList"
+    <sec:form-login login-processing-url="/redirect/withwhitelist/login" login-page="/redirect/withwhitelist/loginWithWhiteList"
       authentication-failure-handler-ref="redirectErrorHandlerWithWhiteList"
       authentication-success-handler-ref="redirectHandlerWithWhiteList" />
   </sec:http>
 
   <sec:http pattern="/**">
     <sec:access-denied-handler ref="accessDeniedHandler" />
-    <sec:form-login login-page="/redirect/login"
-      authentication-failure-handler-ref="redirectErrorHandler"
+    <sec:form-login login-page="/redirect/login" authentication-failure-handler-ref="redirectErrorHandler"
       authentication-success-handler-ref="redirectHandler" />
   </sec:http>
 
-  <bean id="accessDeniedHandler"
-    class="org.springframework.security.web.access.DelegatingAccessDeniedHandler">
+  <bean id="accessDeniedHandler" class="org.springframework.security.web.access.DelegatingAccessDeniedHandler">
     <constructor-arg index="0">
       <map>
-        <entry
-          key="org.springframework.security.web.csrf.InvalidCsrfTokenException">
-          <bean
-            class="org.springframework.security.web.access.AccessDeniedHandlerImpl">
-            <property name="errorPage"
-              value="/WEB-INF/views/common/error/csrfTokenError.jsp" />
+        <entry key="org.springframework.security.web.csrf.InvalidCsrfTokenException">
+          <bean class="org.springframework.security.web.access.AccessDeniedHandlerImpl">
+            <property name="errorPage" value="/WEB-INF/views/common/error/csrfTokenError.jsp" />
           </bean>
         </entry>
       </map>
     </constructor-arg>
     <constructor-arg index="1">
-      <bean
-        class="org.springframework.security.web.access.AccessDeniedHandlerImpl">
-        <property name="errorPage"
-          value="/WEB-INF/views/common/error/accessDeniedError.jsp" />
+      <bean class="org.springframework.security.web.access.AccessDeniedHandlerImpl">
+        <property name="errorPage" value="/WEB-INF/views/common/error/accessDeniedError.jsp" />
       </bean>
     </constructor-arg>
   </bean>
 
-  <bean id="redirectHandler"
-    class="org.terasoluna.gfw.security.web.redirect.RedirectAuthenticationHandler">
+  <bean id="redirectHandler" class="org.terasoluna.gfw.security.web.redirect.RedirectAuthenticationHandler">
     <property name="targetUrlParameter" value="redirectTo" />
   </bean>
 
-  <bean id="redirectHandlerWithGoTo"
-    class="org.terasoluna.gfw.security.web.redirect.RedirectAuthenticationHandler">
+  <bean id="redirectHandlerWithGoTo" class="org.terasoluna.gfw.security.web.redirect.RedirectAuthenticationHandler">
     <property name="targetUrlParameter" value="goTo" />
   </bean>
 
-  <bean id="redirectHandlerWithWhiteList"
-    class="org.terasoluna.gfw.security.web.redirect.RedirectAuthenticationHandler">
+  <bean id="redirectHandlerWithWhiteList" class="org.terasoluna.gfw.security.web.redirect.RedirectAuthenticationHandler">
     <property name="targetUrlParameter" value="redirectTo" />
     <property name="redirectToRedirectStrategy" ref="whiteListRedirectStrategy" />
   </bean>
 
-  <bean id="whiteListRedirectStrategy"
-    class="org.terasoluna.gfw.functionaltest.app.redirect.WhiteListRedirectStrategy" />
+  <bean id="whiteListRedirectStrategy" class="org.terasoluna.gfw.functionaltest.app.redirect.WhiteListRedirectStrategy" />
 
   <bean id="redirectErrorHandlerWithGoTo"
     class="org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler">
-    <property name="defaultFailureUrl"
-      value="/redirect/withgoto/loginWithGoTo?error=true" />
+    <property name="defaultFailureUrl" value="/redirect/withgoto/loginWithGoTo?error=true" />
     <property name="useForward" value="true" />
   </bean>
 
   <bean id="redirectErrorHandlerWithWhiteList"
     class="org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler">
-    <property name="defaultFailureUrl"
-      value="/redirect/withwhitelist/loginWithWhiteList?error=true" />
+    <property name="defaultFailureUrl" value="/redirect/withwhitelist/loginWithWhiteList?error=true" />
     <property name="useForward" value="true" />
   </bean>
 
@@ -101,8 +85,7 @@
   </bean>
 
   <sec:authentication-manager>
-    <sec:authentication-provider
-      user-service-ref="userService">
+    <sec:authentication-provider user-service-ref="userService">
       <sec:password-encoder ref="passwordEncoder" />
     </sec:authentication-provider>
   </sec:authentication-manager>
