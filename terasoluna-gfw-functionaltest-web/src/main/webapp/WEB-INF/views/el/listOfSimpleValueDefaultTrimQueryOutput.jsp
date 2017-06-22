@@ -48,8 +48,8 @@
           <td><form:input path="item.listA[1]" /></td>
           <td><form:input path="item.listA[2]" /></td>
           <td><form:checkbox path="item.listB" value="bb0" label="bb0" /><br> <form:checkbox
-              path="item.listB" value="bb1" label="bb1" /><br> <form:checkbox path="item.listB"
-              value="bb2" label="bb2" /><br></td>
+              path="item.listB" value="bb1" label="bb1" /><br> <form:checkbox
+              path="item.listB" value="bb2" label="bb2" /><br></td>
           <td><form:select path="item.listC">
               <form:option value="" label="--Please Select(Multiple)" />
               <form:option value="cc0">c0</form:option>
