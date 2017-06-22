@@ -7,8 +7,7 @@
     </encoder>
   </appender>
 
-  <appender name="APPLICATION_LOG_FILE"
-    class="ch.qos.logback.core.rolling.RollingFileAppender">
+  <appender name="APPLICATION_LOG_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
     <file>${gfw.app.log.dir:-log}/terasoluna-gfw-functionaltest-application.log</file>
     <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
       <fileNamePattern>${gfw.app.log.dir:-log}/backup/terasoluna-gfw-functionaltest-application-%d{yyyyMMdd}.log
@@ -21,8 +20,7 @@
     </encoder>
   </appender>
 
-  <appender name="MONITORING_LOG_FILE"
-    class="ch.qos.logback.core.rolling.RollingFileAppender">
+  <appender name="MONITORING_LOG_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
     <file>${gfw.app.log.dir:-log}/terasoluna-gfw-functionaltest-monitoring.log</file>
     <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
       <fileNamePattern>${gfw.app.log.dir:-log}/backup/terasoluna-gfw-functionaltest-monitoring-%d{yyyyMMdd}.log
@@ -35,8 +33,7 @@
     </encoder>
   </appender>
 
-  <appender name="TRACE_LOGGING_INTERCEPTER_TEST_LOG_FILE"
-    class="ch.qos.logback.core.rolling.RollingFileAppender">
+  <appender name="TRACE_LOGGING_INTERCEPTER_TEST_LOG_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
     <file>${gfw.app.log.dir:-log}/traceLoggingInterceptorTest.log</file>
     <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
       <fileNamePattern>${gfw.app.log.dir:-log}/backup/traceLoggingInterceptorTest-%d{yyyyMMdd}.log
@@ -50,8 +47,7 @@
   </appender>
 
   <appender name="DB" class="ch.qos.logback.classic.db.DBAppender">
-    <connectionSource
-      class="ch.qos.logback.core.db.DataSourceConnectionSource">
+    <connectionSource class="ch.qos.logback.core.db.DataSourceConnectionSource">
       <dataSource class="org.apache.commons.dbcp2.BasicDataSource">
         <driverClassName>org.h2.Driver</driverClassName>
         <url>jdbc:h2:mem:terasoluna-gfw-functionaltest;DB_CLOSE_DELAY=-1</url>
@@ -77,15 +73,12 @@
   <logger name="org.terasoluna.gfw.common.exception.ExceptionLogger">
     <level value="info" />
   </logger>
-  <logger
-    name="org.terasoluna.gfw.common.exception.ExceptionLogger.Monitoring"
-    additivity="false">
+  <logger name="org.terasoluna.gfw.common.exception.ExceptionLogger.Monitoring" additivity="false">
     <level value="info" />
     <appender-ref ref="MONITORING_LOG_FILE" />
     <appender-ref ref="DB" />
   </logger>
-  <logger
-    name="org.terasoluna.gfw.functionaltest.app.logging.traceLoggingInterceptor"
+  <logger name="org.terasoluna.gfw.functionaltest.app.logging.traceLoggingInterceptor"
     additivity="false">
     <level value="trace" />
     <appender-ref ref="TRACE_LOGGING_INTERCEPTER_TEST_LOG_FILE" />
@@ -126,8 +119,7 @@
     <level value="debug" />
   </logger>
 
-  <logger
-    name="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+  <logger name="org.springframework.jdbc.datasource.DataSourceTransactionManager">
     <level value="debug" />
   </logger>
 

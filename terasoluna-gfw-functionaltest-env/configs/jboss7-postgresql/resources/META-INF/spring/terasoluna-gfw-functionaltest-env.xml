@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jee="http://www.springframework.org/schema/jee"
-  xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:tx="http://www.springframework.org/schema/tx"
-  xmlns:util="http://www.springframework.org/schema/util" xmlns:task="http://www.springframework.org/schema/task"
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:jee="http://www.springframework.org/schema/jee" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+  xmlns:tx="http://www.springframework.org/schema/tx" xmlns:util="http://www.springframework.org/schema/util"
+  xmlns:task="http://www.springframework.org/schema/task"
   xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
         http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd
         http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
@@ -10,8 +10,7 @@
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd">
 
-  <bean id="dateFactory"
-    class="org.terasoluna.gfw.common.date.jodatime.DefaultJodaTimeDateFactory" />
+  <bean id="dateFactory" class="org.terasoluna.gfw.common.date.jodatime.DefaultJodaTimeDateFactory" />
 
   <jee:jndi-lookup id="realDataSource" jndi-name="jdbc/gfwFunctionaltestDataSource"
     expected-type="javax.sql.DataSource" />
@@ -45,10 +44,8 @@
   <bean id="stringSeq" class="org.terasoluna.gfw.common.sequencer.JdbcSequencer">
     <property name="dataSource" ref="dataSource" />
     <property name="sequenceClass" value="java.lang.String" />
-    <property name="nextValueQuery"
-      value="SELECT TO_CHAR(nextval('STRING_SEQ'),'FM0000000000') AS seq" />
-    <property name="currentValueQuery"
-      value="SELECT TO_CHAR(currval('STRING_SEQ'),'FM0000000000') AS seq" />
+    <property name="nextValueQuery" value="SELECT TO_CHAR(nextval('STRING_SEQ'),'FM0000000000') AS seq" />
+    <property name="currentValueQuery" value="SELECT TO_CHAR(currval('STRING_SEQ'),'FM0000000000') AS seq" />
   </bean>
 
   <bean id="notFoundSeq" class="org.terasoluna.gfw.common.sequencer.JdbcSequencer">
@@ -64,9 +61,8 @@
   <alias alias="jpaTransactionManager" name="transactionManager" />
 
   <!-- Settings of EntityManager. -->
-  <bean
-    class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
-    id="entityManagerFactory" parent="abstractEntityManagerFactory">
+  <bean class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" id="entityManagerFactory"
+    parent="abstractEntityManagerFactory">
     <property name="jtaDataSource" ref="dataSource" />
     <property name="jpaPropertyMap">
       <map merge="true">
@@ -80,8 +76,7 @@
   <bean id="realDataSourceForLogging" class="org.apache.commons.dbcp2.BasicDataSource"
     destroy-method="close">
     <property name="driverClassName" value="org.h2.Driver" />
-    <property name="url"
-      value="jdbc:h2:mem:terasoluna-gfw-functionaltest;DB_CLOSE_DELAY=-1" />
+    <property name="url" value="jdbc:h2:mem:terasoluna-gfw-functionaltest;DB_CLOSE_DELAY=-1" />
     <property name="username" value="sa" />
     <property name="password" value="" />
     <property name="defaultAutoCommit" value="false" />
@@ -97,8 +92,7 @@
 
   <task:scheduler id="dbLogCleanupTaskScheduler" />
   <task:scheduled-tasks scheduler="dbLogCleanupTaskScheduler">
-    <task:scheduled ref="dbLogCleaner" method="cleanup"
-      cron="0 0 6 * * ?" />
+    <task:scheduled ref="dbLogCleaner" method="cleanup" cron="0 0 6 * * ?" />
   </task:scheduled-tasks>
 
 </beans>

@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-  xmlns:context="http://www.springframework.org/schema/context"
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context"
   xmlns:tx="http://www.springframework.org/schema/tx" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
                         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
                         http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-  <context:property-placeholder
-    location="classpath*:META-INF/spring/*.properties" />
+  <context:property-placeholder location="classpath*:META-INF/spring/*.properties" />
 
   <!-- Settings for DbAppender of logback. -->
   <bean id="realDataSourceForLogging" class="org.apache.commons.dbcp2.BasicDataSource"
@@ -24,8 +22,7 @@
     <constructor-arg index="0" ref="realDataSourceForLogging" />
   </bean>
 
-  <bean id="transactionManager"
-    class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+  <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
     <property name="dataSource" ref="dataSourceForLogging" />
     <property name="rollbackOnCommitFailure" value="true" />
   </bean>
@@ -56,16 +53,13 @@
   </bean>
 
   <beans profile="firefox default">
-    <bean id="webDriver"
-      class="org.terasoluna.gfw.functionaltest.app.FirefoxDriverFactoryBean"
+    <bean id="webDriver" class="org.terasoluna.gfw.functionaltest.app.FirefoxDriverFactoryBean"
       scope="prototype" />
   </beans>
   <beans profile="chrome">
-    <bean id="webDriver" class="org.openqa.selenium.chrome.ChromeDriver"
-      scope="prototype" />
+    <bean id="webDriver" class="org.openqa.selenium.chrome.ChromeDriver" scope="prototype" />
   </beans>
   <beans profile="ie">
-    <bean id="webDriver" class="org.openqa.selenium.ie.InternetExplorerDriver"
-      scope="prototype" />
+    <bean id="webDriver" class="org.openqa.selenium.ie.InternetExplorerDriver" scope="prototype" />
   </beans>
 </beans>
