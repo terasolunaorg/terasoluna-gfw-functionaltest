@@ -5,8 +5,8 @@
 
   <Resource name="jdbc/gfwFunctionaltestDataSource" type="javax.sql.DataSource"
     driverClassName="oracle.jdbc.OracleDriver" username="gfw" password="gfw"
-    url="jdbc:oracle:thin:@${HOST_IP!'localhost'}:${DBSRV_DB_PORT!'1521'}/teradb"
-    maxIdle="16" minIdle="0" maxWaitMillis="60000" maxTotal="96" />
+    url="jdbc:oracle:thin:@${HOST_IP!'localhost'}:${DBSRV_DB_PORT!'1521'}/teradb" maxIdle="16"
+    minIdle="0" maxWaitMillis="60000" maxTotal="96" />
 
   <Resources className="org.apache.catalina.webresources.StandardRoot">
     <PreResources className="org.apache.catalina.webresources.DirResourceSet"
