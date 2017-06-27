@@ -29,7 +29,8 @@ import org.terasoluna.gfw.functionaltest.app.ApServerName;
 import org.terasoluna.gfw.functionaltest.app.FunctionTestSupport;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath:META-INF/spring/seleniumContext.xml" })
+@ContextConfiguration(locations = {
+        "classpath:META-INF/spring/seleniumContext.xml" })
 public class RedirectTest extends FunctionTestSupport {
 
     @Value("${app.redirect.allowed.externalUrl}")
@@ -53,7 +54,8 @@ public class RedirectTest extends FunctionTestSupport {
         driver.findElement(By.id("btn1")).click();
 
         // confirms that transition was made to detail.jsp with the below assertions
-        assertThat(driver.findElement(By.id("username")).getText(), is("user1"));
+        assertThat(driver.findElement(By.id("username")).getText(), is(
+                "user1"));
         assertThat(driver.findElement(By.id("name")).getText(), is("Tarou"));
         assertThat(driver.findElement(By.id("address")).getText(), is("Tokyo"));
 
@@ -81,8 +83,8 @@ public class RedirectTest extends FunctionTestSupport {
         driver.findElement(By.id("btn1")).click();
 
         // confirms that transition was made to the context-root
-        assertThat(driver.findElement(By.id("Redirect")).getText(),
-                is("Redirect Function Test"));
+        assertThat(driver.findElement(By.id("Redirect")).getText(), is(
+                "Redirect Function Test"));
 
     }
 
@@ -98,9 +100,8 @@ public class RedirectTest extends FunctionTestSupport {
         inputFieldAccessor.overrideValue(By.id("password"), "user1", driver);
 
         // confirms that login page contains redirectTo hidden tag with external link
-        assertThat(
-                getRedirectValue(),
-                is("http://www.google.com/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"));
+        assertThat(getRedirectValue(), is(
+                "http://www.google.com/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"));
 
         // screen capture
         screenCapture.save(driver);
@@ -140,7 +141,8 @@ public class RedirectTest extends FunctionTestSupport {
         driver.findElement(By.id("btn1")).click();
 
         // confirms that transition was made to detail.jsp with the below assertions
-        assertThat(driver.findElement(By.id("username")).getText(), is("user1"));
+        assertThat(driver.findElement(By.id("username")).getText(), is(
+                "user1"));
         assertThat(driver.findElement(By.id("name")).getText(), is("Tarou"));
         assertThat(driver.findElement(By.id("address")).getText(), is("Tokyo"));
 
@@ -168,9 +170,9 @@ public class RedirectTest extends FunctionTestSupport {
         driver.findElement(By.id("btn1")).click();
 
         // error message
-        assertThat(driver.findElement(
-                By.xpath("//form[@id='command']/div/ul/li")).getText(),
-                is("Bad credentials"));
+        assertThat(driver.findElement(By.xpath(
+                "//form[@id='command']/div/ul/li")).getText(), is(
+                        "Bad credentials"));
 
         // not delete redirectTo value
         assertThat(getRedirectValue(), is("/" + contextName
@@ -184,7 +186,8 @@ public class RedirectTest extends FunctionTestSupport {
         driver.findElement(By.id("btn1")).click();
 
         // confirms that transition was made to detail.jsp with the below assertions
-        assertThat(driver.findElement(By.id("username")).getText(), is("user1"));
+        assertThat(driver.findElement(By.id("username")).getText(), is(
+                "user1"));
         assertThat(driver.findElement(By.id("name")).getText(), is("Tarou"));
         assertThat(driver.findElement(By.id("address")).getText(), is("Tokyo"));
 
@@ -225,7 +228,8 @@ public class RedirectTest extends FunctionTestSupport {
 
     private String getRedirectValue() {
         JavascriptExecutor jse = (JavascriptExecutor) driver;
-        jse.executeScript("document.getElementById('redirect').setAttribute('type', 'text');");
+        jse.executeScript(
+                "document.getElementById('redirect').setAttribute('type', 'text');");
         return driver.findElement(By.id("redirect")).getAttribute("value");
     }
 }

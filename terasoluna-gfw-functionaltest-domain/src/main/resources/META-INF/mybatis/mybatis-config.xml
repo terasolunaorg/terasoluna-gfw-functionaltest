@@ -2,14 +2,14 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org/DTD Config 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-     
-    <settings>
-        <setting name="mapUnderscoreToCamelCase" value="true" />
-        <setting name="jdbcTypeForNull" value="NULL" />
-    </settings>
 
-    <typeAliases>
-        <package name="org.terasoluna.gfw.functionaltest.domain.model" />
-    </typeAliases>
-     
+  <settings>
+    <setting name="mapUnderscoreToCamelCase" value="true" />
+    <setting name="jdbcTypeForNull" value="NULL" />
+  </settings>
+
+  <typeAliases>
+    <package name="org.terasoluna.gfw.functionaltest.domain.model" />
+  </typeAliases>
+
 </configuration>

@@ -1,70 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-    xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context"
+  xmlns:tx="http://www.springframework.org/schema/tx" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
                         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
                         http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-    <context:property-placeholder
-        location="classpath*:META-INF/spring/*.properties" />
+  <context:property-placeholder location="classpath*:META-INF/spring/*.properties" />
 
-    <!-- Settings for DbAppender of logback. -->
-    <bean id="realDataSourceForLogging" class="org.apache.commons.dbcp2.BasicDataSource"
-        destroy-method="close">
-        <property name="driverClassName" value="org.h2.Driver" />
-        <property name="url" value="jdbc:h2:tcp://${selenium.logDbHost}:${selenium.logDbPort}/mem:terasoluna-gfw-functionaltest" />
-        <property name="username" value="sa" />
-        <property name="password" value="" />
-        <property name="defaultAutoCommit" value="false" />
-    </bean>
+  <!-- Settings for DbAppender of logback. -->
+  <bean id="realDataSourceForLogging" class="org.apache.commons.dbcp2.BasicDataSource"
+    destroy-method="close">
+    <property name="driverClassName" value="org.h2.Driver" />
+    <property name="url"
+      value="jdbc:h2:tcp://${selenium.logDbHost}:${selenium.logDbPort}/mem:terasoluna-gfw-functionaltest" />
+    <property name="username" value="sa" />
+    <property name="password" value="" />
+    <property name="defaultAutoCommit" value="false" />
+  </bean>
 
-    <bean id="dataSourceForLogging" class="net.sf.log4jdbc.Log4jdbcProxyDataSource">
-        <constructor-arg index="0" ref="realDataSourceForLogging" />
-    </bean>
+  <bean id="dataSourceForLogging" class="net.sf.log4jdbc.Log4jdbcProxyDataSource">
+    <constructor-arg index="0" ref="realDataSourceForLogging" />
+  </bean>
 
-    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+  <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+    <property name="dataSource" ref="dataSourceForLogging" />
+    <property name="rollbackOnCommitFailure" value="true" />
+  </bean>
+
+  <tx:annotation-driven />
+
+  <bean id="screenCapture" class="org.terasoluna.gfw.functionaltest.app.ScreenCapture" />
+
+  <bean id="pageSource" class="org.terasoluna.gfw.functionaltest.app.PageSource" />
+
+  <bean id="restTemplate" class="org.springframework.web.client.RestTemplate" />
+
+  <bean id="dbLogAssertOperations" class="org.terasoluna.gfw.functionaltest.app.DBLogProvider">
+    <constructor-arg index="0">
+      <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
         <property name="dataSource" ref="dataSourceForLogging" />
-        <property name="rollbackOnCommitFailure" value="true" />
-    </bean>
-    
-    <tx:annotation-driven/>
+        <property name="fetchSize" value="100" />
+      </bean>
+    </constructor-arg>
+  </bean>
 
-    <bean id="screenCapture"
-        class="org.terasoluna.gfw.functionaltest.app.ScreenCapture" />
+  <bean id="dbLog" class="org.terasoluna.gfw.functionaltest.app.DBLog">
+    <property name="dataSource" ref="dataSourceForLogging" />
+  </bean>
 
-    <bean id="pageSource"
-        class="org.terasoluna.gfw.functionaltest.app.PageSource" />
+  <bean id="dbLogCleaner" class="org.terasoluna.gfw.functionaltest.domain.DBLogCleaner">
+    <property name="dataSource" ref="dataSourceForLogging" />
+  </bean>
 
-    <bean id="restTemplate" class="org.springframework.web.client.RestTemplate" />
-
-    <bean id="dbLogAssertOperations" class="org.terasoluna.gfw.functionaltest.app.DBLogProvider">
-        <constructor-arg index="0">
-            <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
-                <property name="dataSource" ref="dataSourceForLogging" />
-                <property name="fetchSize" value="100" />
-            </bean>
-        </constructor-arg>
-    </bean>
-
-    <bean id="dbLog" class="org.terasoluna.gfw.functionaltest.app.DBLog">
-        <property name="dataSource" ref="dataSourceForLogging" />
-    </bean>
-
-    <bean id="dbLogCleaner" class="org.terasoluna.gfw.functionaltest.domain.DBLogCleaner">
-        <property name="dataSource" ref="dataSourceForLogging" />
-    </bean>
-
-    <beans profile="firefox default">
-        <bean id="webDriver" class="org.terasoluna.gfw.functionaltest.app.FirefoxDriverFactoryBean"
-            scope="prototype" />
-    </beans>
-    <beans profile="chrome">
-        <bean id="webDriver" class="org.openqa.selenium.chrome.ChromeDriver"
-            scope="prototype" />
-    </beans>
-    <beans profile="ie">
-        <bean id="webDriver" class="org.openqa.selenium.ie.InternetExplorerDriver"
-            scope="prototype" />
-    </beans>
+  <beans profile="firefox default">
+    <bean id="webDriver" class="org.terasoluna.gfw.functionaltest.app.FirefoxDriverFactoryBean"
+      scope="prototype" />
+  </beans>
+  <beans profile="chrome">
+    <bean id="webDriver" class="org.openqa.selenium.chrome.ChromeDriver" scope="prototype" />
+  </beans>
+  <beans profile="ie">
+    <bean id="webDriver" class="org.openqa.selenium.ie.InternetExplorerDriver" scope="prototype" />
+  </beans>
 </beans>
