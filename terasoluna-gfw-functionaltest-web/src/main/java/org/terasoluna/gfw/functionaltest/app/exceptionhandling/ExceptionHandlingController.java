@@ -216,7 +216,7 @@ public class ExceptionHandlingController {
     public String servletFrameworkHandling_03_09() {
 
         exceptionHandlingService.throwException(
-                new SystemException("e.xx.xxx", "3_8 Error"));
+                new SystemException("e.xx.xxx", "3_9 Error"));
 
         return "exceptionhandling/index";
     }
