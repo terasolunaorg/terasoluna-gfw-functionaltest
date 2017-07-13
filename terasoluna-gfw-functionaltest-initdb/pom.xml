@@ -12,6 +12,7 @@
     <artifactId>terasoluna-gfw-functionaltest-initdb</artifactId>
 
     <properties>
+        <project.root.basedir>${project.parent.basedir}</project.root.basedir>
         <postgresql.version>9.3-1102-jdbc41</postgresql.version>
     </properties>
 

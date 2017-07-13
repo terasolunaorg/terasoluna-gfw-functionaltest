@@ -88,6 +88,23 @@
                     <artifactId>sql-maven-plugin</artifactId>
                     <version>${org.codehaus.mojo.sql-maven-plugin.version}</version>
                 </plugin>
+                <plugin>
+                    <groupId>net.revelc.code.formatter</groupId>
+                    <artifactId>formatter-maven-plugin</artifactId>
+                    <version>${formatter-maven-plugin.version}</version>
+                    <configuration>
+                        <configFile>${project.root.basedir}/eclipse/formatter.xml
+                        </configFile>
+                        <lineEnding>CRLF</lineEnding>
+                        <directories>
+                            <directory>${project.basedir}</directory>
+                        </directories>
+                        <includes>
+                            <include>**/src/main/java/**/*.java</include>
+                            <include>**/src/test/java/**/*.java</include>
+                        </includes>
+                    </configuration>
+                </plugin>
             </plugins>
         </pluginManagement>
     </build>
@@ -276,8 +293,10 @@
     <properties>
         <project.env.main.directory>src/main</project.env.main.directory>
         <project.env.buildFinalName>${project.artifactId}-${project.version}</project.env.buildFinalName>
+        <formatter-maven-plugin.version>2.0.1</formatter-maven-plugin.version>
         <com.google.code.maven-license-plugin.version>1.4.0</com.google.code.maven-license-plugin.version>
         <com.h2database.version>1.3.156</com.h2database.version>
+        <project.root.basedir>${project.basedir}</project.root.basedir>
         <encoding>UTF-8</encoding>
         <jasperreports.version>3.5.1</jasperreports.version>
         <java-version>1.8</java-version>
