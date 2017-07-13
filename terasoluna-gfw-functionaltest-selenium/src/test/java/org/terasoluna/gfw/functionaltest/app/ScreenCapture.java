@@ -30,8 +30,8 @@ import org.springframework.util.StringUtils;
 
 public class ScreenCapture {
 
-    private static final Logger logger = LoggerFactory
-            .getLogger(ScreenCapture.class);
+    private static final Logger logger = LoggerFactory.getLogger(
+            ScreenCapture.class);
 
     @Value("${selenium.enableCapture}")
     protected boolean enableCapture;

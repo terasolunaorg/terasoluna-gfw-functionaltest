@@ -28,7 +28,8 @@ public class ThrowIndexOutOfBoundsExceptionFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request,
-            HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+            HttpServletResponse response,
+            FilterChain filterChain) throws ServletException, IOException {
         throw new IndexOutOfBoundsException("4_3 Error");
     }
 
