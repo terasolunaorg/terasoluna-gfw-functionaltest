@@ -1,10 +1,10 @@
 
-    <head>
-        <meta name="_csrf" content="${f:h(_csrf.token)}"/>
-        <meta name="_csrf_header" content="${f:h(_csrf.headerName)}"/>
-    </head>
+<head>
+<meta name="_csrf" content="${f:h(_csrf.token)}" />
+<meta name="_csrf_header" content="${f:h(_csrf.headerName)}" />
+</head>
 
-    <script type="text/javascript">
+<script type="text/javascript">
     var contextPath = "${pageContext.request.contextPath}";
 
     $(function() {
@@ -31,9 +31,9 @@
     });
     </script>
 
-    <h2>CsrfToken Head Setting</h2>
+<h2>CsrfToken Head Setting</h2>
 
-    <form id="ajaxForm" action="${pageContext.request.contextPath}">
-        <input id="ajaxButton" class="mainbtn" type="button" value="send">
-    </form>
-    <div id="result"></div>
+<form id="ajaxForm" action="${pageContext.request.contextPath}">
+  <input id="ajaxButton" class="mainbtn" type="button" value="send">
+</form>
+<div id="result"></div>
