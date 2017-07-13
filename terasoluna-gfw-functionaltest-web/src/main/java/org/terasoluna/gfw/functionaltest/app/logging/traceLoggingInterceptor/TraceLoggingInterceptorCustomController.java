@@ -32,8 +32,8 @@ public class TraceLoggingInterceptorCustomController {
     @Inject
     protected TraceLoggingInterceptorService traceLoggingInterceptorService;
 
-    private static final Logger logger = LoggerFactory
-            .getLogger(TraceLoggingInterceptorCustomController.class);
+    private static final Logger logger = LoggerFactory.getLogger(
+            TraceLoggingInterceptorCustomController.class);
 
     @RequestMapping(value = "4_3", method = RequestMethod.GET)
     public String customTraceLoggingAsTraceLevel_04_03(Model model) {

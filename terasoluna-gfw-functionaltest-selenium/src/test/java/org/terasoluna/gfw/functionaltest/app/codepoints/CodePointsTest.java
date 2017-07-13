@@ -28,7 +28,8 @@ import org.terasoluna.gfw.common.codepoints.CodePoints;
 import org.terasoluna.gfw.functionaltest.app.FunctionTestSupport;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath:META-INF/spring/seleniumContext.xml" })
+@ContextConfiguration(locations = {
+        "classpath:META-INF/spring/seleniumContext.xml" })
 public class CodePointsTest extends FunctionTestSupport {
 
     @Test
@@ -37,14 +38,14 @@ public class CodePointsTest extends FunctionTestSupport {
         driver.findElement(By.id("codepoints01_01")).click();
 
         inputFieldAccessor.overrideValue(By.id("targetValue"), "カナ", driver);
-        new Select(driver.findElement(By.id("useInstanceKind")))
-                .selectByValue("codePointsOf");
+        new Select(driver.findElement(By.id("useInstanceKind"))).selectByValue(
+                "codePointsOf");
         driver.findElement(By.id("containsAll")).click();
 
-        assertThat(driver.findElement(By.id("instanceCheck")).getText(),
-                is("true"));
-        assertThat(driver.findElement(By.id("containsAll")).getText(),
-                is("true"));
+        assertThat(driver.findElement(By.id("instanceCheck")).getText(), is(
+                "true"));
+        assertThat(driver.findElement(By.id("containsAll")).getText(), is(
+                "true"));
     }
 
     @Test
@@ -53,12 +54,12 @@ public class CodePointsTest extends FunctionTestSupport {
         driver.findElement(By.id("codepoints01_02")).click();
 
         inputFieldAccessor.overrideValue(By.id("targetValue"), "カナ", driver);
-        new Select(driver.findElement(By.id("useInstanceKind")))
-                .selectByValue("newJIS_X_0208_Katakana");
+        new Select(driver.findElement(By.id("useInstanceKind"))).selectByValue(
+                "newJIS_X_0208_Katakana");
         driver.findElement(By.id("containsAll")).click();
 
-        assertThat(driver.findElement(By.id("containsAll")).getText(),
-                is("true"));
+        assertThat(driver.findElement(By.id("containsAll")).getText(), is(
+                "true"));
     }
 
     @Test
@@ -67,16 +68,16 @@ public class CodePointsTest extends FunctionTestSupport {
         driver.findElement(By.id("codepoints01_03")).click();
 
         inputFieldAccessor.overrideValue(By.id("targetValue"), "ab", driver);
-        inputFieldAccessor
-                .overrideValue(By.id("codePoints0"), "0x0061", driver);
-        inputFieldAccessor
-                .overrideValue(By.id("codePoints1"), "0x0062", driver);
-        new Select(driver.findElement(By.id("useInstanceKind")))
-                .selectByValue("newCodePointsWithIntegerArray");
+        inputFieldAccessor.overrideValue(By.id("codePoints0"), "0x0061",
+                driver);
+        inputFieldAccessor.overrideValue(By.id("codePoints1"), "0x0062",
+                driver);
+        new Select(driver.findElement(By.id("useInstanceKind"))).selectByValue(
+                "newCodePointsWithIntegerArray");
         driver.findElement(By.id("containsAll")).click();
 
-        assertThat(driver.findElement(By.id("containsAll")).getText(),
-                is("true"));
+        assertThat(driver.findElement(By.id("containsAll")).getText(), is(
+                "true"));
     }
 
     @Test
@@ -85,16 +86,16 @@ public class CodePointsTest extends FunctionTestSupport {
         driver.findElement(By.id("codepoints01_04")).click();
 
         inputFieldAccessor.overrideValue(By.id("targetValue"), "ab", driver);
-        inputFieldAccessor
-                .overrideValue(By.id("codePoints0"), "0x0061", driver);
-        inputFieldAccessor
-                .overrideValue(By.id("codePoints1"), "0x0062", driver);
-        new Select(driver.findElement(By.id("useInstanceKind")))
-                .selectByValue("newCodePointsWithIntegerSet");
+        inputFieldAccessor.overrideValue(By.id("codePoints0"), "0x0061",
+                driver);
+        inputFieldAccessor.overrideValue(By.id("codePoints1"), "0x0062",
+                driver);
+        new Select(driver.findElement(By.id("useInstanceKind"))).selectByValue(
+                "newCodePointsWithIntegerSet");
         driver.findElement(By.id("containsAll")).click();
 
-        assertThat(driver.findElement(By.id("containsAll")).getText(),
-                is("true"));
+        assertThat(driver.findElement(By.id("containsAll")).getText(), is(
+                "true"));
     }
 
     @Test
@@ -103,12 +104,12 @@ public class CodePointsTest extends FunctionTestSupport {
         driver.findElement(By.id("codepoints01_05")).click();
 
         inputFieldAccessor.overrideValue(By.id("targetValue"), "ab", driver);
-        new Select(driver.findElement(By.id("useInstanceKind")))
-                .selectByValue("newCodePonitsWithString");
+        new Select(driver.findElement(By.id("useInstanceKind"))).selectByValue(
+                "newCodePonitsWithString");
         driver.findElement(By.id("containsAll")).click();
 
-        assertThat(driver.findElement(By.id("containsAll")).getText(),
-                is("true"));
+        assertThat(driver.findElement(By.id("containsAll")).getText(), is(
+                "true"));
     }
 
     @Test
@@ -121,8 +122,8 @@ public class CodePointsTest extends FunctionTestSupport {
         inputFieldAccessor.overrideValue(By.id("codePoints1"), "b", driver);
         driver.findElement(By.id("containsAll")).click();
 
-        assertThat(driver.findElement(By.id("containsAll")).getText(),
-                is("true"));
+        assertThat(driver.findElement(By.id("containsAll")).getText(), is(
+                "true"));
     }
 
     @Test
@@ -139,12 +140,12 @@ public class CodePointsTest extends FunctionTestSupport {
                 driver);
         inputFieldAccessor.overrideValue(By.id("codePointsB1"), "0x0064",
                 driver);
-        new Select(driver.findElement(By.id("operation")))
-                .selectByValue("union");
+        new Select(driver.findElement(By.id("operation"))).selectByValue(
+                "union");
         driver.findElement(By.id("containsAll")).click();
 
-        assertThat(driver.findElement(By.id("containsAll")).getText(),
-                is("true"));
+        assertThat(driver.findElement(By.id("containsAll")).getText(), is(
+                "true"));
     }
 
     @Test
@@ -165,12 +166,12 @@ public class CodePointsTest extends FunctionTestSupport {
                 driver);
         inputFieldAccessor.overrideValue(By.id("codePointsB1"), "0x0064",
                 driver);
-        new Select(driver.findElement(By.id("operation")))
-                .selectByValue("subtract");
+        new Select(driver.findElement(By.id("operation"))).selectByValue(
+                "subtract");
         driver.findElement(By.id("containsAll")).click();
 
-        assertThat(driver.findElement(By.id("containsAll")).getText(),
-                is("true"));
+        assertThat(driver.findElement(By.id("containsAll")).getText(), is(
+                "true"));
     }
 
     @Test
@@ -193,12 +194,12 @@ public class CodePointsTest extends FunctionTestSupport {
                 driver);
         inputFieldAccessor.overrideValue(By.id("codePointsB2"), "0x0065",
                 driver);
-        new Select(driver.findElement(By.id("operation")))
-                .selectByValue("intersect");
+        new Select(driver.findElement(By.id("operation"))).selectByValue(
+                "intersect");
         driver.findElement(By.id("containsAll")).click();
 
-        assertThat(driver.findElement(By.id("containsAll")).getText(),
-                is("true"));
+        assertThat(driver.findElement(By.id("containsAll")).getText(), is(
+                "true"));
     }
 
     @Test
@@ -207,12 +208,12 @@ public class CodePointsTest extends FunctionTestSupport {
         driver.findElement(By.id("codepoints01_10")).click();
 
         inputFieldAccessor.overrideValue(By.id("targetValue"), "カ", driver);
-        new Select(driver.findElement(By.id("useInstanceKind")))
-                .selectByValue("codePointsOfWithJIS_X_0208_Katakana");
+        new Select(driver.findElement(By.id("useInstanceKind"))).selectByValue(
+                "codePointsOfWithJIS_X_0208_Katakana");
         driver.findElement(By.id("containsAll")).click();
 
-        assertThat(driver.findElement(By.id("containsAll")).getText(),
-                is("true"));
+        assertThat(driver.findElement(By.id("containsAll")).getText(), is(
+                "true"));
     }
 
     @Test
@@ -221,12 +222,12 @@ public class CodePointsTest extends FunctionTestSupport {
         driver.findElement(By.id("codepoints01_11")).click();
 
         inputFieldAccessor.overrideValue(By.id("targetValue"), "カナ", driver);
-        new Select(driver.findElement(By.id("useInstanceKind")))
-                .selectByValue("codePointsOfWithJIS_X_0208_Katakana");
+        new Select(driver.findElement(By.id("useInstanceKind"))).selectByValue(
+                "codePointsOfWithJIS_X_0208_Katakana");
         driver.findElement(By.id("containsAll")).click();
 
-        assertThat(driver.findElement(By.id("containsAll")).getText(),
-                is("true"));
+        assertThat(driver.findElement(By.id("containsAll")).getText(), is(
+                "true"));
     }
 
     @Test
@@ -235,12 +236,12 @@ public class CodePointsTest extends FunctionTestSupport {
         driver.findElement(By.id("codepoints01_12")).click();
 
         inputFieldAccessor.overrideValue(By.id("targetValue"), "カナa", driver);
-        new Select(driver.findElement(By.id("useInstanceKind")))
-                .selectByValue("codePointsOfWithJIS_X_0208_Katakana");
+        new Select(driver.findElement(By.id("useInstanceKind"))).selectByValue(
+                "codePointsOfWithJIS_X_0208_Katakana");
         driver.findElement(By.id("containsAll")).click();
 
-        assertThat(driver.findElement(By.id("containsAll")).getText(),
-                is("false"));
+        assertThat(driver.findElement(By.id("containsAll")).getText(), is(
+                "false"));
     }
 
     @Test
@@ -319,8 +320,8 @@ public class CodePointsTest extends FunctionTestSupport {
         inputFieldAccessor.overrideValue(By.id("targetValue"), "カナa", driver);
         driver.findElement(By.id("getExcludedCodePoints")).click();
 
-        String excludedCodePoint1 = driver.findElement(
-                By.id("excludedCodePoint1")).getText();
+        String excludedCodePoint1 = driver.findElement(By.id(
+                "excludedCodePoint1")).getText();
 
         assertThat(driver.findElement(By.id("excludedCodepointsSize"))
                 .getText(), is("1"));
@@ -335,10 +336,10 @@ public class CodePointsTest extends FunctionTestSupport {
         inputFieldAccessor.overrideValue(By.id("targetValue"), "カaナb", driver);
         driver.findElement(By.id("getExcludedCodePoints")).click();
 
-        String excludedCodePoint1 = driver.findElement(
-                By.id("excludedCodePoint1")).getText();
-        String excludedCodePoint2 = driver.findElement(
-                By.id("excludedCodePoint2")).getText();
+        String excludedCodePoint1 = driver.findElement(By.id(
+                "excludedCodePoint1")).getText();
+        String excludedCodePoint2 = driver.findElement(By.id(
+                "excludedCodePoint2")).getText();
 
         assertThat(driver.findElement(By.id("excludedCodepointsSize"))
                 .getText(), is("2"));

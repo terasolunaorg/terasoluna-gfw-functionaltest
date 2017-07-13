@@ -19,7 +19,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ExceptionHandlingSharedServiceImpl implements
-                                               ExceptionHandlingSharedService {
+                                                ExceptionHandlingSharedService {
 
     @Override
     public void throwException(RuntimeException e) {

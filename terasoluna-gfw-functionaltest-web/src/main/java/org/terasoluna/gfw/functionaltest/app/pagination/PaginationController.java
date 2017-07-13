@@ -178,9 +178,9 @@ public class PaginationController {
     }
 
     @RequestMapping(value = "3_1", method = RequestMethod.GET)
-    public String fuinctionTest_3_1(
-            Model model,
-            @PageableDefault(value = 100, sort = { "firstname", "lastname" }, direction = Direction.DESC) Pageable pageable) {
+    public String fuinctionTest_3_1(Model model,
+            @PageableDefault(value = 100, sort = { "firstname",
+                    "lastname" }, direction = Direction.DESC) Pageable pageable) {
 
         Page<Person> page = paginationService.findPerson(pageable);
 
@@ -413,8 +413,8 @@ public class PaginationController {
     public String fuinctionTest_14_1_confirm(@PathVariable("page") int page,
             @PathVariable("size") int size, Model model) {
 
-        Page<Person> namePage = paginationService
-                .findPerson(new PageRequest(page, size));
+        Page<Person> namePage = paginationService.findPerson(
+                new PageRequest(page, size));
 
         model.addAttribute("page", namePage);
 
@@ -487,9 +487,11 @@ public class PaginationController {
         return "pagination/pager";
     }
 
-    @RequestMapping(value = { "20_1", "20_2", "20_3", "20_4", "20_5" }, method = RequestMethod.GET)
+    @RequestMapping(value = { "20_1", "20_2", "20_3", "20_4",
+            "20_5" }, method = RequestMethod.GET)
     public String fuinctionTest_20_x(PersonSearchForm form,
-            @PageableDefault(sort = "personId") Pageable pageable, Model model) {
+            @PageableDefault(sort = "personId") Pageable pageable,
+            Model model) {
 
         if (!StringUtils.hasLength(form.getName())) {
             return "pagination/search";
@@ -506,7 +508,8 @@ public class PaginationController {
     @RequestMapping(value = { "21_1", "21_1/{page}/{size}", "21_2",
             "21_2/{page}/{size}" }, method = RequestMethod.GET)
     public String fuinctionTest_21_x(PersonSearchForm form,
-            @PageableDefault(sort = "personId") Pageable pageable, Model model) {
+            @PageableDefault(sort = "personId") Pageable pageable,
+            Model model) {
 
         if (!StringUtils.hasLength(form.getName())) {
             return "pagination/searchPathTmplAndCriteriaQuery";
@@ -521,8 +524,7 @@ public class PaginationController {
     }
 
     @RequestMapping(value = { "22_1", "22_2" }, method = RequestMethod.GET)
-    public String fuinctionTest_22_x(
-            PersonSearchForm form,
+    public String fuinctionTest_22_x(PersonSearchForm form,
             @PageableDefault(sort = "personId", direction = Direction.DESC) Pageable pageable,
             Model model) {
 
@@ -540,8 +542,7 @@ public class PaginationController {
 
     @RequestMapping(value = { "23_1", "23_1/{page}/{size}", "23_2",
             "23_2/{page}/{size}" }, method = RequestMethod.GET)
-    public String fuinctionTest_23_x(
-            PersonSearchForm form,
+    public String fuinctionTest_23_x(PersonSearchForm form,
             @PageableDefault(sort = "firstname", direction = Direction.DESC) Pageable pageable,
             Model model) {
 

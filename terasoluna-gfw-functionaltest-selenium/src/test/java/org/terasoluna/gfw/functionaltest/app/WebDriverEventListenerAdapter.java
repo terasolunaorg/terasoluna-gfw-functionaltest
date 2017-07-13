@@ -21,7 +21,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.events.WebDriverEventListener;
 
 public abstract class WebDriverEventListenerAdapter implements
-                                                   WebDriverEventListener {
+                                                    WebDriverEventListener {
 
     @Override
     public void afterChangeValueOf(WebElement arg0, WebDriver arg1) {
