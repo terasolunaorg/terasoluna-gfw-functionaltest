@@ -11,6 +11,9 @@
     <description>DB initialization scripts of Functionality Test Application using TERASOLUNA Server Framework for Java (5.x)</description>
     <artifactId>terasoluna-gfw-functionaltest-initdb</artifactId>
 
+    <properties>
+        <project.root.basedir>${project.parent.basedir}</project.root.basedir>
+    </properties>
     <profiles>
         <profile>
             <id>local-postgres</id>
