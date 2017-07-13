@@ -12,7 +12,8 @@
     </database>
     <!-- settings of class loader for web application -->
     <class-loader>
-      <library-loader path="${VM_TOMCAT_ENV_JAR_DIR!'/opt/resin/resin/webapps-env-jars/terasoluna-gfw-functionaltest-env-resin-oracle'}" />
+      <library-loader
+        path="${VM_TOMCAT_ENV_JAR_DIR!'/opt/resin/resin/webapps-env-jars/terasoluna-gfw-functionaltest-env-resin-oracle'}" />
     </class-loader>
   </web-app>
 
