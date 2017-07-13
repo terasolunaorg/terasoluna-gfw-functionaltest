@@ -36,7 +36,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.terasoluna.gfw.functionaltest.app.FunctionTestSupport;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath:META-INF/spring/seleniumContext.xml" })
+@ContextConfiguration(locations = {
+        "classpath:META-INF/spring/seleniumContext.xml" })
 public class ElTest extends FunctionTestSupport {
 
     private boolean acceptNextAlert = true;
@@ -51,8 +52,8 @@ public class ElTest extends FunctionTestSupport {
 
         // output data 01_01 Test
         // It is an error if the dialog alert has gone out
-        assertThat(driver.findElement(By.id("xssOutput")).getText(),
-                is("<script>alert(\"XSS Attack\")</script>"));
+        assertThat(driver.findElement(By.id("xssOutput")).getText(), is(
+                "<script>alert(\"XSS Attack\")</script>"));
 
         // screen capture
         screenCapture.save(driver);
@@ -66,8 +67,8 @@ public class ElTest extends FunctionTestSupport {
 
         // output data 01_02 Test
         // It is an error if the dialog alert has gone out
-        assertThat(driver.findElement(By.id("xssOutput")).getText(),
-                is("<script>alert('XSS Attack')</script>"));
+        assertThat(driver.findElement(By.id("xssOutput")).getText(), is(
+                "<script>alert('XSS Attack')</script>"));
 
         // screen capture
         screenCapture.save(driver);
@@ -80,8 +81,8 @@ public class ElTest extends FunctionTestSupport {
         driver.findElement(By.id("btn-output")).click();
 
         // output data 01_03 Test
-        assertThat(driver.findElement(By.id("xssOutput")).getText(),
-                is("Spring Framework"));
+        assertThat(driver.findElement(By.id("xssOutput")).getText(), is(
+                "Spring Framework"));
     }
 
     @Test
@@ -94,9 +95,8 @@ public class ElTest extends FunctionTestSupport {
         driver.findElement(By.id("btn-output")).click();
 
         // output data 02_01 Test
-        assertThat(
-                driver.findElement(By.id("urlOutput")).getText(),
-                is("http://localhost:8080/spring?hl%3Dja%26tab%3DTw%23hl%3Dja%26q%3D%E3%81%82%E3%81%84%E3%81%86%E3%81%88%E3%81%8A"));
+        assertThat(driver.findElement(By.id("urlOutput")).getText(), is(
+                "http://localhost:8080/spring?hl%3Dja%26tab%3DTw%23hl%3Dja%26q%3D%E3%81%82%E3%81%84%E3%81%86%E3%81%88%E3%81%8A"));
 
         // screen capture
         screenCapture.save(driver);
@@ -109,8 +109,8 @@ public class ElTest extends FunctionTestSupport {
         driver.findElement(By.id("btn-output")).click();
 
         // output data 02_02 Test
-        assertThat(driver.findElement(By.id("urlOutput")).getText(),
-                is("http://localhost:8080/spring"));
+        assertThat(driver.findElement(By.id("urlOutput")).getText(), is(
+                "http://localhost:8080/spring"));
 
         // screen capture
         screenCapture.save(driver);
@@ -118,13 +118,13 @@ public class ElTest extends FunctionTestSupport {
         driver.get(applicationContextUrl);
         driver.findElement(By.id("EL")).click();
         driver.findElement(By.id("02")).click();
-        inputFieldAccessor.overrideValue(By.id("text-output"),
-                "TEST[]#+=&TEST", driver);
+        inputFieldAccessor.overrideValue(By.id("text-output"), "TEST[]#+=&TEST",
+                driver);
         driver.findElement(By.id("btn-output")).click();
 
         // output data 02_03 Test
-        assertThat(driver.findElement(By.id("urlOutput")).getText(),
-                is("TEST%5B%5D%23%2B%3D%26TEST"));
+        assertThat(driver.findElement(By.id("urlOutput")).getText(), is(
+                "TEST%5B%5D%23%2B%3D%26TEST"));
     }
 
     @Test
@@ -173,8 +173,8 @@ public class ElTest extends FunctionTestSupport {
         driver.findElement(By.id("btn-output")).click();
 
         // output 04_01 Test
-        assertThat(driver.findElement(By.id("cutOutput")).getText(),
-                is("SpringSpringSpringSpringSpring"));
+        assertThat(driver.findElement(By.id("cutOutput")).getText(), is(
+                "SpringSpringSpringSpringSpring"));
 
         // screen capture
         screenCapture.save(driver);
@@ -187,8 +187,8 @@ public class ElTest extends FunctionTestSupport {
         driver.findElement(By.id("btn-output")).click();
 
         // output 04_02 Test
-        assertThat(driver.findElement(By.id("cutOutput")).getText(),
-                is("SpringSpringSpringSpringSprin"));
+        assertThat(driver.findElement(By.id("cutOutput")).getText(), is(
+                "SpringSpringSpringSpringSprin"));
 
         // screen capture
         screenCapture.save(driver);
@@ -201,8 +201,8 @@ public class ElTest extends FunctionTestSupport {
         driver.findElement(By.id("btn-output")).click();
 
         // output 04_03 Test
-        assertThat(driver.findElement(By.id("cutOutput")).getText(),
-                is("SpringSpringSpringSpringSpring"));
+        assertThat(driver.findElement(By.id("cutOutput")).getText(), is(
+                "SpringSpringSpringSpringSpring"));
 
         // screen capture
         screenCapture.save(driver);
@@ -215,8 +215,8 @@ public class ElTest extends FunctionTestSupport {
         driver.findElement(By.id("btn-output")).click();
 
         // output 04_04 Test
-        assertThat(driver.findElement(By.id("cutOutput")).getText(),
-                is("スプリングエムブイシー（ＳＰＲＩＮＧ　ＭＶＣ）、スプリングセ"));
+        assertThat(driver.findElement(By.id("cutOutput")).getText(), is(
+                "スプリングエムブイシー（ＳＰＲＩＮＧ　ＭＶＣ）、スプリングセ"));
     }
 
     @Test
@@ -228,8 +228,8 @@ public class ElTest extends FunctionTestSupport {
         driver.findElement(By.id("btn-output")).click();
 
         // output 05_01 Test
-        assertThat(driver.findElement(By.id("linkOutput")).getText(),
-                is("123456789http://example.com/tour/ 01234567890"));
+        assertThat(driver.findElement(By.id("linkOutput")).getText(), is(
+                "123456789http://example.com/tour/ 01234567890"));
         // output link
         assertThat(driver.findElement(By.linkText("http://example.com/tour/"))
                 .getText(), is("http://example.com/tour/"));
@@ -245,8 +245,8 @@ public class ElTest extends FunctionTestSupport {
         driver.findElement(By.id("btn-output")).click();
 
         // output 05_02 Test
-        assertThat(driver.findElement(By.id("linkOutput")).getText(),
-                is("123456789https://example.com/tour/ 01234567890"));
+        assertThat(driver.findElement(By.id("linkOutput")).getText(), is(
+                "123456789https://example.com/tour/ 01234567890"));
         // output link
         assertThat(driver.findElement(By.linkText("https://example.com/tour/"))
                 .getText(), is("https://example.com/tour/"));
@@ -262,19 +262,16 @@ public class ElTest extends FunctionTestSupport {
         driver.findElement(By.id("btn-output")).click();
 
         // output 05_04 Test
-        assertThat(
-                driver.findElement(By.id("linkUOutput")).getText(),
-                is("http://localhost:8080/terasoluna-gfw-functionaltest-web/el/output_05_04?name=tera%261"));
+        assertThat(driver.findElement(By.id("linkUOutput")).getText(), is(
+                "http://localhost:8080/terasoluna-gfw-functionaltest-web/el/output_05_04?name=tera%261"));
         // output link
-        assertThat(
-                driver.findElement(
-                        By.linkText("http://localhost:8080/terasoluna-gfw-functionaltest-web/el/output_05_04?name=tera%261"))
-                        .getText(),
-                is("http://localhost:8080/terasoluna-gfw-functionaltest-web/el/output_05_04?name=tera%261"));
+        assertThat(driver.findElement(By.linkText(
+                "http://localhost:8080/terasoluna-gfw-functionaltest-web/el/output_05_04?name=tera%261"))
+                .getText(), is(
+                        "http://localhost:8080/terasoluna-gfw-functionaltest-web/el/output_05_04?name=tera%261"));
         // inheriting of query Test
-        driver.findElement(By.id("linkUOutput"))
-                .findElement(
-                        By.linkText("http://localhost:8080/terasoluna-gfw-functionaltest-web/el/output_05_04?name=tera%261"))
+        driver.findElement(By.id("linkUOutput")).findElement(By.linkText(
+                "http://localhost:8080/terasoluna-gfw-functionaltest-web/el/output_05_04?name=tera%261"))
                 .click();
     }
 
@@ -287,8 +284,8 @@ public class ElTest extends FunctionTestSupport {
         driver.findElement(By.id("btn-output")).click();
 
         // output 05_03 Test
-        assertThat(driver.findElement(By.id("linkOutput")).getText(),
-                is("123456789ttps://example.com/tour/ 01234567890"));
+        assertThat(driver.findElement(By.id("linkOutput")).getText(), is(
+                "123456789ttps://example.com/tour/ 01234567890"));
 
         try {
             // No link
@@ -305,12 +302,10 @@ public class ElTest extends FunctionTestSupport {
         driver.findElement(By.id("06_01-02")).click();
 
         // output 06_01-02 Test
-        assertThat(
-                driver.findElement(By.id("queryOutput")).getText(),
-                is("Date=Tue%20Oct%2001%2000:00:00%20JST%202013&String=Spring&int=100"));
-        assertThat(
-                driver.findElement(By.id("noAndQueryOutput")).getText(),
-                is("%26String=framework&Long=100&boolean=true&DateTime=10/1/13%2012:00%20AM"));
+        assertThat(driver.findElement(By.id("queryOutput")).getText(), is(
+                "Date=Tue%20Oct%2001%2000:00:00%20JST%202013&String=Spring&int=100"));
+        assertThat(driver.findElement(By.id("noAndQueryOutput")).getText(), is(
+                "%26String=framework&Long=100&boolean=true&DateTime=10/1/13%2012:00%20AM"));
 
         // screen capture
         screenCapture.save(driver);
@@ -320,20 +315,19 @@ public class ElTest extends FunctionTestSupport {
         driver.findElement(By.id("06_03-")).click();
 
         inputFieldAccessor.overrideValue(By.id("name"), "hoge", driver);
-        new Select(driver.findElement(By.id("main")))
-                .selectByVisibleText("YES");
+        new Select(driver.findElement(By.id("main"))).selectByVisibleText(
+                "YES");
         inputFieldAccessor.overrideValue(By.id("age"), "10", driver);
         inputFieldAccessor.overrideValue(By.id("dateOfBirth"), "2000-01-01",
                 driver);
-        new Select(driver.findElement(By.id("countries")))
-                .selectByVisibleText("JA");
+        new Select(driver.findElement(By.id("countries"))).selectByVisibleText(
+                "JA");
         driver.findElement(By.id("btn-output")).click();
 
         // output 06_03 Test
-        assertThat(
-                driver.findElement(
-                        By.xpath("//a[contains(@href, '?page=1&size=10&age=10&countries=JA&dateOfBirth=2000-01-01&main=true&name=hoge')]"))
-                        .getText(), is("2"));
+        assertThat(driver.findElement(By.xpath(
+                "//a[contains(@href, '?page=1&size=10&age=10&countries=JA&dateOfBirth=2000-01-01&main=true&name=hoge')]"))
+                .getText(), is("2"));
 
         // screen capture
         screenCapture.save(driver);
@@ -344,10 +338,9 @@ public class ElTest extends FunctionTestSupport {
         driver.findElement(By.id("btn-output")).click();
 
         // output 06_04 Test
-        assertThat(
-                driver.findElement(
-                        By.xpath("//a[contains(@href, '?page=1&size=10&age=0&countries=&dateOfBirth=&main=false&name=')]"))
-                        .getText(), is("2"));
+        assertThat(driver.findElement(By.xpath(
+                "//a[contains(@href, '?page=1&size=10&age=0&countries=&dateOfBirth=&main=false&name=')]"))
+                .getText(), is("2"));
 
         // screen capture
         screenCapture.save(driver);
@@ -361,10 +354,9 @@ public class ElTest extends FunctionTestSupport {
         driver.findElement(By.id("btn-output")).click();
 
         // output 06_05 Test
-        assertThat(
-                driver.findElement(
-                        By.xpath("//a[contains(@href, \"?page=1&size=10&age=0&countries=&dateOfBirth=&main=false&name=%253Cscript%253Ealert('XSS%2520Attack')%253C/script%253E\")]"))
-                        .getText(), is("2"));
+        assertThat(driver.findElement(By.xpath(
+                "//a[contains(@href, \"?page=1&size=10&age=0&countries=&dateOfBirth=&main=false&name=%253Cscript%253Ealert('XSS%2520Attack')%253C/script%253E\")]"))
+                .getText(), is("2"));
 
         // screen capture
         screenCapture.save(driver);
@@ -377,10 +369,9 @@ public class ElTest extends FunctionTestSupport {
         driver.findElement(By.id("btn-output")).click();
 
         // output 06_06 Test
-        assertThat(
-                driver.findElement(
-                        By.xpath("//a[contains(@href, '?page=1&size=10&age=0&countries=&dateOfBirth=&main=false&name=%25E3%2581%2582%25E3%2581%2584%25E3%2581%2586%25E3%2581%2588%25E3%2581%258A')]"))
-                        .getText(), is("2"));
+        assertThat(driver.findElement(By.xpath(
+                "//a[contains(@href, '?page=1&size=10&age=0&countries=&dateOfBirth=&main=false&name=%25E3%2581%2582%25E3%2581%2584%25E3%2581%2586%25E3%2581%2588%25E3%2581%258A')]"))
+                .getText(), is("2"));
 
         // screen capture
         screenCapture.save(driver);
@@ -404,10 +395,9 @@ public class ElTest extends FunctionTestSupport {
         driver.findElement(By.id("btn-output")).click();
 
         // output 06_08 Test
-        assertThat(
-                driver.findElement(
-                        By.xpath("//a[contains(@href, '?page=1&size=10&age=0&countries=&dateOfBirth=&main=false&name=TEST%255B%255D%2523%252B%253D%2526TEST')]"))
-                        .getText(), is("2"));
+        assertThat(driver.findElement(By.xpath(
+                "//a[contains(@href, '?page=1&size=10&age=0&countries=&dateOfBirth=&main=false&name=TEST%255B%255D%2523%252B%253D%2526TEST')]"))
+                .getText(), is("2"));
     }
 
     @Test
@@ -416,9 +406,8 @@ public class ElTest extends FunctionTestSupport {
         driver.findElement(By.id("write")).click();
 
         // output 07_01 Test
-        assertThat(
-                driver.findElement(By.id("message")).getText(),
-                is("<script></script><script>alert('XSS Attack');</script></script> <h2>JavaScript XSS Measures f:js()</h2>"));
+        assertThat(driver.findElement(By.id("message")).getText(), is(
+                "<script></script><script>alert('XSS Attack');</script></script> <h2>JavaScript XSS Measures f:js()</h2>"));
 
         // screen capture
         screenCapture.save(driver);
@@ -429,9 +418,8 @@ public class ElTest extends FunctionTestSupport {
         driver.findElement(By.id("write")).click();
 
         // output 07_02 Test
-        assertThat(
-                driver.findElement(By.id("message")).getText(),
-                is("<script></script><script>alert(\"XSS Attack\");</script></script> <h2>JavaScript XSS Measures f:js()</h2>"));
+        assertThat(driver.findElement(By.id("message")).getText(), is(
+                "<script></script><script>alert(\"XSS Attack\");</script></script> <h2>JavaScript XSS Measures f:js()</h2>"));
 
         // screen capture
         screenCapture.save(driver);
@@ -442,9 +430,8 @@ public class ElTest extends FunctionTestSupport {
         driver.findElement(By.id("write")).click();
 
         // output 07_03 Test
-        assertThat(
-                driver.findElement(By.id("message")).getText(),
-                is("<script>Spring Framework</script> <h2>JavaScript XSS Measures f:js()</h2>"));
+        assertThat(driver.findElement(By.id("message")).getText(), is(
+                "<script>Spring Framework</script> <h2>JavaScript XSS Measures f:js()</h2>"));
 
     }
 
@@ -454,8 +441,8 @@ public class ElTest extends FunctionTestSupport {
         driver.findElement(By.id("write")).click();
 
         // output 08_01 Test
-        assertThat(closeAlertAndGetItsText(),
-                is("input ');alert('XSS Attack');// . )"));
+        assertThat(closeAlertAndGetItsText(), is(
+                "input ');alert('XSS Attack');// . )"));
 
         // screen capture
         screenCapture.save(driver);
@@ -466,8 +453,8 @@ public class ElTest extends FunctionTestSupport {
         driver.findElement(By.id("write")).click();
 
         // output 08_02 Test
-        assertThat(closeAlertAndGetItsText(),
-                is("input ');alert(\"XSS Attack\");// . )"));
+        assertThat(closeAlertAndGetItsText(), is(
+                "input ');alert(\"XSS Attack\");// . )"));
 
         // screen capture
         screenCapture.save(driver);

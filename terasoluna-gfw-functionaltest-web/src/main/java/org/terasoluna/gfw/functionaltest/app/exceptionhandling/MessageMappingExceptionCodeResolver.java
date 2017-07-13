@@ -23,7 +23,7 @@ import org.terasoluna.gfw.common.exception.ExceptionCodeProvider;
 import org.terasoluna.gfw.common.exception.ExceptionCodeResolver;
 
 public class MessageMappingExceptionCodeResolver implements
-                                                ExceptionCodeResolver {
+                                                 ExceptionCodeResolver {
 
     private String defaultExceptionCode;
 
@@ -47,12 +47,13 @@ public class MessageMappingExceptionCodeResolver implements
             }
         }
 
-        if (exceptionMessageMappings == null
-                || exceptionMessageMappings.isEmpty()) {
+        if (exceptionMessageMappings == null || exceptionMessageMappings
+                .isEmpty()) {
             return defaultExceptionCode;
         }
 
-        for (Entry<String, String> entry : exceptionMessageMappings.entrySet()) {
+        for (Entry<String, String> entry : exceptionMessageMappings
+                .entrySet()) {
             String targetMessageException = entry.getKey();
             Class<?> exceptionClass = ex.getClass();
             String message = ex.getMessage();
