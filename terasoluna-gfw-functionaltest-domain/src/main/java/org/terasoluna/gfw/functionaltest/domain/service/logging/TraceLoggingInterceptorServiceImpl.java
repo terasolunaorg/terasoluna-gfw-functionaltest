@@ -19,7 +19,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class TraceLoggingInterceptorServiceImpl implements
-                                               TraceLoggingInterceptorService {
+                                                TraceLoggingInterceptorService {
 
     @Override
     public void sleep(long millis) {
