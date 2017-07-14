@@ -32,7 +32,8 @@ import org.springframework.web.client.RestTemplate;
 import org.terasoluna.gfw.functionaltest.app.FunctionTestSupport;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath:META-INF/spring/seleniumContext.xml" })
+@ContextConfiguration(locations = {
+        "classpath:META-INF/spring/seleniumContext.xml" })
 public class ExceptionHandlingTest extends FunctionTestSupport {
 
     @Inject
@@ -59,8 +60,8 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
         // TODO Assert Output Log
 
         // output error message
-        assertThat(driver.findElement(By.xpath("//li")).getText(),
-                is("Info !!"));
+        assertThat(driver.findElement(By.xpath("//li")).getText(), is(
+                "Info !!"));
 
     }
 
@@ -75,11 +76,9 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
         assertThat(dbLogProvider.countContainsMessageAndLevelsAndLogger(
                 "\\[e.xx.9999\\] 2_1 Continue", "INFO",
                 "org.terasoluna.gfw.common.exception.ExceptionLogger"), is(1L));
-        assertThat(
-                dbLogProvider
-                        .countContainsMessageAndLevelsAndLogger(
-                                "\\[e.xx.9999\\] 2_1 Continue", "INFO",
-                                "org.terasoluna.gfw.common.exception.ExceptionLogger.Monitoring"),
+        assertThat(dbLogProvider.countContainsMessageAndLevelsAndLogger(
+                "\\[e.xx.9999\\] 2_1 Continue", "INFO",
+                "org.terasoluna.gfw.common.exception.ExceptionLogger.Monitoring"),
                 is(1L));
 
         assertThat(dbLogProvider.countContainsByRegexExceptionMessage(null,
@@ -94,7 +93,8 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
         // TODO Assert Output Log
 
         // output error message
-        assertThat(driver.findElement(By.xpath("//li")).getText(), is("2_2 Ok"));
+        assertThat(driver.findElement(By.xpath("//li")).getText(), is(
+                "2_2 Ok"));
 
     }
 
@@ -106,8 +106,8 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
         // TODO Assert Output Log
 
         // output error message
-        assertThat(driver.findElement(By.xpath("//li")).getText(),
-                is("2_3 Multiple Choices"));
+        assertThat(driver.findElement(By.xpath("//li")).getText(), is(
+                "2_3 Multiple Choices"));
     }
 
     @Test
@@ -118,8 +118,8 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
         // TODO Assert Output Log
 
         // output error message
-        assertThat(driver.findElement(By.xpath("//li")).getText(),
-                is("2_4 Conflict"));
+        assertThat(driver.findElement(By.xpath("//li")).getText(), is(
+                "2_4 Conflict"));
 
     }
 
@@ -131,8 +131,8 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
         // TODO Assert Output Info Log
 
         // output error message
-        assertThat(driver.findElement(By.xpath("//li")).getText(),
-                is("2_5 ignore logging"));
+        assertThat(driver.findElement(By.xpath("//li")).getText(), is(
+                "2_5 ignore logging"));
 
     }
 
@@ -144,8 +144,8 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
         // TODO Assert Output Log
 
         // Error Code assert
-        assertThat(driver.findElement(By.id("exceptionCode")).getText(),
-                is("i.xx.xxx"));
+        assertThat(driver.findElement(By.id("exceptionCode")).getText(), is(
+                "i.xx.xxx"));
 
         // screen capture
         screenCapture.save(driver);
@@ -170,8 +170,8 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
         // TODO Assert Output Log
 
         // Error Code assert
-        assertThat(driver.findElement(By.id("exceptionCode")).getText(),
-                is("w.xx.xxx"));
+        assertThat(driver.findElement(By.id("exceptionCode")).getText(), is(
+                "w.xx.xxx"));
 
         // screen capture
         screenCapture.save(driver);
@@ -196,8 +196,8 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
         // TODO Assert Output Log
 
         // Error Code assert
-        assertThat(driver.findElement(By.id("exceptionCode")).getText(),
-                is("e.xx.xxx"));
+        assertThat(driver.findElement(By.id("exceptionCode")).getText(), is(
+                "e.xx.xxx"));
 
         // screen capture
         screenCapture.save(driver);
@@ -222,8 +222,8 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
         // TODO Assert Output Log
 
         // Error Code assert
-        assertThat(driver.findElement(By.id("exceptionCode")).getText(),
-                is("e.xx.xxx"));
+        assertThat(driver.findElement(By.id("exceptionCode")).getText(), is(
+                "e.xx.xxx"));
 
     }
 
@@ -235,12 +235,12 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
         // TODO Assert Output Log
 
         // Error Code assert
-        assertThat(driver.findElement(By.id("exceptionCode")).getText(),
-                is("e.xx.9999"));
+        assertThat(driver.findElement(By.id("exceptionCode")).getText(), is(
+                "e.xx.9999"));
         // Response Code assert
-        assertThat(driver.findElement(
-                By.xpath("//div[@id='messagesPanel']/div/ul/li")).getText(),
-                is("w.yy.yyy"));
+        assertThat(driver.findElement(By.xpath(
+                "//div[@id='messagesPanel']/div/ul/li")).getText(), is(
+                        "w.yy.yyy"));
 
         // screen capture
         screenCapture.save(driver);
@@ -266,18 +266,16 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
         // TODO Assert Output Log
 
         // Error Code assert
-        assertThat(driver.findElement(By.id("exceptionCode")).getText(),
-                is("e.xx.9999"));
+        assertThat(driver.findElement(By.id("exceptionCode")).getText(), is(
+                "e.xx.9999"));
 
         // screen capture
         screenCapture.save(driver);
 
         try {
-            restTemplate
-                    .getForEntity(
-                            applicationContextUrl
-                                    + "/exceptionHandlingIgnoreResultMessages/exceptionhandling/3_6",
-                            String.class);
+            restTemplate.getForEntity(applicationContextUrl
+                    + "/exceptionHandlingIgnoreResultMessages/exceptionhandling/3_6",
+                    String.class);
         } catch (HttpServerErrorException e) {
             // Response Header Error Code assert
             assertThat(e.getResponseHeaders().get("X-Exception-Code").get(0)
@@ -295,8 +293,8 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
         // TODO Assert Output Log
 
         // Error Code assert
-        assertThat(driver.findElement(By.id("exceptionCode")).getText(),
-                is("w.xx.0001"));
+        assertThat(driver.findElement(By.id("exceptionCode")).getText(), is(
+                "w.xx.0001"));
 
         // screen capture
         screenCapture.save(driver);
@@ -321,18 +319,16 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
         // TODO Assert Output Log
 
         // Error Code assert
-        assertThat(driver.findElement(By.id("exceptionCode")).getText(),
-                is("e.xx.9999"));
+        assertThat(driver.findElement(By.id("exceptionCode")).getText(), is(
+                "e.xx.9999"));
 
         // screen capture
         screenCapture.save(driver);
 
         try {
-            restTemplate
-                    .getForEntity(
-                            applicationContextUrl
-                                    + "/exceptionHandlingChangeAttribute/exceptionhandling/3_8",
-                            String.class);
+            restTemplate.getForEntity(applicationContextUrl
+                    + "/exceptionHandlingChangeAttribute/exceptionhandling/3_8",
+                    String.class);
         } catch (HttpServerErrorException e) {
             // Response Header Error Code assert
             assertThat(e.getResponseHeaders().get("X-Error-Code").get(0)
@@ -350,18 +346,16 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
         // TODO Assert Output Log
 
         // Error Code assert
-        assertThat(driver.findElement(By.id("exceptionCode")).getText(),
-                is("e.xx.xxx"));
+        assertThat(driver.findElement(By.id("exceptionCode")).getText(), is(
+                "e.xx.xxx"));
 
         // screen capture
         screenCapture.save(driver);
 
         try {
-            restTemplate
-                    .getForEntity(
-                            applicationContextUrl
-                                    + "/exceptionHandlingChangeAttribute/exceptionhandling/3_9",
-                            String.class);
+            restTemplate.getForEntity(applicationContextUrl
+                    + "/exceptionHandlingChangeAttribute/exceptionhandling/3_9",
+                    String.class);
         } catch (HttpServerErrorException e) {
             // Response Header Error Code assert
             assertThat(e.getResponseHeaders().get("X-Error-Code").get(0)
@@ -379,8 +373,8 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
         // TODO Assert Output Log
 
         // Error Code assert
-        assertThat(driver.findElement(By.id("exceptionCode")).getText(),
-                is("i.xx.0010"));
+        assertThat(driver.findElement(By.id("exceptionCode")).getText(), is(
+                "i.xx.0010"));
 
         // screen capture
         screenCapture.save(driver);
@@ -405,8 +399,8 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
         // TODO Assert Output Log
 
         // error page screen
-        assertThat(driver.findElement(By.cssSelector("h2")).getText(),
-                is("Servlet Error..."));
+        assertThat(driver.findElement(By.cssSelector("h2")).getText(), is(
+                "Servlet Error..."));
 
     }
 
@@ -418,8 +412,8 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
         // TODO Assert Output Log
 
         // error page screen
-        assertThat(driver.findElement(By.cssSelector("h2")).getText(),
-                is("Servlet Error..."));
+        assertThat(driver.findElement(By.cssSelector("h2")).getText(), is(
+                "Servlet Error..."));
 
     }
 
@@ -431,8 +425,8 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
         // TODO Assert Output Log
 
         // error page screen
-        assertThat(driver.findElement(By.cssSelector("h2")).getText(),
-                is("UnHandled System Error!!"));
+        assertThat(driver.findElement(By.cssSelector("h2")).getText(), is(
+                "UnHandled System Error!!"));
 
     }
 
@@ -444,8 +438,8 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
         // TODO Assert Output Log
 
         // error page screen
-        assertThat(driver.findElement(By.cssSelector("h2")).getText(),
-                is("UnHandled System Error!!"));
+        assertThat(driver.findElement(By.cssSelector("h2")).getText(), is(
+                "UnHandled System Error!!"));
 
     }
 
@@ -457,8 +451,8 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
         // TODO Assert Output Log
 
         // error page screen
-        assertThat(driver.findElement(By.cssSelector("h2")).getText(),
-                is("UnHandled System Error!!"));
+        assertThat(driver.findElement(By.cssSelector("h2")).getText(), is(
+                "UnHandled System Error!!"));
     }
 
     @Test
@@ -469,8 +463,8 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
         // TODO Assert Output Log
 
         // error page screen
-        assertThat(driver.findElement(By.cssSelector("h2")).getText(),
-                is("UnHandled System Error!!"));
+        assertThat(driver.findElement(By.cssSelector("h2")).getText(), is(
+                "UnHandled System Error!!"));
 
     }
 
@@ -482,8 +476,8 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
         // TODO Assert Output Log
 
         // error page screen
-        assertThat(driver.findElement(By.cssSelector("h2")).getText(),
-                is("UnHandled System Error!!"));
+        assertThat(driver.findElement(By.cssSelector("h2")).getText(), is(
+                "UnHandled System Error!!"));
 
     }
 
@@ -494,8 +488,8 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
         // TODO Assert Output Log
 
         // output error message
-        assertThat(driver.findElement(By.cssSelector("h2")).getText(),
-                is("System Error..."));
+        assertThat(driver.findElement(By.cssSelector("h2")).getText(), is(
+                "System Error..."));
 
     }
 
@@ -506,8 +500,8 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
         // TODO Assert Output Log
 
         // output error message
-        assertThat(driver.findElement(By.xpath("//li")).getText(),
-                is("5_5 Error"));
+        assertThat(driver.findElement(By.xpath("//li")).getText(), is(
+                "5_5 Error"));
 
     }
 
@@ -518,8 +512,8 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
         // TODO Assert Output Log
 
         // output error message
-        assertThat(driver.findElement(By.cssSelector("h2")).getText(),
-                is("System Error..."));
+        assertThat(driver.findElement(By.cssSelector("h2")).getText(), is(
+                "System Error..."));
 
     }
 
@@ -543,8 +537,8 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
         // TODO Assert Output Log
 
         // no exception
-        assertThat(driver.findElement(By.cssSelector("h2")).getText(),
-                is("Exception Handling Test"));
+        assertThat(driver.findElement(By.cssSelector("h2")).getText(), is(
+                "Exception Handling Test"));
 
     }
 }

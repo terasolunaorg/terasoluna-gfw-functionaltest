@@ -4,6 +4,6 @@
     "http://glassfish.org/dtds/glassfish-web-app_3_0-1.dtd">
 <glassfish-web-app>
 
-    <class-loader delegate="false"/>
+  <class-loader delegate="false" />
 
 </glassfish-web-app>

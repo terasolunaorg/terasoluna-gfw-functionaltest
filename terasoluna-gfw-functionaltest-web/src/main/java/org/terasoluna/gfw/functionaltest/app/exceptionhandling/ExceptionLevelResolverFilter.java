@@ -29,7 +29,8 @@ public class ExceptionLevelResolverFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request,
-            HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+            HttpServletResponse response,
+            FilterChain filterChain) throws ServletException, IOException {
 
         // Workaround for application servers that don't provide getServletPath(), eg. WebSphere Liberty Profile 8.5.
         String path = request.getServletPath();
