@@ -27,8 +27,7 @@ import org.springframework.security.web.access.AccessDeniedHandler;
 public class NotAcceptableHandler implements AccessDeniedHandler {
 
     @Override
-    public void handle(HttpServletRequest request,
-            HttpServletResponse response,
+    public void handle(HttpServletRequest request, HttpServletResponse response,
             AccessDeniedException accessDeniedException) throws IOException, ServletException {
         if (!response.isCommitted()) {
             response.sendError(HttpServletResponse.SC_NOT_ACCEPTABLE,

@@ -12,7 +12,8 @@
         <td><b>The key of selected code is : <label id="output">${codeListForm.item1}</label></b></td>
       </tr>
       <tr>
-        <td><input id="btnback" class="mainbtn" style="width: 200px;" type="submit" value="Back to menu" /></td>
+        <td><input id="btnback" class="mainbtn" style="width: 200px;" type="submit"
+          value="Back to menu" /></td>
       </tr>
     </table>
   </form:form>

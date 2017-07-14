@@ -7,4 +7,4 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <%@ taglib uri="http://terasoluna.org/tags" prefix="t"%>
 <%@ taglib uri="http://terasoluna.org/functions" prefix="f"%>
-<%@ taglib uri="http://www.joda.org/joda/time/tags" prefix="joda" %>
+<%@ taglib uri="http://www.joda.org/joda/time/tags" prefix="joda"%>

@@ -258,7 +258,8 @@ public class CodeListContoller {
 
     // test case 08_03
     @RequestMapping(value = "/08_03_form", method = RequestMethod.GET)
-    public String test08_03_form(ExistInCheckWrongCodeListForm form, Model model) {
+    public String test08_03_form(ExistInCheckWrongCodeListForm form,
+            Model model) {
         return "codelist/08_03_form";
     }
 

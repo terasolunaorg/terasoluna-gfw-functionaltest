@@ -1,123 +1,126 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-    <artifactId>terasoluna-gfw-functionaltest-web</artifactId>
-    <packaging>war</packaging>
-    <parent>
-        <groupId>org.terasoluna.gfw.functionaltest</groupId>
-        <artifactId>terasoluna-gfw-functionaltest</artifactId>
-        <version>1.0.7-SNAPSHOT</version>
-        <relativePath>../pom.xml</relativePath>
-    </parent>
-    <name>TERASOLUNA Global Framework - Functionality Test Application - Web Layer</name>
-    <description>Web layer of Functionality Test Application using TERASOLUNA Global Framework</description>
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>terasoluna-gfw-functionaltest-web</artifactId>
+  <packaging>war</packaging>
+  <parent>
+    <groupId>org.terasoluna.gfw.functionaltest</groupId>
+    <artifactId>terasoluna-gfw-functionaltest</artifactId>
+    <version>1.0.7-SNAPSHOT</version>
+    <relativePath>../pom.xml</relativePath>
+  </parent>
+  <name>TERASOLUNA Global Framework - Functionality Test Application - Web Layer</name>
+  <description>Web layer of Functionality Test Application using TERASOLUNA Global Framework</description>
 
-    <profiles>
-        <profile>
-            <id>local</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <dependencies>
-                <dependency>
-                    <groupId>${project.groupId}</groupId>
-                    <artifactId>terasoluna-gfw-functionaltest-env</artifactId>
-                    <version>${project.version}</version>
-                </dependency>
-            </dependencies>
-        </profile>
-        <profile>
-            <id>warpack</id>
-            <dependencies>
-            </dependencies>
-        </profile>
-        <profile>
-            <id>warpack-env</id>
-            <dependencies>
-                <dependency>
-                    <groupId>${project.groupId}</groupId>
-                    <artifactId>terasoluna-gfw-functionaltest-env</artifactId>
-                    <version>${project.version}</version>
-                </dependency>
-            </dependencies>
-        </profile>
-    </profiles>
+  <profiles>
+    <profile>
+      <id>local</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <dependencies>
+        <dependency>
+          <groupId>${project.groupId}</groupId>
+          <artifactId>terasoluna-gfw-functionaltest-env</artifactId>
+          <version>${project.version}</version>
+        </dependency>
+      </dependencies>
+    </profile>
+    <profile>
+      <id>warpack</id>
+      <dependencies>
+      </dependencies>
+    </profile>
+    <profile>
+      <id>warpack-env</id>
+      <dependencies>
+        <dependency>
+          <groupId>${project.groupId}</groupId>
+          <artifactId>terasoluna-gfw-functionaltest-env</artifactId>
+          <version>${project.version}</version>
+        </dependency>
+      </dependencies>
+    </profile>
+  </profiles>
 
-    <dependencies>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>terasoluna-gfw-functionaltest-env</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>terasoluna-gfw-functionaltest-domain</artifactId>
-        </dependency>
+  <dependencies>
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>terasoluna-gfw-functionaltest-env</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>terasoluna-gfw-functionaltest-domain</artifactId>
+    </dependency>
 
-        <!-- == Begin TERASOLUNA == -->
-        <dependency>
-            <groupId>org.terasoluna.gfw</groupId>
-            <artifactId>terasoluna-gfw-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.terasoluna.gfw</groupId>
-            <artifactId>terasoluna-gfw-security-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.terasoluna.gfw</groupId>
-            <artifactId>terasoluna-gfw-recommended-web-dependencies</artifactId>
-            <type>pom</type>
-        </dependency>
-        <!-- == End TERASOLUNA == -->
+    <!-- == Begin TERASOLUNA == -->
+    <dependency>
+      <groupId>org.terasoluna.gfw</groupId>
+      <artifactId>terasoluna-gfw-web</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.terasoluna.gfw</groupId>
+      <artifactId>terasoluna-gfw-security-web</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.terasoluna.gfw</groupId>
+      <artifactId>terasoluna-gfw-recommended-web-dependencies</artifactId>
+      <type>pom</type>
+    </dependency>
+    <!-- == End TERASOLUNA == -->
 
-        <!-- == Begin Tomcat == -->
-        <!-- Servlet API 3.0 & JSP API 2.2 -->
-        <dependency>
-            <groupId>org.apache.tomcat</groupId>
-            <artifactId>tomcat-servlet-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.tomcat</groupId>
-            <artifactId>tomcat-jsp-api</artifactId>
-        </dependency>
-        <!-- == End Tomcat == -->
+    <!-- == Begin Tomcat == -->
+    <!-- Servlet API 3.0 & JSP API 2.2 -->
+    <dependency>
+      <groupId>org.apache.tomcat</groupId>
+      <artifactId>tomcat-servlet-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.tomcat</groupId>
+      <artifactId>tomcat-jsp-api</artifactId>
+    </dependency>
+    <!-- == End Tomcat == -->
 
-        <!-- == Begin Database == -->
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.oracle</groupId>
-            <artifactId>ojdbc7</artifactId>
-        </dependency>
-        <!-- == End Database == -->
+    <!-- == Begin Database == -->
+    <dependency>
+      <groupId>com.h2database</groupId>
+      <artifactId>h2</artifactId>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.postgresql</groupId>
+      <artifactId>postgresql</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.oracle</groupId>
+      <artifactId>ojdbc7</artifactId>
+    </dependency>
+    <!-- == End Database == -->
 
 
-        <!-- == Begin Unit Test == -->
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit-dep</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.hamcrest</groupId>
-            <artifactId>hamcrest-library</artifactId>
-        </dependency>
+    <!-- == Begin Unit Test == -->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit-dep</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.hamcrest</groupId>
+      <artifactId>hamcrest-library</artifactId>
+    </dependency>
 
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-all</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
-        </dependency>
-        <!-- == End Unit Test == -->
-    </dependencies>
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-all</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-test</artifactId>
+    </dependency>
+    <!-- == End Unit Test == -->
+  </dependencies>
+  <properties>
+    <project.root.basedir>${project.parent.basedir}</project.root.basedir>
+  </properties>
 </project>

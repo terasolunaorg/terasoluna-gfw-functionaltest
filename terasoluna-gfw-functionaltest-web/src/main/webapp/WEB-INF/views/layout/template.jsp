@@ -10,11 +10,10 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta name="viewport" content="width=device-width" />
 
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/app/css/style.css"
-	type="text/css" media="screen, projection">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/app/css/style.css"
+  type="text/css" media="screen, projection">
 <script type="text/javascript"
-	src="${pageContext.request.contextPath}/resources/vendor/js/jquery-1.7.2.js"></script>
+  src="${pageContext.request.contextPath}/resources/vendor/js/jquery-1.7.2.js"></script>
 
 <c:set var="titleKey">
   <tiles:insertAttribute name="title" ignore="true" />
@@ -27,13 +26,15 @@
     <tiles:insertAttribute name="body" />
     <hr>
     <p align="right">
-        Application Server : 
-            <span id="apServerName"><spring:eval expression="@environment.getProperty('application.server.name')"/></span>
-            <span id="apServerVersion"><spring:eval expression="@environment.getProperty('application.server.version')"/></span>
+      Application Server : <span id="apServerName"><spring:eval
+          expression="@environment.getProperty('application.server.name')" /></span> <span
+        id="apServerVersion"><spring:eval
+          expression="@environment.getProperty('application.server.version')" /></span>
     </p>
     <p style="text-align: center; background: #e5eCf9;">
-        <spring:message code="copyright" htmlEscape="false" />
-        <span id="xtrack">(X-Track:${f:h(requestScope["X-Track"])})</span></p>
+      <spring:message code="copyright" htmlEscape="false" />
+      <span id="xtrack">(X-Track:${f:h(requestScope["X-Track"])})</span>
+    </p>
   </div>
 </body>
 </html>

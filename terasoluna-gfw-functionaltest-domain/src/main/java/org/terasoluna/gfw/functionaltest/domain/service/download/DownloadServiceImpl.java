@@ -42,12 +42,13 @@ public class DownloadServiceImpl implements DownloadService {
         InputStream contentsStream = jdbcTemplate.queryForObject(
                 FIND_CONTENTS_BY_ID, Collections.singletonMap("documentId",
                         documentId), new RowMapper<InputStream>() {
-                    public InputStream mapRow(ResultSet rs, int i) throws SQLException {
-                        InputStream blobStream = lobHandler
-                                .getBlobAsBinaryStream(rs, "contents");
-                        return blobStream;
-                    }
-                });
+                            public InputStream mapRow(ResultSet rs,
+                                    int i) throws SQLException {
+                                InputStream blobStream = lobHandler
+                                        .getBlobAsBinaryStream(rs, "contents");
+                                return blobStream;
+                            }
+                        });
         return contentsStream;
     }
 }

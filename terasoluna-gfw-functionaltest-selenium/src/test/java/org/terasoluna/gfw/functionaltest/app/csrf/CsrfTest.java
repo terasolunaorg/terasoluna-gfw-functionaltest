@@ -40,7 +40,8 @@ import org.springframework.web.client.RestTemplate;
 import org.terasoluna.gfw.functionaltest.app.FunctionTestSupport;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath:META-INF/spring/seleniumContext.xml" })
+@ContextConfiguration(locations = {
+        "classpath:META-INF/spring/seleniumContext.xml" })
 public class CsrfTest extends FunctionTestSupport {
 
     @Inject
@@ -57,13 +58,14 @@ public class CsrfTest extends FunctionTestSupport {
     public void test01_CsrfTokenSendByForm() {
         // 1.1 Test start
         // CsrfToken setting check
-        jse.executeScript("document.getElementsByName('_csrf')[0].setAttribute('type', 'text');");
+        jse.executeScript(
+                "document.getElementsByName('_csrf')[0].setAttribute('type', 'text');");
 
         driver.findElement(By.id("csrf_1_1")).click();
 
         // Normal screen transition
-        assertThat(driver.findElement(By.id("testName")).getText(),
-                is("springFormNormalCsrfTokenSend_HttpMethodGet_01_01"));
+        assertThat(driver.findElement(By.id("testName")).getText(), is(
+                "springFormNormalCsrfTokenSend_HttpMethodGet_01_01"));
 
         screenCapture.save(driver);
 
@@ -71,14 +73,16 @@ public class CsrfTest extends FunctionTestSupport {
         driver.get(applicationContextUrl);
         driver.findElement(By.id("CSRF")).click();
         // CsrfToken setting check
-        jse.executeScript("document.getElementsByName('_csrf')[1].setAttribute('type', 'text');");
-        jse.executeScript("document.getElementsByName('_csrf')[1].value = '123456abc9876abc';");
+        jse.executeScript(
+                "document.getElementsByName('_csrf')[1].setAttribute('type', 'text');");
+        jse.executeScript(
+                "document.getElementsByName('_csrf')[1].value = '123456abc9876abc';");
 
         driver.findElement(By.id("csrf_1_2")).click();
 
         // Normal screen transition
-        assertThat(driver.findElement(By.id("testName")).getText(),
-                is("springFormAlterCsrfTokenSend_HttpMethodGet_01_02"));
+        assertThat(driver.findElement(By.id("testName")).getText(), is(
+                "springFormAlterCsrfTokenSend_HttpMethodGet_01_02"));
 
         screenCapture.save(driver);
 
@@ -86,13 +90,14 @@ public class CsrfTest extends FunctionTestSupport {
         driver.get(applicationContextUrl);
         driver.findElement(By.id("CSRF")).click();
         // CsrfToken setting check
-        jse.executeScript("document.getElementsByName('_csrf')[2].setAttribute('type', 'text');");
+        jse.executeScript(
+                "document.getElementsByName('_csrf')[2].setAttribute('type', 'text');");
 
         driver.findElement(By.id("csrf_1_3")).click();
 
         // Normal screen transition
-        assertThat(driver.findElement(By.id("testName")).getText(),
-                is("springFormNormalCsrfTokenSend_HttpMethodPost_01_03"));
+        assertThat(driver.findElement(By.id("testName")).getText(), is(
+                "springFormNormalCsrfTokenSend_HttpMethodPost_01_03"));
 
         screenCapture.save(driver);
 
@@ -100,8 +105,10 @@ public class CsrfTest extends FunctionTestSupport {
         driver.get(applicationContextUrl);
         driver.findElement(By.id("CSRF")).click();
         // CsrfToken setting check
-        jse.executeScript("document.getElementsByName('_csrf')[3].setAttribute('type', 'text');");
-        jse.executeScript("document.getElementsByName('_csrf')[3].value = '123456abc9876abc';");
+        jse.executeScript(
+                "document.getElementsByName('_csrf')[3].setAttribute('type', 'text');");
+        jse.executeScript(
+                "document.getElementsByName('_csrf')[3].value = '123456abc9876abc';");
 
         driver.findElement(By.id("csrf_1_4")).click();
 
@@ -125,13 +132,14 @@ public class CsrfTest extends FunctionTestSupport {
         driver.get(applicationContextUrl);
         driver.findElement(By.id("CSRF")).click();
         // CsrfToken setting check
-        jse.executeScript("document.getElementsByName('_csrf')[4].setAttribute('type', 'text');");
+        jse.executeScript(
+                "document.getElementsByName('_csrf')[4].setAttribute('type', 'text');");
 
         driver.findElement(By.id("csrf_1_5")).click();
 
         // Normal screen transition
-        assertThat(driver.findElement(By.id("testName")).getText(),
-                is("formNormalCsrfTokenSend_HttpMethodPost_01_05"));
+        assertThat(driver.findElement(By.id("testName")).getText(), is(
+                "formNormalCsrfTokenSend_HttpMethodPost_01_05"));
 
         screenCapture.save(driver);
 
@@ -139,8 +147,10 @@ public class CsrfTest extends FunctionTestSupport {
         driver.get(applicationContextUrl);
         driver.findElement(By.id("CSRF")).click();
         // CsrfToken setting check
-        jse.executeScript("document.getElementsByName('_csrf')[5].setAttribute('type', 'text');");
-        jse.executeScript("document.getElementsByName('_csrf')[5].value = '123456abc9876abc';");
+        jse.executeScript(
+                "document.getElementsByName('_csrf')[5].setAttribute('type', 'text');");
+        jse.executeScript(
+                "document.getElementsByName('_csrf')[5].value = '123456abc9876abc';");
 
         driver.findElement(By.id("csrf_1_6")).click();
 
@@ -176,7 +186,8 @@ public class CsrfTest extends FunctionTestSupport {
         driver.findElement(By.id("CSRF")).click();
         driver.findElement(By.id("csrf_2_2")).click();
 
-        jse.executeScript("document.getElementsByName('_csrf')[0].setAttribute('content', '123456abc9876abc');");
+        jse.executeScript(
+                "document.getElementsByName('_csrf')[0].setAttribute('content', '123456abc9876abc');");
 
         driver.findElement(By.id("ajaxButton")).click();
 
@@ -199,7 +210,8 @@ public class CsrfTest extends FunctionTestSupport {
         driver.findElement(By.id("CSRF")).click();
         driver.findElement(By.id("csrf_2_4")).click();
 
-        jse.executeScript("document.getElementsByName('_csrf')[0].setAttribute('content', '123456abc9876abc');");
+        jse.executeScript(
+                "document.getElementsByName('_csrf')[0].setAttribute('content', '123456abc9876abc');");
 
         driver.findElement(By.id("ajaxButton")).click();
 
@@ -212,8 +224,10 @@ public class CsrfTest extends FunctionTestSupport {
         driver.findElement(By.id("CSRF")).click();
         driver.findElement(By.id("csrf_2_5")).click();
 
-        jse.executeScript("document.getElementsByName('_csrf')[1].setAttribute('type', 'text');");
-        jse.executeScript("document.getElementsByName('_csrf')[1].value = '123456abc9876abc';");
+        jse.executeScript(
+                "document.getElementsByName('_csrf')[1].setAttribute('type', 'text');");
+        jse.executeScript(
+                "document.getElementsByName('_csrf')[1].value = '123456abc9876abc';");
         driver.findElement(By.id("ajaxButton")).click();
 
         // HttpStatusCode 200 return
@@ -235,7 +249,8 @@ public class CsrfTest extends FunctionTestSupport {
         driver.findElement(By.id("CSRF")).click();
         driver.findElement(By.id("csrf_2_7")).click();
 
-        jse.executeScript("document.getElementsByName('_csrf')[0].setAttribute('content', '123456abc9876abc');");
+        jse.executeScript(
+                "document.getElementsByName('_csrf')[0].setAttribute('content', '123456abc9876abc');");
 
         driver.findElement(By.id("ajaxButton")).click();
 
@@ -258,7 +273,8 @@ public class CsrfTest extends FunctionTestSupport {
         driver.findElement(By.id("CSRF")).click();
         driver.findElement(By.id("csrf_2_9")).click();
 
-        jse.executeScript("document.getElementsByName('_csrf')[0].setAttribute('content', '123456abc9876abc');");
+        jse.executeScript(
+                "document.getElementsByName('_csrf')[0].setAttribute('content', '123456abc9876abc');");
 
         driver.findElement(By.id("ajaxButton")).click();
 
@@ -281,7 +297,8 @@ public class CsrfTest extends FunctionTestSupport {
         driver.findElement(By.id("CSRF")).click();
         driver.findElement(By.id("csrf_2_11")).click();
 
-        jse.executeScript("document.getElementsByName('_csrf')[0].setAttribute('content', '123456abc9876abc');");
+        jse.executeScript(
+                "document.getElementsByName('_csrf')[0].setAttribute('content', '123456abc9876abc');");
 
         driver.findElement(By.id("ajaxButton")).click();
 
@@ -305,13 +322,14 @@ public class CsrfTest extends FunctionTestSupport {
         driver.findElement(By.id("springFormFileBtn")).sendKeys(imagePath);
 
         // CsrfToken setting check
-        jse.executeScript("document.getElementsByName('_csrf')[0].setAttribute('type', 'text');");
+        jse.executeScript(
+                "document.getElementsByName('_csrf')[0].setAttribute('type', 'text');");
 
         driver.findElement(By.id("springFormSubmitBtn")).click();
 
         // upload finish
-        assertThat(driver.findElement(By.cssSelector("h2")).getText(),
-                is("CSRF Test"));
+        assertThat(driver.findElement(By.cssSelector("h2")).getText(), is(
+                "CSRF Test"));
         screenCapture.save(driver);
 
         // 3.2 Test start
@@ -321,8 +339,10 @@ public class CsrfTest extends FunctionTestSupport {
         driver.findElement(By.id("springFormFileBtn")).sendKeys(imagePath);
 
         // CsrfToken setting check
-        jse.executeScript("document.getElementsByName('_csrf')[0].setAttribute('type', 'text');");
-        jse.executeScript("document.getElementsByName('_csrf')[0].value = '123456abc9876abc';");
+        jse.executeScript(
+                "document.getElementsByName('_csrf')[0].setAttribute('type', 'text');");
+        jse.executeScript(
+                "document.getElementsByName('_csrf')[0].value = '123456abc9876abc';");
 
         driver.findElement(By.id("springFormSubmitBtn")).click();
 
@@ -338,13 +358,14 @@ public class CsrfTest extends FunctionTestSupport {
         driver.findElement(By.id("formFileBtn")).sendKeys(imagePath);
 
         // CsrfToken setting check
-        jse.executeScript("document.getElementsByName('_csrf')[1].setAttribute('type', 'text');");
+        jse.executeScript(
+                "document.getElementsByName('_csrf')[1].setAttribute('type', 'text');");
 
         driver.findElement(By.id("formSubmitBtn")).click();
 
         // upload finish
-        assertThat(driver.findElement(By.cssSelector("h2")).getText(),
-                is("CSRF Test"));
+        assertThat(driver.findElement(By.cssSelector("h2")).getText(), is(
+                "CSRF Test"));
         screenCapture.save(driver);
 
         // 3.4 Test start
@@ -354,8 +375,10 @@ public class CsrfTest extends FunctionTestSupport {
         driver.findElement(By.id("formFileBtn")).sendKeys(imagePath);
 
         // CsrfToken setting check
-        jse.executeScript("document.getElementsByName('_csrf')[1].setAttribute('type', 'text');");
-        jse.executeScript("document.getElementsByName('_csrf')[1].value = '123456abc9876abc';");
+        jse.executeScript(
+                "document.getElementsByName('_csrf')[1].setAttribute('type', 'text');");
+        jse.executeScript(
+                "document.getElementsByName('_csrf')[1].value = '123456abc9876abc';");
 
         driver.findElement(By.id("formSubmitBtn")).click();
 
@@ -373,8 +396,8 @@ public class CsrfTest extends FunctionTestSupport {
         driver.findElement(By.id("querySubmitBtn")).click();
 
         // upload finish
-        assertThat(driver.findElement(By.cssSelector("h2")).getText(),
-                is("CSRF Test"));
+        assertThat(driver.findElement(By.cssSelector("h2")).getText(), is(
+                "CSRF Test"));
         screenCapture.save(driver);
 
         // 3.6 Test start
@@ -386,8 +409,9 @@ public class CsrfTest extends FunctionTestSupport {
         // CsrfToken setting check
         String alterUrI = "/" + contextName
                 + "/csrf/fileUpload?_csrf=123456789abcdef9876";
-        jse.executeScript("document.getElementById('queryFileForm').setAttribute('action', '"
-                + alterUrI + "');");
+        jse.executeScript(
+                "document.getElementById('queryFileForm').setAttribute('action', '"
+                        + alterUrI + "');");
 
         driver.findElement(By.id("querySubmitBtn")).click();
 
@@ -401,8 +425,10 @@ public class CsrfTest extends FunctionTestSupport {
 
         // 4.1 Test Start
         // CsrfToken setting check
-        jse.executeScript("document.getElementsByName('_csrf')[6].setAttribute('type', 'text');");
-        jse.executeScript("document.getElementsByName('_csrf')[6].value = '123456abc9876abc';");
+        jse.executeScript(
+                "document.getElementsByName('_csrf')[6].setAttribute('type', 'text');");
+        jse.executeScript(
+                "document.getElementsByName('_csrf')[6].value = '123456abc9876abc';");
 
         driver.findElement(By.id("csrf_4_1")).click();
 
@@ -426,8 +452,10 @@ public class CsrfTest extends FunctionTestSupport {
         driver.findElement(By.id("CSRF")).click();
 
         // CsrfToken setting check
-        jse.executeScript("document.getElementsByName('_csrf')[7].setAttribute('type', 'text');");
-        jse.executeScript("document.getElementsByName('_csrf')[7].value = '123456abc9876abc';");
+        jse.executeScript(
+                "document.getElementsByName('_csrf')[7].setAttribute('type', 'text');");
+        jse.executeScript(
+                "document.getElementsByName('_csrf')[7].value = '123456abc9876abc';");
 
         driver.findElement(By.id("csrf_4_2")).click();
 
@@ -448,8 +476,8 @@ public class CsrfTest extends FunctionTestSupport {
     }
 
     private String getStatusCodeInAjaxRequest() {
-        return driver.findElement(By.id("result")).findElement(
-                By.tagName("span")).getText();
+        return driver.findElement(By.id("result")).findElement(By.tagName(
+                "span")).getText();
     }
 
 }
