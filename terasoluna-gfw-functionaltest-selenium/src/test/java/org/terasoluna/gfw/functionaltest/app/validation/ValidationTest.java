@@ -116,7 +116,28 @@ public class ValidationTest extends FunctionTestSupport {
     }
 
     @Test
-    public void test03_05_Compare_Operator_GreaterThan_valid() {
+    public void test03_05_Compare_Operator_NotEqual_valid() {
+        driver.findElement(By.linkText("@Compare Test")).click();
+
+        inputFieldAccessor.overrideValue(By.id("left"), "100", driver);
+        inputFieldAccessor.overrideValue(By.id("right"), "101", driver);
+        driver.findElement(By.id("btn_ne")).click();
+        assertThat(driver.findElement(By.id("message")).getText(), is(SUCCESS));
+    }
+
+    @Test
+    public void test03_06_Compare_Operator_NotEqual_invalid() {
+        driver.findElement(By.linkText("@Compare Test")).click();
+
+        inputFieldAccessor.overrideValue(By.id("left"), "100", driver);
+        inputFieldAccessor.overrideValue(By.id("right"), "100", driver);
+        driver.findElement(By.id("btn_ne")).click();
+        assertThat(driver.findElement(By.id("left.errors")).getText(), is(
+                "invalid combination of left and right"));
+    }
+
+    @Test
+    public void test03_07_Compare_Operator_GreaterThan_valid() {
         driver.findElement(By.linkText("@Compare Test")).click();
 
         inputFieldAccessor.overrideValue(By.id("left"), "100", driver);
@@ -126,7 +147,7 @@ public class ValidationTest extends FunctionTestSupport {
     }
 
     @Test
-    public void test03_06_Compare_Operator_GreaterThan_invalid() {
+    public void test03_08_Compare_Operator_GreaterThan_invalid() {
         driver.findElement(By.linkText("@Compare Test")).click();
 
         {
@@ -147,7 +168,7 @@ public class ValidationTest extends FunctionTestSupport {
     }
 
     @Test
-    public void test03_07_Compare_Operator_GreaterThanOrEqual_valid() {
+    public void test03_09_Compare_Operator_GreaterThanOrEqual_valid() {
         driver.findElement(By.linkText("@Compare Test")).click();
 
         {
@@ -168,7 +189,7 @@ public class ValidationTest extends FunctionTestSupport {
     }
 
     @Test
-    public void test03_08_Compare_Operator_GreaterThanOrEqual_invalid() {
+    public void test03_10_Compare_Operator_GreaterThanOrEqual_invalid() {
         driver.findElement(By.linkText("@Compare Test")).click();
 
         inputFieldAccessor.overrideValue(By.id("left"), "100", driver);
@@ -179,7 +200,7 @@ public class ValidationTest extends FunctionTestSupport {
     }
 
     @Test
-    public void test03_09_Compare_Operator_LessThan_valid() {
+    public void test03_11_Compare_Operator_LessThan_valid() {
         driver.findElement(By.linkText("@Compare Test")).click();
 
         inputFieldAccessor.overrideValue(By.id("left"), "100", driver);
@@ -189,7 +210,7 @@ public class ValidationTest extends FunctionTestSupport {
     }
 
     @Test
-    public void test03_10_Compare_Operator_LessThan_invalid() {
+    public void test03_12_Compare_Operator_LessThan_invalid() {
         driver.findElement(By.linkText("@Compare Test")).click();
 
         {
@@ -210,7 +231,7 @@ public class ValidationTest extends FunctionTestSupport {
     }
 
     @Test
-    public void test03_11_Compare_Operator_LessThanOrEqual_valid() {
+    public void test03_13_Compare_Operator_LessThanOrEqual_valid() {
         driver.findElement(By.linkText("@Compare Test")).click();
 
         {
@@ -231,7 +252,7 @@ public class ValidationTest extends FunctionTestSupport {
     }
 
     @Test
-    public void test03_12_Compare_Operator_LessThanOrEqual_invalid() {
+    public void test03_14_Compare_Operator_LessThanOrEqual_invalid() {
         driver.findElement(By.linkText("@Compare Test")).click();
 
         inputFieldAccessor.overrideValue(By.id("left"), "100", driver);
@@ -242,7 +263,7 @@ public class ValidationTest extends FunctionTestSupport {
     }
 
     @Test
-    public void test03_13_Compare_Node_Property() {
+    public void test03_15_Compare_Node_Property() {
         driver.findElement(By.linkText("@Compare Test")).click();
 
         inputFieldAccessor.overrideValue(By.id("left"), "100", driver);
@@ -253,7 +274,7 @@ public class ValidationTest extends FunctionTestSupport {
     }
 
     @Test
-    public void test03_14_Compare_Node_RootBean() {
+    public void test03_16_Compare_Node_RootBean() {
         driver.findElement(By.linkText("@Compare Test")).click();
 
         inputFieldAccessor.overrideValue(By.id("left"), "100", driver);
