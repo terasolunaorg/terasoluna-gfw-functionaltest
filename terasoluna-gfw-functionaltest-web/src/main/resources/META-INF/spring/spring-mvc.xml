@@ -46,9 +46,9 @@
     <property name="exceptionLogger" ref="exceptionLogger" />
     <property name="ignoreExceptions">
       <set>
-        <value>org.springframework.dao.PessimisticLockingFailureException
-        </value>
         <value>org.terasoluna.gfw.common.exception.ResultMessagesNotificationException
+        </value>
+        <value>org.springframework.dao.PessimisticLockingFailureException
         </value>
       </set>
     </property>

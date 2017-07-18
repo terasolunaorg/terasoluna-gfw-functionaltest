@@ -39,11 +39,6 @@
   <!-- AOP. -->
   <bean id="handlerExceptionResolverLoggingInterceptor" class="org.terasoluna.gfw.web.exception.HandlerExceptionResolverLoggingInterceptor">
     <property name="exceptionLogger" ref="exceptionLogger" />
-    <property name="ignoreExceptions">
-      <set>
-        <value>org.springframework.dao.PessimisticLockingFailureException</value>
-      </set>
-    </property>
   </bean>
   <aop:config>
     <aop:advisor advice-ref="handlerExceptionResolverLoggingInterceptor"
