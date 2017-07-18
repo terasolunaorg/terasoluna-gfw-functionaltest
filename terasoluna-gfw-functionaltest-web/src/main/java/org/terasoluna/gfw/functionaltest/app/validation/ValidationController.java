@@ -102,6 +102,14 @@ public class ValidationController {
         return internalValidateCompare(form, bindingResult, model, attributes);
     }
 
+    @RequestMapping(value = "compare", method = RequestMethod.POST, params = "ne")
+    public String validateCompareOperatorNotEqual(@Validated({
+            ValidationForm.ValidateCompareOperatorNotEqual.class }) ValidationForm form,
+            BindingResult bindingResult, Model model,
+            RedirectAttributes attributes) {
+        return internalValidateCompare(form, bindingResult, model, attributes);
+    }
+
     @RequestMapping(value = "compare", method = RequestMethod.POST, params = "gt")
     public String validateCompareOperatorGreaterThan(@Validated({
             ValidationForm.ValidateCompareOperatorGreaterThan.class }) ValidationForm form,

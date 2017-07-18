@@ -29,9 +29,10 @@
     <tr>
       <td colspan="2"><input id="btn_lt" type="submit" class="mainbtn" value="&lt;" name="lt" />
         <input id="btn_le" type="submit" class="mainbtn" value="&lt;=" name="le" /> <input
-        id="btn_eq" type="submit" class="mainbtn" value="=" name="eq" /> <input id="btn_ge"
-        type="submit" class="mainbtn" value="&gt;=" name="ge" /> <input id="btn_gt" type="submit"
-        class="mainbtn" value="&gt;" name="gt" /></td>
+        id="btn_eq" type="submit" class="mainbtn" value="=" name="eq" /> <input id="btn_ne"
+        type="submit" class="mainbtn" value="&ne;" name="ne" /> <input id="btn_ge" type="submit"
+        class="mainbtn" value="&gt;=" name="ge" /> <input id="btn_gt" type="submit" class="mainbtn"
+        value="&gt;" name="gt" /></td>
     </tr>
     <tr>
       <td colspan="3"><span>Select field to display error message (compare operator is

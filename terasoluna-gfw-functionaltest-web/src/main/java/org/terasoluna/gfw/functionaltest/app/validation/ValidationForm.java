@@ -29,6 +29,8 @@ import org.terasoluna.gfw.common.validator.constraints.Compare;
                 ValidationForm.ValidateCompare.class }),
         @Compare(left = "left", right = "right", operator = Compare.Operator.EQUAL, groups = {
                 ValidationForm.ValidateCompareOperatorEqual.class }),
+        @Compare(left = "left", right = "right", operator = Compare.Operator.NOT_EQUAL, groups = {
+                ValidationForm.ValidateCompareOperatorNotEqual.class }),
         @Compare(left = "left", right = "right", operator = Compare.Operator.GREATER_THAN, groups = {
                 ValidationForm.ValidateCompareOperatorGreaterThan.class }),
         @Compare(left = "left", right = "right", operator = Compare.Operator.GREATER_THAN_OR_EQUAL, groups = {
@@ -56,6 +58,9 @@ public class ValidationForm implements Serializable {
     };
 
     static interface ValidateCompareOperatorEqual {
+    };
+
+    static interface ValidateCompareOperatorNotEqual {
     };
 
     static interface ValidateCompareOperatorGreaterThan {
