@@ -46,7 +46,17 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
     public void test01_01_requestControllerHandling() {
         driver.findElement(By.id("requestControllerHandling_01_01")).click();
 
-        // TODO Assert Output Log
+        // WARN Level Log
+        dbLogProvider.waitForAssertion();
+        assertThat(dbLogProvider.countContainsMessageAndLevelsAndLogger(
+                "\\[w.xx.0002\\] ResultMessages \\[type=error, list=\\[ResultMessage \\[code=null, args=\\[\\], text=Error\\]\\]\\]",
+                "WARN", "org.terasoluna.gfw.common.exception.ExceptionLogger"),
+                is(1L));
+        assertThat(dbLogProvider.countContainsMessageAndLevelsAndLogger(
+                "\\[w.xx.0002\\] ResultMessages \\[type=error, list=\\[ResultMessage \\[code=null, args=\\[\\], text=Error\\]\\]\\]",
+                "WARN",
+                "org.terasoluna.gfw.common.exception.ExceptionLogger.Monitoring"),
+                is(1L));
 
         // output error message
         assertThat(driver.findElement(By.xpath("//li")).getText(), is("Error"));
@@ -57,7 +67,17 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
     public void test01_02_requestControllerHandling() {
         driver.findElement(By.id("requestControllerHandling_01_02")).click();
 
-        // TODO Assert Output Log
+        // INFO Level Log
+        dbLogProvider.waitForAssertion();
+        assertThat(dbLogProvider.countContainsMessageAndLevelsAndLogger(
+                "\\[w.xx.0002\\] ResultMessages \\[type=info, list=\\[ResultMessage \\[code=i.gt.me.0004, args=\\[\\], text=null\\]\\]\\]",
+                "INFO", "org.terasoluna.gfw.common.exception.ExceptionLogger"),
+                is(1L));
+        assertThat(dbLogProvider.countContainsMessageAndLevelsAndLogger(
+                "\\[w.xx.0002\\] ResultMessages \\[type=info, list=\\[ResultMessage \\[code=i.gt.me.0004, args=\\[\\], text=null\\]\\]\\]",
+                "INFO",
+                "org.terasoluna.gfw.common.exception.ExceptionLogger.Monitoring"),
+                is(1L));
 
         // output error message
         assertThat(driver.findElement(By.xpath("//li")).getText(), is(
@@ -89,7 +109,15 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
 
         driver.findElement(By.id("useCaseControllerHandling_02_02")).click();
 
-        // TODO Assert Output Log
+        // INFO Level Log
+        dbLogProvider.waitForAssertion();
+        assertThat(dbLogProvider.countContainsMessageAndLevelsAndLogger(
+                "\\[e.xx.9999\\] 2_2 Ok", "INFO",
+                "org.terasoluna.gfw.common.exception.ExceptionLogger"), is(1L));
+        assertThat(dbLogProvider.countContainsMessageAndLevelsAndLogger(
+                "\\[e.xx.9999\\] 2_2 Ok", "INFO",
+                "org.terasoluna.gfw.common.exception.ExceptionLogger.Monitoring"),
+                is(1L));
 
         // output error message
         assertThat(driver.findElement(By.xpath("//li")).getText(), is(
@@ -102,7 +130,15 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
 
         driver.findElement(By.id("useCaseControllerHandling_02_03")).click();
 
-        // TODO Assert Output Log
+        // INFO Level Log
+        dbLogProvider.waitForAssertion();
+        assertThat(dbLogProvider.countContainsMessageAndLevelsAndLogger(
+                "\\[e.xx.9999\\] 2_3 Multiple Choices", "INFO",
+                "org.terasoluna.gfw.common.exception.ExceptionLogger"), is(1L));
+        assertThat(dbLogProvider.countContainsMessageAndLevelsAndLogger(
+                "\\[e.xx.9999\\] 2_3 Multiple Choices", "INFO",
+                "org.terasoluna.gfw.common.exception.ExceptionLogger.Monitoring"),
+                is(1L));
 
         // output error message
         assertThat(driver.findElement(By.xpath("//li")).getText(), is(
@@ -114,7 +150,15 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
 
         driver.findElement(By.id("useCaseControllerHandling_02_04")).click();
 
-        // TODO Assert Output Log
+        // WARN Level Log
+        dbLogProvider.waitForAssertion();
+        assertThat(dbLogProvider.countContainsMessageAndLevelsAndLogger(
+                "\\[e.xx.9999\\] 2_4 Conflict", "WARN",
+                "org.terasoluna.gfw.common.exception.ExceptionLogger"), is(1L));
+        assertThat(dbLogProvider.countContainsMessageAndLevelsAndLogger(
+                "\\[e.xx.9999\\] 2_4 Conflict", "WARN",
+                "org.terasoluna.gfw.common.exception.ExceptionLogger.Monitoring"),
+                is(1L));
 
         // output error message
         assertThat(driver.findElement(By.xpath("//li")).getText(), is(
@@ -127,7 +171,15 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
 
         driver.findElement(By.id("useCaseControllerHandling_02_05")).click();
 
-        // TODO Assert Output Info Log
+        // Log isn't output
+        dbLogProvider.waitForAssertion();
+        assertThat(dbLogProvider.countContainsMessageAndLevelsAndLogger(
+                "\\[e.xx.9999\\] 2_5 ignore logging", "WARN",
+                "org.terasoluna.gfw.common.exception.ExceptionLogger"), is(0L));
+        assertThat(dbLogProvider.countContainsMessageAndLevelsAndLogger(
+                "\\[e.xx.9999\\] 2_5 ignore logging", "WARN",
+                "org.terasoluna.gfw.common.exception.ExceptionLogger.Monitoring"),
+                is(0L));
 
         // output error message
         assertThat(driver.findElement(By.xpath("//li")).getText(), is(
@@ -243,7 +295,15 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
 
         driver.findElement(By.id("servletFrameworkHandling_03_04")).click();
 
-        // TODO Assert Output Log
+        // ERROR Level Log
+        dbLogProvider.waitForAssertion();
+        assertThat(dbLogProvider.countContainsMessageAndLevelsAndLogger(
+                "\\[e.xx.xxx\\] 3_4 SystemException", "ERROR",
+                "org.terasoluna.gfw.common.exception.ExceptionLogger"), is(1L));
+        assertThat(dbLogProvider.countContainsMessageAndLevelsAndLogger(
+                "\\[e.xx.xxx\\] 3_4 SystemException", "ERROR",
+                "org.terasoluna.gfw.common.exception.ExceptionLogger.Monitoring"),
+                is(1L));
 
         // Error Code assert
         assertThat(driver.findElement(By.id("exceptionCode")).getText(), is(
@@ -256,7 +316,17 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
 
         driver.findElement(By.id("servletFrameworkHandling_03_05")).click();
 
-        // TODO Assert Output Log
+        // WARN Level Log
+        dbLogProvider.waitForAssertion();
+        assertThat(dbLogProvider.countContainsMessageAndLevelsAndLogger(
+                "\\[e.xx.9999\\] ResultMessages \\[type=warning, list=\\[ResultMessage \\[code=null, args=\\[\\], text=w.yy.yyy\\]\\]\\]",
+                "WARN", "org.terasoluna.gfw.common.exception.ExceptionLogger"),
+                is(1L));
+        assertThat(dbLogProvider.countContainsMessageAndLevelsAndLogger(
+                "\\[e.xx.9999\\] ResultMessages \\[type=warning, list=\\[ResultMessage \\[code=null, args=\\[\\], text=w.yy.yyy\\]\\]\\]",
+                "WARN",
+                "org.terasoluna.gfw.common.exception.ExceptionLogger.Monitoring"),
+                is(1L));
 
         // Error Code assert
         assertThat(driver.findElement(By.id("exceptionCode")).getText(), is(
@@ -287,7 +357,17 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
 
         driver.findElement(By.id("servletFrameworkHandling_03_06")).click();
 
-        // TODO Assert Output Log
+        // WARN Level Log
+        dbLogProvider.waitForAssertion();
+        assertThat(dbLogProvider.countContainsMessageAndLevelsAndLogger(
+                "\\[e.xx.9999\\] ResultMessages \\[type=warning, list=\\[ResultMessage \\[code=null, args=\\[\\], text=w.yy.yyy\\]\\]\\]",
+                "WARN", "org.terasoluna.gfw.common.exception.ExceptionLogger"),
+                is(1L));
+        assertThat(dbLogProvider.countContainsMessageAndLevelsAndLogger(
+                "\\[e.xx.9999\\] ResultMessages \\[type=warning, list=\\[ResultMessage \\[code=null, args=\\[\\], text=w.yy.yyy\\]\\]\\]",
+                "WARN",
+                "org.terasoluna.gfw.common.exception.ExceptionLogger.Monitoring"),
+                is(1L));
 
         // Error Code assert
         assertThat(driver.findElement(By.id("exceptionCode")).getText(), is(
@@ -350,7 +430,15 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
 
         driver.findElement(By.id("servletFrameworkHandling_03_08")).click();
 
-        // TODO Assert Output Log
+        // ERROR Level Log
+        dbLogProvider.waitForAssertion();
+        assertThat(dbLogProvider.countContainsMessageAndLevelsAndLogger(
+                "\\[e.xx.9999\\] e.cc.ccc", "ERROR",
+                "org.terasoluna.gfw.common.exception.ExceptionLogger"), is(1L));
+        assertThat(dbLogProvider.countContainsMessageAndLevelsAndLogger(
+                "\\[e.xx.9999\\] e.cc.ccc", "ERROR",
+                "org.terasoluna.gfw.common.exception.ExceptionLogger.Monitoring"),
+                is(1L));
 
         // Error Code assert
         assertThat(driver.findElement(By.id("exceptionCode")).getText(), is(
@@ -448,7 +536,15 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
 
         driver.findElement(By.id("webApplicationHandling_04_01")).click();
 
-        // TODO Assert Output Log
+        // ERROR Level Log
+        dbLogProvider.waitForAssertion();
+        assertThat(dbLogProvider.countContainsMessageAndLevelsAndLogger(
+                "\\[e.xx.9999\\] Request processing failed; .*", "ERROR",
+                "org.terasoluna.gfw.common.exception.ExceptionLogger"), is(1L));
+        assertThat(dbLogProvider.countContainsMessageAndLevelsAndLogger(
+                "\\[e.xx.9999\\] Request processing failed; .*", "ERROR",
+                "org.terasoluna.gfw.common.exception.ExceptionLogger.Monitoring"),
+                is(1L));
 
         // error page screen
         assertThat(driver.findElement(By.cssSelector("h2")).getText(), is(
@@ -461,7 +557,17 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
 
         driver.findElement(By.id("webApplicationHandling_04_02")).click();
 
-        // TODO Assert Output Log
+        // ERROR Level Log
+        dbLogProvider.waitForAssertion();
+        assertThat(dbLogProvider.countContainsMessageAndLevelsAndLogger(
+                "\\[e.xx.9999\\] Handler dispatch failed; nested exception is java.lang.AssertionError",
+                "ERROR", "org.terasoluna.gfw.common.exception.ExceptionLogger"),
+                is(1L));
+        assertThat(dbLogProvider.countContainsMessageAndLevelsAndLogger(
+                "\\[e.xx.9999\\] Handler dispatch failed; nested exception is java.lang.AssertionError",
+                "ERROR",
+                "org.terasoluna.gfw.common.exception.ExceptionLogger.Monitoring"),
+                is(1L));
 
         // error page screen
         assertThat(driver.findElement(By.cssSelector("h2")).getText(), is(
@@ -487,7 +593,15 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
 
         driver.findElement(By.id("webApplicationHandling_04_04")).click();
 
-        // TODO Assert Output Log
+        // ERROR Level Log
+        dbLogProvider.waitForAssertion();
+        assertThat(dbLogProvider.countContainsMessageAndLevelsAndLogger(
+                "\\[e.xx.9999\\] 4_4 Error", "ERROR",
+                "org.terasoluna.gfw.common.exception.ExceptionLogger"), is(1L));
+        assertThat(dbLogProvider.countContainsMessageAndLevelsAndLogger(
+                "\\[e.xx.9999\\] 4_4 Error", "ERROR",
+                "org.terasoluna.gfw.common.exception.ExceptionLogger.Monitoring"),
+                is(1L));
 
         // error page screen
         assertThat(driver.findElement(By.cssSelector("h2")).getText(), is(
@@ -537,7 +651,15 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
     public void test05_04_exceptionLoggerVariation() {
         driver.findElement(By.id("exceptionLoggerVariation_05_04")).click();
 
-        // TODO Assert Output Log
+        // ERROR Level Log
+        dbLogProvider.waitForAssertion();
+        assertThat(dbLogProvider.countContainsMessageAndLevelsAndLogger(
+                "\\[e.00.9999\\] DEFAULT ERROR", "ERROR",
+                "org.terasoluna.gfw.common.exception.ExceptionLogger"), is(1L));
+        assertThat(dbLogProvider.countContainsMessageAndLevelsAndLogger(
+                "\\[e.00.9999\\] DEFAULT ERROR", "ERROR",
+                "org.terasoluna.gfw.common.exception.ExceptionLogger.Monitoring"),
+                is(1L));
 
         // output error message
         assertThat(driver.findElement(By.cssSelector("h2")).getText(), is(
@@ -590,7 +712,17 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
         driver.findElement(By.id("exceptionOccuresInSharedService_06_01"))
                 .click();
 
-        // TODO Assert Output Log
+        // WARN Level Log
+        dbLogProvider.waitForAssertion();
+        assertThat(dbLogProvider.countContainsMessageAndLevelsAndLogger(
+                "\\[w.xx.0002\\] ResultMessages \\[type=error, list=\\[ResultMessage \\[code=null, args=\\[\\], text=Error\\]\\]\\]",
+                "WARN", "org.terasoluna.gfw.common.exception.ExceptionLogger"),
+                is(1L));
+        assertThat(dbLogProvider.countContainsMessageAndLevelsAndLogger(
+                "\\[w.xx.0002\\] ResultMessages \\[type=error, list=\\[ResultMessage \\[code=null, args=\\[\\], text=Error\\]\\]\\]",
+                "WARN",
+                "org.terasoluna.gfw.common.exception.ExceptionLogger.Monitoring"),
+                is(1L));
 
         // output error message
         assertThat(driver.findElement(By.xpath("//li")).getText(), is("Error"));
@@ -602,7 +734,17 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
         driver.findElement(By.id("exceptionOccuresInSharedService_06_02"))
                 .click();
 
-        // TODO Assert Output Log
+        // WARN Level Log
+        dbLogProvider.waitForAssertion();
+        assertThat(dbLogProvider.countContainsMessageAndLevelsAndLogger(
+                "\\[w.xx.0002\\] ResultMessages \\[type=error, list=\\[ResultMessage \\[code=null, args=\\[\\], text=Error\\]\\]\\]",
+                "WARN", "org.terasoluna.gfw.common.exception.ExceptionLogger"),
+                is(0L));
+        assertThat(dbLogProvider.countContainsMessageAndLevelsAndLogger(
+                "\\[w.xx.0002\\] ResultMessages \\[type=error, list=\\[ResultMessage \\[code=null, args=\\[\\], text=Error\\]\\]\\]",
+                "WARN",
+                "org.terasoluna.gfw.common.exception.ExceptionLogger.Monitoring"),
+                is(0L));
 
         // no exception
         assertThat(driver.findElement(By.cssSelector("h2")).getText(), is(
