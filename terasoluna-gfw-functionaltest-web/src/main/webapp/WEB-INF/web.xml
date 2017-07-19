@@ -27,11 +27,11 @@
   </filter-mapping>
 
   <filter>
-    <filter-name>vaiationExceptionLoggingFilter</filter-name>
+    <filter-name>variationExceptionLoggingFilter</filter-name>
     <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
   </filter>
   <filter-mapping>
-    <filter-name>vaiationExceptionLoggingFilter</filter-name>
+    <filter-name>variationExceptionLoggingFilter</filter-name>
     <url-pattern>/exceptionhandling/5_1</url-pattern>
     <url-pattern>/exceptionhandling/5_2</url-pattern>
     <url-pattern>/exceptionhandling/5_3</url-pattern>

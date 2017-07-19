@@ -89,7 +89,8 @@
     <property name="exceptionLogger" ref="exceptionLogger" />
   </bean>
 
-  <bean id="vaiationExceptionLoggingFilter" class="org.terasoluna.gfw.web.exception.ExceptionLoggingFilter">
+  <bean id="variationExceptionLoggingFilter"
+    class="org.terasoluna.gfw.functionaltest.app.exceptionhandling.VariationExceptionLoggingFilter">
     <property name="exceptionLogger" ref="variationExceptionLogger" />
   </bean>
 
