@@ -90,7 +90,7 @@
   </bean>
 
   <bean id="variationExceptionLoggingFilter"
-    class="org.terasoluna.gfw.functionaltest.app.exceptionhandling.VariationExceptionLoggingFilter">
+    class="org.terasoluna.gfw.functionaltest.app.exceptionhandling.ExceptionCodeExceptionLoggingFilter">
     <property name="exceptionLogger" ref="variationExceptionLogger" />
   </bean>
 
