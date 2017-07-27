@@ -238,7 +238,7 @@
       </dependency>
       <dependency>
         <!-- ojdbc7.jar must be pre-installed in local repository. -->
-        <groupId>com.oracle</groupId>
+        <groupId>com.oracle.jdbc</groupId>
         <artifactId>ojdbc7</artifactId>
         <version>${ojdbc7.version}</version>
       </dependency>
