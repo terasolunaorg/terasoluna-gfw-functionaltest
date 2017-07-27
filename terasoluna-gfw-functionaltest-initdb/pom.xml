@@ -35,6 +35,7 @@
       </properties>
     </profile>
     <profile>
+      <!-- ojdbc7.jar must be pre-installed in local repository. -->
       <id>oracle</id>
       <properties>
         <db.encoding>UTF8</db.encoding>
