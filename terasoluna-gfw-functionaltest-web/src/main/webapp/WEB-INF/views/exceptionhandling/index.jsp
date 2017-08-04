@@ -48,7 +48,7 @@
   </tr>
   <tr>
     <td><a id="servletFrameworkHandling_03_03"
-      href="${pageContext.request.contextPath}/exceptionhandling/3_3">servletFrameworkHandling_03_03</a>
+      href="${pageContext.request.contextPath}/exceptionHandlingChangeDefaultStatusCode/exceptionhandling/3_3">servletFrameworkHandling_03_03</a>
     </td>
   </tr>
   <tr>
