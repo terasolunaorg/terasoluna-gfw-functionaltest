@@ -320,11 +320,11 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
         // WARN Level Log
         dbLogProvider.waitForAssertion();
         assertThat(dbLogProvider.countContainsMessageAndLevelsAndLogger(
-                "\\[e.xx.9999\\] ResultMessages \\[type=warning, list=\\[ResultMessage \\[code=null, args=\\[\\], text=w.yy.yyy\\]\\]\\]",
+                "\\[e.xx.9999\\] ResultMessages \\[type=warn, list=\\[ResultMessage \\[code=null, args=\\[\\], text=w.yy.yyy\\]\\]\\]",
                 "WARN", "org.terasoluna.gfw.common.exception.ExceptionLogger"),
                 is(1L));
         assertThat(dbLogProvider.countContainsMessageAndLevelsAndLogger(
-                "\\[e.xx.9999\\] ResultMessages \\[type=warning, list=\\[ResultMessage \\[code=null, args=\\[\\], text=w.yy.yyy\\]\\]\\]",
+                "\\[e.xx.9999\\] ResultMessages \\[type=warn, list=\\[ResultMessage \\[code=null, args=\\[\\], text=w.yy.yyy\\]\\]\\]",
                 "WARN",
                 "org.terasoluna.gfw.common.exception.ExceptionLogger.Monitoring"),
                 is(1L));
@@ -361,11 +361,11 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
         // WARN Level Log
         dbLogProvider.waitForAssertion();
         assertThat(dbLogProvider.countContainsMessageAndLevelsAndLogger(
-                "\\[e.xx.9999\\] ResultMessages \\[type=warning, list=\\[ResultMessage \\[code=null, args=\\[\\], text=w.yy.yyy\\]\\]\\]",
+                "\\[e.xx.9999\\] ResultMessages \\[type=warn, list=\\[ResultMessage \\[code=null, args=\\[\\], text=w.yy.yyy\\]\\]\\]",
                 "WARN", "org.terasoluna.gfw.common.exception.ExceptionLogger"),
                 is(1L));
         assertThat(dbLogProvider.countContainsMessageAndLevelsAndLogger(
-                "\\[e.xx.9999\\] ResultMessages \\[type=warning, list=\\[ResultMessage \\[code=null, args=\\[\\], text=w.yy.yyy\\]\\]\\]",
+                "\\[e.xx.9999\\] ResultMessages \\[type=warn, list=\\[ResultMessage \\[code=null, args=\\[\\], text=w.yy.yyy\\]\\]\\]",
                 "WARN",
                 "org.terasoluna.gfw.common.exception.ExceptionLogger.Monitoring"),
                 is(1L));
@@ -561,11 +561,11 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
         // ERROR Level Log
         dbLogProvider.waitForAssertion();
         assertThat(dbLogProvider.countContainsMessageAndLevelsAndLogger(
-                "\\[e.xx.9999\\] Handler dispatch failed; nested exception is java.lang.AssertionError",
+                "\\[e.xx.9999\\] Handler processing failed; nested exception is java.lang.AssertionError",
                 "ERROR", "org.terasoluna.gfw.common.exception.ExceptionLogger"),
                 is(1L));
         assertThat(dbLogProvider.countContainsMessageAndLevelsAndLogger(
-                "\\[e.xx.9999\\] Handler dispatch failed; nested exception is java.lang.AssertionError",
+                "\\[e.xx.9999\\] Handler processing failed; nested exception is java.lang.AssertionError",
                 "ERROR",
                 "org.terasoluna.gfw.common.exception.ExceptionLogger.Monitoring"),
                 is(1L));
@@ -626,11 +626,11 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
         // INFO Level Log
         dbLogProvider.waitForAssertion();
         assertThat(dbLogProvider.countContainsMessageAndLevelsAndLogger(
-                "\\[e.xx.9999\\] ResultMessages \\[type=warning, list=\\[ResultMessage \\[code=n.cc.0000, args=\\[Error\\], text=null\\]\\]\\]",
+                "\\[e.xx.9999\\] ResultMessages \\[type=warn, list=\\[ResultMessage \\[code=n.cc.0000, args=\\[Error\\], text=null\\]\\]\\]",
                 "INFO", "org.terasoluna.gfw.common.exception.ExceptionLogger"),
                 is(1L));
         assertThat(dbLogProvider.countContainsMessageAndLevelsAndLogger(
-                "\\[e.xx.9999\\] ResultMessages \\[type=warning, list=\\[ResultMessage \\[code=n.cc.0000, args=\\[Error\\], text=null\\]\\]\\]",
+                "\\[e.xx.9999\\] ResultMessages \\[type=warn, list=\\[ResultMessage \\[code=n.cc.0000, args=\\[Error\\], text=null\\]\\]\\]",
                 "INFO",
                 "org.terasoluna.gfw.common.exception.ExceptionLogger.Monitoring"),
                 is(1L));
@@ -648,11 +648,11 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
         // WARN Level Log
         dbLogProvider.waitForAssertion();
         assertThat(dbLogProvider.countContainsMessageAndLevelsAndLogger(
-                "\\[e.xx.9999\\] ResultMessages \\[type=warning, list=\\[ResultMessage \\[code=a.cc.0000, args=\\[Error\\], text=null\\]\\]\\]",
+                "\\[e.xx.9999\\] ResultMessages \\[type=warn, list=\\[ResultMessage \\[code=a.cc.0000, args=\\[Error\\], text=null\\]\\]\\]",
                 "WARN", "org.terasoluna.gfw.common.exception.ExceptionLogger"),
                 is(1L));
         assertThat(dbLogProvider.countContainsMessageAndLevelsAndLogger(
-                "\\[e.xx.9999\\] ResultMessages \\[type=warning, list=\\[ResultMessage \\[code=a.cc.0000, args=\\[Error\\], text=null\\]\\]\\]",
+                "\\[e.xx.9999\\] ResultMessages \\[type=warn, list=\\[ResultMessage \\[code=a.cc.0000, args=\\[Error\\], text=null\\]\\]\\]",
                 "WARN",
                 "org.terasoluna.gfw.common.exception.ExceptionLogger.Monitoring"),
                 is(1L));
@@ -671,11 +671,11 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
         // ERROR Level Log
         dbLogProvider.waitForAssertion();
         assertThat(dbLogProvider.countContainsMessageAndLevelsAndLogger(
-                "\\[e.xx.9999\\] ResultMessages \\[type=warning, list=\\[ResultMessage \\[code=d.cc.0000, args=\\[Error\\], text=null\\]\\]\\]",
+                "\\[e.xx.9999\\] ResultMessages \\[type=warn, list=\\[ResultMessage \\[code=d.cc.0000, args=\\[Error\\], text=null\\]\\]\\]",
                 "ERROR", "org.terasoluna.gfw.common.exception.ExceptionLogger"),
                 is(1L));
         assertThat(dbLogProvider.countContainsMessageAndLevelsAndLogger(
-                "\\[e.xx.9999\\] ResultMessages \\[type=warning, list=\\[ResultMessage \\[code=d.cc.0000, args=\\[Error\\], text=null\\]\\]\\]",
+                "\\[e.xx.9999\\] ResultMessages \\[type=warn, list=\\[ResultMessage \\[code=d.cc.0000, args=\\[Error\\], text=null\\]\\]\\]",
                 "ERROR",
                 "org.terasoluna.gfw.common.exception.ExceptionLogger.Monitoring"),
                 is(1L));
