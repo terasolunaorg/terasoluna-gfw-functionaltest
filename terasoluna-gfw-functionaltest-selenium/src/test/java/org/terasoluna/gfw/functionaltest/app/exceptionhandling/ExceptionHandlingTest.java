@@ -561,11 +561,11 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
         // ERROR Level Log
         dbLogProvider.waitForAssertion();
         assertThat(dbLogProvider.countContainsMessageAndLevelsAndLogger(
-                "\\[e.xx.9999\\] Handler dispatch failed; nested exception is java.lang.AssertionError",
+                "\\[e.xx.9999\\] Handler processing failed; nested exception is java.lang.AssertionError",
                 "ERROR", "org.terasoluna.gfw.common.exception.ExceptionLogger"),
                 is(1L));
         assertThat(dbLogProvider.countContainsMessageAndLevelsAndLogger(
-                "\\[e.xx.9999\\] Handler dispatch failed; nested exception is java.lang.AssertionError",
+                "\\[e.xx.9999\\] Handler processing failed; nested exception is java.lang.AssertionError",
                 "ERROR",
                 "org.terasoluna.gfw.common.exception.ExceptionLogger.Monitoring"),
                 is(1L));
