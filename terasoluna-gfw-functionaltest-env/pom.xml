@@ -50,23 +50,6 @@
         <artifactId>maven-license-plugin</artifactId>
       </plugin>
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-install-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>install-ojdbc7</id>
-            <phase>install</phase>
-            <goals>
-              <goal>install-file</goal>
-            </goals>
-            <configuration>
-              <file>${basedir}/3rdparty/com/oracle/ojdbc7/${ojdbc7.version}/ojdbc7-${ojdbc7.version}.jar</file>
-              <pomFile>${basedir}/3rdparty/com/oracle/ojdbc7/${ojdbc7.version}/ojdbc7-${ojdbc7.version}.pom</pomFile>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>xml-maven-plugin</artifactId>
         <configuration>
