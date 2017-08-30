@@ -94,7 +94,7 @@
       <artifactId>postgresql</artifactId>
     </dependency>
     <!-- Once you have installed ojdbc7.jar into local repository, please remove this comment out. -->
-    <!-- <dependency> <groupId>com.oracle</groupId> <artifactId>ojdbc7</artifactId>
+    <!-- <dependency> <groupId>com.oracle.jdbc</groupId> <artifactId>ojdbc7</artifactId>
     </dependency> -->
     <!-- == End Database == -->
 

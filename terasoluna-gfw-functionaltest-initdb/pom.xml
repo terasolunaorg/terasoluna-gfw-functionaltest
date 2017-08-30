@@ -45,7 +45,7 @@
         <db.username>gfw</db.username>
         <db.password>gfw</db.password>
         <db.driver>oracle.jdbc.OracleDriver</db.driver>
-        <db.groupId>com.oracle</db.groupId>
+        <db.groupId>com.oracle.jdbc</db.groupId>
         <db.artifactId>ojdbc7</db.artifactId>
         <db.version>${ojdbc7.version}</db.version>
         <db.delimiterType>row</db.delimiterType>
