@@ -279,7 +279,8 @@
         <!-- <scope>provided</scope> -->
       </dependency>
       <dependency>
-        <groupId>com.oracle</groupId>
+        <!-- ojdbc7.jar must be pre-installed in local repository. -->
+        <groupId>com.oracle.jdbc</groupId>
         <artifactId>ojdbc7</artifactId>
         <version>${ojdbc7.version}</version>
       </dependency>
