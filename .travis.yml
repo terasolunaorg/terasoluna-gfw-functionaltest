@@ -1,4 +1,4 @@
-sudo: false
+sudo: required
 language: java
 jdk:
   - oraclejdk8
@@ -8,8 +8,6 @@ addons:
 cache:
   directories:
     - $HOME/.m2
-
-before_install: sudo sh -c 'echo "127.0.0.1" >> /etc/hosts'
 
 install:
   - pushd `pwd`
