@@ -376,6 +376,13 @@
       </properties>
     </profile>
     <profile>
+      <id>tomcat9-postgresql</id>
+      <properties>
+        <project.env.main.directory>configs/tomcat9-postgresql</project.env.main.directory>
+        <project.env.buildFinalName>${project.artifactId}-${project.version}-tomcat9-postgresql</project.env.buildFinalName>
+      </properties>
+    </profile>
+    <profile>
       <id>weblogic-oracle</id>
       <properties>
         <project.env.main.directory>configs/weblogic-oracle</project.env.main.directory>
