@@ -46,7 +46,7 @@ public class CodeListServiceImpl implements CodeListService {
 
     @Override
     public ItemCode findOne(Integer code) {
-        return codeListRepository.findOne(code);
+        return codeListRepository.findById(code).orElse(null);
     }
 
     @Override
