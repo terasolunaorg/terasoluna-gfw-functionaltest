@@ -2083,7 +2083,7 @@ public class PaginationTest extends FunctionTestSupport {
 
         // search
         {
-            inputFieldAccessor.appendValue(By.id("name"), "+ &=", driver);
+            inputFieldAccessor.appendValue(By.id("name"), " &=", driver);
             driver.findElement(By.id("searchButton")).click();
             // assert 1 page
             assertThat(driver.findElement(By.id("pagePosition")).getText(), is(
@@ -2203,7 +2203,7 @@ public class PaginationTest extends FunctionTestSupport {
 
         // search
         {
-            inputFieldAccessor.appendValue(By.id("name"), "+ &=", driver);
+            inputFieldAccessor.appendValue(By.id("name"), " &=", driver);
             driver.findElement(By.id("searchButton")).click();
             // assert 1 page
             assertThat(driver.findElement(By.id("pagePosition")).getText(), is(
@@ -2454,7 +2454,7 @@ public class PaginationTest extends FunctionTestSupport {
 
         // search
         {
-            inputFieldAccessor.appendValue(By.id("name"), "+ &=", driver);
+            inputFieldAccessor.appendValue(By.id("name"), " &=", driver);
             driver.findElement(By.id("searchButton")).click();
             // assert 1 page
             assertThat(driver.findElement(By.id("pagePosition")).getText(), is(
@@ -2507,12 +2507,12 @@ public class PaginationTest extends FunctionTestSupport {
                 }
                 assertTrue(fqueryElement.findElement(By.xpath("ul/li[" + count
                         + "]/a")).getAttribute("href").endsWith(
-                                "name=%2B%20%26%3D"));
+                                "name=%20%26%3D"));
             }
 
             // check search condition parameter.
             assertThat(inputFieldAccessor.getValue(By.id("name"), driver), is(
-                    "+ &="));
+                    " &="));
 
             // check output of <f:query> and <f:u> are the same URL.
             WebElement fuElement = driver.findElement(By.id(
@@ -2533,7 +2533,7 @@ public class PaginationTest extends FunctionTestSupport {
 
         // search
         {
-            inputFieldAccessor.appendValue(By.id("name"), "+ &=", driver);
+            inputFieldAccessor.appendValue(By.id("name"), " &=", driver);
             driver.findElement(By.id("searchButton")).click();
             // assert 1 page
             assertThat(driver.findElement(By.id("pagePosition")).getText(), is(
@@ -2586,12 +2586,12 @@ public class PaginationTest extends FunctionTestSupport {
                 }
                 assertTrue(fuElement.findElement(By.xpath("ul/li[" + count
                         + "]/a")).getAttribute("href").endsWith(
-                                "name=%2B%20%26%3D"));
+                                "name=%20%26%3D"));
             }
 
             // check search condition parameter.
             assertThat(inputFieldAccessor.getValue(By.id("name"), driver), is(
-                    "+ &="));
+                    " &="));
 
             // check output of <f:query> and <f:u> are the same URL.
             WebElement fqueryElement = driver.findElement(By.id(
@@ -2612,7 +2612,7 @@ public class PaginationTest extends FunctionTestSupport {
 
         // search
         {
-            inputFieldAccessor.appendValue(By.id("name"), "+ &=", driver);
+            inputFieldAccessor.appendValue(By.id("name"), " &=", driver);
             driver.findElement(By.id("searchButton")).click();
             // assert 1 page
             assertThat(driver.findElement(By.id("pagePosition")).getText(), is(
@@ -2665,12 +2665,12 @@ public class PaginationTest extends FunctionTestSupport {
                 }
                 assertTrue(fqueryElement.findElement(By.xpath("ul/li[" + count
                         + "]/a")).getAttribute("href").endsWith(
-                                "name=%2B%20%26%3D"));
+                                "name=%20%26%3D"));
             }
 
             // check search condition parameter.
             assertThat(inputFieldAccessor.getValue(By.id("name"), driver), is(
-                    "+ &="));
+                    " &="));
 
             // check output of <f:query> and <f:u> are the same URL.
             WebElement fuElement = driver.findElement(By.id(
@@ -2691,7 +2691,7 @@ public class PaginationTest extends FunctionTestSupport {
 
         // search
         {
-            inputFieldAccessor.appendValue(By.id("name"), "+ &=", driver);
+            inputFieldAccessor.appendValue(By.id("name"), " &=", driver);
             driver.findElement(By.id("searchButton")).click();
             // assert 1 page
             assertThat(driver.findElement(By.id("pagePosition")).getText(), is(
@@ -2744,12 +2744,12 @@ public class PaginationTest extends FunctionTestSupport {
                 continue;
             }
             assertTrue(fuElement.findElement(By.xpath("ul/li[" + count + "]/a"))
-                    .getAttribute("href").endsWith("name=%2B%20%26%3D"));
+                    .getAttribute("href").endsWith("name=%20%26%3D"));
         }
 
         // check search condition parameter.
         assertThat(inputFieldAccessor.getValue(By.id("name"), driver), is(
-                "+ &="));
+                " &="));
 
         // check output of <f:query> and <f:u> are the same URL.
         WebElement fqueryElement = driver.findElement(By.id(
@@ -2769,7 +2769,7 @@ public class PaginationTest extends FunctionTestSupport {
 
         // search
         {
-            inputFieldAccessor.appendValue(By.id("name"), "+ &=", driver);
+            inputFieldAccessor.appendValue(By.id("name"), " &=", driver);
             driver.findElement(By.id("searchButton")).click();
             // assert 1 page
             assertThat(driver.findElement(By.id("pagePosition")).getText(), is(
@@ -2826,12 +2826,12 @@ public class PaginationTest extends FunctionTestSupport {
                 }
                 assertTrue(fqueryElement.findElement(By.xpath("ul/li[" + count
                         + "]/a")).getAttribute("href").endsWith(
-                                "name=%2B%20%26%3D"));
+                                "name=%20%26%3D"));
             }
 
             // check search condition parameter.
             assertThat(inputFieldAccessor.getValue(By.id("name"), driver), is(
-                    "+ &="));
+                    " &="));
 
             // check output of <f:query> and <f:u> are the same URL.
             WebElement fuElement = driver.findElement(By.id(
@@ -2852,7 +2852,7 @@ public class PaginationTest extends FunctionTestSupport {
 
         // search
         {
-            inputFieldAccessor.appendValue(By.id("name"), "+ &=", driver);
+            inputFieldAccessor.appendValue(By.id("name"), " &=", driver);
             driver.findElement(By.id("searchButton")).click();
             // assert 1 page
             assertThat(driver.findElement(By.id("pagePosition")).getText(), is(
@@ -2908,12 +2908,12 @@ public class PaginationTest extends FunctionTestSupport {
                 }
                 assertTrue(fuElement.findElement(By.xpath("ul/li[" + count
                         + "]/a")).getAttribute("href").endsWith(
-                                "name=%2B%20%26%3D"));
+                                "name=%20%26%3D"));
             }
 
             // check search condition parameter.
             assertThat(inputFieldAccessor.getValue(By.id("name"), driver), is(
-                    "+ &="));
+                    " &="));
 
             // check output of <f:query> and <f:u> are the same URL.
             WebElement fqueryElement = driver.findElement(By.id(
