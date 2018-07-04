@@ -118,13 +118,13 @@ public class ElTest extends FunctionTestSupport {
         driver.get(applicationContextUrl);
         driver.findElement(By.id("EL")).click();
         driver.findElement(By.id("02")).click();
-        inputFieldAccessor.overrideValue(By.id("text-output"), "TEST[]#+=&TEST",
+        inputFieldAccessor.overrideValue(By.id("text-output"), "TEST[]#=&TEST",
                 driver);
         driver.findElement(By.id("btn-output")).click();
 
         // output data 02_03 Test
         assertThat(driver.findElement(By.id("urlOutput")).getText(), is(
-                "TEST%5B%5D%23%2B%3D%26TEST"));
+                "TEST%5B%5D%23%3D%26TEST"));
     }
 
     @Test
@@ -390,13 +390,13 @@ public class ElTest extends FunctionTestSupport {
         driver.findElement(By.id("EL")).click();
         driver.findElement(By.id("06_03-")).click();
 
-        inputFieldAccessor.overrideValue(By.id("name"), "TEST[]#+=&TEST",
+        inputFieldAccessor.overrideValue(By.id("name"), "TEST[]#=&TEST",
                 driver);
         driver.findElement(By.id("btn-output")).click();
 
         // output 06_08 Test
         assertThat(driver.findElement(By.xpath(
-                "//a[contains(@href, '?page=1&size=10&age=0&countries=&_dateOfBirth=&main=false&name=TEST%5B%5D%23%2B%3D%26TEST')]"))
+                "//a[contains(@href, '?page=1&size=10&age=0&countries=&_dateOfBirth=&main=false&name=TEST%5B%5D%23%3D%26TEST')]"))
                 .getText(), is("2"));
     }
 
