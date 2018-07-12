@@ -265,7 +265,7 @@
     <postgresql.version>9.4.1212.jre7</postgresql.version>
     <ojdbc7.version>12.1.0.2</ojdbc7.version>
     <db2jcc4.version>4.21.29</db2jcc4.version>
-    <selenium.version>2.46.0</selenium.version>
+    <selenium.version>3.9.1</selenium.version>
     <!-- == Project Properties == -->
     <project.env.main.directory>src/main</project.env.main.directory>
     <project.env.buildFinalName>${project.artifactId}-${project.version}</project.env.buildFinalName>

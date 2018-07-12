@@ -132,6 +132,11 @@ $ mvn -U test -pl terasoluna-gfw-functionaltest-selenium
 > $ mvn -U test -pl terasoluna-gfw-functionaltest-selenium -Djava-version=1.7
 >```
 
+> **Note:**
+>
+> If proxy authentication is required, go to ``terasoluna-gfw-functionaltest-selenium / src / test / resources / META-INF / spring / selenium.properties`` and specify with `` selenium.proxyUserName={username} , selenium.proxyUserPassword = {password} , selenium.proxyHttpServer={HttpServer} `` .  
+> If not require proxy authentication, no need to change.
+
 ## Appendix
 
 ### How to use latest or any branch snapshot of Common Library
