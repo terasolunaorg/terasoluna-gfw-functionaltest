@@ -26,7 +26,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 public class FirefoxDriverFactoryBean implements FactoryBean<FirefoxDriver> {
 
     @Value("${selenium.geckodriverVersion}")
-    protected String geckodriver;
+    protected String geckodriverVersion;
 
     @Value("${selenium.proxyUserName}")
     protected String userName;
@@ -39,7 +39,7 @@ public class FirefoxDriverFactoryBean implements FactoryBean<FirefoxDriver> {
 
     @Override
     public FirefoxDriver getObject() {
-        WebDriverManager.firefoxdriver().version(geckodriver);
+        WebDriverManager.firefoxdriver().version(geckodriverVersion);
         WebDriverManager.firefoxdriver().proxyUser(userName);
         WebDriverManager.firefoxdriver().proxyPass(userPassword);
         WebDriverManager.firefoxdriver().proxy(httpServer).setup();
