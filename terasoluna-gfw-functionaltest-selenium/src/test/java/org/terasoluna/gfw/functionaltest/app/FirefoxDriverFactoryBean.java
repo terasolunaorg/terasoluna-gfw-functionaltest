@@ -27,15 +27,15 @@ public class FirefoxDriverFactoryBean implements FactoryBean<FirefoxDriver> {
 
     @Value("${selenium.geckodriverVersion}")
     protected String geckodriverVersion;
+    
+    @Value("${selenium.proxyHttpServer}")
+    protected String httpServer;
 
     @Value("${selenium.proxyUserName}")
     protected String userName;
 
     @Value("${selenium.proxyUserPassword}")
     protected String userPassword;
-
-    @Value("${selenium.proxyHttpServer}")
-    protected String httpServer;
 
     @Override
     public FirefoxDriver getObject() {
