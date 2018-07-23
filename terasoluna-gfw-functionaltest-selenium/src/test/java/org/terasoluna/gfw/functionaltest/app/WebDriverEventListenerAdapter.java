@@ -49,6 +49,10 @@ public abstract class WebDriverEventListenerAdapter implements
     }
 
     @Override
+    public void afterNavigateRefresh(WebDriver arg0) {
+    }
+
+    @Override
     public void afterScript(String arg0, WebDriver arg1) {
     }
 
@@ -61,28 +65,12 @@ public abstract class WebDriverEventListenerAdapter implements
     }
 
     @Override
-    public void afterNavigateRefresh(WebDriver arg0) {
-    }
-
-    @Override
     public void beforeChangeValueOf(WebElement arg0, WebDriver arg1,
             CharSequence[] arg2) {
     }
 
     @Override
     public void beforeClickOn(WebElement arg0, WebDriver arg1) {
-    }
-
-    @Override
-    public void beforeAlertAccept(WebDriver arg0) {
-    }
-
-    @Override
-    public void beforeAlertDismiss(WebDriver arg0) {
-    }
-
-    @Override
-    public void beforeNavigateRefresh(WebDriver arg0) {
     }
 
     @Override
@@ -102,7 +90,19 @@ public abstract class WebDriverEventListenerAdapter implements
     }
 
     @Override
+    public void beforeNavigateRefresh(WebDriver arg0) {
+    }
+
+    @Override
     public void beforeScript(String arg0, WebDriver arg1) {
+    }
+
+    @Override
+    public void beforeAlertAccept(WebDriver arg0) {
+    }
+
+    @Override
+    public void beforeAlertDismiss(WebDriver arg0) {
     }
 
     @Override
