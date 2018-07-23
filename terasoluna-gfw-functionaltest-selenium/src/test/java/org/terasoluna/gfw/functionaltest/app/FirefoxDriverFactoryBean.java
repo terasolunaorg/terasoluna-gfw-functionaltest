@@ -27,7 +27,7 @@ public class FirefoxDriverFactoryBean implements FactoryBean<FirefoxDriver> {
 
     @Value("${selenium.geckodriverVersion}")
     protected String geckodriverVersion;
-    
+
     @Value("${selenium.proxyHttpServer}")
     protected String httpServer;
 
@@ -39,11 +39,8 @@ public class FirefoxDriverFactoryBean implements FactoryBean<FirefoxDriver> {
 
     @Override
     public FirefoxDriver getObject() {
-        WebDriverManager.firefoxdriver().version(geckodriverVersion)
-                                        .proxy(httpServer)
-                                        .proxyUser(userName)
-                                        .proxyPass(userPassword)
-                                        .setup();
+        WebDriverManager.firefoxdriver().version(geckodriverVersion).proxy(
+                httpServer).proxyUser(userName).proxyPass(userPassword).setup();
 
         FirefoxProfile profile = new FirefoxProfile();
         profile.setPreference("browser.startup.homepage_override.mstone",
