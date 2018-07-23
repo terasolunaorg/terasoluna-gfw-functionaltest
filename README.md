@@ -134,8 +134,10 @@ $ mvn -U test -pl terasoluna-gfw-functionaltest-selenium
 
 > **Note:**
 >
-> If proxy authentication is required, go to ``terasoluna-gfw-functionaltest-selenium / src / test / resources / META-INF / spring / selenium.properties`` and specify with `` selenium.proxyUserName={username} , selenium.proxyUserPassword = {password} , selenium.proxyHttpServer={HttpServer} `` .  
-> If not require proxy authentication, no need to change.
+> If proxy authentication is required,please build as follows.  
+> ```console
+> $ mvn -U test -pl terasoluna-gfw-functionaltest-selenium -Dselenium.proxyUserName={UserName} -Dselenium.proxyUserPassword={Password} -Dselenium.proxyHttpServer={HttpServer}
+> ```
 
 ## Appendix
 
