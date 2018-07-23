@@ -39,10 +39,11 @@ public class FirefoxDriverFactoryBean implements FactoryBean<FirefoxDriver> {
 
     @Override
     public FirefoxDriver getObject() {
-        WebDriverManager.firefoxdriver().version(geckodriverVersion);
-        WebDriverManager.firefoxdriver().proxyUser(userName);
-        WebDriverManager.firefoxdriver().proxyPass(userPassword);
-        WebDriverManager.firefoxdriver().proxy(httpServer).setup();
+        WebDriverManager.firefoxdriver().version(geckodriverVersion)
+                                        .proxy(httpServer)
+                                        .proxyUser(userName)
+                                        .proxyPass(userPassword)
+                                        .setup();
 
         FirefoxProfile profile = new FirefoxProfile();
         profile.setPreference("browser.startup.homepage_override.mstone",
