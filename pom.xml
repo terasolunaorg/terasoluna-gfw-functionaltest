@@ -228,6 +228,16 @@
         <artifactId>selenium-support</artifactId>
         <version>${selenium.version}</version>
       </dependency>
+      <dependency>
+        <groupId>io.github.bonigarcia</groupId>
+        <artifactId>webdrivermanager</artifactId>
+        <version>${webdrivermanager.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.google.guava</groupId>
+        <artifactId>guava</artifactId>
+        <version>${guava.version}</version>
+      </dependency>
       <!-- == End Test == -->
 
       <!-- == Begin Database == -->
@@ -266,6 +276,8 @@
     <ojdbc7.version>12.1.0.2</ojdbc7.version>
     <db2jcc4.version>4.21.29</db2jcc4.version>
     <selenium.version>3.9.1</selenium.version>
+    <webdrivermanager.version>2.1.0</webdrivermanager.version>
+    <guava.version>23.5-jre</guava.version>
     <!-- == Project Properties == -->
     <project.env.main.directory>src/main</project.env.main.directory>
     <project.env.buildFinalName>${project.artifactId}-${project.version}</project.env.buildFinalName>
