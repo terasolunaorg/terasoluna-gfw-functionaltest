@@ -16,18 +16,39 @@
 package org.terasoluna.gfw.functionaltest.app;
 
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.springframework.beans.factory.FactoryBean;
+import org.springframework.beans.factory.annotation.Value;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class FirefoxDriverFactoryBean implements FactoryBean<FirefoxDriver> {
 
+    @Value("${selenium.geckodriverVersion}")
+    protected String geckodriverVersion;
+
+    @Value("${selenium.proxyHttpServer}")
+    protected String httpServer;
+
+    @Value("${selenium.proxyUserName}")
+    protected String userName;
+
+    @Value("${selenium.proxyUserPassword}")
+    protected String userPassword;
+
     @Override
     public FirefoxDriver getObject() {
+        WebDriverManager.firefoxdriver().version(geckodriverVersion)
+                .forceCache().proxy(httpServer).proxyUser(userName).proxyPass(
+                        userPassword).setup();
+
         FirefoxProfile profile = new FirefoxProfile();
         profile.setPreference("browser.startup.homepage_override.mstone",
                 "ignore");
         profile.setPreference("network.proxy.type", 0);
-        return new FirefoxDriver(profile);
+        FirefoxOptions options = new FirefoxOptions().setProfile(profile);
+        return new FirefoxDriver(options);
     }
 
     @Override

@@ -132,6 +132,13 @@ $ mvn -U test -pl terasoluna-gfw-functionaltest-selenium
 > $ mvn -U test -pl terasoluna-gfw-functionaltest-selenium -Djava-version=1.7
 >```
 
+> **Note:**
+>
+> If proxy authentication is required,please build as follows.  
+> ```console
+> $ mvn -U test -pl terasoluna-gfw-functionaltest-selenium -Dselenium.proxyUserName={UserName} -Dselenium.proxyUserPassword={Password} -Dselenium.proxyHttpServer={HttpServer}
+> ```
+
 ## Appendix
 
 ### How to use latest or any branch snapshot of Common Library
