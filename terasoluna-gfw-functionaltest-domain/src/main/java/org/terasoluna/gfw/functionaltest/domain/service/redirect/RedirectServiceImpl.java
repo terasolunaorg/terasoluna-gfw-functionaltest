@@ -41,7 +41,7 @@ public class RedirectServiceImpl implements RedirectService {
     @Override
     @Transactional(value = TransactionManagers.JPA, readOnly = true)
     public UserInfo findOne(String code) {
-        return userRepository.findOne(code);
+        return userRepository.findById(code).orElse(null);
     }
 
     @Override
