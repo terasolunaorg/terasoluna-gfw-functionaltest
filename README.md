@@ -25,6 +25,7 @@ Tested environments are managed at [wiki page](https://github.com/terasolunaorg/
 * [JDK 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) or [JDK 7](http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html) installed (`JAVA_HOME` defined as environment variable)
 * [Maven](https://maven.apache.org/download.cgi) installed (Can run `mvn` command)
 * Firefox([for personal](https://www.mozilla.org/en-US/firefox/all/) or [ESR](https://www.mozilla.org/en-US/firefox/organizations/all/)) installed (ESR is used on our CI environment)
+* [geckodriver](https://github.com/mozilla/geckodriver/releases/tag/v0.14.0) placed in application execution environment.
 
 ### [Step 1] Create database of PostgreSQL (Optional)
 If [PostgreSQL](http://www.postgresql.org/) use as database , you need to create database of PostgreSQL into local machine. (PostgreSQL can download via [here site](http://www.postgresql.org/download/)).
@@ -117,7 +118,7 @@ Run tests using Selenium(`WebDriver`) on JUnit.
 
 ```console
 $ cd {your repository directory}
-$ mvn -U test -pl terasoluna-gfw-functionaltest-selenium
+$ mvn -U test -pl terasoluna-gfw-functionaltest-selenium -Dwebdriver.gecko.driver={path to geckodriver.exe}
 ```
 
 > **Note:**
@@ -131,6 +132,15 @@ $ mvn -U test -pl terasoluna-gfw-functionaltest-selenium
 >```console
 > $ mvn -U test -pl terasoluna-gfw-functionaltest-selenium -Djava-version=1.7
 >```
+
+> **Note:**
+>
+> geckodriver can be downloaded automatically through the Internet.  
+> If proxy authentication is required, please build as follows.  
+> In the case of no authentication proxy, only  `-Dselenium.proxyHttpServer={HttpServer}`.  
+> ```console
+> $ mvn -U test -pl terasoluna-gfw-functionaltest-selenium -Dselenium.proxyUserName={UserName} -Dselenium.proxyUserPassword={Password} -Dselenium.proxyHttpServer={HttpServer}
+> ```  
 
 ## Appendix
 

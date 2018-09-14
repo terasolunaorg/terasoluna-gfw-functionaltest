@@ -37,7 +37,7 @@ public class CodeListTest extends FunctionTestSupport {
 
     @Test
     public void test01_01_form() {
-        driver.findElement(By.linkText("SimpleCodeList Test")).click();
+        getTextMatchLink("SimpleCodeList Test").click();
         assertThat(driver.findElement(By.cssSelector("option[value=\"key1\"]"))
                 .getText(), is("label1"));
         assertThat(driver.findElement(By.cssSelector("option[value=\"key2\"]"))
@@ -47,13 +47,13 @@ public class CodeListTest extends FunctionTestSupport {
         driver.findElement(By.id("btn1")).click();
         assertThat(driver.findElement(By.id("output")).getText(), is("key1"));
         driver.findElement(By.id("btnback")).click();
-        driver.findElement(By.linkText("SimpleCodeList Test")).click();
+        getTextMatchLink("SimpleCodeList Test").click();
         new Select(driver.findElement(By.id("item1"))).selectByVisibleText(
                 "label2");
         driver.findElement(By.id("btn1")).click();
         assertThat(driver.findElement(By.id("output")).getText(), is("key2"));
         driver.findElement(By.id("btnback")).click();
-        driver.findElement(By.linkText("SimpleCodeList Test")).click();
+        getTextMatchLink("SimpleCodeList Test").click();
         new Select(driver.findElement(By.id("item1"))).selectByVisibleText(
                 "label3");
         driver.findElement(By.id("btn1")).click();
@@ -63,16 +63,14 @@ public class CodeListTest extends FunctionTestSupport {
 
     @Test
     public void test01_02_form() {
-        driver.findElement(By.linkText(
-                "SimpleCodeList Test (CodeList is empty)")).click();
+        getTextMatchLink("SimpleCodeList Test (CodeList is empty)").click();
         assertThat(driver.findElement(By.id("item1")).getText(), is(""));
         driver.findElement(By.id("btnback")).click();
     }
 
     @Test
     public void test02_01_form() {
-        driver.findElement(By.linkText("NumberRangeCodeList Test (Ascending)"))
-                .click();
+        getTextMatchLink("NumberRangeCodeList Test (Ascending)").click();
         assertThat(driver.findElement(By.cssSelector("option[value=\"1\"]"))
                 .getText(), is("1"));
         assertThat(driver.findElement(By.cssSelector("option[value=\"2\"]"))
@@ -91,8 +89,7 @@ public class CodeListTest extends FunctionTestSupport {
 
     @Test
     public void test02_02_form() {
-        driver.findElement(By.linkText("NumberRangeCodeList Test (Descending)"))
-                .click();
+        getTextMatchLink("NumberRangeCodeList Test (Descending)").click();
         assertThat(driver.findElement(By.cssSelector("option[value=\"5\"]"))
                 .getText(), is("5"));
         assertThat(driver.findElement(By.cssSelector("option[value=\"4\"]"))
@@ -111,8 +108,8 @@ public class CodeListTest extends FunctionTestSupport {
 
     @Test
     public void test02_03_form() {
-        driver.findElement(By.linkText(
-                "NumberRangeCodeList Test (Interval specified)")).click();
+        getTextMatchLink("NumberRangeCodeList Test (Interval specified)")
+                .click();
         assertThat(driver.findElement(By.cssSelector("option[value=\"5\"]"))
                 .getText(), is("5"));
         assertThat(driver.findElement(By.cssSelector("option[value=\"2\"]"))
@@ -125,8 +122,7 @@ public class CodeListTest extends FunctionTestSupport {
 
     @Test
     public void test02_04_form() {
-        driver.findElement(By.linkText(
-                "NumberRangeCodeList Test (Format specified)")).click();
+        getTextMatchLink("NumberRangeCodeList Test (Format specified)").click();
         assertThat(driver.findElement(By.cssSelector("option[value=\"005\"]"))
                 .getText(), is("05"));
         assertThat(driver.findElement(By.cssSelector("option[value=\"002\"]"))
@@ -140,7 +136,7 @@ public class CodeListTest extends FunctionTestSupport {
 
     @Test
     public void test03_01_form() {
-        driver.findElement(By.linkText("JdbcCodeList Test")).click();
+        getTextMatchLink("JdbcCodeList Test").click();
         assertThat(driver.findElement(By.cssSelector("option[value=\"key1\"]"))
                 .getText(), is("label1"));
         assertThat(driver.findElement(By.cssSelector("option[value=\"key2\"]"))
@@ -156,8 +152,7 @@ public class CodeListTest extends FunctionTestSupport {
 
     @Test
     public void test03_02_form() {
-        driver.findElement(By.linkText("JdbcCodeList Test (CodeList is empty)"))
-                .click();
+        getTextMatchLink("JdbcCodeList Test (CodeList is empty)").click();
         assertThat(driver.findElement(By.id("item1")).getText(), is(""));
         driver.findElement(By.id("btn1")).click();
         driver.findElement(By.id("btnback")).click();
@@ -165,16 +160,14 @@ public class CodeListTest extends FunctionTestSupport {
 
     @Test
     public void test03_03_form() {
-        driver.findElement(By.linkText("JdbcCodeList Test (DB error occurs)"))
-                .click();
+        getTextMatchLink("JdbcCodeList Test (DB error occurs)").click();
         assertThat(driver.findElement(By.id("exceptionCode")).getText(), is(
                 "e.xx.9999"));
     }
 
     @Test
     public void test04_02_form() {
-        driver.findElement(By.linkText(
-                "JdbcCodeList Test (Refresh functionality)")).click();
+        getTextMatchLink("JdbcCodeList Test (Refresh functionality)").click();
         assertThat(driver.findElement(By.cssSelector("option[value=\"key1\"]"))
                 .getText(), is("label1"));
         assertThat(driver.findElement(By.cssSelector("option[value=\"key2\"]"))
@@ -204,8 +197,7 @@ public class CodeListTest extends FunctionTestSupport {
         driver.findElement(By.id("btnback")).click();
 
         // reverting the change to DB state
-        driver.findElement(By.linkText(
-                "JdbcCodeList Test (Refresh functionality)")).click();
+        getTextMatchLink("JdbcCodeList Test (Refresh functionality)").click();
         driver.findElement(By.name("jdbcCodeListTestSelectCodeList")).click();
         driver.findElement(By.linkText("bbb")).click();
         inputFieldAccessor.overrideValue(By.id("code"), "key2", driver);
@@ -229,9 +221,9 @@ public class CodeListTest extends FunctionTestSupport {
     @Test
     public void test06_01_form() {
         driver.findElement(By.linkText("English")).click();
-        driver.findElement(By.linkText(
-                "SimpleI18nCodeList Test (EN and JP set using rows. Click English)"))
-                .click();
+        getTextMatchLink(
+                "SimpleI18nCodeList Test (EN and JP set using rows. Click English)")
+                        .click();
         assertThat(driver.findElement(By.cssSelector("option[value=\"key1\"]"))
                 .getText(), is("label1"));
         assertThat(driver.findElement(By.cssSelector("option[value=\"key2\"]"))
@@ -244,9 +236,9 @@ public class CodeListTest extends FunctionTestSupport {
     @Test
     public void test06_02_form() {
         driver.findElement(By.linkText("Japanese")).click();
-        driver.findElement(By.linkText(
-                "SimpleI18nCodeList Test (EN and JP set using rows. Click Japanese)"))
-                .click();
+        getTextMatchLink(
+                "SimpleI18nCodeList Test (EN and JP set using rows. Click Japanese)")
+                        .click();
 
         assertThat(driver.findElement(By.cssSelector("option[value=\"key1\"]"))
                 .getText(), is("ラベル1"));
@@ -260,9 +252,9 @@ public class CodeListTest extends FunctionTestSupport {
     @Test
     public void test06_03_form() {
         driver.findElement(By.linkText("French")).click();
-        driver.findElement(By.linkText(
-                "SimpleI18nCodeList Test (EN and JP set using rows. fallbackTo not set. Click French)"))
-                .click();
+        getTextMatchLink(
+                "SimpleI18nCodeList Test (EN and JP set using rows. fallbackTo not set. Click French)")
+                        .click();
 
         assertThat(driver.findElement(By.cssSelector("option[value=\"key1\"]"))
                 .getText(), is("ラベル1"));
@@ -276,9 +268,9 @@ public class CodeListTest extends FunctionTestSupport {
     @Test
     public void test06_04_form() {
         driver.findElement(By.linkText("French")).click();
-        driver.findElement(By.linkText(
-                "SimpleI18nCodeList Test (EN and JP set using rows. fallbackTo is set to EN. Click French)"))
-                .click();
+        getTextMatchLink(
+                "SimpleI18nCodeList Test (EN and JP set using rows. fallbackTo is set to EN. Click French)")
+                        .click();
         assertThat(driver.findElement(By.cssSelector("option[value=\"key1\"]"))
                 .getText(), is("label1"));
         assertThat(driver.findElement(By.cssSelector("option[value=\"key2\"]"))
@@ -291,9 +283,9 @@ public class CodeListTest extends FunctionTestSupport {
     @Test
     public void test06_05_form() {
         driver.findElement(By.linkText("Chinese")).click();
-        driver.findElement(By.linkText(
-                "SimpleI18nCodeList Test (EN and JP set using rows. fallbackTo is set to FR. Click Chinese)"))
-                .click();
+        getTextMatchLink(
+                "SimpleI18nCodeList Test (EN and JP set using rows. fallbackTo is set to FR. Click Chinese)")
+                        .click();
         assertThat(driver.findElement(By.id("item1")).getText(), is(""));
         driver.findElement(By.id("btnback")).click();
     }
@@ -301,9 +293,9 @@ public class CodeListTest extends FunctionTestSupport {
     @Test
     public void test06_06_form() {
         driver.findElement(By.linkText("English")).click();
-        driver.findElement(By.linkText(
-                "SimpleI18nCodeList Test (EN and JP set using rowsByCodeList. Click English)"))
-                .click();
+        getTextMatchLink(
+                "SimpleI18nCodeList Test (EN and JP set using rowsByCodeList. Click English)")
+                        .click();
         assertThat(driver.findElement(By.cssSelector("option[value=\"key1\"]"))
                 .getText(), is("label1"));
         assertThat(driver.findElement(By.cssSelector("option[value=\"key2\"]"))
@@ -316,9 +308,9 @@ public class CodeListTest extends FunctionTestSupport {
     @Test
     public void test06_07_form() {
         driver.findElement(By.linkText("Japanese")).click();
-        driver.findElement(By.linkText(
-                "SimpleI18nCodeList Test (EN and JP set using rowsByCodeList. Click Japanese)"))
-                .click();
+        getTextMatchLink(
+                "SimpleI18nCodeList Test (EN and JP set using rowsByCodeList. Click Japanese)")
+                        .click();
         assertThat(driver.findElement(By.cssSelector("option[value=\"key1\"]"))
                 .getText(), is("ラベル1"));
         assertThat(driver.findElement(By.cssSelector("option[value=\"key2\"]"))
@@ -331,9 +323,9 @@ public class CodeListTest extends FunctionTestSupport {
     @Test
     public void test06_08_form() {
         driver.findElement(By.linkText("French")).click();
-        driver.findElement(By.linkText(
-                "SimpleI18nCodeList Test (EN and JP set using rowsByCodeList. fallbackTo not set. Click French)"))
-                .click();
+        getTextMatchLink(
+                "SimpleI18nCodeList Test (EN and JP set using rowsByCodeList. fallbackTo not set. Click French)")
+                        .click();
         assertThat(driver.findElement(By.cssSelector("option[value=\"key1\"]"))
                 .getText(), is("ラベル1"));
         assertThat(driver.findElement(By.cssSelector("option[value=\"key2\"]"))
@@ -346,9 +338,9 @@ public class CodeListTest extends FunctionTestSupport {
     @Test
     public void test06_09_form() {
         driver.findElement(By.linkText("English")).click();
-        driver.findElement(By.linkText(
-                "SimpleI18nCodeList Test (EN and JP set using columns. Click English)"))
-                .click();
+        getTextMatchLink(
+                "SimpleI18nCodeList Test (EN and JP set using columns. Click English)")
+                        .click();
         assertThat(driver.findElement(By.cssSelector("option[value=\"key1\"]"))
                 .getText(), is("label1"));
         assertThat(driver.findElement(By.cssSelector("option[value=\"key2\"]"))
@@ -361,9 +353,9 @@ public class CodeListTest extends FunctionTestSupport {
     @Test
     public void test06_10_form() {
         driver.findElement(By.linkText("Japanese")).click();
-        driver.findElement(By.linkText(
-                "SimpleI18nCodeList Test (EN and JP set using columns. Click Japanese)"))
-                .click();
+        getTextMatchLink(
+                "SimpleI18nCodeList Test (EN and JP set using columns. Click Japanese)")
+                        .click();
         assertThat(driver.findElement(By.cssSelector("option[value=\"key1\"]"))
                 .getText(), is("ラベル1"));
         assertThat(driver.findElement(By.cssSelector("option[value=\"key2\"]"))
@@ -376,9 +368,9 @@ public class CodeListTest extends FunctionTestSupport {
     @Test
     public void test06_11_form() {
         driver.findElement(By.linkText("French")).click();
-        driver.findElement(By.linkText(
-                "SimpleI18nCodeList Test (EN and JP set using columns. fallbackTo not set. Click French)"))
-                .click();
+        getTextMatchLink(
+                "SimpleI18nCodeList Test (EN and JP set using columns. fallbackTo not set. Click French)")
+                        .click();
         assertThat(driver.findElement(By.cssSelector("option[value=\"key1\"]"))
                 .getText(), is("ラベル1"));
         assertThat(driver.findElement(By.cssSelector("option[value=\"key2\"]"))
@@ -390,8 +382,8 @@ public class CodeListTest extends FunctionTestSupport {
 
     @Test
     public void test07_01_form() {
-        driver.findElement(By.linkText(
-                "CodeListInteceptor Test (codeListPattern is set)")).click();
+        getTextMatchLink("CodeListInteceptor Test (codeListPattern is set)")
+                .click();
         assertThat(driver.findElement(By.cssSelector("option[value=\"key1\"]"))
                 .getText(), is("label1"));
         assertThat(driver.findElement(By.cssSelector("option[value=\"key2\"]"))
@@ -404,8 +396,7 @@ public class CodeListTest extends FunctionTestSupport {
 
     @Test
     public void test07_03_form() {
-        driver.findElement(By.linkText(
-                "CodeListInteceptor Test (codeListPattern is changed)"))
+        getTextMatchLink("CodeListInteceptor Test (codeListPattern is changed)")
                 .click();
         assertThat(driver.findElement(By.cssSelector("option[value=\"key1\"]"))
                 .getText(), is("ラベル1"));
@@ -419,8 +410,7 @@ public class CodeListTest extends FunctionTestSupport {
 
     @Test
     public void test08_01_form() {
-        driver.findElement(By.linkText("@ExistInCodeList Test (String)"))
-                .click();
+        getTextMatchLink("@ExistInCodeList Test (String)").click();
         inputFieldAccessor.overrideValue(By.id("item1"), "key1", driver);
         driver.findElement(By.id("btn1")).click();
         assertThat(driver.findElement(By.id("errors")).getText(), is(""));
@@ -433,8 +423,7 @@ public class CodeListTest extends FunctionTestSupport {
 
     @Test
     public void test08_02_form() {
-        driver.findElement(By.linkText("@ExistInCodeList Test (Character)"))
-                .click();
+        getTextMatchLink("@ExistInCodeList Test (Character)").click();
         inputFieldAccessor.overrideValue(By.id("item2"), "a", driver);
         driver.findElement(By.id("btn1")).click();
         assertThat(driver.findElement(By.id("errors")).getText(), is(""));
@@ -447,9 +436,9 @@ public class CodeListTest extends FunctionTestSupport {
 
     @Test
     public void test08_03_form() {
-        driver.findElement(By.linkText(
-                "@ExistInCodeList Test (specified codelist does not exist)"))
-                .click();
+        getTextMatchLink(
+                "@ExistInCodeList Test (specified codelist does not exist)")
+                        .click();
         inputFieldAccessor.overrideValue(By.id("item3"), "key1", driver);
         driver.findElement(By.id("btn1")).click();
         assertThat(driver.findElement(By.cssSelector("h2")).getText(), is(
@@ -458,8 +447,8 @@ public class CodeListTest extends FunctionTestSupport {
 
     @Test
     public void test08_04_form() {
-        driver.findElement(By.linkText(
-                "@ExistInCodeList Test (Used as method annotation)")).click();
+        getTextMatchLink("@ExistInCodeList Test (Used as method annotation)")
+                .click();
         inputFieldAccessor.overrideValue(By.id("item4"), "key5", driver);
         driver.findElement(By.id("btn1")).click();
         assertThat(driver.findElement(By.id("item4.errors")).getText(), is(
@@ -472,8 +461,7 @@ public class CodeListTest extends FunctionTestSupport {
 
     @Test
     public void test08_05_form() {
-        driver.findElement(By.linkText(
-                "@ExistInCodeList Test (Custom message)")).click();
+        getTextMatchLink("@ExistInCodeList Test (Custom message)").click();
         inputFieldAccessor.overrideValue(By.id("item5"), "key5", driver);
         driver.findElement(By.id("btn1")).click();
         assertThat(driver.findElement(By.id("item5.errors")).getText(), is(
@@ -483,8 +471,7 @@ public class CodeListTest extends FunctionTestSupport {
 
     @Test
     public void test08_06_form() {
-        driver.findElement(By.linkText(
-                "@ExistInCodeList Test (Extended codelist)")).click();
+        getTextMatchLink("@ExistInCodeList Test (Extended codelist)").click();
         inputFieldAccessor.overrideValue(By.id("item6"), "key5", driver);
         driver.findElement(By.id("btn1")).click();
         assertThat(driver.findElement(By.id("item6.errors")).getText(), is(
@@ -494,8 +481,8 @@ public class CodeListTest extends FunctionTestSupport {
 
     @Test
     public void test08_07_form() {
-        driver.findElement(By.linkText(
-                "@ExistInCodeList Test (Multiple Custom codelist)")).click();
+        getTextMatchLink("@ExistInCodeList Test (Multiple Custom codelist)")
+                .click();
 
         // not error occured
         inputFieldAccessor.overrideValue(By.id("item7"), "key1", driver);
@@ -531,8 +518,8 @@ public class CodeListTest extends FunctionTestSupport {
 
     @Test
     public void test08_08_form() {
-        driver.findElement(By.linkText(
-                "@ExistInCodeList Test (Used as param annotation)")).click();
+        getTextMatchLink("@ExistInCodeList Test (Used as param annotation)")
+                .click();
 
         // not error occured
         inputFieldAccessor.overrideValue(By.id("item1"), "key1", driver);
@@ -551,7 +538,7 @@ public class CodeListTest extends FunctionTestSupport {
 
     @Test
     public void test09_01_form() {
-        driver.findElement(By.linkText("EnumCodeList Test")).click();
+        getTextMatchLink("EnumCodeList Test").click();
         assertThat(driver.findElement(By.cssSelector("option[value=\"1\"]"))
                 .getText(), is("January"));
         assertThat(driver.findElement(By.cssSelector("option[value=\"2\"]"))
@@ -581,77 +568,77 @@ public class CodeListTest extends FunctionTestSupport {
         assertThat(driver.findElement(By.id("output")).getText(), is("1"));
         driver.findElement(By.id("btnback")).click();
 
-        driver.findElement(By.linkText("EnumCodeList Test")).click();
+        getTextMatchLink("EnumCodeList Test").click();
         new Select(driver.findElement(By.id("item1"))).selectByVisibleText(
                 "February");
         driver.findElement(By.id("btn1")).click();
         assertThat(driver.findElement(By.id("output")).getText(), is("2"));
         driver.findElement(By.id("btnback")).click();
 
-        driver.findElement(By.linkText("EnumCodeList Test")).click();
+        getTextMatchLink("EnumCodeList Test").click();
         new Select(driver.findElement(By.id("item1"))).selectByVisibleText(
                 "March");
         driver.findElement(By.id("btn1")).click();
         assertThat(driver.findElement(By.id("output")).getText(), is("3"));
         driver.findElement(By.id("btnback")).click();
 
-        driver.findElement(By.linkText("EnumCodeList Test")).click();
+        getTextMatchLink("EnumCodeList Test").click();
         new Select(driver.findElement(By.id("item1"))).selectByVisibleText(
                 "April");
         driver.findElement(By.id("btn1")).click();
         assertThat(driver.findElement(By.id("output")).getText(), is("4"));
         driver.findElement(By.id("btnback")).click();
 
-        driver.findElement(By.linkText("EnumCodeList Test")).click();
+        getTextMatchLink("EnumCodeList Test").click();
         new Select(driver.findElement(By.id("item1"))).selectByVisibleText(
                 "May");
         driver.findElement(By.id("btn1")).click();
         assertThat(driver.findElement(By.id("output")).getText(), is("5"));
         driver.findElement(By.id("btnback")).click();
 
-        driver.findElement(By.linkText("EnumCodeList Test")).click();
+        getTextMatchLink("EnumCodeList Test").click();
         new Select(driver.findElement(By.id("item1"))).selectByVisibleText(
                 "June");
         driver.findElement(By.id("btn1")).click();
         assertThat(driver.findElement(By.id("output")).getText(), is("6"));
         driver.findElement(By.id("btnback")).click();
 
-        driver.findElement(By.linkText("EnumCodeList Test")).click();
+        getTextMatchLink("EnumCodeList Test").click();
         new Select(driver.findElement(By.id("item1"))).selectByVisibleText(
                 "July");
         driver.findElement(By.id("btn1")).click();
         assertThat(driver.findElement(By.id("output")).getText(), is("7"));
         driver.findElement(By.id("btnback")).click();
 
-        driver.findElement(By.linkText("EnumCodeList Test")).click();
+        getTextMatchLink("EnumCodeList Test").click();
         new Select(driver.findElement(By.id("item1"))).selectByVisibleText(
                 "August");
         driver.findElement(By.id("btn1")).click();
         assertThat(driver.findElement(By.id("output")).getText(), is("8"));
         driver.findElement(By.id("btnback")).click();
 
-        driver.findElement(By.linkText("EnumCodeList Test")).click();
+        getTextMatchLink("EnumCodeList Test").click();
         new Select(driver.findElement(By.id("item1"))).selectByVisibleText(
                 "September");
         driver.findElement(By.id("btn1")).click();
         assertThat(driver.findElement(By.id("output")).getText(), is("9"));
         driver.findElement(By.id("btnback")).click();
 
-        driver.findElement(By.linkText("EnumCodeList Test")).click();
+        getTextMatchLink("EnumCodeList Test").click();
         new Select(driver.findElement(By.id("item1"))).selectByVisibleText(
                 "October");
         driver.findElement(By.id("btn1")).click();
         assertThat(driver.findElement(By.id("output")).getText(), is("10"));
         driver.findElement(By.id("btnback")).click();
 
-        driver.findElement(By.linkText("EnumCodeList Test")).click();
+        getTextMatchLink("EnumCodeList Test").click();
         new Select(driver.findElement(By.id("item1"))).selectByVisibleText(
                 "November");
         driver.findElement(By.id("btn1")).click();
         assertThat(driver.findElement(By.id("output")).getText(), is("11"));
         driver.findElement(By.id("btnback")).click();
 
-        driver.findElement(By.linkText("EnumCodeList Test")).click();
+        getTextMatchLink("EnumCodeList Test").click();
         new Select(driver.findElement(By.id("item1"))).selectByVisibleText(
                 "December");
         driver.findElement(By.id("btn1")).click();
@@ -661,8 +648,7 @@ public class CodeListTest extends FunctionTestSupport {
 
     @Test
     public void test10_01_form() {
-        driver.findElement(By.linkText(
-                "CodeListInterceptor Test (Exception occurs)")).click();
+        getTextMatchLink("CodeListInterceptor Test (Exception occurs)").click();
         assertThat(driver.findElement(By.cssSelector("option[value=\"key1\"]"))
                 .getText(), is("label1"));
         assertThat(driver.findElement(By.cssSelector("option[value=\"key2\"]"))

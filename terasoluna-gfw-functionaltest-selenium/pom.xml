@@ -87,6 +87,11 @@
       <artifactId>h2</artifactId>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>io.github.bonigarcia</groupId>
+      <artifactId>webdrivermanager</artifactId>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
   <properties>
     <project.root.basedir>${project.parent.basedir}</project.root.basedir>

@@ -220,6 +220,16 @@
       </dependency>
       <dependency>
         <groupId>org.seleniumhq.selenium</groupId>
+        <artifactId>selenium-edge-driver</artifactId>
+        <version>${selenium.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.seleniumhq.selenium</groupId>
+        <artifactId>selenium-opera-driver</artifactId>
+        <version>${selenium.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.seleniumhq.selenium</groupId>
         <artifactId>selenium-safari-driver</artifactId>
         <version>${selenium.version}</version>
       </dependency>
@@ -227,6 +237,11 @@
         <groupId>org.seleniumhq.selenium</groupId>
         <artifactId>selenium-support</artifactId>
         <version>${selenium.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.github.bonigarcia</groupId>
+        <artifactId>webdrivermanager</artifactId>
+        <version>${webdrivermanager.version}</version>
       </dependency>
       <!-- == End Test == -->
 
@@ -265,7 +280,8 @@
     <postgresql.version>42.2.2</postgresql.version>
     <ojdbc7.version>12.1.0.2</ojdbc7.version>
     <db2jcc4.version>4.21.29</db2jcc4.version>
-    <selenium.version>2.46.0</selenium.version>
+    <selenium.version>3.0.1</selenium.version>
+    <webdrivermanager.version>1.6.2</webdrivermanager.version>
     <!-- == Project Properties == -->
     <project.env.main.directory>src/main</project.env.main.directory>
     <project.env.buildFinalName>${project.artifactId}-${project.version}</project.env.buildFinalName>
