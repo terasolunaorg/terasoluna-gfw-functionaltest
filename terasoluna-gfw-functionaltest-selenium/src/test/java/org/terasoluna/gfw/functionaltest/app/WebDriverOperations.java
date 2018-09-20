@@ -16,12 +16,10 @@
 package org.terasoluna.gfw.functionaltest.app;
 
 import java.util.concurrent.TimeUnit;
-import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -109,18 +107,4 @@ public class WebDriverOperations {
         return webDriver.findElement(By.id("apServerVersion")).getText();
     }
 
-    /**
-     * Get the specified link.
-     * @param text for Identifying to look for the link
-     * @return link matching the text
-     */
-    public WebElement getTextMatchLink(String compareText) {
-        List<WebElement> elements = webDriver.findElements(By.tagName("a"));
-        for (WebElement element : elements) {
-            if (element.getText().equals(compareText)) {
-                return element;
-            }
-        }
-        throw new NoSuchElementException(compareText + "is not found.");
-    }
 }
