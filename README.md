@@ -25,7 +25,7 @@ Tested environments are managed at [wiki page](https://github.com/terasolunaorg/
 * [JDK 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) or [JDK 7](http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html) installed (`JAVA_HOME` defined as environment variable)
 * [Maven](https://maven.apache.org/download.cgi) installed (Can run `mvn` command)
 * Firefox([for personal](https://www.mozilla.org/en-US/firefox/all/) or [ESR](https://www.mozilla.org/en-US/firefox/organizations/all/)) installed (ESR is used on our CI environment)
-* [geckodriver](https://github.com/mozilla/geckodriver/releases/tag/v0.14.0) placed in application execution environment.
+* [geckodriver](https://github.com/mozilla/geckodriver/releases/tag/v0.14.0) placed in application execution environment and add to `Path`.
 
 ### [Step 1] Create database of PostgreSQL (Optional)
 If [PostgreSQL](http://www.postgresql.org/) use as database , you need to create database of PostgreSQL into local machine. (PostgreSQL can download via [here site](http://www.postgresql.org/download/)).
@@ -61,7 +61,7 @@ $ mvn -U install -am -pl terasoluna-gfw-functionaltest-web
 ```
 
 > **Note:**
-> 
+>
 > When using JDK 7, build as follows.
 > you must compile with the target version 1.7 in accordance with the runtime environment JVM.
 > You can set the target version using `java-version` property.
@@ -118,7 +118,7 @@ Run tests using Selenium(`WebDriver`) on JUnit.
 
 ```console
 $ cd {your repository directory}
-$ mvn -U test -pl terasoluna-gfw-functionaltest-selenium -Dwebdriver.gecko.driver={path to geckodriver.exe}
+$ mvn -U test -pl terasoluna-gfw-functionaltest-selenium
 ```
 
 > **Note:**
@@ -135,12 +135,16 @@ $ mvn -U test -pl terasoluna-gfw-functionaltest-selenium -Dwebdriver.gecko.drive
 
 > **Note:**
 >
-> geckodriver can be downloaded automatically through the Internet.  
-> If proxy authentication is required, please build as follows.  
-> In the case of no authentication proxy, only  `-Dselenium.proxyHttpServer={HttpServer}`.  
+> If GeckoDriver is not registered in the path, [webdrivermanager](https://github.com/bonigarcia/webdrivermanager) will download it automatically.  
+> If required proxy, please set `selenium.proxyHttpServer`.  
+> If required proxy authentication, set   `selenium.proxyUserName`, `selenium.proxyUserPassword`.  
 > ```console
-> $ mvn -U test -pl terasoluna-gfw-functionaltest-selenium -Dselenium.proxyUserName={UserName} -Dselenium.proxyUserPassword={Password} -Dselenium.proxyHttpServer={HttpServer}
+> $ mvn -U test -pl terasoluna-gfw-functionaltest-selenium -Dselenium.proxyHttpServer={HttpServer} -Dselenium.proxyUserName={UserName} -Dselenium.proxyUserPassword={Password}
 > ```  
+
+> **Note:**
+> You can change GeckoDriver's version with setting `selenium.geckodriverVersion`. 
+
 
 ## Appendix
 
