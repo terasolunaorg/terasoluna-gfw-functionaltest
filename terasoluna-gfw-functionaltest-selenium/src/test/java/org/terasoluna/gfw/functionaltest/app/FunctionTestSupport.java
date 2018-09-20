@@ -30,9 +30,7 @@ import org.junit.rules.TestWatcher;
 import org.junit.runner.Description;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
-import org.openqa.selenium.support.events.WebDriverEventListener;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -47,8 +45,6 @@ public class FunctionTestSupport extends ApplicationObjectSupport {
     protected static WebDriver driver;
 
     private static final Set<WebDriver> webDrivers = new HashSet<WebDriver>();
-
-    protected static WebDriverEventListener waitWebDriverEventListener;
 
     protected static EventFiringWebDriver eventFiringWebDriver;
 
@@ -172,7 +168,8 @@ public class FunctionTestSupport extends ApplicationObjectSupport {
         if (driver == null) {
             driver = newWebDriver();
             eventFiringWebDriver = new EventFiringWebDriver(driver);
-            waitWebDriverEventListener = new WaitWebDriverEventListener();
+            WaitWebDriverEventListener waitWebDriverEventListener = getApplicationContext()
+                    .getBean(WaitWebDriverEventListener.class);
             driver = eventFiringWebDriver.register(waitWebDriverEventListener);
         }
         driver.manage().timeouts().implicitlyWait(
@@ -278,10 +275,6 @@ public class FunctionTestSupport extends ApplicationObjectSupport {
     }
 
     protected void onFinished() {
-    }
-
-    public WebElement getTextMatchLink(String compareText) {
-        return this.webDriverOperations.getTextMatchLink(compareText);
     }
 
 }

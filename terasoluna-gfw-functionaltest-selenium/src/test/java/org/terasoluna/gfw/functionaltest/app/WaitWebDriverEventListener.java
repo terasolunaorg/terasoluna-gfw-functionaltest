@@ -19,6 +19,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.springframework.beans.factory.annotation.Value;
 import org.openqa.selenium.By;
 
 import org.apache.commons.logging.Log;
@@ -33,20 +34,22 @@ public class WaitWebDriverEventListener extends WebDriverEventListenerAdapter {
 
     protected final Log logger = LogFactory.getLog(getClass());
 
-    protected static Wait<WebDriver> wait;
+    protected Wait<WebDriver> wait;
 
-    protected static String XTrack;
+    protected String xTrack;
 
-    protected long webDriverWait = 3;
+    @Value("${selenium.webDriverWait}")
+    protected long webDriverWait;
 
-    protected long webDriverSleepWait = 100;
+    @Value("${selenium.webDriverSleepWait}")
+    protected long webDriverSleepWait;
 
     @Override
     public void afterClickOn(WebElement webElement, WebDriver webDriver) {
         try {
             wait = new WebDriverWait(webDriver, webDriverWait, webDriverSleepWait);
             wait.until(ExpectedConditions.invisibilityOfElementWithText(By.id(
-                    "xtrack"), XTrack));
+                    "xtrack"), xTrack));
         } catch (TimeoutException e) {
             logger.debug("XTrack hasn't change in default time");
         }
@@ -57,7 +60,7 @@ public class WaitWebDriverEventListener extends WebDriverEventListenerAdapter {
 
     @Override
     public void beforeClickOn(WebElement webElement, WebDriver webDriver) {
-        XTrack = webDriver.findElement(By.id("xtrack")).getText();
+        xTrack = webDriver.findElement(By.id("xtrack")).getText();
     }
 
 }
