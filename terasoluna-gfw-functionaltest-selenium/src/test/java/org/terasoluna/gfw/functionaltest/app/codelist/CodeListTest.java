@@ -70,7 +70,6 @@ public class CodeListTest extends FunctionTestSupport {
 
     @Test
     public void test02_01_form() {
-        //driver.findElement(By.xpath("//*[contains(text(), \"NumberRangeCodeList Test (Ascending)\")]")).click();
         driver.findElement(By.xpath("//tbody/tr[3]/td[1]/a")).click();
         assertThat(driver.findElement(By.cssSelector("option[value=\"1\"]"))
                 .getText(), is("1"));
@@ -235,7 +234,7 @@ public class CodeListTest extends FunctionTestSupport {
     public void test06_02_form() {
         driver.findElement(By.linkText("Japanese")).click();
         driver.findElement(By.xpath("//tbody/tr[12]/td[1]/a")).click();
-        
+
         assertThat(driver.findElement(By.cssSelector("option[value=\"key1\"]"))
                 .getText(), is("ラベル1"));
         assertThat(driver.findElement(By.cssSelector("option[value=\"key2\"]"))
@@ -249,7 +248,7 @@ public class CodeListTest extends FunctionTestSupport {
     public void test06_03_form() {
         driver.findElement(By.linkText("French")).click();
         driver.findElement(By.xpath("//tbody/tr[13]/td[1]/a")).click();
-        
+
         assertThat(driver.findElement(By.cssSelector("option[value=\"key1\"]"))
                 .getText(), is("ラベル1"));
         assertThat(driver.findElement(By.cssSelector("option[value=\"key2\"]"))
