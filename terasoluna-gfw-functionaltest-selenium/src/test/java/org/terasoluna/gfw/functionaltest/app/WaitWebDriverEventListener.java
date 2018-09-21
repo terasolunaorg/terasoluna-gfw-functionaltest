@@ -22,8 +22,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.beans.factory.annotation.Value;
 import org.openqa.selenium.By;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.openqa.selenium.TimeoutException;
 
 import org.openqa.selenium.support.ui.ExpectedCondition;
@@ -32,7 +32,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class WaitWebDriverEventListener extends WebDriverEventListenerAdapter {
 
-    protected final Log logger = LogFactory.getLog(getClass());
+    protected final Logger logger = LoggerFactory.getLogger(getClass());
 
     protected Wait<WebDriver> wait;
 
