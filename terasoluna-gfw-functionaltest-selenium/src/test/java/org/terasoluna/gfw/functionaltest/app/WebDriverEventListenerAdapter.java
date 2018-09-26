@@ -24,7 +24,8 @@ public abstract class WebDriverEventListenerAdapter implements
                                                     WebDriverEventListener {
 
     @Override
-    public void afterChangeValueOf(WebElement arg0, WebDriver arg1) {
+    public void afterChangeValueOf(WebElement arg0, WebDriver arg1,
+            CharSequence[] arg2) {
     }
 
     @Override
@@ -52,7 +53,12 @@ public abstract class WebDriverEventListenerAdapter implements
     }
 
     @Override
-    public void beforeChangeValueOf(WebElement arg0, WebDriver arg1) {
+    public void afterNavigateRefresh(WebDriver driver) {
+    }
+
+    @Override
+    public void beforeChangeValueOf(WebElement arg0, WebDriver arg1,
+            CharSequence[] arg2) {
     }
 
     @Override
@@ -77,6 +83,10 @@ public abstract class WebDriverEventListenerAdapter implements
 
     @Override
     public void beforeScript(String arg0, WebDriver arg1) {
+    }
+
+    @Override
+    public void beforeNavigateRefresh(WebDriver driver) {
     }
 
     @Override

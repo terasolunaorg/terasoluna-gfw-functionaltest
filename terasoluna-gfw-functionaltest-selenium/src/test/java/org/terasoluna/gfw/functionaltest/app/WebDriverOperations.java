@@ -106,4 +106,5 @@ public class WebDriverOperations {
     public String getApServerVersion() {
         return webDriver.findElement(By.id("apServerVersion")).getText();
     }
+
 }
