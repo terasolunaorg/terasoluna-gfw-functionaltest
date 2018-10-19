@@ -229,6 +229,12 @@ public class CodeListController {
         return "codelist/06_11_form";
     }
 
+    // test case 06_12
+    @RequestMapping(value = "06_12_form", method = RequestMethod.GET)
+    public String test06_12_form(CodeListForm form, Model model) {
+        return "codelist/06_12_form";
+    }
+
     // test case 07_01
     @RequestMapping(value = "07_01_form", method = RequestMethod.GET)
     public String test07_01_form(CodeListForm form, Model model) {
