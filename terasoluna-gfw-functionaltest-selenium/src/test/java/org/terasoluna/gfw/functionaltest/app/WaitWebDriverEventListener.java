@@ -53,9 +53,14 @@ public class WaitWebDriverEventListener extends WebDriverEventListenerAdapter {
         } catch (TimeoutException e) {
             logger.debug("XTrack hasn't change in default time");
         }
-        wait.until((ExpectedCondition<Boolean>) wd -> ((JavascriptExecutor) wd)
-                .executeScript("return document.readyState").equals(
-                        "complete"));
+        try {
+            wait.until(
+                    (ExpectedCondition<Boolean>) wd -> ((JavascriptExecutor) wd)
+                            .executeScript("return document.readyState").equals(
+                                    "complete"));
+        } catch (TimeoutException e) {
+            logger.debug("document.readyState hasn't change in default time");
+        }
     }
 
     @Override
