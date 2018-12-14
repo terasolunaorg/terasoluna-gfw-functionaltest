@@ -53,6 +53,7 @@ public class WaitWebDriverEventListener extends WebDriverEventListenerAdapter {
         } catch (TimeoutException e) {
             logger.debug("XTrack hasn't change in default time");
         }
+        // Since want to perform this processing after the above processing is completed, divide the try-catch.
         try {
             wait.until(
                     (ExpectedCondition<Boolean>) wd -> ((JavascriptExecutor) wd)
