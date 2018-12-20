@@ -426,12 +426,5 @@
         <project.env.buildFinalName>${project.artifactId}-${project.version}-webspherelp-db2</project.env.buildFinalName>
       </properties>
     </profile>
-    <profile>
-      <id>webspheretr-db2</id>
-      <properties>
-        <project.env.main.directory>configs/webspheretr-db2</project.env.main.directory>
-        <project.env.buildFinalName>${project.artifactId}-${project.version}-webspheretr-db2</project.env.buildFinalName>
-      </properties>
-    </profile>
   </profiles>
 </project>
