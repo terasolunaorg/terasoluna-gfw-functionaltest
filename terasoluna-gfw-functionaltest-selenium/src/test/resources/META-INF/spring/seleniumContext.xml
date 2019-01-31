@@ -52,11 +52,11 @@
     <property name="dataSource" ref="dataSourceForLogging" />
   </bean>
 
-  <bean id="waitWebDriverEventListener" class="org.terasoluna.gfw.functionaltest.app.WaitWebDriverEventListener" />
-
   <beans profile="firefox default">
     <bean id="webDriver" class="org.terasoluna.gfw.functionaltest.app.FirefoxDriverFactoryBean"
-      scope="prototype" />
+      scope="prototype">
+      <property name="propertyFileLocation" value="wdm.properties" />
+    </bean>
   </beans>
   <beans profile="chrome">
     <bean id="webDriver" class="org.openqa.selenium.chrome.ChromeDriver" scope="prototype" />
