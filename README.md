@@ -22,7 +22,7 @@ Tested environments are managed at [wiki page](https://github.com/terasolunaorg/
 
 **Preconditions are as follow:**
 
-* [JDK 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) or [JDK 7](http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html) installed (`JAVA_HOME` defined as environment variable)
+* [JDK 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) or [JDK 11](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html) installed (`JAVA_HOME` defined as environment variable)
 * [Maven](https://maven.apache.org/download.cgi) installed (Can run `mvn` command)
 * Firefox([for personal](https://www.mozilla.org/en-US/firefox/all/) or [ESR](https://www.mozilla.org/en-US/firefox/organizations/all/)) installed (ESR is used on our CI environment)
 * [geckodriver](https://github.com/mozilla/geckodriver/releases) (`v0.23.0` recommended) placed in application execution environment and add to `PATH`.
@@ -59,15 +59,6 @@ $ cd {your repository directory}
 $ git checkout {target branch}
 $ mvn -U install -am -pl terasoluna-gfw-functionaltest-web
 ```
-
-> **Note:**
->
-> When using JDK 7, build as follows.
-> you must compile with the target version 1.7 in accordance with the runtime environment JVM.
-> You can set the target version using `java-version` property.
-> ```console
-> $ mvn -U install -am -pl terasoluna-gfw-functionaltest-web -Djava-version=1.7
-> ```
 
 #### Case that use PostgreSQL as database
 
@@ -125,13 +116,6 @@ $ mvn -U test -pl terasoluna-gfw-functionaltest-selenium
 >
 > If functional test is failed, try again using latest Selenium(specify with `-Dselenium.version={latest version}`).
 > Please also refer [tested environment](https://github.com/terasolunaorg/terasoluna-gfw-functionaltest/wiki/Tested-Environment) for more information about our tested environment. At last, please check [selenium changelog](https://github.com/SeleniumHQ/selenium/blob/master/java/CHANGELOG) to make sure your Firefox version is supported.
-
-> **Note:**
->
-> When using JDK 7,  please build as follows.
->```console
-> $ mvn -U test -pl terasoluna-gfw-functionaltest-selenium -Djava-version=1.7
->```
 
 > **Note:**
 >
