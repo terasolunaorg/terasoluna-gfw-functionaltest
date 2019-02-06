@@ -34,6 +34,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.support.ApplicationObjectSupport;
+import org.terasoluna.gfw.functionaltest.app.webdrivers.WebDriverType;
 import org.terasoluna.gfw.functionaltest.domain.DBLogCleaner;
 
 public class FunctionTestSupport extends ApplicationObjectSupport {
@@ -44,6 +45,8 @@ public class FunctionTestSupport extends ApplicationObjectSupport {
     protected static WebDriver driver;
 
     private static final Set<WebDriver> webDrivers = new HashSet<WebDriver>();
+
+    protected static WebDriverType driverType;
 
     @Value("${selenium.serverUrl}")
     protected String serverUrl;
@@ -146,6 +149,23 @@ public class FunctionTestSupport extends ApplicationObjectSupport {
             return;
         }
         bootDefaultWebDriver();
+    }
+
+    @Before
+    public final void setUpWebDriverType() {
+        if (driverType != null) {
+            return;
+        }
+        for (String activeProfile : getApplicationContext().getEnvironment()
+                .getActiveProfiles()) {
+            for (WebDriverType type : WebDriverType.values()) {
+                if (type.toString().equalsIgnoreCase(activeProfile)) {
+                    driverType = type;
+                    return;
+                }
+            }
+        }
+        driverType = WebDriverType.DEFAULT();
     }
 
     @Before
@@ -267,5 +287,4 @@ public class FunctionTestSupport extends ApplicationObjectSupport {
 
     protected void onFinished() {
     }
-
 }
