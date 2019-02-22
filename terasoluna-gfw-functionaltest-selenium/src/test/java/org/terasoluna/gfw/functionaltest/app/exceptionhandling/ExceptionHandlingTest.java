@@ -208,7 +208,8 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
             assertThat(e.getResponseHeaders().get("X-Exception-Code").get(0)
                     .toString(), is("i.xx.xxx"));
             // Response Code assert
-            assertThat(e.getStatusCode().toString(), is("500"));
+            assertThat(e.getStatusCode().toString(), is(
+                    "500 INTERNAL_SERVER_ERROR"));
         }
     }
 
@@ -241,7 +242,8 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
             assertThat(e.getResponseHeaders().get("X-Exception-Code").get(0)
                     .toString(), is("w.xx.xxx"));
             // Response Code assert
-            assertThat(e.getStatusCode().toString(), is("500"));
+            assertThat(e.getStatusCode().toString(), is(
+                    "500 INTERNAL_SERVER_ERROR"));
         }
     }
 
@@ -275,7 +277,7 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
             assertThat(e.getResponseHeaders().get("X-Exception-Code").get(0)
                     .toString(), is("e.xx.xxx"));
             // Response Code assert
-            assertThat(e.getStatusCode().toString(), is("400"));
+            assertThat(e.getStatusCode().toString(), is("400 BAD_REQUEST"));
         }
     }
 
@@ -334,7 +336,8 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
             assertThat(e.getResponseHeaders().get("X-Exception-Code").get(0)
                     .toString(), is("e.xx.9999"));
             // Response Code assert
-            assertThat(e.getStatusCode().toString(), is("500"));
+            assertThat(e.getStatusCode().toString(), is(
+                    "500 INTERNAL_SERVER_ERROR"));
         }
 
     }
@@ -371,7 +374,8 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
             assertThat(e.getResponseHeaders().get("X-Exception-Code").get(0)
                     .toString(), is("e.xx.9999"));
             // Response Code assert
-            assertThat(e.getStatusCode().toString(), is("500"));
+            assertThat(e.getStatusCode().toString(), is(
+                    "500 INTERNAL_SERVER_ERROR"));
         }
     }
 
@@ -406,7 +410,7 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
             assertThat(e.getResponseHeaders().get("X-Exception-Code").get(0)
                     .toString(), is("w.xx.0001"));
             // Response Code assert
-            assertThat(e.getStatusCode().toString(), is("404"));
+            assertThat(e.getStatusCode().toString(), is("404 NOT_FOUND"));
         }
     }
 
@@ -440,7 +444,8 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
             assertThat(e.getResponseHeaders().get("X-Error-Code").get(0)
                     .toString(), is("e.xx.9999"));
             // Response Code assert
-            assertThat(e.getStatusCode().toString(), is("500"));
+            assertThat(e.getStatusCode().toString(), is(
+                    "500 INTERNAL_SERVER_ERROR"));
         }
     }
 
@@ -474,7 +479,8 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
             assertThat(e.getResponseHeaders().get("X-Error-Code").get(0)
                     .toString(), is("e.xx.xxx"));
             // Response Code assert
-            assertThat(e.getStatusCode().toString(), is("500"));
+            assertThat(e.getStatusCode().toString(), is(
+                    "500 INTERNAL_SERVER_ERROR"));
         }
     }
 
@@ -509,7 +515,7 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
             assertThat(e.getResponseHeaders().get("X-Exception-Code").get(0)
                     .toString(), is("i.xx.0010"));
             // Response Code assert
-            assertThat(e.getStatusCode().toString(), is("409"));
+            assertThat(e.getStatusCode().toString(), is("409 CONFLICT"));
         }
     }
 

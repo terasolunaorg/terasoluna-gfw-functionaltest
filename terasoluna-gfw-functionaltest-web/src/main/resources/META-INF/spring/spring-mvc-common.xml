@@ -115,7 +115,7 @@
       <mvc:exclude-mapping path="/resources/**" />
       <mvc:exclude-mapping path="/**/*.html" />
       <bean class="org.terasoluna.gfw.web.logging.TraceLoggingInterceptor">
-        <property name="warnHandlingNanos" value="5000000000" />
+        <property name="warnHandlingNanos" value="#{5L * 1000L * 1000L * 1000L}" />
       </bean>
     </mvc:interceptor>
   </mvc:interceptors>

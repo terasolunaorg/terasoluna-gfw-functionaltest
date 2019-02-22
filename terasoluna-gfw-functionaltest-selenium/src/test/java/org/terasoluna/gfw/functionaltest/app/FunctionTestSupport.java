@@ -30,7 +30,6 @@ import org.junit.rules.TestWatcher;
 import org.junit.runner.Description;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -45,8 +44,6 @@ public class FunctionTestSupport extends ApplicationObjectSupport {
     protected static WebDriver driver;
 
     private static final Set<WebDriver> webDrivers = new HashSet<WebDriver>();
-
-    protected static EventFiringWebDriver eventFiringWebDriver;
 
     @Value("${selenium.serverUrl}")
     protected String serverUrl;
@@ -167,10 +164,6 @@ public class FunctionTestSupport extends ApplicationObjectSupport {
     protected void bootDefaultWebDriver() {
         if (driver == null) {
             driver = newWebDriver();
-            eventFiringWebDriver = new EventFiringWebDriver(driver);
-            WaitWebDriverEventListener waitWebDriverEventListener = getApplicationContext()
-                    .getBean(WaitWebDriverEventListener.class);
-            driver = eventFiringWebDriver.register(waitWebDriverEventListener);
         }
         driver.manage().timeouts().implicitlyWait(
                 defaultTimeoutSecForImplicitlyWait, TimeUnit.SECONDS);
@@ -190,7 +183,6 @@ public class FunctionTestSupport extends ApplicationObjectSupport {
     protected void quitDefaultWebDriver() {
         if (driver != null) {
             try {
-                driver.get("about:config");
                 driver.quit();
             } finally {
                 driver = null;
@@ -217,7 +209,6 @@ public class FunctionTestSupport extends ApplicationObjectSupport {
     private static void quitWebDrivers() {
         for (WebDriver webDriver : webDrivers) {
             try {
-                webDriver.get("about:config");
                 webDriver.quit();
             } catch (Throwable t) {
                 classLogger.error("failed quit.", t);

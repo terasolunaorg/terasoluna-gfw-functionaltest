@@ -22,10 +22,10 @@ Tested environments are managed at [wiki page](https://github.com/terasolunaorg/
 
 **Preconditions are as follow:**
 
-* [JDK 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) or [JDK 7](http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html) installed (`JAVA_HOME` defined as environment variable)
+* [JDK 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) or [JDK 11](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html) installed (`JAVA_HOME` defined as environment variable)
 * [Maven](https://maven.apache.org/download.cgi) installed (Can run `mvn` command)
 * Firefox([for personal](https://www.mozilla.org/en-US/firefox/all/) or [ESR](https://www.mozilla.org/en-US/firefox/organizations/all/)) installed (ESR is used on our CI environment)
-* [geckodriver](https://github.com/mozilla/geckodriver/releases) (`v0.14.0` recommended) placed in application execution environment and add to `PATH`.
+* [geckodriver](https://github.com/mozilla/geckodriver/releases) (`v0.23.0` recommended) placed in application execution environment and add to `PATH`.
 
 ### [Step 1] Create database of PostgreSQL (Optional)
 If [PostgreSQL](http://www.postgresql.org/) use as database , you need to create database of PostgreSQL into local machine. (PostgreSQL can download via [here site](http://www.postgresql.org/download/)).
@@ -59,15 +59,6 @@ $ cd {your repository directory}
 $ git checkout {target branch}
 $ mvn -U install -am -pl terasoluna-gfw-functionaltest-web
 ```
-
-> **Note:**
->
-> When using JDK 7, build as follows.
-> you must compile with the target version 1.7 in accordance with the runtime environment JVM.
-> You can set the target version using `java-version` property.
-> ```console
-> $ mvn -U install -am -pl terasoluna-gfw-functionaltest-web -Djava-version=1.7
-> ```
 
 #### Case that use PostgreSQL as database
 
@@ -128,23 +119,8 @@ $ mvn -U test -pl terasoluna-gfw-functionaltest-selenium
 
 > **Note:**
 >
-> When using JDK 7,  please build as follows.
->```console
-> $ mvn -U test -pl terasoluna-gfw-functionaltest-selenium -Djava-version=1.7
->```
-
-> **Note:**
->
-> If GeckoDriver is not registered in the path, [webdrivermanager](https://github.com/bonigarcia/webdrivermanager) will download it automatically.  
-> If required proxy, please set `selenium.proxyHttpServer`.  
-> If required proxy authentication, set   `selenium.proxyUserName`, `selenium.proxyUserPassword`.  
-> ```console
-> $ mvn -U test -pl terasoluna-gfw-functionaltest-selenium -Dselenium.proxyHttpServer={HttpServer} -Dselenium.proxyUserName={UserName} -Dselenium.proxyUserPassword={Password}
-> ```  
-
-> **Note:**
-> You can change GeckoDriver's version with setting `selenium.geckodriverVersion`.
-
+> If GeckoDriver is not registered in the path, [webdrivermanager](https://github.com/bonigarcia/webdrivermanager) will download it automatically.
+> Configure using [properties](https://github.com/bonigarcia/webdrivermanager#webdrivermanager-api) in `wdm.properties` or Java System Properties.
 
 ## Appendix
 

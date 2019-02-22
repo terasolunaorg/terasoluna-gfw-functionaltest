@@ -2,9 +2,10 @@ sudo: required
 language: java
 jdk:
   - oraclejdk8
+  - oraclejdk11
 addons:
   postgresql: "9.4"
-  firefox: "52.9.0esr"
+  firefox: "60.3.0esr"
 cache:
   directories:
     - $HOME/.m2
@@ -15,7 +16,7 @@ install:
   - if [[ -z $GFW_BRANCH ]]; then GFW_BRANCH=master; fi
   - git clone --depth=1 --branch=$GFW_BRANCH https://github.com/terasolunaorg/terasoluna-gfw.git terasolunaorg/terasoluna-gfw
   - cd terasolunaorg/terasoluna-gfw
-  - sh ./mvn-build-all.sh install -Dmaven.test.skip=true -Dmaven.javadoc.skip=true -Dsource.skip=true
+  - sh ./mvn-build-all.sh install -P default -Dmaven.test.skip=true -Dmaven.javadoc.skip=true -Dsource.skip=true
   - export CARGO_DAEMON_WEBAPP_VERSION=`mvn -B -f terasoluna-gfw-parent/pom.xml help:evaluate -Dexpression=cargo-maven2-plugin.version | grep -v '^\['`
   - popd
 
