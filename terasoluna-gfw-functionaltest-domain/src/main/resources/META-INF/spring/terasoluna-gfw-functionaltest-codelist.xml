@@ -72,7 +72,7 @@
   </bean>
 
   <bean id="CL_CODELIST06_01" class="org.terasoluna.gfw.common.codelist.i18n.SimpleI18nCodeList">
-    <property name="rows"> <!-- (1) -->
+    <property name="rows">
       <util:map>
         <entry key="en">
           <util:map>
@@ -81,7 +81,7 @@
             <entry key="key3" value="label3" />
           </util:map>
         </entry>
-        <entry key="ja">
+        <entry key="ja_JP">
           <util:map>
             <entry key="key1" value="ラベル1" />
             <entry key="key2" value="ラベル2" />
@@ -92,127 +92,81 @@
     </property>
   </bean>
 
-  <bean id="CL_CODELIST06_04" class="org.terasoluna.gfw.common.codelist.i18n.SimpleI18nCodeList">
-    <property name="rows"> <!-- (1) -->
+  <bean id="CL_CODELIST06_02" class="org.terasoluna.gfw.common.codelist.i18n.SimpleI18nCodeList">
+    <property name="rowsByCodeList">
       <util:map>
-        <entry key="en">
-          <util:map>
-            <entry key="key1" value="label1" />
-            <entry key="key2" value="label2" />
-            <entry key="key3" value="label3" />
-          </util:map>
-        </entry>
-        <entry key="ja">
-          <util:map>
-            <entry key="key1" value="ラベル1" />
-            <entry key="key2" value="ラベル2" />
-            <entry key="key3" value="ラベル3" />
-          </util:map>
-        </entry>
-      </util:map>
-    </property>
-    <property name="fallbackTo" value="en" />
-  </bean>
-
-  <bean id="CLFR_CODELIST06_05" class="org.terasoluna.gfw.common.codelist.i18n.SimpleI18nCodeList">
-    <property name="rows"> <!-- (1) -->
-      <util:map>
-        <entry key="en">
-          <util:map>
-            <entry key="key1" value="label1" />
-            <entry key="key2" value="label2" />
-            <entry key="key3" value="label3" />
-          </util:map>
-        </entry>
-        <entry key="ja">
-          <util:map>
-            <entry key="key1" value="ラベル1" />
-            <entry key="key2" value="ラベル2" />
-            <entry key="key3" value="ラベル3" />
-          </util:map>
-        </entry>
-      </util:map>
-    </property>
-    <property name="fallbackTo" value="fr" />
-  </bean>
-
-  <bean id="CL_CODELIST06_06" class="org.terasoluna.gfw.common.codelist.i18n.SimpleI18nCodeList">
-    <property name="rowsByCodeList"> <!-- (1) -->
-      <util:map>
-        <entry key="en" value-ref="CL_CODELIST06_06_EN" />
-        <entry key="ja" value-ref="CL_CODELIST06_06_JA" />
+        <entry key="en" value-ref="CL_CODELIST06_02_EN" />
+        <entry key="ja_JP" value-ref="CL_CODELIST06_02_JA" />
       </util:map>
     </property>
   </bean>
 
-  <bean id="CL_CODELIST06_06_EN" parent="AbstractJdbcCodeList">
-    <property name="querySql" value="select code, label_en from item3 ORDER BY code" />
-    <property name="valueColumn" value="code" />
-    <property name="labelColumn" value="label_en" />
+  <bean id="CL_CODELIST06_02_EN" class="org.terasoluna.gfw.common.codelist.SimpleMapCodeList">
+    <property name="map">
+      <util:map>
+        <entry key="key1" value="label1" />
+        <entry key="key2" value="label2" />
+        <entry key="key3" value="label3" />
+      </util:map>
+    </property>
   </bean>
 
-  <bean id="CL_CODELIST06_06_JA" parent="AbstractJdbcCodeList">
-    <property name="querySql" value="select code, label_ja from item3 ORDER BY code" />
-    <property name="valueColumn" value="code" />
-    <property name="labelColumn" value="label_ja" />
+  <bean id="CL_CODELIST06_02_JA" class="org.terasoluna.gfw.common.codelist.SimpleMapCodeList">
+    <property name="map">
+      <util:map>
+        <entry key="key1" value="ラベル1" />
+        <entry key="key2" value="ラベル2" />
+        <entry key="key3" value="ラベル3" />
+      </util:map>
+    </property>
   </bean>
 
-  <bean id="CL_CODELIST06_09" class="org.terasoluna.gfw.common.codelist.i18n.SimpleI18nCodeList">
+  <bean id="CL_CODELIST06_03" class="org.terasoluna.gfw.common.codelist.i18n.SimpleI18nCodeList">
     <property name="columns">
       <util:map>
         <entry key="key1">
           <util:map>
             <entry key="en" value="label1" />
-            <entry key="ja" value="ラベル1" />
+            <entry key="ja_JP" value="ラベル1" />
           </util:map>
         </entry>
         <entry key="key2">
           <util:map>
             <entry key="en" value="label2" />
-            <entry key="ja" value="ラベル2" />
+            <entry key="ja_JP" value="ラベル2" />
           </util:map>
         </entry>
         <entry key="key3">
           <util:map>
             <entry key="en" value="label3" />
-            <entry key="ja" value="ラベル3" />
+            <entry key="ja_JP" value="ラベル3" />
           </util:map>
         </entry>
       </util:map>
     </property>
   </bean>
 
-  <bean id="CL_CODELIST06_12" class="org.terasoluna.gfw.common.codelist.i18n.SimpleI18nCodeList">
-    <property name="rowsByCodeList">
+  <bean id="CL_CODELIST11_01" class="org.terasoluna.gfw.common.codelist.i18n.SimpleI18nCodeList">
+    <property name="rows">
       <util:map>
-        <entry key="en_US" value-ref="CL_CODELIST06_12_EN_US" />
-        <entry key="en_GB" value-ref="CL_CODELIST06_12_EN_GB" />
-        <entry key="en" value-ref="CL_CODELIST06_12_EN_US" />
+        <entry key="en">
+          <util:map>
+            <entry key="key1" value="label1" />
+            <entry key="key2" value="label2" />
+            <entry key="key3" value="label3" />
+          </util:map>
+        </entry>
+        <entry key="ja_JP">
+          <util:map>
+            <entry key="key1" value="ラベル1" />
+            <entry key="key2" value="ラベル2" />
+            <entry key="key3" value="ラベル3" />
+          </util:map>
+        </entry>
       </util:map>
     </property>
     <property name="fallbackTo" value="en" />
   </bean>
-
-  <bean id="CL_CODELIST06_12_EN_US" class="org.terasoluna.gfw.common.codelist.SimpleMapCodeList">
-    <property name="map">
-      <util:map key-type="java.lang.String" value-type="java.lang.String" map-class="java.util.LinkedHashMap">
-        <entry key="key1" value="Gas" />
-        <entry key="key2" value="Cookie" />
-        <entry key="key3" value="Sweater" />
-      </util:map>
-    </property>
-  </bean>
-
-  <bean id="CL_CODELIST06_12_EN_GB" class="org.terasoluna.gfw.common.codelist.SimpleMapCodeList">
-    <property name="map">
-      <util:map key-type="java.lang.String" value-type="java.lang.String" map-class="java.util.LinkedHashMap">
-        <entry key="key1" value="Petrol" />
-        <entry key="key2" value="Biscuit" />
-        <entry key="key3" value="Jumper" />
-      </util:map>
-    </property>
-  </bean>
-
 
   <bean id="SAMPLE_CODELIST" class="org.terasoluna.gfw.common.codelist.SimpleMapCodeList">
     <property name="map">

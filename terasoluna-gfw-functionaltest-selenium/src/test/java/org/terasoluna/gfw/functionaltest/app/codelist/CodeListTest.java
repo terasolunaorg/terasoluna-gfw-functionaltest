@@ -221,177 +221,47 @@ public class CodeListTest extends FunctionTestSupport {
     public void test06_01_form() {
         driver.findElement(By.linkText("English")).click();
         driver.findElement(By.id("codelist_06_01")).click();
+
         assertThat(driver.findElement(By.cssSelector("option[value=\"key1\"]"))
                 .getText(), is("label1"));
         assertThat(driver.findElement(By.cssSelector("option[value=\"key2\"]"))
                 .getText(), is("label2"));
         assertThat(driver.findElement(By.cssSelector("option[value=\"key3\"]"))
                 .getText(), is("label3"));
+        driver.findElement(By.id("btn1")).click();
+        assertThat(driver.findElement(By.id("output")).getText(), is("key1"));
         driver.findElement(By.id("btnback")).click();
     }
 
     @Test
     public void test06_02_form() {
-        driver.findElement(By.linkText("Japanese")).click();
+        driver.findElement(By.linkText("English")).click();
         driver.findElement(By.id("codelist_06_02")).click();
 
         assertThat(driver.findElement(By.cssSelector("option[value=\"key1\"]"))
-                .getText(), is("ラベル1"));
+                .getText(), is("label1"));
         assertThat(driver.findElement(By.cssSelector("option[value=\"key2\"]"))
-                .getText(), is("ラベル2"));
+                .getText(), is("label2"));
         assertThat(driver.findElement(By.cssSelector("option[value=\"key3\"]"))
-                .getText(), is("ラベル3"));
+                .getText(), is("label3"));
+        driver.findElement(By.id("btn1")).click();
+        assertThat(driver.findElement(By.id("output")).getText(), is("key1"));
         driver.findElement(By.id("btnback")).click();
     }
 
     @Test
     public void test06_03_form() {
-        driver.findElement(By.linkText("French")).click();
+        driver.findElement(By.linkText("English")).click();
         driver.findElement(By.id("codelist_06_03")).click();
 
         assertThat(driver.findElement(By.cssSelector("option[value=\"key1\"]"))
-                .getText(), is("ラベル1"));
-        assertThat(driver.findElement(By.cssSelector("option[value=\"key2\"]"))
-                .getText(), is("ラベル2"));
-        assertThat(driver.findElement(By.cssSelector("option[value=\"key3\"]"))
-                .getText(), is("ラベル3"));
-        driver.findElement(By.id("btnback")).click();
-    }
-
-    @Test
-    public void test06_04_form() {
-        driver.findElement(By.linkText("French")).click();
-        driver.findElement(By.id("codelist_06_04")).click();
-        assertThat(driver.findElement(By.cssSelector("option[value=\"key1\"]"))
                 .getText(), is("label1"));
         assertThat(driver.findElement(By.cssSelector("option[value=\"key2\"]"))
                 .getText(), is("label2"));
         assertThat(driver.findElement(By.cssSelector("option[value=\"key3\"]"))
                 .getText(), is("label3"));
-        driver.findElement(By.id("btnback")).click();
-    }
-
-    @Test
-    public void test06_05_form() {
-        driver.findElement(By.linkText("Chinese")).click();
-        driver.findElement(By.id("codelist_06_05")).click();
-        assertThat(driver.getTitle(), is("System Error"));
-    }
-
-    @Test
-    public void test06_06_form() {
-        driver.findElement(By.linkText("English")).click();
-        driver.findElement(By.id("codelist_06_06")).click();
-        assertThat(driver.findElement(By.cssSelector("option[value=\"key1\"]"))
-                .getText(), is("label1"));
-        assertThat(driver.findElement(By.cssSelector("option[value=\"key2\"]"))
-                .getText(), is("label2"));
-        assertThat(driver.findElement(By.cssSelector("option[value=\"key3\"]"))
-                .getText(), is("label3"));
-        driver.findElement(By.id("btnback")).click();
-    }
-
-    @Test
-    public void test06_07_form() {
-        driver.findElement(By.linkText("Japanese")).click();
-        driver.findElement(By.id("codelist_06_07")).click();
-        assertThat(driver.findElement(By.cssSelector("option[value=\"key1\"]"))
-                .getText(), is("ラベル1"));
-        assertThat(driver.findElement(By.cssSelector("option[value=\"key2\"]"))
-                .getText(), is("ラベル2"));
-        assertThat(driver.findElement(By.cssSelector("option[value=\"key3\"]"))
-                .getText(), is("ラベル3"));
-        driver.findElement(By.id("btnback")).click();
-    }
-
-    @Test
-    public void test06_08_form() {
-        driver.findElement(By.linkText("French")).click();
-        driver.findElement(By.id("codelist_06_08")).click();
-        assertThat(driver.findElement(By.cssSelector("option[value=\"key1\"]"))
-                .getText(), is("ラベル1"));
-        assertThat(driver.findElement(By.cssSelector("option[value=\"key2\"]"))
-                .getText(), is("ラベル2"));
-        assertThat(driver.findElement(By.cssSelector("option[value=\"key3\"]"))
-                .getText(), is("ラベル3"));
-        driver.findElement(By.id("btnback")).click();
-    }
-
-    @Test
-    public void test06_09_form() {
-        driver.findElement(By.linkText("English")).click();
-        driver.findElement(By.id("codelist_06_09")).click();
-        assertThat(driver.findElement(By.cssSelector("option[value=\"key1\"]"))
-                .getText(), is("label1"));
-        assertThat(driver.findElement(By.cssSelector("option[value=\"key2\"]"))
-                .getText(), is("label2"));
-        assertThat(driver.findElement(By.cssSelector("option[value=\"key3\"]"))
-                .getText(), is("label3"));
-        driver.findElement(By.id("btnback")).click();
-    }
-
-    @Test
-    public void test06_10_form() {
-        driver.findElement(By.linkText("Japanese")).click();
-        driver.findElement(By.id("codelist_06_10")).click();
-        assertThat(driver.findElement(By.cssSelector("option[value=\"key1\"]"))
-                .getText(), is("ラベル1"));
-        assertThat(driver.findElement(By.cssSelector("option[value=\"key2\"]"))
-                .getText(), is("ラベル2"));
-        assertThat(driver.findElement(By.cssSelector("option[value=\"key3\"]"))
-                .getText(), is("ラベル3"));
-        driver.findElement(By.id("btnback")).click();
-    }
-
-    @Test
-    public void test06_11_form() {
-        driver.findElement(By.linkText("French")).click();
-        driver.findElement(By.id("codelist_06_11")).click();
-        assertThat(driver.findElement(By.cssSelector("option[value=\"key1\"]"))
-                .getText(), is("ラベル1"));
-        assertThat(driver.findElement(By.cssSelector("option[value=\"key2\"]"))
-                .getText(), is("ラベル2"));
-        assertThat(driver.findElement(By.cssSelector("option[value=\"key3\"]"))
-                .getText(), is("ラベル3"));
-        driver.findElement(By.id("btnback")).click();
-    }
-
-    @Test
-    public void test06_12_form() {
-        driver.findElement(By.linkText("English(US)")).click();
-        driver.findElement(By.id("codelist_06_12")).click();
-        assertThat(driver.findElement(By.cssSelector("option[value=\"key1\"]"))
-                .getText(), is("Gas"));
-        assertThat(driver.findElement(By.cssSelector("option[value=\"key2\"]"))
-                .getText(), is("Cookie"));
-        assertThat(driver.findElement(By.cssSelector("option[value=\"key3\"]"))
-                .getText(), is("Sweater"));
-        driver.findElement(By.id("btnback")).click();
-    }
-
-    @Test
-    public void test06_13_form() {
-        driver.findElement(By.linkText("English(GB)")).click();
-        driver.findElement(By.id("codelist_06_13")).click();
-        assertThat(driver.findElement(By.cssSelector("option[value=\"key1\"]"))
-                .getText(), is("Petrol"));
-        assertThat(driver.findElement(By.cssSelector("option[value=\"key2\"]"))
-                .getText(), is("Biscuit"));
-        assertThat(driver.findElement(By.cssSelector("option[value=\"key3\"]"))
-                .getText(), is("Jumper"));
-        driver.findElement(By.id("btnback")).click();
-    }
-
-    @Test
-    public void test06_14_form() {
-        driver.findElement(By.linkText("English(AU)")).click();
-        driver.findElement(By.id("codelist_06_14")).click();
-        assertThat(driver.findElement(By.cssSelector("option[value=\"key1\"]"))
-                .getText(), is("Gas"));
-        assertThat(driver.findElement(By.cssSelector("option[value=\"key2\"]"))
-                .getText(), is("Cookie"));
-        assertThat(driver.findElement(By.cssSelector("option[value=\"key3\"]"))
-                .getText(), is("Sweater"));
+        driver.findElement(By.id("btn1")).click();
+        assertThat(driver.findElement(By.id("output")).getText(), is("key1"));
         driver.findElement(By.id("btnback")).click();
     }
 
@@ -665,6 +535,48 @@ public class CodeListTest extends FunctionTestSupport {
                 .getText(), is("label3"));
         driver.findElement(By.id("btn1")).click();
         assertThat(driver.findElement(By.id("output")).getText(), is("key1"));
+        driver.findElement(By.id("btnback")).click();
+    }
+
+    @Test
+    public void test11_01_form() {
+        driver.findElement(By.linkText("English")).click();
+        driver.findElement(By.id("codelist_11_01")).click();
+
+        assertThat(driver.findElement(By.cssSelector("option[value=\"key1\"]"))
+                .getText(), is("label1"));
+        assertThat(driver.findElement(By.cssSelector("option[value=\"key2\"]"))
+                .getText(), is("label2"));
+        assertThat(driver.findElement(By.cssSelector("option[value=\"key3\"]"))
+                .getText(), is("label3"));
+        driver.findElement(By.id("btnback")).click();
+    }
+
+    @Test
+    public void test11_02_form() {
+        driver.findElement(By.linkText("Japan")).click();
+        driver.findElement(By.id("codelist_11_02")).click();
+
+        assertThat(driver.findElement(By.cssSelector("option[value=\"key1\"]"))
+                .getText(), is("ラベル1"));
+        assertThat(driver.findElement(By.cssSelector("option[value=\"key2\"]"))
+                .getText(), is("ラベル2"));
+        assertThat(driver.findElement(By.cssSelector("option[value=\"key3\"]"))
+                .getText(), is("ラベル3"));
+        driver.findElement(By.id("btnback")).click();
+    }
+
+    @Test
+    public void test11_03_form() {
+        driver.findElement(By.linkText("French")).click();
+        driver.findElement(By.id("codelist_11_03")).click();
+
+        assertThat(driver.findElement(By.cssSelector("option[value=\"key1\"]"))
+                .getText(), is("label1"));
+        assertThat(driver.findElement(By.cssSelector("option[value=\"key2\"]"))
+                .getText(), is("label2"));
+        assertThat(driver.findElement(By.cssSelector("option[value=\"key3\"]"))
+                .getText(), is("label3"));
         driver.findElement(By.id("btnback")).click();
     }
 

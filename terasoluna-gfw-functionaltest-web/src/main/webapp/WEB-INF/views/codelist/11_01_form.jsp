@@ -9,7 +9,7 @@
     modelAttribute="codeListForm">
     <table>
       <tr>
-        <td><form:select path="item1" items="${CL_CODELIST06_12}" /></td>
+        <td><form:select path="item1" items="${CL_CODELIST11_01}" /></td>
       </tr>
       <tr>
         <td><input id="btnback" class="mainbtn" style="width: 200px;" type="submit"

@@ -2,12 +2,8 @@
 
 <label>Change Locale Link</label>
 <a href="${pageContext.request.contextPath}/codelist?locale=en">English</a>
-<a href="${pageContext.request.contextPath}/codelist?locale=en_US">English(US)</a>
-<a href="${pageContext.request.contextPath}/codelist?locale=en_GB">English(GB)</a>
-<a href="${pageContext.request.contextPath}/codelist?locale=en_AU">English(AU)</a>
-<a href="${pageContext.request.contextPath}/codelist?locale=ja_JP">Japanese</a>
+<a href="${pageContext.request.contextPath}/codelist?locale=ja_JP">Japan</a>
 <a href="${pageContext.request.contextPath}/codelist?locale=fr">French</a>
-<a href="${pageContext.request.contextPath}/codelist?locale=cn">Chinese</a>
 <br>
 <br>
 <table>
@@ -53,60 +49,15 @@
   </tr>
   <tr>
     <td><a id="codelist_06_01" href="${pageContext.request.contextPath}/codelist/06_01_form">SimpleI18nCodeList
-        Test (EN and JP set using rows. Click English)</a></td>
+        Test (EN and JP set using rows)</a></td>
   </tr>
   <tr>
-    <td><a id="codelist_06_02" href="${pageContext.request.contextPath}/codelist/06_01_form">SimpleI18nCodeList
-        Test (EN and JP set using rows. Click Japanese)</a></td>
+    <td><a id="codelist_06_02" href="${pageContext.request.contextPath}/codelist/06_02_form">SimpleI18nCodeList
+        Test (EN and JP set using rowsByCodeList)</a></td>
   </tr>
   <tr>
-    <td><a id="codelist_06_03" href="${pageContext.request.contextPath}/codelist/06_01_form">SimpleI18nCodeList
-        Test (EN and JP set using rows. fallbackTo not set. Click French)</a></td>
-  </tr>
-  <tr>
-    <td><a id="codelist_06_04" href="${pageContext.request.contextPath}/codelist/fallbackToEn/06_04_form">SimpleI18nCodeList
-        Test (EN and JP set using rows. fallbackTo is set to EN. Click French)</a></td>
-  </tr>
-  <tr>
-    <td><a id="codelist_06_05" href="${pageContext.request.contextPath}/codelist/fallbackToFr/06_05_form">SimpleI18nCodeList
-        Test (EN and JP set using rows. fallbackTo is set to FR. Click Chinese)</a></td>
-  </tr>
-  <tr>
-    <td><a id="codelist_06_06" href="${pageContext.request.contextPath}/codelist/06_06_form">SimpleI18nCodeList
-        Test (EN and JP set using rowsByCodeList. Click English)</a></td>
-  </tr>
-  <tr>
-    <td><a id="codelist_06_07" href="${pageContext.request.contextPath}/codelist/06_07_form">SimpleI18nCodeList
-        Test (EN and JP set using rowsByCodeList. Click Japanese)</a></td>
-  </tr>
-  <tr>
-    <td><a id="codelist_06_08" href="${pageContext.request.contextPath}/codelist/06_08_form">SimpleI18nCodeList
-        Test (EN and JP set using rowsByCodeList. fallbackTo not set. Click French)</a></td>
-  </tr>
-
-  <tr>
-    <td><a id="codelist_06_09" href="${pageContext.request.contextPath}/codelist/06_09_form">SimpleI18nCodeList
-        Test (EN and JP set using columns. Click English)</a></td>
-  </tr>
-  <tr>
-    <td><a id="codelist_06_10" href="${pageContext.request.contextPath}/codelist/06_10_form">SimpleI18nCodeList
-        Test (EN and JP set using columns. Click Japanese)</a></td>
-  </tr>
-  <tr>
-    <td><a id="codelist_06_11" href="${pageContext.request.contextPath}/codelist/06_11_form">SimpleI18nCodeList
-        Test (EN and JP set using columns. fallbackTo not set. Click French)</a></td>
-  </tr>
-  <tr>
-    <td><a id="codelist_06_12" href="${pageContext.request.contextPath}/codelist/06_12_form">SimpleI18nCodeList
-        Test (EN_US and EN_GB and EN set using rowsByCodeList. Click English(US))</a></td>
-  </tr>
-  <tr>
-    <td><a id="codelist_06_13" href="${pageContext.request.contextPath}/codelist/06_12_form">SimpleI18nCodeList
-        Test (EN_US and EN_GB and EN set using rowsByCodeList. Click English(GB))</a></td>
-  </tr>
-  <tr>
-    <td><a id="codelist_06_14" href="${pageContext.request.contextPath}/codelist/06_12_form">SimpleI18nCodeList
-        Test (EN_US and EN_GB and EN set using rowsByCodeList. Click English(AU))</a></td>
+    <td><a id="codelist_06_03" href="${pageContext.request.contextPath}/codelist/06_03_form">SimpleI18nCodeList
+        Test (EN and JP set using columns)</a></td>
   </tr>
   <tr>
     <td><a id="codelist_07_01" href="${pageContext.request.contextPath}/codelist/07_01_form">CodeListInteceptor
@@ -154,5 +105,17 @@
   <tr>
     <td><a id="codelist_10_01" href="${pageContext.request.contextPath}/codelist/10_01_form">CodeListInterceptor
         Test (Exception occurs)</a></td>
+  </tr>
+  <tr>
+    <td><a id="codelist_11_01" href="${pageContext.request.contextPath}/codelist/11_01_form">SimpleI18nCodeList
+        Test (EN and JP set using rows. fallbackTo is set to EN. Click English)</a></td>
+  </tr>
+  <tr>
+    <td><a id="codelist_11_02" href="${pageContext.request.contextPath}/codelist/11_01_form">SimpleI18nCodeList
+        Test (EN and JP set using rows. fallbackTo is set to EN. Click Japan)</a></td>
+  </tr>
+  <tr>
+    <td><a id="codelist_11_03" href="${pageContext.request.contextPath}/codelist/11_01_form">SimpleI18nCodeList
+        Test (EN and JP set using rows. fallbackTo is set to EN. Click French)</a></td>
   </tr>
 </table>
