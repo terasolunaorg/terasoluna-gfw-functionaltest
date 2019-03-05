@@ -81,7 +81,7 @@
             <entry key="key3" value="label3" />
           </util:map>
         </entry>
-        <entry key="ja_JP">
+        <entry key="ja">
           <util:map>
             <entry key="key1" value="ラベル1" />
             <entry key="key2" value="ラベル2" />
@@ -90,15 +90,17 @@
         </entry>
       </util:map>
     </property>
+    <property name="fallbackTo" value="en" />
   </bean>
 
   <bean id="CL_CODELIST06_02" class="org.terasoluna.gfw.common.codelist.i18n.SimpleI18nCodeList">
     <property name="rowsByCodeList">
       <util:map>
         <entry key="en" value-ref="CL_CODELIST06_02_EN" />
-        <entry key="ja_JP" value-ref="CL_CODELIST06_02_JA" />
+        <entry key="ja" value-ref="CL_CODELIST06_02_JA" />
       </util:map>
     </property>
+    <property name="fallbackTo" value="en" />
   </bean>
 
   <bean id="CL_CODELIST06_02_EN" class="org.terasoluna.gfw.common.codelist.SimpleMapCodeList">
@@ -127,23 +129,24 @@
         <entry key="key1">
           <util:map>
             <entry key="en" value="label1" />
-            <entry key="ja_JP" value="ラベル1" />
+            <entry key="ja" value="ラベル1" />
           </util:map>
         </entry>
         <entry key="key2">
           <util:map>
             <entry key="en" value="label2" />
-            <entry key="ja_JP" value="ラベル2" />
+            <entry key="ja" value="ラベル2" />
           </util:map>
         </entry>
         <entry key="key3">
           <util:map>
             <entry key="en" value="label3" />
-            <entry key="ja_JP" value="ラベル3" />
+            <entry key="ja" value="ラベル3" />
           </util:map>
         </entry>
       </util:map>
     </property>
+    <property name="fallbackTo" value="en" />
   </bean>
 
   <bean id="CL_CODELIST11_01" class="org.terasoluna.gfw.common.codelist.i18n.SimpleI18nCodeList">
@@ -165,7 +168,6 @@
         </entry>
       </util:map>
     </property>
-    <property name="fallbackTo" value="en" />
   </bean>
 
   <bean id="SAMPLE_CODELIST" class="org.terasoluna.gfw.common.codelist.SimpleMapCodeList">
