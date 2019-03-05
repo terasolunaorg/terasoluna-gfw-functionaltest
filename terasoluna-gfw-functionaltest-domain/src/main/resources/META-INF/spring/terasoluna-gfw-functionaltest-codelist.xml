@@ -159,15 +159,30 @@
             <entry key="key3" value="label3" />
           </util:map>
         </entry>
-        <entry key="ja_JP">
+        <entry key="ja">
           <util:map>
             <entry key="key1" value="ラベル1" />
             <entry key="key2" value="ラベル2" />
             <entry key="key3" value="ラベル3" />
           </util:map>
         </entry>
+        <entry key="fr">
+          <util:map>
+            <entry key="key1" value="étiquette un" />
+            <entry key="key2" value="étiquette deux" />
+            <entry key="key3" value="étiquette trois" />
+          </util:map>
+        </entry>
+        <entry key="fr_ca">
+          <util:map>
+            <entry key="key1" value="étiquette1" />
+            <entry key="key2" value="étiquette2" />
+            <entry key="key3" value="étiquette3" />
+          </util:map>
+        </entry>
       </util:map>
     </property>
+    <property name="fallbackTo" value="ja" />
   </bean>
 
   <bean id="SAMPLE_CODELIST" class="org.terasoluna.gfw.common.codelist.SimpleMapCodeList">

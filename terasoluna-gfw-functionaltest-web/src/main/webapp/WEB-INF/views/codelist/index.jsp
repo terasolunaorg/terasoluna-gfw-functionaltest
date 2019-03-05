@@ -2,8 +2,9 @@
 
 <label>Change Locale Link</label>
 <a href="${pageContext.request.contextPath}/codelist?locale=en">English</a>
-<a href="${pageContext.request.contextPath}/codelist?locale=ja_JP">Japan</a>
-<a href="${pageContext.request.contextPath}/codelist?locale=fr">French</a>
+<a href="${pageContext.request.contextPath}/codelist?locale=fr_fr">Franc</a>
+<a href="${pageContext.request.contextPath}/codelist?locale=fr_ca">Canada(French)</a>
+<a href="${pageContext.request.contextPath}/codelist?locale=de">German</a>
 <br>
 <br>
 <table>
@@ -108,14 +109,18 @@
   </tr>
   <tr>
     <td><a id="codelist_11_01" href="${pageContext.request.contextPath}/codelist/11_01_form">SimpleI18nCodeList
-        Test (EN and JP set using rows. fallbackTo is set to EN. Click English)</a></td>
+        Test (specified language locale and returned in same locale)</a></td>
   </tr>
   <tr>
     <td><a id="codelist_11_02" href="${pageContext.request.contextPath}/codelist/11_01_form">SimpleI18nCodeList
-        Test (EN and JP set using rows. fallbackTo is set to EN. Click Japan)</a></td>
+        Test (specified nation locale and returned in same locale)</a></td>
   </tr>
   <tr>
     <td><a id="codelist_11_03" href="${pageContext.request.contextPath}/codelist/11_01_form">SimpleI18nCodeList
-        Test (EN and JP set using rows. fallbackTo is set to EN. Click French)</a></td>
+        Test (specified nation locale and returned in fallback language locale)</a></td>
+  </tr>
+  <tr>
+    <td><a id="codelist_11_04" href="${pageContext.request.contextPath}/codelist/11_01_form">SimpleI18nCodeList
+        Test (specified language locale and returned in fallbackTo locale)</a></td>
   </tr>
 </table>
