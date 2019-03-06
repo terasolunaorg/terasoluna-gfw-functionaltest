@@ -28,6 +28,6 @@ public enum WebDriverType {
      * @return {@link #HTMLUNIT}
      */
     public static WebDriverType DEFAULT() {
-        return HTMLUNIT;
+        return FIREFOX;
     }
 }
