@@ -2,7 +2,7 @@
 
 <label>Change Locale Link</label>
 <a href="${pageContext.request.contextPath}/codelist?locale=en">English</a>
-<a href="${pageContext.request.contextPath}/codelist?locale=fr_fr">Franc</a>
+<a href="${pageContext.request.contextPath}/codelist?locale=fr_fr">France</a>
 <a href="${pageContext.request.contextPath}/codelist?locale=fr_ca">Canada(French)</a>
 <a href="${pageContext.request.contextPath}/codelist?locale=de">German</a>
 <br>

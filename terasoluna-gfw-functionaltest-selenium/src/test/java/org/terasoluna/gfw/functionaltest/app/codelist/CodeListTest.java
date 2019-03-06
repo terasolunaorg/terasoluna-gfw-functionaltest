@@ -571,7 +571,7 @@ public class CodeListTest extends FunctionTestSupport {
 
     @Test
     public void test11_03_form() {
-        driver.findElement(By.linkText("Franc")).click();
+        driver.findElement(By.linkText("France")).click();
         driver.findElement(By.id("codelist_11_03")).click();
 
         assertThat(driver.findElement(By.cssSelector("option[value=\"key1\"]"))
