@@ -18,6 +18,9 @@ package org.terasoluna.gfw.functionaltest.app.codelist;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assume.assumeThat;
+
+import java.util.Locale;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -585,6 +588,22 @@ public class CodeListTest extends FunctionTestSupport {
         driver.findElement(By.linkText("German")).click();
         driver.findElement(By.id("codelist_11_04")).click();
 
+        assertThat(driver.findElement(By.cssSelector("option[value=\"key1\"]"))
+                .getText(), is("ラベル1"));
+        assertThat(driver.findElement(By.cssSelector("option[value=\"key2\"]"))
+                .getText(), is("ラベル2"));
+        assertThat(driver.findElement(By.cssSelector("option[value=\"key3\"]"))
+                .getText(), is("ラベル3"));
+        driver.findElement(By.id("btnback")).click();
+    }
+
+    @Test
+    public void test11_05_form() {
+        driver.findElement(By.linkText("German")).click();
+        driver.findElement(By.id("codelist_11_05")).click();
+
+        assumeThat(driver.findElement(By.id("defaultLocale")), is(
+                "The default locale is " + Locale.JAPAN));
         assertThat(driver.findElement(By.cssSelector("option[value=\"key1\"]"))
                 .getText(), is("ラベル1"));
         assertThat(driver.findElement(By.cssSelector("option[value=\"key2\"]"))

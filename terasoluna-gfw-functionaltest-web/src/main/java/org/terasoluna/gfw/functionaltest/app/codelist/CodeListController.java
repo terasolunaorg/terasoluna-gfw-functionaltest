@@ -15,6 +15,8 @@
  */
 package org.terasoluna.gfw.functionaltest.app.codelist;
 
+import java.util.Locale;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.ConstraintViolationException;
@@ -333,6 +335,13 @@ public class CodeListController {
     @RequestMapping(value = "11_01_form", method = RequestMethod.GET)
     public String test11_01_form(CodeListForm form, Model model) {
         return "codelist/11_01_form";
+    }
+
+    // test case 11_05
+    @RequestMapping(value = "11_05_form", method = RequestMethod.GET)
+    public String test11_05_form(CodeListForm form, Model model) {
+        model.addAttribute("defaultLocale", Locale.getDefault());
+        return "codelist/11_05_form";
     }
 
     // Exception handler for test10_01_form
