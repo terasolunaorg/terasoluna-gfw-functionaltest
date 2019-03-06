@@ -34,6 +34,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.terasoluna.gfw.functionaltest.app.FunctionTestSupport;
+import org.terasoluna.gfw.functionaltest.app.webdrivers.WebDriverType;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {
@@ -301,8 +302,14 @@ public class ElTest extends FunctionTestSupport {
         driver.findElement(By.id("06_01-02")).click();
 
         // output 06_01-02 Test
-        assertThat(driver.findElement(By.id("queryOutput")).getText(), is(
-                "Date=Tue%20Oct%2001%2000:00:00%20JST%202013&String=Spring&int=100"));
+        if (driverType == WebDriverType.HTMLUNIT) {
+            // https://sourceforge.net/p/htmlunit/bugs/2011/
+            assertThat(driver.findElement(By.id("queryOutput")).getText(), is(
+                    "Date=Tue%20Oct%2001%2000:00:00%20JST%202013&String=Spring∫=100"));
+        } else {
+            assertThat(driver.findElement(By.id("queryOutput")).getText(), is(
+                    "Date=Tue%20Oct%2001%2000:00:00%20JST%202013&String=Spring&int=100"));
+        }
         assertThat(driver.findElement(By.id("noAndQueryOutput")).getText(), is(
                 "%26String=framework&Long=100&boolean=true&DateTime=10/1/13%2012:00%20AM"));
 
@@ -406,8 +413,8 @@ public class ElTest extends FunctionTestSupport {
         inputFieldAccessor.overrideValue(By.id("criteria.name"), "yamada",
                 driver);
         inputFieldAccessor.overrideValue(By.id("criteria.age"), "20", driver);
-        inputFieldAccessor.overrideValue(By.id("rememberCriteria"), "true",
-                driver);
+        new Select(driver.findElement(By.id("rememberCriteria"))).selectByValue(
+                "true");
 
         driver.findElement(By.id("searchButton")).click();
         driver.findElement(By.id("pagination")).findElement(By.linkText("2"))
@@ -418,8 +425,8 @@ public class ElTest extends FunctionTestSupport {
                 "value"), is("yamada"));
         assertThat(driver.findElement(By.id("criteria.age")).getAttribute(
                 "value"), is("20"));
-        assertThat(driver.findElement(By.id("rememberCriteria")).getAttribute(
-                "value"), is("true"));
+        assertThat(new Select(driver.findElement(By.id("rememberCriteria")))
+                .getFirstSelectedOption().getText(), is("YES"));
     }
 
     @Test
@@ -432,7 +439,7 @@ public class ElTest extends FunctionTestSupport {
         inputFieldAccessor.overrideValue(By.id("criteria1.name"), "tanaka",
                 driver);
         inputFieldAccessor.overrideValue(By.id("criteria1.age"), "50", driver);
-        inputFieldAccessor.overrideValue(By.id("operator"), "AND", driver);
+        new Select(driver.findElement(By.id("operator"))).selectByValue("AND");
 
         driver.findElement(By.id("searchButton")).click();
         driver.findElement(By.id("pagination")).findElement(By.linkText("2"))
@@ -447,8 +454,8 @@ public class ElTest extends FunctionTestSupport {
                 "value"), is("tanaka"));
         assertThat(driver.findElement(By.id("criteria1.age")).getAttribute(
                 "value"), is("50"));
-        assertThat(driver.findElement(By.id("operator")).getAttribute("value"),
-                is("AND"));
+        assertThat(new Select(driver.findElement(By.id("operator")))
+                .getFirstSelectedOption().getText(), is("AND"));
     }
 
     @Test

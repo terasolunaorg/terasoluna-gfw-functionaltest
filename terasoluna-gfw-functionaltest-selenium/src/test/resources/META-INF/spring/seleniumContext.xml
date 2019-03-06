@@ -53,15 +53,23 @@
   </bean>
 
   <beans profile="firefox default">
-    <bean id="webDriver" class="org.terasoluna.gfw.functionaltest.app.FirefoxDriverFactoryBean"
+    <bean id="webDriver" class="org.terasoluna.gfw.functionaltest.app.webdrivers.FirefoxDriverFactoryBean"
       scope="prototype">
       <property name="propertyFileLocation" value="wdm.properties" />
     </bean>
   </beans>
   <beans profile="chrome">
-    <bean id="webDriver" class="org.openqa.selenium.chrome.ChromeDriver" scope="prototype" />
+    <bean id="webDriver" class="org.terasoluna.gfw.functionaltest.app.webdrivers.ChromeDriverFactoryBean"
+    scope="prototype">
+      <property name="propertyFileLocation" value="wdm.properties" />
+    </bean>
   </beans>
-  <beans profile="ie">
-    <bean id="webDriver" class="org.openqa.selenium.ie.InternetExplorerDriver" scope="prototype" />
+  <beans profile="utmlunit">
+    <bean id="webDriver" class="org.terasoluna.gfw.functionaltest.app.webdrivers.HtmlUnitDriverEx"
+      scope="prototype">
+      <constructor-arg name="version" type="com.gargoylesoftware.htmlunit.BrowserVersion"
+        value="${selenium.htmlUnitBrowserVersion}" />
+      <constructor-arg name="enableJavascript" value="true" />
+    </bean>
   </beans>
 </beans>

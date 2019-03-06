@@ -29,6 +29,7 @@ import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.RestTemplate;
 import org.terasoluna.gfw.functionaltest.app.FunctionTestSupport;
+import org.terasoluna.gfw.functionaltest.app.webdrivers.WebDriverType;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {
@@ -87,17 +88,26 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
 
         driver.findElement(By.id("useCaseControllerHandling_02_01")).click();
 
-        assertThat(driver.getTitle(), is("terasoluna-gfw-functionaltest"));
+        long retryTimes = 1L;
+        if (driverType == WebDriverType.HTMLUNIT) {
+            // when HTTP Status 100 (Continue), the screen is not displayed and retry 4 times.
+            retryTimes = 4L;
+        } else {
+            assertThat(driver.getTitle(), is("terasoluna-gfw-functionaltest"));
+        }
+
         assertThat(dbLogProvider.countContainsMessageAndLevelsAndLogger(
                 "\\[e.xx.9999\\] 2_1 Continue", "INFO",
-                "org.terasoluna.gfw.common.exception.ExceptionLogger"), is(1L));
+                "org.terasoluna.gfw.common.exception.ExceptionLogger"), is(
+                        retryTimes));
         assertThat(dbLogProvider.countContainsMessageAndLevelsAndLogger(
                 "\\[e.xx.9999\\] 2_1 Continue", "INFO",
                 "org.terasoluna.gfw.common.exception.ExceptionLogger.Monitoring"),
-                is(1L));
+                is(retryTimes));
 
         assertThat(dbLogProvider.countContainsByRegexExceptionMessage(null,
-                null, "2_1 Continue*", "..*ContinueException..*"), is(1L));
+                null, "2_1 Continue*", "..*ContinueException..*"), is(
+                        retryTimes));
     }
 
     @Test
