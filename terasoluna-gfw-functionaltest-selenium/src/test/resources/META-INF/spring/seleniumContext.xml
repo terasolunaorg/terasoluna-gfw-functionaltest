@@ -64,18 +64,6 @@
       <property name="propertyFileLocation" value="wdm.properties" />
     </bean>
   </beans>
-  <beans profile="edge">
-    <bean id="webDriver" class="org.terasoluna.gfw.functionaltest.app.webdrivers.EdgeDriverFactoryBean"
-    scope="prototype">
-      <property name="propertyFileLocation" value="wdm.properties" />
-    </bean>
-  </beans>
-  <beans profile="ie">
-    <bean id="webDriver" class="org.terasoluna.gfw.functionaltest.app.webdrivers.IEDriverFactoryBean"
-    scope="prototype">
-      <property name="propertyFileLocation" value="wdm.properties" />
-    </bean>
-  </beans>
   <beans profile="utmlunit default">
     <bean id="webDriver" class="org.terasoluna.gfw.functionaltest.app.webdrivers.HtmlUnitDriverEx"
       scope="prototype">
