@@ -15,6 +15,8 @@
  */
 package org.terasoluna.gfw.functionaltest.app.codelist;
 
+import java.util.Locale;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.ConstraintViolationException;
@@ -181,52 +183,16 @@ public class CodeListController {
         return "codelist/06_01_form";
     }
 
-    // test case 06_04
-    @RequestMapping(value = "/fallbackToEn/06_04_form", method = RequestMethod.GET)
-    public String test06_04_form(CodeListForm form, Model model) {
-        return "codelist/06_04_form";
+    // test case 06_02
+    @RequestMapping(value = "06_02_form", method = RequestMethod.GET)
+    public String test06_02_form(CodeListForm form, Model model) {
+        return "codelist/06_02_form";
     }
 
-    // test case 06_05
-    @RequestMapping(value = "/fallbackToFr/06_05_form", method = RequestMethod.GET)
-    public String test06_05_form(CodeListForm form, Model model) {
-        return "codelist/06_05_form";
-    }
-
-    // test case 06_06
-    @RequestMapping(value = "06_06_form", method = RequestMethod.GET)
-    public String test06_06_form(CodeListForm form, Model model) {
-        return "codelist/06_06_form";
-    }
-
-    // test case 06_07
-    @RequestMapping(value = "06_07_form", method = RequestMethod.GET)
-    public String test06_07_form(CodeListForm form, Model model) {
-        return "codelist/06_07_form";
-    }
-
-    // test case 06_08
-    @RequestMapping(value = "06_08_form", method = RequestMethod.GET)
-    public String test06_08_form(CodeListForm form, Model model) {
-        return "codelist/06_08_form";
-    }
-
-    // test case 06_09
-    @RequestMapping(value = "06_09_form", method = RequestMethod.GET)
-    public String test06_09_form(CodeListForm form, Model model) {
-        return "codelist/06_09_form";
-    }
-
-    // test case 06_10
-    @RequestMapping(value = "06_10_form", method = RequestMethod.GET)
-    public String test06_10_form(CodeListForm form, Model model) {
-        return "codelist/06_10_form";
-    }
-
-    // test case 06_11
-    @RequestMapping(value = "06_11_form", method = RequestMethod.GET)
-    public String test06_11_form(CodeListForm form, Model model) {
-        return "codelist/06_11_form";
+    // test case 06_03
+    @RequestMapping(value = "06_03_form", method = RequestMethod.GET)
+    public String test06_03_form(CodeListForm form, Model model) {
+        return "codelist/06_03_form";
     }
 
     // test case 07_01
@@ -363,6 +329,12 @@ public class CodeListController {
     @RequestMapping(value = "10_01_form", method = RequestMethod.GET)
     public String test10_01_form(CodeListForm form, Model model) {
         return "codelist/10_01_form";
+    }
+
+    // test case 11_01
+    @RequestMapping(value = "11_01_form", method = RequestMethod.GET)
+    public String test11_01_form(CodeListForm form, Model model) {
+        return "codelist/11_01_form";
     }
 
     // Exception handler for test10_01_form
