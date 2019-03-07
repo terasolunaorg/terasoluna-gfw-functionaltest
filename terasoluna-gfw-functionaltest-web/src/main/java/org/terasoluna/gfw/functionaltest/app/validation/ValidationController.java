@@ -81,6 +81,25 @@ public class ValidationController {
         return "redirect:/validation/bytemax/";
     }
 
+    @RequestMapping(value = "bytesize", method = RequestMethod.GET)
+    public String bytesize(Model model) {
+        return "validation/bytesize";
+    }
+
+    @RequestMapping(value = "bytesize", method = RequestMethod.POST)
+    public String validateByteSize(@Validated({
+            ValidationForm.ValidateByteSize.class }) ValidationForm form,
+            BindingResult bindingResult, Model model,
+            RedirectAttributes attributes) {
+
+        if (bindingResult.hasErrors()) {
+            return bytesize(model);
+        }
+
+        attributes.addFlashAttribute(ResultMessages.success().add(SUCCESS));
+        return "redirect:/validation/bytesize/";
+    }
+
     @RequestMapping(value = "compare", method = RequestMethod.GET)
     public String compare(Model model) {
         return "validation/compare";
