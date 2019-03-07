@@ -79,6 +79,7 @@
       <mvc:mapping path="/**" />
       <mvc:exclude-mapping path="/resources/**" />
       <mvc:exclude-mapping path="/**/*.html" />
+      <mvc:exclude-mapping path="/codelist/fallbackToEn/**" />
       <mvc:exclude-mapping path="/codelist/fallbackToFr/**" />
       <mvc:exclude-mapping path="/codelist/noPattern/**" />
       <mvc:exclude-mapping path="/codelist/jdbcCodeListTestDBError/**" />
@@ -87,11 +88,22 @@
       </bean>
     </mvc:interceptor>
     <mvc:interceptor>
+      <mvc:mapping path="/codelist/fallbackToEn/**" />
+      <mvc:exclude-mapping path="/resources/**" />
+      <mvc:exclude-mapping path="/**/*.html" />
+
+      <bean class="org.terasoluna.gfw.web.codelist.CodeListInterceptor">
+        <property name="codeListIdPattern" value="CL_.+" />
+        <property name="fallbackTo" value="en" />
+      </bean>
+    </mvc:interceptor>
+    <mvc:interceptor>
       <mvc:mapping path="/codelist/fallbackToFr/**" />
       <mvc:exclude-mapping path="/resources/**" />
       <mvc:exclude-mapping path="/**/*.html" />
       <bean class="org.terasoluna.gfw.web.codelist.CodeListInterceptor">
-        <property name="codeListIdPattern" value="CLFR_.+" />
+        <property name="codeListIdPattern" value="CL_.+" />
+        <property name="fallbackTo" value="fr" />
       </bean>
     </mvc:interceptor>
     <mvc:interceptor>
@@ -100,6 +112,7 @@
       <mvc:exclude-mapping path="/**/*.html" />
       <bean class="org.terasoluna.gfw.web.codelist.CodeListInterceptor">
         <property name="codeListIdPattern" value="CL_.+|SAMPLE_.+" />
+        <property name="fallbackTo" value="fr" />
       </bean>
     </mvc:interceptor>
     <mvc:interceptor>
@@ -108,6 +121,7 @@
       <mvc:exclude-mapping path="/**/*.html" />
       <bean class="org.terasoluna.gfw.web.codelist.CodeListInterceptor">
         <property name="codeListIdPattern" value="CL_CODELIST_WRONG_ITEM" />
+        <property name="fallbackTo" value="fr" />
       </bean>
     </mvc:interceptor>
     <mvc:interceptor>
