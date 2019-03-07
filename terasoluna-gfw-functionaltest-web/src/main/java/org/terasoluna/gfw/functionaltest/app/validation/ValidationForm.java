@@ -19,6 +19,7 @@ import java.io.Serializable;
 
 import org.terasoluna.gfw.common.validator.constraints.ByteMax;
 import org.terasoluna.gfw.common.validator.constraints.ByteMin;
+import org.terasoluna.gfw.common.validator.constraints.ByteSize;
 import org.terasoluna.gfw.common.validator.constraints.Compare;
 
 /**
@@ -54,6 +55,9 @@ public class ValidationForm implements Serializable {
     static interface ValidateByteMax {
     };
 
+    static interface ValidateByteSize {
+    };
+
     static interface ValidateCompare {
     };
 
@@ -85,6 +89,8 @@ public class ValidationForm implements Serializable {
             ValidateByteMin.class })
     @ByteMax(value = 6, charset = "Shift_JIS", groups = {
             ValidateByteMax.class })
+    @ByteSize(min = 6, max = 6, charset = "Shift_JIS", groups = {
+            ValidateByteSize.class })
     private String userName;
 
     private Integer left;
