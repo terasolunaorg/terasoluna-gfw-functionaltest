@@ -22,6 +22,7 @@ import static org.junit.Assume.assumeThat;
 
 import java.util.Locale;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
@@ -597,20 +598,9 @@ public class CodeListTest extends FunctionTestSupport {
         driver.findElement(By.id("btnback")).click();
     }
 
-    @Test
+    @Ignore("It is not implemented because there is a possibility that the application startup may fail due "
+            + "to　the definition of the bean that has not set the fallbackTo property")
     public void test11_05_form() {
-        driver.findElement(By.linkText("German")).click();
-        driver.findElement(By.id("codelist_11_05")).click();
-
-        assumeThat(driver.findElement(By.id("defaultLocale")), is(
-                "The default locale is " + Locale.JAPAN));
-        assertThat(driver.findElement(By.cssSelector("option[value=\"key1\"]"))
-                .getText(), is("ラベル1"));
-        assertThat(driver.findElement(By.cssSelector("option[value=\"key2\"]"))
-                .getText(), is("ラベル2"));
-        assertThat(driver.findElement(By.cssSelector("option[value=\"key3\"]"))
-                .getText(), is("ラベル3"));
-        driver.findElement(By.id("btnback")).click();
     }
 
 }

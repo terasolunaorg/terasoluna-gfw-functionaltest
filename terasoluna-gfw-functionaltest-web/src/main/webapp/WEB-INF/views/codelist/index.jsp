@@ -123,8 +123,4 @@
     <td><a id="codelist_11_04" href="${pageContext.request.contextPath}/codelist/11_01_form">SimpleI18nCodeList
         Test (specified language locale and returned in fallbackTo locale)</a></td>
   </tr>
-  <tr>
-    <td><a id="codelist_11_05" href="${pageContext.request.contextPath}/codelist/11_05_form">SimpleI18nCodeList
-        Test (specified language locale and returned in fallback default locale)</a></td>
-  </tr>
 </table>
