@@ -13,14 +13,13 @@
       </tr>
     </table>
     <table>
-
       <tr>
         <td>Input a key to check if it is exists in CodeList:</td>
         <td><form:input path="item7" /></td>
       </tr>
       <tr>
         <td><input id="btn1" class="mainbtn" style="width: 200px;" type="submit"
-          value="Confirm" name="existInCheckMultipleCustomCodeList" />
+          value="Confirm" name="existInCheckCustomMessage" />
         <td>
         <td></td>
       </tr>

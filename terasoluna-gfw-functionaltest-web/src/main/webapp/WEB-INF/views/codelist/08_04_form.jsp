@@ -19,7 +19,7 @@
       </tr>
       <tr>
         <td><input id="btn1" class="mainbtn" style="width: 200px;" type="submit"
-          value="Confirm" name="existInCheckMethodAnnotation" />
+          value="Confirm" name="existInCheckNumberFormatted" />
         <td>
         <td></td>
       </tr>
