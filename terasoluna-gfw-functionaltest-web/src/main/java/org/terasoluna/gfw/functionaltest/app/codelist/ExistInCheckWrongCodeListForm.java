@@ -27,13 +27,13 @@ public class ExistInCheckWrongCodeListForm implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @ExistInCodeList(codeListId = "WRONG_CODELIST")
-    private String item3;
+    private String item5;
 
-    public String getItem3() {
-        return item3;
+    public String getItem5() {
+        return item5;
     }
 
-    public void setItem3(String item3) {
-        this.item3 = item3;
+    public void setItem5(String item5) {
+        this.item5 = item5;
     }
 }

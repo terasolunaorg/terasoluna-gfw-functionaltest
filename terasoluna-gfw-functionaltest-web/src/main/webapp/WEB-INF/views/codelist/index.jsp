@@ -102,35 +102,43 @@
         Test (codeListPattern is changed)</a></td>
   </tr>
   <tr>
-    <td><a href="${pageContext.request.contextPath}/codelist/08_01_form">@ExistInCodeList
+    <td><a id="codelist_08_01" href="${pageContext.request.contextPath}/codelist/08_01_form">@ExistInCodeList
         Test (String)</a></td>
   </tr>
   <tr>
-    <td><a href="${pageContext.request.contextPath}/codelist/08_02_form">@ExistInCodeList
+    <td><a id="codelist_08_02" href="${pageContext.request.contextPath}/codelist/08_02_form">@ExistInCodeList
         Test (Character)</a></td>
   </tr>
   <tr>
-    <td><a href="${pageContext.request.contextPath}/codelist/08_03_form">@ExistInCodeList
+    <td><a id="codelist_08_03" href="${pageContext.request.contextPath}/codelist/08_03_form">@ExistInCodeList
+        Test (Number)</a></td>
+  </tr>
+  <tr>
+    <td><a id="codelist_08_04" href="${pageContext.request.contextPath}/codelist/08_04_form">@ExistInCodeList
+        Test (Number as formatted)</a></td>
+  </tr>
+  <tr>
+    <td><a id="codelist_08_05" href="${pageContext.request.contextPath}/codelist/08_05_form">@ExistInCodeList
         Test (specified codelist does not exist)</a></td>
   </tr>
   <tr>
-    <td><a href="${pageContext.request.contextPath}/codelist/08_04_form">@ExistInCodeList
+    <td><a id="codelist_08_06" href="${pageContext.request.contextPath}/codelist/08_06_form">@ExistInCodeList
         Test (Used as method annotation)</a></td>
   </tr>
   <tr>
-    <td><a href="${pageContext.request.contextPath}/codelist/08_05_form">@ExistInCodeList
+    <td><a id="codelist_08_07" href="${pageContext.request.contextPath}/codelist/08_07_form">@ExistInCodeList
         Test (Custom message)</a></td>
   </tr>
   <tr>
-    <td><a href="${pageContext.request.contextPath}/codelist/08_06_form">@ExistInCodeList
+    <td><a id="codelist_08_08" href="${pageContext.request.contextPath}/codelist/08_08_form">@ExistInCodeList
         Test (Extended codelist)</a></td>
   </tr>
   <tr>
-    <td><a href="${pageContext.request.contextPath}/codelist/08_07_form">@ExistInCodeList
+    <td><a id="codelist_08_09" href="${pageContext.request.contextPath}/codelist/08_09_form">@ExistInCodeList
         Test (Multiple Custom codelist)</a></td>
   </tr>
   <tr>
-    <td><a href="${pageContext.request.contextPath}/codelist/08_08_form">@ExistInCodeList
+    <td><a id="codelist_08_10" href="${pageContext.request.contextPath}/codelist/08_10_form">@ExistInCodeList
         Test (Used as param annotation)</a></td>
   </tr>
   <tr>

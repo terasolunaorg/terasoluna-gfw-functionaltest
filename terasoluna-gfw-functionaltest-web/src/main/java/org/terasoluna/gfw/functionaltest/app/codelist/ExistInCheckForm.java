@@ -32,18 +32,24 @@ public class ExistInCheckForm implements Serializable {
     @ExistInCodeList(codeListId = "CHARACTER_CODELIST")
     private Character item2;
 
-    private String item4;
+    @ExistInCodeList(codeListId = "NUMBER_CODELIST")
+    private Integer item3;
+
+    @ExistInCodeList(codeListId = "NUMBER_FORMATTED_CODELIST")
+    private Long item4;
+
+    private String item6;
 
     @ExistInCodeList(codeListId = "SAMPLE_CODELIST", message = "This is a custom message notifying that value doesn't exist in sample codelist")
-    private String item5;
+    private String item7;
 
     @ExistInSampleCodeList
-    private String item6;
+    private String item8;
 
     @ExistInCodeList.List(value = {
             @ExistInCodeList(codeListId = "SAMPLE_CODELIST", message = "This is a custom message notifying that value doesn't exist in sample codelist"),
             @ExistInCodeList(codeListId = "SAMPLE_MUTIPLE_CODELIST", message = "This is a custom message notifying that value doesn't exist in sample multiple codelist") })
-    private String item7;
+    private String item9;
 
     public String getItem1() {
         return item1;
@@ -61,23 +67,23 @@ public class ExistInCheckForm implements Serializable {
         this.item2 = item2;
     }
 
-    @ExistInCodeList(codeListId = "SAMPLE_CODELIST")
-    public String getItem4() {
+    public Integer getItem3() {
+        return item3;
+    }
+
+    public void setItem3(Integer item3) {
+        this.item3 = item3;
+    }
+
+    public Long getItem4() {
         return item4;
     }
 
-    public void setItem4(String item4) {
+    public void setItem4(Long item4) {
         this.item4 = item4;
     }
 
-    public String getItem5() {
-        return item5;
-    }
-
-    public void setItem5(String item5) {
-        this.item5 = item5;
-    }
-
+    @ExistInCodeList(codeListId = "SAMPLE_CODELIST")
     public String getItem6() {
         return item6;
     }
@@ -92,5 +98,21 @@ public class ExistInCheckForm implements Serializable {
 
     public void setItem7(String item7) {
         this.item7 = item7;
+    }
+
+    public String getItem8() {
+        return item8;
+    }
+
+    public void setItem8(String item8) {
+        this.item8 = item8;
+    }
+
+    public String getItem9() {
+        return item9;
+    }
+
+    public void setItem9(String item9) {
+        this.item9 = item9;
     }
 }

@@ -419,8 +419,7 @@ public class CodeListTest extends FunctionTestSupport {
 
     @Test
     public void test08_01_form() {
-        driver.findElement(By.linkText("@ExistInCodeList Test (String)"))
-                .click();
+        driver.findElement(By.id("codelist_08_01")).click();
         inputFieldAccessor.overrideValue(By.id("item1"), "key1", driver);
         driver.findElement(By.id("btn1")).click();
         assertThat(driver.findElement(By.id("errors")).getText(), is(""));
@@ -433,8 +432,7 @@ public class CodeListTest extends FunctionTestSupport {
 
     @Test
     public void test08_02_form() {
-        driver.findElement(By.linkText("@ExistInCodeList Test (Character)"))
-                .click();
+        driver.findElement(By.id("codelist_08_02")).click();
         inputFieldAccessor.overrideValue(By.id("item2"), "a", driver);
         driver.findElement(By.id("btn1")).click();
         assertThat(driver.findElement(By.id("errors")).getText(), is(""));
@@ -447,81 +445,101 @@ public class CodeListTest extends FunctionTestSupport {
 
     @Test
     public void test08_03_form() {
-        driver.findElement(By.linkText(
-                "@ExistInCodeList Test (specified codelist does not exist)"))
-                .click();
-        inputFieldAccessor.overrideValue(By.id("item3"), "key1", driver);
+        driver.findElement(By.id("codelist_08_03")).click();
+        inputFieldAccessor.overrideValue(By.id("item3"), "5", driver);
+        driver.findElement(By.id("btn1")).click();
+        assertThat(driver.findElement(By.id("errors")).getText(), is(""));
+        inputFieldAccessor.overrideValue(By.id("item3"), "6", driver);
+        driver.findElement(By.id("btn1")).click();
+        assertThat(driver.findElement(By.id("item3.errors")).getText(), is(
+                "Does not exist in NUMBER_CODELIST"));
+        driver.findElement(By.id("btnback")).click();
+    }
+
+    @Test
+    public void test08_04_form() {
+        driver.findElement(By.id("codelist_08_04")).click();
+        inputFieldAccessor.overrideValue(By.id("item4"), "5", driver);
+        driver.findElement(By.id("btn1")).click();
+        assertThat(driver.findElement(By.id("errors")).getText(), is(""));
+        inputFieldAccessor.overrideValue(By.id("item4"), "6", driver);
+        driver.findElement(By.id("btn1")).click();
+        assertThat(driver.findElement(By.id("item4.errors")).getText(), is(
+                "Does not exist in NUMBER_FORMATTED_CODELIST"));
+        driver.findElement(By.id("btnback")).click();
+    }
+
+    @Test
+    public void test08_05_form() {
+        driver.findElement(By.id("codelist_08_05")).click();
+        inputFieldAccessor.overrideValue(By.id("item5"), "key1", driver);
         driver.findElement(By.id("btn1")).click();
         assertThat(driver.findElement(By.cssSelector("h2")).getText(), is(
                 "System Error..."));
     }
 
     @Test
-    public void test08_04_form() {
-        driver.findElement(By.linkText(
-                "@ExistInCodeList Test (Used as method annotation)")).click();
-        inputFieldAccessor.overrideValue(By.id("item4"), "key5", driver);
+    public void test08_06_form() {
+        driver.findElement(By.id("codelist_08_06")).click();
+        inputFieldAccessor.overrideValue(By.id("item6"), "key5", driver);
         driver.findElement(By.id("btn1")).click();
-        assertThat(driver.findElement(By.id("item4.errors")).getText(), is(
+        assertThat(driver.findElement(By.id("item6.errors")).getText(), is(
                 "Does not exist in SAMPLE_CODELIST"));
-        inputFieldAccessor.overrideValue(By.id("item4"), "key1", driver);
+        inputFieldAccessor.overrideValue(By.id("item6"), "key1", driver);
         driver.findElement(By.id("btn1")).click();
         assertThat(driver.findElement(By.id("errors")).getText(), is(""));
         driver.findElement(By.id("btn1")).click();
     }
 
     @Test
-    public void test08_05_form() {
-        driver.findElement(By.linkText(
-                "@ExistInCodeList Test (Custom message)")).click();
-        inputFieldAccessor.overrideValue(By.id("item5"), "key5", driver);
+    public void test08_07_form() {
+        driver.findElement(By.id("codelist_08_07")).click();
+        inputFieldAccessor.overrideValue(By.id("item7"), "key5", driver);
         driver.findElement(By.id("btn1")).click();
-        assertThat(driver.findElement(By.id("item5.errors")).getText(), is(
+        assertThat(driver.findElement(By.id("item7.errors")).getText(), is(
                 "This is a custom message notifying that value doesnt exist in sample codelist"));
         driver.findElement(By.id("btnback")).click();
     }
 
     @Test
-    public void test08_06_form() {
-        driver.findElement(By.linkText(
-                "@ExistInCodeList Test (Extended codelist)")).click();
-        inputFieldAccessor.overrideValue(By.id("item6"), "key5", driver);
+    public void test08_08_form() {
+        driver.findElement(By.id("codelist_08_08")).click();
+        inputFieldAccessor.overrideValue(By.id("item8"), "key5", driver);
         driver.findElement(By.id("btn1")).click();
-        assertThat(driver.findElement(By.id("item6.errors")).getText(), is(
+        assertThat(driver.findElement(By.id("item8.errors")).getText(), is(
                 "This message comes from extended codelist notifying that value doesnt exist in sample codelist"));
         driver.findElement(By.id("btnback")).click();
     }
 
     @Test
-    public void test08_07_form() {
-        driver.findElement(By.linkText(
-                "@ExistInCodeList Test (Multiple Custom codelist)")).click();
+    public void test08_09_form() {
+        driver.findElement(By.id("codelist_08_09")).click();
 
         // not error occured
-        inputFieldAccessor.overrideValue(By.id("item7"), "key1", driver);
+        inputFieldAccessor.overrideValue(By.id("item9"), "key1", driver);
         driver.findElement(By.id("btn1")).click();
         assertThat(driver.findElement(By.id("errors")).getText(), is(""));
 
         // sample multiple codelist error occured
-        inputFieldAccessor.overrideValue(By.id("item7"), "key2", driver);
+        inputFieldAccessor.overrideValue(By.id("item9"), "key2", driver);
         driver.findElement(By.id("btn1")).click();
-        assertThat(driver.findElement(By.id("item7.errors")).getText(), is(
+        assertThat(driver.findElement(By.id("item9.errors")).getText(), is(
                 "This is a custom message notifying that value doesnt exist in sample multiple codelist"));
 
         // sample codelist error occured
-        inputFieldAccessor.overrideValue(By.id("item7"), "key4", driver);
+        inputFieldAccessor.overrideValue(By.id("item9"), "key4", driver);
         driver.findElement(By.id("btn1")).click();
-        assertThat(driver.findElement(By.id("item7.errors")).getText(), is(
+        assertThat(driver.findElement(By.id("item9.errors")).getText(), is(
                 "This is a custom message notifying that value doesnt exist in sample codelist"));
 
         // sample multiple codelist and sample codelist error occured
-        inputFieldAccessor.overrideValue(By.id("item7"), "key6", driver);
+        inputFieldAccessor.overrideValue(By.id("item9"), "key6", driver);
         driver.findElement(By.id("btn1")).click();
-        assertNotSame(driver.findElement(By.id("item7.errors")).getText()
+        assertNotSame(driver.findElement(By.id("item9.errors")).getText()
                 .indexOf(
                         "This is a custom message notifying that value doesnt exist in sample codelist"),
                 -1);
-        assertNotSame(driver.findElement(By.id("item7.errors")).getText()
+        assertNotSame(driver.findElement(By.id("item9.errors")).getText()
                 .indexOf(
                         "This is a custom message notifying that value doesnt exist in sample multiple codelist"),
                 -1);
@@ -530,9 +548,8 @@ public class CodeListTest extends FunctionTestSupport {
     }
 
     @Test
-    public void test08_08_form() {
-        driver.findElement(By.linkText(
-                "@ExistInCodeList Test (Used as param annotation)")).click();
+    public void test08_10_form() {
+        driver.findElement(By.id("codelist_08_10")).click();
 
         // not error occured
         inputFieldAccessor.overrideValue(By.id("item1"), "key1", driver);
