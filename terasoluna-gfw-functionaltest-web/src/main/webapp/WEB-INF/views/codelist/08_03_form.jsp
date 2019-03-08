@@ -6,21 +6,20 @@
   <h2>Codelist</h2>
   <br>
   <form:form action="${pageContext.request.contextPath}/codelist/next" method="get"
-    modelAttribute="existInCheckWrongCodeListForm">
+    modelAttribute="existInCheckForm">
     <table>
       <tr>
         <td><span id="errors"><form:errors path="item3" style="color:red" /></span></td>
       </tr>
     </table>
     <table>
-
       <tr>
         <td>Input a key to check if it is exists in CodeList:</td>
         <td><form:input path="item3" /></td>
       </tr>
       <tr>
         <td><input id="btn1" class="mainbtn" style="width: 200px;" type="submit"
-          value="Confirm" name="existInCheckWrongCodeList" />
+          value="Confirm" name="existInCheckNumber" />
         <td>
         <td></td>
       </tr>

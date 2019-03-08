@@ -9,17 +9,18 @@
     modelAttribute="existInCheckForm">
     <table>
       <tr>
-        <td><span id="errors"><form:errors path="item6" style="color:red" /></span></td>
+        <td><span id="errors"><form:errors path="item9" style="color:red" /></span></td>
       </tr>
     </table>
     <table>
+
       <tr>
         <td>Input a key to check if it is exists in CodeList:</td>
-        <td><form:input path="item6" /></td>
+        <td><form:input path="item9" /></td>
       </tr>
       <tr>
         <td><input id="btn1" class="mainbtn" style="width: 200px;" type="submit"
-          value="Confirm" name="existInCheckMethodAnnotation" />
+          value="Confirm" name="existInCheckMultipleCustomCodeList" />
         <td>
         <td></td>
       </tr>
