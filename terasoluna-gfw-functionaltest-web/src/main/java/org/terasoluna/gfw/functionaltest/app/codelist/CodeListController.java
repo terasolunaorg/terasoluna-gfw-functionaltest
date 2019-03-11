@@ -31,14 +31,17 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.ModelAndView;
 import org.terasoluna.gfw.common.codelist.CodeList;
 import org.terasoluna.gfw.common.exception.BusinessException;
 import org.terasoluna.gfw.common.message.ResultMessages;
+import org.terasoluna.gfw.functionaltest.domain.model.I18nItemCode;
 import org.terasoluna.gfw.functionaltest.domain.model.ItemCode;
 import org.terasoluna.gfw.functionaltest.domain.service.codelist.CodeListService;
 import org.terasoluna.gfw.functionaltest.domain.service.codelist.ExistInCodeListService;
+import org.terasoluna.gfw.functionaltest.domain.service.codelist.I18nCodeListService;
 
 @Controller
 @RequestMapping(value = "codelist")
@@ -46,6 +49,9 @@ public class CodeListController {
 
     @Inject
     CodeListService codeListService;
+
+    @Inject
+    I18nCodeListService i18nCodeListService;
 
     @Inject
     ExistInCodeListService existInCodeListService;
@@ -230,6 +236,47 @@ public class CodeListController {
         return "codelist/06_11_form";
     }
 
+    // test case 12_01
+    @RequestMapping(value = "12_01_form", method = RequestMethod.GET)
+    public String test12_01_form(I18nCodeListForm form, Model model) {
+        model.addAttribute("items", i18nCodeListService.findAll());
+        return "codelist/12_01_form";
+    }
+
+    // test case 12_01
+    @RequestMapping(value = "12_01_form", method = RequestMethod.POST, params = "update")
+    public String test12_01_form_update(I18nCodeListForm form, Model model) {
+        I18nItemCode row = i18nCodeListService.findOne(form.getId());
+        row.setCode(form.getCode());
+        row.setLabelEn(form.getLabelEn());
+        row.setLabelJa(form.getLabelJa());
+        i18nCodeListService.save(row);
+        model.addAttribute("items", i18nCodeListService.findAll());
+        return "codelist/12_01_form";
+    }
+
+    // test case 12_01
+    @RequestMapping(value = "12_01_form", method = RequestMethod.POST, params = "refresh")
+    public String test12_01_form_refrash(I18nCodeListForm form, Model model,
+            @RequestParam(name = "recursive", required = false) Boolean recursive) {
+        if (recursive == null) {
+            i18nCodeListService.refresh();
+        } else {
+            i18nCodeListService.refresh(recursive);
+        }
+        model.addAttribute("items", i18nCodeListService.findAll());
+        return "codelist/12_01_form";
+    }
+
+    // test case 12_01
+    @RequestMapping(value = "12_01_form", method = RequestMethod.POST, params = "refreshAll")
+    public String test12_01_form_refrashAll(I18nCodeListForm form,
+            Model model) {
+        i18nCodeListService.refreshAll();
+        model.addAttribute("items", i18nCodeListService.findAll());
+        return "codelist/12_01_form";
+    }
+
     // test case 07_01
     @RequestMapping(value = "07_01_form", method = RequestMethod.GET)
     public String test07_01_form(CodeListForm form, Model model) {
@@ -240,6 +287,35 @@ public class CodeListController {
     @RequestMapping(value = "/multiplePattern/07_03_form", method = RequestMethod.GET)
     public String test07_03_form(CodeListForm form, Model model) {
         return "codelist/07_03_form";
+    }
+
+    // test case 10_01
+    @RequestMapping(value = "10_01_form", method = RequestMethod.GET)
+    public String test10_01_form(CodeListForm form, Model model) {
+        throw new BusinessException(ResultMessages.warning().add(
+                "w.gt.me.0001"));
+    }
+
+    // test case 10_02
+    @RequestMapping(value = "10_02_form", method = RequestMethod.GET)
+    public String test10_02_form(CodeListForm form, Model model) {
+        try {
+            throw new BusinessException(ResultMessages.warning().add(
+                    "w.gt.me.0001"));
+        } catch (BusinessException e) {
+            model.addAttribute(e.getResultMessages());
+        }
+        return "codelist/10_02_form";
+    }
+
+    // Exception handler for test10_01_form
+    @ExceptionHandler(BusinessException.class)
+    @ResponseStatus(HttpStatus.CONFLICT)
+    public ModelAndView handleBusinessException(BusinessException e) {
+        ExtendedModelMap modelMap = new ExtendedModelMap();
+        modelMap.addAttribute(e.getResultMessages());
+        modelMap.addAttribute(setUpCodeListForm());
+        return new ModelAndView("codelist/10_01_form", modelMap);
     }
 
     // test case 08_01
@@ -385,34 +461,4 @@ public class CodeListController {
     public String test09_01_form(CodeListForm form, Model model) {
         return "codelist/09_01_form";
     }
-
-    // test case 10_01
-    @RequestMapping(value = "10_01_form", method = RequestMethod.GET)
-    public String test10_01_form(CodeListForm form, Model model) {
-        throw new BusinessException(ResultMessages.warning().add(
-                "w.gt.me.0001"));
-    }
-
-    // test case 10_02
-    @RequestMapping(value = "10_02_form", method = RequestMethod.GET)
-    public String test10_02_form(CodeListForm form, Model model) {
-        try {
-            throw new BusinessException(ResultMessages.warning().add(
-                    "w.gt.me.0001"));
-        } catch (BusinessException e) {
-            model.addAttribute(e.getResultMessages());
-        }
-        return "codelist/10_02_form";
-    }
-
-    // Exception handler for test10_01_form
-    @ExceptionHandler(BusinessException.class)
-    @ResponseStatus(HttpStatus.CONFLICT)
-    public ModelAndView handleBusinessException(BusinessException e) {
-        ExtendedModelMap modelMap = new ExtendedModelMap();
-        modelMap.addAttribute(e.getResultMessages());
-        modelMap.addAttribute(setUpCodeListForm());
-        return new ModelAndView("codelist/10_01_form", modelMap);
-    }
-
 }
