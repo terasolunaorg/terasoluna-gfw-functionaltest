@@ -35,6 +35,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.ModelAndView;
 import org.terasoluna.gfw.common.codelist.CodeList;
 import org.terasoluna.gfw.common.exception.BusinessException;
+import org.terasoluna.gfw.common.message.ResultMessages;
 import org.terasoluna.gfw.functionaltest.domain.model.ItemCode;
 import org.terasoluna.gfw.functionaltest.domain.service.codelist.CodeListService;
 import org.terasoluna.gfw.functionaltest.domain.service.codelist.ExistInCodeListService;
@@ -388,7 +389,20 @@ public class CodeListController {
     // test case 10_01
     @RequestMapping(value = "10_01_form", method = RequestMethod.GET)
     public String test10_01_form(CodeListForm form, Model model) {
-        return "codelist/10_01_form";
+        throw new BusinessException(ResultMessages.warning().add(
+                "w.gt.me.0001"));
+    }
+
+    // test case 10_02
+    @RequestMapping(value = "10_02_form", method = RequestMethod.GET)
+    public String test10_02_form(CodeListForm form, Model model) {
+        try {
+            throw new BusinessException(ResultMessages.warning().add(
+                    "w.gt.me.0001"));
+        } catch (BusinessException e) {
+            model.addAttribute(e.getResultMessages());
+        }
+        return "codelist/10_02_form";
     }
 
     // Exception handler for test10_01_form
