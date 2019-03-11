@@ -113,7 +113,11 @@
   </tr>
   <tr>
     <td><a id="codelist_10_01" href="${pageContext.request.contextPath}/codelist/10_01_form">CodeListInterceptor
-        Test (Exception occurs)</a></td>
+        Test (Exception handling with @ExceptionHandler)</a></td>
+  </tr>
+  <tr>
+    <td><a id="codelist_10_02" href="${pageContext.request.contextPath}/codelist/10_02_form">CodeListInterceptor
+        Test (Exception handling with Try-Catch)</a></td>
   </tr>
   <tr>
     <td><a id="codelist_11_01" href="${pageContext.request.contextPath}/codelist/11_01_form">SimpleI18nCodeList

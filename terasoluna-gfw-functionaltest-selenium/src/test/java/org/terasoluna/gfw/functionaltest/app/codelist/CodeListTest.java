@@ -554,6 +554,18 @@ public class CodeListTest extends FunctionTestSupport {
     @Test
     public void test10_01_form() {
         driver.findElement(By.id("codelist_10_01")).click();
+        assertThat(driver.findElement(By.cssSelector("div>ul>li")).getText(),
+                is("Warn Message!!"));
+        assertThat(webDriverOperations.exists(By.tagName("option")), is(false));
+        driver.findElement(By.id("btn1")).click();
+        driver.findElement(By.id("btnback")).click();
+    }
+
+    @Test
+    public void test10_02_form() {
+        driver.findElement(By.id("codelist_10_02")).click();
+        assertThat(driver.findElement(By.cssSelector("div>ul>li")).getText(),
+                is("Warn Message!!"));
         assertThat(driver.findElement(By.cssSelector("option[value=\"key1\"]"))
                 .getText(), is("label1"));
         assertThat(driver.findElement(By.cssSelector("option[value=\"key2\"]"))
