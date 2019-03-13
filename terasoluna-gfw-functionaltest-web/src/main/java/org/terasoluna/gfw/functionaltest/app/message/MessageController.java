@@ -70,6 +70,7 @@ public class MessageController {
         return "message/default";
     }
 
+    @SuppressWarnings("deprecation")
     @RequestMapping(value = "1_5_1", method = RequestMethod.GET)
     public String defaultSpecified_01_05_01(Model model) {
 
