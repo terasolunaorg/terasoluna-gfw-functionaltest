@@ -18,6 +18,7 @@ package org.terasoluna.gfw.functionaltest.app.el;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
@@ -45,21 +46,15 @@ public class ElMapOfSimpleValueDefaultTrimController {
 
     @ModelAttribute
     public MapForm setUpForm() {
-        MapForm mapForm = new MapForm(new LinkedHashMap<String, String>() {
-            {
-                put("a", "1");
-                put("b", "2");
-                put("c", "3");
-            }
-        }, new MapFormItem(new LinkedHashMap<String, String>() {
-            {
-                put("d", "4");
-                put("e", "5");
-                put("f", "6");
-            }
-        }));
-
-        return mapForm;
+        Map<String, String> mapA = new LinkedHashMap<String, String>();
+        mapA.put("a", "1");
+        mapA.put("b", "2");
+        mapA.put("c", "3");
+        Map<String, String> itemMapA = new LinkedHashMap<String, String>();
+        mapA.put("d", "4");
+        mapA.put("e", "5");
+        mapA.put("f", "6");
+        return new MapForm(mapA, new MapFormItem(itemMapA));
     }
 
     @RequestMapping(value = "6_17", method = RequestMethod.GET)
