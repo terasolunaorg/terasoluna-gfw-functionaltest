@@ -215,6 +215,28 @@
     </property>
   </bean>
 
+  <bean id="CL_CODELIST12_01" class="org.terasoluna.gfw.common.codelist.i18n.SimpleReloadableI18nCodeList">
+    <property name="rowsByCodeList">
+      <util:map>
+        <entry key="en" value-ref="CL_CODELIST_ITEM3_EN" />
+        <entry key="ja" value-ref="CL_CODELIST_ITEM3_JA" />
+      </util:map>
+    </property>
+    <property name="fallbackTo" value="en" />
+  </bean>
+
+  <bean id="CL_CODELIST_ITEM3_EN" parent="AbstractJdbcCodeList">
+    <property name="querySql" value="select code, label_en from item3 ORDER BY code" />
+    <property name="valueColumn" value="code" />
+    <property name="labelColumn" value="label_en" />
+  </bean>
+
+  <bean id="CL_CODELIST_ITEM3_JA" parent="AbstractJdbcCodeList">
+    <property name="querySql" value="select code, label_ja from item3 ORDER BY code" />
+    <property name="valueColumn" value="code" />
+    <property name="labelColumn" value="label_ja" />
+  </bean>
+
   <bean id="NUMBER_CODELIST" class="org.terasoluna.gfw.common.codelist.NumberRangeCodeList">
     <property name="from" value="1" />
     <property name="to" value="5" />

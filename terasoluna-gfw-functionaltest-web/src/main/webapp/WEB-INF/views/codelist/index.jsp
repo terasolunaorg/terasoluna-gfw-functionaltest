@@ -61,12 +61,40 @@
         Test (EN and JP set using columns)</a></td>
   </tr>
   <tr>
+    <td><a id="codelist_11_01" href="${pageContext.request.contextPath}/codelist/11_01_form">SimpleI18nCodeList
+        Test (specified language locale and returned in same locale)</a></td>
+  </tr>
+  <tr>
+    <td><a id="codelist_11_02" href="${pageContext.request.contextPath}/codelist/11_01_form">SimpleI18nCodeList
+        Test (specified nation locale and returned in same locale)</a></td>
+  </tr>
+  <tr>
+    <td><a id="codelist_11_03" href="${pageContext.request.contextPath}/codelist/11_01_form">SimpleI18nCodeList
+        Test (specified nation locale and returned in fallback language locale)</a></td>
+  </tr>
+  <tr>
+    <td><a id="codelist_11_04" href="${pageContext.request.contextPath}/codelist/11_01_form">SimpleI18nCodeList
+        Test (specified language locale and returned in fallbackTo locale)</a></td>
+  </tr>
+  <tr>
+    <td><a id="codelist_12_01" href="${pageContext.request.contextPath}/codelist/12_01_form">SimpleReloadableI18nCodeList
+        Test</a></td>
+  </tr>
+  <tr>
     <td><a id="codelist_07_01" href="${pageContext.request.contextPath}/codelist/07_01_form">CodeListInteceptor
         Test (codeListPattern is set)</a></td>
   </tr>
   <tr>
     <td><a id="codelist_07_03" href="${pageContext.request.contextPath}/codelist/multiplePattern/07_03_form">CodeListInteceptor
         Test (codeListPattern is changed)</a></td>
+  </tr>
+  <tr>
+    <td><a id="codelist_10_01" href="${pageContext.request.contextPath}/codelist/10_01_form">CodeListInterceptor
+        Test (Exception handling with @ExceptionHandler)</a></td>
+  </tr>
+  <tr>
+    <td><a id="codelist_10_02" href="${pageContext.request.contextPath}/codelist/10_02_form">CodeListInterceptor
+        Test (Exception handling with Try-Catch)</a></td>
   </tr>
   <tr>
     <td><a id="codelist_08_01" href="${pageContext.request.contextPath}/codelist/08_01_form">@ExistInCodeList
@@ -110,29 +138,5 @@
   </tr>
   <tr>
     <td><a id="codelist_09_01" href="${pageContext.request.contextPath}/codelist/09_01_form">EnumCodeList Test</a></td>
-  </tr>
-  <tr>
-    <td><a id="codelist_10_01" href="${pageContext.request.contextPath}/codelist/10_01_form">CodeListInterceptor
-        Test (Exception handling with @ExceptionHandler)</a></td>
-  </tr>
-  <tr>
-    <td><a id="codelist_10_02" href="${pageContext.request.contextPath}/codelist/10_02_form">CodeListInterceptor
-        Test (Exception handling with Try-Catch)</a></td>
-  </tr>
-  <tr>
-    <td><a id="codelist_11_01" href="${pageContext.request.contextPath}/codelist/11_01_form">SimpleI18nCodeList
-        Test (specified language locale and returned in same locale)</a></td>
-  </tr>
-  <tr>
-    <td><a id="codelist_11_02" href="${pageContext.request.contextPath}/codelist/11_01_form">SimpleI18nCodeList
-        Test (specified nation locale and returned in same locale)</a></td>
-  </tr>
-  <tr>
-    <td><a id="codelist_11_03" href="${pageContext.request.contextPath}/codelist/11_01_form">SimpleI18nCodeList
-        Test (specified nation locale and returned in fallback language locale)</a></td>
-  </tr>
-  <tr>
-    <td><a id="codelist_11_04" href="${pageContext.request.contextPath}/codelist/11_01_form">SimpleI18nCodeList
-        Test (specified language locale and returned in fallbackTo locale)</a></td>
   </tr>
 </table>
