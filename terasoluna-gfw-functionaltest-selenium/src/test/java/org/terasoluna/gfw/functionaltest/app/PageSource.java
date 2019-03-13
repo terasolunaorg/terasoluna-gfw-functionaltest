@@ -17,6 +17,7 @@ package org.terasoluna.gfw.functionaltest.app;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import org.apache.commons.io.FileUtils;
@@ -69,8 +70,7 @@ public class PageSource {
 
         try {
             FileUtils.writeStringToFile(pageSourceFile, webDriver
-                    .getPageSource());
-
+                    .getPageSource(), StandardCharsets.UTF_8);
         } catch (IOException e) {
             logger.error(e.toString());
         }
