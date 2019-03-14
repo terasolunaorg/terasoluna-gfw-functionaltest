@@ -12,7 +12,14 @@
   </session-descriptor>
 
   <container-descriptor>
-    <prefer-web-inf-classes>true</prefer-web-inf-classes>
+    <prefer-web-inf-classes>false</prefer-web-inf-classes>
+    <prefer-application-packages>
+      <package-name>org.hibernate.validator.*</package-name>
+      <package-name>javax.validation.*</package-name>
+      <package-name>com.fasterxml.jackson.*</package-name>
+      <package-name>org.joda.*</package-name>
+      <package-name>org.slf4j.*</package-name>
+    </prefer-application-packages>
   </container-descriptor>
 
 </weblogic-web-app>
