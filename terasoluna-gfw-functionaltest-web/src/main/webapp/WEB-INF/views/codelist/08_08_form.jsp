@@ -4,27 +4,23 @@
 </head>
 <body>
   <h2>Codelist</h2>
-
   <br>
   <form:form action="${pageContext.request.contextPath}/codelist/next" method="get"
-    modelAttribute="codeListForm">
+    modelAttribute="existInCheckForm">
     <table>
       <tr>
-        <td><span id="errors"><span id="item1Error" style="color: red">${f:h(item1Error)}</span></span></td>
+        <td><span id="errors"><form:errors path="item8" style="color:red" /></span></td>
       </tr>
     </table>
     <table>
+
       <tr>
-        <td>Input a key to check if it is exists in CodeList :</td>
-        <td><form:input path="item1" /></td>
-      </tr>
-      <tr>
-        <td>The label of inputed code is :</td>
-        <td><label id="item1Label">${f:h(item1Label)}</label></td>
+        <td>Input a key to check if it is exists in CodeList:</td>
+        <td><form:input path="item8" /></td>
       </tr>
       <tr>
         <td><input id="btn1" class="mainbtn" style="width: 200px;" type="submit"
-          value="Confirm" name="existInCheckParamAnnotation" />
+          value="Confirm" name="existInCheckExtendedCodeList" />
         <td>
         <td></td>
       </tr>
