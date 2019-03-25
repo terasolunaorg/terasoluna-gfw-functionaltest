@@ -145,7 +145,11 @@
     <td><a href="${pageContext.request.contextPath}/codelist/09_01_form">EnumCodeList Test</a></td>
   </tr>
   <tr>
-    <td><a href="${pageContext.request.contextPath}/codelist/10_01_form">CodeListInterceptor
-        Test (Exception occurs)</a></td>
+    <td><a id="codelist_10_01" href="${pageContext.request.contextPath}/codelist/10_01_form">CodeListInterceptor
+        Test (Exception handling with @ExceptionHandler)</a></td>
+  </tr>
+  <tr>
+    <td><a id="codelist_10_02" href="${pageContext.request.contextPath}/codelist/10_02_form">CodeListInterceptor
+        Test (Exception handling with Try-Catch)</a></td>
   </tr>
 </table>
