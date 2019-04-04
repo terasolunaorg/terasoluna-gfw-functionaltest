@@ -195,10 +195,10 @@ public class CodeListTest extends FunctionTestSupport {
         assertThat(driver.findElement(By.cssSelector("option[value=\"key3\"]"))
                 .getText(), is("label3"));
         driver.findElement(By.name("jdbcCodeListTestRefreshCodeList")).click();
-        assertThat(driver.findElement(By.cssSelector("option[value=\"bbb\"]"))
-                .getText(), is("aaa"));
         assertThat(driver.findElement(By.cssSelector("option[value=\"key1\"]"))
                 .getText(), is("label1"));
+        assertThat(driver.findElement(By.cssSelector("option[value=\"bbb\"]"))
+                .getText(), is("aaa"));
         assertThat(driver.findElement(By.cssSelector("option[value=\"key3\"]"))
                 .getText(), is("label3"));
         driver.findElement(By.id("btnback")).click();
@@ -214,15 +214,19 @@ public class CodeListTest extends FunctionTestSupport {
         driver.findElement(By.id("btn1")).click();
         driver.findElement(By.id("btn1")).click();
 
-        assertThat(driver.findElement(By.cssSelector("option[value=\"bbb\"]"))
-                .getText(), is("aaa"));
         assertThat(driver.findElement(By.cssSelector("option[value=\"key1\"]"))
                 .getText(), is("label1"));
+        assertThat(driver.findElement(By.cssSelector("option[value=\"bbb\"]"))
+                .getText(), is("aaa"));
         assertThat(driver.findElement(By.cssSelector("option[value=\"key3\"]"))
                 .getText(), is("label3"));
         driver.findElement(By.name("jdbcCodeListTestRefreshCodeList")).click();
+        assertThat(driver.findElement(By.cssSelector("option[value=\"key1\"]"))
+                .getText(), is("label1"));
         assertThat(driver.findElement(By.cssSelector("option[value=\"key2\"]"))
                 .getText(), is("label2"));
+        assertThat(driver.findElement(By.cssSelector("option[value=\"key3\"]"))
+                .getText(), is("label3"));
         driver.findElement(By.id("btnback")).click();
     }
 
@@ -389,6 +393,139 @@ public class CodeListTest extends FunctionTestSupport {
     }
 
     @Test
+    public void test12_01_form() {
+        driver.findElement(By.id("codelist_12_01")).click();
+        assertTest12Initial();
+
+        inputFieldAccessor.overrideValue(By.id("code1"), "aaa", driver);
+        inputFieldAccessor.overrideValue(By.id("labelEn1"), "bbb", driver);
+        inputFieldAccessor.overrideValue(By.id("labelJa1"), "ＣＣＣ", driver);
+        driver.findElement(By.id("btnUpdate")).click();
+
+        driver.findElement(By.id("btnRefresh4")).click();
+        assertTest12Changed();
+
+        // Rollback codelist.
+        inputFieldAccessor.overrideValue(By.id("code1"), "key1", driver);
+        inputFieldAccessor.overrideValue(By.id("labelEn1"), "label1", driver);
+        inputFieldAccessor.overrideValue(By.id("labelJa1"), "ラベル1", driver);
+        driver.findElement(By.id("btnUpdate")).click();
+
+        driver.findElement(By.id("btnRefresh4")).click();
+        assertTest12Initial();
+    }
+
+    @Test
+    public void test12_02_form() {
+        driver.findElement(By.id("codelist_12_01")).click();
+        assertTest12Initial();
+
+        inputFieldAccessor.overrideValue(By.id("code1"), "aaa", driver);
+        inputFieldAccessor.overrideValue(By.id("labelEn1"), "bbb", driver);
+        inputFieldAccessor.overrideValue(By.id("labelJa1"), "ＣＣＣ", driver);
+        driver.findElement(By.id("btnUpdate")).click();
+
+        driver.findElement(By.id("btnRefresh2")).click();
+        assertTest12Initial();
+
+        driver.findElement(By.id("btnRefresh4")).click();
+        assertTest12Changed();
+
+        // Rollback codelist.
+        inputFieldAccessor.overrideValue(By.id("code1"), "key1", driver);
+        inputFieldAccessor.overrideValue(By.id("labelEn1"), "label1", driver);
+        inputFieldAccessor.overrideValue(By.id("labelJa1"), "ラベル1", driver);
+        driver.findElement(By.id("btnUpdate")).click();
+
+        driver.findElement(By.id("btnRefresh4")).click();
+        assertTest12Initial();
+    }
+
+    @Test
+    public void test12_03_form() {
+        driver.findElement(By.id("codelist_12_01")).click();
+        assertTest12Initial();
+
+        inputFieldAccessor.overrideValue(By.id("code1"), "aaa", driver);
+        inputFieldAccessor.overrideValue(By.id("labelEn1"), "bbb", driver);
+        inputFieldAccessor.overrideValue(By.id("labelJa1"), "ＣＣＣ", driver);
+        driver.findElement(By.id("btnUpdate")).click();
+
+        driver.findElement(By.id("btnRefresh3")).click();
+        assertTest12Changed();
+
+        // Rollback codelist.
+        inputFieldAccessor.overrideValue(By.id("code1"), "key1", driver);
+        inputFieldAccessor.overrideValue(By.id("labelEn1"), "label1", driver);
+        inputFieldAccessor.overrideValue(By.id("labelJa1"), "ラベル1", driver);
+        driver.findElement(By.id("btnUpdate")).click();
+
+        driver.findElement(By.id("btnRefresh4")).click();
+        assertTest12Initial();
+    }
+
+    private void assertTest12Initial() {
+        assertThat(driver.findElement(By.id("cl-code1")).getText(), is("key1"));
+        assertThat(driver.findElement(By.id("cl-label1")).getText(), is(
+                "label1"));
+        assertThat(driver.findElement(By.id("cl-code2")).getText(), is("key2"));
+        assertThat(driver.findElement(By.id("cl-label2")).getText(), is(
+                "label2"));
+        assertThat(driver.findElement(By.id("cl-code3")).getText(), is("key3"));
+        assertThat(driver.findElement(By.id("cl-label3")).getText(), is(
+                "label3"));
+
+        assertThat(driver.findElement(By.id("en-code1")).getText(), is("key1"));
+        assertThat(driver.findElement(By.id("en-label1")).getText(), is(
+                "label1"));
+        assertThat(driver.findElement(By.id("en-code2")).getText(), is("key2"));
+        assertThat(driver.findElement(By.id("en-label2")).getText(), is(
+                "label2"));
+        assertThat(driver.findElement(By.id("en-code3")).getText(), is("key3"));
+        assertThat(driver.findElement(By.id("en-label3")).getText(), is(
+                "label3"));
+
+        assertThat(driver.findElement(By.id("ja-code1")).getText(), is("key1"));
+        assertThat(driver.findElement(By.id("ja-label1")).getText(), is(
+                "ラベル1"));
+        assertThat(driver.findElement(By.id("ja-code2")).getText(), is("key2"));
+        assertThat(driver.findElement(By.id("ja-label2")).getText(), is(
+                "ラベル2"));
+        assertThat(driver.findElement(By.id("ja-code3")).getText(), is("key3"));
+        assertThat(driver.findElement(By.id("ja-label3")).getText(), is(
+                "ラベル3"));
+    }
+
+    private void assertTest12Changed() {
+        assertThat(driver.findElement(By.id("cl-code1")).getText(), is("aaa"));
+        assertThat(driver.findElement(By.id("cl-label1")).getText(), is("bbb"));
+        assertThat(driver.findElement(By.id("cl-code2")).getText(), is("key2"));
+        assertThat(driver.findElement(By.id("cl-label2")).getText(), is(
+                "label2"));
+        assertThat(driver.findElement(By.id("cl-code3")).getText(), is("key3"));
+        assertThat(driver.findElement(By.id("cl-label3")).getText(), is(
+                "label3"));
+
+        assertThat(driver.findElement(By.id("en-code1")).getText(), is("aaa"));
+        assertThat(driver.findElement(By.id("en-label1")).getText(), is("bbb"));
+        assertThat(driver.findElement(By.id("en-code2")).getText(), is("key2"));
+        assertThat(driver.findElement(By.id("en-label2")).getText(), is(
+                "label2"));
+        assertThat(driver.findElement(By.id("en-code3")).getText(), is("key3"));
+        assertThat(driver.findElement(By.id("en-label3")).getText(), is(
+                "label3"));
+
+        assertThat(driver.findElement(By.id("ja-code1")).getText(), is("aaa"));
+        assertThat(driver.findElement(By.id("ja-label1")).getText(), is("ＣＣＣ"));
+        assertThat(driver.findElement(By.id("ja-code2")).getText(), is("key2"));
+        assertThat(driver.findElement(By.id("ja-label2")).getText(), is(
+                "ラベル2"));
+        assertThat(driver.findElement(By.id("ja-code3")).getText(), is("key3"));
+        assertThat(driver.findElement(By.id("ja-label3")).getText(), is(
+                "ラベル3"));
+    }
+
+    @Test
     public void test07_01_form() {
         driver.findElement(By.linkText(
                 "CodeListInteceptor Test (codeListPattern is set)")).click();
@@ -414,6 +551,32 @@ public class CodeListTest extends FunctionTestSupport {
         assertThat(driver.findElement(By.cssSelector("option[value=\"key3\"]"))
                 .getText(), is("ラベル3"));
         assertThat(driver.findElement(By.id("list2")).getText(), is(""));
+        driver.findElement(By.id("btnback")).click();
+    }
+
+    @Test
+    public void test10_01_form() {
+        driver.findElement(By.id("codelist_10_01")).click();
+        assertThat(driver.findElement(By.cssSelector("div>ul>li")).getText(),
+                is("Warn Message!!"));
+        assertThat(webDriverOperations.exists(By.tagName("option")), is(false));
+        driver.findElement(By.id("btn1")).click();
+        driver.findElement(By.id("btnback")).click();
+    }
+
+    @Test
+    public void test10_02_form() {
+        driver.findElement(By.id("codelist_10_02")).click();
+        assertThat(driver.findElement(By.cssSelector("div>ul>li")).getText(),
+                is("Warn Message!!"));
+        assertThat(driver.findElement(By.cssSelector("option[value=\"key1\"]"))
+                .getText(), is("label1"));
+        assertThat(driver.findElement(By.cssSelector("option[value=\"key2\"]"))
+                .getText(), is("label2"));
+        assertThat(driver.findElement(By.cssSelector("option[value=\"key3\"]"))
+                .getText(), is("label3"));
+        driver.findElement(By.id("btn1")).click();
+        assertThat(driver.findElement(By.id("output")).getText(), is("key1"));
         driver.findElement(By.id("btnback")).click();
     }
 
@@ -675,31 +838,4 @@ public class CodeListTest extends FunctionTestSupport {
         assertThat(driver.findElement(By.id("output")).getText(), is("12"));
         driver.findElement(By.id("btnback")).click();
     }
-
-    @Test
-    public void test10_01_form() {
-        driver.findElement(By.id("codelist_10_01")).click();
-        assertThat(driver.findElement(By.cssSelector("div>ul>li")).getText(),
-                is("Warn Message!!"));
-        assertThat(webDriverOperations.exists(By.tagName("option")), is(false));
-        driver.findElement(By.id("btn1")).click();
-        driver.findElement(By.id("btnback")).click();
-    }
-
-    @Test
-    public void test10_02_form() {
-        driver.findElement(By.id("codelist_10_02")).click();
-        assertThat(driver.findElement(By.cssSelector("div>ul>li")).getText(),
-                is("Warn Message!!"));
-        assertThat(driver.findElement(By.cssSelector("option[value=\"key1\"]"))
-                .getText(), is("label1"));
-        assertThat(driver.findElement(By.cssSelector("option[value=\"key2\"]"))
-                .getText(), is("label2"));
-        assertThat(driver.findElement(By.cssSelector("option[value=\"key3\"]"))
-                .getText(), is("label3"));
-        driver.findElement(By.id("btn1")).click();
-        assertThat(driver.findElement(By.id("output")).getText(), is("key1"));
-        driver.findElement(By.id("btnback")).click();
-    }
-
 }
