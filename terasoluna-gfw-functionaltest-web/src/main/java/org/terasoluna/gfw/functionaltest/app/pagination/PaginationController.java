@@ -413,8 +413,8 @@ public class PaginationController {
     public String fuinctionTest_14_1_confirm(@PathVariable("page") int page,
             @PathVariable("size") int size, Model model) {
 
-        Page<Person> namePage = paginationService.findPerson(PageRequest.of(
-                page, size));
+        Page<Person> namePage = paginationService.findPerson(
+                new PageRequest(page, size));
 
         model.addAttribute("page", namePage);
 
