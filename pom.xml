@@ -237,10 +237,10 @@
         <version>${postgresql.version}</version>
       </dependency>
       <dependency>
-        <!-- ojdbc8.jar must be pre-installed in local repository. -->
+        <!-- ojdbc7.jar must be pre-installed in local repository. -->
         <groupId>com.oracle.jdbc</groupId>
-        <artifactId>ojdbc8</artifactId>
-        <version>${ojdbc8.version}</version>
+        <artifactId>ojdbc7</artifactId>
+        <version>${ojdbc7.version}</version>
       </dependency>
       <dependency>
         <!-- db2jcc4.jar must be pre-installed in local repository. -->
@@ -262,8 +262,8 @@
     <xml-maven-plugin.version>1.0.1</xml-maven-plugin.version>
     <com.google.code.maven-license-plugin.version>1.4.0</com.google.code.maven-license-plugin.version>
     <!-- == Dependency Versions == -->
-    <postgresql.version>9.4.1212.jre7</postgresql.version>
-    <ojdbc8.version>12.2.0.1.0</ojdbc8.version>
+    <postgresql.version>42.2.5.jre7</postgresql.version>
+    <ojdbc7.version>12.1.0.2</ojdbc7.version>
     <db2jcc4.version>4.21.29</db2jcc4.version>
     <selenium.version>2.46.0</selenium.version>
     <!-- == Project Properties == -->

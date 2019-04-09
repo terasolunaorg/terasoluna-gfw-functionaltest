@@ -59,10 +59,10 @@
       <scope>provided</scope>
       <optional>true</optional>
     </dependency>
-    <!-- Once you have installed ojdbc8.jar into local repository, please remove this comment out. -->
+    <!-- Once you have installed ojdbc7.jar into local repository, please remove this comment out. -->
     <!-- <dependency> -->
     <!--   <groupId>com.oracle.jdbc</groupId> -->
-    <!--   <artifactId>ojdbc8</artifactId> -->
+    <!--   <artifactId>ojdbc7</artifactId> -->
     <!--   <scope>provided</scope> -->
     <!--   <optional>true</optional> -->
     <!-- </dependency> -->
