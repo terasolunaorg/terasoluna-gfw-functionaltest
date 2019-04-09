@@ -182,6 +182,7 @@ public class FunctionTestSupport extends ApplicationObjectSupport {
     protected void quitDefaultWebDriver() {
         if (driver != null) {
             try {
+                driver.get("about:config");
                 driver.quit();
             } finally {
                 driver = null;
@@ -208,6 +209,7 @@ public class FunctionTestSupport extends ApplicationObjectSupport {
     private static void quitWebDrivers() {
         for (WebDriver webDriver : webDrivers) {
             try {
+                webDriver.get("about:config");
                 webDriver.quit();
             } catch (Throwable t) {
                 classLogger.error("failed quit.", t);

@@ -270,9 +270,8 @@ public class ElTest extends FunctionTestSupport {
                 .getText(), is(
                         "http://localhost:8080/terasoluna-gfw-functionaltest-web/el/output_05_04?name=tera%261"));
         // inheriting of query Test
-        driver.findElement(By.id("linkUOutput")).findElement(By.linkText(
-                "http://localhost:8080/terasoluna-gfw-functionaltest-web/el/output_05_04?name=tera%261"))
-                .click();
+        driver.navigate().to(applicationContextUrl
+                + "/el/output_05_04?name=tera%261");
     }
 
     @Test(expected = NoSuchElementException.class)
