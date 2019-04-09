@@ -35,7 +35,7 @@
       </properties>
     </profile>
     <profile>
-      <!-- ojdbc8.jar must be pre-installed in local repository. -->
+      <!-- ojdbc7.jar must be pre-installed in local repository. -->
       <id>oracle</id>
       <properties>
         <db.encoding>UTF8</db.encoding>
@@ -45,8 +45,8 @@
         <db.password>gfw</db.password>
         <db.driver>oracle.jdbc.OracleDriver</db.driver>
         <db.groupId>com.oracle.jdbc</db.groupId>
-        <db.artifactId>ojdbc8</db.artifactId>
-        <db.version>${ojdbc8.version}</db.version>
+        <db.artifactId>ojdbc7</db.artifactId>
+        <db.version>${ojdbc7.version}</db.version>
         <db.delimiterType>row</db.delimiterType>
       </properties>
     </profile>
