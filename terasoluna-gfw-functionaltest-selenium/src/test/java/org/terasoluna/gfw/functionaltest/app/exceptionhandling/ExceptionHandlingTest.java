@@ -87,7 +87,6 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
 
         driver.findElement(By.id("useCaseControllerHandling_02_01")).click();
 
-        long retryTimes = 1L;
         assertThat(driver.getTitle(), is("terasoluna-gfw-functionaltest"));
         assertThat(dbLogProvider.countContainsMessageAndLevelsAndLogger(
                 "\\[e.xx.9999\\] 2_1 Continue", "INFO",
@@ -95,11 +94,10 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
         assertThat(dbLogProvider.countContainsMessageAndLevelsAndLogger(
                 "\\[e.xx.9999\\] 2_1 Continue", "INFO",
                 "org.terasoluna.gfw.common.exception.ExceptionLogger.Monitoring"),
-                is(retryTimes));
+                is(1L));
 
         assertThat(dbLogProvider.countContainsByRegexExceptionMessage(null,
-                null, "2_1 Continue*", "..*ContinueException..*"), is(
-                        retryTimes));
+                null, "2_1 Continue*", "..*ContinueException..*"), is(1L));
     }
 
     @Test
