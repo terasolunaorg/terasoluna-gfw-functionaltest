@@ -37,7 +37,7 @@ public class CodeListTest extends FunctionTestSupport {
 
     @Test
     public void test01_01_form() {
-        driver.findElement(By.linkText("SimpleCodeList Test")).click();
+        driver.findElement(By.id("codelist_01_01")).click();
         assertThat(driver.findElement(By.cssSelector("option[value=\"key1\"]"))
                 .getText(), is("label1"));
         assertThat(driver.findElement(By.cssSelector("option[value=\"key2\"]"))
@@ -47,13 +47,13 @@ public class CodeListTest extends FunctionTestSupport {
         driver.findElement(By.id("btn1")).click();
         assertThat(driver.findElement(By.id("output")).getText(), is("key1"));
         driver.findElement(By.id("btnback")).click();
-        driver.findElement(By.linkText("SimpleCodeList Test")).click();
+        driver.findElement(By.id("codelist_01_01")).click();
         new Select(driver.findElement(By.id("item1"))).selectByVisibleText(
                 "label2");
         driver.findElement(By.id("btn1")).click();
         assertThat(driver.findElement(By.id("output")).getText(), is("key2"));
         driver.findElement(By.id("btnback")).click();
-        driver.findElement(By.linkText("SimpleCodeList Test")).click();
+        driver.findElement(By.id("codelist_01_01")).click();
         new Select(driver.findElement(By.id("item1"))).selectByVisibleText(
                 "label3");
         driver.findElement(By.id("btn1")).click();
@@ -63,16 +63,14 @@ public class CodeListTest extends FunctionTestSupport {
 
     @Test
     public void test01_02_form() {
-        driver.findElement(By.linkText(
-                "SimpleCodeList Test (CodeList is empty)")).click();
+        driver.findElement(By.id("codelist_01_02")).click();
         assertThat(driver.findElement(By.id("item1")).getText(), is(""));
         driver.findElement(By.id("btnback")).click();
     }
 
     @Test
     public void test02_01_form() {
-        driver.findElement(By.linkText("NumberRangeCodeList Test (Ascending)"))
-                .click();
+        driver.findElement(By.id("codelist_02_01")).click();
         assertThat(driver.findElement(By.cssSelector("option[value=\"1\"]"))
                 .getText(), is("1"));
         assertThat(driver.findElement(By.cssSelector("option[value=\"2\"]"))
@@ -91,8 +89,7 @@ public class CodeListTest extends FunctionTestSupport {
 
     @Test
     public void test02_02_form() {
-        driver.findElement(By.linkText("NumberRangeCodeList Test (Descending)"))
-                .click();
+        driver.findElement(By.id("codelist_02_02")).click();
         assertThat(driver.findElement(By.cssSelector("option[value=\"5\"]"))
                 .getText(), is("5"));
         assertThat(driver.findElement(By.cssSelector("option[value=\"4\"]"))
@@ -111,8 +108,7 @@ public class CodeListTest extends FunctionTestSupport {
 
     @Test
     public void test02_03_form() {
-        driver.findElement(By.linkText(
-                "NumberRangeCodeList Test (Interval specified)")).click();
+        driver.findElement(By.id("codelist_02_03")).click();
         assertThat(driver.findElement(By.cssSelector("option[value=\"5\"]"))
                 .getText(), is("5"));
         assertThat(driver.findElement(By.cssSelector("option[value=\"2\"]"))
@@ -125,8 +121,7 @@ public class CodeListTest extends FunctionTestSupport {
 
     @Test
     public void test02_04_form() {
-        driver.findElement(By.linkText(
-                "NumberRangeCodeList Test (Format specified)")).click();
+        driver.findElement(By.id("codelist_02_04")).click();
         assertThat(driver.findElement(By.cssSelector("option[value=\"005\"]"))
                 .getText(), is("05"));
         assertThat(driver.findElement(By.cssSelector("option[value=\"002\"]"))
@@ -140,7 +135,7 @@ public class CodeListTest extends FunctionTestSupport {
 
     @Test
     public void test03_01_form() {
-        driver.findElement(By.linkText("JdbcCodeList Test")).click();
+        driver.findElement(By.id("codelist_03_01")).click();
         assertThat(driver.findElement(By.cssSelector("option[value=\"key1\"]"))
                 .getText(), is("label1"));
         assertThat(driver.findElement(By.cssSelector("option[value=\"key2\"]"))
@@ -156,8 +151,7 @@ public class CodeListTest extends FunctionTestSupport {
 
     @Test
     public void test03_02_form() {
-        driver.findElement(By.linkText("JdbcCodeList Test (CodeList is empty)"))
-                .click();
+        driver.findElement(By.id("codelist_03_02")).click();
         assertThat(driver.findElement(By.id("item1")).getText(), is(""));
         driver.findElement(By.id("btn1")).click();
         driver.findElement(By.id("btnback")).click();
@@ -165,16 +159,14 @@ public class CodeListTest extends FunctionTestSupport {
 
     @Test
     public void test03_03_form() {
-        driver.findElement(By.linkText("JdbcCodeList Test (DB error occurs)"))
-                .click();
+        driver.findElement(By.id("codelist_03_03")).click();
         assertThat(driver.findElement(By.id("exceptionCode")).getText(), is(
                 "e.xx.9999"));
     }
 
     @Test
     public void test04_02_form() {
-        driver.findElement(By.linkText(
-                "JdbcCodeList Test (Refresh functionality)")).click();
+        driver.findElement(By.id("codelist_04_02")).click();
         assertThat(driver.findElement(By.cssSelector("option[value=\"key1\"]"))
                 .getText(), is("label1"));
         assertThat(driver.findElement(By.cssSelector("option[value=\"key2\"]"))
@@ -204,8 +196,7 @@ public class CodeListTest extends FunctionTestSupport {
         driver.findElement(By.id("btnback")).click();
 
         // reverting the change to DB state
-        driver.findElement(By.linkText(
-                "JdbcCodeList Test (Refresh functionality)")).click();
+        driver.findElement(By.id("codelist_04_02")).click();
         driver.findElement(By.name("jdbcCodeListTestSelectCodeList")).click();
         driver.findElement(By.linkText("bbb")).click();
         inputFieldAccessor.overrideValue(By.id("code"), "key2", driver);
@@ -233,9 +224,8 @@ public class CodeListTest extends FunctionTestSupport {
     @Test
     public void test06_01_form() {
         driver.findElement(By.linkText("English")).click();
-        driver.findElement(By.linkText(
-                "SimpleI18nCodeList Test (EN and JP set using rows. Click English)"))
-                .click();
+        driver.findElement(By.id("codelist_06_01")).click();
+
         assertThat(driver.findElement(By.cssSelector("option[value=\"key1\"]"))
                 .getText(), is("label1"));
         assertThat(driver.findElement(By.cssSelector("option[value=\"key2\"]"))
@@ -248,9 +238,7 @@ public class CodeListTest extends FunctionTestSupport {
     @Test
     public void test06_02_form() {
         driver.findElement(By.linkText("Japanese")).click();
-        driver.findElement(By.linkText(
-                "SimpleI18nCodeList Test (EN and JP set using rows. Click Japanese)"))
-                .click();
+        driver.findElement(By.id("codelist_06_02")).click();
 
         assertThat(driver.findElement(By.cssSelector("option[value=\"key1\"]"))
                 .getText(), is("ラベル1"));
@@ -264,9 +252,7 @@ public class CodeListTest extends FunctionTestSupport {
     @Test
     public void test06_03_form() {
         driver.findElement(By.linkText("French")).click();
-        driver.findElement(By.linkText(
-                "SimpleI18nCodeList Test (EN and JP set using rows. fallbackTo not set. Click French)"))
-                .click();
+        driver.findElement(By.id("codelist_06_03")).click();
 
         assertThat(driver.findElement(By.cssSelector("option[value=\"key1\"]"))
                 .getText(), is("ラベル1"));
@@ -280,9 +266,7 @@ public class CodeListTest extends FunctionTestSupport {
     @Test
     public void test06_04_form() {
         driver.findElement(By.linkText("French")).click();
-        driver.findElement(By.linkText(
-                "SimpleI18nCodeList Test (EN and JP set using rows. fallbackTo is set to EN. Click French)"))
-                .click();
+        driver.findElement(By.id("codelist_06_04")).click();
         assertThat(driver.findElement(By.cssSelector("option[value=\"key1\"]"))
                 .getText(), is("label1"));
         assertThat(driver.findElement(By.cssSelector("option[value=\"key2\"]"))
@@ -295,9 +279,7 @@ public class CodeListTest extends FunctionTestSupport {
     @Test
     public void test06_05_form() {
         driver.findElement(By.linkText("Chinese")).click();
-        driver.findElement(By.linkText(
-                "SimpleI18nCodeList Test (EN and JP set using rows. fallbackTo is set to FR. Click Chinese)"))
-                .click();
+        driver.findElement(By.id("codelist_06_05")).click();
         assertThat(driver.findElement(By.id("item1")).getText(), is(""));
         driver.findElement(By.id("btnback")).click();
     }
@@ -305,9 +287,7 @@ public class CodeListTest extends FunctionTestSupport {
     @Test
     public void test06_06_form() {
         driver.findElement(By.linkText("English")).click();
-        driver.findElement(By.linkText(
-                "SimpleI18nCodeList Test (EN and JP set using rowsByCodeList. Click English)"))
-                .click();
+        driver.findElement(By.id("codelist_06_06")).click();
         assertThat(driver.findElement(By.cssSelector("option[value=\"key1\"]"))
                 .getText(), is("label1"));
         assertThat(driver.findElement(By.cssSelector("option[value=\"key2\"]"))
@@ -320,9 +300,7 @@ public class CodeListTest extends FunctionTestSupport {
     @Test
     public void test06_07_form() {
         driver.findElement(By.linkText("Japanese")).click();
-        driver.findElement(By.linkText(
-                "SimpleI18nCodeList Test (EN and JP set using rowsByCodeList. Click Japanese)"))
-                .click();
+        driver.findElement(By.id("codelist_06_07")).click();
         assertThat(driver.findElement(By.cssSelector("option[value=\"key1\"]"))
                 .getText(), is("ラベル1"));
         assertThat(driver.findElement(By.cssSelector("option[value=\"key2\"]"))
@@ -335,9 +313,7 @@ public class CodeListTest extends FunctionTestSupport {
     @Test
     public void test06_08_form() {
         driver.findElement(By.linkText("French")).click();
-        driver.findElement(By.linkText(
-                "SimpleI18nCodeList Test (EN and JP set using rowsByCodeList. fallbackTo not set. Click French)"))
-                .click();
+        driver.findElement(By.id("codelist_06_08")).click();
         assertThat(driver.findElement(By.cssSelector("option[value=\"key1\"]"))
                 .getText(), is("ラベル1"));
         assertThat(driver.findElement(By.cssSelector("option[value=\"key2\"]"))
@@ -350,9 +326,7 @@ public class CodeListTest extends FunctionTestSupport {
     @Test
     public void test06_09_form() {
         driver.findElement(By.linkText("English")).click();
-        driver.findElement(By.linkText(
-                "SimpleI18nCodeList Test (EN and JP set using columns. Click English)"))
-                .click();
+        driver.findElement(By.id("codelist_06_09")).click();
         assertThat(driver.findElement(By.cssSelector("option[value=\"key1\"]"))
                 .getText(), is("label1"));
         assertThat(driver.findElement(By.cssSelector("option[value=\"key2\"]"))
@@ -365,9 +339,7 @@ public class CodeListTest extends FunctionTestSupport {
     @Test
     public void test06_10_form() {
         driver.findElement(By.linkText("Japanese")).click();
-        driver.findElement(By.linkText(
-                "SimpleI18nCodeList Test (EN and JP set using columns. Click Japanese)"))
-                .click();
+        driver.findElement(By.id("codelist_06_10")).click();
         assertThat(driver.findElement(By.cssSelector("option[value=\"key1\"]"))
                 .getText(), is("ラベル1"));
         assertThat(driver.findElement(By.cssSelector("option[value=\"key2\"]"))
@@ -380,9 +352,7 @@ public class CodeListTest extends FunctionTestSupport {
     @Test
     public void test06_11_form() {
         driver.findElement(By.linkText("French")).click();
-        driver.findElement(By.linkText(
-                "SimpleI18nCodeList Test (EN and JP set using columns. fallbackTo not set. Click French)"))
-                .click();
+        driver.findElement(By.id("codelist_06_11")).click();
         assertThat(driver.findElement(By.cssSelector("option[value=\"key1\"]"))
                 .getText(), is("ラベル1"));
         assertThat(driver.findElement(By.cssSelector("option[value=\"key2\"]"))
@@ -527,8 +497,7 @@ public class CodeListTest extends FunctionTestSupport {
 
     @Test
     public void test07_01_form() {
-        driver.findElement(By.linkText(
-                "CodeListInteceptor Test (codeListPattern is set)")).click();
+        driver.findElement(By.id("codelist_07_01")).click();
         assertThat(driver.findElement(By.cssSelector("option[value=\"key1\"]"))
                 .getText(), is("label1"));
         assertThat(driver.findElement(By.cssSelector("option[value=\"key2\"]"))
@@ -541,9 +510,7 @@ public class CodeListTest extends FunctionTestSupport {
 
     @Test
     public void test07_03_form() {
-        driver.findElement(By.linkText(
-                "CodeListInteceptor Test (codeListPattern is changed)"))
-                .click();
+        driver.findElement(By.id("codelist_07_03")).click();
         assertThat(driver.findElement(By.cssSelector("option[value=\"key1\"]"))
                 .getText(), is("ラベル1"));
         assertThat(driver.findElement(By.cssSelector("option[value=\"key2\"]"))
@@ -731,7 +698,7 @@ public class CodeListTest extends FunctionTestSupport {
 
     @Test
     public void test09_01_form() {
-        driver.findElement(By.linkText("EnumCodeList Test")).click();
+        driver.findElement(By.id("codelist_09_01")).click();
         assertThat(driver.findElement(By.cssSelector("option[value=\"1\"]"))
                 .getText(), is("January"));
         assertThat(driver.findElement(By.cssSelector("option[value=\"2\"]"))
@@ -761,77 +728,77 @@ public class CodeListTest extends FunctionTestSupport {
         assertThat(driver.findElement(By.id("output")).getText(), is("1"));
         driver.findElement(By.id("btnback")).click();
 
-        driver.findElement(By.linkText("EnumCodeList Test")).click();
+        driver.findElement(By.id("codelist_09_01")).click();
         new Select(driver.findElement(By.id("item1"))).selectByVisibleText(
                 "February");
         driver.findElement(By.id("btn1")).click();
         assertThat(driver.findElement(By.id("output")).getText(), is("2"));
         driver.findElement(By.id("btnback")).click();
 
-        driver.findElement(By.linkText("EnumCodeList Test")).click();
+        driver.findElement(By.id("codelist_09_01")).click();
         new Select(driver.findElement(By.id("item1"))).selectByVisibleText(
                 "March");
         driver.findElement(By.id("btn1")).click();
         assertThat(driver.findElement(By.id("output")).getText(), is("3"));
         driver.findElement(By.id("btnback")).click();
 
-        driver.findElement(By.linkText("EnumCodeList Test")).click();
+        driver.findElement(By.id("codelist_09_01")).click();
         new Select(driver.findElement(By.id("item1"))).selectByVisibleText(
                 "April");
         driver.findElement(By.id("btn1")).click();
         assertThat(driver.findElement(By.id("output")).getText(), is("4"));
         driver.findElement(By.id("btnback")).click();
 
-        driver.findElement(By.linkText("EnumCodeList Test")).click();
+        driver.findElement(By.id("codelist_09_01")).click();
         new Select(driver.findElement(By.id("item1"))).selectByVisibleText(
                 "May");
         driver.findElement(By.id("btn1")).click();
         assertThat(driver.findElement(By.id("output")).getText(), is("5"));
         driver.findElement(By.id("btnback")).click();
 
-        driver.findElement(By.linkText("EnumCodeList Test")).click();
+        driver.findElement(By.id("codelist_09_01")).click();
         new Select(driver.findElement(By.id("item1"))).selectByVisibleText(
                 "June");
         driver.findElement(By.id("btn1")).click();
         assertThat(driver.findElement(By.id("output")).getText(), is("6"));
         driver.findElement(By.id("btnback")).click();
 
-        driver.findElement(By.linkText("EnumCodeList Test")).click();
+        driver.findElement(By.id("codelist_09_01")).click();
         new Select(driver.findElement(By.id("item1"))).selectByVisibleText(
                 "July");
         driver.findElement(By.id("btn1")).click();
         assertThat(driver.findElement(By.id("output")).getText(), is("7"));
         driver.findElement(By.id("btnback")).click();
 
-        driver.findElement(By.linkText("EnumCodeList Test")).click();
+        driver.findElement(By.id("codelist_09_01")).click();
         new Select(driver.findElement(By.id("item1"))).selectByVisibleText(
                 "August");
         driver.findElement(By.id("btn1")).click();
         assertThat(driver.findElement(By.id("output")).getText(), is("8"));
         driver.findElement(By.id("btnback")).click();
 
-        driver.findElement(By.linkText("EnumCodeList Test")).click();
+        driver.findElement(By.id("codelist_09_01")).click();
         new Select(driver.findElement(By.id("item1"))).selectByVisibleText(
                 "September");
         driver.findElement(By.id("btn1")).click();
         assertThat(driver.findElement(By.id("output")).getText(), is("9"));
         driver.findElement(By.id("btnback")).click();
 
-        driver.findElement(By.linkText("EnumCodeList Test")).click();
+        driver.findElement(By.id("codelist_09_01")).click();
         new Select(driver.findElement(By.id("item1"))).selectByVisibleText(
                 "October");
         driver.findElement(By.id("btn1")).click();
         assertThat(driver.findElement(By.id("output")).getText(), is("10"));
         driver.findElement(By.id("btnback")).click();
 
-        driver.findElement(By.linkText("EnumCodeList Test")).click();
+        driver.findElement(By.id("codelist_09_01")).click();
         new Select(driver.findElement(By.id("item1"))).selectByVisibleText(
                 "November");
         driver.findElement(By.id("btn1")).click();
         assertThat(driver.findElement(By.id("output")).getText(), is("11"));
         driver.findElement(By.id("btnback")).click();
 
-        driver.findElement(By.linkText("EnumCodeList Test")).click();
+        driver.findElement(By.id("codelist_09_01")).click();
         new Select(driver.findElement(By.id("item1"))).selectByVisibleText(
                 "December");
         driver.findElement(By.id("btn1")).click();

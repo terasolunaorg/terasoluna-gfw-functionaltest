@@ -9,88 +9,94 @@
 <br>
 <table>
   <tr>
-    <td><a href="${pageContext.request.contextPath}/codelist/01_01_form">SimpleCodeList
+    <td><a id="codelist_01_01" href="${pageContext.request.contextPath}/codelist/01_01_form">SimpleCodeList
         Test</a></td>
   </tr>
   <tr>
-    <td><a href="${pageContext.request.contextPath}/codelist/01_02_form">SimpleCodeList
+    <td><a id="codelist_01_02" href="${pageContext.request.contextPath}/codelist/01_02_form">SimpleCodeList
         Test (CodeList is empty)</a></td>
   </tr>
   <tr>
-    <td><a href="${pageContext.request.contextPath}/codelist/02_01_form">
+    <td><a id="codelist_02_01" href="${pageContext.request.contextPath}/codelist/02_01_form">
         NumberRangeCodeList Test (Ascending)</a></td>
   </tr>
   <tr>
-    <td><a href="${pageContext.request.contextPath}/codelist/02_02_form">NumberRangeCodeList
+    <td><a id="codelist_02_02" href="${pageContext.request.contextPath}/codelist/02_02_form">NumberRangeCodeList
         Test (Descending)</a></td>
   </tr>
   <tr>
-    <td><a href="${pageContext.request.contextPath}/codelist/02_03_form">NumberRangeCodeList
+    <td><a id="codelist_02_03" href="${pageContext.request.contextPath}/codelist/02_03_form">NumberRangeCodeList
         Test (Interval specified)</a></td>
   </tr>
   <tr>
-    <td><a href="${pageContext.request.contextPath}/codelist/02_04_form">NumberRangeCodeList
+    <td><a id="codelist_02_04" href="${pageContext.request.contextPath}/codelist/02_04_form">NumberRangeCodeList
         Test (Format specified)</a></td>
   </tr>
   <tr>
-    <td><a href="${pageContext.request.contextPath}/codelist/jdbcCodeListTestReflesh">JdbcCodeList
+    <td><a id="codelist_03_01"
+      href="${pageContext.request.contextPath}/codelist/jdbcCodeListTestReflesh">JdbcCodeList
         Test</a></td>
   </tr>
   <tr>
-    <td><a href="${pageContext.request.contextPath}/codelist/jdbcCodeListTestCodeListIsEmpty">JdbcCodeList
+    <td><a id="codelist_03_02"
+      href="${pageContext.request.contextPath}/codelist/jdbcCodeListTestCodeListIsEmpty">JdbcCodeList
         Test (CodeList is empty)</a></td>
   </tr>
   <tr>
-    <td><a href="${pageContext.request.contextPath}/codelist/jdbcCodeListTestDBError">JdbcCodeList
+    <td><a id="codelist_03_03"
+      href="${pageContext.request.contextPath}/codelist/jdbcCodeListTestDBError">JdbcCodeList
         Test (DB error occurs)</a></td>
   </tr>
   <tr>
-    <td><a href="${pageContext.request.contextPath}/codelist/jdbcCodeListTestReflesh">JdbcCodeList
+    <td><a id="codelist_04_02"
+      href="${pageContext.request.contextPath}/codelist/jdbcCodeListTestReflesh">JdbcCodeList
         Test (Refresh functionality)</a></td>
   </tr>
   <tr>
-    <td><a href="${pageContext.request.contextPath}/codelist/06_01_form">SimpleI18nCodeList
+    <td><a id="codelist_06_01" href="${pageContext.request.contextPath}/codelist/06_01_form">SimpleI18nCodeList
         Test (EN and JP set using rows. Click English)</a></td>
   </tr>
   <tr>
-    <td><a href="${pageContext.request.contextPath}/codelist/06_01_form">SimpleI18nCodeList
+    <td><a id="codelist_06_02" href="${pageContext.request.contextPath}/codelist/06_01_form">SimpleI18nCodeList
         Test (EN and JP set using rows. Click Japanese)</a></td>
   </tr>
   <tr>
-    <td><a href="${pageContext.request.contextPath}/codelist/06_01_form">SimpleI18nCodeList
+    <td><a id="codelist_06_03" href="${pageContext.request.contextPath}/codelist/06_01_form">SimpleI18nCodeList
         Test (EN and JP set using rows. fallbackTo not set. Click French)</a></td>
   </tr>
   <tr>
-    <td><a href="${pageContext.request.contextPath}/codelist/fallbackToEn/06_04_form">SimpleI18nCodeList
+    <td><a id="codelist_06_04"
+      href="${pageContext.request.contextPath}/codelist/fallbackToEn/06_04_form">SimpleI18nCodeList
         Test (EN and JP set using rows. fallbackTo is set to EN. Click French)</a></td>
   </tr>
   <tr>
-    <td><a href="${pageContext.request.contextPath}/codelist/fallbackToFr/06_05_form">SimpleI18nCodeList
+    <td><a id="codelist_06_05"
+      href="${pageContext.request.contextPath}/codelist/fallbackToFr/06_05_form">SimpleI18nCodeList
         Test (EN and JP set using rows. fallbackTo is set to FR. Click Chinese)</a></td>
   </tr>
   <tr>
-    <td><a href="${pageContext.request.contextPath}/codelist/06_06_form">SimpleI18nCodeList
+    <td><a id="codelist_06_06" href="${pageContext.request.contextPath}/codelist/06_06_form">SimpleI18nCodeList
         Test (EN and JP set using rowsByCodeList. Click English)</a></td>
   </tr>
   <tr>
-    <td><a href="${pageContext.request.contextPath}/codelist/06_07_form">SimpleI18nCodeList
+    <td><a id="codelist_06_07" href="${pageContext.request.contextPath}/codelist/06_07_form">SimpleI18nCodeList
         Test (EN and JP set using rowsByCodeList. Click Japanese)</a></td>
   </tr>
   <tr>
-    <td><a href="${pageContext.request.contextPath}/codelist/06_08_form">SimpleI18nCodeList
+    <td><a id="codelist_06_08" href="${pageContext.request.contextPath}/codelist/06_08_form">SimpleI18nCodeList
         Test (EN and JP set using rowsByCodeList. fallbackTo not set. Click French)</a></td>
   </tr>
 
   <tr>
-    <td><a href="${pageContext.request.contextPath}/codelist/06_09_form">SimpleI18nCodeList
+    <td><a id="codelist_06_09" href="${pageContext.request.contextPath}/codelist/06_09_form">SimpleI18nCodeList
         Test (EN and JP set using columns. Click English)</a></td>
   </tr>
   <tr>
-    <td><a href="${pageContext.request.contextPath}/codelist/06_10_form">SimpleI18nCodeList
+    <td><a id="codelist_06_10" href="${pageContext.request.contextPath}/codelist/06_10_form">SimpleI18nCodeList
         Test (EN and JP set using columns. Click Japanese)</a></td>
   </tr>
   <tr>
-    <td><a href="${pageContext.request.contextPath}/codelist/06_11_form">SimpleI18nCodeList
+    <td><a id="codelist_06_11" href="${pageContext.request.contextPath}/codelist/06_11_form">SimpleI18nCodeList
         Test (EN and JP set using columns. fallbackTo not set. Click French)</a></td>
   </tr>
   <tr>
@@ -102,7 +108,8 @@
         Test (codeListPattern is set)</a></td>
   </tr>
   <tr>
-    <td><a href="${pageContext.request.contextPath}/codelist/multiplePattern/07_03_form">CodeListInteceptor
+    <td><a id="codelist_07_03"
+      href="${pageContext.request.contextPath}/codelist/multiplePattern/07_03_form">CodeListInteceptor
         Test (codeListPattern is changed)</a></td>
   </tr>
   <tr>
@@ -154,6 +161,7 @@
         Test (Used as param annotation)</a></td>
   </tr>
   <tr>
-    <td><a href="${pageContext.request.contextPath}/codelist/09_01_form">EnumCodeList Test</a></td>
+    <td><a id="codelist_09_01" href="${pageContext.request.contextPath}/codelist/09_01_form">EnumCodeList
+        Test</a></td>
   </tr>
 </table>

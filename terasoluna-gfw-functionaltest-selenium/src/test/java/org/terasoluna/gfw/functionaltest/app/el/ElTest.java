@@ -270,9 +270,8 @@ public class ElTest extends FunctionTestSupport {
                 .getText(), is(
                         "http://localhost:8080/terasoluna-gfw-functionaltest-web/el/output_05_04?name=tera%261"));
         // inheriting of query Test
-        driver.findElement(By.id("linkUOutput")).findElement(By.linkText(
-                "http://localhost:8080/terasoluna-gfw-functionaltest-web/el/output_05_04?name=tera%261"))
-                .click();
+        driver.navigate().to(applicationContextUrl
+                + "/el/output_05_04?name=tera%261");
     }
 
     @Test(expected = NoSuchElementException.class)
@@ -407,8 +406,8 @@ public class ElTest extends FunctionTestSupport {
         inputFieldAccessor.overrideValue(By.id("criteria.name"), "yamada",
                 driver);
         inputFieldAccessor.overrideValue(By.id("criteria.age"), "20", driver);
-        inputFieldAccessor.overrideValue(By.id("rememberCriteria"), "true",
-                driver);
+        new Select(driver.findElement(By.id("rememberCriteria"))).selectByValue(
+                "true");
 
         driver.findElement(By.id("searchButton")).click();
         driver.findElement(By.id("pagination")).findElement(By.linkText("2"))
@@ -419,8 +418,8 @@ public class ElTest extends FunctionTestSupport {
                 "value"), is("yamada"));
         assertThat(driver.findElement(By.id("criteria.age")).getAttribute(
                 "value"), is("20"));
-        assertThat(driver.findElement(By.id("rememberCriteria")).getAttribute(
-                "value"), is("true"));
+        assertThat(new Select(driver.findElement(By.id("rememberCriteria")))
+                .getFirstSelectedOption().getText(), is("YES"));
     }
 
     @Test
@@ -433,7 +432,7 @@ public class ElTest extends FunctionTestSupport {
         inputFieldAccessor.overrideValue(By.id("criteria1.name"), "tanaka",
                 driver);
         inputFieldAccessor.overrideValue(By.id("criteria1.age"), "50", driver);
-        inputFieldAccessor.overrideValue(By.id("operator"), "AND", driver);
+        new Select(driver.findElement(By.id("operator"))).selectByValue("AND");
 
         driver.findElement(By.id("searchButton")).click();
         driver.findElement(By.id("pagination")).findElement(By.linkText("2"))
@@ -448,8 +447,8 @@ public class ElTest extends FunctionTestSupport {
                 "value"), is("tanaka"));
         assertThat(driver.findElement(By.id("criteria1.age")).getAttribute(
                 "value"), is("50"));
-        assertThat(driver.findElement(By.id("operator")).getAttribute("value"),
-                is("AND"));
+        assertThat(new Select(driver.findElement(By.id("operator")))
+                .getFirstSelectedOption().getText(), is("AND"));
     }
 
     @Test
