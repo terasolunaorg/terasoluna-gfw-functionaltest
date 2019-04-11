@@ -13,26 +13,22 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.terasoluna.gfw.functionaltest.app;
+package org.terasoluna.gfw.functionaltest.app.webdrivers;
 
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxProfile;
+import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.springframework.beans.factory.FactoryBean;
 
-public class FirefoxDriverFactoryBean implements FactoryBean<FirefoxDriver> {
+public class InternetExplorerDriverFactoryBean implements
+                                               FactoryBean<InternetExplorerDriver> {
 
     @Override
-    public FirefoxDriver getObject() {
-        FirefoxProfile profile = new FirefoxProfile();
-        profile.setPreference("browser.startup.homepage_override.mstone",
-                "ignore");
-        profile.setPreference("network.proxy.type", 0);
-        return new FirefoxDriver(profile);
+    public InternetExplorerDriver getObject() {
+        return new InternetExplorerDriver();
     }
 
     @Override
     public Class<?> getObjectType() {
-        return FirefoxDriver.class;
+        return InternetExplorerDriver.class;
     }
 
     @Override
