@@ -56,6 +56,7 @@ public class TransactionTokenFlow1Controller {
         return "transactiontoken/flow1Step3";
     }
 
+    @SuppressWarnings("deprecation")
     @RequestMapping(value = "flow1", method = RequestMethod.POST, params = "intermediateWithFinish")
     @TransactionTokenCheck(type = TransactionTokenType.IN)
     public String flow1Step3_withFinish(
