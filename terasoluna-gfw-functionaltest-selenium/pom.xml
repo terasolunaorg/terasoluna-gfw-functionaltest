@@ -7,7 +7,7 @@
   <parent>
     <groupId>org.terasoluna.gfw.functionaltest</groupId>
     <artifactId>terasoluna-gfw-functionaltest</artifactId>
-    <version>5.5.1-SNAPSHOT</version>
+    <version>5.5.1.RELEASE</version>
     <relativePath>../pom.xml</relativePath>
   </parent>
   <name>TERASOLUNA Server Framework for Java (5.x) - Functionality Test Application - Selenium</name>
