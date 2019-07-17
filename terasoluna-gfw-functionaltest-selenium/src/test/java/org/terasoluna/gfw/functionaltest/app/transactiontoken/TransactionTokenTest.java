@@ -22,9 +22,7 @@ import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
 
-import java.util.Arrays;
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -46,12 +44,6 @@ import org.terasoluna.gfw.functionaltest.app.ScreenCaptureWebDriverEventListener
         "classpath:META-INF/spring/seleniumContext.xml" })
 public class TransactionTokenTest extends FunctionTestSupport {
 
-    private static final Set<String> testCasesOfRebootTarget = new HashSet<String>(Arrays
-            .asList("test03_01_defaultTokenStoreSizeOver",
-                    "test03_02_customTokenStoreSizeOverClassMethodNamespace",
-                    "test03_03_customTokenStoreSizeOverMethodOnlyNamespace",
-                    "test03_04_customTokenStoreSizeOverGlobalNamespace"));
-
     protected EventFiringWebDriver driver;
 
     public TransactionTokenTest() {
@@ -60,9 +52,6 @@ public class TransactionTokenTest extends FunctionTestSupport {
 
     @Before
     public void setUp() {
-        if (testCasesOfRebootTarget.contains(testName.getMethodName())) {
-            quitDefaultWebDriver();
-        }
         bootDefaultWebDriver();
         driver = new EventFiringWebDriver(getDefaultWebDriver());
         driver.register(new ScreenCaptureWebDriverEventListener(screenCapture));
@@ -70,9 +59,7 @@ public class TransactionTokenTest extends FunctionTestSupport {
 
     @After
     public void tearDown() {
-        if (testCasesOfRebootTarget.contains(testName.getMethodName())) {
-            quitDefaultWebDriver();
-        }
+        quitDefaultWebDriver();
     }
 
     @Test
