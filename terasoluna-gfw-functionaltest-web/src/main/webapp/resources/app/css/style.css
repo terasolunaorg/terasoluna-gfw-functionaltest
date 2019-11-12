@@ -282,6 +282,10 @@ padding-left: 0px;
     display: inline;
 }
 
+.pagination li.enable {
+	font-size: large;
+}
+
 .pagination div {
     display: inline-block;
     *display: inline;
