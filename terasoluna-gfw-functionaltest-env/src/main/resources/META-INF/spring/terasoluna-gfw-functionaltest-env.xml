@@ -12,7 +12,7 @@
 
   <bean id="dateFactory" class="org.terasoluna.gfw.common.date.jodatime.DefaultJodaTimeDateFactory" />
 
-  <bean id="realDataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
+  <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
     <property name="driverClassName" value="${database.driverClassName}" />
     <property name="url" value="${database.url}" />
     <property name="username" value="${database.username}" />
@@ -22,10 +22,6 @@
     <property name="maxIdle" value="${cp.maxIdle}" />
     <property name="minIdle" value="${cp.minIdle}" />
     <property name="maxWaitMillis" value="${cp.maxWait}" />
-  </bean>
-
-  <bean id="dataSource" class="net.sf.log4jdbc.Log4jdbcProxyDataSource">
-    <constructor-arg index="0" ref="realDataSource" />
   </bean>
 
   <bean id="integerSeq" class="org.terasoluna.gfw.common.sequencer.JdbcSequencer">
@@ -83,17 +79,13 @@
   </bean>
 
   <!-- Settings for DbAppender of logback. -->
-  <bean id="realDataSourceForLogging" class="org.apache.commons.dbcp2.BasicDataSource"
+  <bean id="dataSourceForLogging" class="org.apache.commons.dbcp2.BasicDataSource"
     destroy-method="close">
     <property name="driverClassName" value="org.h2.Driver" />
     <property name="url" value="jdbc:h2:mem:terasoluna-gfw-functionaltest;DB_CLOSE_DELAY=-1" />
     <property name="username" value="sa" />
     <property name="password" value="" />
     <property name="defaultAutoCommit" value="false" />
-  </bean>
-
-  <bean id="dataSourceForLogging" class="net.sf.log4jdbc.Log4jdbcProxyDataSource">
-    <constructor-arg index="0" ref="realDataSourceForLogging" />
   </bean>
 
   <bean id="dbLogCleaner" class="org.terasoluna.gfw.functionaltest.domain.DBLogCleaner">

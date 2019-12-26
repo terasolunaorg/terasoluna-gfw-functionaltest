@@ -106,10 +106,6 @@
     <level value="debug" />
   </logger>
 
-  <logger name="jdbc.sqltiming">
-    <level value="debug" />
-  </logger>
-
   <logger name="org.springframework.jdbc.datasource">
     <level value="debug" />
   </logger>
