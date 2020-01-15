@@ -596,7 +596,7 @@ public class CodeListTest extends FunctionTestSupport {
         inputFieldAccessor.overrideValue(By.id("item7"), "key5", driver);
         driver.findElement(By.id("btn1")).click();
         assertThat(driver.findElement(By.id("item7.errors")).getText(), is(
-                "This is a custom message notifying that value doesnt exist in sample codelist"));
+                "This is a custom message notifying that value doesn't exist in sample codelist"));
         driver.findElement(By.id("btnback")).click();
     }
 
@@ -606,7 +606,7 @@ public class CodeListTest extends FunctionTestSupport {
         inputFieldAccessor.overrideValue(By.id("item8"), "key5", driver);
         driver.findElement(By.id("btn1")).click();
         assertThat(driver.findElement(By.id("item8.errors")).getText(), is(
-                "This message comes from extended codelist notifying that value doesnt exist in sample codelist"));
+                "This message comes from extended codelist notifying that value doesn't exist in sample codelist"));
         driver.findElement(By.id("btnback")).click();
     }
 
@@ -623,24 +623,24 @@ public class CodeListTest extends FunctionTestSupport {
         inputFieldAccessor.overrideValue(By.id("item9"), "key2", driver);
         driver.findElement(By.id("btn1")).click();
         assertThat(driver.findElement(By.id("item9.errors")).getText(), is(
-                "This is a custom message notifying that value doesnt exist in sample multiple codelist"));
+                "This is a custom message notifying that value doesn't exist in sample multiple codelist"));
 
         // sample codelist error occured
         inputFieldAccessor.overrideValue(By.id("item9"), "key4", driver);
         driver.findElement(By.id("btn1")).click();
         assertThat(driver.findElement(By.id("item9.errors")).getText(), is(
-                "This is a custom message notifying that value doesnt exist in sample codelist"));
+                "This is a custom message notifying that value doesn't exist in sample codelist"));
 
         // sample multiple codelist and sample codelist error occured
         inputFieldAccessor.overrideValue(By.id("item9"), "key6", driver);
         driver.findElement(By.id("btn1")).click();
         assertNotSame(driver.findElement(By.id("item9.errors")).getText()
                 .indexOf(
-                        "This is a custom message notifying that value doesnt exist in sample codelist"),
+                        "This is a custom message notifying that value doesn't exist in sample codelist"),
                 -1);
         assertNotSame(driver.findElement(By.id("item9.errors")).getText()
                 .indexOf(
-                        "This is a custom message notifying that value doesnt exist in sample multiple codelist"),
+                        "This is a custom message notifying that value doesn't exist in sample multiple codelist"),
                 -1);
 
         driver.findElement(By.id("btnback")).click();
