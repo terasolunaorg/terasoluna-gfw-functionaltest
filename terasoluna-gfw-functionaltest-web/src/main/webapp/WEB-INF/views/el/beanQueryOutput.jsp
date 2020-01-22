@@ -9,6 +9,7 @@
 
     <span class="left">Main/Sub</span>
     <form:select path="main">
+      <form:option value="">Unselected</form:option>
       <form:option value="false">NO</form:option>
       <form:option value="true">YES</form:option>
     </form:select>

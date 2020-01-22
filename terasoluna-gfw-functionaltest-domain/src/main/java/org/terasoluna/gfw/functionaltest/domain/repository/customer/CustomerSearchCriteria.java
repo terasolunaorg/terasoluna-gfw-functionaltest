@@ -29,7 +29,7 @@ public class CustomerSearchCriteria implements Serializable {
 
     private List<String> countries;
 
-    private boolean main;
+    private Boolean main;
 
     private int age;
 
@@ -52,11 +52,11 @@ public class CustomerSearchCriteria implements Serializable {
         this.countries = countries;
     }
 
-    public boolean isMain() {
+    public Boolean getMain() {
         return main;
     }
 
-    public void setMain(boolean main) {
+    public void setMain(Boolean main) {
         this.main = main;
     }
 
