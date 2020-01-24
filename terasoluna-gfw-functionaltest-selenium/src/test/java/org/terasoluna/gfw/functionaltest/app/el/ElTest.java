@@ -330,9 +330,25 @@ public class ElTest extends FunctionTestSupport {
                 "JA");
         driver.findElement(By.id("btn-output")).click();
 
-        // output 06_03 Test
+        // output 06_03 first Test
         assertThat(driver.findElement(By.xpath(
                 "//a[contains(@href, '?page=1&size=10&age=10&countries%5B0%5D=JA&dateOfBirth=2000-01-01&main=true&name=hoge')]"))
+                .getText(), is("2"));
+
+        // screen capture
+        screenCapture.save(driver);
+
+        driver.get(applicationContextUrl);
+        driver.findElement(By.id("EL")).click();
+        driver.findElement(By.id("06_03-")).click();
+
+        inputFieldAccessor.overrideValue(By.id("name"), "hoge", driver);
+        new Select(driver.findElement(By.id("main"))).selectByVisibleText("NO");
+        driver.findElement(By.id("btn-output")).click();
+
+        // output 06_03 second Test
+        assertThat(driver.findElement(By.xpath(
+                "//a[contains(@href, '?page=1&size=10&age=0&countries=&_dateOfBirth=&main=false&name=')]"))
                 .getText(), is("2"));
 
         // screen capture
