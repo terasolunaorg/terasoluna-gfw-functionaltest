@@ -11,6 +11,7 @@
     <form:input path="criteria.age" />
     <span>RememberCriteria</span>
     <form:select path="rememberCriteria">
+      <form:option value="">Unselected</form:option>
       <form:option value="false">NO</form:option>
       <form:option value="true">YES</form:option>
     </form:select>

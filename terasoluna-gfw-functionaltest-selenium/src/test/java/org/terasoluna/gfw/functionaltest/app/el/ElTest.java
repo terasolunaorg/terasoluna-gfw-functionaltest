@@ -436,13 +436,44 @@ public class ElTest extends FunctionTestSupport {
         driver.findElement(By.id("pagination")).findElement(By.linkText("2"))
                 .click();
 
-        // output 06_09 Test
+        // output 06_09 Test with nested JavaBean and Boolean of true
         assertThat(driver.findElement(By.id("criteria.name")).getAttribute(
                 "value"), is("yamada"));
         assertThat(driver.findElement(By.id("criteria.age")).getAttribute(
                 "value"), is("20"));
         assertThat(new Select(driver.findElement(By.id("rememberCriteria")))
                 .getFirstSelectedOption().getText(), is("YES"));
+
+        driver.get(applicationContextUrl);
+        driver.findElement(By.id("EL")).click();
+        driver.findElement(By.id("06_09")).click();
+
+        new Select(driver.findElement(By.id("rememberCriteria"))).selectByValue(
+                "false");
+
+        driver.findElement(By.id("searchButton")).click();
+        driver.findElement(By.id("pagination")).findElement(By.linkText("2"))
+                .click();
+
+        // output 06_09 Test with Boolean of false
+        assertThat(new Select(driver.findElement(By.id("rememberCriteria")))
+                .getFirstSelectedOption().getText(), is("NO"));
+
+        driver.get(applicationContextUrl);
+        driver.findElement(By.id("EL")).click();
+        driver.findElement(By.id("06_09")).click();
+
+        new Select(driver.findElement(By.id("rememberCriteria"))).selectByValue(
+                "");
+
+        driver.findElement(By.id("searchButton")).click();
+        driver.findElement(By.id("pagination")).findElement(By.linkText("2"))
+                .click();
+
+        // output 06_09 Test with Boolean of null
+        assertThat(new Select(driver.findElement(By.id("rememberCriteria")))
+                .getFirstSelectedOption().getText(), is("Unselected"));
+
     }
 
     @Test

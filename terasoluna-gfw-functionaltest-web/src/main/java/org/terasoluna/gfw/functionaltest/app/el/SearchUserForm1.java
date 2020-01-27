@@ -18,7 +18,7 @@ package org.terasoluna.gfw.functionaltest.app.el;
 public class SearchUserForm1 {
     private SearchUserCriteriaForm1 criteria;
 
-    private boolean rememberCriteria;
+    private Boolean rememberCriteria;
 
     public SearchUserForm1(SearchUserCriteriaForm1 criteria,
             boolean rememberCriteria) {
@@ -37,11 +37,12 @@ public class SearchUserForm1 {
         this.criteria = criteria;
     }
 
-    public boolean isRememberCriteria() {
+    public Boolean getRememberCriteria() {
         return rememberCriteria;
     }
 
-    public void setRememberCriteria(boolean rememberCriteria) {
+    public void setRememberCriteria(Boolean rememberCriteria) {
         this.rememberCriteria = rememberCriteria;
     }
+
 }
