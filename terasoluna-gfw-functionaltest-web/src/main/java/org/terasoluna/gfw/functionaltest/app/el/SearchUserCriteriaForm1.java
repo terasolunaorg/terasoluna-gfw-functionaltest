@@ -20,9 +20,12 @@ public class SearchUserCriteriaForm1 {
 
     private Integer age;
 
-    public SearchUserCriteriaForm1(String name, Integer age) {
+    private Boolean main;
+
+    public SearchUserCriteriaForm1(String name, Integer age, Boolean main) {
         this.name = name;
         this.age = age;
+        this.setMain(main);
     }
 
     public SearchUserCriteriaForm1() {
@@ -42,5 +45,13 @@ public class SearchUserCriteriaForm1 {
 
     public void setAge(Integer age) {
         this.age = age;
+    }
+
+    public Boolean getMain() {
+        return main;
+    }
+
+    public void setMain(Boolean main) {
+        this.main = main;
     }
 }

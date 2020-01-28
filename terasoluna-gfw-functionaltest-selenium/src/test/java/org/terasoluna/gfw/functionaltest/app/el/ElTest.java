@@ -429,7 +429,7 @@ public class ElTest extends FunctionTestSupport {
         inputFieldAccessor.overrideValue(By.id("criteria.name"), "yamada",
                 driver);
         inputFieldAccessor.overrideValue(By.id("criteria.age"), "20", driver);
-        new Select(driver.findElement(By.id("rememberCriteria"))).selectByValue(
+        new Select(driver.findElement(By.id("criteria.main"))).selectByValue(
                 "true");
 
         driver.findElement(By.id("searchButton")).click();
@@ -441,14 +441,14 @@ public class ElTest extends FunctionTestSupport {
                 "value"), is("yamada"));
         assertThat(driver.findElement(By.id("criteria.age")).getAttribute(
                 "value"), is("20"));
-        assertThat(new Select(driver.findElement(By.id("rememberCriteria")))
+        assertThat(new Select(driver.findElement(By.id("criteria.main")))
                 .getFirstSelectedOption().getText(), is("YES"));
 
         driver.get(applicationContextUrl);
         driver.findElement(By.id("EL")).click();
         driver.findElement(By.id("06_09")).click();
 
-        new Select(driver.findElement(By.id("rememberCriteria"))).selectByValue(
+        new Select(driver.findElement(By.id("criteria.main"))).selectByValue(
                 "false");
 
         driver.findElement(By.id("searchButton")).click();
@@ -456,14 +456,14 @@ public class ElTest extends FunctionTestSupport {
                 .click();
 
         // output 06_09 Test with Boolean of false
-        assertThat(new Select(driver.findElement(By.id("rememberCriteria")))
+        assertThat(new Select(driver.findElement(By.id("criteria.main")))
                 .getFirstSelectedOption().getText(), is("NO"));
 
         driver.get(applicationContextUrl);
         driver.findElement(By.id("EL")).click();
         driver.findElement(By.id("06_09")).click();
 
-        new Select(driver.findElement(By.id("rememberCriteria"))).selectByValue(
+        new Select(driver.findElement(By.id("criteria.main"))).selectByValue(
                 "");
 
         driver.findElement(By.id("searchButton")).click();
@@ -471,7 +471,7 @@ public class ElTest extends FunctionTestSupport {
                 .click();
 
         // output 06_09 Test with Boolean of null
-        assertThat(new Select(driver.findElement(By.id("rememberCriteria")))
+        assertThat(new Select(driver.findElement(By.id("criteria.main")))
                 .getFirstSelectedOption().getText(), is("Unselected"));
 
     }
