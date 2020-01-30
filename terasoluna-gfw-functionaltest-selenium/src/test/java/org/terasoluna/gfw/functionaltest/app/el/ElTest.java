@@ -330,9 +330,25 @@ public class ElTest extends FunctionTestSupport {
                 "JA");
         driver.findElement(By.id("btn-output")).click();
 
-        // output 06_03 Test
+        // output 06_03 first Test
         assertThat(driver.findElement(By.xpath(
                 "//a[contains(@href, '?page=1&size=10&age=10&countries%5B0%5D=JA&dateOfBirth=2000-01-01&main=true&name=hoge')]"))
+                .getText(), is("2"));
+
+        // screen capture
+        screenCapture.save(driver);
+
+        driver.get(applicationContextUrl);
+        driver.findElement(By.id("EL")).click();
+        driver.findElement(By.id("06_03-")).click();
+
+        inputFieldAccessor.overrideValue(By.id("name"), "hoge", driver);
+        new Select(driver.findElement(By.id("main"))).selectByVisibleText("NO");
+        driver.findElement(By.id("btn-output")).click();
+
+        // output 06_03 second Test
+        assertThat(driver.findElement(By.xpath(
+                "//a[contains(@href, '?page=1&size=10&age=0&countries=&_dateOfBirth=&main=false&name=')]"))
                 .getText(), is("2"));
 
         // screen capture
@@ -345,7 +361,7 @@ public class ElTest extends FunctionTestSupport {
 
         // output 06_04 Test
         assertThat(driver.findElement(By.xpath(
-                "//a[contains(@href, '?page=1&size=10&age=0&countries=&_dateOfBirth=&main=false&name=')]"))
+                "//a[contains(@href, '?page=1&size=10&age=0&countries=&_dateOfBirth=&main=&name=')]"))
                 .getText(), is("2"));
 
         // screen capture
@@ -361,7 +377,7 @@ public class ElTest extends FunctionTestSupport {
 
         // output 06_05 Test
         assertThat(driver.findElement(By.xpath(
-                "//a[contains(@href, \"?page=1&size=10&age=0&countries=&_dateOfBirth=&main=false&name=%3Cscript%3Ealert('XSS%20Attack')%3C/script%3E\")]"))
+                "//a[contains(@href, \"?page=1&size=10&age=0&countries=&_dateOfBirth=&main=&name=%3Cscript%3Ealert('XSS%20Attack')%3C/script%3E\")]"))
                 .getText(), is("2"));
 
         // screen capture
@@ -376,7 +392,7 @@ public class ElTest extends FunctionTestSupport {
 
         // output 06_06 Test
         assertThat(driver.findElement(By.xpath(
-                "//a[contains(@href, '?page=1&size=10&age=0&countries=&_dateOfBirth=&main=false&name=%E3%81%82%E3%81%84%E3%81%86%E3%81%88%E3%81%8A')]"))
+                "//a[contains(@href, '?page=1&size=10&age=0&countries=&_dateOfBirth=&main=&name=%E3%81%82%E3%81%84%E3%81%86%E3%81%88%E3%81%8A')]"))
                 .getText(), is("2"));
 
         // screen capture
@@ -402,7 +418,7 @@ public class ElTest extends FunctionTestSupport {
 
         // output 06_08 Test
         assertThat(driver.findElement(By.xpath(
-                "//a[contains(@href, '?page=1&size=10&age=0&countries=&_dateOfBirth=&main=false&name=TEST%5B%5D%23%2B%3D%26TEST')]"))
+                "//a[contains(@href, '?page=1&size=10&age=0&countries=&_dateOfBirth=&main=&name=TEST%5B%5D%23%2B%3D%26TEST')]"))
                 .getText(), is("2"));
     }
 
@@ -413,20 +429,51 @@ public class ElTest extends FunctionTestSupport {
         inputFieldAccessor.overrideValue(By.id("criteria.name"), "yamada",
                 driver);
         inputFieldAccessor.overrideValue(By.id("criteria.age"), "20", driver);
-        new Select(driver.findElement(By.id("rememberCriteria"))).selectByValue(
+        new Select(driver.findElement(By.id("criteria.main"))).selectByValue(
                 "true");
 
         driver.findElement(By.id("searchButton")).click();
         driver.findElement(By.id("pagination")).findElement(By.linkText("2"))
                 .click();
 
-        // output 06_09 Test
+        // output 06_09 Test with nested JavaBean and Boolean of true
         assertThat(driver.findElement(By.id("criteria.name")).getAttribute(
                 "value"), is("yamada"));
         assertThat(driver.findElement(By.id("criteria.age")).getAttribute(
                 "value"), is("20"));
-        assertThat(new Select(driver.findElement(By.id("rememberCriteria")))
+        assertThat(new Select(driver.findElement(By.id("criteria.main")))
                 .getFirstSelectedOption().getText(), is("YES"));
+
+        driver.get(applicationContextUrl);
+        driver.findElement(By.id("EL")).click();
+        driver.findElement(By.id("06_09")).click();
+
+        new Select(driver.findElement(By.id("criteria.main"))).selectByValue(
+                "false");
+
+        driver.findElement(By.id("searchButton")).click();
+        driver.findElement(By.id("pagination")).findElement(By.linkText("2"))
+                .click();
+
+        // output 06_09 Test with Boolean of false
+        assertThat(new Select(driver.findElement(By.id("criteria.main")))
+                .getFirstSelectedOption().getText(), is("NO"));
+
+        driver.get(applicationContextUrl);
+        driver.findElement(By.id("EL")).click();
+        driver.findElement(By.id("06_09")).click();
+
+        new Select(driver.findElement(By.id("criteria.main"))).selectByValue(
+                "");
+
+        driver.findElement(By.id("searchButton")).click();
+        driver.findElement(By.id("pagination")).findElement(By.linkText("2"))
+                .click();
+
+        // output 06_09 Test with Boolean of null
+        assertThat(new Select(driver.findElement(By.id("criteria.main")))
+                .getFirstSelectedOption().getText(), is("Unselected"));
+
     }
 
     @Test

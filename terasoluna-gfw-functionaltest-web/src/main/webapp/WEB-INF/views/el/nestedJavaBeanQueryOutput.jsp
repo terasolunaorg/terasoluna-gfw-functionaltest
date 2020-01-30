@@ -9,6 +9,12 @@
     <form:input path="criteria.name" />
     <span>Age</span>
     <form:input path="criteria.age" />
+    <span>Main/Sub</span>
+    <form:select path="criteria.main">
+      <form:option value="">Unselected</form:option>
+      <form:option value="false">NO</form:option>
+      <form:option value="true">YES</form:option>
+    </form:select>
     <span>RememberCriteria</span>
     <form:select path="rememberCriteria">
       <form:option value="false">NO</form:option>
