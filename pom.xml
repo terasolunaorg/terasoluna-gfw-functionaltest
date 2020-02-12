@@ -235,7 +235,7 @@
     <xml-maven-plugin.version>1.0.1</xml-maven-plugin.version>
     <com.google.code.maven-license-plugin.version>1.4.0</com.google.code.maven-license-plugin.version>
     <!-- == Dependency Versions == -->
-    <postgresql.version>42.2.8</postgresql.version>
+    <postgresql.version>42.2.9</postgresql.version>
     <ojdbc.version>19.3.0.0</ojdbc.version>
     <db2jcc4.version>4.21.29</db2jcc4.version>
     <webdrivermanager.version>3.1.1</webdrivermanager.version>
