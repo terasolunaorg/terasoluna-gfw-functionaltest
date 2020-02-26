@@ -93,26 +93,32 @@
     <level value="info" />
   </logger>
 
+  <logger name="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping">
+    <level value="trace" />
+  </logger>
 
-  <!-- <logger name="org.hibernate.SQL"> -->
-  <!-- <level value="debug" /> -->
-  <!-- </logger> -->
+  <logger name="org.springframework.jdbc.core.JdbcTemplate">
+    <level value="trace" />
+  </logger>
+  <logger name="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+    <level value="debug" />
+  </logger>
 
-  <!-- <logger name="org.hibernate.type.descriptor.sql.BasicBinder"> -->
-  <!-- <level value="trace" /> -->
-  <!-- </logger> -->
+  <logger name="java.sql.Connection">
+    <level value="trace" />
+  </logger>
 
+  <logger name="java.sql.PreparedStatement">
+    <level value="debug" />
+  </logger>
+
+  <logger name="org.hibernate.SQL" additivity="true">
+    <level value="debug" />
+  </logger>
+  <logger name="org.hibernate.type">
+    <level value="trace" />
+  </logger>
   <logger name="org.hibernate.engine.transaction">
-    <level value="debug" />
-  </logger>
-
-  <logger name="org.springframework.jdbc.datasource">
-    <level value="debug" />
-  </logger>
-  <logger name="org.springframework.orm.jpa">
-    <level value="debug" />
-  </logger>
-  <logger name="org.springframework.transaction">
     <level value="debug" />
   </logger>
 
