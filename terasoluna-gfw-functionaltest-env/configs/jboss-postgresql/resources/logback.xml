@@ -104,14 +104,6 @@
     <level value="debug" />
   </logger>
 
-  <logger name="java.sql.Connection">
-    <level value="trace" />
-  </logger>
-
-  <logger name="java.sql.PreparedStatement">
-    <level value="debug" />
-  </logger>
-
   <logger name="org.hibernate.SQL" additivity="true">
     <level value="debug" />
   </logger>
