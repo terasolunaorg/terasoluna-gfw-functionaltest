@@ -36,6 +36,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.terasoluna.gfw.functionaltest.app.FunctionTestSupport;
@@ -45,6 +47,9 @@ import org.terasoluna.gfw.functionaltest.app.ScreenCaptureWebDriverEventListener
 @ContextConfiguration(locations = {
         "classpath:META-INF/spring/seleniumContext.xml" })
 public class TransactionTokenTest extends FunctionTestSupport {
+
+    private static final Logger logger = LoggerFactory.getLogger(
+            FunctionTestSupport.class);
 
     private static final Set<String> testCasesOfRebootTarget = new HashSet<String>(Arrays
             .asList("test03_01_defaultTokenStoreSizeOver",

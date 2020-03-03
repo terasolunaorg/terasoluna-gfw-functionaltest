@@ -39,7 +39,7 @@ import org.terasoluna.gfw.functionaltest.domain.DBLogCleaner;
 
 public class FunctionTestSupport extends ApplicationObjectSupport {
 
-    private static final Logger classLogger = LoggerFactory.getLogger(
+    private static final Logger logger = LoggerFactory.getLogger(
             FunctionTestSupport.class);
 
     protected static WebDriver driver;
@@ -231,7 +231,7 @@ public class FunctionTestSupport extends ApplicationObjectSupport {
             try {
                 webDriver.quit();
             } catch (Throwable t) {
-                classLogger.error("failed quit.", t);
+                logger.error("failed quit.", t);
             }
         }
         webDrivers.clear();
