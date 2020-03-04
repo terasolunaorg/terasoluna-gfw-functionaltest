@@ -31,7 +31,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Component
 public class DBLogCleaner {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(
+    private static final Logger logger = LoggerFactory.getLogger(
             DBLogCleaner.class);
 
     private long savedPeriodMinutes = TimeUnit.MINUTES.toHours(24);
@@ -59,11 +59,11 @@ public class DBLogCleaner {
 
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public void cleanupAll() {
-        LOGGER.info("Begin cleanupAll.");
+        logger.info("Begin cleanupAll.");
 
         cleanup(0L);
 
-        LOGGER.info("Finished cleanupAll.");
+        logger.info("Finished cleanupAll.");
     }
 
     private int cleanup(long savedPeriodMinutes) {
@@ -71,7 +71,7 @@ public class DBLogCleaner {
         Date cutoffDate = new Date(System.currentTimeMillis()
                 - (TimeUnit.MINUTES.toMillis(savedPeriodMinutes)));
 
-        LOGGER.info("Begin cleanup. cutoffDate is '{}'.", cutoffDate);
+        logger.info("Begin cleanup. cutoffDate is '{}'.", cutoffDate);
 
         // decide max event id of unnecessary log.
         MapSqlParameterSource queryParameters = new MapSqlParameterSource();
@@ -94,10 +94,10 @@ public class DBLogCleaner {
             deletedCount = namedParameterJdbcTemplate.update(
                     "DELETE FROM logging_event WHERE event_id <= :eventId",
                     deleteParameters);
-            LOGGER.info("Finished cleanup. Deleted log count is '{}'.",
+            logger.info("Finished cleanup. Deleted log count is '{}'.",
                     deletedCount);
         } else {
-            LOGGER.info("Finished cleanup. Not exists target log.");
+            logger.info("Finished cleanup. Not exists target log.");
         }
         return deletedCount;
     }
