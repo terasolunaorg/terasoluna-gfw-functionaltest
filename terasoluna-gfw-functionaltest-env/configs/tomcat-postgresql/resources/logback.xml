@@ -61,6 +61,9 @@
   <logger name="org.terasoluna.gfw.functionaltest">
     <level value="debug" />
   </logger>
+  <logger name="org.terasoluna.gfw.functionaltest.domain.repository">
+    <level value="trace" />
+  </logger>
 
   <!-- TERASOLUNA -->
   <logger name="org.terasoluna.gfw">
