@@ -17,11 +17,15 @@ package org.terasoluna.gfw.functionaltest.app.redirect;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -32,6 +36,9 @@ import org.terasoluna.gfw.functionaltest.app.FunctionTestSupport;
 @ContextConfiguration(locations = {
         "classpath:META-INF/spring/seleniumContext.xml" })
 public class RedirectTest extends FunctionTestSupport {
+
+    private static final Logger logger = LoggerFactory.getLogger(
+            FunctionTestSupport.class);
 
     @Value("${app.redirect.allowed.externalUrl}")
     String redirectionAllowedExternalUrl;
@@ -91,6 +98,15 @@ public class RedirectTest extends FunctionTestSupport {
     @Test
     public void test01_03_redirectToExternalLink() {
 
+        // The redirected page differs depending on the web browser.
+        // This test support Firefox only.
+        // Details, see https://github.com/terasolunaorg/terasoluna-gfw-functionaltest/issues/855
+        if (!(driver instanceof FirefoxDriver)) {
+            logger.warn(testName.getMethodName()
+                    + " is not support excepting Firefox.");
+            return;
+        }
+
         ApServerName apServerName = webDriverOperations.getApServerName();
 
         driver.findElement(By.id("listWithExternalPath")).click();
@@ -108,20 +124,50 @@ public class RedirectTest extends FunctionTestSupport {
 
         driver.findElement(By.id("btn1")).click();
 
-        // Unlike other application servers, WebSphere Liberty Profile & WebSphere traditional wraps an unexpected exception of
-        // ServletException.
-        // So the expected error page is different.
-        String expectedErrorMessage;
-        if (apServerName == ApServerName.WEBSPHERELP
-                || apServerName == ApServerName.WEBSPHERETR) {
-            expectedErrorMessage = "System Error...";
+        // check include "/terasoluna-gfw-functionaltest-web" in URL.
+        assertTrue(driver.getCurrentUrl().contains(
+                "/terasoluna-gfw-functionaltest-web"));
+
+        // Unlike other application servers, in Tomcat, the Location of the response header is empty when sendRedirect ("").
+        // So the expected redirected page is different.
+        // Details, see https://github.com/terasolunaorg/terasoluna-gfw-functionaltest/issues/855
+        String expectedMessage;
+        if (apServerName == ApServerName.TOMCAT) {
+            expectedMessage = "Redirect";
         } else {
-            expectedErrorMessage = "Page Not Found";
+            expectedMessage = "Welcome!";
         }
 
-        // confirms that 404 error occurred after login transition
+        // confirms that redirect to application internal page after login transition.
         assertThat(driver.findElement(By.xpath("/html/body/div/h2")).getText(),
-                is(expectedErrorMessage));
+                is(expectedMessage));
+
+        driver.get(getPackageRootUrl());
+
+        driver.findElement(By.id("listWithExternalPathWithContextPath"))
+                .click();
+        driver.findElement(By.id("btn1")).click();
+
+        inputFieldAccessor.overrideValue(By.id("username"), "user1", driver);
+        inputFieldAccessor.overrideValue(By.id("password"), "user1", driver);
+
+        // confirms that login page contains redirectTo hidden tag with external link with ContextPath
+        assertThat(getRedirectValue(), is(
+                "http://www.google.com/terasoluna-gfw-functionaltest-web/redirect/externalPathWithContextPath"));
+
+        // screen capture
+        screenCapture.save(driver);
+
+        driver.findElement(By.id("btn1")).click();
+
+        // check include "/terasoluna-gfw-functionaltest-web" in URL.
+        assertTrue(driver.getCurrentUrl().contains(
+                "/terasoluna-gfw-functionaltest-web"));
+
+        // confirms that redirect to application internal page after login transition.
+        assertThat(driver.findElement(By.xpath("/html/body/div/h2")).getText(),
+                is("Redirect (externalPathWithContextPath)"));
+
     }
 
     @Test
