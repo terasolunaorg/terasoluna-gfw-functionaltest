@@ -17,7 +17,6 @@ package org.terasoluna.gfw.functionaltest.app.redirect;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -120,7 +119,7 @@ public class RedirectTest extends FunctionTestSupport {
         }
 
         // check URL.
-        assertTrue(driver.getCurrentUrl().contains(expectedURL));
+        assertThat(driver.getCurrentUrl(), is(expectedURL));
 
         driver.get(getPackageRootUrl());
 
@@ -141,7 +140,7 @@ public class RedirectTest extends FunctionTestSupport {
         driver.findElement(By.id("btn1")).click();
 
         // check URL.
-        assertTrue(driver.getCurrentUrl().contains(applicationContextUrl
+        assertThat(driver.getCurrentUrl(), is(applicationContextUrl
                 + "/redirect/externalPathWithContextPath"));
 
     }
