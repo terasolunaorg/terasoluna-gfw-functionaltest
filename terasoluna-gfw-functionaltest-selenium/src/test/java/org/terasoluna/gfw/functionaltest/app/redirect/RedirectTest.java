@@ -23,9 +23,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -36,9 +33,6 @@ import org.terasoluna.gfw.functionaltest.app.FunctionTestSupport;
 @ContextConfiguration(locations = {
         "classpath:META-INF/spring/seleniumContext.xml" })
 public class RedirectTest extends FunctionTestSupport {
-
-    private static final Logger logger = LoggerFactory.getLogger(
-            FunctionTestSupport.class);
 
     @Value("${app.redirect.allowed.externalUrl}")
     String redirectionAllowedExternalUrl;
@@ -98,15 +92,6 @@ public class RedirectTest extends FunctionTestSupport {
     @Test
     public void test01_03_redirectToExternalLink() {
 
-        // The redirected page differs depending on the web browser.
-        // This test support Firefox only.
-        // Details, see https://github.com/terasolunaorg/terasoluna-gfw-functionaltest/issues/855
-        if (!(driver instanceof FirefoxDriver)) {
-            logger.warn(testName.getMethodName()
-                    + " is not support excepting Firefox.");
-            return;
-        }
-
         ApServerName apServerName = webDriverOperations.getApServerName();
 
         driver.findElement(By.id("listWithExternalPath")).click();
@@ -124,23 +109,18 @@ public class RedirectTest extends FunctionTestSupport {
 
         driver.findElement(By.id("btn1")).click();
 
-        // check include "/terasoluna-gfw-functionaltest-web" in URL.
-        assertTrue(driver.getCurrentUrl().contains(
-                "/terasoluna-gfw-functionaltest-web"));
-
         // Unlike other application servers, in Tomcat, the Location of the response header is empty when sendRedirect ("").
-        // So the expected redirected page is different.
+        // So the expected redirected URL is different.
         // Details, see https://github.com/terasolunaorg/terasoluna-gfw-functionaltest/issues/855
-        String expectedMessage;
+        String expectedURL;
         if (apServerName == ApServerName.TOMCAT) {
-            expectedMessage = "Redirect";
+            expectedURL = applicationContextUrl + "/login";
         } else {
-            expectedMessage = "Welcome!";
+            expectedURL = applicationContextUrl + "/";
         }
 
-        // confirms that redirect to application internal page after login transition.
-        assertThat(driver.findElement(By.xpath("/html/body/div/h2")).getText(),
-                is(expectedMessage));
+        // check URL.
+        assertTrue(driver.getCurrentUrl().contains(expectedURL));
 
         driver.get(getPackageRootUrl());
 
@@ -160,13 +140,9 @@ public class RedirectTest extends FunctionTestSupport {
 
         driver.findElement(By.id("btn1")).click();
 
-        // check include "/terasoluna-gfw-functionaltest-web" in URL.
-        assertTrue(driver.getCurrentUrl().contains(
-                "/terasoluna-gfw-functionaltest-web"));
-
-        // confirms that redirect to application internal page after login transition.
-        assertThat(driver.findElement(By.xpath("/html/body/div/h2")).getText(),
-                is("Redirect (externalPathWithContextPath)"));
+        // check URL.
+        assertTrue(driver.getCurrentUrl().contains(applicationContextUrl
+                + "/redirect/externalPathWithContextPath"));
 
     }
 
