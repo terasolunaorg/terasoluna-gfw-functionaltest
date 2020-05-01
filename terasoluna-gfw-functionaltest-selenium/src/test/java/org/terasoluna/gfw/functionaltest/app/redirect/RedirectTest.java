@@ -17,6 +17,7 @@ package org.terasoluna.gfw.functionaltest.app.redirect;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
+import static org.openqa.selenium.support.ui.ExpectedConditions.urlToBe;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -118,6 +119,8 @@ public class RedirectTest extends FunctionTestSupport {
             expectedURL = applicationContextUrl + "/";
         }
 
+        urlToBe(expectedURL);
+
         // check URL.
         assertThat(driver.getCurrentUrl(), is(expectedURL));
 
@@ -139,9 +142,13 @@ public class RedirectTest extends FunctionTestSupport {
 
         driver.findElement(By.id("btn1")).click();
 
+        String expectedURLWithContextPath = applicationContextUrl
+                + "/redirect/externalPathWithContextPath";
+
+        urlToBe(expectedURLWithContextPath);
+
         // check URL.
-        assertThat(driver.getCurrentUrl(), is(applicationContextUrl
-                + "/redirect/externalPathWithContextPath"));
+        assertThat(driver.getCurrentUrl(), is(expectedURLWithContextPath));
 
     }
 
