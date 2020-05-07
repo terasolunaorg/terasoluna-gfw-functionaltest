@@ -122,9 +122,6 @@ public class RedirectTest extends FunctionTestSupport {
         webDriverOperations.waitForDisplayed(ExpectedConditions.urlToBe(
                 expectedURL));
 
-        // check URL.
-        assertThat(driver.getCurrentUrl(), is(expectedURL));
-
         driver.get(getPackageRootUrl());
 
         driver.findElement(By.id("listWithExternalPathWithContextPath"))
@@ -143,14 +140,9 @@ public class RedirectTest extends FunctionTestSupport {
 
         driver.findElement(By.id("btn1")).click();
 
-        String expectedURLWithContextPath = applicationContextUrl
-                + "/redirect/externalPathWithContextPath";
-
         webDriverOperations.waitForDisplayed(ExpectedConditions.urlToBe(
-                expectedURLWithContextPath));
-
-        // check URL.
-        assertThat(driver.getCurrentUrl(), is(expectedURLWithContextPath));
+                applicationContextUrl
+                        + "/redirect/externalPathWithContextPath"));
 
     }
 
