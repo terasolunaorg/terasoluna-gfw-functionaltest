@@ -119,7 +119,7 @@ public class RedirectTest extends FunctionTestSupport {
             expectedURL = applicationContextUrl + "/";
         }
 
-        webDriverOperations.waitForDisplayed(ExpectedConditions.urlToBe(
+        webDriverOperations.getWebDriverWait().until(ExpectedConditions.urlToBe(
                 expectedURL));
 
         // Test the behavior when the redirected URL is an external URL
@@ -142,7 +142,7 @@ public class RedirectTest extends FunctionTestSupport {
 
         driver.findElement(By.id("btn1")).click();
 
-        webDriverOperations.waitForDisplayed(ExpectedConditions.urlToBe(
+        webDriverOperations.getWebDriverWait().until(ExpectedConditions.urlToBe(
                 applicationContextUrl
                         + "/redirect/externalPathWithContextPath"));
 

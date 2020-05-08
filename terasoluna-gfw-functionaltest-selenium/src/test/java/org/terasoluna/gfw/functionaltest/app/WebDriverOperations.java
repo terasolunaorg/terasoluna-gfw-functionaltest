@@ -20,7 +20,6 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,10 +34,15 @@ public class WebDriverOperations {
 
     protected final WebDriver webDriver;
 
+    protected final WebDriverWait webDriverWait;
+
     protected long defaultTimeoutSecForImplicitlyWait = 5;
 
-    public WebDriverOperations(WebDriver webDriver) {
+    public WebDriverOperations(WebDriver webDriver,
+            long defaultTimeoutSecForImplicitlyWait) {
         this.webDriver = webDriver;
+        this.webDriverWait = new WebDriverWait(webDriver, defaultTimeoutSecForImplicitlyWait);
+        setDefaultTimeoutForImplicitlyWait(defaultTimeoutSecForImplicitlyWait);
     }
 
     /**
@@ -67,15 +71,6 @@ public class WebDriverOperations {
             setDefaultTimeoutForImplicitlyWait();
         }
         return existsElement;
-    }
-
-    /**
-     * Wait until the specified display conditions are met.
-     * @param expectedCondition display condition
-     */
-    public void waitForDisplayed(ExpectedCondition<?> expectedCondition) {
-        WebDriverWait wait = new WebDriverWait(webDriver, defaultTimeoutSecForImplicitlyWait);
-        wait.until(expectedCondition);
     }
 
     /**
@@ -116,5 +111,13 @@ public class WebDriverOperations {
      */
     public String getApServerVersion() {
         return webDriver.findElement(By.id("apServerVersion")).getText();
+    }
+
+    /**
+     * Get WebDriverWait.
+     * @return WebDriverWait
+     */
+    public WebDriverWait getWebDriverWait() {
+        return webDriverWait;
     }
 }
