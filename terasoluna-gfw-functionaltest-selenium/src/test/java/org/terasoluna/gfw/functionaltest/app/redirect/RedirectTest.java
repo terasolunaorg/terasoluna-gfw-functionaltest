@@ -122,6 +122,8 @@ public class RedirectTest extends FunctionTestSupport {
         webDriverOperations.waitForDisplayed(ExpectedConditions.urlToBe(
                 expectedURL));
 
+        // Test the behavior when the redirected URL is an external URL
+        // and includes the context path(terasoluna-gfw-functionaltest-web) of the application.
         driver.get(getPackageRootUrl());
 
         driver.findElement(By.id("listWithExternalPathWithContextPath"))
