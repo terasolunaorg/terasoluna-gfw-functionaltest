@@ -94,6 +94,8 @@ public class RedirectTest extends FunctionTestSupport {
 
         ApServerName apServerName = webDriverOperations.getApServerName();
 
+        // Test the behavior when the redirected URL is an external URL
+        // and not include the context path(terasoluna-gfw-functionaltest-web) of the application.
         driver.findElement(By.id("listWithExternalPath")).click();
         driver.findElement(By.id("btn1")).click();
 
