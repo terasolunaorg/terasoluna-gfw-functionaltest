@@ -30,6 +30,7 @@ import org.junit.rules.TestWatcher;
 import org.junit.runner.Description;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -61,6 +62,8 @@ public class FunctionTestSupport extends ApplicationObjectSupport {
     protected String evidenceBaseDirectory;
 
     protected WebDriverOperations webDriverOperations;
+
+    protected WebDriverWait webDriverWait;
 
     @Inject
     protected ScreenCapture screenCapture;
@@ -192,6 +195,7 @@ public class FunctionTestSupport extends ApplicationObjectSupport {
         this.webDriverOperations = new WebDriverOperations(driver);
         this.webDriverOperations.setDefaultTimeoutForImplicitlyWait(
                 defaultTimeoutSecForImplicitlyWait);
+        this.webDriverWait = new WebDriverWait(driver, defaultTimeoutSecForImplicitlyWait);
     }
 
     private WebDriver newWebDriver() {

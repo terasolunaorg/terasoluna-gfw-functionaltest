@@ -76,6 +76,12 @@ public class RedirectController {
         return "redirect/listWithExternalPath";
     }
 
+    @RequestMapping(value = "listWithExternalPathWithContextPath", method = RequestMethod.GET)
+    public String listWithExternalPathWithContextPath(Model model) {
+        model.addAttribute("users", redirectService.findUserInfo());
+        return "redirect/listWithExternalPathWithContextPath";
+    }
+
     @RequestMapping(value = "listWithGoTo", method = RequestMethod.GET)
     public String listWithGoTo(Model model) {
         model.addAttribute("users", redirectService.findUserInfo());

@@ -22,6 +22,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -93,6 +94,8 @@ public class RedirectTest extends FunctionTestSupport {
 
         ApServerName apServerName = webDriverOperations.getApServerName();
 
+        // Test the behavior when the redirected URL is an external URL
+        // and not include the context path(terasoluna-gfw-functionaltest-web) of the application.
         driver.findElement(By.id("listWithExternalPath")).click();
         driver.findElement(By.id("btn1")).click();
 
@@ -108,20 +111,41 @@ public class RedirectTest extends FunctionTestSupport {
 
         driver.findElement(By.id("btn1")).click();
 
-        // Unlike other application servers, WebSphere Liberty Profile & WebSphere traditional wraps an unexpected exception of
-        // ServletException.
-        // So the expected error page is different.
-        String expectedErrorMessage;
-        if (apServerName == ApServerName.WEBSPHERELP
-                || apServerName == ApServerName.WEBSPHERETR) {
-            expectedErrorMessage = "System Error...";
+        // Unlike other application servers, in Tomcat, the Location of the response header is empty when sendRedirect ("").
+        // So the expected redirected URL is different.
+        // Details, see https://github.com/terasolunaorg/terasoluna-gfw-functionaltest/issues/855
+        String expectedURL;
+        if (apServerName == ApServerName.TOMCAT) {
+            expectedURL = applicationContextUrl + "/login";
         } else {
-            expectedErrorMessage = "Page Not Found";
+            expectedURL = applicationContextUrl + "/";
         }
 
-        // confirms that 404 error occurred after login transition
-        assertThat(driver.findElement(By.xpath("/html/body/div/h2")).getText(),
-                is(expectedErrorMessage));
+        webDriverWait.until(ExpectedConditions.urlToBe(expectedURL));
+
+        // Test the behavior when the redirected URL is an external URL
+        // and includes the context path(terasoluna-gfw-functionaltest-web) of the application.
+        driver.get(getPackageRootUrl());
+
+        driver.findElement(By.id("listWithExternalPathWithContextPath"))
+                .click();
+        driver.findElement(By.id("btn1")).click();
+
+        inputFieldAccessor.overrideValue(By.id("username"), "user1", driver);
+        inputFieldAccessor.overrideValue(By.id("password"), "user1", driver);
+
+        // confirms that login page contains redirectTo hidden tag with external link with ContextPath
+        assertThat(getRedirectValue(), is(
+                "http://www.google.com/terasoluna-gfw-functionaltest-web/redirect/externalPathWithContextPath"));
+
+        // screen capture
+        screenCapture.save(driver);
+
+        driver.findElement(By.id("btn1")).click();
+
+        webDriverWait.until(ExpectedConditions.urlToBe(applicationContextUrl
+                + "/redirect/externalPathWithContextPath"));
+
     }
 
     @Test

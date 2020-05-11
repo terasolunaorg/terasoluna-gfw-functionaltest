@@ -17,6 +17,11 @@
         contains external link</a></td>
   </tr>
   <tr>
+    <td><a id="listWithExternalPathWithContextPath"
+      href="${pageContext.request.contextPath}/redirect/listWithExternalPathWithContextPath">redirectTo
+        element contains external link with ContextPath</a></td>
+  </tr>
+  <tr>
     <td><a id="listWithGoTo" href="${pageContext.request.contextPath}/redirect/listWithGoTo">targetUrlParameter
         attribute is changed to goTo</a></td>
   </tr>
