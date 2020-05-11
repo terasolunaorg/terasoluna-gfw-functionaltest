@@ -45,9 +45,11 @@ public class FunctionTestSupport extends ApplicationObjectSupport {
 
     protected static WebDriver driver;
 
-    protected WebDriverWait webDriverWait;
-
     private static final Set<WebDriver> webDrivers = new HashSet<WebDriver>();
+
+    protected WebDriverOperations webDriverOperations;
+
+    protected WebDriverWait webDriverWait;
 
     protected static WebDriverType driverType;
 
@@ -62,8 +64,6 @@ public class FunctionTestSupport extends ApplicationObjectSupport {
 
     @Value("${selenium.evidenceBaseDirectory}")
     protected String evidenceBaseDirectory;
-
-    protected WebDriverOperations webDriverOperations;
 
     @Inject
     protected ScreenCapture screenCapture;
