@@ -15,19 +15,30 @@
  */
 package org.terasoluna.gfw.functionaltest.app.webdrivers;
 
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 
-/**
- * Supported {@link WebDriver} types.
- */
-public enum WebDriverType {
-    FIREFOX, CHROME, EDGE, HTMLUNIT;
+import io.github.bonigarcia.wdm.WebDriverManager;
 
-    /**
-     * The default {@link WebDriver} type.
-     * @return {@link #FIREFOX}
-     */
-    public static WebDriverType DEFAULT() {
-        return FIREFOX;
+public class EdgeDriverFactoryBean extends
+                                   WebDriverManagerFactoryBean<EdgeDriver> {
+
+    @Override
+    public EdgeDriver getObject() {
+        if (System.getenv("webdriver.edge.driver") == null) {
+            WebDriverManager.edgedriver().setup();
+        }
+
+        return new EdgeDriver();
     }
+
+    @Override
+    public Class<?> getObjectType() {
+        return EdgeDriver.class;
+    }
+
+    @Override
+    public boolean isSingleton() {
+        return false;
+    }
+
 }

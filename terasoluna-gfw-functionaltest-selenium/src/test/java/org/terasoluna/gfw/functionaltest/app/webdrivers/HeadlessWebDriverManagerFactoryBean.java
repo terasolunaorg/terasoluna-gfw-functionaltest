@@ -17,17 +17,14 @@ package org.terasoluna.gfw.functionaltest.app.webdrivers;
 
 import org.openqa.selenium.WebDriver;
 
-/**
- * Supported {@link WebDriver} types.
- */
-public enum WebDriverType {
-    FIREFOX, CHROME, EDGE, HTMLUNIT;
+public abstract class HeadlessWebDriverManagerFactoryBean<T extends WebDriver>
+                                                         extends
+                                                         WebDriverManagerFactoryBean<T> {
 
-    /**
-     * The default {@link WebDriver} type.
-     * @return {@link #FIREFOX}
-     */
-    public static WebDriverType DEFAULT() {
-        return FIREFOX;
+    protected boolean headless;
+
+    public void setHeadless(boolean headless) {
+        this.headless = headless;
     }
+
 }

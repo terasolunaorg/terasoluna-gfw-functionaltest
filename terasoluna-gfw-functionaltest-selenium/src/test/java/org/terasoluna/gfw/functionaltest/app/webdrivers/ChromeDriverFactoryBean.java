@@ -16,11 +16,12 @@
 package org.terasoluna.gfw.functionaltest.app.webdrivers;
 
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class ChromeDriverFactoryBean extends
-                                     WebDriverManagerFactoryBean<ChromeDriver> {
+                                     HeadlessWebDriverManagerFactoryBean<ChromeDriver> {
 
     @Override
     public ChromeDriver getObject() {
@@ -28,6 +29,11 @@ public class ChromeDriverFactoryBean extends
             WebDriverManager.chromedriver().setup();
         }
 
+        if (headless) {
+            ChromeOptions options = new ChromeOptions();
+            options.setHeadless(headless);
+            return new ChromeDriver(options);
+        }
         return new ChromeDriver();
     }
 
