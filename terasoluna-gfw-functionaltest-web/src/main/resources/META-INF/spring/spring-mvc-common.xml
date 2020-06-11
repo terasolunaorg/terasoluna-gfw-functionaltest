@@ -22,6 +22,8 @@
 
   <context:component-scan base-package="org.terasoluna.gfw.functionaltest.app" />
 
+  <mvc:view-controller path="/" view-name="welcome/index" />
+
   <mvc:view-controller path="redirect/withgoto/loginWithGoTo" view-name="redirect/withgoto/loginWithGoTo" />
 
   <mvc:view-controller path="redirect/withwhitelist/loginWithWhiteList"

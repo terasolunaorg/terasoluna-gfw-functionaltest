@@ -38,9 +38,6 @@ public class Todo implements Serializable {
     @Column(name = "todo_title")
     private String todoTitle;
 
-    public Todo() {
-    }
-
     public boolean isNew(Todo e) {
         return e.getId() == null;
     }
