@@ -106,8 +106,7 @@ public class ElController {
         return "el/linkOutput";
     }
 
-    @RequestMapping(value = "5_4", method = { RequestMethod.GET,
-            RequestMethod.POST })
+    @RequestMapping(value = "5_4", method = RequestMethod.GET)
     public String urlEncodeLinkString() {
         return "el/linkUOutput";
     }
