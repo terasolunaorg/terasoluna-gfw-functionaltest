@@ -31,7 +31,7 @@ public class TraceLoggingInterceptorServiceImpl implements
         try {
             Thread.sleep(millis);
         } catch (InterruptedException e) {
-            logger.warn(e.getMessage());
+            logger.trace(e.getMessage());
             Thread.currentThread().interrupt();
         }
     }
