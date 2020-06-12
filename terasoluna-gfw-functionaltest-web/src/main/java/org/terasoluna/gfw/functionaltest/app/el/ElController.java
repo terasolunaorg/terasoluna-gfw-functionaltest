@@ -119,7 +119,8 @@ public class ElController {
         return "el/linkOutput";
     }
 
-    @RequestMapping(value = "output_05_04")
+    @RequestMapping(value = "output_05_04", method = { RequestMethod.GET,
+            RequestMethod.POST })
     public String urlULink_InputDatas(String URLPath, String outputQueryParam,
             Model model) {
         model.addAttribute("URLPath", URLPath);

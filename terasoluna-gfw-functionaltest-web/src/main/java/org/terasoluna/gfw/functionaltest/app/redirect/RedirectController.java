@@ -53,7 +53,8 @@ public class RedirectController {
         return new DetailForm();
     }
 
-    @RequestMapping(value = "login")
+    @RequestMapping(value = "login", method = { RequestMethod.GET,
+            RequestMethod.POST })
     public String viewLoginForm() {
         return "redirect/login";
     }

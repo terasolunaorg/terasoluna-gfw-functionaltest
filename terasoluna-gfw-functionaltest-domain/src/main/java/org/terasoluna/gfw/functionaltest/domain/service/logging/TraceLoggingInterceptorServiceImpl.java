@@ -15,18 +15,24 @@
  */
 package org.terasoluna.gfw.functionaltest.domain.service.logging;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 @Service
 public class TraceLoggingInterceptorServiceImpl implements
                                                 TraceLoggingInterceptorService {
 
+    private static final Logger logger = LoggerFactory.getLogger(
+            TraceLoggingInterceptorServiceImpl.class);
+
     @Override
     public void sleep(long millis) {
         try {
             Thread.sleep(millis);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            logger.trace(e.getMessage());
+            Thread.currentThread().interrupt();
         }
     }
 

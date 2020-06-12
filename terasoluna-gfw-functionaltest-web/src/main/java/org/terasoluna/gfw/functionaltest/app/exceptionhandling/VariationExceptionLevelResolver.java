@@ -22,9 +22,6 @@ import org.terasoluna.gfw.functionaltest.domain.exception.BusinessTestException;
 
 public class VariationExceptionLevelResolver implements ExceptionLevelResolver {
 
-    public VariationExceptionLevelResolver() {
-    }
-
     public ExceptionLevel resolveExceptionLevel(Exception ex) {
         BusinessTestException we = (BusinessTestException) ex;
         String exceptionCode = we.getResultMessages().getList().get(0)
