@@ -88,12 +88,12 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
 
         driver.findElement(By.id("useCaseControllerHandling_02_01")).click();
 
+        // Some browsers may or may not display the screen.
+
         long retryTimes = 1L;
         if (driverType == WebDriverType.HTMLUNIT) {
-            // when HTTP Status 100 (Continue), the screen is not displayed and retry 4 times.
+            // HtmlUnit retry 4 times.
             retryTimes = 4L;
-        } else {
-            assertThat(driver.getTitle(), is("terasoluna-gfw-functionaltest"));
         }
 
         assertThat(dbLogProvider.countContainsMessageAndLevelsAndLogger(

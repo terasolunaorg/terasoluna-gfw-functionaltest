@@ -34,7 +34,7 @@ public abstract class WebDriverManagerFactoryBean<T extends WebDriver>
     @Override
     public void afterPropertiesSet() throws Exception {
         if (propertyFileLocation != null) {
-            WebDriverManager.config().setProperties(propertyFileLocation);
+            WebDriverManager.globalConfig().setProperties(propertyFileLocation);
         }
     }
 
