@@ -4,8 +4,15 @@ jdk:
   - openjdk8
   - openjdk11
 addons:
-  postgresql: "9.4"
-  firefox: "60.3.0esr"
+  postgresql: "11"
+  apt:
+    packages:
+      - postgresql-11
+      - postgresql-client-11
+  firefox: "68.2.0esr"
+env:
+  global:
+  - PGPORT=5432
 cache:
   directories:
     - $HOME/.m2
@@ -23,6 +30,8 @@ install:
   - popd
 
 before_script:
+  - sudo sed -i 's/port = 5433/port = 5432/' /etc/postgresql/11/main/postgresql.conf
+  - sudo service postgresql restart
   - createdb terasoluna-gfw-functionaltest --locale=C --encoding=UTF8 --template=template0
   - mvn -B dependency:copy -Dartifact=org.codehaus.cargo:cargo-daemon-webapp:${CARGO_DAEMON_WEBAPP_VERSION}:war -DoutputDirectory=./target/.
   - java -jar ./target/cargo-daemon-webapp-${CARGO_DAEMON_WEBAPP_VERSION}.war &
