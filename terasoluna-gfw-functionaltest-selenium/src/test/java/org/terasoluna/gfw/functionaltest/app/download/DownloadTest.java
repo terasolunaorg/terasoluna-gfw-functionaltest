@@ -18,9 +18,9 @@ package org.terasoluna.gfw.functionaltest.app.download;
 import java.io.IOException;
 
 import javax.inject.Inject;
-import static org.hamcrest.CoreMatchers.*;
-import static org.hamcrest.text.IsEqualIgnoringCase.*;
-import static org.junit.Assert.*;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.text.IsEqualIgnoringCase.equalToIgnoringCase;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.core.io.ClassPathResource;

@@ -16,8 +16,8 @@
 package org.terasoluna.gfw.functionaltest.app.codelist;
 
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertNotSame;
-import static org.junit.Assert.assertThat;
 
 import org.junit.Ignore;
 import org.junit.Test;
