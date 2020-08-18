@@ -17,6 +17,7 @@ package org.terasoluna.gfw.functionaltest.app.message;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.openqa.selenium.support.ui.ExpectedConditions.textToBe;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -419,8 +420,7 @@ public class MessageTest extends FunctionTestSupport {
         driver.findElement(By.id("elementSpecified_03_05")).click();
 
         // error screen
-        assertThat(driver.findElement(By.cssSelector("h2")).getText(), is(
-                "Servlet Error..."));
+        webDriverWait.until(textToBe(By.cssSelector("h2"), "Servlet Error..."));
 
         // screen capture
         screenCapture.save(driver);
@@ -604,9 +604,8 @@ public class MessageTest extends FunctionTestSupport {
     public void test07_02_outputMessage() {
         driver.findElement(By.id("outputMessage_07_02")).click();
 
-        // error page screen
-        assertThat(driver.findElement(By.cssSelector("h2")).getText(), is(
-                "Servlet Error..."));
+        // error screen
+        webDriverWait.until(textToBe(By.cssSelector("h2"), "Servlet Error..."));
 
         // screen capture
         screenCapture.save(driver);
