@@ -16,17 +16,16 @@
 package org.terasoluna.gfw.functionaltest.app.redirect;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.openqa.selenium.support.ui.ExpectedConditions.urlToBe;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.terasoluna.gfw.functionaltest.app.ApServerName;
 import org.terasoluna.gfw.functionaltest.app.FunctionTestSupport;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -92,8 +91,6 @@ public class RedirectTest extends FunctionTestSupport {
     @Test
     public void test01_03_redirectToExternalLink() {
 
-        ApServerName apServerName = webDriverOperations.getApServerName();
-
         // Test the behavior when the redirected URL is an external URL
         // and not include the context path(terasoluna-gfw-functionaltest-web) of the application.
         driver.findElement(By.id("listWithExternalPath")).click();
@@ -111,17 +108,8 @@ public class RedirectTest extends FunctionTestSupport {
 
         driver.findElement(By.id("btn1")).click();
 
-        // Unlike other application servers, in Tomcat, the Location of the response header is empty when sendRedirect ("").
-        // So the expected redirected URL is different.
-        // Details, see https://github.com/terasolunaorg/terasoluna-gfw-functionaltest/issues/855
-        String expectedURL;
-        if (apServerName == ApServerName.TOMCAT) {
-            expectedURL = applicationContextUrl + "/login";
-        } else {
-            expectedURL = applicationContextUrl + "/";
-        }
-
-        webDriverWait.until(ExpectedConditions.urlToBe(expectedURL));
+        assertThat(driver.findElement(By.xpath("//h2")).getText(), is(
+                "UnHandled System Error!!"));
 
         // Test the behavior when the redirected URL is an external URL
         // and includes the context path(terasoluna-gfw-functionaltest-web) of the application.
@@ -143,9 +131,10 @@ public class RedirectTest extends FunctionTestSupport {
 
         driver.findElement(By.id("btn1")).click();
 
-        webDriverWait.until(ExpectedConditions.urlToBe(applicationContextUrl
+        webDriverWait.until(urlToBe(applicationContextUrl
                 + "/redirect/externalPathWithContextPath"));
-
+        assertThat(driver.findElement(By.xpath("//h3")).getText(), is(
+                "Redirected"));
     }
 
     @Test

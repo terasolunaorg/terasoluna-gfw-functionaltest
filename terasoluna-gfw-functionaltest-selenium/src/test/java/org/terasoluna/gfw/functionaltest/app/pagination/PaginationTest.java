@@ -17,11 +17,12 @@ package org.terasoluna.gfw.functionaltest.app.pagination;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.not;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsNull.notNullValue;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
+import static org.openqa.selenium.support.ui.ExpectedConditions.textToBe;
 
 import java.util.concurrent.TimeUnit;
 
@@ -42,6 +43,7 @@ public class PaginationTest extends FunctionTestSupport {
     @Test
     public void test01_01_defaultSpecified() {
         driver.findElement(By.id("defaultSpecified_1_1")).click();
+        webDriverWait.until(textToBe(By.xpath("//h1[2]"), "1 Page"));
 
         // all page display check
         assertThat(driver.findElement(By.xpath("//li[3]/a")).getText(), is(
@@ -90,6 +92,7 @@ public class PaginationTest extends FunctionTestSupport {
         screenCapture.save(driver);
 
         driver.findElement(By.linkText(">")).click();
+        webDriverWait.until(textToBe(By.xpath("//h1[2]"), "2 Page"));
 
         // move page 2 page check
         assertThat(driver.findElement(By.cssSelector("li.active > a"))
@@ -98,6 +101,7 @@ public class PaginationTest extends FunctionTestSupport {
         screenCapture.save(driver);
 
         driver.findElement(By.linkText(">>")).click();
+        webDriverWait.until(textToBe(By.xpath("//h1[2]"), "3 Page"));
 
         // move page 3 page check
         assertThat(driver.findElement(By.cssSelector("li.active > a"))
@@ -111,6 +115,7 @@ public class PaginationTest extends FunctionTestSupport {
     @Test
     public void test01_02_defaultSpecified() {
         driver.findElement(By.id("defaultSpecified_1_2")).click();
+        webDriverWait.until(textToBe(By.xpath("//h1[2]"), "1 Page"));
 
         // all page display check
         for (int i = 1; i < 11; i++) {
@@ -155,8 +160,8 @@ public class PaginationTest extends FunctionTestSupport {
         for (int i = 2; i < 11; i++) {
             driver.findElement(By.linkText(">")).click();
             // active page number check
-            assertThat(driver.findElement(By.xpath("//h1[2]")).getText(), is(
-                    String.valueOf(i) + " Page"));
+            webDriverWait.until(textToBe(By.xpath("//h1[2]"), String.valueOf(i)
+                    + " Page"));
 
             // screen capture
             screenCapture.save(driver);
@@ -166,6 +171,7 @@ public class PaginationTest extends FunctionTestSupport {
     @Test
     public void test01_03_defaultSpecified() {
         driver.findElement(By.id("defaultSpecified_1_3")).click();
+        webDriverWait.until(textToBe(By.xpath("//h1[2]"), "1 Page"));
 
         // all page display check
         for (int i = 1; i < 11; i++) {
@@ -209,6 +215,7 @@ public class PaginationTest extends FunctionTestSupport {
                 .getText(), is("<<"));
 
         driver.findElement(By.linkText("6")).click();
+        webDriverWait.until(textToBe(By.xpath("//h1[2]"), "6 Page"));
 
         // move page 6 page check
         assertThat(driver.findElement(By.cssSelector("li.active > a"))
@@ -222,6 +229,7 @@ public class PaginationTest extends FunctionTestSupport {
         }
 
         driver.findElement(By.linkText("7")).click();
+        webDriverWait.until(textToBe(By.xpath("//h1[2]"), "7 Page"));
 
         // move page 7 page check
         assertThat(driver.findElement(By.cssSelector("li.active > a"))
@@ -238,8 +246,8 @@ public class PaginationTest extends FunctionTestSupport {
 
         for (int i = 1; i < 21; i++) {
             // active page number check
-            assertThat(driver.findElement(By.xpath("//h1[2]")).getText(), is(
-                    String.valueOf(i) + " Page"));
+            webDriverWait.until(textToBe(By.xpath("//h1[2]"), String.valueOf(i)
+                    + " Page"));
             // screen capture
             screenCapture.save(driver);
 
@@ -251,6 +259,7 @@ public class PaginationTest extends FunctionTestSupport {
     @Test(expected = NoSuchElementException.class)
     public void test01_04_defaultSpecified() {
         driver.findElement(By.id("defaultSpecified_1_4")).click();
+        webDriverWait.until(textToBe(By.xpath("//h1[2]"), "1 Page"));
 
         try {
             // Immediate time-out value set
@@ -271,6 +280,7 @@ public class PaginationTest extends FunctionTestSupport {
     @Test(expected = NoSuchElementException.class)
     public void test01_05_defaultSpecified() {
         driver.findElement(By.id("defaultSpecified_1_5")).click();
+        webDriverWait.until(textToBe(By.xpath("//h1[2]"), "1 Page"));
 
         try {
             // Immediate time-out value set
@@ -291,6 +301,7 @@ public class PaginationTest extends FunctionTestSupport {
     @Test
     public void test01_06_defaultSpecified() {
         driver.findElement(By.id("defaultSpecified_1_6")).click();
+        webDriverWait.until(textToBe(By.xpath("//h1[2]"), "1 Page"));
 
         // firstLink disabled
         assertThat(driver.findElement(By.xpath(
@@ -341,8 +352,8 @@ public class PaginationTest extends FunctionTestSupport {
 
         for (int i = 1; i < 4; i++) {
             // active page number check
-            assertThat(driver.findElement(By.xpath("//h1[2]")).getText(), is(
-                    String.valueOf(i) + " Page"));
+            webDriverWait.until(textToBe(By.xpath("//h1[2]"), String.valueOf(i)
+                    + " Page"));
 
             // screen capture
             screenCapture.save(driver);
@@ -354,8 +365,10 @@ public class PaginationTest extends FunctionTestSupport {
     @Test
     public void test01_07_test_defaultSpecified() {
         driver.findElement(By.id("defaultSpecified_1_7")).click();
+        webDriverWait.until(textToBe(By.xpath("//h1[2]"), "1 Page"));
 
         driver.findElement(By.linkText("2")).click();
+        webDriverWait.until(textToBe(By.xpath("//h1[2]"), "2 Page"));
 
         // firstLink active
         assertThat(driver.findElement(By.xpath(
@@ -398,8 +411,8 @@ public class PaginationTest extends FunctionTestSupport {
         driver.findElement(By.linkText("<<")).click();
         for (int i = 1; i < 4; i++) {
             // active page number check
-            assertThat(driver.findElement(By.xpath("//h1[2]")).getText(), is(
-                    String.valueOf(i) + " Page"));
+            webDriverWait.until(textToBe(By.xpath("//h1[2]"), String.valueOf(i)
+                    + " Page"));
 
             // screen capture
             screenCapture.save(driver);
@@ -411,8 +424,10 @@ public class PaginationTest extends FunctionTestSupport {
     @Test
     public void test01_08_defaultSpecified() {
         driver.findElement(By.id("defaultSpecified_1_8")).click();
+        webDriverWait.until(textToBe(By.xpath("//h1[2]"), "1 Page"));
 
         driver.findElement(By.linkText("3")).click();
+        webDriverWait.until(textToBe(By.xpath("//h1[2]"), "3 Page"));
 
         // firstLink active
         assertThat(driver.findElement(By.xpath(
@@ -467,8 +482,8 @@ public class PaginationTest extends FunctionTestSupport {
         driver.findElement(By.linkText("<<")).click();
         for (int i = 1; i < 4; i++) {
             // active page number check
-            assertThat(driver.findElement(By.xpath("//h1[2]")).getText(), is(
-                    String.valueOf(i) + " Page"));
+            webDriverWait.until(textToBe(By.xpath("//h1[2]"), String.valueOf(i)
+                    + " Page"));
 
             // screen capture
             screenCapture.save(driver);
@@ -480,8 +495,10 @@ public class PaginationTest extends FunctionTestSupport {
     @Test
     public void test01_09_defaultSpecified() {
         driver.findElement(By.id("defaultSpecified_1_9")).click();
+        webDriverWait.until(textToBe(By.xpath("//h1[2]"), "1 Page"));
 
         driver.findElement(By.linkText("3")).click();
+        webDriverWait.until(textToBe(By.xpath("//h1[2]"), "3 Page"));
 
         // firstLink active
         assertThat(driver.findElement(By.xpath(
@@ -523,8 +540,8 @@ public class PaginationTest extends FunctionTestSupport {
         driver.findElement(By.linkText("<<")).click();
         for (int i = 1; i < 21; i++) {
             // active page number check
-            assertThat(driver.findElement(By.xpath("//h1[2]")).getText(), is(
-                    String.valueOf(i) + " Page"));
+            webDriverWait.until(textToBe(By.xpath("//h1[2]"), String.valueOf(i)
+                    + " Page"));
 
             // screen capture
             screenCapture.save(driver);
@@ -537,9 +554,12 @@ public class PaginationTest extends FunctionTestSupport {
     @Test
     public void test01_10_defaultSpecified() {
         driver.findElement(By.id("defaultSpecified_1_10")).click();
+        webDriverWait.until(textToBe(By.xpath("//h1[2]"), "1 Page"));
 
         driver.findElement(By.linkText("10")).click();
+        webDriverWait.until(textToBe(By.xpath("//h1[2]"), "10 Page"));
         driver.findElement(By.linkText("13")).click();
+        webDriverWait.until(textToBe(By.xpath("//h1[2]"), "13 Page"));
 
         // firstLink active
         assertThat(driver.findElement(By.xpath(
@@ -582,8 +602,8 @@ public class PaginationTest extends FunctionTestSupport {
         driver.findElement(By.linkText("<<")).click();
         for (int i = 1; i < 21; i++) {
             // active page number check
-            assertThat(driver.findElement(By.xpath("//h1[2]")).getText(), is(
-                    String.valueOf(i) + " Page"));
+            webDriverWait.until(textToBe(By.xpath("//h1[2]"), String.valueOf(i)
+                    + " Page"));
 
             // screen capture
             screenCapture.save(driver);
@@ -595,6 +615,7 @@ public class PaginationTest extends FunctionTestSupport {
     @Test
     public void test01_11_defaultSpecified() {
         driver.findElement(By.id("defaultSpecified_1_11")).click();
+        webDriverWait.until(textToBe(By.xpath("//h1[2]"), "1 Page"));
 
         // default page
         String orgXtrack = driver.findElement(By.id("xtrack")).getText();
@@ -621,6 +642,7 @@ public class PaginationTest extends FunctionTestSupport {
 
         // nextLink click
         driver.findElement(By.linkText(">")).click();
+        webDriverWait.until(textToBe(By.xpath("//h1[2]"), "2 Page"));
         String nextLinkXtrack = driver.findElement(By.id("xtrack")).getText();
         // change xtrack
         assertThat(nextLinkXtrack, is(not(orgXtrack)));
@@ -629,6 +651,7 @@ public class PaginationTest extends FunctionTestSupport {
     @Test
     public void test02_01_pathTmplSpecified() {
         driver.findElement(By.id("pathTmplSpecified_2_1")).click();
+        webDriverWait.until(textToBe(By.xpath("//h1[2]"), "1 Page"));
 
         // current page url path
         assertThat(driver.findElement(By.xpath(
@@ -673,8 +696,8 @@ public class PaginationTest extends FunctionTestSupport {
 
         for (int i = 1; i < 4; i++) {
             // active page number check
-            assertThat(driver.findElement(By.xpath("//h1[2]")).getText(), is(
-                    String.valueOf(i) + " Page"));
+            webDriverWait.until(textToBe(By.xpath("//h1[2]"), String.valueOf(i)
+                    + " Page"));
 
             // screen capture
             screenCapture.save(driver);
@@ -686,6 +709,7 @@ public class PaginationTest extends FunctionTestSupport {
     @Test
     public void test03_01_queryTmplSpecified() {
         driver.findElement(By.id("queryTmplSpecified_3_1")).click();
+        webDriverWait.until(textToBe(By.xpath("//h1[2]"), "1 Page"));
 
         // current page query value
         assertThat(driver.findElement(By.xpath(
@@ -730,8 +754,8 @@ public class PaginationTest extends FunctionTestSupport {
 
         for (int i = 1; i < 4; i++) {
             // active page number check
-            assertThat(driver.findElement(By.xpath("//h1[2]")).getText(), is(
-                    String.valueOf(i) + " Page"));
+            webDriverWait.until(textToBe(By.xpath("//h1[2]"), String.valueOf(i)
+                    + " Page"));
 
             // screen capture
             screenCapture.save(driver);
@@ -744,6 +768,7 @@ public class PaginationTest extends FunctionTestSupport {
     @Test
     public void test04_01_maxDisplayCountSpecified() {
         driver.findElement(By.id("maxDisplayCountSpecified_4_1")).click();
+        webDriverWait.until(textToBe(By.xpath("//h1[2]"), "1 Page"));
 
         // all page display check
         for (int i = 1; i < 21; i++) {
@@ -783,6 +808,7 @@ public class PaginationTest extends FunctionTestSupport {
                 .getText(), is("<<"));
 
         driver.findElement(By.linkText("11")).click();
+        webDriverWait.until(textToBe(By.xpath("//h1[2]"), "11 Page"));
 
         // move page 11 page check
         assertThat(driver.findElement(By.cssSelector("li.active > a"))
@@ -796,6 +822,7 @@ public class PaginationTest extends FunctionTestSupport {
         }
 
         driver.findElement(By.linkText("12")).click();
+        webDriverWait.until(textToBe(By.xpath("//h1[2]"), "12 Page"));
 
         // move page 12 page check
         assertThat(driver.findElement(By.cssSelector("li.active > a"))
@@ -812,8 +839,8 @@ public class PaginationTest extends FunctionTestSupport {
 
         for (int i = 1; i < 31; i++) {
             // active page number check
-            assertThat(driver.findElement(By.xpath("//h1[2]")).getText(), is(
-                    String.valueOf(i) + " Page"));
+            webDriverWait.until(textToBe(By.xpath("//h1[2]"), String.valueOf(i)
+                    + " Page"));
             // screen capture
             screenCapture.save(driver);
 
@@ -825,6 +852,7 @@ public class PaginationTest extends FunctionTestSupport {
     @Test(expected = NoSuchElementException.class)
     public void test04_02_maxDisplayCountSpecified() {
         driver.findElement(By.id("maxDisplayCountSpecified_4_2")).click();
+        webDriverWait.until(textToBe(By.xpath("//h1[2]"), "1 Page"));
 
         // all page display check not page number link
         // previousLink, nextLink, firstLink, lastLink check
@@ -863,8 +891,8 @@ public class PaginationTest extends FunctionTestSupport {
 
             for (int i = 1; i < 31; i++) {
                 // active page number check
-                assertThat(driver.findElement(By.xpath("//h1[2]")).getText(),
-                        is(String.valueOf(i) + " Page"));
+                webDriverWait.until(textToBe(By.xpath("//h1[2]"), String
+                        .valueOf(i) + " Page"));
                 // screen capture
                 screenCapture.save(driver);
 
@@ -878,6 +906,7 @@ public class PaginationTest extends FunctionTestSupport {
     @Test(expected = NoSuchElementException.class)
     public void test04_03_maxDisplayCountSpecified() {
         driver.findElement(By.id("maxDisplayCountSpecified_4_3")).click();
+        webDriverWait.until(textToBe(By.xpath("//h1[2]"), "1 Page"));
 
         // all page display check not page number link
         // previousLink, nextLink, firstLink, lastLink check
@@ -916,8 +945,8 @@ public class PaginationTest extends FunctionTestSupport {
 
             for (int i = 1; i < 31; i++) {
                 // active page number check
-                assertThat(driver.findElement(By.xpath("//h1[2]")).getText(),
-                        is(String.valueOf(i) + " Page"));
+                webDriverWait.until(textToBe(By.xpath("//h1[2]"), String
+                        .valueOf(i) + " Page"));
                 // screen capture
                 screenCapture.save(driver);
 
@@ -931,6 +960,7 @@ public class PaginationTest extends FunctionTestSupport {
     @Test
     public void test05_01_outerElementSpecified() {
         driver.findElement(By.id("outerElementSpecified_5_1")).click();
+        webDriverWait.until(textToBe(By.xpath("//h1[2]"), "1 Page"));
 
         // HTML tags outside "<div>" check
         assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/div")),
@@ -965,8 +995,8 @@ public class PaginationTest extends FunctionTestSupport {
         driver.findElement(By.linkText("<<")).click();
         for (int i = 1; i < 4; i++) {
             // active page number check
-            assertThat(driver.findElement(By.xpath("//h1[2]")).getText(), is(
-                    String.valueOf(i) + " Page"));
+            webDriverWait.until(textToBe(By.xpath("//h1[2]"), String.valueOf(i)
+                    + " Page"));
             // screen capture
             screenCapture.save(driver);
 
@@ -978,6 +1008,7 @@ public class PaginationTest extends FunctionTestSupport {
     @Test
     public void test06_01_innerElementSpecified() {
         driver.findElement(By.id("innerElementSpecified_6_1")).click();
+        webDriverWait.until(textToBe(By.xpath("//h1[2]"), "1 Page"));
 
         // HTML tags outside "<ul>" check
         assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul")),
@@ -1011,8 +1042,8 @@ public class PaginationTest extends FunctionTestSupport {
 
         for (int i = 1; i < 4; i++) {
             // active page number check
-            assertThat(driver.findElement(By.xpath("//h1[2]")).getText(), is(
-                    String.valueOf(i) + " Page"));
+            webDriverWait.until(textToBe(By.xpath("//h1[2]"), String.valueOf(i)
+                    + " Page"));
             // screen capture
             screenCapture.save(driver);
 
@@ -1024,6 +1055,7 @@ public class PaginationTest extends FunctionTestSupport {
     @Test
     public void test07_01_firstLinkTextSpecified() {
         driver.findElement(By.id("firstLinkTextSpecified_7_1")).click();
+        webDriverWait.until(textToBe(By.xpath("//h1[2]"), "1 Page"));
 
         // first link value "*"
         assertThat(driver.findElement(By.xpath("//li[1]/a")).getText(), is(
@@ -1059,8 +1091,8 @@ public class PaginationTest extends FunctionTestSupport {
 
         for (int i = 1; i < 4; i++) {
             // active page number check
-            assertThat(driver.findElement(By.xpath("//h1[2]")).getText(), is(
-                    String.valueOf(i) + " Page"));
+            webDriverWait.until(textToBe(By.xpath("//h1[2]"), String.valueOf(i)
+                    + " Page"));
             // screen capture
             screenCapture.save(driver);
 
@@ -1072,6 +1104,7 @@ public class PaginationTest extends FunctionTestSupport {
     @Test
     public void test07_02_firstLinkTextSpecified() {
         driver.findElement(By.id("firstLinkTextSpecified_7_2")).click();
+        webDriverWait.until(textToBe(By.xpath("//h1[2]"), "1 Page"));
 
         // firstLink no display
         // previousLink, nextLink, lastLink check
@@ -1106,8 +1139,8 @@ public class PaginationTest extends FunctionTestSupport {
 
         for (int i = 1; i < 4; i++) {
             // active page number check
-            assertThat(driver.findElement(By.xpath("//h1[2]")).getText(), is(
-                    String.valueOf(i) + " Page"));
+            webDriverWait.until(textToBe(By.xpath("//h1[2]"), String.valueOf(i)
+                    + " Page"));
             // screen capture
             screenCapture.save(driver);
 
@@ -1118,6 +1151,7 @@ public class PaginationTest extends FunctionTestSupport {
     @Test
     public void test08_01_previousLinkTextSpecified() {
         driver.findElement(By.id("previousLinkTextSpecified_8_1")).click();
+        webDriverWait.until(textToBe(By.xpath("//h1[2]"), "1 Page"));
 
         // Previous Link value "*"
         assertThat(driver.findElement(By.xpath("//li[2]/a")).getText(), is(
@@ -1153,8 +1187,8 @@ public class PaginationTest extends FunctionTestSupport {
 
         for (int i = 1; i < 4; i++) {
             // active page number check
-            assertThat(driver.findElement(By.xpath("//h1[2]")).getText(), is(
-                    String.valueOf(i) + " Page"));
+            webDriverWait.until(textToBe(By.xpath("//h1[2]"), String.valueOf(i)
+                    + " Page"));
             // screen capture
             screenCapture.save(driver);
 
@@ -1166,6 +1200,7 @@ public class PaginationTest extends FunctionTestSupport {
     @Test
     public void test08_02_previousLinkTextSpecified() {
         driver.findElement(By.id("previousLinkTextSpecified_8_2")).click();
+        webDriverWait.until(textToBe(By.xpath("//h1[2]"), "1 Page"));
 
         // previousLink no display
         // firstLink, nextLink, lastLink check
@@ -1200,8 +1235,8 @@ public class PaginationTest extends FunctionTestSupport {
 
         for (int i = 1; i < 4; i++) {
             // active page number check
-            assertThat(driver.findElement(By.xpath("//h1[2]")).getText(), is(
-                    String.valueOf(i) + " Page"));
+            webDriverWait.until(textToBe(By.xpath("//h1[2]"), String.valueOf(i)
+                    + " Page"));
             // screen capture
             screenCapture.save(driver);
 
@@ -1213,6 +1248,7 @@ public class PaginationTest extends FunctionTestSupport {
     @Test
     public void test09_01_nextLinkTextSpecified() {
         driver.findElement(By.id("nextLinkTextSpecified_9_1")).click();
+        webDriverWait.until(textToBe(By.xpath("//h1[2]"), "1 Page"));
 
         // Next Link value "*"
         assertThat(driver.findElement(By.xpath("//li[6]/a")).getText(), is(
@@ -1248,8 +1284,8 @@ public class PaginationTest extends FunctionTestSupport {
 
         for (int i = 1; i < 4; i++) {
             // active page number check
-            assertThat(driver.findElement(By.xpath("//h1[2]")).getText(), is(
-                    String.valueOf(i) + " Page"));
+            webDriverWait.until(textToBe(By.xpath("//h1[2]"), String.valueOf(i)
+                    + " Page"));
             // screen capture
             screenCapture.save(driver);
 
@@ -1261,6 +1297,7 @@ public class PaginationTest extends FunctionTestSupport {
     @Test
     public void test09_02_nextLinkTextSpecified() {
         driver.findElement(By.id("nextLinkTextSpecified_9_2")).click();
+        webDriverWait.until(textToBe(By.xpath("//h1[2]"), "1 Page"));
 
         // nextLink no display
         // firstLink, previousLink, lastLink check
@@ -1296,8 +1333,8 @@ public class PaginationTest extends FunctionTestSupport {
         for (int i = 1; i < 4; i++) {
             driver.findElement(By.linkText(String.valueOf(i))).click();
             // active page number check
-            assertThat(driver.findElement(By.xpath("//h1[2]")).getText(), is(
-                    String.valueOf(i) + " Page"));
+            webDriverWait.until(textToBe(By.xpath("//h1[2]"), String.valueOf(i)
+                    + " Page"));
             // screen capture
             screenCapture.save(driver);
         }
@@ -1306,6 +1343,7 @@ public class PaginationTest extends FunctionTestSupport {
     @Test
     public void test10_01_lastLinkTextSpecified() {
         driver.findElement(By.id("lastLinkTextSpecified_10_1")).click();
+        webDriverWait.until(textToBe(By.xpath("//h1[2]"), "1 Page"));
 
         // Last Link value "*"
         assertThat(driver.findElement(By.xpath("//li[7]/a")).getText(), is(
@@ -1341,8 +1379,8 @@ public class PaginationTest extends FunctionTestSupport {
 
         for (int i = 1; i < 4; i++) {
             // active page number check
-            assertThat(driver.findElement(By.xpath("//h1[2]")).getText(), is(
-                    String.valueOf(i) + " Page"));
+            webDriverWait.until(textToBe(By.xpath("//h1[2]"), String.valueOf(i)
+                    + " Page"));
             // screen capture
             screenCapture.save(driver);
 
@@ -1354,6 +1392,7 @@ public class PaginationTest extends FunctionTestSupport {
     @Test(expected = NoSuchElementException.class)
     public void test10_02_lastLinkTextSpecified() {
         driver.findElement(By.id("lastLinkTextSpecified_10_2")).click();
+        webDriverWait.until(textToBe(By.xpath("//h1[2]"), "1 Page"));
 
         // lastLink no display
         // firstLink, previousLink, nextLink check
@@ -1396,8 +1435,8 @@ public class PaginationTest extends FunctionTestSupport {
             // screen capture
             for (int i = 1; i < 4; i++) {
                 // active page number check
-                assertThat(driver.findElement(By.xpath("//h1[2]")).getText(),
-                        is(String.valueOf(i) + " Page"));
+                webDriverWait.until(textToBe(By.xpath("//h1[2]"), String
+                        .valueOf(i) + " Page"));
                 // screen capture
                 screenCapture.save(driver);
 
@@ -1411,6 +1450,7 @@ public class PaginationTest extends FunctionTestSupport {
     @Test
     public void test11_01_disabledHrefSpecified() {
         driver.findElement(By.id("disabledHrefSpecified_11_1")).click();
+        webDriverWait.until(textToBe(By.xpath("//h1[2]"), "1 Page"));
 
         // firstLink, previousLink, current page value "#" check
         assertThat(driver.findElement(By.xpath(
@@ -1452,6 +1492,7 @@ public class PaginationTest extends FunctionTestSupport {
                 .getText(), is("<<"));
 
         driver.findElement(By.linkText(">>")).click();
+        webDriverWait.until(textToBe(By.xpath("//h1[2]"), "3 Page"));
 
         // nextLink, lastLink value "#" check
         assertThat(driver.findElement(By.xpath(
@@ -1464,8 +1505,8 @@ public class PaginationTest extends FunctionTestSupport {
         driver.findElement(By.linkText("<<")).click();
         for (int i = 1; i < 4; i++) {
             // active page number check
-            assertThat(driver.findElement(By.xpath("//h1[2]")).getText(), is(
-                    String.valueOf(i) + " Page"));
+            webDriverWait.until(textToBe(By.xpath("//h1[2]"), String.valueOf(i)
+                    + " Page"));
             // screen capture
             screenCapture.save(driver);
 
@@ -1476,6 +1517,7 @@ public class PaginationTest extends FunctionTestSupport {
     @Test
     public void test11_02_disabledHrefSpecified() {
         driver.findElement(By.id("disabledHrefSpecified_11_2")).click();
+        webDriverWait.until(textToBe(By.xpath("//h1[2]"), "1 Page"));
 
         // HTML tags outside "<ul>" check
         assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul")),
@@ -1502,6 +1544,7 @@ public class PaginationTest extends FunctionTestSupport {
                 is("<<"));
 
         driver.findElement(By.linkText(">>")).click();
+        webDriverWait.until(textToBe(By.xpath("//h1[2]"), "3 Page"));
 
         // nextLink, lastLink value check (does not have anchor)
         assertThat(driver.findElement(By.xpath("//li[6]")).getText(), is(">"));
@@ -1510,8 +1553,8 @@ public class PaginationTest extends FunctionTestSupport {
         driver.findElement(By.linkText("<<")).click();
         for (int i = 1; i <= 3; i++) {
             // active page number check
-            assertThat(driver.findElement(By.xpath("//h1[2]")).getText(), is(
-                    String.valueOf(i) + " Page"));
+            webDriverWait.until(textToBe(By.xpath("//h1[2]"), String.valueOf(i)
+                    + " Page"));
             // screen capture
             screenCapture.save(driver);
             if (i < 3) {
@@ -1523,6 +1566,7 @@ public class PaginationTest extends FunctionTestSupport {
     @Test
     public void test12_01_activeClassSpecified() {
         driver.findElement(By.id("activeClassSpecified_12_1")).click();
+        webDriverWait.until(textToBe(By.xpath("//h1[2]"), "1 Page"));
 
         // "active" class change "actv"
         assertThat(driver.findElement(By.cssSelector("li.actv > a")).getText(),
@@ -1556,8 +1600,8 @@ public class PaginationTest extends FunctionTestSupport {
 
         for (int i = 1; i < 4; i++) {
             // active page number check
-            assertThat(driver.findElement(By.xpath("//h1[2]")).getText(), is(
-                    String.valueOf(i) + " Page"));
+            webDriverWait.until(textToBe(By.xpath("//h1[2]"), String.valueOf(i)
+                    + " Page"));
             // screen capture
             screenCapture.save(driver);
 
@@ -1569,6 +1613,7 @@ public class PaginationTest extends FunctionTestSupport {
     @Test
     public void test12_02_activeClassSpecified() {
         driver.findElement(By.id("activeClassSpecified_12_2")).click();
+        webDriverWait.until(textToBe(By.xpath("//h1[2]"), "1 Page"));
 
         // "active" class change ""
         assertThat(driver.findElement(By.xpath("//li[contains(@class, '')][3]"))
@@ -1602,8 +1647,8 @@ public class PaginationTest extends FunctionTestSupport {
 
         for (int i = 1; i < 4; i++) {
             // active page number check
-            assertThat(driver.findElement(By.xpath("//h1[2]")).getText(), is(
-                    String.valueOf(i) + " Page"));
+            webDriverWait.until(textToBe(By.xpath("//h1[2]"), String.valueOf(i)
+                    + " Page"));
             // screen capture
             screenCapture.save(driver);
 
@@ -1614,6 +1659,7 @@ public class PaginationTest extends FunctionTestSupport {
     @Test
     public void test13_01_disabledClassSpecified() {
         driver.findElement(By.id("disabledClassSpecified_13_1")).click();
+        webDriverWait.until(textToBe(By.xpath("//h1[2]"), "1 Page"));
 
         // firstLink, previousLink class="dis" check
         assertThat(driver.findElement(By.xpath(
@@ -1649,8 +1695,8 @@ public class PaginationTest extends FunctionTestSupport {
 
         for (int i = 1; i < 4; i++) {
             // active page number check
-            assertThat(driver.findElement(By.xpath("//h1[2]")).getText(), is(
-                    String.valueOf(i) + " Page"));
+            webDriverWait.until(textToBe(By.xpath("//h1[2]"), String.valueOf(i)
+                    + " Page"));
             // screen capture
             screenCapture.save(driver);
 
@@ -1662,6 +1708,7 @@ public class PaginationTest extends FunctionTestSupport {
     @Test
     public void test13_02_disabledClassSpecified() {
         driver.findElement(By.id("disabledClassSpecified_13_2")).click();
+        webDriverWait.until(textToBe(By.xpath("//h1[2]"), "1 Page"));
 
         // firstLink, previousLink class="dis" check
         assertThat(driver.findElement(By.xpath("//li[contains(@class, '')][1]"))
@@ -1697,8 +1744,8 @@ public class PaginationTest extends FunctionTestSupport {
 
         for (int i = 1; i < 4; i++) {
             // active page number check
-            assertThat(driver.findElement(By.xpath("//h1[2]")).getText(), is(
-                    String.valueOf(i) + " Page"));
+            webDriverWait.until(textToBe(By.xpath("//h1[2]"), String.valueOf(i)
+                    + " Page"));
             // screen capture
             screenCapture.save(driver);
 
@@ -1709,6 +1756,7 @@ public class PaginationTest extends FunctionTestSupport {
     @Test
     public void test14_01_pathQueryTmplCombination() {
         driver.findElement(By.id("pathQueryTmplCombination_14_1")).click();
+        webDriverWait.until(textToBe(By.xpath("//h1[2]"), "1 Page"));
 
         // change path value
         assertThat(driver.findElement(By.xpath("//a[contains(@href, '/"
@@ -1751,8 +1799,8 @@ public class PaginationTest extends FunctionTestSupport {
 
         for (int i = 1; i < 4; i++) {
             // active page number check
-            assertThat(driver.findElement(By.xpath("//h1[2]")).getText(), is(
-                    String.valueOf(i) + " Page"));
+            webDriverWait.until(textToBe(By.xpath("//h1[2]"), String.valueOf(i)
+                    + " Page"));
             // screen capture
             screenCapture.save(driver);
 
@@ -1764,6 +1812,7 @@ public class PaginationTest extends FunctionTestSupport {
     @Test
     public void test15_01_outerInnerElementCombination() {
         driver.findElement(By.id("outerInnerElementCombination_15_1")).click();
+        webDriverWait.until(textToBe(By.xpath("//h1[2]"), "1 Page"));
 
         // HTML tags outside "<span>" check
         assertThat(driver.findElement(By.xpath(
@@ -1794,8 +1843,8 @@ public class PaginationTest extends FunctionTestSupport {
 
         for (int i = 1; i < 4; i++) {
             // active page number check
-            assertThat(driver.findElement(By.xpath("//h1[2]")).getText(), is(
-                    String.valueOf(i) + " Page"));
+            webDriverWait.until(textToBe(By.xpath("//h1[2]"), String.valueOf(i)
+                    + " Page"));
             // screen capture
             screenCapture.save(driver);
 
@@ -1806,6 +1855,7 @@ public class PaginationTest extends FunctionTestSupport {
     @Test(expected = NoSuchElementException.class)
     public void test16_01_firstLastLinkCombination() {
         driver.findElement(By.id("firstLastLinkCombination_16_1")).click();
+        webDriverWait.until(textToBe(By.xpath("//h1[2]"), "1 Page"));
 
         // HTML tags outside "<ul>" check
         assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul")),
@@ -1837,6 +1887,7 @@ public class PaginationTest extends FunctionTestSupport {
                 .getText(), is("first"));
 
         driver.findElement(By.linkText("last")).click();
+        webDriverWait.until(textToBe(By.xpath("//h1[2]"), "3 Page"));
 
         // "active" class check
         assertThat(driver.findElement(By.cssSelector("li.active > a"))
@@ -1854,8 +1905,8 @@ public class PaginationTest extends FunctionTestSupport {
             for (int i = 1; i < 4; i++) {
                 driver.findElement(By.linkText(String.valueOf(i))).click();
                 // active page number check
-                assertThat(driver.findElement(By.xpath("//h1[2]")).getText(),
-                        is(String.valueOf(i) + " Page"));
+                webDriverWait.until(textToBe(By.xpath("//h1[2]"), String
+                        .valueOf(i) + " Page"));
                 // screen capture
                 screenCapture.save(driver);
             }
@@ -1867,6 +1918,7 @@ public class PaginationTest extends FunctionTestSupport {
     @Test(expected = NoSuchElementException.class)
     public void test16_02_firstLastLinkCombination() {
         driver.findElement(By.id("firstLastLinkCombination_16_2")).click();
+        webDriverWait.until(textToBe(By.xpath("//h1[2]"), "1 Page"));
 
         // HTML tags outside "<ul>" check
         assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul")),
@@ -1899,8 +1951,8 @@ public class PaginationTest extends FunctionTestSupport {
             for (int i = 1; i < 4; i++) {
                 driver.findElement(By.linkText(String.valueOf(i))).click();
                 // active page number check
-                assertThat(driver.findElement(By.xpath("//h1[2]")).getText(),
-                        is(String.valueOf(i) + " Page"));
+                webDriverWait.until(textToBe(By.xpath("//h1[2]"), String
+                        .valueOf(i) + " Page"));
                 // screen capture
                 screenCapture.save(driver);
             }
@@ -1912,6 +1964,7 @@ public class PaginationTest extends FunctionTestSupport {
     @Test(expected = NoSuchElementException.class)
     public void test17_01_previousNextLinkCombination() {
         driver.findElement(By.id("previousNextLinkCombination_17_1")).click();
+        webDriverWait.until(textToBe(By.xpath("//h1[2]"), "1 Page"));
 
         // HTML tags outside "<ul>" check
         assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul")),
@@ -1943,6 +1996,7 @@ public class PaginationTest extends FunctionTestSupport {
                 .getText(), is("prev"));
 
         driver.findElement(By.linkText("next")).click();
+        webDriverWait.until(textToBe(By.xpath("//h1[2]"), "2 Page"));
 
         // "active" class check
         assertThat(driver.findElement(By.cssSelector("li.active > a"))
@@ -1960,8 +2014,8 @@ public class PaginationTest extends FunctionTestSupport {
             driver.findElement(By.linkText("1")).click();
             for (int i = 1; i < 4; i++) {
                 // active page number check
-                assertThat(driver.findElement(By.xpath("//h1[2]")).getText(),
-                        is(String.valueOf(i) + " Page"));
+                webDriverWait.until(textToBe(By.xpath("//h1[2]"), String
+                        .valueOf(i) + " Page"));
                 // screen capture
                 screenCapture.save(driver);
 
@@ -1975,6 +2029,7 @@ public class PaginationTest extends FunctionTestSupport {
     @Test
     public void test18_01_outerElementClassSpecified() {
         driver.findElement(By.id("outerElementClassSpecified_18_1")).click();
+        webDriverWait.until(textToBe(By.xpath("//h1[2]"), "1 Page"));
 
         // HTML tags outside class "rightPosition" check
         assertThat(driver.findElement(By.xpath(
@@ -2013,8 +2068,8 @@ public class PaginationTest extends FunctionTestSupport {
 
         for (int i = 1; i < 4; i++) {
             // active page number check
-            assertThat(driver.findElement(By.xpath("//h1[2]")).getText(), is(
-                    String.valueOf(i) + " Page"));
+            webDriverWait.until(textToBe(By.xpath("//h1[2]"), String.valueOf(i)
+                    + " Page"));
             // screen capture
             screenCapture.save(driver);
 
@@ -2025,6 +2080,7 @@ public class PaginationTest extends FunctionTestSupport {
     @Test
     public void test18_02_innerElementClassSpecified() {
         driver.findElement(By.id("innerElementClassSpecified_18_2")).click();
+        webDriverWait.until(textToBe(By.xpath("//h1[2]"), "1 Page"));
 
         // HTML tags outside "<ul>" check
         assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul")),
@@ -2062,8 +2118,8 @@ public class PaginationTest extends FunctionTestSupport {
 
         for (int i = 1; i < 4; i++) {
             // active page number check
-            assertThat(driver.findElement(By.xpath("//h1[2]")).getText(), is(
-                    String.valueOf(i) + " Page"));
+            webDriverWait.until(textToBe(By.xpath("//h1[2]"), String.valueOf(i)
+                    + " Page"));
             // screen capture
             screenCapture.save(driver);
 
@@ -2074,6 +2130,7 @@ public class PaginationTest extends FunctionTestSupport {
     @Test(expected = NoSuchElementException.class)
     public void test19_01_screenDrawing() {
         driver.findElement(By.id("screenDrawing_19_1")).click();
+        webDriverWait.until(textToBe(By.xpath("//h1[2]"), "1 Page"));
 
         // HTML tags outside "<ul>" check
         assertThat(driver.findElement(By.xpath("/html/body/div/ul[2]")),
@@ -2097,7 +2154,9 @@ public class PaginationTest extends FunctionTestSupport {
                 .getText(), is("prev"));
 
         driver.findElement(By.linkText("next")).click();
+        webDriverWait.until(textToBe(By.xpath("//h1[2]"), "2 Page"));
         driver.findElement(By.linkText("next")).click();
+        webDriverWait.until(textToBe(By.xpath("//h1[2]"), "3 Page"));
 
         // move page 3 page check
         assertThat(driver.findElement(By.xpath("//td")).getText(), is("201"));
@@ -2111,11 +2170,12 @@ public class PaginationTest extends FunctionTestSupport {
             fail("error route");
         } catch (NoSuchElementException e) {
             driver.findElement(By.linkText("prev")).click();
+            webDriverWait.until(textToBe(By.xpath("//h1[2]"), "2 Page"));
             driver.findElement(By.linkText("prev")).click();
             for (int i = 1; i < 4; i++) {
                 // active page number check
-                assertThat(driver.findElement(By.xpath("//h1[2]")).getText(),
-                        is(String.valueOf(i) + " Page"));
+                webDriverWait.until(textToBe(By.xpath("//h1[2]"), String
+                        .valueOf(i) + " Page"));
                 // screen capture
                 screenCapture.save(driver);
 
@@ -2135,8 +2195,7 @@ public class PaginationTest extends FunctionTestSupport {
             inputFieldAccessor.appendValue(By.id("name"), "+ &=", driver);
             driver.findElement(By.id("searchButton")).click();
             // assert 1 page
-            assertThat(driver.findElement(By.id("pagePosition")).getText(), is(
-                    "1"));
+            webDriverWait.until(textToBe(By.id("pagePosition"), "1"));
             assertThat(driver.findElement(By.id("rangeStart")).getText(), is(
                     "1"));
             assertThat(driver.findElement(By.id("rangeEnd")).getText(), is(
@@ -2154,8 +2213,7 @@ public class PaginationTest extends FunctionTestSupport {
                     .findElement(By.linkText("3")).click();
 
             // assert 3 page
-            assertThat(driver.findElement(By.id("pagePosition")).getText(), is(
-                    "3"));
+            webDriverWait.until(textToBe(By.id("pagePosition"), "3"));
             assertThat(driver.findElement(By.id("rangeStart")).getText(), is(
                     "21"));
             assertThat(driver.findElement(By.id("rangeEnd")).getText(), is(
@@ -2173,8 +2231,7 @@ public class PaginationTest extends FunctionTestSupport {
                     .findElement(By.linkText(">")).click();
 
             // assert 4 page
-            assertThat(driver.findElement(By.id("pagePosition")).getText(), is(
-                    "4"));
+            webDriverWait.until(textToBe(By.id("pagePosition"), "4"));
             assertThat(driver.findElement(By.id("rangeStart")).getText(), is(
                     "31"));
             assertThat(driver.findElement(By.id("rangeEnd")).getText(), is(
@@ -2192,8 +2249,7 @@ public class PaginationTest extends FunctionTestSupport {
                     .findElement(By.linkText(">>")).click();
 
             // assert 10 page
-            assertThat(driver.findElement(By.id("pagePosition")).getText(), is(
-                    "10"));
+            webDriverWait.until(textToBe(By.id("pagePosition"), "10"));
             assertThat(driver.findElement(By.id("rangeStart")).getText(), is(
                     "91"));
             assertThat(driver.findElement(By.id("rangeEnd")).getText(), is(
@@ -2211,8 +2267,7 @@ public class PaginationTest extends FunctionTestSupport {
                     .findElement(By.linkText("<")).click();
 
             // assert 9 page
-            assertThat(driver.findElement(By.id("pagePosition")).getText(), is(
-                    "9"));
+            webDriverWait.until(textToBe(By.id("pagePosition"), "9"));
             assertThat(driver.findElement(By.id("rangeStart")).getText(), is(
                     "81"));
             assertThat(driver.findElement(By.id("rangeEnd")).getText(), is(
@@ -2230,8 +2285,7 @@ public class PaginationTest extends FunctionTestSupport {
                     .findElement(By.linkText("<<")).click();
 
             // assert 1 page
-            assertThat(driver.findElement(By.id("pagePosition")).getText(), is(
-                    "1"));
+            webDriverWait.until(textToBe(By.id("pagePosition"), "1"));
             assertThat(driver.findElement(By.id("rangeStart")).getText(), is(
                     "1"));
             assertThat(driver.findElement(By.id("rangeEnd")).getText(), is(
@@ -2255,8 +2309,7 @@ public class PaginationTest extends FunctionTestSupport {
             inputFieldAccessor.appendValue(By.id("name"), "+ &=", driver);
             driver.findElement(By.id("searchButton")).click();
             // assert 1 page
-            assertThat(driver.findElement(By.id("pagePosition")).getText(), is(
-                    "1"));
+            webDriverWait.until(textToBe(By.id("pagePosition"), "1"));
             assertThat(driver.findElement(By.id("rangeStart")).getText(), is(
                     "1"));
             assertThat(driver.findElement(By.id("rangeEnd")).getText(), is(
@@ -2274,8 +2327,7 @@ public class PaginationTest extends FunctionTestSupport {
                     .linkText("3")).click();
 
             // assert 3 page
-            assertThat(driver.findElement(By.id("pagePosition")).getText(), is(
-                    "3"));
+            webDriverWait.until(textToBe(By.id("pagePosition"), "3"));
             assertThat(driver.findElement(By.id("rangeStart")).getText(), is(
                     "21"));
             assertThat(driver.findElement(By.id("rangeEnd")).getText(), is(
@@ -2293,8 +2345,7 @@ public class PaginationTest extends FunctionTestSupport {
                     .linkText(">")).click();
 
             // assert 4 page
-            assertThat(driver.findElement(By.id("pagePosition")).getText(), is(
-                    "4"));
+            webDriverWait.until(textToBe(By.id("pagePosition"), "4"));
             assertThat(driver.findElement(By.id("rangeStart")).getText(), is(
                     "31"));
             assertThat(driver.findElement(By.id("rangeEnd")).getText(), is(
@@ -2312,8 +2363,7 @@ public class PaginationTest extends FunctionTestSupport {
                     .linkText(">>")).click();
 
             // assert 10 page
-            assertThat(driver.findElement(By.id("pagePosition")).getText(), is(
-                    "10"));
+            webDriverWait.until(textToBe(By.id("pagePosition"), "10"));
             assertThat(driver.findElement(By.id("rangeStart")).getText(), is(
                     "91"));
             assertThat(driver.findElement(By.id("rangeEnd")).getText(), is(
@@ -2331,8 +2381,7 @@ public class PaginationTest extends FunctionTestSupport {
                     .linkText("<")).click();
 
             // assert 9 page
-            assertThat(driver.findElement(By.id("pagePosition")).getText(), is(
-                    "9"));
+            webDriverWait.until(textToBe(By.id("pagePosition"), "9"));
             assertThat(driver.findElement(By.id("rangeStart")).getText(), is(
                     "81"));
             assertThat(driver.findElement(By.id("rangeEnd")).getText(), is(
@@ -2350,8 +2399,7 @@ public class PaginationTest extends FunctionTestSupport {
                     .linkText("<<")).click();
 
             // assert 1 page
-            assertThat(driver.findElement(By.id("pagePosition")).getText(), is(
-                    "1"));
+            webDriverWait.until(textToBe(By.id("pagePosition"), "1"));
             assertThat(driver.findElement(By.id("rangeStart")).getText(), is(
                     "1"));
             assertThat(driver.findElement(By.id("rangeEnd")).getText(), is(
@@ -2374,8 +2422,7 @@ public class PaginationTest extends FunctionTestSupport {
             inputFieldAccessor.appendValue(By.id("name"), "<>\"'", driver);
             driver.findElement(By.id("searchButton")).click();
             // assert 1 page
-            assertThat(driver.findElement(By.id("pagePosition")).getText(), is(
-                    "1"));
+            webDriverWait.until(textToBe(By.id("pagePosition"), "1"));
             assertThat(driver.findElement(By.id("rangeStart")).getText(), is(
                     "1"));
             assertThat(driver.findElement(By.id("rangeEnd")).getText(), is(
@@ -2394,8 +2441,7 @@ public class PaginationTest extends FunctionTestSupport {
                     .findElement(By.linkText("2")).click();
 
             // assert 3 page
-            assertThat(driver.findElement(By.id("pagePosition")).getText(), is(
-                    "2"));
+            webDriverWait.until(textToBe(By.id("pagePosition"), "2"));
             assertThat(driver.findElement(By.id("rangeStart")).getText(), is(
                     "11"));
             assertThat(driver.findElement(By.id("rangeEnd")).getText(), is(
@@ -2418,8 +2464,7 @@ public class PaginationTest extends FunctionTestSupport {
             inputFieldAccessor.appendValue(By.id("name"), "<>\"'", driver);
             driver.findElement(By.id("searchButton")).click();
             // assert 1 page
-            assertThat(driver.findElement(By.id("pagePosition")).getText(), is(
-                    "1"));
+            webDriverWait.until(textToBe(By.id("pagePosition"), "1"));
             assertThat(driver.findElement(By.id("rangeStart")).getText(), is(
                     "1"));
             assertThat(driver.findElement(By.id("rangeEnd")).getText(), is(
@@ -2437,9 +2482,8 @@ public class PaginationTest extends FunctionTestSupport {
                     "paginationDisableHtmlEscapeByFQueryFunctionOfCriteriaQueryIsTrue"))
                     .findElement(By.linkText("2")).click();
 
-            // assert 3 page
-            assertThat(driver.findElement(By.id("pagePosition")).getText(), is(
-                    "2"));
+            // assert 2 page
+            webDriverWait.until(textToBe(By.id("pagePosition"), "2"));
             assertThat(driver.findElement(By.id("rangeStart")).getText(), is(
                     "11"));
             assertThat(driver.findElement(By.id("rangeEnd")).getText(), is(
@@ -2462,8 +2506,7 @@ public class PaginationTest extends FunctionTestSupport {
             inputFieldAccessor.appendValue(By.id("name"), "<>\"'", driver);
             driver.findElement(By.id("searchButton")).click();
             // assert 1 page
-            assertThat(driver.findElement(By.id("pagePosition")).getText(), is(
-                    "1"));
+            webDriverWait.until(textToBe(By.id("pagePosition"), "1"));
             assertThat(driver.findElement(By.id("rangeStart")).getText(), is(
                     "1"));
             assertThat(driver.findElement(By.id("rangeEnd")).getText(), is(
@@ -2481,9 +2524,8 @@ public class PaginationTest extends FunctionTestSupport {
                     "paginationDisableHtmlEscapeByFUFunctionOfCriteriaQueryIsTrue"))
                     .findElement(By.linkText("2")).click();
 
-            // assert 3 page
-            assertThat(driver.findElement(By.id("pagePosition")).getText(), is(
-                    "2"));
+            // assert 2 page
+            webDriverWait.until(textToBe(By.id("pagePosition"), "2"));
             assertThat(driver.findElement(By.id("rangeStart")).getText(), is(
                     "11"));
             assertThat(driver.findElement(By.id("rangeEnd")).getText(), is(
@@ -2506,8 +2548,7 @@ public class PaginationTest extends FunctionTestSupport {
             inputFieldAccessor.appendValue(By.id("name"), "+ &=", driver);
             driver.findElement(By.id("searchButton")).click();
             // assert 1 page
-            assertThat(driver.findElement(By.id("pagePosition")).getText(), is(
-                    "1"));
+            webDriverWait.until(textToBe(By.id("pagePosition"), "1"));
             assertThat(driver.findElement(By.id("rangeStart")).getText(), is(
                     "1"));
             assertThat(driver.findElement(By.id("rangeEnd")).getText(), is(
@@ -2525,8 +2566,7 @@ public class PaginationTest extends FunctionTestSupport {
                     "paginationCombinationOfPathTmplAndCriteriaQueryAndFQuery"))
                     .findElement(By.linkText("3")).click();
             // assert 3 page
-            assertThat(driver.findElement(By.id("pagePosition")).getText(), is(
-                    "3"));
+            webDriverWait.until(textToBe(By.id("pagePosition"), "3"));
             assertThat(driver.findElement(By.id("rangeStart")).getText(), is(
                     "21"));
             assertThat(driver.findElement(By.id("rangeEnd")).getText(), is(
@@ -2585,8 +2625,7 @@ public class PaginationTest extends FunctionTestSupport {
             inputFieldAccessor.appendValue(By.id("name"), "+ &=", driver);
             driver.findElement(By.id("searchButton")).click();
             // assert 1 page
-            assertThat(driver.findElement(By.id("pagePosition")).getText(), is(
-                    "1"));
+            webDriverWait.until(textToBe(By.id("pagePosition"), "1"));
             assertThat(driver.findElement(By.id("rangeStart")).getText(), is(
                     "1"));
             assertThat(driver.findElement(By.id("rangeEnd")).getText(), is(
@@ -2604,8 +2643,7 @@ public class PaginationTest extends FunctionTestSupport {
                     "paginationCombinationOfPathTmplAndCriteriaQueryAndFU"))
                     .findElement(By.linkText("3")).click();
             // assert 3 page
-            assertThat(driver.findElement(By.id("pagePosition")).getText(), is(
-                    "3"));
+            webDriverWait.until(textToBe(By.id("pagePosition"), "3"));
             assertThat(driver.findElement(By.id("rangeStart")).getText(), is(
                     "21"));
             assertThat(driver.findElement(By.id("rangeEnd")).getText(), is(
@@ -2664,8 +2702,7 @@ public class PaginationTest extends FunctionTestSupport {
             inputFieldAccessor.appendValue(By.id("name"), "+ &=", driver);
             driver.findElement(By.id("searchButton")).click();
             // assert 1 page
-            assertThat(driver.findElement(By.id("pagePosition")).getText(), is(
-                    "1"));
+            webDriverWait.until(textToBe(By.id("pagePosition"), "1"));
             assertThat(driver.findElement(By.id("rangeStart")).getText(), is(
                     "1"));
             assertThat(driver.findElement(By.id("rangeEnd")).getText(), is(
@@ -2683,8 +2720,7 @@ public class PaginationTest extends FunctionTestSupport {
                     "paginationCombinationOfQueryTmplAndCriteriaQueryAndFQuery"))
                     .findElement(By.linkText("2")).click();
             // assert 2 page
-            assertThat(driver.findElement(By.id("pagePosition")).getText(), is(
-                    "2"));
+            webDriverWait.until(textToBe(By.id("pagePosition"), "2"));
             assertThat(driver.findElement(By.id("rangeStart")).getText(), is(
                     "11"));
             assertThat(driver.findElement(By.id("rangeEnd")).getText(), is(
@@ -2743,8 +2779,7 @@ public class PaginationTest extends FunctionTestSupport {
             inputFieldAccessor.appendValue(By.id("name"), "+ &=", driver);
             driver.findElement(By.id("searchButton")).click();
             // assert 1 page
-            assertThat(driver.findElement(By.id("pagePosition")).getText(), is(
-                    "1"));
+            webDriverWait.until(textToBe(By.id("pagePosition"), "1"));
             assertThat(driver.findElement(By.id("rangeStart")).getText(), is(
                     "1"));
             assertThat(driver.findElement(By.id("rangeEnd")).getText(), is(
@@ -2762,8 +2797,7 @@ public class PaginationTest extends FunctionTestSupport {
                     "paginationCombinationOfQueryTmplAndCriteriaQueryAndFU"))
                     .findElement(By.linkText("2")).click();
             // assert 2 page
-            assertThat(driver.findElement(By.id("pagePosition")).getText(), is(
-                    "2"));
+            webDriverWait.until(textToBe(By.id("pagePosition"), "2"));
             assertThat(driver.findElement(By.id("rangeStart")).getText(), is(
                     "11"));
             assertThat(driver.findElement(By.id("rangeEnd")).getText(), is(
@@ -2821,8 +2855,7 @@ public class PaginationTest extends FunctionTestSupport {
             inputFieldAccessor.appendValue(By.id("name"), "+ &=", driver);
             driver.findElement(By.id("searchButton")).click();
             // assert 1 page
-            assertThat(driver.findElement(By.id("pagePosition")).getText(), is(
-                    "1"));
+            webDriverWait.until(textToBe(By.id("pagePosition"), "1"));
             assertThat(driver.findElement(By.id("rangeStart")).getText(), is(
                     "1"));
             assertThat(driver.findElement(By.id("rangeEnd")).getText(), is(
@@ -2840,8 +2873,7 @@ public class PaginationTest extends FunctionTestSupport {
                     "paginationCombinationOfPathTmplAndQueryTmplAndCriteriaQueryAndFQuery"))
                     .findElement(By.linkText("2")).click();
             // assert 2 page
-            assertThat(driver.findElement(By.id("pagePosition")).getText(), is(
-                    "2"));
+            webDriverWait.until(textToBe(By.id("pagePosition"), "2"));
             assertThat(driver.findElement(By.id("rangeStart")).getText(), is(
                     "11"));
             assertThat(driver.findElement(By.id("rangeEnd")).getText(), is(
@@ -2904,8 +2936,7 @@ public class PaginationTest extends FunctionTestSupport {
             inputFieldAccessor.appendValue(By.id("name"), "+ &=", driver);
             driver.findElement(By.id("searchButton")).click();
             // assert 1 page
-            assertThat(driver.findElement(By.id("pagePosition")).getText(), is(
-                    "1"));
+            webDriverWait.until(textToBe(By.id("pagePosition"), "1"));
             assertThat(driver.findElement(By.id("rangeStart")).getText(), is(
                     "1"));
             assertThat(driver.findElement(By.id("rangeEnd")).getText(), is(
@@ -2923,8 +2954,7 @@ public class PaginationTest extends FunctionTestSupport {
                     "paginationCombinationOfPathTmplAndQueryTmplAndCriteriaQueryAndFQuery"))
                     .findElement(By.linkText("2")).click();
             // assert 2 page
-            assertThat(driver.findElement(By.id("pagePosition")).getText(), is(
-                    "2"));
+            webDriverWait.until(textToBe(By.id("pagePosition"), "2"));
             assertThat(driver.findElement(By.id("rangeStart")).getText(), is(
                     "11"));
             assertThat(driver.findElement(By.id("rangeEnd")).getText(), is(
@@ -2980,6 +3010,7 @@ public class PaginationTest extends FunctionTestSupport {
     @Test
     public void test24_01_enableLinkOfCurrentPage() {
         driver.findElement(By.id("enableLinkOfCurrentPage_24_1")).click();
+        webDriverWait.until(textToBe(By.xpath("//h1[2]"), "1 Page"));
 
         // default page
         String orgXtrack = driver.findElement(By.id("xtrack")).getText();
@@ -3002,6 +3033,7 @@ public class PaginationTest extends FunctionTestSupport {
     public void test25_01_disabledPageLinkWithJavaScript() {
         driver.findElement(By.id("disabledPageLinkWithJavaScript_25_1"))
                 .click();
+        webDriverWait.until(textToBe(By.xpath("//h1[2]"), "1 Page"));
 
         // firstLink, previousLink, current page value "#" check
         assertThat(driver.findElement(By.xpath(
@@ -3048,6 +3080,7 @@ public class PaginationTest extends FunctionTestSupport {
     @Test
     public void test26_01_tagConfiguration() {
         driver.findElement(By.id("tagConfiguration_26_1")).click();
+        webDriverWait.until(textToBe(By.xpath("//h1[2]"), "1 Page"));
 
         // outerElement close with </ul> confirm
         assertThat(driver.getPageSource().contains("<ul></ul>"), is(true));

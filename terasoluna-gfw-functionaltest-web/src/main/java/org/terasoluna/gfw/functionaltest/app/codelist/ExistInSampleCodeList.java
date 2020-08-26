@@ -32,7 +32,6 @@ import javax.validation.Constraint;
 import javax.validation.Payload;
 
 import org.terasoluna.gfw.common.codelist.ExistInCodeList;
-
 import org.terasoluna.gfw.functionaltest.app.codelist.ExistInSampleCodeList.List;
 
 @Documented

@@ -17,8 +17,7 @@ package org.terasoluna.gfw.functionaltest.app.logging;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.not;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 import javax.inject.Inject;
 
@@ -55,7 +54,7 @@ public class LoggingTest extends FunctionTestSupport {
         footerMdc = footerMdc.substring(footerMdc.indexOf(":") + 1, footerMdc
                 .indexOf(":") + 33);
         // check default x-Track MDC
-        assertTrue(targetMdc.matches("[0-9a-zA-Z]{32}"));
+        assertThat(targetMdc.matches("[0-9a-zA-Z]{32}"), is(true));
         assertThat(targetMdc, is(footerMdc));
     }
 
@@ -72,7 +71,7 @@ public class LoggingTest extends FunctionTestSupport {
         footerMdc = footerMdc.substring(footerMdc.indexOf(":") + 1, footerMdc
                 .indexOf(":") + 33);
         // check custom x-Track MDC
-        assertTrue(targetMdc.matches("[0-9a-zA-Z]{32}"));
+        assertThat(targetMdc.matches("[0-9a-zA-Z]{32}"), is(true));
         assertThat(targetMdc, not(footerMdc));
     }
 
