@@ -18,6 +18,7 @@ package org.terasoluna.gfw.functionaltest.app.codepoints;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
@@ -29,6 +30,11 @@ import org.terasoluna.gfw.functionaltest.app.FunctionTestSupport;
 @ContextConfiguration(locations = {
         "classpath:META-INF/spring/seleniumContext.xml" })
 public class ConsistOfCheckTest extends FunctionTestSupport {
+
+    @Before
+    public void setUpLocale() {
+        driver.findElement(By.linkText("English")).click();
+    }
 
     @Test
     public void consistOfCheckSuccessTest() {
@@ -96,6 +102,44 @@ public class ConsistOfCheckTest extends FunctionTestSupport {
         for (String[] testData : testDatas) {
             this.check(testData[0] + ".errors",
                     "not consist of specified code points");
+        }
+    }
+
+    @Test
+    public void consistOfCheckErrorTestJa() {
+
+        // assert japanese message.
+        driver.findElement(By.linkText("Japanese")).click();
+        driver.findElement(By.id("codepoints02_01")).click();
+
+        String[][] testDatas = { { "jisX208Hiragana", "しメい" }, {
+                "jisX208HiraganaKatakana", "メモめもmemo" }, { "asciiCtrlChars",
+                        "\u0007\b\tM\u000b\r\n" }, // \a\b\tM\v\r\n
+                { "asciiPrntChars", "\u001f 012abcABC~" }, { "crlf", "\rA\n" },
+                { "jisX201Katakana", " ｡ｶﾀｶﾅﾟ" }, { "jisX201LatinLetters",
+                        "ｱ 012aB}‾" }, { "jisX208SpecialChars", "ア\u3000☆★〒◯" },
+                { "jisX208LatinLetters", "０Ａアａｚ" }, { "jisX208Katakana",
+                        "あァカナヶ" }, { "jisX208GreekLetteres", "ΑΦ・ω・" }, {
+                                "jisX0208CyrillicLetters", "АЯяア" }, {
+                                        "jisX0208BoxDrawingChars", "─あ╋╂" }, {
+                                                "jisX0208Kanji", "亜椈熙ヰ" }, {
+                                                        "jisX0213Kanji",
+                                                        "亜窠𪚲ヰ" }, {
+                                                                "numberChars",
+                                                                "a01589" }, {
+                                                                        "hiraganaKatakanaChars",
+                                                                        "ひらカナA" },
+                { "kanaChars", "カタカナ。" } };
+        for (String[] testData : testDatas) {
+            this.setText(testData[0], testData[1]);
+        }
+
+        driver.findElement(By.id("check")).click();
+
+        this.check("page_title", "CodePoints Test");
+
+        for (String[] testData : testDatas) {
+            this.check(testData[0] + ".errors", "指定されたコードポイントで構成されていません");
         }
     }
 

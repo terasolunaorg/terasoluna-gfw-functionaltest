@@ -18,6 +18,7 @@ package org.terasoluna.gfw.functionaltest.app.validation;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
@@ -33,6 +34,11 @@ public class ValidationTest extends FunctionTestSupport {
     private static final String SUCCESS = "Validation successfully!";
 
     public ValidationTest() {
+    }
+
+    @Before
+    public void setUpLocale() {
+        driver.findElement(By.linkText("English")).click();
     }
 
     @Test
@@ -55,6 +61,18 @@ public class ValidationTest extends FunctionTestSupport {
     }
 
     @Test
+    public void test01_03_ByteMin_invalid_ja() {
+        // assert japanese message.
+        driver.findElement(By.linkText("Japanese")).click();
+        driver.findElement(By.linkText("@ByteMin Test")).click();
+
+        inputFieldAccessor.overrideValue(By.id("userName"), "あいu", driver);
+        driver.findElement(By.id("btn_validate")).click();
+        assertThat(driver.findElement(By.id("userName.errors")).getText(), is(
+                "6 バイト以上のサイズにしてください"));
+    }
+
+    @Test
     public void test02_01_ByteMax_valid() {
         driver.findElement(By.linkText("@ByteMax Test")).click();
 
@@ -71,6 +89,18 @@ public class ValidationTest extends FunctionTestSupport {
         driver.findElement(By.id("btn_validate")).click();
         assertThat(driver.findElement(By.id("userName.errors")).getText(), is(
                 "must be less than or equal to 6 bytes"));
+    }
+
+    @Test
+    public void test02_03_ByteMax_invalid_ja() {
+        // assert japanese message.
+        driver.findElement(By.linkText("Japanese")).click();
+        driver.findElement(By.linkText("@ByteMax Test")).click();
+
+        inputFieldAccessor.overrideValue(By.id("userName"), "あいうe", driver);
+        driver.findElement(By.id("btn_validate")).click();
+        assertThat(driver.findElement(By.id("userName.errors")).getText(), is(
+                "6 バイト以下のサイズにしてください"));
     }
 
     @Test
@@ -95,6 +125,23 @@ public class ValidationTest extends FunctionTestSupport {
         driver.findElement(By.id("btn_validate")).click();
         assertThat(driver.findElement(By.id("userName.errors")).getText(), is(
                 "must be between 6 and 6 bytes"));
+    }
+
+    @Test
+    public void test03_03_ByteSize_invalid_ja() {
+        // assert japanese message.
+        driver.findElement(By.linkText("Japanese")).click();
+        driver.findElement(By.linkText("@ByteSize Test")).click();
+
+        inputFieldAccessor.overrideValue(By.id("userName"), "あいu", driver);
+        driver.findElement(By.id("btn_validate")).click();
+        assertThat(driver.findElement(By.id("userName.errors")).getText(), is(
+                "6 から 6 バイトの間のサイズにしてください"));
+
+        inputFieldAccessor.overrideValue(By.id("userName"), "あいうe", driver);
+        driver.findElement(By.id("btn_validate")).click();
+        assertThat(driver.findElement(By.id("userName.errors")).getText(), is(
+                "6 から 6 バイトの間のサイズにしてください"));
     }
 
     @Test
@@ -306,5 +353,18 @@ public class ValidationTest extends FunctionTestSupport {
         driver.findElement(By.id("btn_root")).click();
         assertThat(driver.findElement(By.id("validationForm.errors")).getText(),
                 is("invalid combination of left and right"));
+    }
+
+    @Test
+    public void test04_17_Compare_invalid_ja() {
+        // assert japanese message.
+        driver.findElement(By.linkText("Japanese")).click();
+        driver.findElement(By.linkText("@Compare Test")).click();
+
+        inputFieldAccessor.overrideValue(By.id("left"), "100", driver);
+        inputFieldAccessor.overrideValue(By.id("right"), "101", driver);
+        driver.findElement(By.id("btn_eq")).click();
+        assertThat(driver.findElement(By.id("left.errors")).getText(), is(
+                "正しくない left と right の組合せです"));
     }
 }

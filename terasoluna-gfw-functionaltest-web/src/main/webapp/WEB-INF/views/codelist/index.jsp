@@ -5,6 +5,7 @@
 <a href="${pageContext.request.contextPath}/codelist?locale=fr_fr">France</a>
 <a href="${pageContext.request.contextPath}/codelist?locale=fr_ca">Canada(French)</a>
 <a href="${pageContext.request.contextPath}/codelist?locale=de">German</a>
+<a href="${pageContext.request.contextPath}/codelist?locale=ja">Japanese</a>
 <br>
 <br>
 <table>
