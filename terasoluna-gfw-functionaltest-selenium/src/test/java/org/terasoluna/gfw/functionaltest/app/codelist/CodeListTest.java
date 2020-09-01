@@ -19,6 +19,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertNotSame;
 
+import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -34,6 +35,11 @@ import org.terasoluna.gfw.functionaltest.app.FunctionTestSupport;
 public class CodeListTest extends FunctionTestSupport {
 
     public CodeListTest() {
+    }
+
+    @Before
+    public void setUpLocale() {
+        driver.findElement(By.linkText("English")).click();
     }
 
     @Test
@@ -663,6 +669,17 @@ public class CodeListTest extends FunctionTestSupport {
         assertThat(driver.findElement(By.id("item1Error")).getText(), is(
                 "Does not exist in CL_CODELIST08_08"));
         assertThat(driver.findElement(By.id("item1Label")).getText(), is(""));
+    }
+
+    @Test
+    public void test08_11_form() {
+        // assert japanese message.
+        driver.findElement(By.linkText("Japanese")).click();
+        driver.findElement(By.id("codelist_08_01")).click();
+        inputFieldAccessor.overrideValue(By.id("item1"), "key5", driver);
+        driver.findElement(By.id("btn1")).click();
+        assertThat(driver.findElement(By.id("item1.errors")).getText(), is(
+                "SAMPLE_CODELIST にありません"));
     }
 
     @Test

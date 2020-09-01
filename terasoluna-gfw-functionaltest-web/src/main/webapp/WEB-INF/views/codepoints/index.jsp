@@ -1,5 +1,8 @@
 <h2>CodePoints Test</h2>
 
+<label>Change Locale Link</label>
+<a href="${pageContext.request.contextPath}/codepoints?locale=en">English</a>
+<a href="${pageContext.request.contextPath}/codepoints?locale=ja">Japanese</a>
 <table>
   <tr>
     <td><a id="codepoints01_01"
