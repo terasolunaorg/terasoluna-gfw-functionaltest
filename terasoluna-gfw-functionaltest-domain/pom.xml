@@ -61,7 +61,7 @@
     </dependency>
     <!-- Once you have installed ojdbc8.jar into local repository, please remove this comment out. -->
     <!-- <dependency> -->
-    <!--   <groupId>com.oracle.ojdbc</groupId> -->
+    <!--   <groupId>com.oracle.database.jdbc</groupId> -->
     <!--   <artifactId>ojdbc8</artifactId> -->
     <!--   <scope>provided</scope> -->
     <!--   <optional>true</optional> -->
