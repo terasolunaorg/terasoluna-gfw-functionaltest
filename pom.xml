@@ -203,7 +203,7 @@
       </dependency>
       <dependency>
         <!-- ojdbc8.jar must be pre-installed in local repository. -->
-        <groupId>com.oracle.ojdbc</groupId>
+        <groupId>com.oracle.database.jdbc</groupId>
         <artifactId>ojdbc8</artifactId>
         <version>${ojdbc.version}</version>
       </dependency>
