@@ -48,14 +48,12 @@
     </mvc:interceptor>
     <mvc:interceptor>
       <mvc:mapping path="/transactiontoken/customTransactionStoreSize2/**" />
-      <mvc:exclude-mapping path="/resources/**" />
       <bean class="org.terasoluna.gfw.web.token.transaction.TransactionTokenInterceptor">
         <constructor-arg value="2" />
       </bean>
     </mvc:interceptor>
     <mvc:interceptor>
       <mvc:mapping path="/transactiontoken/customTransactionStoreSize1/**" />
-      <mvc:exclude-mapping path="/resources/**" />
       <bean class="org.terasoluna.gfw.web.token.transaction.TransactionTokenInterceptor">
         <constructor-arg value="1" />
       </bean>
@@ -82,21 +80,18 @@
     </mvc:interceptor>
     <mvc:interceptor>
       <mvc:mapping path="/codelist/multiplePattern/**" />
-      <mvc:exclude-mapping path="/resources/**" />
       <bean class="org.terasoluna.gfw.web.codelist.CodeListInterceptor">
         <property name="codeListIdPattern" value="CL_.+|SAMPLE_.+" />
       </bean>
     </mvc:interceptor>
     <mvc:interceptor>
       <mvc:mapping path="/codelist/jdbcCodeListTestDBError/**" />
-      <mvc:exclude-mapping path="/resources/**" />
       <bean class="org.terasoluna.gfw.web.codelist.CodeListInterceptor">
         <property name="codeListIdPattern" value="CL_CODELIST_WRONG_ITEM" />
       </bean>
     </mvc:interceptor>
     <mvc:interceptor>
       <mvc:mapping path="/logging/traceLoggingInterceptor/customWarnHandling/**" />
-      <mvc:exclude-mapping path="/resources/**" />
       <bean class="org.terasoluna.gfw.web.logging.TraceLoggingInterceptor">
         <property name="warnHandlingNanos" value="#{5L * 1000L * 1000L * 1000L}" />
       </bean>
