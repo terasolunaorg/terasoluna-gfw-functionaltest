@@ -44,8 +44,8 @@ public class DateServiceImpl implements DateService {
     @Override
     public void insertOperationDate(String id, String diffTime) {
         Map<String, Object> params = new HashMap<String, Object>();
-        params.put("diff", new Long(diffTime));
-        params.put("operation_date_id", new Integer(id));
+        params.put("diff", Long.valueOf(diffTime));
+        params.put("operation_date_id", Integer.valueOf(id));
 
         jdbcTemplate.update(INSERT_OPERATION_DATE, params);
     }
@@ -53,8 +53,8 @@ public class DateServiceImpl implements DateService {
     @Override
     public void updateOperationDate(String id, String diffTime) {
         Map<String, Object> params = new HashMap<String, Object>();
-        params.put("diff", new Long(diffTime));
-        params.put("operation_date_id", new Integer(id));
+        params.put("diff", Long.valueOf(diffTime));
+        params.put("operation_date_id", Integer.valueOf(id));
 
         jdbcTemplate.update(UPDATE_DIFF_BY_ID, params);
     }
@@ -62,13 +62,13 @@ public class DateServiceImpl implements DateService {
     @Override
     public void deleteOperationDate(int id) {
         jdbcTemplate.update(DELETE_OPERATION_DATE_BY_ID, Collections
-                .singletonMap("operation_date_id", new Integer(id)));
+                .singletonMap("operation_date_id", Integer.valueOf(id)));
     }
 
     @Override
     public void deleteSystemDate(int id) {
         jdbcTemplate.update(DELETE_SYSTEM_DATE_BY_ID, Collections.singletonMap(
-                "system_date_id", new Integer(id)));
+                "system_date_id", Integer.valueOf(id)));
     }
 
 }
