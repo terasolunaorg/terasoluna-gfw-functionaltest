@@ -106,14 +106,15 @@ public class MessageController {
     @RequestMapping(value = "1_8", method = RequestMethod.GET)
     public String defaultSpecified_01_08(Model model) {
 
-        throw new BusinessException(ResultMessages.error().add(ResultMessage
-                .fromText("Error Message!!")));
+        model.addAttribute(ResultMessages.primary().add("i.gt.me.0001"));
+
+        return "message/default";
     }
 
     @RequestMapping(value = "1_9", method = RequestMethod.GET)
     public String defaultSpecified_01_09(Model model) {
 
-        model.addAttribute(ResultMessages.success().add("i.gt.me.0001"));
+        model.addAttribute(ResultMessages.secondary().add("i.gt.me.0001"));
 
         return "message/default";
     }
@@ -121,8 +122,7 @@ public class MessageController {
     @RequestMapping(value = "1_10", method = RequestMethod.GET)
     public String defaultSpecified_01_10(Model model) {
 
-        model.addAttribute(ResultMessages.success().add("i.gt.me.0005",
-                "Terasoluna"));
+        model.addAttribute(ResultMessages.light().add("i.gt.me.0001"));
 
         return "message/default";
     }
@@ -130,14 +130,46 @@ public class MessageController {
     @RequestMapping(value = "1_11", method = RequestMethod.GET)
     public String defaultSpecified_01_11(Model model) {
 
-        model.addAttribute(ResultMessages.success().add(ResultMessage.fromCode(
-                "i.gt.me.0005", "Terasoluna")));
+        model.addAttribute(ResultMessages.dark().add("i.gt.me.0001"));
 
         return "message/default";
     }
 
     @RequestMapping(value = "1_12", method = RequestMethod.GET)
     public String defaultSpecified_01_12(Model model) {
+
+        throw new BusinessException(ResultMessages.error().add(ResultMessage
+                .fromText("Error Message!!")));
+    }
+
+    @RequestMapping(value = "1_13", method = RequestMethod.GET)
+    public String defaultSpecified_01_13(Model model) {
+
+        model.addAttribute(ResultMessages.success().add("i.gt.me.0001"));
+
+        return "message/default";
+    }
+
+    @RequestMapping(value = "1_14", method = RequestMethod.GET)
+    public String defaultSpecified_01_14(Model model) {
+
+        model.addAttribute(ResultMessages.success().add("i.gt.me.0005",
+                "Terasoluna"));
+
+        return "message/default";
+    }
+
+    @RequestMapping(value = "1_15", method = RequestMethod.GET)
+    public String defaultSpecified_01_15(Model model) {
+
+        model.addAttribute(ResultMessages.success().add(ResultMessage.fromCode(
+                "i.gt.me.0005", "Terasoluna")));
+
+        return "message/default";
+    }
+
+    @RequestMapping(value = "1_16", method = RequestMethod.GET)
+    public String defaultSpecified_01_16(Model model) {
 
         ResultMessage resultMessage = new ResultMessage("i.gt.me.0001", null, "Terasoluna !!");
 
@@ -146,8 +178,8 @@ public class MessageController {
         return "message/default";
     }
 
-    @RequestMapping(value = "1_13", method = RequestMethod.GET)
-    public String defaultSpecified_01_13(Model model) {
+    @RequestMapping(value = "1_17", method = RequestMethod.GET)
+    public String defaultSpecified_01_17(Model model) {
 
         ResultMessage resultMessage = new ResultMessage("i.gt.me.9999", null, "Terasoluna !!");
 

@@ -2127,6 +2127,58 @@ public class PaginationTest extends FunctionTestSupport {
         }
     }
 
+    @Test
+    public void test18_03_anchorClassSpecified() {
+        driver.findElement(By.id("anchorClassSpecified_18_3")).click();
+        webDriverWait.until(textToBe(By.xpath("//h1[2]"), "1 Page"));
+
+        // HTML tags outside "<ul>" check
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul")),
+                notNullValue());
+        // HTML tags inside "<li>" check
+        assertThat(driver.findElement(By.xpath(
+                "/html/body/div/div[2]/ul/li[1]")), notNullValue());
+
+        // previousLink, nextLink, firstLink, lastLink check
+        assertThat(driver.findElement(By.xpath("//li[1]/a")).getText(), is(
+                "<<"));
+        assertThat(driver.findElement(By.xpath("//li[2]/a")).getText(), is(
+                "<"));
+        assertThat(driver.findElement(By.xpath("//li[6]/a")).getText(), is(
+                ">"));
+        assertThat(driver.findElement(By.xpath("//li[7]/a")).getText(), is(
+                ">>"));
+
+        // previousLink value "javascript:void(0)" check
+        assertThat(driver.findElement(By.xpath(
+                "(//a[contains(@href, 'javascript:void(0)')])[2]")),
+                notNullValue());
+
+        // "active" class check
+        assertThat(driver.findElement(By.cssSelector("li.active > a"))
+                .getText(), is("1"));
+
+        // "disabled" class check
+        assertThat(driver.findElement(By.cssSelector("li.disabled > a"))
+                .getText(), is("<<"));
+
+        for (int i = 1; i < 4; i++) {
+            // active page number check
+            webDriverWait.until(textToBe(By.xpath("//h1[2]"), String.valueOf(i)
+                    + " Page"));
+            // screen capture
+            screenCapture.save(driver);
+
+            driver.findElement(By.linkText(">")).click();
+        }
+
+        // All of HTML tags anchor class "link" check
+        assertThat(driver.findElements(By.cssSelector("li > a.link")).size(),
+                is(14));
+        assertThat(driver.findElements(By.cssSelector("li > a:not(.link)"))
+                .size(), is(0));
+    }
+
     @Test(expected = NoSuchElementException.class)
     public void test19_01_screenDrawing() {
         driver.findElement(By.id("screenDrawing_19_1")).click();

@@ -487,6 +487,17 @@ public class PaginationController {
         return "pagination/innerElementClass";
     }
 
+    @RequestMapping(value = "18_3", method = RequestMethod.GET)
+    public String fuinctionTest_18_3(Model model,
+            @PageableDefault(value = 100) Pageable pageable) {
+
+        Page<Person> page = paginationService.findPerson(pageable);
+
+        model.addAttribute("page", page);
+
+        return "pagination/anchorClass";
+    }
+
     @RequestMapping(value = "19_1", method = RequestMethod.GET)
     public String fuinctionTest_19_1(Model model,
             @PageableDefault(value = 100) Pageable pageable) {
