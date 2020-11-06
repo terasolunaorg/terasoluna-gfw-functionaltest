@@ -35,8 +35,7 @@ before_script:
   - sudo sed -i -e '/local.*peer/s/postgres/all/' -e 's/peer\|md5/trust/g' /etc/postgresql/11/main/pg_hba.conf
   - sudo cat /etc/postgresql/11/main/pg_hba.conf
   - sudo ps -auxww
-  - sudo systemctl status postgresql.service -l
-  - sudo service postgresql restart
+  - sudo systemctl restart postgresql@11-main
   - psql --version
   - createdb terasoluna-gfw-functionaltest --locale=C --encoding=UTF8 --template=template0
   - mvn -B dependency:copy -Dartifact=org.codehaus.cargo:cargo-daemon-webapp:${CARGO_DAEMON_WEBAPP_VERSION}:war -DoutputDirectory=./target/.
