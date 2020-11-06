@@ -48,3 +48,4 @@ script:
   - mvn -B -U install -am -pl terasoluna-gfw-functionaltest-web -P tomcat9-postgresql,warpack-env,warpack-jstl,travis
   - mvn -B -U cargo:daemon-start -pl terasoluna-gfw-functionaltest-web -P travis
   - sudo cat ~/.cargo/logs/terasoluna-gfw-functionaltest-web/container.log
+  - mvn -B -U test -pl terasoluna-gfw-functionaltest-selenium
