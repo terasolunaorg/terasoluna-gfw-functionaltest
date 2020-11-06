@@ -30,6 +30,13 @@ install:
   - popd
 
 before_script:
+  - sudo cat /etc/postgresql/9.4/main/pg_hba.conf
+  - sudo cat /etc/postgresql/11/main/pg_hba.conf
+  - sudo sed -i -e '/local.*peer/s/postgres/all/' -e 's/peer\|md5/trust/g' /etc/postgresql/11/main/pg_hba.conf
+  - sudo cat /etc/postgresql/11/main/pg_hba.conf
+  - sudo ps -auxww
+  - sudo systemctl status postgresql.service -l
+  - sudo service postgresql restart
   - psql --version
   - createdb terasoluna-gfw-functionaltest --locale=C --encoding=UTF8 --template=template0
   - mvn -B dependency:copy -Dartifact=org.codehaus.cargo:cargo-daemon-webapp:${CARGO_DAEMON_WEBAPP_VERSION}:war -DoutputDirectory=./target/.
@@ -42,4 +49,3 @@ script:
   - mvn -B -U install -am -pl terasoluna-gfw-functionaltest-web -P tomcat9-postgresql,warpack-env,warpack-jstl,travis
   - mvn -B -U cargo:daemon-start -pl terasoluna-gfw-functionaltest-web -P travis
   - sudo cat ~/.cargo/logs/terasoluna-gfw-functionaltest-web/container.log
-  - mvn -B -U test -pl terasoluna-gfw-functionaltest-selenium
