@@ -46,7 +46,8 @@ script:
   - mvn -B formatter:validate
   - mvn -B -U sql:execute -pl terasoluna-gfw-functionaltest-initdb -Ddb.url=jdbc:postgresql://127.0.0.1:5433/terasoluna-gfw-functionaltest
   - sudo sed -i -e "s/5433/5432/" *env/configs/travis/*/context.xml
+  - sudo cat *env/configs/travis/*/context.xml
+  - ls -la *env/configs/travis/*/context.xml
   - mvn -B -U install -am -pl terasoluna-gfw-functionaltest-web -P tomcat9-postgresql,warpack-env,warpack-jstl,travis
   - mvn -B -U cargo:daemon-start -pl terasoluna-gfw-functionaltest-web -P travis
   - sudo cat ~/.cargo/logs/terasoluna-gfw-functionaltest-web/container.log
-  - mvn -B -U test -pl terasoluna-gfw-functionaltest-selenium
