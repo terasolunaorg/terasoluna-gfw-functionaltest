@@ -9,7 +9,7 @@ addons:
     packages:
       - postgresql-11
       - postgresql-client-11
-  firefox: "68.2.0esr"
+  firefox: "latest-esr"
 env:
   global:
   - PGPORT=5433
