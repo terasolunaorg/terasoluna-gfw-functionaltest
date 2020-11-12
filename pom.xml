@@ -246,8 +246,8 @@
     <project.root.basedir>${project.basedir}</project.root.basedir>
     <encoding>UTF-8</encoding>
     <java-version>1.8</java-version>
-    <cargo.connect.db.port>-Ddb.port=5432</cargo.connect.db.port>
-    <cargo.jvmargs>${cargo.connect.db.port} -Xms512m -Xmx1024m -Duser.language=ja -Duser.country=JP -Duser.timezone=Asia/Tokyo</cargo.jvmargs>
+    <cargo.connect.db.port>5432</cargo.connect.db.port>
+    <cargo.jvmargs>-Ddb.port=${cargo.connect.db.port} -Xms512m -Xmx1024m -Duser.language=ja -Duser.country=JP -Duser.timezone=Asia/Tokyo</cargo.jvmargs>
   </properties>
   <profiles>
     <profile>
@@ -391,7 +391,7 @@
       </activation>
       <properties>
         <java-version>11</java-version>
-        <cargo.jvmargs>${cargo.connect.db.port} -Xms512m -Xmx1024m -Duser.language=ja -Duser.country=JP -Duser.timezone=Asia/Tokyo -Djava.locale.providers=COMPAT,CLDR,SPI</cargo.jvmargs>
+        <cargo.jvmargs>-Ddb.port=${cargo.connect.db.port} -Xms512m -Xmx1024m -Duser.language=ja -Duser.country=JP -Duser.timezone=Asia/Tokyo -Djava.locale.providers=COMPAT,CLDR,SPI</cargo.jvmargs>
       </properties>
       <build>
         <pluginManagement>

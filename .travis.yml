@@ -41,5 +41,5 @@ script:
   - mvn -B formatter:validate
   - mvn -B -U sql:execute -pl terasoluna-gfw-functionaltest-initdb -Ddb.url=jdbc:postgresql://127.0.0.1:5433/terasoluna-gfw-functionaltest
   - mvn -B -U install -am -pl terasoluna-gfw-functionaltest-web -P tomcat9-postgresql,warpack-env,warpack-jstl,travis
-  - mvn -B -U cargo:daemon-start -pl terasoluna-gfw-functionaltest-web -P travis -Dcargo.connect.db.port="-Ddb.port=5433"
+  - mvn -B -U cargo:daemon-start -pl terasoluna-gfw-functionaltest-web -P travis -Dcargo.connect.db.port=5433
   - mvn -B -U test -pl terasoluna-gfw-functionaltest-selenium
