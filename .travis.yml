@@ -4,8 +4,15 @@ jdk:
   - openjdk8
   - openjdk11
 addons:
-  postgresql: "9.4"
-  firefox: "60.3.0esr"
+  postgresql: "11"
+  apt:
+    packages:
+      - postgresql-11
+      - postgresql-client-11
+  firefox: "latest-esr"
+env:
+  global:
+  - PGPORT=5433
 cache:
   directories:
     - $HOME/.m2
@@ -23,6 +30,8 @@ install:
   - popd
 
 before_script:
+  - sudo sed -i -e '/local.*peer/s/postgres/all/' -e 's/peer\|md5/trust/g' /etc/postgresql/11/main/pg_hba.conf
+  - sudo systemctl restart postgresql@11-main
   - createdb terasoluna-gfw-functionaltest --locale=C --encoding=UTF8 --template=template0
   - mvn -B dependency:copy -Dartifact=org.codehaus.cargo:cargo-daemon-webapp:${CARGO_DAEMON_WEBAPP_VERSION}:war -DoutputDirectory=./target/.
   - java -jar ./target/cargo-daemon-webapp-${CARGO_DAEMON_WEBAPP_VERSION}.war &
@@ -30,7 +39,8 @@ before_script:
 script:
   - mvn -B xml:check-format
   - mvn -B formatter:validate
-  - mvn -B -U sql:execute -pl terasoluna-gfw-functionaltest-initdb
+  - mvn -B -U sql:execute -pl terasoluna-gfw-functionaltest-initdb -Ddb.url=jdbc:postgresql://127.0.0.1:5433/terasoluna-gfw-functionaltest
+  - sed -i -e "s/5432/5433/" *env/configs/travis/*/context.xml
   - mvn -B -U install -am -pl terasoluna-gfw-functionaltest-web -P tomcat9-postgresql,warpack-env,warpack-jstl,travis
   - mvn -B -U cargo:daemon-start -pl terasoluna-gfw-functionaltest-web -P travis
   - mvn -B -U test -pl terasoluna-gfw-functionaltest-selenium
