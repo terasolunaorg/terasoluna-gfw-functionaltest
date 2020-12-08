@@ -111,32 +111,15 @@ public class MessageTest extends FunctionTestSupport {
     }
 
     @Test
-    public void test01_05_01_defaultSpecified() {
-        driver.findElement(By.id("defaultSpecified_01_05_01")).click();
+    public void test01_05_defaultSpecified() {
+        driver.findElement(By.id("defaultSpecified_01_05")).click();
 
         // div ul li Tag confirm
         // Message Confirm
         assertThat(driver.findElement(By.xpath("/html/body/div/div/ul/li"))
                 .getText(), is("Hello World!!"));
 
-        // <div> Tag class is "alert alert-warn"
-        assertThat(driver.findElement(By.cssSelector("div.alert.alert-warn"))
-                .getText(), is("Hello World!!"));
-
-        // screen capture
-        screenCapture.save(driver);
-    }
-
-    @Test
-    public void test01_05_02_defaultSpecified() {
-        driver.findElement(By.id("defaultSpecified_01_05_02")).click();
-
-        // div ul li Tag confirm
-        // Message Confirm
-        assertThat(driver.findElement(By.xpath("/html/body/div/div/ul/li"))
-                .getText(), is("Hello World!!"));
-
-        // <div> Tag class is "alert alert-warn"
+        // <div> Tag class is "alert alert-warning"
         assertThat(driver.findElement(By.cssSelector("div.alert.alert-warning"))
                 .getText(), is("Hello World!!"));
 
@@ -537,7 +520,7 @@ public class MessageTest extends FunctionTestSupport {
         assertThat(driver.findElement(By.xpath("/html/body/div/div/ul/li"))
                 .getText(), is("Warn Message!!"));
 
-        // <div> Tag class is "alert alert-warn"
+        // <div> Tag class is "alert alert-warning"
         assertThat(driver.findElement(By.cssSelector("div.alert.alert-warning"))
                 .getText(), is("Warn Message!!"));
 
@@ -554,7 +537,7 @@ public class MessageTest extends FunctionTestSupport {
         assertThat(driver.findElement(By.xpath("/html/body/div/div/ul/li"))
                 .getText(), is("Warn Message!!"));
 
-        // <div> Tag class is "alert alert-warn"
+        // <div> Tag class is "alert alert-warning"
         assertThat(driver.findElement(By.cssSelector("div.alert.alert-warning"))
                 .getText(), is("Warn Message!!"));
 
@@ -573,7 +556,7 @@ public class MessageTest extends FunctionTestSupport {
         assertThat(driver.findElement(By.xpath("/html/body/div/div/ul/li[2]"))
                 .getText(), is("Error Message!!"));
 
-        // <div> Tag class is "alert alert-warn"
+        // <div> Tag class is "alert alert-warning"
         assertThat(driver.findElement(By.cssSelector("div.alert.alert-warning"))
                 .getTagName(), is("div"));
 

@@ -5,8 +5,6 @@ after authentication test
     	userId:<input type="text" id="username" name="username">
     	password:<input type="password" id="password" name="password">
   <input type="submit" id="btn1" class="mainbtn" style="width: 100px;" value="Login" />
-  <input type="hidden" name="redirectTo"
-    value="${pageContext.request.contextPath}/logging/userIdMDCPutFilter/login" />
 </form:form>
 
 <br />
