@@ -72,11 +72,7 @@ public class ScreenCapture {
             return;
         }
 
-        if (StringUtils.isEmpty(subTitle)) {
-            subTitle = "";
-        } else {
-            subTitle = "-" + subTitle;
-        }
+        subTitle = StringUtils.hasText(subTitle) ? "-" + subTitle : "";
 
         File screenshotFile = takesScreenshot.getScreenshotAs(OutputType.FILE);
 

@@ -66,11 +66,7 @@ public class DBLog {
 
     public void saveForced(String subTitle) {
 
-        if (StringUtils.isEmpty(subTitle)) {
-            subTitle = "";
-        } else {
-            subTitle = "-" + subTitle;
-        }
+        subTitle = StringUtils.hasText(subTitle) ? "-" + subTitle : "";
 
         int sequenceNo = sequence.incrementAndGet();
 

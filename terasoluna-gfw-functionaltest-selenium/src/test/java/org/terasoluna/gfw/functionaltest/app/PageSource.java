@@ -57,11 +57,7 @@ public class PageSource {
 
     public void saveForced(WebDriver webDriver, String subTitle) {
 
-        if (StringUtils.isEmpty(subTitle)) {
-            subTitle = "";
-        } else {
-            subTitle = "-" + subTitle;
-        }
+        subTitle = StringUtils.hasText(subTitle) ? "-" + subTitle : "";
 
         int sequenceNo = sequence.incrementAndGet();
         String evidenceFile = String.format("page_source_%03d%s.txt",
