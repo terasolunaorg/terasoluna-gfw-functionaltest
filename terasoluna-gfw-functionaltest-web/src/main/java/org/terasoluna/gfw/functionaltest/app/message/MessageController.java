@@ -70,17 +70,8 @@ public class MessageController {
         return "message/default";
     }
 
-    @SuppressWarnings("deprecation")
-    @RequestMapping(value = "1_5_1", method = RequestMethod.GET)
-    public String defaultSpecified_01_05_01(Model model) {
-
-        model.addAttribute(ResultMessages.warn().add("i.gt.me.0001"));
-
-        return "message/default";
-    }
-
-    @RequestMapping(value = "1_5_2", method = RequestMethod.GET)
-    public String defaultSpecified_01_05_02(Model model) {
+    @RequestMapping(value = "1_5", method = RequestMethod.GET)
+    public String defaultSpecified_01_05(Model model) {
 
         model.addAttribute(ResultMessages.warning().add("i.gt.me.0001"));
 

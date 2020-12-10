@@ -56,16 +56,6 @@ public class TransactionTokenFlow1Controller {
         return "transactiontoken/flow1Step3";
     }
 
-    @SuppressWarnings("deprecation")
-    @RequestMapping(value = "flow1", method = RequestMethod.POST, params = "intermediateWithFinish")
-    @TransactionTokenCheck(type = TransactionTokenType.IN)
-    public String flow1Step3_withFinish(
-            TransactionTokenContext transactionTokenContext) {
-        transactionTokenContext.removeToken();
-        // Navigate to final screen
-        return "transactiontoken/flow1Step4";
-    }
-
     @RequestMapping(value = "flow1", method = RequestMethod.POST, params = "intermediateWithFinishError")
     @TransactionTokenCheck(type = TransactionTokenType.IN)
     public String flow1Step3_withFinishError(

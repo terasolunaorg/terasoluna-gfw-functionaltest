@@ -10,9 +10,6 @@
   <input id="btn-end" name="finalize" class="mainbtn" style="width: 200px;" type="submit"
     value="Finish" />
   <br>
-  <input id="btn-in-finish" name="intermediateWithFinish" class="mainbtn" style="width: 200px;"
-    type="submit" value="Next and Finish" />
-  <br>
   <input id="btn-in-finish-error" name="intermediateWithFinishError" class="mainbtn"
     style="width: 200px;" type="submit" value="Next and Finish with Error" />
   <br>

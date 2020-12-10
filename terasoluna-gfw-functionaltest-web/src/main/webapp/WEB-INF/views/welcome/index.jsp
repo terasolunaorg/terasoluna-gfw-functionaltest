@@ -46,10 +46,6 @@
           Function Test</a></td>
     </tr>
     <tr>
-      <td><a id="Redirect" href="${pageContext.request.contextPath}/redirect">Redirect
-          Function Test</a></td>
-    </tr>
-    <tr>
       <td><a id="EL" href="${pageContext.request.contextPath}/el">EL Function Test</a></td>
     </tr>
     <tr>
