@@ -185,11 +185,11 @@ public class MessageTest extends FunctionTestSupport {
         // div ul li Tag confirm
         // Message Confirm
         assertThat(driver.findElement(By.xpath("/html/body/div/div/ul/li"))
-                .getText(), is("Error Message!!"));
+                .getText(), is("Hello World!!"));
 
-        // <div> Tag class is "alert alert-error"
-        assertThat(driver.findElement(By.cssSelector("div.alert.alert-error"))
-                .getText(), is("Error Message!!"));
+        // <div> Tag class is "alert alert-primary"
+        assertThat(driver.findElement(By.cssSelector("div.alert.alert-primary"))
+                .getText(), is("Hello World!!"));
 
         // screen capture
         screenCapture.save(driver);
@@ -204,9 +204,9 @@ public class MessageTest extends FunctionTestSupport {
         assertThat(driver.findElement(By.xpath("/html/body/div/div/ul/li"))
                 .getText(), is("Hello World!!"));
 
-        // <div> Tag class is "alert alert-success"
-        assertThat(driver.findElement(By.cssSelector("div.alert.alert-success"))
-                .getText(), is("Hello World!!"));
+        // <div> Tag class is "alert alert-secondary"
+        assertThat(driver.findElement(By.cssSelector(
+                "div.alert.alert-secondary")).getText(), is("Hello World!!"));
 
         // screen capture
         screenCapture.save(driver);
@@ -219,11 +219,11 @@ public class MessageTest extends FunctionTestSupport {
         // div ul li Tag confirm
         // Message Confirm
         assertThat(driver.findElement(By.xpath("/html/body/div/div/ul/li"))
-                .getText(), is("Hello Terasoluna!!"));
+                .getText(), is("Hello World!!"));
 
-        // <div> Tag class is "alert alert-success"
-        assertThat(driver.findElement(By.cssSelector("div.alert.alert-success"))
-                .getText(), is("Hello Terasoluna!!"));
+        // <div> Tag class is "alert alert-light"
+        assertThat(driver.findElement(By.cssSelector("div.alert.alert-light"))
+                .getText(), is("Hello World!!"));
 
         // screen capture
         screenCapture.save(driver);
@@ -236,11 +236,11 @@ public class MessageTest extends FunctionTestSupport {
         // div ul li Tag confirm
         // Message Confirm
         assertThat(driver.findElement(By.xpath("/html/body/div/div/ul/li"))
-                .getText(), is("Hello Terasoluna!!"));
+                .getText(), is("Hello World!!"));
 
-        // <div> Tag class is "alert alert-success"
-        assertThat(driver.findElement(By.cssSelector("div.alert.alert-success"))
-                .getText(), is("Hello Terasoluna!!"));
+        // <div> Tag class is "alert alert-dark"
+        assertThat(driver.findElement(By.cssSelector("div.alert.alert-dark"))
+                .getText(), is("Hello World!!"));
 
         // screen capture
         screenCapture.save(driver);
@@ -249,6 +249,23 @@ public class MessageTest extends FunctionTestSupport {
     @Test
     public void test01_12_defaultSpecified() {
         driver.findElement(By.id("defaultSpecified_01_12")).click();
+
+        // div ul li Tag confirm
+        // Message Confirm
+        assertThat(driver.findElement(By.xpath("/html/body/div/div/ul/li"))
+                .getText(), is("Error Message!!"));
+
+        // <div> Tag class is "alert alert-error"
+        assertThat(driver.findElement(By.cssSelector("div.alert.alert-error"))
+                .getText(), is("Error Message!!"));
+
+        // screen capture
+        screenCapture.save(driver);
+    }
+
+    @Test
+    public void test01_13_defaultSpecified() {
+        driver.findElement(By.id("defaultSpecified_01_13")).click();
 
         // div ul li Tag confirm
         // Message Confirm
@@ -264,8 +281,59 @@ public class MessageTest extends FunctionTestSupport {
     }
 
     @Test
-    public void test01_13_defaultSpecified() {
-        driver.findElement(By.id("defaultSpecified_01_13")).click();
+    public void test01_14_defaultSpecified() {
+        driver.findElement(By.id("defaultSpecified_01_14")).click();
+
+        // div ul li Tag confirm
+        // Message Confirm
+        assertThat(driver.findElement(By.xpath("/html/body/div/div/ul/li"))
+                .getText(), is("Hello Terasoluna!!"));
+
+        // <div> Tag class is "alert alert-success"
+        assertThat(driver.findElement(By.cssSelector("div.alert.alert-success"))
+                .getText(), is("Hello Terasoluna!!"));
+
+        // screen capture
+        screenCapture.save(driver);
+    }
+
+    @Test
+    public void test01_15_defaultSpecified() {
+        driver.findElement(By.id("defaultSpecified_01_15")).click();
+
+        // div ul li Tag confirm
+        // Message Confirm
+        assertThat(driver.findElement(By.xpath("/html/body/div/div/ul/li"))
+                .getText(), is("Hello Terasoluna!!"));
+
+        // <div> Tag class is "alert alert-success"
+        assertThat(driver.findElement(By.cssSelector("div.alert.alert-success"))
+                .getText(), is("Hello Terasoluna!!"));
+
+        // screen capture
+        screenCapture.save(driver);
+    }
+
+    @Test
+    public void test01_16_defaultSpecified() {
+        driver.findElement(By.id("defaultSpecified_01_16")).click();
+
+        // div ul li Tag confirm
+        // Message Confirm
+        assertThat(driver.findElement(By.xpath("/html/body/div/div/ul/li"))
+                .getText(), is("Hello World!!"));
+
+        // <div> Tag class is "alert alert-success"
+        assertThat(driver.findElement(By.cssSelector("div.alert.alert-success"))
+                .getText(), is("Hello World!!"));
+
+        // screen capture
+        screenCapture.save(driver);
+    }
+
+    @Test
+    public void test01_17_defaultSpecified() {
+        driver.findElement(By.id("defaultSpecified_01_17")).click();
 
         // div ul li Tag confirm
         // Message Confirm
