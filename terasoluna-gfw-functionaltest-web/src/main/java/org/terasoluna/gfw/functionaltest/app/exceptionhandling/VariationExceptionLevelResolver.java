@@ -27,7 +27,7 @@ public class VariationExceptionLevelResolver implements ExceptionLevelResolver {
         String exceptionCode = we.getResultMessages().getList().get(0)
                 .getCode();
 
-        if (StringUtils.isEmpty(exceptionCode)) {
+        if (!StringUtils.hasText(exceptionCode)) {
             return ExceptionLevel.ERROR;
         }
         String exceptionCodePrefix = exceptionCode.substring(0, 1)
