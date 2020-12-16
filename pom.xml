@@ -215,14 +215,6 @@
       </dependency>
       <!-- == End Database == -->
 
-      <!-- == Begin For JDK 11 == -->
-      <dependency>
-        <groupId>javax.annotation</groupId>
-        <artifactId>javax.annotation-api</artifactId>
-        <version>${javax.annotation-api.version}</version>
-      </dependency>
-      <!-- == End For JDK 11 == -->
-
     </dependencies>
   </dependencyManagement>
   <properties>
@@ -239,7 +231,6 @@
     <ojdbc.version>19.3.0.0</ojdbc.version>
     <db2jcc4.version>4.21.29</db2jcc4.version>
     <webdrivermanager.version>3.1.1</webdrivermanager.version>
-    <javax.annotation-api.version>1.3.2</javax.annotation-api.version>
     <!-- == Project Properties == -->
     <project.env.main.directory>src/main</project.env.main.directory>
     <project.env.buildFinalName>${project.artifactId}-${project.version}</project.env.buildFinalName>
