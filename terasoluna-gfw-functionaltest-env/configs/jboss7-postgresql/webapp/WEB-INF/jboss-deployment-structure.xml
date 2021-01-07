@@ -10,6 +10,7 @@
     <exclude-subsystems>
       <subsystem name="jpa" />
       <subsystem name="jaxrs" />
+      <subsystem name="jsf"/>
     </exclude-subsystems>
   </deployment>
 </jboss-deployment-structure>
