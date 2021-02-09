@@ -2,11 +2,18 @@
 <web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
   version="3.0">
+
+  <context-param>
+    <param-name>logbackDisableServletContainerInitializer</param-name>
+    <param-value>true</param-value>
+  </context-param>
+
+  <listener>
+    <listener-class>ch.qos.logback.classic.servlet.LogbackServletContextListener</listener-class>
+  </listener>
+
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-  </listener>
-  <listener>
-    <listener-class>org.terasoluna.gfw.web.logging.HttpSessionEventLoggingListener</listener-class>
   </listener>
   <context-param>
     <param-name>contextConfigLocation</param-name>
@@ -16,6 +23,10 @@
       classpath*:META-INF/spring/spring-security.xml
     </param-value>
   </context-param>
+
+  <listener>
+    <listener-class>org.terasoluna.gfw.web.logging.HttpSessionEventLoggingListener</listener-class>
+  </listener>
 
   <filter>
     <filter-name>MDCClearFilter</filter-name>
