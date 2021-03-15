@@ -26,6 +26,7 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.textToBe;
 
 import java.util.concurrent.TimeUnit;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
@@ -903,6 +904,7 @@ public class PaginationTest extends FunctionTestSupport {
         }
     }
 
+    @Ignore("The behavior differs depending on the server used.")
     @Test(expected = NoSuchElementException.class)
     public void test04_03_maxDisplayCountSpecified() {
         driver.findElement(By.id("maxDisplayCountSpecified_4_3")).click();
