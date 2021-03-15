@@ -12,7 +12,7 @@
 
 <c:if test="${not empty page and page.totalElements != 0}">
   <h2 class="center-content">
-    <span id="pagePosition">${f:h(page.number) + 1}</span> Page ( <span id="rangeStart">${(page.number * page.size) + 1}</span>-<span
+    <span id="pagePosition">${f:h(page.number + 1) }</span> Page ( <span id="rangeStart">${(page.number * page.size) + 1}</span>-<span
       id="rangeEnd">${(page.number * page.size) +
             page.numberOfElements}</span> / <span
       id="totalResults">${page.totalElements}</span> results )
