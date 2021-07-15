@@ -53,7 +53,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-war-plugin</artifactId>
-          <version>${maven-war-plugin.version}</version>
+          <version>${org.apache.maven.plugins.maven-war-plugin.version}</version>
           <configuration>
             <webResources>
               <resource>
@@ -77,7 +77,7 @@
         <plugin>
           <groupId>net.revelc.code.formatter</groupId>
           <artifactId>formatter-maven-plugin</artifactId>
-          <version>${formatter-maven-plugin.version}</version>
+          <version>${net.revelc.code.formatter.formatter-maven-plugin.version}</version>
           <configuration>
             <configFile>${project.root.basedir}/eclipse/formatter.xml
             </configFile>
@@ -94,7 +94,7 @@
         <plugin>
           <groupId>org.codehaus.mojo</groupId>
           <artifactId>xml-maven-plugin</artifactId>
-          <version>${xml-maven-plugin.version}</version>
+          <version>${org.codehaus.mojo.xml-maven-plugin.version}</version>
           <configuration>
             <indentSize>2</indentSize>
           </configuration>
@@ -102,7 +102,7 @@
         <plugin>
           <groupId>com.mycila</groupId>
           <artifactId>license-maven-plugin</artifactId>
-          <version>${license-maven-plugin.version}</version>
+          <version>${com.mycila.license-maven-plugin.version}</version>
           <configuration>
             <header>${project.root.basedir}/license/header.txt</header>
             <includes>
@@ -175,10 +175,10 @@
   </dependencyManagement>
   <properties>
     <!-- == Maven Plugin Versions == -->
-    <maven-war-plugin.version>3.3.1</maven-war-plugin.version>
-    <formatter-maven-plugin.version>2.15.0</formatter-maven-plugin.version>
-    <xml-maven-plugin.version>1.0.2</xml-maven-plugin.version>
-    <license-maven-plugin.version>4.1</license-maven-plugin.version>
+    <org.apache.maven.plugins.maven-war-plugin.version>3.3.1</org.apache.maven.plugins.maven-war-plugin.version>
+    <net.revelc.code.formatter.formatter-maven-plugin.version>2.15.0</net.revelc.code.formatter.formatter-maven-plugin.version>
+    <org.codehaus.mojo.xml-maven-plugin.version>1.0.2</org.codehaus.mojo.xml-maven-plugin.version>
+    <com.mycila.license-maven-plugin.version>4.1</com.mycila.license-maven-plugin.version>
     <!-- == Dependency Versions == -->
     <postgresql.version>42.2.9</postgresql.version>
     <ojdbc.version>19.3.0.0</ojdbc.version>
