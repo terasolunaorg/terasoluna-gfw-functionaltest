@@ -75,11 +75,6 @@
           </configuration>
         </plugin>
         <plugin>
-          <groupId>org.codehaus.mojo</groupId>
-          <artifactId>sql-maven-plugin</artifactId>
-          <version>${org.codehaus.mojo.sql-maven-plugin.version}</version>
-        </plugin>
-        <plugin>
           <groupId>net.revelc.code.formatter</groupId>
           <artifactId>formatter-maven-plugin</artifactId>
           <version>${formatter-maven-plugin.version}</version>
@@ -181,7 +176,6 @@
   <properties>
     <!-- == Maven Plugin Versions == -->
     <maven-war-plugin.version>3.3.1</maven-war-plugin.version>
-    <org.codehaus.mojo.sql-maven-plugin.version>1.5</org.codehaus.mojo.sql-maven-plugin.version>
     <formatter-maven-plugin.version>2.15.0</formatter-maven-plugin.version>
     <xml-maven-plugin.version>1.0.2</xml-maven-plugin.version>
     <license-maven-plugin.version>4.1</license-maven-plugin.version>
