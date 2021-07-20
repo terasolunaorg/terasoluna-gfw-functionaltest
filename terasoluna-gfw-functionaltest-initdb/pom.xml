@@ -13,6 +13,7 @@
   <artifactId>terasoluna-gfw-functionaltest-initdb</artifactId>
 
   <properties>
+    <org.codehaus.mojo.sql-maven-plugin.version>1.5</org.codehaus.mojo.sql-maven-plugin.version>
     <project.root.basedir>${project.parent.basedir}</project.root.basedir>
   </properties>
   <profiles>
@@ -73,7 +74,7 @@
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>sql-maven-plugin</artifactId>
-        <version>1.5</version>
+        <version>${org.codehaus.mojo.sql-maven-plugin.version}</version>
         <dependencies>
           <dependency>
             <groupId>${db.groupId}</groupId>
