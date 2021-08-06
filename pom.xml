@@ -53,7 +53,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-failsafe-plugin</artifactId>
-          <version>${maven-failsafe-plugin.version}</version>
+          <version>${org.apache.maven.plugins.maven-failsafe-plugin.version}</version>
           <executions>
             <execution>
               <goals>
@@ -61,6 +61,11 @@
               </goals>
             </execution>
           </executions>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>${org.apache.maven.plugins.maven-surefire-plugin.version}</version>
         </plugin>
         <plugin>
           <groupId>org.codehaus.mojo</groupId>
@@ -98,7 +103,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-war-plugin</artifactId>
-          <version>${maven-war-plugin.version}</version>
+          <version>${org.apache.maven.plugins.maven-war-plugin.version}</version>
           <configuration>
             <webResources>
               <resource>
@@ -117,18 +122,12 @@
                 <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
               </manifest>
             </archive>
-
           </configuration>
-        </plugin>
-        <plugin>
-          <groupId>org.codehaus.mojo</groupId>
-          <artifactId>sql-maven-plugin</artifactId>
-          <version>${org.codehaus.mojo.sql-maven-plugin.version}</version>
         </plugin>
         <plugin>
           <groupId>net.revelc.code.formatter</groupId>
           <artifactId>formatter-maven-plugin</artifactId>
-          <version>${formatter-maven-plugin.version}</version>
+          <version>${net.revelc.code.formatter.formatter-maven-plugin.version}</version>
           <configuration>
             <configFile>${project.root.basedir}/eclipse/formatter.xml
             </configFile>
@@ -145,15 +144,15 @@
         <plugin>
           <groupId>org.codehaus.mojo</groupId>
           <artifactId>xml-maven-plugin</artifactId>
-          <version>${xml-maven-plugin.version}</version>
+          <version>${org.codehaus.mojo.xml-maven-plugin.version}</version>
           <configuration>
             <indentSize>2</indentSize>
           </configuration>
         </plugin>
         <plugin>
-          <groupId>com.google.code.maven-license-plugin</groupId>
-          <artifactId>maven-license-plugin</artifactId>
-          <version>${com.google.code.maven-license-plugin.version}</version>
+          <groupId>com.mycila</groupId>
+          <artifactId>license-maven-plugin</artifactId>
+          <version>${com.mycila.license-maven-plugin.version}</version>
           <configuration>
             <header>${project.root.basedir}/license/header.txt</header>
             <includes>
@@ -226,13 +225,13 @@
   </dependencyManagement>
   <properties>
     <!-- == Maven Plugin Versions == -->
-    <maven-war-plugin.version>2.5</maven-war-plugin.version>
-    <org.codehaus.mojo.build-helper-maven-plugin.version>1.9.1</org.codehaus.mojo.build-helper-maven-plugin.version>
-    <org.codehaus.mojo.sql-maven-plugin.version>1.5</org.codehaus.mojo.sql-maven-plugin.version>
-    <maven-failsafe-plugin.version>2.19</maven-failsafe-plugin.version>
-    <formatter-maven-plugin.version>2.0.1</formatter-maven-plugin.version>
-    <xml-maven-plugin.version>1.0.1</xml-maven-plugin.version>
-    <com.google.code.maven-license-plugin.version>1.4.0</com.google.code.maven-license-plugin.version>
+    <org.apache.maven.plugins.maven-war-plugin.version>3.3.1</org.apache.maven.plugins.maven-war-plugin.version>
+    <org.codehaus.mojo.build-helper-maven-plugin.version>3.2.0</org.codehaus.mojo.build-helper-maven-plugin.version>
+    <org.apache.maven.plugins.maven-failsafe-plugin.version>3.0.0-M5</org.apache.maven.plugins.maven-failsafe-plugin.version>
+    <org.apache.maven.plugins.maven-surefire-plugin.version>3.0.0-M5</org.apache.maven.plugins.maven-surefire-plugin.version>
+    <net.revelc.code.formatter.formatter-maven-plugin.version>2.15.0</net.revelc.code.formatter.formatter-maven-plugin.version>
+    <org.codehaus.mojo.xml-maven-plugin.version>1.0.2</org.codehaus.mojo.xml-maven-plugin.version>
+    <com.mycila.license-maven-plugin.version>4.1</com.mycila.license-maven-plugin.version>
     <!-- == Dependency Versions == -->
     <postgresql.version>42.2.9</postgresql.version>
     <ojdbc.version>19.3.0.0</ojdbc.version>
@@ -267,7 +266,7 @@
             </plugin>
             <plugin>
               <groupId>org.codehaus.cargo</groupId>
-              <artifactId>cargo-maven2-plugin</artifactId>
+              <artifactId>cargo-maven3-plugin</artifactId>
               <configuration>
                 <container>
                   <dependencies>
