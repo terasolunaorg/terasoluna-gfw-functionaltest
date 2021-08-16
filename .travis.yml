@@ -39,6 +39,7 @@ before_script:
 script:
   - mvn -B xml:check-format
   - mvn -B formatter:validate
+  - mvn -B license:check
   - mvn -B -U sql:execute -pl terasoluna-gfw-functionaltest-initdb -Ddb.url=jdbc:postgresql://127.0.0.1:${PGPORT}/terasoluna-gfw-functionaltest
   - sed -i -e "s/5432/${PGPORT}/" *env/configs/travis/*/context.xml
   - mvn -B -U install -am -pl terasoluna-gfw-functionaltest-web -P tomcat9-postgresql,warpack-env,warpack-jstl,travis
