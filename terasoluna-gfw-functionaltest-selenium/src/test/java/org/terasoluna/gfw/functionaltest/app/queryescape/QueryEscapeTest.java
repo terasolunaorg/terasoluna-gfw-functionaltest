@@ -904,7 +904,8 @@ public class QueryEscapeTest extends FunctionTestSupport {
             String[] srcStrArray = "11.2.0.1.0".split("\\.");
 
             int max = destStrArray.length >= srcStrArray.length
-                    ? destStrArray.length : srcStrArray.length;
+                    ? destStrArray.length
+                    : srcStrArray.length;
 
             for (int i = 0; i < max; i++) {
                 String dest = i < destStrArray.length ? destStrArray[i] : "";
