@@ -16,8 +16,8 @@
 package org.terasoluna.gfw.functionaltest.app.transactiontoken;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.terasoluna.gfw.web.token.transaction.TransactionTokenCheck;
 import org.terasoluna.gfw.web.token.transaction.TransactionTokenType;
 
@@ -25,36 +25,36 @@ import org.terasoluna.gfw.web.token.transaction.TransactionTokenType;
 @RequestMapping("transactiontoken")
 public class TransactionTokenFlow2Controller {
 
-    @RequestMapping(value = "flow2", method = RequestMethod.POST, params = "confirm")
+    @PostMapping(value = "flow2", params = "confirm")
     @TransactionTokenCheck(type = TransactionTokenType.BEGIN)
     public String flow2Step2() {
         return "transactiontoken/flow2Step2";
     }
 
-    @RequestMapping(value = "flow2", method = RequestMethod.POST, params = "redo1")
+    @PostMapping(value = "flow2", params = "redo1")
     public String flow2Step2Back() {
         return "transactiontoken/flowAllStep1";
     }
 
-    @RequestMapping(value = "flow2", method = RequestMethod.POST, params = "intermediate")
+    @PostMapping(value = "flow2", params = "intermediate")
     @TransactionTokenCheck(type = TransactionTokenType.IN)
     public String flow2Step3() {
         return "transactiontoken/flow2Step3";
     }
 
-    @RequestMapping(value = "flow2", method = RequestMethod.POST, params = "redo2")
+    @PostMapping(value = "flow2", params = "redo2")
     @TransactionTokenCheck
     public String flow2Step3Back() {
         return "transactiontoken/flow2Step2";
     }
 
-    @RequestMapping(value = "flow2", method = RequestMethod.POST, params = "finalize")
+    @PostMapping(value = "flow2", params = "finalize")
     @TransactionTokenCheck(type = TransactionTokenType.END)
     public String flow2Step4() {
         return "transactiontoken/flow2Step4";
     }
 
-    @RequestMapping(value = "flow2", method = RequestMethod.POST, params = "check")
+    @PostMapping(value = "flow2", params = "check")
     @TransactionTokenCheck(type = TransactionTokenType.CHECK)
     public String flow1Step2Check() {
         return "transactiontoken/flow2Step3";

@@ -17,8 +17,8 @@ package org.terasoluna.gfw.functionaltest.app.transactiontoken;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.terasoluna.gfw.web.token.transaction.TransactionTokenCheck;
 import org.terasoluna.gfw.web.token.transaction.TransactionTokenContext;
 import org.terasoluna.gfw.web.token.transaction.TransactionTokenType;
@@ -28,36 +28,36 @@ import org.terasoluna.gfw.web.token.transaction.TransactionTokenType;
 @TransactionTokenCheck("transactiontoken")
 public class TransactionTokenFlow1Controller {
 
-    @RequestMapping(value = "flow1", method = RequestMethod.POST, params = "confirm")
+    @PostMapping(value = "flow1", params = "confirm")
     @TransactionTokenCheck(type = TransactionTokenType.BEGIN)
     public String flow1Step2() {
         return "transactiontoken/flow1Step2";
     }
 
-    @RequestMapping(value = "flow1", method = RequestMethod.POST, params = "confirmError")
+    @PostMapping(value = "flow1", params = "confirmError")
     @TransactionTokenCheck(type = TransactionTokenType.BEGIN)
     public String flow1Step2_withError() {
         return "transactiontoken/flowAllStep1";
     }
 
-    @RequestMapping(value = "flow1", method = RequestMethod.POST, params = "confirmDiffNamespace")
+    @PostMapping(value = "flow1", params = "confirmDiffNamespace")
     @TransactionTokenCheck(type = TransactionTokenType.BEGIN)
     public String flow1Step2_toDifferentNamespace() {
         return "transactiontoken/flow1Step2ToDifferentNamespace";
     }
 
-    @RequestMapping(value = "flow1", method = RequestMethod.POST, params = "redo1")
+    @PostMapping(value = "flow1", params = "redo1")
     public String flow1Step2Back() {
         return "transactiontoken/flowAllStep1";
     }
 
-    @RequestMapping(value = "flow1", method = RequestMethod.POST, params = "intermediate")
+    @PostMapping(value = "flow1", params = "intermediate")
     @TransactionTokenCheck(type = TransactionTokenType.IN)
     public String flow1Step3() {
         return "transactiontoken/flow1Step3";
     }
 
-    @RequestMapping(value = "flow1", method = RequestMethod.POST, params = "intermediateWithFinishError")
+    @PostMapping(value = "flow1", params = "intermediateWithFinishError")
     @TransactionTokenCheck(type = TransactionTokenType.IN)
     public String flow1Step3_withFinishError(
             TransactionTokenContext transactionTokenContext) {
@@ -66,19 +66,19 @@ public class TransactionTokenFlow1Controller {
         return "transactiontoken/flow1Step2";
     }
 
-    @RequestMapping(value = "flow1", method = RequestMethod.POST, params = "redo2")
+    @PostMapping(value = "flow1", params = "redo2")
     @TransactionTokenCheck
     public String flow1Step3Back() {
         return "transactiontoken/flow1Step2";
     }
 
-    @RequestMapping(value = "flow1", method = RequestMethod.POST, params = "finalize")
+    @PostMapping(value = "flow1", params = "finalize")
     @TransactionTokenCheck(type = TransactionTokenType.END)
     public String flow1Step4() {
         return "transactiontoken/flow1Step4";
     }
 
-    @RequestMapping(value = "flow1", method = RequestMethod.POST, params = "finalizeError")
+    @PostMapping(value = "flow1", params = "finalizeError")
     @TransactionTokenCheck(type = TransactionTokenType.END)
     public String flow1Step4_withError() {
         // return to first step screen due to business error
@@ -91,7 +91,7 @@ public class TransactionTokenFlow1Controller {
         return "imageFileDownloadView";
     }
 
-    @RequestMapping(value = "flow1", method = RequestMethod.POST, params = "check")
+    @PostMapping(value = "flow1", params = "check")
     @TransactionTokenCheck(type = TransactionTokenType.CHECK)
     public String flow1Step2Check() {
         return "transactiontoken/flow1Step3";

@@ -18,8 +18,8 @@ package org.terasoluna.gfw.functionaltest.app.string;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.terasoluna.gfw.common.fullhalf.DefaultFullHalf;
 
 @Controller
@@ -46,7 +46,7 @@ public class FullHalfConverterController {
         return "string/fullHalf";
     }
 
-    @RequestMapping(method = RequestMethod.POST, params = { "full" })
+    @PostMapping(params = { "full" })
     public String toFullwidth(FullHalfForm form) {
 
         form.setFullwidth(DefaultFullHalf.INSTANCE.toFullwidth(form
@@ -55,7 +55,7 @@ public class FullHalfConverterController {
         return "string/fullHalf";
     }
 
-    @RequestMapping(method = RequestMethod.POST, params = { "half" })
+    @PostMapping(params = { "half" })
     public String toHalfwidth(FullHalfForm form) {
 
         form.setHalfwidth(DefaultFullHalf.INSTANCE.toHalfwidth(form

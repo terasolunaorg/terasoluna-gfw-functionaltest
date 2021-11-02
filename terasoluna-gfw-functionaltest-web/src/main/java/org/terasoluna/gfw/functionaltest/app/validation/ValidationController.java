@@ -21,8 +21,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.terasoluna.gfw.common.message.ResultMessage;
 import org.terasoluna.gfw.common.message.ResultMessages;
@@ -49,7 +49,7 @@ public class ValidationController {
         return "validation/bytemin";
     }
 
-    @RequestMapping(value = "bytemin", method = RequestMethod.POST)
+    @PostMapping(value = "bytemin")
     public String validateByteMin(@Validated({
             ValidationForm.ValidateByteMin.class }) ValidationForm form,
             BindingResult bindingResult, Model model,
@@ -68,7 +68,7 @@ public class ValidationController {
         return "validation/bytemax";
     }
 
-    @RequestMapping(value = "bytemax", method = RequestMethod.POST)
+    @PostMapping(value = "bytemax")
     public String validateByteMax(@Validated({
             ValidationForm.ValidateByteMax.class }) ValidationForm form,
             BindingResult bindingResult, Model model,
@@ -87,7 +87,7 @@ public class ValidationController {
         return "validation/bytesize";
     }
 
-    @RequestMapping(value = "bytesize", method = RequestMethod.POST)
+    @PostMapping(value = "bytesize")
     public String validateByteSize(@Validated({
             ValidationForm.ValidateByteSize.class }) ValidationForm form,
             BindingResult bindingResult, Model model,
@@ -106,7 +106,7 @@ public class ValidationController {
         return "validation/compare";
     }
 
-    @RequestMapping(value = "compare", method = RequestMethod.POST)
+    @PostMapping(value = "compare")
     public String validateCompare(@Validated({
             ValidationForm.ValidateCompare.class }) ValidationForm form,
             BindingResult bindingResult, Model model,
@@ -114,7 +114,7 @@ public class ValidationController {
         return internalValidateCompare(form, bindingResult, model, attributes);
     }
 
-    @RequestMapping(value = "compare", method = RequestMethod.POST, params = "eq")
+    @PostMapping(value = "compare", params = "eq")
     public String validateCompareOperatorEqual(@Validated({
             ValidationForm.ValidateCompareOperatorEqual.class }) ValidationForm form,
             BindingResult bindingResult, Model model,
@@ -122,7 +122,7 @@ public class ValidationController {
         return internalValidateCompare(form, bindingResult, model, attributes);
     }
 
-    @RequestMapping(value = "compare", method = RequestMethod.POST, params = "ne")
+    @PostMapping(value = "compare", params = "ne")
     public String validateCompareOperatorNotEqual(@Validated({
             ValidationForm.ValidateCompareOperatorNotEqual.class }) ValidationForm form,
             BindingResult bindingResult, Model model,
@@ -130,7 +130,7 @@ public class ValidationController {
         return internalValidateCompare(form, bindingResult, model, attributes);
     }
 
-    @RequestMapping(value = "compare", method = RequestMethod.POST, params = "gt")
+    @PostMapping(value = "compare", params = "gt")
     public String validateCompareOperatorGreaterThan(@Validated({
             ValidationForm.ValidateCompareOperatorGreaterThan.class }) ValidationForm form,
             BindingResult bindingResult, Model model,
@@ -138,7 +138,7 @@ public class ValidationController {
         return internalValidateCompare(form, bindingResult, model, attributes);
     }
 
-    @RequestMapping(value = "compare", method = RequestMethod.POST, params = "ge")
+    @PostMapping(value = "compare", params = "ge")
     public String validateCompareGreaterThanOrEqual(@Validated({
             ValidationForm.ValidateCompareOperatorGreaterThanOrEqual.class }) ValidationForm form,
             BindingResult bindingResult, Model model,
@@ -146,7 +146,7 @@ public class ValidationController {
         return internalValidateCompare(form, bindingResult, model, attributes);
     }
 
-    @RequestMapping(value = "compare", method = RequestMethod.POST, params = "lt")
+    @PostMapping(value = "compare", params = "lt")
     public String validateCompareOperatoressThan(@Validated({
             ValidationForm.ValidateCompareOperatorLessThan.class }) ValidationForm form,
             BindingResult bindingResult, Model model,
@@ -154,7 +154,7 @@ public class ValidationController {
         return internalValidateCompare(form, bindingResult, model, attributes);
     }
 
-    @RequestMapping(value = "compare", method = RequestMethod.POST, params = "le")
+    @PostMapping(value = "compare", params = "le")
     public String validateCompareOperatoressThanOrEqual(@Validated({
             ValidationForm.ValidateCompareOperatorLessThanOrEqual.class }) ValidationForm form,
             BindingResult bindingResult, Model model,
@@ -162,7 +162,7 @@ public class ValidationController {
         return internalValidateCompare(form, bindingResult, model, attributes);
     }
 
-    @RequestMapping(value = "compare", method = RequestMethod.POST, params = "prop")
+    @PostMapping(value = "compare", params = "prop")
     public String validateComparePathSource(@Validated({
             ValidationForm.ValidateCompareNodeProperty.class }) ValidationForm form,
             BindingResult bindingResult, Model model,
@@ -170,7 +170,7 @@ public class ValidationController {
         return internalValidateCompare(form, bindingResult, model, attributes);
     }
 
-    @RequestMapping(value = "compare", method = RequestMethod.POST, params = "root")
+    @PostMapping(value = "compare", params = "root")
     public String validateCompareOperatorPathRootBean(@Validated({
             ValidationForm.ValidateCompareNodeRootBean.class }) ValidationForm form,
             BindingResult bindingResult, Model model,

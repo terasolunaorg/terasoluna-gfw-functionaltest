@@ -16,8 +16,8 @@
 package org.terasoluna.gfw.functionaltest.app.transactiontoken;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.terasoluna.gfw.web.token.transaction.TransactionTokenCheck;
 import org.terasoluna.gfw.web.token.transaction.TransactionTokenType;
 
@@ -25,13 +25,13 @@ import org.terasoluna.gfw.web.token.transaction.TransactionTokenType;
 @RequestMapping("transactiontoken")
 public class TransactionTokenFlow6Controller {
 
-    @RequestMapping(value = "flow6", method = RequestMethod.POST, params = "confirm")
+    @PostMapping(value = "flow6", params = "confirm")
     @TransactionTokenCheck(type = TransactionTokenType.BEGIN)
     public String flow6Step2() {
         return "transactiontoken/transactionTokenDisplayStart";
     }
 
-    @RequestMapping(value = "flow6", method = RequestMethod.POST, params = "create")
+    @PostMapping(value = "flow6", params = "create")
     @TransactionTokenCheck(type = TransactionTokenType.IN)
     public String flow6Step3() {
         return "transactiontoken/transactionTokenDisplayFinish";

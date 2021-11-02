@@ -29,6 +29,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -55,7 +56,7 @@ public class ElController {
         return "el/xssOutput";
     }
 
-    @RequestMapping(value = "output_01", method = RequestMethod.POST)
+    @PostMapping(value = "output_01")
     public String xSSMeasures_InputData(
             @RequestParam("outputData") String outputData, Model model) {
         model.addAttribute("outputData", outputData);
@@ -68,7 +69,7 @@ public class ElController {
         return "el/urlOutput";
     }
 
-    @RequestMapping(value = "output_02", method = RequestMethod.POST)
+    @PostMapping(value = "output_02")
     public String urlEncoding_InputData(
             @RequestParam("outputData") String outputData, Model model) {
         model.addAttribute("outputData", outputData);
@@ -81,7 +82,7 @@ public class ElController {
         return "el/newLineOutput";
     }
 
-    @RequestMapping(value = "output_03", method = RequestMethod.POST)
+    @PostMapping(value = "output_03")
     public String newLine_InputData(
             @RequestParam("outputData") String outputData, Model model) {
         model.addAttribute("outputData", outputData);
@@ -94,7 +95,7 @@ public class ElController {
         return "el/cutOutput";
     }
 
-    @RequestMapping(value = "output_04", method = RequestMethod.POST)
+    @PostMapping(value = "output_04")
     public String cutString_InputData(
             @RequestParam("outputData") String outputData, Model model) {
         model.addAttribute("outputData", outputData);
@@ -112,7 +113,7 @@ public class ElController {
         return "el/linkUOutput";
     }
 
-    @RequestMapping(value = "output_05", method = RequestMethod.POST)
+    @PostMapping(value = "output_05")
     public String urlLink_InputData(
             @RequestParam("outputData") String outputData, Model model) {
         model.addAttribute("outputData", outputData);
@@ -120,8 +121,7 @@ public class ElController {
         return "el/linkOutput";
     }
 
-    @RequestMapping(value = "output_05_04", method = { RequestMethod.GET,
-            RequestMethod.POST })
+    @PostMapping(value = "output_05_04")
     public String urlULink_InputDatas(String URLPath, String outputQueryParam,
             Model model) {
         model.addAttribute("URLPath", URLPath);

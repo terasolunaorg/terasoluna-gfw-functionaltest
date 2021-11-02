@@ -30,8 +30,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.ModelAndView;
@@ -151,7 +151,7 @@ public class CodeListController {
         return "codelist/jdbcCodeListTestEditCodeList";
     }
 
-    @RequestMapping(value = "next", method = RequestMethod.POST, params = "jdbcCodeListTestUpdateCodeList")
+    @PostMapping(value = "next", params = "jdbcCodeListTestUpdateCodeList")
     public String testJdbcCodeListTestUpdateCodeList(CodeListMngForm form,
             Model model) {
         ItemCode row = codeListService.findOne(form.getId());
@@ -215,7 +215,7 @@ public class CodeListController {
     }
 
     // test case 12_01
-    @RequestMapping(value = "12_01_form", method = RequestMethod.POST, params = "update")
+    @PostMapping(value = "12_01_form", params = "update")
     public String test12_01_form_update(I18nCodeListForm form, Model model) {
         I18nItemCode row = i18nCodeListService.findOne(form.getId());
         row.setCode(form.getCode());
@@ -227,7 +227,7 @@ public class CodeListController {
     }
 
     // test case 12_01
-    @RequestMapping(value = "12_01_form", method = RequestMethod.POST, params = "refresh")
+    @PostMapping(value = "12_01_form", params = "refresh")
     public String test12_01_form_refrash(I18nCodeListForm form, Model model,
             @RequestParam(name = "recursive", required = false) Boolean recursive) {
         if (recursive == null) {
@@ -240,7 +240,7 @@ public class CodeListController {
     }
 
     // test case 12_01
-    @RequestMapping(value = "12_01_form", method = RequestMethod.POST, params = "refreshAll")
+    @PostMapping(value = "12_01_form", params = "refreshAll")
     public String test12_01_form_refrashAll(I18nCodeListForm form,
             Model model) {
         i18nCodeListService.refreshAll();

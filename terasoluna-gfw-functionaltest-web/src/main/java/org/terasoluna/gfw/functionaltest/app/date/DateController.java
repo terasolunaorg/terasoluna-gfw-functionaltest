@@ -25,8 +25,8 @@ import org.joda.time.DateTime;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.terasoluna.gfw.common.date.DateConvertUtils;
 import org.terasoluna.gfw.common.date.jodatime.JdbcAdjustedJodaTimeDateFactory;
@@ -400,7 +400,7 @@ public class DateController {
         return "date/dateManage";
     }
 
-    @RequestMapping(value = "diff", method = RequestMethod.POST)
+    @PostMapping(value = "diff")
     public String updateDiffTime(@RequestParam("diffTime") String diffTime) {
         dateService.updateOperationDate("1", diffTime);
         return "date/index";

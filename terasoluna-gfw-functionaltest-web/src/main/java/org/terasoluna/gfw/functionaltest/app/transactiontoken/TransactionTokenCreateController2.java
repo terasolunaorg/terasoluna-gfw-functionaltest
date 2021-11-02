@@ -16,8 +16,8 @@
 package org.terasoluna.gfw.functionaltest.app.transactiontoken;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.terasoluna.gfw.web.token.transaction.TransactionTokenCheck;
 import org.terasoluna.gfw.web.token.transaction.TransactionTokenType;
 
@@ -26,7 +26,7 @@ import org.terasoluna.gfw.web.token.transaction.TransactionTokenType;
 public class TransactionTokenCreateController2 {
 
     // Transaction token with method value only
-    @RequestMapping(value = "1_3", method = RequestMethod.POST)
+    @PostMapping(value = "1_3")
     @TransactionTokenCheck(value = "create", type = TransactionTokenType.BEGIN)
     public String functionTest1_3_Create() {
         return "transactiontoken/createOutput";
@@ -34,7 +34,7 @@ public class TransactionTokenCreateController2 {
 
     // Transaction token neither with method value nor class value
     // This will generate token with global namespace
-    @RequestMapping(value = "1_4", method = RequestMethod.POST)
+    @PostMapping(value = "1_4")
     @TransactionTokenCheck(type = TransactionTokenType.BEGIN)
     public String functionTest1_4_Create() {
         return "transactiontoken/createOutput";
