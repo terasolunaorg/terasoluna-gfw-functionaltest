@@ -16,14 +16,14 @@
 package org.terasoluna.gfw.functionaltest.app.logging.traceLoggingInterceptor;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 @RequestMapping(value = "logging/traceLoggingInterceptor")
 public class TraceLoggingInterceptorController {
 
-    @RequestMapping(method = RequestMethod.GET)
+    @GetMapping
     public String index() {
         return "logging/traceLoggingInterceptor";
     }

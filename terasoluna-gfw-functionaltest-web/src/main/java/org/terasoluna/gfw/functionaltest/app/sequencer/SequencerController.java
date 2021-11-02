@@ -22,8 +22,8 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.terasoluna.gfw.functionaltest.domain.service.sequencer.SequencerService;
 
 @Controller
@@ -33,26 +33,26 @@ public class SequencerController {
     @Inject
     protected SequencerService sequencerService;
 
-    @RequestMapping(method = RequestMethod.GET)
+    @GetMapping
     public String index() {
         return "sequencer/index";
     }
 
-    @RequestMapping(value = "2_1", params = "next", method = RequestMethod.GET)
+    @GetMapping(value = "2_1", params = "next")
     public String fuinctionTest_2_1_get_next(Model model) {
         Integer nextval = sequencerService.getNotFoundSequenceNext();
         model.addAttribute("nextval", nextval);
         return "sequencer/showNextval";
     }
 
-    @RequestMapping(value = "2_1", params = "current", method = RequestMethod.GET)
+    @GetMapping(value = "2_1", params = "current")
     public String fuinctionTest_2_1_get_current(Model model) {
         Integer currval = sequencerService.getNotFoundSequenceCurrent();
         model.addAttribute("currval", currval);
         return "sequencer/showCurrval";
     }
 
-    @RequestMapping(value = "1_1", params = "sameTransaction", method = RequestMethod.GET)
+    @GetMapping(value = "1_1", params = "sameTransaction")
     public String fuinctionTest_1_1_sameTransaction(Model model) {
         LinkedHashMap<String, Integer> resultMap = sequencerService
                 .getSequencerIntegers();
@@ -61,7 +61,7 @@ public class SequencerController {
         return "sequencer/showSameTransaction";
     }
 
-    @RequestMapping(value = "1_2", params = "sameTransaction", method = RequestMethod.GET)
+    @GetMapping(value = "1_2", params = "sameTransaction")
     public String fuinctionTest_1_2_sameTransaction(Model model) {
         LinkedHashMap<String, Long> resultMap = sequencerService
                 .getSequencerLongs();
@@ -70,7 +70,7 @@ public class SequencerController {
         return "sequencer/showSameTransaction";
     }
 
-    @RequestMapping(value = "1_3", params = "sameTransaction", method = RequestMethod.GET)
+    @GetMapping(value = "1_3", params = "sameTransaction")
     public String fuinctionTest_1_3_sameTransaction(Model model) {
         LinkedHashMap<String, BigInteger> resultMap = sequencerService
                 .getSequencerBigIntegers();
@@ -79,7 +79,7 @@ public class SequencerController {
         return "sequencer/showSameTransaction";
     }
 
-    @RequestMapping(value = "1_4", params = "sameTransaction", method = RequestMethod.GET)
+    @GetMapping(value = "1_4", params = "sameTransaction")
     public String fuinctionTest_1_4_sameTransaction(Model model) {
         LinkedHashMap<String, String> resultMap = sequencerService
                 .getSequencerStrings();

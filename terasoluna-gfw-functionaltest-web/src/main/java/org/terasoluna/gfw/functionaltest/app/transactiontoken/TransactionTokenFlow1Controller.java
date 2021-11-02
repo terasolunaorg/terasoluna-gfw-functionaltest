@@ -16,6 +16,7 @@
 package org.terasoluna.gfw.functionaltest.app.transactiontoken;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.terasoluna.gfw.web.token.transaction.TransactionTokenCheck;
@@ -84,7 +85,7 @@ public class TransactionTokenFlow1Controller {
         return "transactiontoken/flowAllStep1";
     }
 
-    @RequestMapping(value = "flow1", method = RequestMethod.GET, params = "download01")
+    @GetMapping(value = "flow1", params = "download01")
     @TransactionTokenCheck(type = TransactionTokenType.CHECK)
     public String flow1Step2Download_01() {
         return "imageFileDownloadView";

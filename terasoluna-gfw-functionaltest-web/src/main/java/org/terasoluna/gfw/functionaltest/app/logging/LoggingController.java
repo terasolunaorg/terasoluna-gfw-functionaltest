@@ -16,14 +16,14 @@
 package org.terasoluna.gfw.functionaltest.app.logging;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 @RequestMapping("logging")
 public class LoggingController {
 
-    @RequestMapping(method = RequestMethod.GET)
+    @GetMapping
     public String index() {
         return "logging/index";
     }

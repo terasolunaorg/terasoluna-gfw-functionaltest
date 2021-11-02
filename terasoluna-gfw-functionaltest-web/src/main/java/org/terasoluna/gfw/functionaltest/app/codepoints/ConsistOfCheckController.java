@@ -18,6 +18,7 @@ package org.terasoluna.gfw.functionaltest.app.codepoints;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -31,8 +32,7 @@ public class ConsistOfCheckController {
         return new ConsistOfCheckForm();
     }
 
-    @RequestMapping(value = "consistOfCheck", method = RequestMethod.GET, params = {
-            "form" })
+    @GetMapping(value = "consistOfCheck", params = { "form" })
     public String consistOfCheck_form() {
 
         return "codepoints/consistOfCheck_form";

@@ -21,8 +21,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.terasoluna.gfw.functionaltest.domain.service.logging.TraceLoggingInterceptorService;
 
 @Controller
@@ -35,7 +35,7 @@ public class TraceLoggingInterceptorDefaultController {
     private static final Logger logger = LoggerFactory.getLogger(
             TraceLoggingInterceptorDefaultController.class);
 
-    @RequestMapping(value = "4_1", method = RequestMethod.GET)
+    @GetMapping(value = "4_1")
     public String defaultTraceLoggingAsTraceLevel_04_01(Model model) {
 
         long startTime = traceLoggingInterceptorService.getTime();
@@ -50,7 +50,7 @@ public class TraceLoggingInterceptorDefaultController {
         return "logging/traceLoggingInterceptor";
     }
 
-    @RequestMapping(value = "4_2", method = RequestMethod.GET)
+    @GetMapping(value = "4_2")
     public String defaultTraceLoggingAsWarnLevel_04_02(Model model) {
 
         long startTime = traceLoggingInterceptorService.getTime();

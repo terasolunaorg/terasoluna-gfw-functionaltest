@@ -21,8 +21,8 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.terasoluna.gfw.functionaltest.domain.service.download.DownloadService;
 
 @Controller
@@ -32,18 +32,18 @@ public class DownloadController {
     @Inject
     protected DownloadService downloadService;
 
-    @RequestMapping(method = RequestMethod.GET)
+    @GetMapping
     public String index() {
 
         return "download/index";
     }
 
-    @RequestMapping(value = "1_1", method = RequestMethod.GET)
+    @GetMapping(value = "1_1")
     public String fileDownload_01_01() {
         return "imageFileDownloadView";
     }
 
-    @RequestMapping(value = "1_2", method = RequestMethod.GET)
+    @GetMapping(value = "1_2")
     public String fileDownload_01_02(Model model) {
 
         InputStream contentsStream = downloadService.findContentsById(1);

@@ -28,10 +28,10 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 @RequestMapping(value = "el")
@@ -54,13 +54,13 @@ public class ElListOfSimpleValueDefaultTrimController {
         return listForm;
     }
 
-    @RequestMapping(value = "6_16", method = RequestMethod.GET)
+    @GetMapping(value = "6_16")
     public String init(Model model) {
 
         return "el/listOfSimpleValueDefaultTrimQueryOutput";
     }
 
-    @RequestMapping(value = "6_16/search", method = RequestMethod.GET)
+    @GetMapping(value = "6_16/search")
     public String nestedJavaBeanQueryString(ListForm listForm,
             @PageableDefault Pageable pageable, Model model) {
 

@@ -20,8 +20,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.terasoluna.gfw.common.exception.BusinessException;
 import org.terasoluna.gfw.common.message.ResultMessage;
 import org.terasoluna.gfw.common.message.ResultMessages;
@@ -30,12 +30,12 @@ import org.terasoluna.gfw.common.message.ResultMessages;
 @RequestMapping(value = "message")
 public class MessageController {
 
-    @RequestMapping(method = RequestMethod.GET)
+    @GetMapping
     public String index() {
         return "message/index";
     }
 
-    @RequestMapping(value = "1_1", method = RequestMethod.GET)
+    @GetMapping(value = "1_1")
     public String defaultSpecified_01_01(Model model) {
 
         model.addAttribute(ResultMessages.success().add("i.gt.me.0001"));
@@ -43,7 +43,7 @@ public class MessageController {
         return "message/default";
     }
 
-    @RequestMapping(value = "1_2", method = RequestMethod.GET)
+    @GetMapping(value = "1_2")
     public String defaultSpecified_01_02(Model model) {
 
         model.addAttribute(ResultMessages.success().addAll(ResultMessage
@@ -53,7 +53,7 @@ public class MessageController {
         return "message/default";
     }
 
-    @RequestMapping(value = "1_3", method = RequestMethod.GET)
+    @GetMapping(value = "1_3")
     public String defaultSpecified_01_03(Model model) {
 
         model.addAttribute(ResultMessages.error().add(ResultMessage.fromText(
@@ -62,7 +62,7 @@ public class MessageController {
         return "message/default";
     }
 
-    @RequestMapping(value = "1_4", method = RequestMethod.GET)
+    @GetMapping(value = "1_4")
     public String defaultSpecified_01_04(Model model) {
 
         model.addAttribute(ResultMessages.info().add("i.gt.me.0001"));
@@ -70,7 +70,7 @@ public class MessageController {
         return "message/default";
     }
 
-    @RequestMapping(value = "1_5", method = RequestMethod.GET)
+    @GetMapping(value = "1_5")
     public String defaultSpecified_01_05(Model model) {
 
         model.addAttribute(ResultMessages.warning().add("i.gt.me.0001"));
@@ -78,7 +78,7 @@ public class MessageController {
         return "message/default";
     }
 
-    @RequestMapping(value = "1_6", method = RequestMethod.GET)
+    @GetMapping(value = "1_6")
     public String defaultSpecified_01_06(Model model) {
 
         model.addAttribute(ResultMessages.error().add("i.gt.me.0001"));
@@ -86,7 +86,7 @@ public class MessageController {
         return "message/default";
     }
 
-    @RequestMapping(value = "1_7", method = RequestMethod.GET)
+    @GetMapping(value = "1_7")
     public String defaultSpecified_01_07(Model model) {
 
         model.addAttribute(ResultMessages.danger().add("i.gt.me.0001"));
@@ -94,7 +94,7 @@ public class MessageController {
         return "message/default";
     }
 
-    @RequestMapping(value = "1_8", method = RequestMethod.GET)
+    @GetMapping(value = "1_8")
     public String defaultSpecified_01_08(Model model) {
 
         model.addAttribute(ResultMessages.primary().add("i.gt.me.0001"));
@@ -102,7 +102,7 @@ public class MessageController {
         return "message/default";
     }
 
-    @RequestMapping(value = "1_9", method = RequestMethod.GET)
+    @GetMapping(value = "1_9")
     public String defaultSpecified_01_09(Model model) {
 
         model.addAttribute(ResultMessages.secondary().add("i.gt.me.0001"));
@@ -110,7 +110,7 @@ public class MessageController {
         return "message/default";
     }
 
-    @RequestMapping(value = "1_10", method = RequestMethod.GET)
+    @GetMapping(value = "1_10")
     public String defaultSpecified_01_10(Model model) {
 
         model.addAttribute(ResultMessages.light().add("i.gt.me.0001"));
@@ -118,7 +118,7 @@ public class MessageController {
         return "message/default";
     }
 
-    @RequestMapping(value = "1_11", method = RequestMethod.GET)
+    @GetMapping(value = "1_11")
     public String defaultSpecified_01_11(Model model) {
 
         model.addAttribute(ResultMessages.dark().add("i.gt.me.0001"));
@@ -126,14 +126,14 @@ public class MessageController {
         return "message/default";
     }
 
-    @RequestMapping(value = "1_12", method = RequestMethod.GET)
+    @GetMapping(value = "1_12")
     public String defaultSpecified_01_12(Model model) {
 
         throw new BusinessException(ResultMessages.error().add(ResultMessage
                 .fromText("Error Message!!")));
     }
 
-    @RequestMapping(value = "1_13", method = RequestMethod.GET)
+    @GetMapping(value = "1_13")
     public String defaultSpecified_01_13(Model model) {
 
         model.addAttribute(ResultMessages.success().add("i.gt.me.0001"));
@@ -141,7 +141,7 @@ public class MessageController {
         return "message/default";
     }
 
-    @RequestMapping(value = "1_14", method = RequestMethod.GET)
+    @GetMapping(value = "1_14")
     public String defaultSpecified_01_14(Model model) {
 
         model.addAttribute(ResultMessages.success().add("i.gt.me.0005",
@@ -150,7 +150,7 @@ public class MessageController {
         return "message/default";
     }
 
-    @RequestMapping(value = "1_15", method = RequestMethod.GET)
+    @GetMapping(value = "1_15")
     public String defaultSpecified_01_15(Model model) {
 
         model.addAttribute(ResultMessages.success().add(ResultMessage.fromCode(
@@ -159,7 +159,7 @@ public class MessageController {
         return "message/default";
     }
 
-    @RequestMapping(value = "1_16", method = RequestMethod.GET)
+    @GetMapping(value = "1_16")
     public String defaultSpecified_01_16(Model model) {
 
         ResultMessage resultMessage = new ResultMessage("i.gt.me.0001", null, "Terasoluna !!");
@@ -169,7 +169,7 @@ public class MessageController {
         return "message/default";
     }
 
-    @RequestMapping(value = "1_17", method = RequestMethod.GET)
+    @GetMapping(value = "1_17")
     public String defaultSpecified_01_17(Model model) {
 
         ResultMessage resultMessage = new ResultMessage("i.gt.me.9999", null, "Terasoluna !!");
@@ -179,7 +179,7 @@ public class MessageController {
         return "message/default";
     }
 
-    @RequestMapping(value = "2_1", method = RequestMethod.GET)
+    @GetMapping(value = "2_1")
     public String messagesAttributeNameSpecified_02_01(Model model) {
 
         model.addAttribute("successMessage", ResultMessages.success().add(
@@ -188,7 +188,7 @@ public class MessageController {
         return "message/messagesAttributeName";
     }
 
-    @RequestMapping(value = "2_2", method = RequestMethod.GET)
+    @GetMapping(value = "2_2")
     public String messagesAttributeNameSpecified_02_02(Model model) {
 
         model.addAttribute("errorMessage", ResultMessages.error().add(
@@ -197,7 +197,7 @@ public class MessageController {
         return "message/messagesAttributeNameStringSpecified";
     }
 
-    @RequestMapping(value = "2_3", method = RequestMethod.GET)
+    @GetMapping(value = "2_3")
     public String messagesAttributeNameSpecified_02_03(Model model) {
 
         model.addAttribute("successMessage", ResultMessages.success().add(
@@ -206,7 +206,7 @@ public class MessageController {
         return "message/messagesAttributeNameSingleSpecified";
     }
 
-    @RequestMapping(value = "2_4", method = RequestMethod.GET)
+    @GetMapping(value = "2_4")
     public String messagesAttributeNameSpecified_02_04(Model model) {
 
         List<ResultMessage> resultMessageList = new ArrayList<ResultMessage>();
@@ -218,7 +218,7 @@ public class MessageController {
         return "message/messagesAttributeNameMultiSpecified";
     }
 
-    @RequestMapping(value = "3_1", method = RequestMethod.GET)
+    @GetMapping(value = "3_1")
     public String elementSpecified_03_01(Model model) {
 
         model.addAttribute(ResultMessages.success().add("i.gt.me.0001"));
@@ -226,7 +226,7 @@ public class MessageController {
         return "message/elementSpecified";
     }
 
-    @RequestMapping(value = "3_2", method = RequestMethod.GET)
+    @GetMapping(value = "3_2")
     public String elementSpecified_03_02(Model model) {
 
         model.addAttribute(ResultMessages.success().add("i.gt.me.0001"));
@@ -234,7 +234,7 @@ public class MessageController {
         return "message/panelElementSpecified";
     }
 
-    @RequestMapping(value = "3_3", method = RequestMethod.GET)
+    @GetMapping(value = "3_3")
     public String elementSpecified_03_03(Model model) {
 
         model.addAttribute(ResultMessages.success().add("i.gt.me.0001"));
@@ -242,7 +242,7 @@ public class MessageController {
         return "message/outerElementSpecified";
     }
 
-    @RequestMapping(value = "3_4", method = RequestMethod.GET)
+    @GetMapping(value = "3_4")
     public String elementSpecified_03_04(Model model) {
 
         model.addAttribute(ResultMessages.success().add("i.gt.me.0001"));
@@ -250,7 +250,7 @@ public class MessageController {
         return "message/innerElementSpecified";
     }
 
-    @RequestMapping(value = "3_5", method = RequestMethod.GET)
+    @GetMapping(value = "3_5")
     public String elementSpecified_03_05(Model model) {
 
         model.addAttribute(ResultMessages.success().add("i.gt.me.0001"));
@@ -258,7 +258,7 @@ public class MessageController {
         return "message/allElementBlnakSpecified";
     }
 
-    @RequestMapping(value = "4_1", method = RequestMethod.GET)
+    @GetMapping(value = "4_1")
     public String panelClassSpecified_04_01(Model model) {
 
         model.addAttribute(ResultMessages.success().add("i.gt.me.0001"));
@@ -266,7 +266,7 @@ public class MessageController {
         return "message/panelClassSpecified";
     }
 
-    @RequestMapping(value = "4_2", method = RequestMethod.GET)
+    @GetMapping(value = "4_2")
     public String panelClassSpecified_04_02(Model model) {
 
         model.addAttribute(ResultMessages.success().add("i.gt.me.0001"));
@@ -274,7 +274,7 @@ public class MessageController {
         return "message/panelClassBlankSpecified";
     }
 
-    @RequestMapping(value = "5_1", method = RequestMethod.GET)
+    @GetMapping(value = "5_1")
     public String messagesTypeSpecified_05_01(Model model) {
 
         model.addAttribute("login_error_message", ResultMessages.warning().add(
@@ -283,7 +283,7 @@ public class MessageController {
         return "message/messageTypeSpecified";
     }
 
-    @RequestMapping(value = "5_2", method = RequestMethod.GET)
+    @GetMapping(value = "5_2")
     public String messagesTypeSpecified_05_02(Model model) {
 
         model.addAttribute("login_error_message", ResultMessages.error().add(
@@ -292,7 +292,7 @@ public class MessageController {
         return "message/messageTypeSpecified";
     }
 
-    @RequestMapping(value = "5_3", method = RequestMethod.GET)
+    @GetMapping(value = "5_3")
     public String messagesTypeSpecified_05_03(Model model) {
 
         model.addAttribute("login_error_messages", ResultMessages.error()
@@ -302,7 +302,7 @@ public class MessageController {
         return "message/messagesTypeSpecified";
     }
 
-    @RequestMapping(value = "6_1", method = RequestMethod.GET)
+    @GetMapping(value = "6_1")
     public String customResultMessageTypeImpl_06_01(Model model) {
 
         model.addAttribute(new ResultMessages(BlueprintResultMessageType.NOTICE)
@@ -311,7 +311,7 @@ public class MessageController {
         return "message/resultMessageType";
     }
 
-    @RequestMapping(value = "6_2", method = RequestMethod.GET)
+    @GetMapping(value = "6_2")
     public String customResultMessageTypeImpl_06_02(Model model) {
 
         model.addAttribute(new ResultMessages(BlueprintResultMessageType.ERROR)
@@ -320,7 +320,7 @@ public class MessageController {
         return "message/resultMessageType";
     }
 
-    @RequestMapping(value = "6_3", method = RequestMethod.GET)
+    @GetMapping(value = "6_3")
     public String customResultMessageTypeImpl_06_03(Model model) {
 
         model.addAttribute(
@@ -330,7 +330,7 @@ public class MessageController {
         return "message/resultMessageType";
     }
 
-    @RequestMapping(value = "6_4", method = RequestMethod.GET)
+    @GetMapping(value = "6_4")
     public String customResultMessageTypeImpl_06_04(Model model) {
 
         model.addAttribute(new ResultMessages(BlueprintResultMessageType.INFO)
@@ -339,7 +339,7 @@ public class MessageController {
         return "message/resultMessageType";
     }
 
-    @RequestMapping(value = "7_1", method = RequestMethod.GET)
+    @GetMapping(value = "7_1")
     public String outputMessage_07_01(Model model) {
 
         model.addAttribute(ResultMessages.success().addAll(ResultMessage
@@ -349,26 +349,26 @@ public class MessageController {
         return "message/outputMessage";
     }
 
-    @RequestMapping(value = "7_2", method = RequestMethod.GET)
+    @GetMapping(value = "7_2")
     public String outputMessage_07_02(Model model) {
 
         throw new BusinessException(ResultMessages.error().add("e.gt.me.9999"));
 
     }
 
-    @RequestMapping(value = "7_3", method = RequestMethod.GET)
+    @GetMapping(value = "7_3")
     public String outputMessage_07_03(Model model) {
 
         throw new BusinessException(ResultMessages.error().add("e.gt.me.0001"));
     }
 
-    @RequestMapping(value = "7_4", method = RequestMethod.GET)
+    @GetMapping(value = "7_4")
     public String outputMessage_07_04(Model model) {
 
         throw new BusinessException(ResultMessages.error().add("e.gt.me.0001"));
     }
 
-    @RequestMapping(value = "7_5", method = RequestMethod.GET)
+    @GetMapping(value = "7_5")
     public String outputMessage_07_05(Model model) {
 
         model.addAttribute(ResultMessages.success().add("i.gt.me.0001"));
@@ -378,7 +378,7 @@ public class MessageController {
         return "message/outputMessageMultiSpecified";
     }
 
-    @RequestMapping(value = "8_1", method = RequestMethod.GET)
+    @GetMapping(value = "8_1")
     public String styleChangeScreen_08_01(Model model) {
 
         model.addAttribute(ResultMessages.success().add("i.gt.me.0001"));
@@ -386,7 +386,7 @@ public class MessageController {
         return "message/styleChangeScreen";
     }
 
-    @RequestMapping(value = "9_1", method = RequestMethod.GET)
+    @GetMapping(value = "9_1")
     public String disableHtmlEscape_09_01(Model model) {
 
         model.addAttribute(ResultMessages.success().add("i.gt.me.0006"));
@@ -394,7 +394,7 @@ public class MessageController {
         return "message/disableHtmlEscapeNotSpecified";
     }
 
-    @RequestMapping(value = "9_2", method = RequestMethod.GET)
+    @GetMapping(value = "9_2")
     public String disableHtmlEscape_09_02(Model model) {
 
         model.addAttribute(ResultMessages.success().add("i.gt.me.0006"));
@@ -402,7 +402,7 @@ public class MessageController {
         return "message/disableHtmlEscapeSpecifiedTrue";
     }
 
-    @RequestMapping(value = "10_1", method = RequestMethod.GET)
+    @GetMapping(value = "10_1")
     public String tagConfiguration_10_01(Model model) {
 
         model.addAttribute(ResultMessages.success().add("i.gt.me.0007"));
@@ -410,7 +410,7 @@ public class MessageController {
         return "message/tagConfiguration";
     }
 
-    @RequestMapping(value = "10_2", method = RequestMethod.GET)
+    @GetMapping(value = "10_2")
     public String tagConfiguration_10_02(Model model) {
 
         List<ResultMessage> resultMessageList = new ArrayList<ResultMessage>();
@@ -419,7 +419,7 @@ public class MessageController {
         return "message/tagConfiguration";
     }
 
-    @RequestMapping(value = "10_3", method = RequestMethod.GET)
+    @GetMapping(value = "10_3")
     public String tagConfiguration_10_03(Model model) {
 
         List<ResultMessage> resultMessageList = new ArrayList<ResultMessage>();

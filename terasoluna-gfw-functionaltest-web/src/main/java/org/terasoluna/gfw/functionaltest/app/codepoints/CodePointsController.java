@@ -25,6 +25,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -65,14 +66,13 @@ public class CodePointsController {
         return new ExcludedCodePointsForm();
     }
 
-    @RequestMapping(method = RequestMethod.GET)
+    @GetMapping
     public String index() {
 
         return "codepoints/index";
     }
 
-    @RequestMapping(value = "containsAll", method = RequestMethod.GET, params = {
-            "form1" })
+    @GetMapping(value = "containsAll", params = { "form1" })
     public String containsAll_form1() {
         return "codepoints/containsAll_form1";
     }
@@ -104,8 +104,7 @@ public class CodePointsController {
         return "codepoints/result_containsAll";
     }
 
-    @RequestMapping(value = "containsAll", method = RequestMethod.GET, params = {
-            "form2" })
+    @GetMapping(value = "containsAll", params = { "form2" })
     public String containsAll_form2(ContainsAllForm2 form) {
         form.setCodePoints(new Integer[2]);
         return "codepoints/containsAll_form2";
@@ -160,8 +159,7 @@ public class CodePointsController {
         return "codepoints/result_containsAll";
     }
 
-    @RequestMapping(value = "containsAll", method = RequestMethod.GET, params = {
-            "form3" })
+    @GetMapping(value = "containsAll", params = { "form3" })
     public String containsAll_form3(ContainsAllForm3 form) {
         form.setCodePoints(new String[2]);
         return "codepoints/containsAll_form3";
@@ -180,8 +178,7 @@ public class CodePointsController {
         return "codepoints/result_containsAll";
     }
 
-    @RequestMapping(value = "containsAll", method = RequestMethod.GET, params = {
-            "form4=union" })
+    @GetMapping(value = "containsAll", params = { "form4=union" })
     public String containsAll_form4_union(ContainsAllForm4 form) {
         form.setCodePointsA(new Integer[2]);
         form.setCodePointsB(new Integer[2]);
@@ -207,8 +204,7 @@ public class CodePointsController {
         return "codepoints/result_containsAll";
     }
 
-    @RequestMapping(value = "containsAll", method = RequestMethod.GET, params = {
-            "form4=subtract" })
+    @GetMapping(value = "containsAll", params = { "form4=subtract" })
     public String containsAll_form4_subtract(ContainsAllForm4 form) {
         form.setCodePointsA(new Integer[4]);
         form.setCodePointsB(new Integer[2]);
@@ -234,8 +230,7 @@ public class CodePointsController {
         return "codepoints/result_containsAll";
     }
 
-    @RequestMapping(value = "containsAll", method = RequestMethod.GET, params = {
-            "form4=intersect" })
+    @GetMapping(value = "containsAll", params = { "form4=intersect" })
     public String containsAll_form4_intersect(ContainsAllForm4 form) {
         form.setCodePointsA(new Integer[4]);
         form.setCodePointsB(new Integer[3]);
@@ -274,8 +269,7 @@ public class CodePointsController {
         return "codepoints/result_containsAll";
     }
 
-    @RequestMapping(value = "firstExcludedCodePoint", method = RequestMethod.GET, params = {
-            "form" })
+    @GetMapping(value = "firstExcludedCodePoint", params = { "form" })
     public String firstExcludedCodePoint_form() {
         return "codepoints/firstExcludedCodePoint_form";
     }
@@ -292,8 +286,7 @@ public class CodePointsController {
         return "codepoints/result_firstExcludedCodepoint";
     }
 
-    @RequestMapping(value = "excludedCodePoints", method = RequestMethod.GET, params = {
-            "form" })
+    @GetMapping(value = "excludedCodePoints", params = { "form" })
     public String excludedCodePoints_form() {
         return "codepoints/excludedCodePoints_form";
     }

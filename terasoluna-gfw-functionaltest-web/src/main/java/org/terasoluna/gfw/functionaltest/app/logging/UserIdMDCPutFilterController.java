@@ -19,8 +19,8 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.terasoluna.gfw.functionaltest.domain.service.logging.MDCService;
 
 @Controller
@@ -30,12 +30,12 @@ public class UserIdMDCPutFilterController {
     @Inject
     protected MDCService mdcService;
 
-    @RequestMapping(method = RequestMethod.GET)
+    @GetMapping
     public String index() {
         return "logging/userIdMDCPutFilter";
     }
 
-    @RequestMapping(value = "2_1", method = RequestMethod.GET)
+    @GetMapping(value = "2_1")
     public String createDefaultUserIdMDC_02_01(Model model) {
 
         // case of default attribute name before login
@@ -46,7 +46,7 @@ public class UserIdMDCPutFilterController {
         return "logging/userIdMDCPutFilter";
     }
 
-    @RequestMapping(value = "2_2", method = RequestMethod.GET)
+    @GetMapping(value = "2_2")
     public String createCustomUserIdMDC_02_02(Model model) {
 
         // case of custom attribute name before login
@@ -57,13 +57,13 @@ public class UserIdMDCPutFilterController {
         return "logging/userIdMDCPutFilter";
     }
 
-    @RequestMapping(value = "login", method = RequestMethod.GET)
+    @GetMapping(value = "login")
     public String forwardAuthenticationPage(Model model) {
         // redirect
         return "logging/userIdMDCPutFilterAfterLogin";
     }
 
-    @RequestMapping(value = "2_4", method = RequestMethod.GET)
+    @GetMapping(value = "2_4")
     public String createDefaultUserIdMDCAfterLogin_02_04(Model model) {
 
         // case of default attribute name after login

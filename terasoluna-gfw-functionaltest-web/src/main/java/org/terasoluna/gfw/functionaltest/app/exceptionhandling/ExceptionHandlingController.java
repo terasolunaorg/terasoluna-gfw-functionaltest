@@ -25,8 +25,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ExtendedModelMap;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.ModelAndView;
 import org.terasoluna.gfw.common.exception.BusinessException;
@@ -55,12 +55,12 @@ public class ExceptionHandlingController {
     @Inject
     protected InfoLoggingExceptionHandlingService infoLoggingExceptionHandlingService;
 
-    @RequestMapping(method = RequestMethod.GET)
+    @GetMapping
     public String index() {
         return "exceptionhandling/index";
     }
 
-    @RequestMapping(value = "1_1", method = RequestMethod.GET)
+    @GetMapping(value = "1_1")
     public String requestControllerHandling_01_01(Model model) {
 
         try {
@@ -75,7 +75,7 @@ public class ExceptionHandlingController {
         return "exceptionhandling/index";
     }
 
-    @RequestMapping(value = "1_2", method = RequestMethod.GET)
+    @GetMapping(value = "1_2")
     public String requestControllerHandling_01_02(Model model) {
 
         try {
@@ -91,7 +91,7 @@ public class ExceptionHandlingController {
         return "exceptionhandling/index";
     }
 
-    @RequestMapping(value = "2_1", method = RequestMethod.GET)
+    @GetMapping(value = "2_1")
     public String useCaseControllerHandling_02_01() {
 
         exceptionHandlingService.throwException(
@@ -100,7 +100,7 @@ public class ExceptionHandlingController {
         return "exceptionhandling/index";
     }
 
-    @RequestMapping(value = "2_2", method = RequestMethod.GET)
+    @GetMapping(value = "2_2")
     public String useCaseControllerHandling_02_02() {
 
         exceptionHandlingService.throwException(new NormalException("2_2 Ok"));
@@ -108,7 +108,7 @@ public class ExceptionHandlingController {
         return "exceptionhandling/index";
     }
 
-    @RequestMapping(value = "2_3", method = RequestMethod.GET)
+    @GetMapping(value = "2_3")
     public String useCaseControllerHandling_02_03() {
 
         exceptionHandlingService.throwException(
@@ -117,7 +117,7 @@ public class ExceptionHandlingController {
         return "exceptionhandling/index";
     }
 
-    @RequestMapping(value = "2_4", method = RequestMethod.GET)
+    @GetMapping(value = "2_4")
     public String useCaseControllerHandling_02_04() {
 
         exceptionHandlingService.throwException(
@@ -126,7 +126,7 @@ public class ExceptionHandlingController {
         return "exceptionhandling/index";
     }
 
-    @RequestMapping(value = "2_5", method = RequestMethod.GET)
+    @GetMapping(value = "2_5")
     public String useCaseControllerHandling_02_05() {
 
         exceptionHandlingService.throwException(
@@ -135,7 +135,7 @@ public class ExceptionHandlingController {
         return "exceptionhandling/index";
     }
 
-    @RequestMapping(value = "3_1", method = RequestMethod.GET)
+    @GetMapping(value = "3_1")
     public String servletFrameworkHandling_03_01() {
 
         exceptionHandlingService.throwException(
@@ -144,7 +144,7 @@ public class ExceptionHandlingController {
         return "exceptionhandling/index";
     }
 
-    @RequestMapping(value = "3_2", method = RequestMethod.GET)
+    @GetMapping(value = "3_2")
     public String servletFrameworkHandling_03_02() {
 
         exceptionHandlingService.throwException(
@@ -153,7 +153,7 @@ public class ExceptionHandlingController {
         return "exceptionhandling/index";
     }
 
-    @RequestMapping(value = "3_3", method = RequestMethod.GET)
+    @GetMapping(value = "3_3")
     public String servletFrameworkHandling_03_03() {
 
         exceptionHandlingService.throwException(
@@ -162,7 +162,7 @@ public class ExceptionHandlingController {
         return "exceptionhandling/index";
     }
 
-    @RequestMapping(value = "3_4", method = RequestMethod.GET)
+    @GetMapping(value = "3_4")
     public String servletFrameworkHandling_03_04() {
 
         exceptionHandlingService.throwException(
@@ -171,12 +171,12 @@ public class ExceptionHandlingController {
         return "exceptionhandling/index";
     }
 
-    @RequestMapping(value = "exceptionHandlingRedirect/3_4_1", method = RequestMethod.GET)
+    @GetMapping(value = "exceptionHandlingRedirect/3_4_1")
     public String servletFrameworkHandling_03_04_01() {
         return "common/error/systemError";
     }
 
-    @RequestMapping(value = "3_5", method = RequestMethod.GET)
+    @GetMapping(value = "3_5")
     public String servletFrameworkHandling_03_05() {
 
         exceptionHandlingService.throwException(
@@ -185,7 +185,7 @@ public class ExceptionHandlingController {
         return "exceptionhandling/index";
     }
 
-    @RequestMapping(value = "3_6", method = RequestMethod.GET)
+    @GetMapping(value = "3_6")
     public String servletFrameworkHandling_03_06() {
 
         exceptionHandlingService.throwException(
@@ -194,7 +194,7 @@ public class ExceptionHandlingController {
         return "exceptionhandling/index";
     }
 
-    @RequestMapping(value = "3_7", method = RequestMethod.GET)
+    @GetMapping(value = "3_7")
     public String servletFrameworkHandling_03_07() {
 
         exceptionHandlingService.throwException(
@@ -203,7 +203,7 @@ public class ExceptionHandlingController {
         return "exceptionhandling/index";
     }
 
-    @RequestMapping(value = "3_8", method = RequestMethod.GET)
+    @GetMapping(value = "3_8")
     public String servletFrameworkHandling_03_08() {
 
         exceptionHandlingService.throwException(
@@ -212,7 +212,7 @@ public class ExceptionHandlingController {
         return "exceptionhandling/index";
     }
 
-    @RequestMapping(value = "3_9", method = RequestMethod.GET)
+    @GetMapping(value = "3_9")
     public String servletFrameworkHandling_03_09() {
 
         exceptionHandlingService.throwException(
@@ -221,19 +221,19 @@ public class ExceptionHandlingController {
         return "exceptionhandling/index";
     }
 
-    @RequestMapping(value = "3_10", method = RequestMethod.GET)
+    @GetMapping(value = "3_10")
     @TransactionTokenCheck(type = TransactionTokenType.IN)
     public String servletFrameworkHandling_03_10() {
         return "exceptionhandling/index";
     }
 
-    @RequestMapping(value = "4_1", method = RequestMethod.GET)
+    @GetMapping(value = "4_1")
     public String webApplicationHandling_04_01() {
 
         return "exceptionhandling/viewIOException";
     }
 
-    @RequestMapping(value = "4_2", method = RequestMethod.GET)
+    @GetMapping(value = "4_2")
     public String servletFrameworkHandling_04_2() {
 
         exceptionHandlingService.throwAssertionError();
@@ -241,37 +241,37 @@ public class ExceptionHandlingController {
         return "exceptionhandling/index";
     }
 
-    @RequestMapping(value = "4_3", method = RequestMethod.GET)
+    @GetMapping(value = "4_3")
     public String webApplicationHandling_04_03() {
 
         return "exceptionhandling/index";
     }
 
-    @RequestMapping(value = "4_4", method = RequestMethod.GET)
+    @GetMapping(value = "4_4")
     public String webApplicationHandling_04_04() {
 
         return "exceptionhandling/index";
     }
 
-    @RequestMapping(value = "5_1", method = RequestMethod.GET)
+    @GetMapping(value = "5_1")
     public String exceptionLoggerVariation_05_01() {
 
         return "exceptionhandling/index";
     }
 
-    @RequestMapping(value = "5_2", method = RequestMethod.GET)
+    @GetMapping(value = "5_2")
     public String exceptionLoggerVariation_05_02() {
 
         return "exceptionhandling/index";
     }
 
-    @RequestMapping(value = "5_3", method = RequestMethod.GET)
+    @GetMapping(value = "5_3")
     public String exceptionLoggerVariation_05_03() {
 
         return "exceptionhandling/index";
     }
 
-    @RequestMapping(value = "5_4", method = RequestMethod.GET)
+    @GetMapping(value = "5_4")
     public String exceptionLoggerVariation_05_04() {
 
         exceptionHandlingService.throwException(
@@ -280,7 +280,7 @@ public class ExceptionHandlingController {
         return "exceptionhandling/index";
     }
 
-    @RequestMapping(value = "5_5", method = RequestMethod.GET)
+    @GetMapping(value = "5_5")
     public String exceptionLoggerVariation_05_05() {
 
         exceptionHandlingService.throwException(
@@ -289,7 +289,7 @@ public class ExceptionHandlingController {
         return "exceptionhandling/index";
     }
 
-    @RequestMapping(value = "5_6", method = RequestMethod.GET)
+    @GetMapping(value = "5_6")
     public String exceptionLoggerVariation_05_06() {
 
         exceptionHandlingService.throwException(
@@ -298,7 +298,7 @@ public class ExceptionHandlingController {
         return "exceptionhandling/index";
     }
 
-    @RequestMapping(value = "6_1", method = RequestMethod.GET)
+    @GetMapping(value = "6_1")
     public String exceptionOccuresInSharedService_06_01(Model model) {
 
         try {
@@ -313,7 +313,7 @@ public class ExceptionHandlingController {
         return "exceptionhandling/index";
     }
 
-    @RequestMapping(value = "6_2", method = RequestMethod.GET)
+    @GetMapping(value = "6_2")
     public String exceptionOccuresInSharedService_06_02() {
 
         exceptionHandlingService.throwExceptionInSharedServiceCatchThis(

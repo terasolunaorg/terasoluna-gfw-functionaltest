@@ -29,9 +29,9 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.terasoluna.gfw.functionaltest.domain.model.Person;
 import org.terasoluna.gfw.functionaltest.domain.service.pagination.PaginationService;
 
@@ -42,12 +42,12 @@ public class PaginationController {
     @Inject
     protected PaginationService paginationService;
 
-    @RequestMapping(method = RequestMethod.GET)
+    @GetMapping
     public String index() {
         return "pagination/index";
     }
 
-    @RequestMapping(value = "1_1", method = RequestMethod.GET)
+    @GetMapping(value = "1_1")
     public String fuinctionTest_1_1(Model model,
             @PageableDefault(value = 100) Pageable pageable) {
 
@@ -58,7 +58,7 @@ public class PaginationController {
         return "pagination/pagination";
     }
 
-    @RequestMapping(value = "1_2", method = RequestMethod.GET)
+    @GetMapping(value = "1_2")
     public String fuinctionTest_1_2(Model model,
             @PageableDefault(value = 30) Pageable pageable) {
 
@@ -69,7 +69,7 @@ public class PaginationController {
         return "pagination/pagination";
     }
 
-    @RequestMapping(value = "1_3", method = RequestMethod.GET)
+    @GetMapping(value = "1_3")
     public String fuinctionTest_1_3(Model model,
             @PageableDefault(value = 15) Pageable pageable) {
 
@@ -80,7 +80,7 @@ public class PaginationController {
         return "pagination/pagination";
     }
 
-    @RequestMapping(value = "1_4", method = RequestMethod.GET)
+    @GetMapping(value = "1_4")
     public String fuinctionTest_1_4(Model model,
             @PageableDefault Pageable pageable) {
 
@@ -91,7 +91,7 @@ public class PaginationController {
         return "pagination/pagination";
     }
 
-    @RequestMapping(value = "1_5", method = RequestMethod.GET)
+    @GetMapping(value = "1_5")
     public String fuinctionTest_1_5(Model model,
             @PageableDefault Pageable pageable) {
 
@@ -100,7 +100,7 @@ public class PaginationController {
         return "pagination/pagination";
     }
 
-    @RequestMapping(value = "1_6", method = RequestMethod.GET)
+    @GetMapping(value = "1_6")
     public String fuinctionTest_1_6(Model model,
             @PageableDefault(value = 100) Pageable pageable) {
 
@@ -111,7 +111,7 @@ public class PaginationController {
         return "pagination/pagination";
     }
 
-    @RequestMapping(value = "1_7", method = RequestMethod.GET)
+    @GetMapping(value = "1_7")
     public String fuinctionTest_1_7(Model model,
             @PageableDefault(value = 100) Pageable pageable) {
 
@@ -122,7 +122,7 @@ public class PaginationController {
         return "pagination/pagination";
     }
 
-    @RequestMapping(value = "1_8", method = RequestMethod.GET)
+    @GetMapping(value = "1_8")
     public String fuinctionTest_1_8(Model model,
             @PageableDefault(value = 100) Pageable pageable) {
 
@@ -133,7 +133,7 @@ public class PaginationController {
         return "pagination/pagination";
     }
 
-    @RequestMapping(value = "1_9", method = RequestMethod.GET)
+    @GetMapping(value = "1_9")
     public String fuinctionTest_1_9(Model model,
             @PageableDefault(value = 15) Pageable pageable) {
 
@@ -144,7 +144,7 @@ public class PaginationController {
         return "pagination/pagination";
     }
 
-    @RequestMapping(value = "1_10", method = RequestMethod.GET)
+    @GetMapping(value = "1_10")
     public String fuinctionTest_1_10(Model model,
             @PageableDefault(value = 15) Pageable pageable) {
 
@@ -155,7 +155,7 @@ public class PaginationController {
         return "pagination/pagination";
     }
 
-    @RequestMapping(value = "1_11", method = RequestMethod.GET)
+    @GetMapping(value = "1_11")
     public String fuinctionTest_1_11(Model model,
             @PageableDefault(value = 15) Pageable pageable) {
 
@@ -166,7 +166,7 @@ public class PaginationController {
         return "pagination/pagination";
     }
 
-    @RequestMapping(value = "2_1", method = RequestMethod.GET)
+    @GetMapping(value = "2_1")
     public String fuinctionTest_2_1(Model model,
             @PageableDefault(value = 100) Pageable pageable) {
 
@@ -177,7 +177,7 @@ public class PaginationController {
         return "pagination/pathtmpl";
     }
 
-    @RequestMapping(value = "3_1", method = RequestMethod.GET)
+    @GetMapping(value = "3_1")
     public String fuinctionTest_3_1(Model model,
             @PageableDefault(value = 100, sort = { "firstname",
                     "lastname" }, direction = Direction.DESC) Pageable pageable) {
@@ -189,7 +189,7 @@ public class PaginationController {
         return "pagination/querytmpl";
     }
 
-    @RequestMapping(value = "4_1", method = RequestMethod.GET)
+    @GetMapping(value = "4_1")
     public String fuinctionTest_4_1(Model model,
             @PageableDefault(value = 10) Pageable pageable) {
 
@@ -200,7 +200,7 @@ public class PaginationController {
         return "pagination/maxDisplayCountTwenty";
     }
 
-    @RequestMapping(value = "4_2", method = RequestMethod.GET)
+    @GetMapping(value = "4_2")
     public String fuinctionTest_4_2(Model model,
             @PageableDefault(value = 10) Pageable pageable) {
 
@@ -211,7 +211,7 @@ public class PaginationController {
         return "pagination/maxDisplayCountZero";
     }
 
-    @RequestMapping(value = "4_3", method = RequestMethod.GET)
+    @GetMapping(value = "4_3")
     public String fuinctionTest_4_3(Model model,
             @PageableDefault(value = 10) Pageable pageable) {
 
@@ -222,7 +222,7 @@ public class PaginationController {
         return "pagination/maxDisplayCountBlank";
     }
 
-    @RequestMapping(value = "5_1", method = RequestMethod.GET)
+    @GetMapping(value = "5_1")
     public String fuinctionTest_5_1(Model model,
             @PageableDefault(value = 100) Pageable pageable) {
 
@@ -233,7 +233,7 @@ public class PaginationController {
         return "pagination/outerElement";
     }
 
-    @RequestMapping(value = "6_1", method = RequestMethod.GET)
+    @GetMapping(value = "6_1")
     public String fuinctionTest_6_1(Model model,
             @PageableDefault(value = 100) Pageable pageable) {
 
@@ -244,7 +244,7 @@ public class PaginationController {
         return "pagination/innerElement";
     }
 
-    @RequestMapping(value = "7_1", method = RequestMethod.GET)
+    @GetMapping(value = "7_1")
     public String fuinctionTest_7_1(Model model,
             @PageableDefault(value = 100) Pageable pageable) {
 
@@ -255,7 +255,7 @@ public class PaginationController {
         return "pagination/firstLinkText";
     }
 
-    @RequestMapping(value = "7_2", method = RequestMethod.GET)
+    @GetMapping(value = "7_2")
     public String fuinctionTest_7_2(Model model,
             @PageableDefault(value = 100) Pageable pageable) {
 
@@ -266,7 +266,7 @@ public class PaginationController {
         return "pagination/firstLinkTextBlank";
     }
 
-    @RequestMapping(value = "8_1", method = RequestMethod.GET)
+    @GetMapping(value = "8_1")
     public String fuinctionTest_8_1(Model model,
             @PageableDefault(value = 100) Pageable pageable) {
 
@@ -277,7 +277,7 @@ public class PaginationController {
         return "pagination/previousLinkText";
     }
 
-    @RequestMapping(value = "8_2", method = RequestMethod.GET)
+    @GetMapping(value = "8_2")
     public String fuinctionTest_8_2(Model model,
             @PageableDefault(value = 100) Pageable pageable) {
 
@@ -288,7 +288,7 @@ public class PaginationController {
         return "pagination/previousLinkTextBlank";
     }
 
-    @RequestMapping(value = "9_1", method = RequestMethod.GET)
+    @GetMapping(value = "9_1")
     public String fuinctionTest_9_1(Model model,
             @PageableDefault(value = 100) Pageable pageable) {
 
@@ -299,7 +299,7 @@ public class PaginationController {
         return "pagination/nextLinkText";
     }
 
-    @RequestMapping(value = "9_2", method = RequestMethod.GET)
+    @GetMapping(value = "9_2")
     public String fuinctionTest_9_2(Model model,
             @PageableDefault(value = 100) Pageable pageable) {
 
@@ -310,7 +310,7 @@ public class PaginationController {
         return "pagination/nextLinkTextBlank";
     }
 
-    @RequestMapping(value = "10_1", method = RequestMethod.GET)
+    @GetMapping(value = "10_1")
     public String fuinctionTest_10_1(Model model,
             @PageableDefault(value = 100) Pageable pageable) {
 
@@ -321,7 +321,7 @@ public class PaginationController {
         return "pagination/lastLinkText";
     }
 
-    @RequestMapping(value = "10_2", method = RequestMethod.GET)
+    @GetMapping(value = "10_2")
     public String fuinctionTest_10_2(Model model,
             @PageableDefault(value = 100) Pageable pageable) {
 
@@ -332,7 +332,7 @@ public class PaginationController {
         return "pagination/lastLinkTextBlank";
     }
 
-    @RequestMapping(value = "11_1", method = RequestMethod.GET)
+    @GetMapping(value = "11_1")
     public String fuinctionTest_11_1(Model model,
             @PageableDefault(value = 100) Pageable pageable) {
 
@@ -343,7 +343,7 @@ public class PaginationController {
         return "pagination/disabledHref";
     }
 
-    @RequestMapping(value = "11_2", method = RequestMethod.GET)
+    @GetMapping(value = "11_2")
     public String fuinctionTest_11_2(Model model,
             @PageableDefault(value = 100) Pageable pageable) {
 
@@ -354,7 +354,7 @@ public class PaginationController {
         return "pagination/disabledHrefBlank";
     }
 
-    @RequestMapping(value = "12_1", method = RequestMethod.GET)
+    @GetMapping(value = "12_1")
     public String fuinctionTest_12_1(Model model,
             @PageableDefault(value = 100) Pageable pageable) {
 
@@ -365,7 +365,7 @@ public class PaginationController {
         return "pagination/activeClass";
     }
 
-    @RequestMapping(value = "12_2", method = RequestMethod.GET)
+    @GetMapping(value = "12_2")
     public String fuinctionTest_12_2(Model model,
             @PageableDefault(value = 100) Pageable pageable) {
 
@@ -376,7 +376,7 @@ public class PaginationController {
         return "pagination/activeClassBlank";
     }
 
-    @RequestMapping(value = "13_1", method = RequestMethod.GET)
+    @GetMapping(value = "13_1")
     public String fuinctionTest_13_1(Model model,
             @PageableDefault(value = 100) Pageable pageable) {
 
@@ -387,7 +387,7 @@ public class PaginationController {
         return "pagination/disabledClass";
     }
 
-    @RequestMapping(value = "13_2", method = RequestMethod.GET)
+    @GetMapping(value = "13_2")
     public String fuinctionTest_13_2(Model model,
             @PageableDefault(value = 100) Pageable pageable) {
 
@@ -398,7 +398,7 @@ public class PaginationController {
         return "pagination/disabledClassBlank";
     }
 
-    @RequestMapping(value = "14_1", method = RequestMethod.GET)
+    @GetMapping(value = "14_1")
     public String fuinctionTest_14_1(Model model,
             @PageableDefault(value = 100) Pageable pageable) {
 
@@ -409,7 +409,7 @@ public class PaginationController {
         return "pagination/pathQueryTmpl";
     }
 
-    @RequestMapping(value = "14_1/{page}/{size}", method = RequestMethod.GET)
+    @GetMapping(value = "14_1/{page}/{size}")
     public String fuinctionTest_14_1_confirm(@PathVariable("page") int page,
             @PathVariable("size") int size, Model model) {
 
@@ -421,7 +421,7 @@ public class PaginationController {
         return "pagination/pathQueryTmpl";
     }
 
-    @RequestMapping(value = "15_1", method = RequestMethod.GET)
+    @GetMapping(value = "15_1")
     public String fuinctionTest_15_1(Model model,
             @PageableDefault(value = 100) Pageable pageable) {
 
@@ -432,7 +432,7 @@ public class PaginationController {
         return "pagination/InOutElement";
     }
 
-    @RequestMapping(value = "16_1", method = RequestMethod.GET)
+    @GetMapping(value = "16_1")
     public String fuinctionTest_16_1(Model model,
             @PageableDefault(value = 100) Pageable pageable) {
 
@@ -443,7 +443,7 @@ public class PaginationController {
         return "pagination/firstLastLink";
     }
 
-    @RequestMapping(value = "16_2", method = RequestMethod.GET)
+    @GetMapping(value = "16_2")
     public String fuinctionTest_16_2(Model model,
             @PageableDefault(value = 100) Pageable pageable) {
 
@@ -454,7 +454,7 @@ public class PaginationController {
         return "pagination/firstLastLinkBlank";
     }
 
-    @RequestMapping(value = "17_1", method = RequestMethod.GET)
+    @GetMapping(value = "17_1")
     public String fuinctionTest_17_1(Model model,
             @PageableDefault(value = 100) Pageable pageable) {
 
@@ -465,7 +465,7 @@ public class PaginationController {
         return "pagination/prevNextLink";
     }
 
-    @RequestMapping(value = "18_1", method = RequestMethod.GET)
+    @GetMapping(value = "18_1")
     public String fuinctionTest_18_1(Model model,
             @PageableDefault(value = 100) Pageable pageable) {
 
@@ -476,7 +476,7 @@ public class PaginationController {
         return "pagination/outerElementClass";
     }
 
-    @RequestMapping(value = "18_2", method = RequestMethod.GET)
+    @GetMapping(value = "18_2")
     public String fuinctionTest_18_2(Model model,
             @PageableDefault(value = 100) Pageable pageable) {
 
@@ -487,7 +487,7 @@ public class PaginationController {
         return "pagination/innerElementClass";
     }
 
-    @RequestMapping(value = "18_3", method = RequestMethod.GET)
+    @GetMapping(value = "18_3")
     public String fuinctionTest_18_3(Model model,
             @PageableDefault(value = 100) Pageable pageable) {
 
@@ -498,7 +498,7 @@ public class PaginationController {
         return "pagination/anchorClass";
     }
 
-    @RequestMapping(value = "19_1", method = RequestMethod.GET)
+    @GetMapping(value = "19_1")
     public String fuinctionTest_19_1(Model model,
             @PageableDefault(value = 100) Pageable pageable) {
 
@@ -509,8 +509,7 @@ public class PaginationController {
         return "pagination/pager";
     }
 
-    @RequestMapping(value = { "20_1", "20_2", "20_3", "20_4",
-            "20_5" }, method = RequestMethod.GET)
+    @GetMapping(value = { "20_1", "20_2", "20_3", "20_4", "20_5" })
     public String fuinctionTest_20_x(PersonSearchForm form,
             @PageableDefault(sort = "personId") Pageable pageable,
             Model model) {
@@ -527,8 +526,8 @@ public class PaginationController {
         return "pagination/search";
     }
 
-    @RequestMapping(value = { "21_1", "21_1/{page}/{size}", "21_2",
-            "21_2/{page}/{size}" }, method = RequestMethod.GET)
+    @GetMapping(value = { "21_1", "21_1/{page}/{size}", "21_2",
+            "21_2/{page}/{size}" })
     public String fuinctionTest_21_x(PersonSearchForm form,
             @PageableDefault(sort = "personId") Pageable pageable,
             Model model) {
@@ -545,7 +544,7 @@ public class PaginationController {
         return "pagination/searchPathTmplAndCriteriaQuery";
     }
 
-    @RequestMapping(value = { "22_1", "22_2" }, method = RequestMethod.GET)
+    @GetMapping(value = { "22_1", "22_2" })
     public String fuinctionTest_22_x(PersonSearchForm form,
             @PageableDefault(sort = "personId", direction = Direction.DESC) Pageable pageable,
             Model model) {
@@ -562,8 +561,8 @@ public class PaginationController {
         return "pagination/searchQueryTmplAndCriteriaQuery";
     }
 
-    @RequestMapping(value = { "23_1", "23_1/{page}/{size}", "23_2",
-            "23_2/{page}/{size}" }, method = RequestMethod.GET)
+    @GetMapping(value = { "23_1", "23_1/{page}/{size}", "23_2",
+            "23_2/{page}/{size}" })
     public String fuinctionTest_23_x(PersonSearchForm form,
             @PageableDefault(sort = "firstname", direction = Direction.DESC) Pageable pageable,
             Model model) {
@@ -580,7 +579,7 @@ public class PaginationController {
         return "pagination/searchPathTmplAndQueryTmplAndCriteriaQuery";
     }
 
-    @RequestMapping(value = "24_1", method = RequestMethod.GET)
+    @GetMapping(value = "24_1")
     public String fuinctionTest_24_1(Model model,
             @PageableDefault(value = 15) Pageable pageable) {
 
@@ -591,7 +590,7 @@ public class PaginationController {
         return "pagination/enableLinkOfCurrentPage";
     }
 
-    @RequestMapping(value = "25_1", method = RequestMethod.GET)
+    @GetMapping(value = "25_1")
     public String fuinctionTest_25_1(Model model,
             @PageableDefault(value = 15) Pageable pageable) {
 
@@ -602,7 +601,7 @@ public class PaginationController {
         return "pagination/disabledPageLinkWithJavaScript";
     }
 
-    @RequestMapping(value = "26_1", method = RequestMethod.GET)
+    @GetMapping(value = "26_1")
     public String fuinctionTest_26_1(Model model,
             @PageableDefault(value = 100) Pageable pageable) {
 

@@ -19,6 +19,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -38,12 +39,12 @@ public class ValidationController {
         return new ValidationForm();
     }
 
-    @RequestMapping(method = RequestMethod.GET)
+    @GetMapping
     public String index(Model model) {
         return "validation/index";
     }
 
-    @RequestMapping(value = "bytemin", method = RequestMethod.GET)
+    @GetMapping(value = "bytemin")
     public String bytemin(Model model) {
         return "validation/bytemin";
     }
@@ -62,7 +63,7 @@ public class ValidationController {
         return "redirect:/validation/bytemin/";
     }
 
-    @RequestMapping(value = "bytemax", method = RequestMethod.GET)
+    @GetMapping(value = "bytemax")
     public String bytemax(Model model) {
         return "validation/bytemax";
     }
@@ -81,7 +82,7 @@ public class ValidationController {
         return "redirect:/validation/bytemax/";
     }
 
-    @RequestMapping(value = "bytesize", method = RequestMethod.GET)
+    @GetMapping(value = "bytesize")
     public String bytesize(Model model) {
         return "validation/bytesize";
     }
@@ -100,7 +101,7 @@ public class ValidationController {
         return "redirect:/validation/bytesize/";
     }
 
-    @RequestMapping(value = "compare", method = RequestMethod.GET)
+    @GetMapping(value = "compare")
     public String compare(Model model) {
         return "validation/compare";
     }

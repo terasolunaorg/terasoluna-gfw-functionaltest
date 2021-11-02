@@ -22,9 +22,9 @@ import javax.inject.Named;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.terasoluna.gfw.functionaltest.domain.model.Todo;
 import org.terasoluna.gfw.functionaltest.domain.service.queryescape.QueryEscapeService;
 
@@ -50,12 +50,12 @@ public class QueryEscapeJpaWithFullWidthController {
         return "JPAWithFullWidth";
     }
 
-    @RequestMapping(method = RequestMethod.GET)
+    @GetMapping
     public String index(Model model) {
         return "queryescape/todoListWithFullWidth";
     }
 
-    @RequestMapping(value = "search", method = RequestMethod.GET, params = "prefix")
+    @GetMapping(value = "search", params = "prefix")
     public String searchWithPrefix_04_XX(TodoForm form, Model model) {
 
         List<Todo> list = queryEscapeService
@@ -67,7 +67,7 @@ public class QueryEscapeJpaWithFullWidthController {
         return "queryescape/todoListWithFullWidth";
     }
 
-    @RequestMapping(value = "search", method = RequestMethod.GET, params = "suffix")
+    @GetMapping(value = "search", params = "suffix")
     public String searchWithSuffix_05_XX(TodoForm form, Model model) {
 
         List<Todo> list = queryEscapeService
@@ -79,7 +79,7 @@ public class QueryEscapeJpaWithFullWidthController {
         return "queryescape/todoListWithFullWidth";
     }
 
-    @RequestMapping(value = "search", method = RequestMethod.GET, params = "partical")
+    @GetMapping(value = "search", params = "partical")
     public String searchWithPartical_06_XX(TodoForm form, Model model) {
 
         List<Todo> list = queryEscapeService
@@ -91,7 +91,7 @@ public class QueryEscapeJpaWithFullWidthController {
         return "queryescape/todoListWithFullWidth";
     }
 
-    @RequestMapping(value = "search", method = RequestMethod.GET, params = "nullTodoTitle")
+    @GetMapping(value = "search", params = "nullTodoTitle")
     public String searchWithPrefix_XX_YY(Model model) {
 
         List<Todo> list = queryEscapeService
