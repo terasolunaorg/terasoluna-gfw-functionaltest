@@ -24,9 +24,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 @RequestMapping(value = "el")
@@ -38,13 +38,13 @@ public class ElNestedJavaBeanController {
         return searchUserForm1;
     }
 
-    @RequestMapping(value = "6_9", method = RequestMethod.GET)
+    @GetMapping(value = "6_9")
     public String init(Model model) {
 
         return "el/nestedJavaBeanQueryOutput";
     }
 
-    @RequestMapping(value = "6_9/search", method = RequestMethod.GET)
+    @GetMapping(value = "6_9/search")
     public String nestedJavaBeanQueryString(SearchUserForm1 searchUserForm1,
             @PageableDefault Pageable pageable, Model model) {
 

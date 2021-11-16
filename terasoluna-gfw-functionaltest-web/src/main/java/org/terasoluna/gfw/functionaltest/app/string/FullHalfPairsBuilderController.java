@@ -17,9 +17,10 @@ package org.terasoluna.gfw.functionaltest.app.string;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.terasoluna.gfw.common.fullhalf.FullHalfPairsBuilder;
 
 @Controller
@@ -41,12 +42,12 @@ public class FullHalfPairsBuilderController {
         return "fullHalfPairsBuilder";
     }
 
-    @RequestMapping(method = RequestMethod.GET, params = { "form" })
+    @GetMapping(params = { "form" })
     public String form() {
         return "string/pair";
     }
 
-    @RequestMapping(method = RequestMethod.POST)
+    @PostMapping
     public String pair(Model model, FullHalfPairForm form) {
 
         String fullwidth = form.getFullwidth();

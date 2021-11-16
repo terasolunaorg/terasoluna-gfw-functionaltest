@@ -27,7 +27,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -43,18 +45,18 @@ public class ElController {
         return criteria;
     }
 
-    @RequestMapping(method = RequestMethod.GET)
+    @GetMapping
     public String index() {
 
         return "el/index";
     }
 
-    @RequestMapping(value = "1", method = RequestMethod.GET)
+    @GetMapping(value = "1")
     public String xSSMeasures() {
         return "el/xssOutput";
     }
 
-    @RequestMapping(value = "output_01", method = RequestMethod.POST)
+    @PostMapping(value = "output_01")
     public String xSSMeasures_InputData(
             @RequestParam("outputData") String outputData, Model model) {
         model.addAttribute("outputData", outputData);
@@ -62,12 +64,12 @@ public class ElController {
         return "el/xssOutput";
     }
 
-    @RequestMapping(value = "2", method = RequestMethod.GET)
+    @GetMapping(value = "2")
     public String urlEncoding() {
         return "el/urlOutput";
     }
 
-    @RequestMapping(value = "output_02", method = RequestMethod.POST)
+    @PostMapping(value = "output_02")
     public String urlEncoding_InputData(
             @RequestParam("outputData") String outputData, Model model) {
         model.addAttribute("outputData", outputData);
@@ -75,12 +77,12 @@ public class ElController {
         return "el/urlOutput";
     }
 
-    @RequestMapping(value = "3", method = RequestMethod.GET)
+    @GetMapping(value = "3")
     public String newLine() {
         return "el/newLineOutput";
     }
 
-    @RequestMapping(value = "output_03", method = RequestMethod.POST)
+    @PostMapping(value = "output_03")
     public String newLine_InputData(
             @RequestParam("outputData") String outputData, Model model) {
         model.addAttribute("outputData", outputData);
@@ -88,12 +90,12 @@ public class ElController {
         return "el/newLineOutput";
     }
 
-    @RequestMapping(value = "4", method = RequestMethod.GET)
+    @GetMapping(value = "4")
     public String cutString() {
         return "el/cutOutput";
     }
 
-    @RequestMapping(value = "output_04", method = RequestMethod.POST)
+    @PostMapping(value = "output_04")
     public String cutString_InputData(
             @RequestParam("outputData") String outputData, Model model) {
         model.addAttribute("outputData", outputData);
@@ -101,17 +103,17 @@ public class ElController {
         return "el/cutOutput";
     }
 
-    @RequestMapping(value = "5", method = RequestMethod.GET)
+    @GetMapping(value = "5")
     public String urlLinkString() {
         return "el/linkOutput";
     }
 
-    @RequestMapping(value = "5_4", method = RequestMethod.GET)
+    @GetMapping(value = "5_4")
     public String urlEncodeLinkString() {
         return "el/linkUOutput";
     }
 
-    @RequestMapping(value = "output_05", method = RequestMethod.POST)
+    @PostMapping(value = "output_05")
     public String urlLink_InputData(
             @RequestParam("outputData") String outputData, Model model) {
         model.addAttribute("outputData", outputData);
@@ -119,8 +121,7 @@ public class ElController {
         return "el/linkOutput";
     }
 
-    @RequestMapping(value = "output_05_04", method = { RequestMethod.GET,
-            RequestMethod.POST })
+    @PostMapping(value = "output_05_04")
     public String urlULink_InputDatas(String URLPath, String outputQueryParam,
             Model model) {
         model.addAttribute("URLPath", URLPath);
@@ -129,7 +130,7 @@ public class ElController {
         return "el/linkUOutput";
     }
 
-    @RequestMapping(value = "6_1-2", method = RequestMethod.GET)
+    @GetMapping(value = "6_1-2")
     public String queryString(Model model) {
         DateTime dt = new DateTime(2013, 10, 01, 0, 0, 0);
 
@@ -151,13 +152,13 @@ public class ElController {
         return "el/mapQueryOutput";
     }
 
-    @RequestMapping(value = "6_3-", method = RequestMethod.GET)
+    @GetMapping(value = "6_3-")
     public String beanQueryString(Model model) {
 
         return "el/beanQueryOutput";
     }
 
-    @RequestMapping(value = "search", method = RequestMethod.GET)
+    @GetMapping(value = "search")
     public String search(CustomerSearchCriteria criteria,
             @PageableDefault Pageable pageable, Model model) {
 
@@ -174,7 +175,7 @@ public class ElController {
         return "el/beanQueryOutput";
     }
 
-    @RequestMapping(value = "6_7", method = RequestMethod.GET)
+    @GetMapping(value = "6_7")
     public String returnQuerySupportObject(Model model) {
 
         List<String> listData = new ArrayList<String>();
@@ -185,7 +186,7 @@ public class ElController {
         return "el/noSupportQueryOutput";
     }
 
-    @RequestMapping(value = "7_1", method = RequestMethod.GET)
+    @GetMapping(value = "7_1")
     public String javascriptXSSMeasures_07_01(Model model) {
 
         model.addAttribute("xssAttack",
@@ -194,7 +195,7 @@ public class ElController {
         return "el/javascriptOutput";
     }
 
-    @RequestMapping(value = "7_2", method = RequestMethod.GET)
+    @GetMapping(value = "7_2")
     public String javascriptXSSMeasures_07_02(Model model) {
 
         model.addAttribute("xssAttack",
@@ -203,7 +204,7 @@ public class ElController {
         return "el/javascriptOutput";
     }
 
-    @RequestMapping(value = "7_3", method = RequestMethod.GET)
+    @GetMapping(value = "7_3")
     public String javascriptXSSMeasures_07_03(Model model) {
 
         model.addAttribute("xssAttack", "Spring Framework");
@@ -211,7 +212,7 @@ public class ElController {
         return "el/javascriptOutput";
     }
 
-    @RequestMapping(value = "8_1", method = RequestMethod.GET)
+    @GetMapping(value = "8_1")
     public String eventHandlerXSSMeasures_08_01(Model model) {
 
         model.addAttribute("xssAttack", "');alert('XSS Attack');// . )");
@@ -219,7 +220,7 @@ public class ElController {
         return "el/eventHandlerOutput";
     }
 
-    @RequestMapping(value = "8_2", method = RequestMethod.GET)
+    @GetMapping(value = "8_2")
     public String eventHandlerXSSMeasures_08_02(Model model) {
 
         model.addAttribute("xssAttack", "');alert(\"XSS Attack\");// . )");
@@ -227,7 +228,7 @@ public class ElController {
         return "el/eventHandlerOutput";
     }
 
-    @RequestMapping(value = "8_3", method = RequestMethod.GET)
+    @GetMapping(value = "8_3")
     public String eventHandlerXSSMeasures_08_03(Model model) {
 
         model.addAttribute("xssAttack", "Spring Framework");

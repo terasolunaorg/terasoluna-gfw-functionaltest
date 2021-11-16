@@ -16,32 +16,32 @@
 package org.terasoluna.gfw.functionaltest.app.transactiontoken;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 @RequestMapping("transactiontoken")
 public class TransactionTokenFunctionalTestController {
 
-    @RequestMapping(method = RequestMethod.GET)
+    @GetMapping
     public String index() {
         return "transactiontoken/index";
     }
 
     // Contents confirmation testing
-    @RequestMapping(value = "create", method = RequestMethod.GET)
+    @GetMapping(value = "create")
     public String functionTestContentsConfirmation() {
         return "transactiontoken/createInput";
     }
 
     // flow testing
-    @RequestMapping(value = "flow", method = RequestMethod.GET)
+    @GetMapping(value = "flow")
     public String functionTestFlow() {
         return "transactiontoken/flowAllStep1";
     }
 
     // flow @AliasFor namespace testing
-    @RequestMapping(value = "flow_namespace", method = RequestMethod.GET)
+    @GetMapping(value = "flow_namespace")
     public String functionTestFlowNamespace() {
         return "transactiontoken/flowAllNamespaceStep1";
     }

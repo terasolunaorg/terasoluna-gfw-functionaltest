@@ -24,8 +24,9 @@ import javax.inject.Named;
 import org.joda.time.DateTime;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.terasoluna.gfw.common.date.DateConvertUtils;
 import org.terasoluna.gfw.common.date.jodatime.JdbcAdjustedJodaTimeDateFactory;
@@ -83,13 +84,13 @@ public class DateController {
     @Inject
     protected DateService dateService;
 
-    @RequestMapping(method = RequestMethod.GET)
+    @GetMapping
     public String index() {
 
         return "date/index";
     }
 
-    @RequestMapping(value = "1_1", method = RequestMethod.GET)
+    @GetMapping(value = "1_1")
     public String serverTimeReturn_01_01(Model model) {
 
         model.addAttribute("firstExpectedDate", new java.util.Date());
@@ -103,7 +104,7 @@ public class DateController {
         return "date/dateTimeDisplay";
     }
 
-    @RequestMapping(value = "1_2", method = RequestMethod.GET)
+    @GetMapping(value = "1_2")
     public String serverTimeReturn_01_02(Model model) {
 
         model.addAttribute("firstExpectedDate", new java.util.Date());
@@ -117,7 +118,7 @@ public class DateController {
         return "date/dateDisplay";
     }
 
-    @RequestMapping(value = "1_3", method = RequestMethod.GET)
+    @GetMapping(value = "1_3")
     public String serverTimeReturn_01_03(Model model) {
 
         model.addAttribute("firstExpectedDate", new java.util.Date());
@@ -131,7 +132,7 @@ public class DateController {
         return "date/dateDisplay";
     }
 
-    @RequestMapping(value = "1_4", method = RequestMethod.GET)
+    @GetMapping(value = "1_4")
     public String serverTimeReturn_01_04(Model model) {
 
         model.addAttribute("firstExpectedDate", DateConvertUtils
@@ -147,7 +148,7 @@ public class DateController {
         return "date/dateDisplay";
     }
 
-    @RequestMapping(value = "1_5", method = RequestMethod.GET)
+    @GetMapping(value = "1_5")
     public String serverTimeReturn_01_05(Model model) {
 
         model.addAttribute("firstExpectedDate", new java.util.Date());
@@ -161,7 +162,7 @@ public class DateController {
         return "date/timeDisplay";
     }
 
-    @RequestMapping(value = "2_1", method = RequestMethod.GET)
+    @GetMapping(value = "2_1")
     public String dbFixationTimeReturn_02_01(Model model) {
 
         DateTime dateTime = jdbcFixedDateFactory.newDateTime();
@@ -172,7 +173,7 @@ public class DateController {
         return "date/dateTimeDisplay";
     }
 
-    @RequestMapping(value = "2_2", method = RequestMethod.GET)
+    @GetMapping(value = "2_2")
     public String dbFixationTimeReturn_02_02(Model model) {
 
         Timestamp timestamp = jdbcFixedDateFactory.newTimestamp();
@@ -183,7 +184,7 @@ public class DateController {
         return "date/dateDisplay";
     }
 
-    @RequestMapping(value = "2_3", method = RequestMethod.GET)
+    @GetMapping(value = "2_3")
     public String dbFixationTimeReturn_02_03(Model model) {
 
         java.util.Date date = jdbcFixedDateFactory.newDate();
@@ -194,7 +195,7 @@ public class DateController {
         return "date/dateDisplay";
     }
 
-    @RequestMapping(value = "2_4", method = RequestMethod.GET)
+    @GetMapping(value = "2_4")
     public String dbFixationTimeReturn_02_04(Model model) {
 
         java.sql.Date sqlDate = jdbcFixedDateFactory.newSqlDate();
@@ -205,7 +206,7 @@ public class DateController {
         return "date/dateDisplay";
     }
 
-    @RequestMapping(value = "2_5", method = RequestMethod.GET)
+    @GetMapping(value = "2_5")
     public String dbFixationTimeReturn_02_05(Model model) {
 
         Time time = jdbcFixedDateFactory.newTime();
@@ -216,7 +217,7 @@ public class DateController {
         return "date/timeDisplay";
     }
 
-    @RequestMapping(value = "2_6", method = RequestMethod.GET)
+    @GetMapping(value = "2_6")
     public String dbFixationTimeReturn_02_06(Model model) {
 
         dbErrorJdbcFixedDateFactory.newTime();
@@ -224,7 +225,7 @@ public class DateController {
         return "date/timeDisplay";
     }
 
-    @RequestMapping(value = "3_1", method = RequestMethod.GET)
+    @GetMapping(value = "3_1")
     public String adjustedDateReturn_03_01(Model model) {
 
         model.addAttribute("firstExpectedDate", new java.util.Date());
@@ -238,7 +239,7 @@ public class DateController {
         return "date/dateTimeDisplay";
     }
 
-    @RequestMapping(value = "3_2", method = RequestMethod.GET)
+    @GetMapping(value = "3_2")
     public String adjustedDateReturn_03_02(Model model) {
 
         model.addAttribute("firstExpectedDate", new java.util.Date());
@@ -252,7 +253,7 @@ public class DateController {
         return "date/dateDisplay";
     }
 
-    @RequestMapping(value = "3_3", method = RequestMethod.GET)
+    @GetMapping(value = "3_3")
     public String adjustedDateReturn_03_03(Model model) {
 
         model.addAttribute("firstExpectedDate", new java.util.Date());
@@ -266,7 +267,7 @@ public class DateController {
         return "date/dateDisplay";
     }
 
-    @RequestMapping(value = "3_4", method = RequestMethod.GET)
+    @GetMapping(value = "3_4")
     public String adjustedDateReturn_03_04(Model model) {
 
         model.addAttribute("firstExpectedDate", DateConvertUtils
@@ -282,7 +283,7 @@ public class DateController {
         return "date/dateDisplay";
     }
 
-    @RequestMapping(value = "3_5", method = RequestMethod.GET)
+    @GetMapping(value = "3_5")
     public String adjustedDateReturn_03_05(Model model) {
 
         model.addAttribute("firstExpectedDate", new java.util.Date());
@@ -296,7 +297,7 @@ public class DateController {
         return "date/timeDisplay";
     }
 
-    @RequestMapping(value = "3_6", method = RequestMethod.GET)
+    @GetMapping(value = "3_6")
     public String adjustedDateReturn_03_06(Model model) {
 
         model.addAttribute("firstExpectedDate", new java.util.Date());
@@ -310,7 +311,7 @@ public class DateController {
         return "date/dateTimeDisplay";
     }
 
-    @RequestMapping(value = "3_7", method = RequestMethod.GET)
+    @GetMapping(value = "3_7")
     public String adjustedDateReturn_03_07(Model model) {
 
         model.addAttribute("firstExpectedDate", new java.util.Date());
@@ -324,7 +325,7 @@ public class DateController {
         return "date/dateTimeDisplay";
     }
 
-    @RequestMapping(value = "3_8", method = RequestMethod.GET)
+    @GetMapping(value = "3_8")
     public String adjustedDateReturn_03_08(Model model) {
 
         model.addAttribute("firstExpectedDate", new java.util.Date());
@@ -338,7 +339,7 @@ public class DateController {
         return "date/dateTimeDisplay";
     }
 
-    @RequestMapping(value = "3_9", method = RequestMethod.GET)
+    @GetMapping(value = "3_9")
     public String adjustedDateReturn_03_09(Model model) {
 
         model.addAttribute("firstExpectedDate", new java.util.Date());
@@ -352,7 +353,7 @@ public class DateController {
         return "date/dateTimeDisplay";
     }
 
-    @RequestMapping(value = "3_10", method = RequestMethod.GET)
+    @GetMapping(value = "3_10")
     public String adjustedDateReturn_03_10(Model model) {
 
         model.addAttribute("firstExpectedDate", new java.util.Date());
@@ -366,7 +367,7 @@ public class DateController {
         return "date/dateTimeDisplay";
     }
 
-    @RequestMapping(value = "3_11", method = RequestMethod.GET)
+    @GetMapping(value = "3_11")
     public String adjustedDateReturn_03_11(Model model) {
 
         model.addAttribute("firstExpectedDate", new java.util.Date());
@@ -380,7 +381,7 @@ public class DateController {
         return "date/dateTimeDisplay";
     }
 
-    @RequestMapping(value = "3_12", method = RequestMethod.GET)
+    @GetMapping(value = "3_12")
     public String adjustedDateReturn_03_12(Model model) {
 
         model.addAttribute("firstExpectedDate", new java.util.Date());
@@ -394,36 +395,36 @@ public class DateController {
         return "date/dateTimeDisplay";
     }
 
-    @RequestMapping(value = "manage", method = RequestMethod.GET)
+    @GetMapping(value = "manage")
     public String manage() {
         return "date/dateManage";
     }
 
-    @RequestMapping(value = "diff", method = RequestMethod.POST)
+    @PostMapping(value = "diff")
     public String updateDiffTime(@RequestParam("diffTime") String diffTime) {
         dateService.updateOperationDate("1", diffTime);
         return "date/index";
     }
 
-    @RequestMapping(value = "insertOperationDate", method = RequestMethod.GET)
+    @GetMapping(value = "insertOperationDate")
     public String insertOperationDate() {
         dateService.insertOperationDate("2", "-86400000");
         return "date/index";
     }
 
-    @RequestMapping(value = "deleteSystemDate", method = RequestMethod.GET)
+    @GetMapping(value = "deleteSystemDate")
     public String deleteSystemDate() {
         dateService.deleteSystemDate(2);
         return "date/index";
     }
 
-    @RequestMapping(value = "deleteOperationDate", method = RequestMethod.GET)
+    @GetMapping(value = "deleteOperationDate")
     public String deleteOperationDate() {
         dateService.deleteOperationDate(2);
         return "date/index";
     }
 
-    @RequestMapping(value = "reload", method = RequestMethod.GET)
+    @GetMapping(value = "reload")
     public String reloadAdjustedDate() {
         useCacheDayJdbcAdjustedDateFactory.reload();
 

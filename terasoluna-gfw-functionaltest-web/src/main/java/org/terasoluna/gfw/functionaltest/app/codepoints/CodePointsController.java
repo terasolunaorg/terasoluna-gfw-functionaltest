@@ -25,9 +25,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.terasoluna.gfw.common.codepoints.CodePoints;
 import org.terasoluna.gfw.common.codepoints.catalog.JIS_X_0208_Katakana;
 
@@ -65,19 +66,18 @@ public class CodePointsController {
         return new ExcludedCodePointsForm();
     }
 
-    @RequestMapping(method = RequestMethod.GET)
+    @GetMapping
     public String index() {
 
         return "codepoints/index";
     }
 
-    @RequestMapping(value = "containsAll", method = RequestMethod.GET, params = {
-            "form1" })
+    @GetMapping(value = "containsAll", params = { "form1" })
     public String containsAll_form1() {
         return "codepoints/containsAll_form1";
     }
 
-    @RequestMapping(value = "containsAll", method = RequestMethod.POST, params = {
+    @PostMapping(value = "containsAll", params = {
             "useInstanceKind=codePointsOf" })
     public String containsAllCodePointsOf(Model model, ContainsAllForm1 form) {
 
@@ -91,7 +91,7 @@ public class CodePointsController {
         return "codepoints/result_instanceCheckAndcontainsAll";
     }
 
-    @RequestMapping(value = "containsAll", method = RequestMethod.POST, params = {
+    @PostMapping(value = "containsAll", params = {
             "useInstanceKind=newJIS_X_0208_Katakana" })
     public String containsAllNewJIS_X_0208_Katakana(Model model,
             ContainsAllForm1 form) {
@@ -104,14 +104,13 @@ public class CodePointsController {
         return "codepoints/result_containsAll";
     }
 
-    @RequestMapping(value = "containsAll", method = RequestMethod.GET, params = {
-            "form2" })
+    @GetMapping(value = "containsAll", params = { "form2" })
     public String containsAll_form2(ContainsAllForm2 form) {
         form.setCodePoints(new Integer[2]);
         return "codepoints/containsAll_form2";
     }
 
-    @RequestMapping(value = "containsAll", method = RequestMethod.POST, params = {
+    @PostMapping(value = "containsAll", params = {
             "useInstanceKind=newCodePointsWithIntegerArray" })
     public String containsAllNewCodePointsWithIntegerArray(Model model,
             @Validated ContainsAllForm2 form, BindingResult bindingResult) {
@@ -128,7 +127,7 @@ public class CodePointsController {
         return "codepoints/result_containsAll";
     }
 
-    @RequestMapping(value = "containsAll", method = RequestMethod.POST, params = {
+    @PostMapping(value = "containsAll", params = {
             "useInstanceKind=newCodePointsWithIntegerSet" })
     public String containsAllNewCodePointsWithIntegerSet(Model model,
             @Validated ContainsAllForm2 form, BindingResult bindingResult) {
@@ -147,7 +146,7 @@ public class CodePointsController {
         return "codepoints/result_containsAll";
     }
 
-    @RequestMapping(value = "containsAll", method = RequestMethod.POST, params = {
+    @PostMapping(value = "containsAll", params = {
             "useInstanceKind=newCodePonitsWithString" })
     public String containsAllNewCodePonitsWithString(Model model,
             ContainsAllForm1 form) {
@@ -160,14 +159,13 @@ public class CodePointsController {
         return "codepoints/result_containsAll";
     }
 
-    @RequestMapping(value = "containsAll", method = RequestMethod.GET, params = {
-            "form3" })
+    @GetMapping(value = "containsAll", params = { "form3" })
     public String containsAll_form3(ContainsAllForm3 form) {
         form.setCodePoints(new String[2]);
         return "codepoints/containsAll_form3";
     }
 
-    @RequestMapping(value = "containsAll", method = RequestMethod.POST, params = {
+    @PostMapping(value = "containsAll", params = {
             "newCodePointsWithStringArray" })
     public String containsAllNewCodePointsWithStringArray(Model model,
             ContainsAllForm3 form) {
@@ -180,16 +178,14 @@ public class CodePointsController {
         return "codepoints/result_containsAll";
     }
 
-    @RequestMapping(value = "containsAll", method = RequestMethod.GET, params = {
-            "form4=union" })
+    @GetMapping(value = "containsAll", params = { "form4=union" })
     public String containsAll_form4_union(ContainsAllForm4 form) {
         form.setCodePointsA(new Integer[2]);
         form.setCodePointsB(new Integer[2]);
         return "codepoints/containsAll_form4";
     }
 
-    @RequestMapping(value = "containsAll", method = RequestMethod.POST, params = {
-            "operation=union" })
+    @PostMapping(value = "containsAll", params = { "operation=union" })
     public String containsAllUnion(Model model,
             @Validated ContainsAllForm4 form, BindingResult bindingResult) {
 
@@ -207,16 +203,14 @@ public class CodePointsController {
         return "codepoints/result_containsAll";
     }
 
-    @RequestMapping(value = "containsAll", method = RequestMethod.GET, params = {
-            "form4=subtract" })
+    @GetMapping(value = "containsAll", params = { "form4=subtract" })
     public String containsAll_form4_subtract(ContainsAllForm4 form) {
         form.setCodePointsA(new Integer[4]);
         form.setCodePointsB(new Integer[2]);
         return "codepoints/containsAll_form4";
     }
 
-    @RequestMapping(value = "containsAll", method = RequestMethod.POST, params = {
-            "operation=subtract" })
+    @PostMapping(value = "containsAll", params = { "operation=subtract" })
     public String containsAllSubtract(Model model,
             @Validated ContainsAllForm4 form, BindingResult bindingResult) {
 
@@ -234,16 +228,14 @@ public class CodePointsController {
         return "codepoints/result_containsAll";
     }
 
-    @RequestMapping(value = "containsAll", method = RequestMethod.GET, params = {
-            "form4=intersect" })
+    @GetMapping(value = "containsAll", params = { "form4=intersect" })
     public String containsAll_form4_intersect(ContainsAllForm4 form) {
         form.setCodePointsA(new Integer[4]);
         form.setCodePointsB(new Integer[3]);
         return "codepoints/containsAll_form4";
     }
 
-    @RequestMapping(value = "containsAll", method = RequestMethod.POST, params = {
-            "operation=intersect" })
+    @PostMapping(value = "containsAll", params = { "operation=intersect" })
     public String containsAllIntersect(Model model,
             @Validated ContainsAllForm4 form, BindingResult bindingResult) {
 
@@ -261,7 +253,7 @@ public class CodePointsController {
         return "codepoints/result_containsAll";
     }
 
-    @RequestMapping(value = "containsAll", method = RequestMethod.POST, params = {
+    @PostMapping(value = "containsAll", params = {
             "useInstanceKind=codePointsOfWithJIS_X_0208_Katakana" })
     public String containsAllCodePointsOfWithJIS_X_0208_Katakana(Model model,
             ContainsAllForm1 form) {
@@ -274,13 +266,12 @@ public class CodePointsController {
         return "codepoints/result_containsAll";
     }
 
-    @RequestMapping(value = "firstExcludedCodePoint", method = RequestMethod.GET, params = {
-            "form" })
+    @GetMapping(value = "firstExcludedCodePoint", params = { "form" })
     public String firstExcludedCodePoint_form() {
         return "codepoints/firstExcludedCodePoint_form";
     }
 
-    @RequestMapping(value = "firstExcludedCodePoint", method = RequestMethod.POST)
+    @PostMapping(value = "firstExcludedCodePoint")
     public String firstExcludedCodePoint(Model model,
             FirstExcludedCodePointForm form) {
 
@@ -292,13 +283,12 @@ public class CodePointsController {
         return "codepoints/result_firstExcludedCodepoint";
     }
 
-    @RequestMapping(value = "excludedCodePoints", method = RequestMethod.GET, params = {
-            "form" })
+    @GetMapping(value = "excludedCodePoints", params = { "form" })
     public String excludedCodePoints_form() {
         return "codepoints/excludedCodePoints_form";
     }
 
-    @RequestMapping(value = "excludedCodePoints", method = RequestMethod.POST)
+    @PostMapping(value = "excludedCodePoints")
     public String excludedCodePoints(Model model, ExcludedCodePointsForm form) {
 
         CodePoints jisX208KanaCp = CodePoints.of(JIS_X_0208_Katakana.class);

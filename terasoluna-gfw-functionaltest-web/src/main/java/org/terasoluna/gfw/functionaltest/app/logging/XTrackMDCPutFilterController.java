@@ -19,8 +19,8 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.terasoluna.gfw.functionaltest.domain.service.logging.MDCService;
 
 @Controller
@@ -30,12 +30,12 @@ public class XTrackMDCPutFilterController {
     @Inject
     protected MDCService mdcService;
 
-    @RequestMapping(method = RequestMethod.GET)
+    @GetMapping
     public String index() {
         return "logging/xTrackMDCPutFilter";
     }
 
-    @RequestMapping(value = "1_1", method = RequestMethod.GET)
+    @GetMapping(value = "1_1")
     public String createDefaultXTrackMDC_01_01(Model model) {
 
         // case of default attribute name
@@ -46,7 +46,7 @@ public class XTrackMDCPutFilterController {
         return "logging/xTrackMDCPutFilter";
     }
 
-    @RequestMapping(value = "1_2", method = RequestMethod.GET)
+    @GetMapping(value = "1_2")
     public String createCustomXTrackMDC_01_02(Model model) {
 
         // case of custom attribute name
@@ -57,14 +57,14 @@ public class XTrackMDCPutFilterController {
         return "logging/xTrackMDCPutFilter";
     }
 
-    @RequestMapping(value = "1_3", method = RequestMethod.GET)
+    @GetMapping(value = "1_3")
     public String removeXTrackMDC_01_03(Model model) {
 
         // Under construction
         return "logging/xTrackMDCPutFilter";
     }
 
-    @RequestMapping(value = "1_4", method = RequestMethod.GET)
+    @GetMapping(value = "1_4")
     public String checkConsistencyXtrackMDCRequestToResponse_01_04(
             Model model) {
 

@@ -16,8 +16,8 @@
 package org.terasoluna.gfw.functionaltest.app.transactiontoken;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.terasoluna.gfw.web.token.transaction.TransactionTokenCheck;
 import org.terasoluna.gfw.web.token.transaction.TransactionTokenType;
 
@@ -26,25 +26,25 @@ import org.terasoluna.gfw.web.token.transaction.TransactionTokenType;
 @TransactionTokenCheck(namespace = "testTokenAttrByNameSpace")
 public class TransactionTokenFlow7Controller {
 
-    @RequestMapping(value = "flow1_namespace", method = RequestMethod.POST, params = "confirm")
+    @PostMapping(value = "flow1_namespace", params = "confirm")
     @TransactionTokenCheck(type = TransactionTokenType.BEGIN)
     public String flow1NamespaceStep2() {
         return "transactiontoken/flow1NamespaceStep2";
     }
 
-    @RequestMapping(value = "flow1_namespace", method = RequestMethod.POST, params = "intermediate")
+    @PostMapping(value = "flow1_namespace", params = "intermediate")
     @TransactionTokenCheck(type = TransactionTokenType.IN)
     public String flow1NamespaceStep3() {
         return "transactiontoken/flow1NamespaceStep3";
     }
 
-    @RequestMapping(value = "flow1_namespace", method = RequestMethod.POST, params = "finalize")
+    @PostMapping(value = "flow1_namespace", params = "finalize")
     @TransactionTokenCheck(type = TransactionTokenType.END)
     public String flow1NamespaceStep4() {
         return "transactiontoken/flow1NamespaceStep4";
     }
 
-    @RequestMapping(value = "flow1_namespace", method = RequestMethod.POST, params = "check")
+    @PostMapping(value = "flow1_namespace", params = "check")
     @TransactionTokenCheck(type = TransactionTokenType.CHECK)
     public String flow1Step2Check() {
         return "transactiontoken/flow1NamespaceStep3";
