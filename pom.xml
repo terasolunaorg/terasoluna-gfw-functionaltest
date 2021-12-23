@@ -237,8 +237,8 @@
     <org.codehaus.mojo.xml-maven-plugin.version>1.0.2</org.codehaus.mojo.xml-maven-plugin.version>
     <com.mycila.license-maven-plugin.version>4.1</com.mycila.license-maven-plugin.version>
     <!-- == Dependency Versions == -->
-    <postgresql.version>42.2.9</postgresql.version>
-    <ojdbc.version>19.3.0.0</ojdbc.version>
+    <postgresql.version>42.3.1</postgresql.version>
+    <ojdbc.version>21.3.0.0</ojdbc.version>
     <db2jcc4.version>4.21.29</db2jcc4.version>
     <webdrivermanager.version>3.1.1</webdrivermanager.version>
     <!-- == Project Properties == -->
