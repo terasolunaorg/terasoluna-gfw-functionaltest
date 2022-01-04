@@ -65,7 +65,7 @@ $ mvn -U install -am -pl terasoluna-gfw-functionaltest-web
 ```console
 $ cd {your repository directory}
 $ git checkout {target branch}
-$ mvn -U install -am -pl terasoluna-gfw-functionaltest-web -P tomcat8-postgresql,warpack-env,warpack-jstl,travis
+$ mvn -U install -am -pl terasoluna-gfw-functionaltest-web -P tomcat9-postgresql,warpack-env,warpack-jstl,travis
 ```
 
 > **Note:**
@@ -83,8 +83,8 @@ $ mvn -U sql:execute -pl terasoluna-gfw-functionaltest-initdb
 >
 > If you not use default user(`postgres`) or password(`P0stgres`), you should specify `-Ddb.username={your user}` or `-Ddb.password={your password}` or both.
 
-### [Step 5] Startup Tomcat8 and deploy war file
-Startup Tomcat8 and deploy war file using [CARGO maven plugin](https://codehaus-cargo.github.io/cargo/Maven2+plugin.html).
+### [Step 5] Startup Tomcat9 and deploy war file
+Startup Tomcat9 and deploy war file using [CARGO maven plugin](https://codehaus-cargo.github.io/cargo/Maven2+plugin.html).
 
 #### Case that use embedded H2 as database
 
