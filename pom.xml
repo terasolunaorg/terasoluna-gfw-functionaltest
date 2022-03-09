@@ -225,6 +225,12 @@
       </dependency>
       <!-- == End Database == -->
 
+      <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-compress</artifactId>
+        <version>${org.apache.commons.version}</version>
+      </dependency>
+
     </dependencies>
   </dependencyManagement>
   <properties>
@@ -241,6 +247,7 @@
     <ojdbc.version>21.3.0.0</ojdbc.version>
     <db2jcc4.version>4.21.29</db2jcc4.version>
     <webdrivermanager.version>3.1.1</webdrivermanager.version>
+    <org.apache.commons.version>1.21</org.apache.commons.version>
     <!-- == Project Properties == -->
     <project.env.main.directory>src/main</project.env.main.directory>
     <project.env.buildFinalName>${project.artifactId}-${project.version}</project.env.buildFinalName>
