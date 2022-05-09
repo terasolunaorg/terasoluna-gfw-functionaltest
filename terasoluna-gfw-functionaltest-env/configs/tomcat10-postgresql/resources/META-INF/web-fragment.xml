@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-fragment xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:webfragment="http://java.sun.com/xml/ns/javaee/web-fragment_3_0.xsd"
+  xsi:schemaLocation="http://java.sun.com/xml/ns/javaee  http://java.sun.com/xml/ns/javaee/web-fragment_3_0.xsd"
+  version="3.0">
+
+  <servlet>
+    <servlet-name>appServlet</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <init-param>
+      <param-name>contextConfigLocation</param-name>
+      <!-- ApplicationContext for Spring MVC -->
+      <param-value>classpath*:META-INF/spring/spring-mvc.xml</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+    <multipart-config />
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>appServlet</servlet-name>
+    <url-pattern>/</url-pattern>
+  </servlet-mapping>
+
+  <listener>
+    <listener-class>org.h2.server.web.DbStarter</listener-class>
+  </listener>
+  <context-param>
+    <param-name>db.url</param-name>
+    <param-value>jdbc:h2:mem:terasoluna-gfw-functionaltest;DB_CLOSE_DELAY=-1;INIT=RUNSCRIPT FROM 'classpath:logback-ddl.sql'</param-value>
+  </context-param>
+  <context-param>
+    <param-name>db.user</param-name>
+    <param-value>sa</param-value>
+  </context-param>
+  <context-param>
+    <param-name>db.password</param-name>
+    <param-value></param-value>
+  </context-param>
+  <context-param>
+    <param-name>db.tcpServer</param-name>
+    <param-value>-tcpAllowOthers -tcpPort 9192</param-value>
+  </context-param>
+</web-fragment>

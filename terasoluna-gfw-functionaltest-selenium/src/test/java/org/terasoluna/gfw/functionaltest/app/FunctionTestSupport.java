@@ -20,7 +20,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
-import javax.inject.Inject;
+import jakarta.inject.Inject;
 
 import org.junit.AfterClass;
 import org.junit.Before;

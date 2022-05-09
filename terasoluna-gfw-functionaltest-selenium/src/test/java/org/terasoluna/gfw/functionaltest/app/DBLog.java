@@ -21,7 +21,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import javax.sql.DataSource;
+import jakarta.sql.DataSource;
 
 import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;

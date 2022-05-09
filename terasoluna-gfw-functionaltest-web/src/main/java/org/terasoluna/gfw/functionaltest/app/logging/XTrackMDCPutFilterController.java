@@ -15,7 +15,7 @@
  */
 package org.terasoluna.gfw.functionaltest.app.logging;
 
-import javax.inject.Inject;
+import jakarta.inject.Inject;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

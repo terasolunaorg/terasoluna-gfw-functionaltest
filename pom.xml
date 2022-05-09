@@ -294,6 +294,13 @@
       </properties>
     </profile>
     <profile>
+      <id>tomcat10-postgresql</id>
+      <properties>
+        <project.env.main.directory>configs/tomcat10-postgresql</project.env.main.directory>
+        <project.env.buildFinalName>${project.artifactId}-${project.version}-tomcat10-postgresql</project.env.buildFinalName>
+      </properties>
+    </profile>
+    <profile>
       <id>tomcat9-oracle</id>
       <properties>
         <project.env.main.directory>configs/tomcat9-oracle</project.env.main.directory>
@@ -314,6 +321,31 @@
       </activation>
       <properties>
         <java-version>11</java-version>
+        <cargo.jvmargs>-Xms512m -Xmx1024m -Duser.language=ja -Duser.country=JP -Duser.timezone=Asia/Tokyo -Djava.locale.providers=COMPAT,CLDR,SPI</cargo.jvmargs>
+      </properties>
+      <build>
+        <pluginManagement>
+          <plugins>
+            <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-surefire-plugin</artifactId>
+              <configuration>
+                <systemProperties>
+                  <jdk.tls.client.protocols>TLSv1.2</jdk.tls.client.protocols>
+                </systemProperties>
+              </configuration>
+            </plugin>
+          </plugins>
+        </pluginManagement>
+      </build>
+    </profile>
+    <profile>
+      <id>jdk17</id>
+      <activation>
+        <jdk>17</jdk>
+      </activation>
+      <properties>
+        <java-version>17</java-version>
         <cargo.jvmargs>-Xms512m -Xmx1024m -Duser.language=ja -Duser.country=JP -Duser.timezone=Asia/Tokyo -Djava.locale.providers=COMPAT,CLDR,SPI</cargo.jvmargs>
       </properties>
       <build>

@@ -15,10 +15,10 @@
  */
 package org.terasoluna.gfw.functionaltest.app.codelist;
 
-import javax.inject.Inject;
-import javax.servlet.http.HttpServletRequest;
-import javax.validation.ConstraintViolationException;
-import javax.validation.Valid;
+import jakarta.inject.Inject;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.ConstraintViolationException;
+import jakarta.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;

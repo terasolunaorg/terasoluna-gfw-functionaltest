@@ -15,7 +15,7 @@
  */
 package org.terasoluna.gfw.functionaltest.domain.service.queryescape;
 
-import javax.inject.Inject;
+import jakarta.inject.Inject;
 
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.stereotype.Service;
