@@ -7,11 +7,11 @@
     <param-name>logbackDisableServletContainerInitializer</param-name>
     <param-value>true</param-value>
   </context-param>
-
+<!-- 
   <listener>
     <listener-class>ch.qos.logback.classic.servlet.LogbackServletContextListener</listener-class>
   </listener>
-
+ -->
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>

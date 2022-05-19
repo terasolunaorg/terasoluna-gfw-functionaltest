@@ -33,9 +33,11 @@
 
   <context:component-scan base-package="org.terasoluna.gfw.functionaltest.config" />
 
+<!-- 
   <bean class="com.github.dozermapper.spring.DozerBeanMapperFactoryBean">
     <property name="mappingFiles" value="classpath*:/META-INF/dozer/**/*-mapping.xml" />
   </bean>
+ -->
 
   <!-- Message -->
   <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">

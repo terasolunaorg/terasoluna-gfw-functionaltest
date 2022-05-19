@@ -19,6 +19,20 @@
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>build-helper-maven-plugin</artifactId>
       </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <annotationProcessorPaths>
+            <path>
+              <groupId>org.mapstruct</groupId>
+              <artifactId>mapstruct-processor</artifactId>
+              <version>1.5.0.RC1</version>
+            </path>
+          <!-- other annotation processors -->
+          </annotationProcessorPaths>
+        </configuration>
+      </plugin>
     </plugins>
   </build>
 
@@ -58,10 +72,11 @@
     <profile>
       <id>warpack-jstl</id>
       <dependencies>
-        <dependency>
-          <groupId>org.apache.taglibs</groupId>
-          <artifactId>taglibs-standard-jstlel</artifactId>
-        </dependency>
+<dependency>
+    <groupId>jakarta.servlet.jsp.jstl</groupId>
+    <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
+    <version>2.0.0</version>
+</dependency>
       </dependencies>
     </profile>
   </profiles>
@@ -154,6 +169,12 @@
       <scope>test</scope>
     </dependency>
     <!-- == End Unit Test == -->
+
+    <dependency>
+      <groupId>org.mapstruct</groupId>
+      <artifactId>mapstruct</artifactId>
+    </dependency>
+
   </dependencies>
   <properties>
     <project.root.basedir>${project.parent.basedir}</project.root.basedir>

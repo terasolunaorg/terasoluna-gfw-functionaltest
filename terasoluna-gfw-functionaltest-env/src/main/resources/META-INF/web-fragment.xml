@@ -21,6 +21,7 @@
   </servlet-mapping>
 
   <!-- H2 Database Console for managing the app's database -->
+<!-- 
   <servlet>
     <servlet-name>H2Console</servlet-name>
     <servlet-class>org.h2.server.web.WebServlet</servlet-class>
@@ -35,7 +36,9 @@
     <servlet-name>H2Console</servlet-name>
     <url-pattern>/admin/h2/*</url-pattern>
   </servlet-mapping>
+ -->
 
+<!-- 
   <listener>
     <listener-class>org.h2.server.web.DbStarter</listener-class>
   </listener>
@@ -55,5 +58,5 @@
     <param-name>db.tcpServer</param-name>
     <param-value>-tcpAllowOthers -tcpPort 9192</param-value>
   </context-param>
-
+ -->
 </web-fragment>

@@ -19,7 +19,7 @@
     <servlet-name>appServlet</servlet-name>
     <url-pattern>/</url-pattern>
   </servlet-mapping>
-
+<!-- 
   <listener>
     <listener-class>org.h2.server.web.DbStarter</listener-class>
   </listener>
@@ -39,4 +39,6 @@
     <param-name>db.tcpServer</param-name>
     <param-value>-tcpAllowOthers -tcpPort 9192</param-value>
   </context-param>
+ -->
+
 </web-fragment>

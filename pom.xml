@@ -224,6 +224,13 @@
         <version>${db2jcc4.version}</version>
       </dependency>
       <!-- == End Database == -->
+      
+      <!-- https://mvnrepository.com/artifact/org.mapstruct/mapstruct -->
+      <dependency>
+        <groupId>org.mapstruct</groupId>
+        <artifactId>mapstruct</artifactId>
+        <version>1.5.0.RC1</version>
+      </dependency>
 
     </dependencies>
   </dependencyManagement>
