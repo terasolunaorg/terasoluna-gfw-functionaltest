@@ -29,6 +29,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -211,18 +212,7 @@ public class PaginationController {
         return "pagination/maxDisplayCountZero";
     }
 
-    @RequestMapping(value = "4_3", method = RequestMethod.GET)
-    public String fuinctionTest_4_3(Model model,
-            @PageableDefault(value = 10) Pageable pageable) {
-
-        Page<Person> page = paginationService.findPerson(pageable);
-
-        model.addAttribute("page", page);
-
-        return "pagination/maxDisplayCountBlank";
-    }
-
-    @RequestMapping(value = "5_1", method = RequestMethod.GET)
+    @GetMapping(value = "5_1")
     public String fuinctionTest_5_1(Model model,
             @PageableDefault(value = 100) Pageable pageable) {
 
