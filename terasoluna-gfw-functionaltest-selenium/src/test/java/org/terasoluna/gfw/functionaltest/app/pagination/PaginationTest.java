@@ -904,60 +904,6 @@ public class PaginationTest extends FunctionTestSupport {
         }
     }
 
-    @Ignore("The behavior differs depending on the server used.")
-    @Test(expected = NoSuchElementException.class)
-    public void test04_03_maxDisplayCountSpecified() {
-        driver.findElement(By.id("maxDisplayCountSpecified_4_3")).click();
-        webDriverWait.until(textToBe(By.xpath("//h1[2]"), "1 Page"));
-
-        // all page display check not page number link
-        // previousLink, nextLink, firstLink, lastLink check
-        assertThat(driver.findElement(By.xpath("//li[1]/a")).getText(), is(
-                "<<"));
-        assertThat(driver.findElement(By.xpath("//li[2]/a")).getText(), is(
-                "<"));
-        assertThat(driver.findElement(By.xpath("//li[3]/a")).getText(), is(
-                ">"));
-        assertThat(driver.findElement(By.xpath("//li[4]/a")).getText(), is(
-                ">>"));
-
-        // HTML tags outside "<ul>" check
-        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul")),
-                notNullValue());
-        // HTML tags inside "<li>" check
-        assertThat(driver.findElement(By.xpath(
-                "/html/body/div/div[2]/ul/li[1]")), notNullValue());
-
-        // previousLink value "#" check
-        assertThat(driver.findElement(By.xpath(
-                "(//a[contains(@href, '#')])[2]")), notNullValue());
-
-        // "disabled" class check
-        assertThat(driver.findElement(By.cssSelector("li.disabled > a"))
-                .getText(), is("<<"));
-
-        try {
-            // Immediate time-out value set
-            driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
-
-            // "active" class check
-            driver.findElement(By.cssSelector("li.active > a"));
-            fail("error route");
-        } catch (NoSuchElementException e) {
-
-            for (int i = 1; i < 31; i++) {
-                // active page number check
-                webDriverWait.until(textToBe(By.xpath("//h1[2]"), String
-                        .valueOf(i) + " Page"));
-                // screen capture
-                screenCapture.save(driver);
-
-                driver.findElement(By.linkText(">")).click();
-            }
-
-            throw e;
-        }
-    }
 
     @Test
     public void test05_01_outerElementSpecified() {

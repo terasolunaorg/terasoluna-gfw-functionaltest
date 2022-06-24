@@ -211,17 +211,6 @@ public class PaginationController {
         return "pagination/maxDisplayCountZero";
     }
 
-    @GetMapping(value = "4_3")
-    public String fuinctionTest_4_3(Model model,
-            @PageableDefault(value = 10) Pageable pageable) {
-
-        Page<Person> page = paginationService.findPerson(pageable);
-
-        model.addAttribute("page", page);
-
-        return "pagination/maxDisplayCountBlank";
-    }
-
     @GetMapping(value = "5_1")
     public String fuinctionTest_5_1(Model model,
             @PageableDefault(value = 100) Pageable pageable) {
