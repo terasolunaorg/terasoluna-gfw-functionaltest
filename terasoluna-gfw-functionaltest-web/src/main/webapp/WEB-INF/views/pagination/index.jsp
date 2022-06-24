@@ -61,10 +61,6 @@
       href="${pageContext.request.contextPath}/pagination/4_2">maxDisplayCountSpecified_4_2</a></td>
   </tr>
   <tr>
-    <td><a id="maxDisplayCountSpecified_4_3"
-      href="${pageContext.request.contextPath}/pagination/4_3">maxDisplayCountSpecified_4_3</a></td>
-  </tr>
-  <tr>
     <td><a id="outerElementSpecified_5_1"
       href="${pageContext.request.contextPath}/pagination/5_1">outerElementSpecified_5_1</a></td>
   </tr>
