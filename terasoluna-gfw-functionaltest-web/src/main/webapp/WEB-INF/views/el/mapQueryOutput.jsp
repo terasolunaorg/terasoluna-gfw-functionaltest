@@ -4,3 +4,4 @@
 <span>Output Data</span>
 <p id="queryOutput">${f:query(outputData)}</p>
 <p id="noAndQueryOutput">${f:query(noAndDoubleOutput)}</p>
+<p id="checkDatetime">${f:h(checkDatetime)}</p>
