@@ -148,6 +148,8 @@ public class ElController {
 
         model.addAttribute("noAndDoubleOutput", outputQueryData);
 
+        System.out.println(outputQueryData.get("DateTime"));
+
         return "el/mapQueryOutput";
     }
 
