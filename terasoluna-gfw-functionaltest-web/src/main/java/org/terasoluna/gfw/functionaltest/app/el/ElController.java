@@ -147,8 +147,6 @@ public class ElController {
         outputQueryData.put("DateTime", dt);
 
         model.addAttribute("noAndDoubleOutput", outputQueryData);
-        
-        model.addAttribute("checkDatetime", dt);
 
         return "el/mapQueryOutput";
     }
