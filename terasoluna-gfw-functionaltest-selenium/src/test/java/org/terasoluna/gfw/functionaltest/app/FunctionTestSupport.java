@@ -16,6 +16,7 @@
 package org.terasoluna.gfw.functionaltest.app;
 
 import java.io.File;
+import java.time.Duration;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
@@ -187,14 +188,15 @@ public class FunctionTestSupport extends ApplicationObjectSupport {
         if (driver == null) {
             driver = newWebDriver();
         }
-        driver.manage().timeouts().implicitlyWait(
-                defaultTimeoutSecForImplicitlyWait, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(
+                defaultTimeoutSecForImplicitlyWait));
         driver.get(getPackageRootUrl());
 
         this.webDriverOperations = new WebDriverOperations(driver);
         this.webDriverOperations.setDefaultTimeoutForImplicitlyWait(
                 defaultTimeoutSecForImplicitlyWait);
-        this.webDriverWait = new WebDriverWait(driver, defaultTimeoutSecForImplicitlyWait);
+        this.webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(
+                defaultTimeoutSecForImplicitlyWait));
     }
 
     private WebDriver newWebDriver() {
