@@ -101,6 +101,13 @@
       <scope>test</scope>
     </dependency>
     <!-- == End Unit Test == -->
+
+    <!-- == Begin logback-db == -->
+    <dependency>
+      <groupId>ch.qos.logback.db</groupId>
+      <artifactId>logback-classic-db</artifactId>
+    </dependency>
+    <!-- == End logback-db == -->
   </dependencies>
 
   <properties>
