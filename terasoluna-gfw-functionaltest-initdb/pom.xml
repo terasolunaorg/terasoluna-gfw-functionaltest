@@ -30,7 +30,7 @@
         <db.driver>org.postgresql.Driver</db.driver>
         <db.groupId>org.postgresql</db.groupId>
         <db.artifactId>postgresql</db.artifactId>
-        <db.version>${postgresql.version}</db.version>
+        <db.version>42.4.1</db.version>
         <db.delimiterType>row</db.delimiterType>
       </properties>
     </profile>
