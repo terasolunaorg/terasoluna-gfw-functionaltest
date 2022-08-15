@@ -28,7 +28,7 @@ public class HtmlUnitDriverEx extends HtmlUnitDriver {
 
     @Override
     public String getPageSource() {
-        Page page = lastPage();
+        Page page = getWindowManager().lastPage();
         return page == null ? null : page.getWebResponse().getContentAsString();
     }
 }

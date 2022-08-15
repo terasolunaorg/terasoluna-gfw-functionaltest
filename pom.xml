@@ -225,6 +225,14 @@
       </dependency>
       <!-- == End Database == -->
 
+      <!-- == Begin logback-db == -->
+      <dependency>
+        <groupId>ch.qos.logback.db</groupId>
+        <artifactId>logback-classic-db</artifactId>
+        <version>${logback-classic-db.version}</version>
+      </dependency>
+      <!-- == End logback-db == -->
+
     </dependencies>
   </dependencyManagement>
   <properties>
@@ -241,6 +249,7 @@
     <ojdbc.version>21.3.0.0</ojdbc.version>
     <db2jcc4.version>4.21.29</db2jcc4.version>
     <webdrivermanager.version>3.1.1</webdrivermanager.version>
+    <logback-classic-db.version>1.2.11.1</logback-classic-db.version>
     <!-- == Project Properties == -->
     <project.env.main.directory>src/main</project.env.main.directory>
     <project.env.buildFinalName>${project.artifactId}-${project.version}</project.env.buildFinalName>
