@@ -33,7 +33,7 @@ public class WebDriverOperations {
 
     protected final WebDriver webDriver;
 
-    protected long defaultTimeoutSecForImplicitlyWait = 5;
+    protected Duration defaultTimeoutSecForImplicitlyWait;
 
     public WebDriverOperations(WebDriver webDriver) {
         this.webDriver = webDriver;
@@ -44,7 +44,7 @@ public class WebDriverOperations {
      * @param defaultTimeoutSecForImplicitlyWait The default timeout value of the waiting process to find the element (s)
      */
     public void setDefaultTimeoutForImplicitlyWait(
-            long defaultTimeoutSecForImplicitlyWait) {
+            Duration defaultTimeoutSecForImplicitlyWait) {
         this.defaultTimeoutSecForImplicitlyWait = defaultTimeoutSecForImplicitlyWait;
     }
 
@@ -55,7 +55,7 @@ public class WebDriverOperations {
      */
     public boolean exists(By by) {
         webDriver.findElement(By.tagName("body"));
-        setTimeoutForImplicitlyWait(Duration.ofSeconds(0));
+        setTimeoutForImplicitlyWait(Duration.ZERO);
         boolean existsElement = true;
         try {
             webDriver.findElement(by).getText();
@@ -71,7 +71,7 @@ public class WebDriverOperations {
      * Set to the default value of the timeout value waiting process to find the element.
      */
     public void setDefaultTimeoutForImplicitlyWait() {
-        setTimeoutForImplicitlyWait(Duration.ofSeconds(defaultTimeoutSecForImplicitlyWait));
+        setTimeoutForImplicitlyWait(defaultTimeoutSecForImplicitlyWait);
     }
 
     /**
