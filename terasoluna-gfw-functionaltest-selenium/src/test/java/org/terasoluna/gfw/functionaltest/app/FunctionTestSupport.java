@@ -108,7 +108,7 @@ public class FunctionTestSupport extends ApplicationObjectSupport {
 
     protected WebDriverInputFieldAccessor inputFieldAccessor = WebDriverInputFieldAccessor.JAVASCRIPT;
 
-    protected long defaultTimeoutSecForImplicitlyWait = 5;
+    protected Duration defaultTimeoutSecForImplicitlyWait;
 
     protected FunctionTestSupport() {
         this.simplePackageName = this.getClass().getPackage().getName()
@@ -120,6 +120,13 @@ public class FunctionTestSupport extends ApplicationObjectSupport {
             String webDriverInputFieldAccessor) {
         this.inputFieldAccessor = WebDriverInputFieldAccessor.valueOf(
                 webDriverInputFieldAccessor.toUpperCase());
+    }
+
+    @Value("${selenium.defaultTimeoutSecForImplicitlyWait:5}")
+    public void setDefaultTimeoutSecForImplicitlyWait(
+            long defaultTimeoutSecForImplicitlyWait) {
+        this.defaultTimeoutSecForImplicitlyWait = Duration.ofSeconds(
+                defaultTimeoutSecForImplicitlyWait);
     }
 
     @AfterClass
@@ -187,15 +194,14 @@ public class FunctionTestSupport extends ApplicationObjectSupport {
         if (driver == null) {
             driver = newWebDriver();
         }
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(
-                defaultTimeoutSecForImplicitlyWait));
+        driver.manage().timeouts().implicitlyWait(
+                this.defaultTimeoutSecForImplicitlyWait);
         driver.get(getPackageRootUrl());
 
         this.webDriverOperations = new WebDriverOperations(driver);
         this.webDriverOperations.setDefaultTimeoutForImplicitlyWait(
-                defaultTimeoutSecForImplicitlyWait);
-        this.webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(
-                defaultTimeoutSecForImplicitlyWait));
+                this.defaultTimeoutSecForImplicitlyWait);
+        this.webDriverWait = new WebDriverWait(driver, this.defaultTimeoutSecForImplicitlyWait);
     }
 
     private WebDriver newWebDriver() {
