@@ -71,7 +71,7 @@ public class WebDriverOperations {
      * Set to the default value of the timeout value waiting process to find the element.
      */
     public void setDefaultTimeoutForImplicitlyWait() {
-        setTimeoutForImplicitlyWait(defaultTimeoutSecForImplicitlyWait);
+        setTimeoutForImplicitlyWait(this.defaultTimeoutSecForImplicitlyWait);
     }
 
     /**

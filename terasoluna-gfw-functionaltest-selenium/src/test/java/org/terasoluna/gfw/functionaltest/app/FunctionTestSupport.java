@@ -195,13 +195,13 @@ public class FunctionTestSupport extends ApplicationObjectSupport {
             driver = newWebDriver();
         }
         driver.manage().timeouts().implicitlyWait(
-                defaultTimeoutSecForImplicitlyWait);
+                this.defaultTimeoutSecForImplicitlyWait);
         driver.get(getPackageRootUrl());
 
         this.webDriverOperations = new WebDriverOperations(driver);
         this.webDriverOperations.setDefaultTimeoutForImplicitlyWait(
-                defaultTimeoutSecForImplicitlyWait);
-        this.webDriverWait = new WebDriverWait(driver, defaultTimeoutSecForImplicitlyWait);
+                this.defaultTimeoutSecForImplicitlyWait);
+        this.webDriverWait = new WebDriverWait(driver, this.defaultTimeoutSecForImplicitlyWait);
     }
 
     private WebDriver newWebDriver() {
