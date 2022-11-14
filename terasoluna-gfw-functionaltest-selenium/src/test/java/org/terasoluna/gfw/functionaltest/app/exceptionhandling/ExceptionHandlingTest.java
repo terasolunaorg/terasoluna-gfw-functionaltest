@@ -537,10 +537,10 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
 
         webDriverWait.until(titleIs("Servlet Error"));
         assertThat(dbLogProvider.countContainsMessageAndLevelsAndLogger(
-                "\\[e.xx.9999\\] Request processing failed; .*", "ERROR",
+                "\\[e.xx.9999\\] \\[WEB-INF/views/exceptionhandling/viewIOException.jsp\\] .*", "ERROR",
                 "org.terasoluna.gfw.common.exception.ExceptionLogger"), is(1L));
         assertThat(dbLogProvider.countContainsMessageAndLevelsAndLogger(
-                "\\[e.xx.9999\\] Request processing failed; .*", "ERROR",
+                "\\[e.xx.9999\\] \\[WEB-INF/views/exceptionhandling/viewIOException.jsp\\] .*", "ERROR",
                 "org.terasoluna.gfw.common.exception.ExceptionLogger.Monitoring"),
                 is(1L));
 
