@@ -34,7 +34,8 @@ public abstract class WebDriverManagerFactoryBean<T extends WebDriver>
     @Override
     public void afterPropertiesSet() throws Exception {
         if (propertyFileLocation != null) {
-            WebDriverManager.config().setProperties(propertyFileLocation);
+            // TODO config is no longer static.
+            // WebDriverManager.config().setProperties(propertyFileLocation);
         }
     }
 

@@ -94,6 +94,11 @@
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-surefire-plugin</artifactId>
           <version>${org.apache.maven.plugins.maven-surefire-plugin.version}</version>
+          <configuration>
+            <systemProperties>
+              <jdk.tls.client.protocols>TLSv1.2</jdk.tls.client.protocols>
+            </systemProperties>
+          </configuration>
         </plugin>
         <plugin>
           <groupId>org.codehaus.mojo</groupId>
@@ -252,6 +257,57 @@
         <version>${db2jcc4.version}</version>
       </dependency>
       <!-- == End Database == -->
+      
+      <!-- == Begin logback-db == -->
+      <dependency>
+        <groupId>ch.qos.logback.db</groupId>
+        <artifactId>logback-classic-db</artifactId>
+        <version>${logback-db.version}</version>
+      </dependency>
+      <!-- == End logback-db == -->
+      
+      <!-- Tiles Custom -->
+      <dependency>
+        <groupId>org.apache.tiles</groupId>
+        <artifactId>tiles-api</artifactId>
+        <version>${tiles.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.tiles</groupId>
+        <artifactId>tiles-core</artifactId>
+        <version>${tiles.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.tiles</groupId>
+        <artifactId>tiles-extras</artifactId>
+        <version>${tiles.version}</version>
+      </dependency>
+      <dependency>
+          <groupId>org.apache.tiles</groupId>
+          <artifactId>tiles-servlet</artifactId>
+          <version>${tiles-custom.version}</version>
+      </dependency>
+      <dependency>
+          <groupId>org.apache.tiles</groupId>
+          <artifactId>tiles-jsp</artifactId>
+          <version>${tiles-custom.version}</version>
+      </dependency>
+      <dependency>
+          <groupId>org.apache.tiles</groupId>
+          <artifactId>tiles-el</artifactId>
+          <version>${tiles-custom.version}</version>
+      </dependency>
+      <dependency>
+          <groupId>org.apache.tiles</groupId>
+          <artifactId>tiles-request-servlet</artifactId>
+          <version>${tiles-request-custom.version}</version>
+      </dependency>
+      <dependency>
+          <groupId>org.apache.tiles</groupId>
+          <artifactId>tiles-request-jsp</artifactId>
+          <version>${tiles-request-custom.version}</version>
+      </dependency>
+      <!-- Tiles Custom -->
 
     </dependencies>
   </dependencyManagement>
@@ -265,17 +321,23 @@
     <org.codehaus.mojo.xml-maven-plugin.version>1.0.2</org.codehaus.mojo.xml-maven-plugin.version>
     <com.mycila.license-maven-plugin.version>4.1</com.mycila.license-maven-plugin.version>
     <!-- == Dependency Versions == -->
+    <logback-db.version>1.2.11.1</logback-db.version>
     <postgresql.version>42.3.1</postgresql.version>
     <ojdbc.version>21.3.0.0</ojdbc.version>
     <db2jcc4.version>4.21.29</db2jcc4.version>
-    <webdrivermanager.version>3.1.1</webdrivermanager.version>
+    <webdrivermanager.version>5.3.1</webdrivermanager.version>
+    <!-- Tiles Custom -->
+    <tiles.version>3.0.8</tiles.version>
+    <tiles-custom.version>3.0.8-custom</tiles-custom.version>
+    <tiles-request-custom.version>1.0.7-custom</tiles-request-custom.version>
+    <!-- Tiles Custom -->
     <!-- == Project Properties == -->
     <project.env.main.directory>src/main</project.env.main.directory>
     <project.env.buildFinalName>${project.artifactId}-${project.version}</project.env.buildFinalName>
     <project.root.basedir>${project.basedir}</project.root.basedir>
     <encoding>UTF-8</encoding>
-    <java-version>1.8</java-version>
-    <cargo.jvmargs>-Xms512m -Xmx1024m -Duser.language=ja -Duser.country=JP -Duser.timezone=Asia/Tokyo</cargo.jvmargs>
+    <java-version>17</java-version>
+    <cargo.jvmargs>-Xms512m -Xmx1024m -Duser.language=ja -Duser.country=JP -Duser.timezone=Asia/Tokyo -Djava.locale.providers=COMPAT,CLDR,SPI</cargo.jvmargs>
   </properties>
   <profiles>
     <profile>
@@ -334,31 +396,6 @@
         <project.env.main.directory>configs/weblogic-oracle</project.env.main.directory>
         <project.env.buildFinalName>${project.artifactId}-${project.version}-weblogic-oracle</project.env.buildFinalName>
       </properties>
-    </profile>
-    <profile>
-      <id>jdk11</id>
-      <activation>
-        <jdk>11</jdk>
-      </activation>
-      <properties>
-        <java-version>11</java-version>
-        <cargo.jvmargs>-Xms512m -Xmx1024m -Duser.language=ja -Duser.country=JP -Duser.timezone=Asia/Tokyo -Djava.locale.providers=COMPAT,CLDR,SPI</cargo.jvmargs>
-      </properties>
-      <build>
-        <pluginManagement>
-          <plugins>
-            <plugin>
-              <groupId>org.apache.maven.plugins</groupId>
-              <artifactId>maven-surefire-plugin</artifactId>
-              <configuration>
-                <systemProperties>
-                  <jdk.tls.client.protocols>TLSv1.2</jdk.tls.client.protocols>
-                </systemProperties>
-              </configuration>
-            </plugin>
-          </plugins>
-        </pluginManagement>
-      </build>
     </profile>
   </profiles>
 </project>

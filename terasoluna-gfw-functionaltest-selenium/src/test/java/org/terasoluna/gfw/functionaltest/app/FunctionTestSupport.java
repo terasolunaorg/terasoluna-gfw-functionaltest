@@ -16,11 +16,10 @@
 package org.terasoluna.gfw.functionaltest.app;
 
 import java.io.File;
+import java.time.Duration;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
-
-import javax.inject.Inject;
 
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -36,6 +35,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.support.ApplicationObjectSupport;
 import org.terasoluna.gfw.functionaltest.app.webdrivers.WebDriverType;
 import org.terasoluna.gfw.functionaltest.domain.DBLogCleaner;
+
+import jakarta.inject.Inject;
 
 public class FunctionTestSupport extends ApplicationObjectSupport {
 
@@ -194,7 +195,8 @@ public class FunctionTestSupport extends ApplicationObjectSupport {
         this.webDriverOperations = new WebDriverOperations(driver);
         this.webDriverOperations.setDefaultTimeoutForImplicitlyWait(
                 defaultTimeoutSecForImplicitlyWait);
-        this.webDriverWait = new WebDriverWait(driver, defaultTimeoutSecForImplicitlyWait);
+        this.webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(
+                defaultTimeoutSecForImplicitlyWait));
     }
 
     private WebDriver newWebDriver() {

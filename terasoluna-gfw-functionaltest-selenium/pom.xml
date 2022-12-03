@@ -82,6 +82,13 @@
         </exclusion>
       </exclusions>
     </dependency>
+    
+    <!-- == Begin logback-db == -->
+    <dependency>
+      <groupId>ch.qos.logback.db</groupId>
+      <artifactId>logback-classic-db</artifactId>
+    </dependency>
+    <!-- == End logback-db == -->
 
     <!-- == Begin Unit Test == -->
     <dependency>

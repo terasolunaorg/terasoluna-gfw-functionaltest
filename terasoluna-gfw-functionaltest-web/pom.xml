@@ -128,14 +128,45 @@
     </dependency>
     <!-- == End TERASOLUNA == -->
 
-    <!-- == Begin Tomcat == -->
-    <!-- Servlet API 4.0 & JSP API 2.3 -->
+    <!-- == Begin Servlet == -->
     <dependency>
-      <groupId>org.apache.tomcat</groupId>
-      <artifactId>tomcat-jsp-api</artifactId>
-      <scope>provided</scope>
+        <groupId>jakarta.servlet</groupId>
+        <artifactId>jakarta.servlet-api</artifactId>
+        <scope>provided</scope>
+    </dependency>
+    <dependency>
+        <groupId>jakarta.servlet.jsp</groupId>
+        <artifactId>jakarta.servlet.jsp-api</artifactId>
+        <scope>provided</scope>
+    </dependency>
+    <dependency>
+        <groupId>jakarta.servlet.jsp.jstl</groupId>
+        <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
+        <scope>runtime</scope>
+    </dependency>
+    <dependency>
+        <groupId>org.glassfish.web</groupId>
+        <artifactId>jakarta.servlet.jsp.jstl</artifactId>
+        <scope>runtime</scope>
     </dependency>
     <!-- == End Tomcat == -->
+    
+    <!-- Tiles Custom -->
+    <!-- == Begin Tiles == -->
+    <dependency>
+      <groupId>org.apache.tiles</groupId>
+      <artifactId>tiles-core</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.tiles</groupId>
+      <artifactId>tiles-jsp</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>terasoluna.library</groupId>
+      <artifactId>spring-tiles-adapter</artifactId>
+      <version>5.8.0-SNAPSHOT</version>
+    </dependency>
+    <!-- Tiles Custom -->
 
     <!-- == Begin Unit Test == -->
     <dependency>

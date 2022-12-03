@@ -6,12 +6,13 @@
         http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
     ">
 
-  <sec:http pattern="/logging/**">
+  <sec:http pattern="/logging/**" use-authorization-manager="true">
     <sec:access-denied-handler ref="accessDeniedHandler" />
     <sec:form-login login-page="/logging/userIdMDCPutFilter" login-processing-url="/logging/login"
       default-target-url="/logging/userIdMDCPutFilter/login" />
     <sec:logout logout-url="/logging/userIdMDCPutFilter/logout" logout-success-url="/logging/userIdMDCPutFilter"
       delete-cookies="JSESSIONID" />
+    <sec:intercept-url pattern="/**" access="permitAll"/>
   </sec:http>
 
   <bean id="accessDeniedHandler" class="org.springframework.security.web.access.DelegatingAccessDeniedHandler">
