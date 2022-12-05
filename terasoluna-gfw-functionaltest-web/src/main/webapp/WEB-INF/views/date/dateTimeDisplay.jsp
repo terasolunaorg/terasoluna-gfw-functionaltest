@@ -7,7 +7,7 @@
 </p>
 <span>Server Time</span>
 <p id="serverTime">
-  <joda:format value="${serverTime}" pattern="yyyy-MM-dd HH:mm:ss.SSS" />
+  ${serverTime}
 </p>
 <span>Last Expected Date</span>
 <p id="lastExpectedDate">
