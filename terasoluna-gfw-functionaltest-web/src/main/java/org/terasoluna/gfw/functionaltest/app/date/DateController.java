@@ -22,6 +22,8 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -84,6 +86,9 @@ public class DateController {
     @Inject
     protected DateService dateService;
 
+    private static final DateTimeFormatter JODA_TIME_DATE_FORMATTER = DateTimeFormat
+            .forPattern("yyyy-MM-dd HH:mm:ss.SSS");
+
     @GetMapping
     public String index() {
 
@@ -96,8 +101,9 @@ public class DateController {
         model.addAttribute("firstExpectedDate", new java.util.Date());
 
         DateTime dateTime = dateFactory.newDateTime();
+        String dateTimeStr = dateTime.toString(JODA_TIME_DATE_FORMATTER);
 
-        model.addAttribute("serverTime", dateTime);
+        model.addAttribute("serverTime", dateTimeStr);
         model.addAttribute("type", dateTime.getClass());
         model.addAttribute("lastExpectedDate", new java.util.Date());
 
@@ -140,7 +146,7 @@ public class DateController {
 
         java.sql.Date sqlDate = dateFactory.newSqlDate();
 
-        model.addAttribute("serverTime", sqlDate);
+        model.addAttribute("serverTime", sqlDate.toString());
         model.addAttribute("type", sqlDate.getClass());
         model.addAttribute("lastExpectedDate", DateConvertUtils
                 .convertToSqlDate(new java.util.Date()));
@@ -166,8 +172,9 @@ public class DateController {
     public String dbFixationTimeReturn_02_01(Model model) {
 
         DateTime dateTime = jdbcFixedDateFactory.newDateTime();
+        String dateTimeStr = dateTime.toString(JODA_TIME_DATE_FORMATTER);
 
-        model.addAttribute("serverTime", dateTime);
+        model.addAttribute("serverTime", dateTimeStr);
         model.addAttribute("type", dateTime.getClass());
 
         return "date/dateTimeDisplay";
@@ -231,8 +238,9 @@ public class DateController {
         model.addAttribute("firstExpectedDate", new java.util.Date());
 
         DateTime dateTime = msecJdbcAdjustedDateFactory.newDateTime();
+        String dateTimeStr = dateTime.toString(JODA_TIME_DATE_FORMATTER);
 
-        model.addAttribute("serverTime", dateTime);
+        model.addAttribute("serverTime", dateTimeStr);
         model.addAttribute("type", dateTime.getClass());
         model.addAttribute("lastExpectedDate", new java.util.Date());
 
@@ -303,8 +311,9 @@ public class DateController {
         model.addAttribute("firstExpectedDate", new java.util.Date());
 
         DateTime dateTime = secJdbcAdjustedDateFactory.newDateTime();
+        String dateTimeStr = dateTime.toString(JODA_TIME_DATE_FORMATTER);
 
-        model.addAttribute("serverTime", dateTime);
+        model.addAttribute("serverTime", dateTimeStr);
         model.addAttribute("type", dateTime.getClass());
         model.addAttribute("lastExpectedDate", new java.util.Date());
 
@@ -317,8 +326,9 @@ public class DateController {
         model.addAttribute("firstExpectedDate", new java.util.Date());
 
         DateTime dateTime = minuteJdbcAdjustedDateFactory.newDateTime();
+        String dateTimeStr = dateTime.toString(JODA_TIME_DATE_FORMATTER);
 
-        model.addAttribute("serverTime", dateTime);
+        model.addAttribute("serverTime", dateTimeStr);
         model.addAttribute("type", dateTime.getClass());
         model.addAttribute("lastExpectedDate", new java.util.Date());
 
@@ -331,8 +341,9 @@ public class DateController {
         model.addAttribute("firstExpectedDate", new java.util.Date());
 
         DateTime dateTime = hourJdbcAdjustedDateFactory.newDateTime();
+        String dateTimeStr = dateTime.toString(JODA_TIME_DATE_FORMATTER);
 
-        model.addAttribute("serverTime", dateTime);
+        model.addAttribute("serverTime", dateTimeStr);
         model.addAttribute("type", dateTime.getClass());
         model.addAttribute("lastExpectedDate", new java.util.Date());
 
@@ -345,8 +356,9 @@ public class DateController {
         model.addAttribute("firstExpectedDate", new java.util.Date());
 
         DateTime dateTime = dayJdbcAdjustedDateFactory.newDateTime();
+        String dateTimeStr = dateTime.toString(JODA_TIME_DATE_FORMATTER);
 
-        model.addAttribute("serverTime", dateTime);
+        model.addAttribute("serverTime", dateTimeStr);
         model.addAttribute("type", dateTime.getClass());
         model.addAttribute("lastExpectedDate", new java.util.Date());
 
@@ -359,8 +371,9 @@ public class DateController {
         model.addAttribute("firstExpectedDate", new java.util.Date());
 
         DateTime dateTime = useCacheDayJdbcAdjustedDateFactory.newDateTime();
+        String dateTimeStr = dateTime.toString(JODA_TIME_DATE_FORMATTER);
 
-        model.addAttribute("serverTime", dateTime);
+        model.addAttribute("serverTime", dateTimeStr);
         model.addAttribute("type", dateTime.getClass());
         model.addAttribute("lastExpectedDate", new java.util.Date());
 
@@ -373,8 +386,9 @@ public class DateController {
         model.addAttribute("firstExpectedDate", new java.util.Date());
 
         DateTime dateTime = noCacheJdbcAdjustedDateFactory.newDateTime();
+        String dateTimeStr = dateTime.toString(JODA_TIME_DATE_FORMATTER);
 
-        model.addAttribute("serverTime", dateTime);
+        model.addAttribute("serverTime", dateTimeStr);
         model.addAttribute("type", dateTime.getClass());
         model.addAttribute("lastExpectedDate", new java.util.Date());
 
@@ -387,8 +401,9 @@ public class DateController {
         model.addAttribute("firstExpectedDate", new java.util.Date());
 
         DateTime dateTime = dbErrorJdbcAdjustedDateFactory.newDateTime();
+        String dateTimeStr = dateTime.toString(JODA_TIME_DATE_FORMATTER);
 
-        model.addAttribute("serverTime", dateTime);
+        model.addAttribute("serverTime", dateTimeStr);
         model.addAttribute("type", dateTime.getClass());
         model.addAttribute("lastExpectedDate", new java.util.Date());
 
