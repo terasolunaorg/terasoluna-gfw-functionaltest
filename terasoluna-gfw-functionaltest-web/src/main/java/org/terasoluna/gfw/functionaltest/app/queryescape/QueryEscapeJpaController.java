@@ -17,8 +17,8 @@ package org.terasoluna.gfw.functionaltest.app.queryescape;
 
 import java.util.List;
 
-import javax.inject.Inject;
-import javax.inject.Named;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

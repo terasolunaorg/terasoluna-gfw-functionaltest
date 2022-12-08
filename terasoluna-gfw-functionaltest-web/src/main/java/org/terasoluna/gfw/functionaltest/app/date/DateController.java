@@ -18,8 +18,8 @@ package org.terasoluna.gfw.functionaltest.app.date;
 import java.sql.Time;
 import java.sql.Timestamp;
 
-import javax.inject.Inject;
-import javax.inject.Named;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;

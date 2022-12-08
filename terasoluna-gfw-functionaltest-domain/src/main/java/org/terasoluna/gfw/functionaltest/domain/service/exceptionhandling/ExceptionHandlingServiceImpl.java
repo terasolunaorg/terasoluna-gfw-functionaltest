@@ -15,7 +15,7 @@
  */
 package org.terasoluna.gfw.functionaltest.domain.service.exceptionhandling;
 
-import javax.inject.Inject;
+import jakarta.inject.Inject;
 
 import org.springframework.stereotype.Service;
 import org.terasoluna.gfw.common.exception.BusinessException;

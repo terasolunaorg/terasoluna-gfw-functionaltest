@@ -60,7 +60,7 @@ public class ValidationController {
         }
 
         attributes.addFlashAttribute(ResultMessages.success().add(SUCCESS));
-        return "redirect:/validation/bytemin/";
+        return "redirect:/validation/bytemin";
     }
 
     @GetMapping(value = "bytemax")
@@ -79,7 +79,7 @@ public class ValidationController {
         }
 
         attributes.addFlashAttribute(ResultMessages.success().add(SUCCESS));
-        return "redirect:/validation/bytemax/";
+        return "redirect:/validation/bytemax";
     }
 
     @GetMapping(value = "bytesize")
@@ -98,7 +98,7 @@ public class ValidationController {
         }
 
         attributes.addFlashAttribute(ResultMessages.success().add(SUCCESS));
-        return "redirect:/validation/bytesize/";
+        return "redirect:/validation/bytesize";
     }
 
     @GetMapping(value = "compare")
@@ -187,6 +187,6 @@ public class ValidationController {
         }
 
         attributes.addFlashAttribute(ResultMessages.success().add(SUCCESS));
-        return "redirect:/validation/compare/";
+        return "redirect:/validation/compare";
     }
 }

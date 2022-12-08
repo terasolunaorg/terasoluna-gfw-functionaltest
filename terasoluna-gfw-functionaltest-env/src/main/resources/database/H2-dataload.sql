@@ -328,7 +328,7 @@ INSERT INTO operation_date(operation_date_id, diff) VALUES (1, -86400000);
 INSERT INTO operation_date(operation_date_id, diff) VALUES (2, -86400000);
 
 -- file download table
-INSERT INTO document VALUES (1, '537072696E67204672616D65776F726B');
+INSERT INTO document VALUES (1, cast('Spring Framework' as blob));
 
 -- redirect test table
 INSERT INTO userinfo VALUES('user1','Tarou','Tokyo');

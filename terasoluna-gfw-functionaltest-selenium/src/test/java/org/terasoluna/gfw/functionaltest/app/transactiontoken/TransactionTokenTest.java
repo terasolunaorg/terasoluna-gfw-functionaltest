@@ -34,30 +34,20 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.ie.InternetExplorerDriver;
-import org.openqa.selenium.support.events.EventFiringWebDriver;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.terasoluna.gfw.functionaltest.app.FunctionTestSupport;
-import org.terasoluna.gfw.functionaltest.app.ScreenCaptureWebDriverEventListener;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {
         "classpath:META-INF/spring/seleniumContext.xml" })
 public class TransactionTokenTest extends FunctionTestSupport {
 
-    private static final Logger logger = LoggerFactory.getLogger(
-            FunctionTestSupport.class);
-
     private static final Set<String> testCasesOfRebootTarget = new HashSet<String>(Arrays
             .asList("test03_01_defaultTokenStoreSizeOver",
                     "test03_02_customTokenStoreSizeOverClassMethodNamespace",
                     "test03_03_customTokenStoreSizeOverMethodOnlyNamespace",
                     "test03_04_customTokenStoreSizeOverGlobalNamespace"));
-
-    protected EventFiringWebDriver driver;
 
     public TransactionTokenTest() {
         disableSetupDefaultWebDriver();
@@ -69,8 +59,6 @@ public class TransactionTokenTest extends FunctionTestSupport {
             quitDefaultWebDriver();
         }
         bootDefaultWebDriver();
-        driver = new EventFiringWebDriver(getDefaultWebDriver());
-        driver.register(new ScreenCaptureWebDriverEventListener(screenCapture));
     }
 
     @After
@@ -545,12 +533,6 @@ public class TransactionTokenTest extends FunctionTestSupport {
     @Test
     public void test03_01_defaultTokenStoreSizeOver() {
 
-        if (driver.getWrappedDriver() instanceof InternetExplorerDriver) {
-            logger.warn(testName.getMethodName()
-                    + " is not support Internet Explorer.");
-            return;
-        }
-
         // Main window
         driver.findElement(By.id("link2")).click();
         driver.findElement(By.id("btn-flow1")).click();
@@ -571,12 +553,6 @@ public class TransactionTokenTest extends FunctionTestSupport {
 
     @Test
     public void test03_02_customTokenStoreSizeOverClassMethodNamespace() {
-
-        if (driver.getWrappedDriver() instanceof InternetExplorerDriver) {
-            logger.warn(testName.getMethodName()
-                    + " is not support Internet Explorer.");
-            return;
-        }
 
         // TODO this test fails if the other namespace starts with the main namespace
 
@@ -618,12 +594,6 @@ public class TransactionTokenTest extends FunctionTestSupport {
     @Test
     public void test03_03_customTokenStoreSizeOverMethodOnlyNamespace() {
 
-        if (driver.getWrappedDriver() instanceof InternetExplorerDriver) {
-            logger.warn(testName.getMethodName()
-                    + " is not support Internet Explorer.");
-            return;
-        }
-
         // Main window
         driver.findElement(By.id("link3")).click();
         driver.findElement(By.id("btn-begin2")).click();
@@ -646,12 +616,6 @@ public class TransactionTokenTest extends FunctionTestSupport {
     @Test
     public void test03_04_customTokenStoreSizeOverGlobalNamespace() {
 
-        if (driver.getWrappedDriver() instanceof InternetExplorerDriver) {
-            logger.warn(testName.getMethodName()
-                    + " is not support Internet Explorer.");
-            return;
-        }
-
         // Main window
         driver.findElement(By.id("link3")).click();
         driver.findElement(By.id("btn-begin3")).click();
@@ -671,12 +635,6 @@ public class TransactionTokenTest extends FunctionTestSupport {
 
     @Test
     public void test03_05_defaultTokenStoreSizeOpen() {
-
-        if (driver.getWrappedDriver() instanceof InternetExplorerDriver) {
-            logger.warn(testName.getMethodName()
-                    + " is not support Internet Explorer.");
-            return;
-        }
 
         // Main window
         driver.findElement(By.id("link2")).click();
@@ -700,12 +658,6 @@ public class TransactionTokenTest extends FunctionTestSupport {
 
     @Test
     public void test03_06_defaultTokenStoreSizeOpenCheck() {
-
-        if (driver.getWrappedDriver() instanceof InternetExplorerDriver) {
-            logger.warn(testName.getMethodName()
-                    + " is not support Internet Explorer.");
-            return;
-        }
 
         // Main window
         driver.findElement(By.id("link2")).click();

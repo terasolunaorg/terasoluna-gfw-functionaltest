@@ -21,7 +21,7 @@
   </servlet-mapping>
 
   <listener>
-    <listener-class>org.h2.server.web.DbStarter</listener-class>
+    <listener-class>org.h2.server.web.JakartaDbStarter</listener-class>
   </listener>
   <context-param>
     <param-name>db.url</param-name>
