@@ -7,7 +7,7 @@
     ">
 
   <sec:http pattern="/logging/**">
-    <sec:intercept-url pattern="/**" access="authenticated"/>
+    <sec:intercept-url pattern="/**" access="permitAll"/>
     <sec:access-denied-handler ref="accessDeniedHandler" />
     <sec:form-login login-page="/logging/userIdMDCPutFilter" login-processing-url="/logging/login"
       default-target-url="/logging/userIdMDCPutFilter/login" />
