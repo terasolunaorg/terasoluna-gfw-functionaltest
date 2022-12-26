@@ -146,7 +146,7 @@ public class DateController {
 
         java.sql.Date sqlDate = dateFactory.newSqlDate();
 
-        model.addAttribute("serverTime", sqlDate.toString());
+        model.addAttribute("serverTime", sqlDate);
         model.addAttribute("type", sqlDate.getClass());
         model.addAttribute("lastExpectedDate", DateConvertUtils
                 .convertToSqlDate(new java.util.Date()));
