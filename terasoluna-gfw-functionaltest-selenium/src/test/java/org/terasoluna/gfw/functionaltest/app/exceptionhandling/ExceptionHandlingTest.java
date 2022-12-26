@@ -535,7 +535,7 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
 
         driver.findElement(By.id("webApplicationHandling_04_01")).click();
 
-        webDriverWait.until(titleIs("Servlet Error"));
+        webDriverWait.until(titleIs(""));
         assertThat(dbLogProvider.countContainsMessageAndLevelsAndLogger(
                 "\\[e.xx.9999\\] Request processing failed; .*", "ERROR",
                 "org.terasoluna.gfw.common.exception.ExceptionLogger"), is(1L));
@@ -546,7 +546,7 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
 
         // error page screen
         assertThat(driver.findElement(By.cssSelector("h2")).getText(), is(
-                "Servlet Error..."));
+                "UnHandled System Error!!"));
 
     }
 
@@ -555,7 +555,7 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
 
         driver.findElement(By.id("webApplicationHandling_04_02")).click();
 
-        webDriverWait.until(titleIs("Servlet Error"));
+        webDriverWait.until(titleIs("System Error"));
         assertThat(dbLogProvider.countContainsMessageAndLevelsAndLogger(
                 "\\[e.xx.9999\\] Handler dispatch failed; nested exception is java.lang.AssertionError",
                 "ERROR", "org.terasoluna.gfw.common.exception.ExceptionLogger"),
@@ -568,7 +568,7 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
 
         // error page screen
         assertThat(driver.findElement(By.cssSelector("h2")).getText(), is(
-                "Servlet Error..."));
+                "UnHandled System Error!!"));
 
     }
 
