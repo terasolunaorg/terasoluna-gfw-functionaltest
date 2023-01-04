@@ -20,7 +20,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.joda.time.DateTime;
+import java.time.LocalDateTime;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
@@ -132,10 +132,10 @@ public class ElController {
 
     @GetMapping(value = "6_1-2")
     public String queryString(Model model) {
-        DateTime dt = new DateTime(2013, 10, 01, 0, 0, 0);
+        LocalDateTime dt = LocalDateTime.of(2013, 10, 01, 0, 0, 0);
 
         Map<String, Object> outputQueryData = new LinkedHashMap<String, Object>();
-        outputQueryData.put("Date", dt.toDate());
+        outputQueryData.put("Date", dt.toLocalDate());
         outputQueryData.put("String", "Spring");
         outputQueryData.put("int", 100);
 
