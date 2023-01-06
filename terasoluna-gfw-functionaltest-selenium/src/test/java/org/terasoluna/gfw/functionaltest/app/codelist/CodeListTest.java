@@ -629,7 +629,7 @@ public class CodeListTest extends FunctionTestSupport {
         inputFieldAccessor.overrideValue(By.id("item9"), "key2", driver);
         driver.findElement(By.id("btn1")).click();
         assertThat(driver.findElement(By.id("item9.errors")).getText(), is(
-                "This is a custom message notifying that value doesn't exist in sample multiple codelist a"));
+                "This is a custom message notifying that value doesn't exist in sample multiple codelist"));
 
         // sample codelist error occured
         inputFieldAccessor.overrideValue(By.id("item9"), "key4", driver);
