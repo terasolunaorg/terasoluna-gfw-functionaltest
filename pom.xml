@@ -209,17 +209,6 @@
             <source>${java-version}</source>
           </configuration>
         </plugin>
-        <plugin>
-          <groupId>org.codehaus.cargo</groupId>
-          <artifactId>cargo-maven3-plugin</artifactId>
-          <configuration>
-            <configuration>
-              <properties>
-                <cargo.servlet.port>8081</cargo.servlet.port>
-              </properties>
-            </configuration>
-          </configuration>
-        </plugin>
       </plugins>
     </pluginManagement>
   </build>
@@ -333,11 +322,6 @@
                     </dependency>
                   </dependencies>
                 </container>
-                <configuration>
-                  <properties>
-                    <cargo.servlet.port>8081</cargo.servlet.port>
-                  </properties>
-                </configuration>
               </configuration>
             </plugin>
           </plugins>
