@@ -471,7 +471,7 @@ public class MessageTest extends FunctionTestSupport {
         driver.findElement(By.id("elementSpecified_03_05")).click();
 
         // error screen
-        webDriverWait.until(textToBe(By.cssSelector("h2"), "UnHandled System Error!!"));
+        webDriverWait.until(textToBe(By.cssSelector("h2"), "Servlet Error..."));
 
         // screen capture
         screenCapture.save(driver);
@@ -656,7 +656,7 @@ public class MessageTest extends FunctionTestSupport {
         driver.findElement(By.id("outputMessage_07_02")).click();
 
         // error screen
-        webDriverWait.until(textToBe(By.cssSelector("h2"), "UnHandled System Error!!"));
+        webDriverWait.until(textToBe(By.cssSelector("h2"), "Servlet Error..."));
 
         // screen capture
         screenCapture.save(driver);
