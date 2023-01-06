@@ -6,7 +6,7 @@
         http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
     ">
 
-  <sec:http pattern="/logging/**">
+  <sec:http pattern="/logging/**" use-authorization-manager="true" request-matcher="ant">
     <sec:intercept-url pattern="/**" access="permitAll"/>
     <sec:access-denied-handler ref="accessDeniedHandler" />
     <sec:form-login login-page="/logging/userIdMDCPutFilter" login-processing-url="/logging/login"
@@ -48,5 +48,7 @@
   </sec:user-service>
 
   <bean id="mvcHandlerMappingIntrospector" class="org.springframework.web.servlet.handler.HandlerMappingIntrospector" />
+
+  <bean id="webexpressionHandler" class="org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler" />
 
 </beans>
