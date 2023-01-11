@@ -311,7 +311,7 @@ public class ElTest extends FunctionTestSupport {
                     "Date=10/1/13&String=Spring&int=100"));
         }
         assertThat(driver.findElement(By.id("noAndQueryOutput")).getText(), is(
-                "%26String=framework&Long=100&boolean=true&DateTime=10/1/13,%2012:00%20AM"));
+                "%26String=framework&Long=100&boolean=true&DateTime=10/1/13%2012:00%20AM"));
 
         // screen capture
         screenCapture.save(driver);
