@@ -149,7 +149,7 @@
       <version>${tiles-request-custom.version}</version>
     </dependency>
     <dependency>
-      <groupId>org.terasoluna.gfw</groupId>
+      <groupId>terasoluna</groupId>
       <artifactId>spring-tiles-adapter</artifactId>
       <version>5.8.0-SNAPSHOT</version>
     </dependency>
