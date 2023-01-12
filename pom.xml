@@ -349,5 +349,12 @@
         <project.env.buildFinalName>${project.artifactId}-${project.version}-weblogic-oracle</project.env.buildFinalName>
       </properties>
     </profile>
+    <profile>
+      <id>tomcat10-postgresql</id>
+      <properties>
+        <project.env.main.directory>configs/tomcat10-postgresql</project.env.main.directory>
+        <project.env.buildFinalName>${project.artifactId}-${project.version}-tomcat10-postgresql</project.env.buildFinalName>
+      </properties>
+    </profile>
   </profiles>
 </project>
