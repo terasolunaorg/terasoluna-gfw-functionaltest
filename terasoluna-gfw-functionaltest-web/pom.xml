@@ -22,10 +22,40 @@
     </plugins>
   </build>
 
+  <profiles>
+    <profile>
+      <id>local</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <dependencies>
+        <dependency>
+          <groupId>${project.groupId}</groupId>
+          <artifactId>terasoluna-gfw-functionaltest-env</artifactId>
+        </dependency>
+      </dependencies>
+    </profile>
+    <profile>
+      <id>warpack-env</id>
+      <dependencies>
+        <dependency>
+          <groupId>${project.groupId}</groupId>
+          <artifactId>terasoluna-gfw-functionaltest-env</artifactId>
+        </dependency>
+      </dependencies>
+    </profile>
+    <profile>
+      <id>warpack-jstl</id>
+      <dependencies>
+      </dependencies>
+    </profile>
+  </profiles>
+
   <dependencies>
     <dependency>
       <groupId>${project.groupId}</groupId>
       <artifactId>terasoluna-gfw-functionaltest-env</artifactId>
+      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>${project.groupId}</groupId>
