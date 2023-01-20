@@ -15,7 +15,7 @@
  */
 package org.terasoluna.gfw.functionaltest.app;
 
-import java.util.concurrent.TimeUnit;
+import java.time.Duration;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
@@ -33,7 +33,7 @@ public class WebDriverOperations {
 
     protected final WebDriver webDriver;
 
-    protected long defaultTimeoutSecForImplicitlyWait = 5;
+    protected Duration defaultTimeoutSecForImplicitlyWait;
 
     public WebDriverOperations(WebDriver webDriver) {
         this.webDriver = webDriver;
@@ -44,7 +44,7 @@ public class WebDriverOperations {
      * @param defaultTimeoutSecForImplicitlyWait The default timeout value of the waiting process to find the element (s)
      */
     public void setDefaultTimeoutForImplicitlyWait(
-            long defaultTimeoutSecForImplicitlyWait) {
+            Duration defaultTimeoutSecForImplicitlyWait) {
         this.defaultTimeoutSecForImplicitlyWait = defaultTimeoutSecForImplicitlyWait;
     }
 
@@ -55,7 +55,7 @@ public class WebDriverOperations {
      */
     public boolean exists(By by) {
         webDriver.findElement(By.tagName("body"));
-        setTimeoutForImplicitlyWait(0, TimeUnit.SECONDS);
+        setTimeoutForImplicitlyWait(Duration.ZERO);
         boolean existsElement = true;
         try {
             webDriver.findElement(by).getText();
@@ -71,15 +71,14 @@ public class WebDriverOperations {
      * Set to the default value of the timeout value waiting process to find the element.
      */
     public void setDefaultTimeoutForImplicitlyWait() {
-        setTimeoutForImplicitlyWait(defaultTimeoutSecForImplicitlyWait,
-                TimeUnit.SECONDS);
+        setTimeoutForImplicitlyWait(this.defaultTimeoutSecForImplicitlyWait);
     }
 
     /**
      * Set the time-out value of the waiting process to find the element.
      */
-    public void setTimeoutForImplicitlyWait(long timeout, TimeUnit timeUnit) {
-        webDriver.manage().timeouts().implicitlyWait(timeout, timeUnit);
+    public void setTimeoutForImplicitlyWait(Duration duration) {
+        webDriver.manage().timeouts().implicitlyWait(duration);
     }
 
     /**

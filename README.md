@@ -63,7 +63,7 @@ $ mvn -U install -am -pl terasoluna-gfw-functionaltest-web
 ```console
 $ cd {your repository directory}
 $ git checkout {target branch}
-$ mvn -U install -am -pl terasoluna-gfw-functionaltest-web -P tomcat9-postgresql,warpack-env,warpack-jstl,travis
+$ mvn -U install -am -pl terasoluna-gfw-functionaltest-web -P tomcat10-postgresql,warpack-env,warpack-jstl,travis
 ```
 
 > **Note:**

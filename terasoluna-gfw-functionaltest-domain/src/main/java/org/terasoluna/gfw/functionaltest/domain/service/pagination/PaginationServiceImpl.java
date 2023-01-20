@@ -15,7 +15,7 @@
  */
 package org.terasoluna.gfw.functionaltest.domain.service.pagination;
 
-import javax.inject.Inject;
+import jakarta.inject.Inject;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

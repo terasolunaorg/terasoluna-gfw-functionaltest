@@ -12,7 +12,7 @@
     <constructor-arg name="idToPasswordEncoder">
       <map>
         <entry key="pbkdf2">
-          <bean class="org.springframework.security.crypto.password.Pbkdf2PasswordEncoder" />
+          <bean class="org.springframework.security.crypto.password.Pbkdf2PasswordEncoder" factory-method="defaultsForSpringSecurity_v5_5" />
         </entry>
         <entry key="bcrypt">
           <bean class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />

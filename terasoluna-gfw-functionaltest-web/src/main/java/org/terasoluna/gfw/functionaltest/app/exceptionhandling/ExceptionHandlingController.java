@@ -15,7 +15,7 @@
  */
 package org.terasoluna.gfw.functionaltest.app.exceptionhandling;
 
-import javax.inject.Inject;
+import jakarta.inject.Inject;
 
 import org.springframework.dao.OptimisticLockingFailureException;
 import org.springframework.dao.PessimisticLockingFailureException;

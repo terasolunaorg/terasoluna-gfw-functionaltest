@@ -19,7 +19,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 
-import javax.inject.Inject;
+import jakarta.inject.Inject;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -537,10 +537,10 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
 
         webDriverWait.until(titleIs("Servlet Error"));
         assertThat(dbLogProvider.countContainsMessageAndLevelsAndLogger(
-                "\\[e.xx.9999\\] Request processing failed; .*", "ERROR",
+                "\\[e.xx.9999\\] Request processing failed: .*", "ERROR",
                 "org.terasoluna.gfw.common.exception.ExceptionLogger"), is(1L));
         assertThat(dbLogProvider.countContainsMessageAndLevelsAndLogger(
-                "\\[e.xx.9999\\] Request processing failed; .*", "ERROR",
+                "\\[e.xx.9999\\] Request processing failed: .*", "ERROR",
                 "org.terasoluna.gfw.common.exception.ExceptionLogger.Monitoring"),
                 is(1L));
 
@@ -557,11 +557,11 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
 
         webDriverWait.until(titleIs("Servlet Error"));
         assertThat(dbLogProvider.countContainsMessageAndLevelsAndLogger(
-                "\\[e.xx.9999\\] Handler dispatch failed; nested exception is java.lang.AssertionError",
+                "\\[e.xx.9999\\] Handler dispatch failed: java.lang.AssertionError",
                 "ERROR", "org.terasoluna.gfw.common.exception.ExceptionLogger"),
                 is(1L));
         assertThat(dbLogProvider.countContainsMessageAndLevelsAndLogger(
-                "\\[e.xx.9999\\] Handler dispatch failed; nested exception is java.lang.AssertionError",
+                "\\[e.xx.9999\\] Handler dispatch failed: java.lang.AssertionError",
                 "ERROR",
                 "org.terasoluna.gfw.common.exception.ExceptionLogger.Monitoring"),
                 is(1L));

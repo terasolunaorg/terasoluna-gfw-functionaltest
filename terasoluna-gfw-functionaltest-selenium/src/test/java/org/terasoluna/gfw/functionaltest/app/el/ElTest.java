@@ -305,10 +305,10 @@ public class ElTest extends FunctionTestSupport {
         if (driverType == WebDriverType.HTMLUNIT) {
             // https://sourceforge.net/p/htmlunit/bugs/2011/
             assertThat(driver.findElement(By.id("queryOutput")).getText(), is(
-                    "Date=Tue%20Oct%2001%2000:00:00%20JST%202013&String=Spring∫=100"));
+                    "Date=10/1/13&String=Spring∫=100"));
         } else {
             assertThat(driver.findElement(By.id("queryOutput")).getText(), is(
-                    "Date=Tue%20Oct%2001%2000:00:00%20JST%202013&String=Spring&int=100"));
+                    "Date=10/1/13&String=Spring&int=100"));
         }
         assertThat(driver.findElement(By.id("noAndQueryOutput")).getText(), is(
                 "%26String=framework&Long=100&boolean=true&DateTime=10/1/13%2012:00%20AM"));

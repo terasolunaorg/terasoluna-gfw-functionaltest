@@ -17,8 +17,8 @@ package org.terasoluna.gfw.functionaltest.domain.service.codelist;
 
 import java.util.List;
 
-import javax.inject.Inject;
-import javax.inject.Named;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
