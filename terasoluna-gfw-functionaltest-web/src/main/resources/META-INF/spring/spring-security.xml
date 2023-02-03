@@ -6,7 +6,7 @@
         http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
     ">
 
-  <sec:http pattern="/logging/**">
+  <sec:http pattern="/logging/**" once-per-request="false">
     <sec:access-denied-handler ref="accessDeniedHandler" />
     <sec:form-login login-page="/logging/userIdMDCPutFilter" login-processing-url="/logging/login"
       default-target-url="/logging/userIdMDCPutFilter/login" />
