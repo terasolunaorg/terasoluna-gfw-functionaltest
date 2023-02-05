@@ -6,7 +6,7 @@
         http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
     ">
 
-  <sec:http pattern="/logging/**" use-authorization-manager="true" request-matcher="ant">
+  <sec:http pattern="/logging/**" request-matcher="ant">
     <sec:intercept-url pattern="/**" access="permitAll"/>
     <sec:access-denied-handler ref="accessDeniedHandler" />
     <sec:form-login login-page="/logging/userIdMDCPutFilter" login-processing-url="/logging/login"

@@ -114,7 +114,7 @@
     <!-- == End TERASOLUNA == -->
 
     <!-- == Begin Tomcat == -->
-    <!-- Servlet API 4.0 & JSP API 2.3 -->
+    <!-- Servlet API 6.0 & JSP API 3.1 -->
     <dependency>
       <groupId>jakarta.servlet</groupId>
       <artifactId>jakarta.servlet-api</artifactId>
