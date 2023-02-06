@@ -18,7 +18,7 @@ package org.terasoluna.gfw.functionaltest.domain.service.sequencer;
 import java.math.BigInteger;
 import java.util.LinkedHashMap;
 
-import javax.annotation.Resource;
+import jakarta.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

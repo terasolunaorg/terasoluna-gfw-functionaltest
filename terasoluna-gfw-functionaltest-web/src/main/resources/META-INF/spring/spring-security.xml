@@ -6,7 +6,8 @@
         http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
     ">
 
-  <sec:http pattern="/logging/**">
+  <sec:http pattern="/logging/**" request-matcher="ant">
+    <sec:intercept-url pattern="/**" access="permitAll"/>
     <sec:access-denied-handler ref="accessDeniedHandler" />
     <sec:form-login login-page="/logging/userIdMDCPutFilter" login-processing-url="/logging/login"
       default-target-url="/logging/userIdMDCPutFilter/login" />
@@ -45,5 +46,9 @@
     <sec:user name="user3" authorities="ROLE_USER"
       password="{pbkdf2}22dbc480b2444d53faa057ef10edcbb0f827c1618557fa72db09b71cf640c4ff21c14c6a80292dc5" /> <!-- the raw password is "user3" -->
   </sec:user-service>
+
+  <bean id="mvcHandlerMappingIntrospector" class="org.springframework.web.servlet.handler.HandlerMappingIntrospector" />
+
+  <bean id="webexpressionHandler" class="org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler" />
 
 </beans>

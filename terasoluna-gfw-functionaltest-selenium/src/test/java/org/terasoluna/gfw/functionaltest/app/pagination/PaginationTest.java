@@ -24,9 +24,8 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 import static org.openqa.selenium.support.ui.ExpectedConditions.textToBe;
 
-import java.util.concurrent.TimeUnit;
+import java.time.Duration;
 
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
@@ -264,7 +263,7 @@ public class PaginationTest extends FunctionTestSupport {
 
         try {
             // Immediate time-out value set
-            driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
 
             // pagination no display
             driver.findElement(By.xpath("//li[3]/a"));
@@ -285,7 +284,7 @@ public class PaginationTest extends FunctionTestSupport {
 
         try {
             // Immediate time-out value set
-            driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
 
             // pagination no display
             driver.findElement(By.xpath("//li[3]/a"));
@@ -883,7 +882,7 @@ public class PaginationTest extends FunctionTestSupport {
 
         try {
             // Immediate time-out value set
-            driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
 
             // "active" class check
             driver.findElement(By.cssSelector("li.active > a"));
@@ -1374,7 +1373,7 @@ public class PaginationTest extends FunctionTestSupport {
 
         try {
             // Immediate time-out value set
-            driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
 
             // no last link
             driver.findElement(By.xpath("//li[7]/a"));
@@ -1843,7 +1842,7 @@ public class PaginationTest extends FunctionTestSupport {
 
         try {
             // Immediate time-out value set
-            driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
 
             // "last link" no check
             driver.findElement(By.xpath("//li[6]/a"));
@@ -1889,7 +1888,7 @@ public class PaginationTest extends FunctionTestSupport {
 
         try {
             // Immediate time-out value set
-            driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
 
             // "last link" no check
             driver.findElement(By.xpath("//li[4]/a"));
@@ -1952,7 +1951,7 @@ public class PaginationTest extends FunctionTestSupport {
 
         try {
             // Immediate time-out value set
-            driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
 
             // "last link" no check
             driver.findElement(By.xpath("//li[6]/a"));
@@ -2163,7 +2162,7 @@ public class PaginationTest extends FunctionTestSupport {
 
         try {
             // Immediate time-out value set
-            driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
 
             // "last link" no check
             driver.findElement(By.xpath("//li[3]/a"));

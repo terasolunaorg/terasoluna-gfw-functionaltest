@@ -33,16 +33,6 @@
           <groupId>${project.groupId}</groupId>
           <artifactId>terasoluna-gfw-functionaltest-env</artifactId>
         </dependency>
-        <!-- Add for local (Tomcat or Tc Server) -->
-        <dependency>
-          <groupId>org.apache.taglibs</groupId>
-          <artifactId>taglibs-standard-jstlel</artifactId>
-        </dependency>
-      </dependencies>
-    </profile>
-    <profile>
-      <id>warpack</id>
-      <dependencies>
       </dependencies>
     </profile>
     <profile>
@@ -54,14 +44,9 @@
         </dependency>
       </dependencies>
     </profile>
-    <!-- Add profile for packaging JSTL jars -->
     <profile>
       <id>warpack-jstl</id>
       <dependencies>
-        <dependency>
-          <groupId>org.apache.taglibs</groupId>
-          <artifactId>taglibs-standard-jstlel</artifactId>
-        </dependency>
       </dependencies>
     </profile>
   </profiles>
@@ -129,11 +114,24 @@
     <!-- == End TERASOLUNA == -->
 
     <!-- == Begin Tomcat == -->
-    <!-- Servlet API 4.0 & JSP API 2.3 -->
+    <!-- Servlet API 6.0 & JSP API 3.1 -->
     <dependency>
-      <groupId>org.apache.tomcat</groupId>
-      <artifactId>tomcat-jsp-api</artifactId>
-      <scope>provided</scope>
+      <groupId>jakarta.servlet</groupId>
+      <artifactId>jakarta.servlet-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>jakarta.servlet.jsp</groupId>
+      <artifactId>jakarta.servlet.jsp-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>jakarta.servlet.jsp.jstl</groupId>
+      <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.glassfish.web</groupId>
+      <artifactId>jakarta.servlet.jsp.jstl</artifactId>
+      <scope>runtime</scope>
     </dependency>
     <!-- == End Tomcat == -->
 

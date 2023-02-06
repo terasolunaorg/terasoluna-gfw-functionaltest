@@ -42,6 +42,6 @@ script:
   - mvn -B license:check
   - mvn -B -U sql:execute -pl terasoluna-gfw-functionaltest-initdb -Ddb.url=jdbc:postgresql://127.0.0.1:${PGPORT}/terasoluna-gfw-functionaltest
   - sed -i -e "s/5432/${PGPORT}/" *env/configs/travis/*/context.xml
-  - mvn -B -U install -am -pl terasoluna-gfw-functionaltest-web -P tomcat9-postgresql,warpack-env,warpack-jstl,travis
+  - mvn -B -U install -am -pl terasoluna-gfw-functionaltest-web -P tomcat10-postgresql,warpack-env,warpack-jstl,travis
   - mvn -B -U cargo:daemon-start -pl terasoluna-gfw-functionaltest-web -P travis
   - mvn -B -U test -pl terasoluna-gfw-functionaltest-selenium
