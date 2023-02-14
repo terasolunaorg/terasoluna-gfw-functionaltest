@@ -922,8 +922,6 @@ public class QueryEscapeTest extends FunctionTestSupport {
                 }
             }
             return true;
-        } else if ("db2".equals(databaseId)) {
-            return true;
         }
         return false;
     }

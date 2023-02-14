@@ -46,7 +46,6 @@
       <props>
         <prop key="Oracle">oracle</prop>
         <prop key="PostgreSQL">postgres</prop>
-        <prop key="DB2">db2</prop>
         <prop key="H2">h2</prop>
       </props>
     </property>
