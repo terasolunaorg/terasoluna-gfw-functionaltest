@@ -233,7 +233,7 @@
     <!-- == Maven Plugin Versions == -->
     <org.apache.maven.plugins.maven-war-plugin.version>3.3.1</org.apache.maven.plugins.maven-war-plugin.version>
     <org.codehaus.mojo.build-helper-maven-plugin.version>3.2.0</org.codehaus.mojo.build-helper-maven-plugin.version>
-    <org.apache.maven.plugins.maven-failsafe-plugin.version>3.0.0-M7</org.apache.maven.plugins.maven-failsafe-plugin.version>
+    <org.apache.maven.plugins.maven-failsafe-plugin.version>3.0.0-M5</org.apache.maven.plugins.maven-failsafe-plugin.version>
     <org.apache.maven.plugins.maven-surefire-plugin.version>3.0.0-M5</org.apache.maven.plugins.maven-surefire-plugin.version>
     <net.revelc.code.formatter.formatter-maven-plugin.version>2.15.0</net.revelc.code.formatter.formatter-maven-plugin.version>
     <org.codehaus.mojo.xml-maven-plugin.version>1.0.2</org.codehaus.mojo.xml-maven-plugin.version>
