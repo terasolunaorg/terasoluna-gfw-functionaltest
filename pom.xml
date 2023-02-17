@@ -247,14 +247,8 @@
       <dependency>
         <!-- ojdbc8.jar must be pre-installed in local repository. -->
         <groupId>com.oracle.database.jdbc</groupId>
-        <artifactId>ojdbc8</artifactId>
+        <artifactId>ojdbc11</artifactId>
         <version>${ojdbc.version}</version>
-      </dependency>
-      <dependency>
-        <!-- db2jcc4.jar must be pre-installed in local repository. -->
-        <groupId>com.ibm</groupId>
-        <artifactId>db2jcc4</artifactId>
-        <version>${db2jcc4.version}</version>
       </dependency>
       <!-- == End Database == -->
 
@@ -270,18 +264,17 @@
   </dependencyManagement>
   <properties>
     <!-- == Maven Plugin Versions == -->
-    <org.apache.maven.plugins.maven-war-plugin.version>3.3.1</org.apache.maven.plugins.maven-war-plugin.version>
-    <org.codehaus.mojo.build-helper-maven-plugin.version>3.2.0</org.codehaus.mojo.build-helper-maven-plugin.version>
-    <org.apache.maven.plugins.maven-failsafe-plugin.version>3.0.0-M5</org.apache.maven.plugins.maven-failsafe-plugin.version>
-    <org.apache.maven.plugins.maven-surefire-plugin.version>3.0.0-M5</org.apache.maven.plugins.maven-surefire-plugin.version>
-    <net.revelc.code.formatter.formatter-maven-plugin.version>2.15.0</net.revelc.code.formatter.formatter-maven-plugin.version>
+    <org.apache.maven.plugins.maven-war-plugin.version>3.3.2</org.apache.maven.plugins.maven-war-plugin.version>
+    <org.codehaus.mojo.build-helper-maven-plugin.version>3.3.0</org.codehaus.mojo.build-helper-maven-plugin.version>
+    <org.apache.maven.plugins.maven-failsafe-plugin.version>3.0.0-M7</org.apache.maven.plugins.maven-failsafe-plugin.version>
+    <org.apache.maven.plugins.maven-surefire-plugin.version>3.0.0-M7</org.apache.maven.plugins.maven-surefire-plugin.version>
+    <net.revelc.code.formatter.formatter-maven-plugin.version>2.20.0</net.revelc.code.formatter.formatter-maven-plugin.version>
     <org.codehaus.mojo.xml-maven-plugin.version>1.0.2</org.codehaus.mojo.xml-maven-plugin.version>
-    <com.mycila.license-maven-plugin.version>4.1</com.mycila.license-maven-plugin.version>
+    <com.mycila.license-maven-plugin.version>4.2.rc3</com.mycila.license-maven-plugin.version>
     <!-- == Dependency Versions == -->
-    <postgresql.version>42.3.1</postgresql.version>
-    <ojdbc.version>21.3.0.0</ojdbc.version>
-    <db2jcc4.version>4.21.29</db2jcc4.version>
-    <webdrivermanager.version>5.3.0</webdrivermanager.version>
+    <postgresql.version>42.5.1</postgresql.version>
+    <ojdbc.version>21.8.0.0</ojdbc.version>
+    <webdrivermanager.version>5.3.1</webdrivermanager.version>
     <logback-db.version>1.2.11.1</logback-db.version>
     <!-- == Project Properties == -->
     <project.env.main.directory>src/main</project.env.main.directory>
