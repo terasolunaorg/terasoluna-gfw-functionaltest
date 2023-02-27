@@ -17,13 +17,13 @@ package org.terasoluna.gfw.functionaltest.domain.service.queryescape;
 
 import java.util.List;
 
-import jakarta.inject.Inject;
-
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.terasoluna.gfw.functionaltest.domain.TransactionManagers;
 import org.terasoluna.gfw.functionaltest.domain.model.Todo;
 import org.terasoluna.gfw.functionaltest.domain.repository.queryescape.TodoMybatisRepository;
+
+import jakarta.inject.Inject;
 
 @Transactional(value = TransactionManagers.DATASOURCE, readOnly = true)
 @Service("queryEscapeMybatisService")

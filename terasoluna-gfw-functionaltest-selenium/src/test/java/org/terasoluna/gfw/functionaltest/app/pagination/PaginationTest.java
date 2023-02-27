@@ -903,7 +903,6 @@ public class PaginationTest extends FunctionTestSupport {
         }
     }
 
-
     @Test
     public void test05_01_outerElementSpecified() {
         driver.findElement(By.id("outerElementSpecified_5_1")).click();

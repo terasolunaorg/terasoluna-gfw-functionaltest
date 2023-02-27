@@ -19,8 +19,6 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 
-import jakarta.inject.Inject;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
@@ -31,6 +29,8 @@ import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.RestTemplate;
 import org.terasoluna.gfw.functionaltest.app.FunctionTestSupport;
 import org.terasoluna.gfw.functionaltest.app.webdrivers.WebDriverType;
+
+import jakarta.inject.Inject;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {
@@ -536,11 +536,12 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
         driver.findElement(By.id("webApplicationHandling_04_01")).click();
 
         webDriverWait.until(titleIs("Servlet Error"));
+        assertThat(dbLogProvider.countContainsMessageAndLevelsAndLogger("",
+                "ERROR", "org.terasoluna.gfw.common.exception.ExceptionLogger"),
+                is(1L));
         assertThat(dbLogProvider.countContainsMessageAndLevelsAndLogger(
-                "", "ERROR",
-                "org.terasoluna.gfw.common.exception.ExceptionLogger"), is(1L));
-        assertThat(dbLogProvider.countContainsMessageAndLevelsAndLogger(
-                "\\[e.xx.9999\\] \\[/WEB-INF/views/exceptionhandling/viewIOException.jsp\\] の処理中に行番号 \\[27\\] で例外が発生しました。", "ERROR",
+                "\\[e.xx.9999\\] \\[/WEB-INF/views/exceptionhandling/viewIOException.jsp\\] の処理中に行番号 \\[27\\] で例外が発生しました。",
+                "ERROR",
                 "org.terasoluna.gfw.common.exception.ExceptionLogger.Monitoring"),
                 is(1L));
 

@@ -18,8 +18,6 @@ package org.terasoluna.gfw.functionaltest.app.pagination;
 import java.util.ArrayList;
 import java.util.List;
 
-import jakarta.inject.Inject;
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
@@ -34,6 +32,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.terasoluna.gfw.functionaltest.domain.model.Person;
 import org.terasoluna.gfw.functionaltest.domain.service.pagination.PaginationService;
+
+import jakarta.inject.Inject;
 
 @Controller
 @RequestMapping(value = "pagination")

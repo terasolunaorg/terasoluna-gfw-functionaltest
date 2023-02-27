@@ -15,11 +15,6 @@
  */
 package org.terasoluna.gfw.functionaltest.app.codelist;
 
-import jakarta.inject.Inject;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.validation.ConstraintViolationException;
-import jakarta.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -43,6 +38,11 @@ import org.terasoluna.gfw.functionaltest.domain.model.ItemCode;
 import org.terasoluna.gfw.functionaltest.domain.service.codelist.CodeListService;
 import org.terasoluna.gfw.functionaltest.domain.service.codelist.ExistInCodeListService;
 import org.terasoluna.gfw.functionaltest.domain.service.codelist.I18nCodeListService;
+
+import jakarta.inject.Inject;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.ConstraintViolationException;
+import jakarta.validation.Valid;
 
 @Controller
 @RequestMapping(value = "codelist")

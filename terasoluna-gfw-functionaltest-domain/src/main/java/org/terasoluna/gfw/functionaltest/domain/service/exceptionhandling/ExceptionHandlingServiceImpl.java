@@ -15,10 +15,10 @@
  */
 package org.terasoluna.gfw.functionaltest.domain.service.exceptionhandling;
 
-import jakarta.inject.Inject;
-
 import org.springframework.stereotype.Service;
 import org.terasoluna.gfw.common.exception.BusinessException;
+
+import jakarta.inject.Inject;
 
 @Service
 public class ExceptionHandlingServiceImpl implements ExceptionHandlingService {

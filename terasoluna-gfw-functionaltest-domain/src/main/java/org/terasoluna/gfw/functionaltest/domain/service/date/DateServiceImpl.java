@@ -19,12 +19,12 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-import jakarta.inject.Inject;
-
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.terasoluna.gfw.functionaltest.domain.TransactionManagers;
+
+import jakarta.inject.Inject;
 
 @Service
 @Transactional(value = TransactionManagers.DATASOURCE)

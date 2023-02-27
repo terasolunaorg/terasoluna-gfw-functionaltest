@@ -28,11 +28,11 @@ import java.lang.annotation.Repeatable;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
-import jakarta.validation.Constraint;
-import jakarta.validation.Payload;
-
 import org.terasoluna.gfw.common.codelist.ExistInCodeList;
 import org.terasoluna.gfw.functionaltest.app.codelist.ExistInSampleCodeList.List;
+
+import jakarta.validation.Constraint;
+import jakarta.validation.Payload;
 
 @Documented
 @Constraint(validatedBy = {})

@@ -17,13 +17,13 @@ package org.terasoluna.gfw.functionaltest.domain.service.redirect;
 
 import java.util.List;
 
-import jakarta.inject.Inject;
-
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.terasoluna.gfw.functionaltest.domain.TransactionManagers;
 import org.terasoluna.gfw.functionaltest.domain.model.UserInfo;
 import org.terasoluna.gfw.functionaltest.domain.repository.user.UserRepository;
+
+import jakarta.inject.Inject;
 
 @Service
 @Transactional(value = TransactionManagers.JPA)

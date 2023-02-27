@@ -17,15 +17,15 @@ package org.terasoluna.gfw.functionaltest.domain.service.codelist;
 
 import java.util.List;
 
-import jakarta.inject.Inject;
-import jakarta.inject.Named;
-
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.terasoluna.gfw.common.codelist.ReloadableCodeList;
 import org.terasoluna.gfw.functionaltest.domain.TransactionManagers;
 import org.terasoluna.gfw.functionaltest.domain.model.ItemCode;
 import org.terasoluna.gfw.functionaltest.domain.repository.codelist.CodeListRepository;
+
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 
 @Service
 @Transactional(value = TransactionManagers.JPA)

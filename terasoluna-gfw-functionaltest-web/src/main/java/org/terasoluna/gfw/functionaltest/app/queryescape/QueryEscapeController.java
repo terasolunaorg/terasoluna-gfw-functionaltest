@@ -15,13 +15,13 @@
  */
 package org.terasoluna.gfw.functionaltest.app.queryescape;
 
-import jakarta.inject.Inject;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.terasoluna.gfw.functionaltest.domain.service.queryescape.DatabaseMetaInfoService;
+
+import jakarta.inject.Inject;
 
 @Controller
 @RequestMapping("queryescape")

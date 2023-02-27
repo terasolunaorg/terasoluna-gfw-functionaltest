@@ -15,13 +15,13 @@
  */
 package org.terasoluna.gfw.functionaltest.domain.service.pagination;
 
-import jakarta.inject.Inject;
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.terasoluna.gfw.functionaltest.domain.model.Person;
 import org.terasoluna.gfw.functionaltest.domain.repository.person.PersonRepository;
+
+import jakarta.inject.Inject;
 
 @Service
 public class PaginationServiceImpl implements PaginationService {
