@@ -19,8 +19,6 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 
-import jakarta.inject.Inject;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
@@ -31,6 +29,8 @@ import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.RestTemplate;
 import org.terasoluna.gfw.functionaltest.app.FunctionTestSupport;
 import org.terasoluna.gfw.functionaltest.app.webdrivers.WebDriverType;
+
+import jakarta.inject.Inject;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {

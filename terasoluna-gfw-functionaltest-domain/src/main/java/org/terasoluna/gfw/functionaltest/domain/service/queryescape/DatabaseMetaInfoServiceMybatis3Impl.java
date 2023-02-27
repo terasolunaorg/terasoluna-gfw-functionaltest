@@ -15,12 +15,12 @@
  */
 package org.terasoluna.gfw.functionaltest.domain.service.queryescape;
 
-import jakarta.inject.Inject;
-
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.terasoluna.gfw.functionaltest.domain.TransactionManagers;
+
+import jakarta.inject.Inject;
 
 @Service
 @Transactional(value = TransactionManagers.DATASOURCE, readOnly = true)

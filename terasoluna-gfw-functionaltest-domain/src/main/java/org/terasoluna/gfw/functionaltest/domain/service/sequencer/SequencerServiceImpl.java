@@ -18,12 +18,12 @@ package org.terasoluna.gfw.functionaltest.domain.service.sequencer;
 import java.math.BigInteger;
 import java.util.LinkedHashMap;
 
-import jakarta.annotation.Resource;
-
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.terasoluna.gfw.common.sequencer.Sequencer;
 import org.terasoluna.gfw.functionaltest.domain.TransactionManagers;
+
+import jakarta.annotation.Resource;
 
 @Service
 @Transactional(value = TransactionManagers.DATASOURCE)

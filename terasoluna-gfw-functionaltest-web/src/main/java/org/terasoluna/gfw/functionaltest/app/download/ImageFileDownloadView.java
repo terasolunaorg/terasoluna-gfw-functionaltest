@@ -19,13 +19,13 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Map;
 
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Component;
 import org.terasoluna.gfw.web.download.AbstractFileDownloadView;
+
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 @Component
 public class ImageFileDownloadView extends AbstractFileDownloadView {

@@ -17,9 +17,6 @@ package org.terasoluna.gfw.functionaltest.app.queryescape;
 
 import java.util.List;
 
-import jakarta.inject.Inject;
-import jakarta.inject.Named;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,6 +24,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.terasoluna.gfw.functionaltest.domain.model.Todo;
 import org.terasoluna.gfw.functionaltest.domain.service.queryescape.QueryEscapeService;
+
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 
 @Controller
 @RequestMapping("queryescape/JPAWithFullWidth")

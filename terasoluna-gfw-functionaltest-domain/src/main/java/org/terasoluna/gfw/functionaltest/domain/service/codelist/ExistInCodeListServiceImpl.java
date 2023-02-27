@@ -15,11 +15,11 @@
  */
 package org.terasoluna.gfw.functionaltest.domain.service.codelist;
 
-import jakarta.inject.Inject;
-import jakarta.inject.Named;
-
 import org.springframework.stereotype.Service;
 import org.terasoluna.gfw.common.codelist.CodeList;
+
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 
 @Service
 public class ExistInCodeListServiceImpl implements ExistInCodeListService {

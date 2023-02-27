@@ -15,8 +15,6 @@
  */
 package org.terasoluna.gfw.functionaltest.app.logging.traceLoggingInterceptor;
 
-import jakarta.inject.Inject;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -24,6 +22,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.terasoluna.gfw.functionaltest.domain.service.logging.TraceLoggingInterceptorService;
+
+import jakarta.inject.Inject;
 
 @Controller
 @RequestMapping(value = "logging/traceLoggingInterceptor/defaultWarnHandling")

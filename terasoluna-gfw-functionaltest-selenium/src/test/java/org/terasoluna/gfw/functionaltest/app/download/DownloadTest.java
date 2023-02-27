@@ -21,8 +21,6 @@ import static org.hamcrest.text.IsEqualIgnoringCase.equalToIgnoringCase;
 
 import java.io.IOException;
 
-import jakarta.inject.Inject;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.core.io.ClassPathResource;
@@ -34,6 +32,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.util.StreamUtils;
 import org.springframework.web.client.RestTemplate;
 import org.terasoluna.gfw.functionaltest.app.FunctionTestSupport;
+
+import jakarta.inject.Inject;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {

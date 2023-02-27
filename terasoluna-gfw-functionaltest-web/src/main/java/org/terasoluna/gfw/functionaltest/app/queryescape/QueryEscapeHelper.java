@@ -17,12 +17,12 @@ package org.terasoluna.gfw.functionaltest.app.queryescape;
 
 import java.util.List;
 
-import jakarta.inject.Inject;
-
 import org.springframework.stereotype.Component;
 import org.springframework.ui.Model;
 import org.terasoluna.gfw.functionaltest.domain.model.Todo;
 import org.terasoluna.gfw.functionaltest.domain.service.queryescape.DatabaseMetaInfoService;
+
+import jakarta.inject.Inject;
 
 @Component
 public class QueryEscapeHelper {

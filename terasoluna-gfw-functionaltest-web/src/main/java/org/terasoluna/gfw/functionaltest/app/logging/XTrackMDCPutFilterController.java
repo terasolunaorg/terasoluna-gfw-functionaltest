@@ -15,13 +15,13 @@
  */
 package org.terasoluna.gfw.functionaltest.app.logging;
 
-import jakarta.inject.Inject;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.terasoluna.gfw.functionaltest.domain.service.logging.MDCService;
+
+import jakarta.inject.Inject;
 
 @Controller
 @RequestMapping(value = "logging/xTrackMDCPutFilter")

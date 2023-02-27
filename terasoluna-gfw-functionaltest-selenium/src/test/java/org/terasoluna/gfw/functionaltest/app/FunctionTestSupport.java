@@ -20,8 +20,6 @@ import java.time.Duration;
 import java.util.HashSet;
 import java.util.Set;
 
-import jakarta.inject.Inject;
-
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.Rule;
@@ -36,6 +34,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.support.ApplicationObjectSupport;
 import org.terasoluna.gfw.functionaltest.app.webdrivers.WebDriverType;
 import org.terasoluna.gfw.functionaltest.domain.DBLogCleaner;
+
+import jakarta.inject.Inject;
 
 public class FunctionTestSupport extends ApplicationObjectSupport {
 

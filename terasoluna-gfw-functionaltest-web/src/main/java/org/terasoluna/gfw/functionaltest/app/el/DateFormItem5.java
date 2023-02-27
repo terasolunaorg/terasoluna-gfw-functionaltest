@@ -15,9 +15,9 @@
  */
 package org.terasoluna.gfw.functionaltest.app.el;
 
+import java.time.LocalDate;
 import java.util.Date;
 
-import java.time.LocalDate;
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class DateFormItem5 {

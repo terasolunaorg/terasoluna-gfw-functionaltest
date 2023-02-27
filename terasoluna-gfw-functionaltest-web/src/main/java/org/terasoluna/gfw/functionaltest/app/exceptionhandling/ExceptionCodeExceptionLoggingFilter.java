@@ -17,11 +17,11 @@ package org.terasoluna.gfw.functionaltest.app.exceptionhandling;
 
 import java.io.IOException;
 
+import org.terasoluna.gfw.web.exception.ExceptionLoggingFilter;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.ServletRequest;
 import jakarta.servlet.ServletResponse;
-
-import org.terasoluna.gfw.web.exception.ExceptionLoggingFilter;
 
 public class ExceptionCodeExceptionLoggingFilter extends
                                                  ExceptionLoggingFilter {

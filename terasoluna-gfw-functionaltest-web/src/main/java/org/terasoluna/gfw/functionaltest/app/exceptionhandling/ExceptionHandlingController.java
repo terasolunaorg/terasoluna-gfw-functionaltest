@@ -15,8 +15,6 @@
  */
 package org.terasoluna.gfw.functionaltest.app.exceptionhandling;
 
-import jakarta.inject.Inject;
-
 import org.springframework.dao.OptimisticLockingFailureException;
 import org.springframework.dao.PessimisticLockingFailureException;
 import org.springframework.dao.QueryTimeoutException;
@@ -43,6 +41,8 @@ import org.terasoluna.gfw.functionaltest.domain.service.exceptionhandling.Except
 import org.terasoluna.gfw.functionaltest.domain.service.exceptionhandling.InfoLoggingExceptionHandlingService;
 import org.terasoluna.gfw.web.token.transaction.TransactionTokenCheck;
 import org.terasoluna.gfw.web.token.transaction.TransactionTokenType;
+
+import jakarta.inject.Inject;
 
 @Controller
 @TransactionTokenCheck("exceptionhandling")
