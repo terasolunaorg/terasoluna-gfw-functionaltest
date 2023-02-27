@@ -536,11 +536,12 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
         driver.findElement(By.id("webApplicationHandling_04_01")).click();
 
         webDriverWait.until(titleIs("Servlet Error"));
+        assertThat(dbLogProvider.countContainsMessageAndLevelsAndLogger("",
+                "ERROR", "org.terasoluna.gfw.common.exception.ExceptionLogger"),
+                is(1L));
         assertThat(dbLogProvider.countContainsMessageAndLevelsAndLogger(
-                "", "ERROR",
-                "org.terasoluna.gfw.common.exception.ExceptionLogger"), is(1L));
-        assertThat(dbLogProvider.countContainsMessageAndLevelsAndLogger(
-                "\\[e.xx.9999\\] \\[/WEB-INF/views/exceptionhandling/viewIOException.jsp\\] の処理中に行番号 \\[27\\] で例外が発生しました。", "ERROR",
+                "\\[e.xx.9999\\] \\[/WEB-INF/views/exceptionhandling/viewIOException.jsp\\] の処理中に行番号 \\[27\\] で例外が発生しました。",
+                "ERROR",
                 "org.terasoluna.gfw.common.exception.ExceptionLogger.Monitoring"),
                 is(1L));
 
