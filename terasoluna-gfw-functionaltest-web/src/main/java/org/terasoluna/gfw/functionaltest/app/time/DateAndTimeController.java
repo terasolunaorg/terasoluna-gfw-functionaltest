@@ -56,19 +56,19 @@ public class DateAndTimeController {
     @Inject
     @Named("dateAndTimeConfigurableClockFactory")
     protected ClockFactory dateAndTimeConfigurableClockFactory;
-    
+
     @Inject
     @Named("configurableAdjustClockFactory")
     protected ClockFactory configurableAdjustClockFactory;
-    
+
     @Inject
     @Named("defaultJdbcClockFactory")
     protected ClockFactory jdbcClockFactory;
-    
+
     @Inject
     @Named("adjustJdbcClockFactory")
     protected ClockFactory jdbcAdjustClockFactory;
-    
+
     // CST : America/Chicago : Time difference 15 hours
     private static final ZoneId CST = ZoneId.of(ZoneId.SHORT_IDS.get("CST"));
 
@@ -87,66 +87,81 @@ public class DateAndTimeController {
 
         setAttribute(model, fixedDefaultZoneClock, tickDefaultZoneClock,
                 fixedChangeZoneClock, tickChangeZoneClock);
-        
+
         return "time/dateAndTimeDisplay";
     }
-    
+
     @GetMapping(value = "2_1")
     public String serverTimeReturn_02_01(Model model) throws Exception {
 
-        Clock fixedDefaultZoneClock = this.defaultConfigurableClockFactory.fixed();
-        Clock fixedChangeZoneClock = this.defaultConfigurableClockFactory.fixed(CST);
-        Clock tickDefaultZoneClock = this.defaultConfigurableClockFactory.tick();
-        Clock tickChangeZoneClock = this.defaultConfigurableClockFactory.tick(CST);
+        Clock fixedDefaultZoneClock = this.defaultConfigurableClockFactory
+                .fixed();
+        Clock fixedChangeZoneClock = this.defaultConfigurableClockFactory.fixed(
+                CST);
+        Clock tickDefaultZoneClock = this.defaultConfigurableClockFactory
+                .tick();
+        Clock tickChangeZoneClock = this.defaultConfigurableClockFactory.tick(
+                CST);
 
         setAttribute(model, fixedDefaultZoneClock, tickDefaultZoneClock,
                 fixedChangeZoneClock, tickChangeZoneClock);
-        
+
         return "time/dateAndTimeDisplay";
     }
 
     @GetMapping(value = "2_2")
     public String serverTimeReturn_02_02(Model model) throws Exception {
 
-        Clock fixedDefaultZoneClock = this.patternConfigurableClockFactory.fixed();
-        Clock fixedChangeZoneClock = this.patternConfigurableClockFactory.fixed(CST);
-        Clock tickDefaultZoneClock = this.patternConfigurableClockFactory.tick();
-        Clock tickChangeZoneClock = this.patternConfigurableClockFactory.tick(CST);
+        Clock fixedDefaultZoneClock = this.patternConfigurableClockFactory
+                .fixed();
+        Clock fixedChangeZoneClock = this.patternConfigurableClockFactory.fixed(
+                CST);
+        Clock tickDefaultZoneClock = this.patternConfigurableClockFactory
+                .tick();
+        Clock tickChangeZoneClock = this.patternConfigurableClockFactory.tick(
+                CST);
 
         setAttribute(model, fixedDefaultZoneClock, tickDefaultZoneClock,
                 fixedChangeZoneClock, tickChangeZoneClock);
-        
+
         return "time/dateAndTimeDisplay";
     }
 
     @GetMapping(value = "2_3")
     public String serverTimeReturn_02_03(Model model) throws Exception {
 
-        Clock fixedDefaultZoneClock = this.dateAndTimeConfigurableClockFactory.fixed();
-        Clock fixedChangeZoneClock = this.dateAndTimeConfigurableClockFactory.fixed(CST);
-        Clock tickDefaultZoneClock = this.dateAndTimeConfigurableClockFactory.tick();
-        Clock tickChangeZoneClock = this.dateAndTimeConfigurableClockFactory.tick(CST);
+        Clock fixedDefaultZoneClock = this.dateAndTimeConfigurableClockFactory
+                .fixed();
+        Clock fixedChangeZoneClock = this.dateAndTimeConfigurableClockFactory
+                .fixed(CST);
+        Clock tickDefaultZoneClock = this.dateAndTimeConfigurableClockFactory
+                .tick();
+        Clock tickChangeZoneClock = this.dateAndTimeConfigurableClockFactory
+                .tick(CST);
 
         setAttribute(model, fixedDefaultZoneClock, tickDefaultZoneClock,
                 fixedChangeZoneClock, tickChangeZoneClock);
-        
+
         return "time/dateAndTimeDisplay";
     }
 
     @GetMapping(value = "3_1")
     public String serverTimeReturn_03_01(Model model) throws Exception {
 
-        Clock fixedDefaultZoneClock = this.configurableAdjustClockFactory.fixed();
-        Clock fixedChangeZoneClock = this.configurableAdjustClockFactory.fixed(CST);
+        Clock fixedDefaultZoneClock = this.configurableAdjustClockFactory
+                .fixed();
+        Clock fixedChangeZoneClock = this.configurableAdjustClockFactory.fixed(
+                CST);
         Clock tickDefaultZoneClock = this.configurableAdjustClockFactory.tick();
-        Clock tickChangeZoneClock = this.configurableAdjustClockFactory.tick(CST);
+        Clock tickChangeZoneClock = this.configurableAdjustClockFactory.tick(
+                CST);
 
         setAttribute(model, fixedDefaultZoneClock, tickDefaultZoneClock,
                 fixedChangeZoneClock, tickChangeZoneClock);
-        
+
         return "time/dateAndTimeDisplay";
     }
-    
+
     @GetMapping(value = "4_1")
     public String serverTimeReturn_04_01(Model model) throws Exception {
 
@@ -157,10 +172,10 @@ public class DateAndTimeController {
 
         setAttribute(model, fixedDefaultZoneClock, tickDefaultZoneClock,
                 fixedChangeZoneClock, tickChangeZoneClock);
-        
+
         return "time/dateAndTimeDisplay";
     }
-    
+
     @GetMapping(value = "5_1")
     public String serverTimeReturn_05_01(Model model) throws Exception {
 
@@ -171,10 +186,10 @@ public class DateAndTimeController {
 
         setAttribute(model, fixedDefaultZoneClock, tickDefaultZoneClock,
                 fixedChangeZoneClock, tickChangeZoneClock);
-        
+
         return "time/dateAndTimeDisplay";
     }
-    
+
     private void setAttribute(Model model, Clock fixedDefaultZoneClock,
             Clock tickDefaultZoneClock, Clock fixedChangeZoneClock,
             Clock tickChangeZoneClock) throws InterruptedException {
@@ -182,7 +197,7 @@ public class DateAndTimeController {
         model.addAttribute("now", LocalDateTime.now(Clock.systemDefaultZone()));
         model.addAttribute("defaultZomeId", ZoneId.systemDefault());
         model.addAttribute("changeZoneId", CST.getId());
-        
+
         // fixedDefaultZone
         model.addAttribute("fixedDefaultZoneInstant", Instant.now(
                 fixedDefaultZoneClock));
@@ -200,7 +215,7 @@ public class DateAndTimeController {
                 fixedDefaultZoneClock));
         model.addAttribute("fixedDefaultZoneJapaneseDate", JapaneseDate.now(
                 fixedDefaultZoneClock));
-        
+
         // fixedChangeZone
         model.addAttribute("fixedChangeZoneInstant", Instant.now(
                 fixedChangeZoneClock));
