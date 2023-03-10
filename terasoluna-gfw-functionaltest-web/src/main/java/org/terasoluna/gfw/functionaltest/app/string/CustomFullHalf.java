@@ -56,8 +56,8 @@ public class CustomFullHalf {
                 .pair("ビ", "ﾋﾞ").pair("ブ", "ﾌﾞ").pair("ベ", "ﾍﾞ").pair("ボ", "ﾎﾞ")
                 .pair("パ", "ﾊﾟ").pair("ピ", "ﾋﾟ").pair("プ", "ﾌﾟ").pair("ペ", "ﾍﾟ")
                 .pair("ポ", "ﾎﾟ").pair("ヴ", "ｳﾞ").pair("\u30f7", "ﾜﾞ").pair(
-                        "\u30fa", "ｦﾞ").pair("゛", "ﾞ").pair("゜", "ﾟ").pair("　",
-                                " ");
+                        "\u30fa", "ｦﾞ").pair("゛", "ﾞ").pair("゜", "ﾟ").pair(
+                                "\u3000", " ");
 
         INSTANCE = new FullHalfConverter(builder.build());
     }
