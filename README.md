@@ -20,10 +20,9 @@ Tested environments are managed at [wiki page](https://github.com/terasolunaorg/
 
 **Preconditions are as follow:**
 
-* [JDK 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) or [JDK 11](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html) installed (`JAVA_HOME` defined as environment variable)
+* [JDK 17](https://developers.redhat.com/products/openjdk/download) installed (`JAVA_HOME` defined as environment variable)
 * [Maven](https://maven.apache.org/download.cgi) installed (Can run `mvn` command)
 * Firefox([for personal](https://www.mozilla.org/en-US/firefox/all/) or [ESR](https://www.mozilla.org/en-US/firefox/organizations/all/)) installed (ESR is used on our CI environment)
-* [geckodriver](https://github.com/mozilla/geckodriver/releases) (`v0.30.0` recommended) placed in application execution environment and add to `PATH`.
 
 ### [Step 1] Create database of PostgreSQL (Optional)
 If [PostgreSQL](http://www.postgresql.org/) use as database , you need to create database of PostgreSQL into local machine. (PostgreSQL can download via [here site](http://www.postgresql.org/download/)).
@@ -107,7 +106,7 @@ Run tests using Selenium(`WebDriver`) on JUnit.
 
 ```console
 $ cd {your repository directory}
-$ mvn -U test -pl terasoluna-gfw-functionaltest-selenium
+$ mvn -U test -pl terasoluna-gfw-functionaltest-selenium -Dwdm.cachePath=/opt/geckodriver -Dwdm.geckoDriverVersion=0.32.0
 ```
 
 > **Note:**
@@ -117,8 +116,11 @@ $ mvn -U test -pl terasoluna-gfw-functionaltest-selenium
 
 > **Note:**
 >
-> If GeckoDriver is not registered in the path, [webdrivermanager](https://github.com/bonigarcia/webdrivermanager) will download it automatically.
-> Configure using [properties](https://github.com/bonigarcia/webdrivermanager#webdrivermanager-api) in `wdm.properties` or Java System Properties.
+> By default, [webdrivermanager](https://github.com/bonigarcia/webdrivermanager) will download the latest [geckodriver](https://github.com/mozilla/geckodriver/releases) to `~/.cache/selenium` automatically.
+> If you want to specify the download destination directory, please specify "`-Dwdm.cachePath`" in the startup argument.
+> To specify the version of geckoDriver, specify "`-Dwdm.geckoDriverVersion`" in the startup argument.
+>
+> See [advanced-configuration](https://bonigarcia.dev/webdrivermanager/#advanced-configuration) for details on configuration.
 
 ## Appendix
 
