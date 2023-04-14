@@ -127,3 +127,6 @@
         <td id="tickChangeZoneLocalDateTime_japaneseImperialYear"><javatime:format value="${tickChangeZoneLocalDateTime}" pattern="Gy年MM月dd日 HH:mm:ss.SSS" /></td>
     </tr>
 </table>
+
+    <jsp:include page="/WEB-INF/views/layout/footer.jsp" />
+  </div>

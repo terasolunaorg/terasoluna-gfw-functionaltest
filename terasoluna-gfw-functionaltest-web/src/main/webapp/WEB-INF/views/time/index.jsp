@@ -47,3 +47,6 @@
     <td><a id="dateAndTime_05_01" href="${pageContext.request.contextPath}/time/5_1">05_01_jdbcAdjustClockFactory</a></td>
   </tr>
 </table>
+
+    <jsp:include page="/WEB-INF/views/layout/footer.jsp" />
+  </div>
