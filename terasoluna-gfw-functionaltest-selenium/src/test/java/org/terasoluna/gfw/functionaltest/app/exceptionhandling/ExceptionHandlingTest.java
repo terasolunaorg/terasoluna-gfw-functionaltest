@@ -558,11 +558,11 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
 
         webDriverWait.until(titleIs("Servlet Error"));
         assertThat(dbLogProvider.countContainsMessageAndLevelsAndLogger(
-                "\\[e.xx.9999\\] Handler dispatch failed: java.lang.AssertionError",
+                "\\[e.xx.9999\\] java.lang.AssertionError",
                 "ERROR", "org.terasoluna.gfw.common.exception.ExceptionLogger"),
                 is(1L));
         assertThat(dbLogProvider.countContainsMessageAndLevelsAndLogger(
-                "\\[e.xx.9999\\] Handler dispatch failed: java.lang.AssertionError",
+                "\\[e.xx.9999\\] java.lang.AssertionError",
                 "ERROR",
                 "org.terasoluna.gfw.common.exception.ExceptionLogger.Monitoring"),
                 is(1L));
