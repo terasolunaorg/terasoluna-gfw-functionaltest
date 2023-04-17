@@ -34,8 +34,7 @@
     </property>
     <property name="excludedExceptions">
       <array>
-        <value>jakarta.servlet.ServletException
-        </value>
+          <value>org.terasoluna.gfw.functionaltest.app.exceptionhandling.ExceptionHandlingController.ExceptionHandlingException</value>
       </array>
     </property>
     <property name="defaultErrorView" value="common/error/systemError" />

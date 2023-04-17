@@ -43,6 +43,7 @@ import org.terasoluna.gfw.web.token.transaction.TransactionTokenCheck;
 import org.terasoluna.gfw.web.token.transaction.TransactionTokenType;
 
 import jakarta.inject.Inject;
+import jakarta.servlet.ServletException;
 
 @Controller
 @TransactionTokenCheck("exceptionhandling")
@@ -234,9 +235,13 @@ public class ExceptionHandlingController {
     }
 
     @GetMapping(value = "4_2")
-    public String servletFrameworkHandling_04_2() {
+    public String servletFrameworkHandling_04_2() throws ExceptionHandlingException {
 
-        exceptionHandlingService.throwAssertionError();
+        try {
+            exceptionHandlingService.throwAssertionError();
+        } catch (Throwable t) {
+            throw new ExceptionHandlingException(t);
+        }
 
         return "exceptionhandling/index";
     }
@@ -366,4 +371,13 @@ public class ExceptionHandlingController {
         modelMap.addAttribute("exceptionMessage", e.getMessage());
         return new ModelAndView("exceptionhandling/exceptionHandler", modelMap);
     }
+
+    public class ExceptionHandlingException extends ServletException {
+        private static final long serialVersionUID = 1L;
+
+        public ExceptionHandlingException(Throwable t) {
+            super(t);
+        }
+    }
+
 }
