@@ -39,8 +39,6 @@
       </tr>
     </table>
   </form:form>
-</body>
-</html>
     <jsp:include page="/WEB-INF/views/layout/footer.jsp" />
   </div>
 </body>

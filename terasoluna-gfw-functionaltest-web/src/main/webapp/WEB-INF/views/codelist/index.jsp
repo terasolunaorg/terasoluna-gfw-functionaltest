@@ -165,7 +165,6 @@
     <td><a id="codelist_09_01" href="${pageContext.request.contextPath}/codelist/09_01_form">EnumCodeList Test</a></td>
   </tr>
 </table>
-
     <jsp:include page="/WEB-INF/views/layout/footer.jsp" />
   </div>
 </body>
