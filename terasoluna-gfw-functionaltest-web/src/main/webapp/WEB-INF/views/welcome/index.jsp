@@ -22,9 +22,7 @@
   <div class="wrapper">
     <jsp:include page="/WEB-INF/views/layout/header.jsp" />
 
-<html>
 <h2>Welcome!</h2>
-<body>
   <table>
     <tr>
       <td><a id="Pagination" href="${pageContext.request.contextPath}/pagination">Pagination
@@ -84,8 +82,6 @@
           Function Test</a></td>
     </tr>
   </table>
-</body>
-</html>
 
     <jsp:include page="/WEB-INF/views/layout/footer.jsp" />
   </div>

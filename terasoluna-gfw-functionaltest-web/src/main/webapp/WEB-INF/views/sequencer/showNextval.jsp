@@ -22,9 +22,7 @@
   <div class="wrapper">
     <jsp:include page="/WEB-INF/views/layout/header.jsp" />
 
-<html>
 <h2>Sequencer Function Test (GET NEXT VALUE)</h2>
-<body>
   <table>
     <tr>
       <td>NEXT VALUE</td>
@@ -69,8 +67,6 @@
       </td>
     </tr>
   </table>
-</body>
-</html>
     <jsp:include page="/WEB-INF/views/layout/footer.jsp" />
   </div>
 </body>

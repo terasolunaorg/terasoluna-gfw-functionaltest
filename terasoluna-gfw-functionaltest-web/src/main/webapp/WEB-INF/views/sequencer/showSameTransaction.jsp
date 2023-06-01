@@ -22,9 +22,7 @@
   <div class="wrapper">
     <jsp:include page="/WEB-INF/views/layout/header.jsp" />
 
-<html>
 <h2>Sequencer Function Test (GET NEXT VALUE AND CURRENT VALUE BY SAME TRANSACTION)</h2>
-<body>
   <table>
     <tr>
       <td>Mode</td>
@@ -38,8 +36,6 @@
     </c:forEach>
 
   </table>
-</body>
-</html>
     <jsp:include page="/WEB-INF/views/layout/footer.jsp" />
   </div>
 </body>

@@ -22,9 +22,7 @@
   <div class="wrapper">
     <jsp:include page="/WEB-INF/views/layout/header.jsp" />
 
-<html>
 <h2>Transaction Token Function Test</h2>
-<body>
   <table>
 
     <!-- Transaction token generation test scenarios -->
@@ -58,8 +56,6 @@
           : BEGIN-IN-CHECK-END @AliasFor namespace</a></td>
     </tr>
   </table>
-</body>
-</html>
 
 
 

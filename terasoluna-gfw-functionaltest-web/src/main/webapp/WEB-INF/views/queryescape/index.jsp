@@ -22,9 +22,7 @@
   <div class="wrapper">
     <jsp:include page="/WEB-INF/views/layout/header.jsp" />
 
-<html>
 <h2>Query Escape Function Test</h2>
-<body>
   <table>
     <tr>
       <td><label class="form-label">Database ID :</label> <a id="databaseId" class="form-label">${f:h(databaseId)}</a></td>
@@ -49,8 +47,6 @@
           Function Test Using JPA WithFullWidth</a></td>
     </tr>
   </table>
-</body>
-</html>
     <jsp:include page="/WEB-INF/views/layout/footer.jsp" />
   </div>
 </body>

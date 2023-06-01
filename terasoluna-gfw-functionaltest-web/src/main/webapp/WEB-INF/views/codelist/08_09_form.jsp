@@ -22,11 +22,6 @@
   <div class="wrapper">
     <jsp:include page="/WEB-INF/views/layout/header.jsp" />
 
-<html>
-<head>
-<title>Insert title here</title>
-</head>
-<body>
   <h2>Codelist</h2>
   <br>
   <form:form action="${pageContext.request.contextPath}/codelist/next" method="get"
@@ -58,8 +53,6 @@
       </tr>
     </table>
   </form:form>
-</body>
-</html>
     <jsp:include page="/WEB-INF/views/layout/footer.jsp" />
   </div>
 </body>

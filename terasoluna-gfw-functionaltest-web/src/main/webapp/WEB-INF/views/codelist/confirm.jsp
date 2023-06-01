@@ -22,11 +22,6 @@
   <div class="wrapper">
     <jsp:include page="/WEB-INF/views/layout/header.jsp" />
 
-<html>
-<head>
-<title>Insert title here</title>
-</head>
-<body>
   <h2>confirm output</h2>
 
 
@@ -41,8 +36,6 @@
       </tr>
     </table>
   </form:form>
-</body>
-</html>
     <jsp:include page="/WEB-INF/views/layout/footer.jsp" />
   </div>
 </body>

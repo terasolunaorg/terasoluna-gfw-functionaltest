@@ -22,9 +22,7 @@
   <div class="wrapper">
     <jsp:include page="/WEB-INF/views/layout/header.jsp" />
 
-<html>
 <h2>logging Function Test</h2>
-<body>
   <table>
     <tr>
       <td><a id="xTrackMDCPutFilter"
@@ -42,8 +40,6 @@
           Test </a></td>
     </tr>
   </table>
-</body>
-</html>
     <jsp:include page="/WEB-INF/views/layout/footer.jsp" />
   </div>
 </body>
