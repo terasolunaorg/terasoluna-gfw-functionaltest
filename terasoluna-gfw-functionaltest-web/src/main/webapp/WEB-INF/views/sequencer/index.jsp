@@ -22,9 +22,7 @@
   <div class="wrapper">
     <jsp:include page="/WEB-INF/views/layout/header.jsp" />
 
-<html>
 <h2>Sequencer Function Test</h2>
-<body>
   <table>
     <tr>
       <td><a id="1_1_same_transaction"
@@ -57,8 +55,6 @@
       </td>
     </tr>
   </table>
-</body>
-</html>
     <jsp:include page="/WEB-INF/views/layout/footer.jsp" />
   </div>
 </body>

@@ -22,11 +22,6 @@
   <div class="wrapper">
     <jsp:include page="/WEB-INF/views/layout/header.jsp" />
 
-<html>
-<head>
-<title>Codelist</title>
-</head>
-<body>
   <h2>Codelist</h2>
   <br>
 
