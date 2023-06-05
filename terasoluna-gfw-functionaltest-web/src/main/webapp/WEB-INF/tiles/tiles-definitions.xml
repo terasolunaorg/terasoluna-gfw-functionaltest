@@ -8,6 +8,7 @@
     <put-attribute name="title" value="terasoluna-gfw-functionaltest" />
     <put-attribute name="header" value="/WEB-INF/views/layout/header.jsp" />
     <put-attribute name="body" value="" />
+    <put-attribute name="footer" value="/WEB-INF/views/layout/footer.jsp" />
   </definition>
 
   <definition name="*/*" extends="layouts">
