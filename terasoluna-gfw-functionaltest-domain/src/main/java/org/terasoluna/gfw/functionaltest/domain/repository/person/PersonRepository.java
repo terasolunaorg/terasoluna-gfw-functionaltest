@@ -24,7 +24,7 @@ import org.terasoluna.gfw.functionaltest.domain.model.Person;
 
 public interface PersonRepository extends JpaRepository<Person, String> {
 
-    @Query("SELECT p FROM Person p WHERE firstname LIKE %:name% OR lastname LIKE %:name%")
+    @Query("SELECT p FROM Person p WHERE firstname LIKE %:name% ESCAPE '~' OR lastname LIKE %:name% ESCAPE '~'")
     Page<Person> findPageByName(@Param("name") String name, Pageable pageable);
 
 }
