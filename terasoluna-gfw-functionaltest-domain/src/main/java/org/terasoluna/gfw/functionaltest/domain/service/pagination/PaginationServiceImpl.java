@@ -18,7 +18,6 @@ package org.terasoluna.gfw.functionaltest.domain.service.pagination;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import org.terasoluna.gfw.common.query.QueryEscapeUtils;
 import org.terasoluna.gfw.functionaltest.domain.model.Person;
 import org.terasoluna.gfw.functionaltest.domain.repository.person.PersonRepository;
 
@@ -36,10 +35,7 @@ public class PaginationServiceImpl implements PaginationService {
     }
 
     public Page<Person> findPersonByName(String name, Pageable pageable) {
-        
-        String escapeName = QueryEscapeUtils.toLikeCondition(name);
-        
-        return personRepostiroy.findPageByName(escapeName, pageable);
+        return personRepostiroy.findPageByName(name, pageable);
     }
 
 }
