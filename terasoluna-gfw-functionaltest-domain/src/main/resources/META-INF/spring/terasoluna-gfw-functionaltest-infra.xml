@@ -11,7 +11,7 @@
     transaction-manager-ref="jpaTransactionManager" />
 
   <bean id="jpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
-    <property name="databasePlatform" value="org.hibernate.dialect.OracleDialect" />
+    <property name="databasePlatform" value="${dialect}" />
     <property name="showSql" value="false" />
     <property name="database" value="${database}" />
   </bean>
