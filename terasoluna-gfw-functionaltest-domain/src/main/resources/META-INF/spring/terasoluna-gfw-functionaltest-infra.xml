@@ -11,8 +11,6 @@
     transaction-manager-ref="jpaTransactionManager" />
 
   <bean id="jpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
-    <!-- DatabasePlatform no longer needs to be specified since hibernate 6.0.10. https://github.com/spring-projects/spring-framework/commit/4c8f1910c82c340135082f3947f7dd9b611d6849-->
-    <property name="databasePlatform" value="${dialect}" />
     <property name="showSql" value="false" />
     <property name="database" value="${database}" />
   </bean>
