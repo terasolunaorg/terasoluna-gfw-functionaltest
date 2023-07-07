@@ -114,4 +114,6 @@
     <property name="exceptionLogger" ref="variationExceptionLogger" />
   </bean>
 
+  <aop:aspectj-autoproxy />
+
 </beans>
