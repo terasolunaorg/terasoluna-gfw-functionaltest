@@ -33,6 +33,10 @@
           <groupId>${project.groupId}</groupId>
           <artifactId>terasoluna-gfw-functionaltest-env</artifactId>
         </dependency>
+        <dependency>
+          <groupId>${project.groupId}</groupId>
+          <artifactId>terasoluna-gfw-functionaltest-xmlconfig</artifactId>
+        </dependency>
       </dependencies>
     </profile>
     <profile>
@@ -47,6 +51,24 @@
     <profile>
       <id>warpack-jstl</id>
       <dependencies>
+      </dependencies>
+    </profile>
+    <profile>
+      <id>xml-config</id>
+      <dependencies>
+        <dependency>
+          <groupId>${project.groupId}</groupId>
+          <artifactId>terasoluna-gfw-functionaltest-xmlconfig</artifactId>
+        </dependency>
+      </dependencies>
+    </profile>
+    <profile>
+      <id>java-config</id>
+      <dependencies>
+        <dependency>
+          <groupId>${project.groupId}</groupId>
+          <artifactId>terasoluna-gfw-functionaltest-javaconfig</artifactId>
+        </dependency>
       </dependencies>
     </profile>
   </profiles>
