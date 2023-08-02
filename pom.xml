@@ -11,6 +11,10 @@
     <module>terasoluna-gfw-functionaltest-web</module>
     <module>terasoluna-gfw-functionaltest-initdb</module>
     <module>terasoluna-gfw-functionaltest-selenium</module>
+    <module>terasoluna-gfw-functionaltest-selenium-xmlconfig</module>
+    <module>terasoluna-gfw-functionaltest-selenium-javaconfig</module>
+    <module>terasoluna-gfw-functionaltest-xmlconfig</module>
+    <module>terasoluna-gfw-functionaltest-javaconfig</module>
   </modules>
   <parent>
     <groupId>org.terasoluna.gfw</groupId>
@@ -227,6 +231,21 @@
       <dependency>
         <groupId>${project.groupId}</groupId>
         <artifactId>terasoluna-gfw-functionaltest-env</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>${project.groupId}</groupId>
+        <artifactId>terasoluna-gfw-functionaltest-xmlconfig</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>${project.groupId}</groupId>
+        <artifactId>terasoluna-gfw-functionaltest-javaconfig</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>${project.groupId}</groupId>
+        <artifactId>terasoluna-gfw-functionaltest-selenium</artifactId>
         <version>${project.version}</version>
       </dependency>
 
