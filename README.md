@@ -53,7 +53,7 @@ Build artifacts using maven commands as follows.
 
 The commands are different for XML-based configuration and Java-based configuration.
 
-** XML-based configuration **
+**XML-based configuration**
 
 ```console
 $ cd {your repository directory}
@@ -61,7 +61,7 @@ $ git checkout {target branch}
 $ mvn -U install -am -pl terasoluna-gfw-functionaltest-web,terasoluna-gfw-functionaltest-selenium
 ```
 
-** Java-based configuration **
+**Java-based configuration**
 
 ```console
 $ cd {your repository directory}
@@ -73,7 +73,7 @@ $ mvn -U install -am -pl terasoluna-gfw-functionaltest-web,terasoluna-gfw-functi
 
 The commands are different for XML-based configuration and Java-based configuration.
 
-** XML-based configuration **
+**XML-based configuration**
 
 ```console
 $ cd {your repository directory}
@@ -81,7 +81,7 @@ $ git checkout {target branch}
 $ mvn -U install -am -pl terasoluna-gfw-functionaltest-web,terasoluna-gfw-functionaltest-selenium -P tomcat10-postgresql,warpack-env,warpack-jstl,travis,xml-config
 ```
 
-** Java-based configuration **
+**Java-based configuration**
 
 ```console
 $ cd {your repository directory}
@@ -130,14 +130,14 @@ Run tests using Selenium(`WebDriver`) on JUnit.
 
 The commands are different for XML-based configuration and Java-based configuration.
 
-** XML-based configuration **
+**XML-based configuration**
 
 ```console
 $ cd {your repository directory}
 $ mvn -U test -pl terasoluna-gfw-functionaltest-selenium-xmlconfig -Dwdm.cachePath=/opt/geckodriver -Dwdm.geckoDriverVersion=0.32.0
 ```
 
-** Java-based configuration **
+**Java-based configuration**
 
 ```console
 $ cd {your repository directory}
@@ -192,38 +192,38 @@ terasoluna-gfw-functionaltest
 └─terasoluna-gfw-functionaltest-xmlconfig
 ```
 
-- ** terasoluna-gfw-functionaltest-domain **
+- **terasoluna-gfw-functionaltest-domain**
 
   A project that stores classes and configuration files related to the domain layer
 
-- ** terasoluna-gfw-functionaltest-env **
+- **terasoluna-gfw-functionaltest-env**
 
   A project that stores environment-dependent files, etc.
 
-- ** terasoluna-gfw-functionaltest-initdb **
+- **terasoluna-gfw-functionaltest-initdb**
 
   A project that manages the SQL file for initializing the database
 
-- ** terasoluna-gfw-functionaltest-javaconfig **
+- **terasoluna-gfw-functionaltest-javaconfig**
 
   A project that manages Java-based configuration definitions
 
-- ** terasoluna-gfw-functionaltest-selenium **
+- **terasoluna-gfw-functionaltest-selenium**
 
   A project that manages common modules used in selenium tests
 
-- ** terasoluna-gfw-functionaltest-selenium-javaconfig **
+- **terasoluna-gfw-functionaltest-selenium-javaconfig**
 
   A project to manage selenium tests running in an Java-based configuration
 
-- ** terasoluna-gfw-functionaltest-selenium-xmlconfig **
+- **terasoluna-gfw-functionaltest-selenium-xmlconfig**
 
   A project to manage selenium tests running in an XML-based configuration
 
-- ** terasoluna-gfw-functionaltest-web **
+- **terasoluna-gfw-functionaltest-web**
 
   A project that stores classes and configuration files related to the application layer
 
-- ** terasoluna-gfw-functionaltest-xmlconfig **
+- **terasoluna-gfw-functionaltest-xmlconfig**
 
   A project that manages XML-based configuration definitions
