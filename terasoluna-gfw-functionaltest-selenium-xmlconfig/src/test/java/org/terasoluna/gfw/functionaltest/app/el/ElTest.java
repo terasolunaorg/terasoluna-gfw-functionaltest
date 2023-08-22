@@ -34,7 +34,6 @@ import org.openqa.selenium.support.ui.Select;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.terasoluna.gfw.functionaltest.app.FunctionTestSupport;
-import org.terasoluna.gfw.functionaltest.app.webdrivers.WebDriverType;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {
@@ -302,14 +301,8 @@ public class ElTest extends FunctionTestSupport {
         driver.findElement(By.id("06_01-02")).click();
 
         // output 06_01-02 Test
-        if (driverType == WebDriverType.HTMLUNIT) {
-            // https://sourceforge.net/p/htmlunit/bugs/2011/
-            assertThat(driver.findElement(By.id("queryOutput")).getText(), is(
-                    "Date=10/1/13&String=Spring∫=100"));
-        } else {
-            assertThat(driver.findElement(By.id("queryOutput")).getText(), is(
-                    "Date=10/1/13&String=Spring&int=100"));
-        }
+        assertThat(driver.findElement(By.id("queryOutput")).getText(), is(
+                "Date=10/1/13&String=Spring&int=100"));
         assertThat(driver.findElement(By.id("noAndQueryOutput")).getText(), is(
                 "%26String=framework&Long=100&boolean=true&DateTime=10/1/13%2012:00%20AM"));
 

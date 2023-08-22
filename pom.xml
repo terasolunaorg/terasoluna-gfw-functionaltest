@@ -13,8 +13,8 @@
     <module>terasoluna-gfw-functionaltest-selenium</module>
     <module>terasoluna-gfw-functionaltest-selenium-xmlconfig</module>
     <module>terasoluna-gfw-functionaltest-selenium-javaconfig</module>
-    <module>terasoluna-gfw-functionaltest-xmlconfig</module>
-    <module>terasoluna-gfw-functionaltest-javaconfig</module>
+    <module>terasoluna-gfw-functionaltest-web-xmlconfig</module>
+    <module>terasoluna-gfw-functionaltest-web-javaconfig</module>
   </modules>
   <parent>
     <groupId>org.terasoluna.gfw</groupId>
@@ -235,12 +235,12 @@
       </dependency>
       <dependency>
         <groupId>${project.groupId}</groupId>
-        <artifactId>terasoluna-gfw-functionaltest-xmlconfig</artifactId>
+        <artifactId>terasoluna-gfw-functionaltest-web-xmlconfig</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
         <groupId>${project.groupId}</groupId>
-        <artifactId>terasoluna-gfw-functionaltest-javaconfig</artifactId>
+        <artifactId>terasoluna-gfw-functionaltest-web-javaconfig</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>

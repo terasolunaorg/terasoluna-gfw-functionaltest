@@ -3,7 +3,7 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <artifactId>terasoluna-gfw-functionaltest-web</artifactId>
-  <packaging>war</packaging>
+  <packaging>jar</packaging>
   <parent>
     <groupId>org.terasoluna.gfw.functionaltest</groupId>
     <artifactId>terasoluna-gfw-functionaltest</artifactId>
@@ -33,10 +33,6 @@
           <groupId>${project.groupId}</groupId>
           <artifactId>terasoluna-gfw-functionaltest-env</artifactId>
         </dependency>
-        <dependency>
-          <groupId>${project.groupId}</groupId>
-          <artifactId>terasoluna-gfw-functionaltest-xmlconfig</artifactId>
-        </dependency>
       </dependencies>
     </profile>
     <profile>
@@ -51,24 +47,6 @@
     <profile>
       <id>warpack-jstl</id>
       <dependencies>
-      </dependencies>
-    </profile>
-    <profile>
-      <id>xml-config</id>
-      <dependencies>
-        <dependency>
-          <groupId>${project.groupId}</groupId>
-          <artifactId>terasoluna-gfw-functionaltest-xmlconfig</artifactId>
-        </dependency>
-      </dependencies>
-    </profile>
-    <profile>
-      <id>java-config</id>
-      <dependencies>
-        <dependency>
-          <groupId>${project.groupId}</groupId>
-          <artifactId>terasoluna-gfw-functionaltest-javaconfig</artifactId>
-        </dependency>
       </dependencies>
     </profile>
   </profiles>
