@@ -1,0 +1,59 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.terasoluna.gfw.functionaltest.domain.repository.queryescape.TodoMybatisRepository">
+
+  <sql id="findAllByTitleLike">
+        <![CDATA[
+        SELECT
+            id, 
+            todo_title
+        FROM
+            todo 
+        WHERE
+            todo_title LIKE #{titleContainingCondition} ESCAPE '~'
+        ORDER BY
+            id
+        ]]>
+  </sql>
+
+  <select id="findAllByTitleLikePrefix" parameterType="string" resultType="Todo">
+    <bind name="titleContainingCondition"
+      value="@org.terasoluna.gfw.common.query.QueryEscapeUtils@toStartingWithCondition(_parameter)" />
+    <include refid="findAllByTitleLike" />
+  </select>
+
+  <select id="findAllByTitleLikeSuffix" parameterType="string" resultType="Todo">
+    <bind name="titleContainingCondition"
+      value="@org.terasoluna.gfw.common.query.QueryEscapeUtils@toEndingWithCondition(_parameter)" />
+    <include refid="findAllByTitleLike" />
+  </select>
+
+  <select id="findAllByTitleLikePartical" parameterType="string" resultType="Todo">
+    <bind name="titleContainingCondition"
+      value="@org.terasoluna.gfw.common.query.QueryEscapeUtils@toContainingCondition(_parameter)" />
+    <include refid="findAllByTitleLike" />
+  </select>
+
+  <select id="findAllByTitleLikePrefixEscapingFullWidthWildCard" parameterType="string"
+    resultType="Todo">
+    <bind name="titleContainingCondition"
+      value="@org.terasoluna.gfw.common.query.QueryEscapeUtils@withFullWidth().toStartingWithCondition(_parameter)" />
+    <include refid="findAllByTitleLike" />
+  </select>
+
+  <select id="findAllByTitleLikeSuffixEscapingFullWidthWildCard" parameterType="string"
+    resultType="Todo">
+    <bind name="titleContainingCondition"
+      value="@org.terasoluna.gfw.common.query.QueryEscapeUtils@withFullWidth().toEndingWithCondition(_parameter)" />
+    <include refid="findAllByTitleLike" />
+  </select>
+
+  <select id="findAllByTitleLikeParticalEscapingFullWidthWildCard" parameterType="string"
+    resultType="Todo">
+    <bind name="titleContainingCondition"
+      value="@org.terasoluna.gfw.common.query.QueryEscapeUtils@withFullWidth().toContainingCondition(_parameter)" />
+    <include refid="findAllByTitleLike" />
+  </select>
+</mapper>
