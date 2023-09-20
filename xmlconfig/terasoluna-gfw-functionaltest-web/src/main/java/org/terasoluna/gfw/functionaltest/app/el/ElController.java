@@ -121,9 +121,9 @@ public class ElController {
     }
 
     @PostMapping(value = "output_05_04")
-    public String urlULink_InputDatas(String URLPath, String outputQueryParam,
+    public String urlULink_InputDatas(
+            @RequestParam("outputQueryParam") String outputQueryParam,
             Model model) {
-        model.addAttribute("URLPath", URLPath);
         model.addAttribute("outputQueryParam", outputQueryParam);
 
         return "el/linkUOutput";
