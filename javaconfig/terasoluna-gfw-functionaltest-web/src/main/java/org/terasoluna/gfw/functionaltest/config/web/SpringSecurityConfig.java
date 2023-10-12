@@ -37,6 +37,8 @@ public class SpringSecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
+        http.securityMatcher(new AntPathRequestMatcher("/logging/**"));
+
         http.authorizeHttpRequests(authz -> authz.requestMatchers(
                 new AntPathRequestMatcher("/**")).permitAll());
 
