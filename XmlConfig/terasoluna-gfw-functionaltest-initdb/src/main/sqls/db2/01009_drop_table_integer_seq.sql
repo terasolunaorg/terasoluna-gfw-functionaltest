@@ -1,0 +1,1 @@
+call DROP_SEQUENCE('integer_seq')

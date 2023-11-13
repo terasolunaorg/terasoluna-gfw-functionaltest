@@ -1,0 +1,3 @@
+BEGIN
+DROP_TABLE('item1');
+END;

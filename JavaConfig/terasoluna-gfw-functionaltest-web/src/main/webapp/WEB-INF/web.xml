@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+  version="6.0">
+
+  <context-param>
+    <param-name>logbackDisableServletContainerInitializer</param-name>
+    <param-value>true</param-value>
+  </context-param>
+
+  <context-param>
+    <param-name>contextClass</param-name>
+    <param-value>
+        org.springframework.web.context.support.AnnotationConfigWebApplicationContext
+    </param-value>
+  </context-param>
+
+  <listener>
+    <listener-class>ch.qos.logback.classic.servlet.LogbackServletContextListener</listener-class>
+  </listener>
+
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <!-- Root ApplicationContext -->
+    <param-value>
+      org.terasoluna.gfw.functionaltest.config.app.ApplicationContextConfig
+      org.terasoluna.gfw.functionaltest.config.web.SpringSecurityConfig
+    </param-value>
+  </context-param>
+
+  <listener>
+    <listener-class>org.terasoluna.gfw.web.logging.HttpSessionEventLoggingListener</listener-class>
+  </listener>
+
+  <filter>
+    <filter-name>MDCClearFilter</filter-name>
+    <filter-class>org.terasoluna.gfw.web.logging.mdc.MDCClearFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>MDCClearFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+  <filter>
+    <filter-name>variationExceptionLoggingFilter</filter-name>
+    <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>variationExceptionLoggingFilter</filter-name>
+    <url-pattern>/exceptionhandling/5_1</url-pattern>
+    <url-pattern>/exceptionhandling/5_2</url-pattern>
+    <url-pattern>/exceptionhandling/5_3</url-pattern>
+  </filter-mapping>
+
+  <filter>
+    <filter-name>ExceptionLevelResolverFilter</filter-name>
+    <filter-class>org.terasoluna.gfw.functionaltest.app.exceptionhandling.ExceptionLevelResolverFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>ExceptionLevelResolverFilter</filter-name>
+    <url-pattern>/exceptionhandling/5_1</url-pattern>
+    <url-pattern>/exceptionhandling/5_2</url-pattern>
+    <url-pattern>/exceptionhandling/5_3</url-pattern>
+  </filter-mapping>
+
+  <filter>
+    <filter-name>exceptionLoggingFilter</filter-name>
+    <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>exceptionLoggingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+  <filter>
+    <filter-name>XTrackMDCPutFilter</filter-name>
+    <filter-class>org.terasoluna.gfw.web.logging.mdc.XTrackMDCPutFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>XTrackMDCPutFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+  <filter>
+    <filter-name>CustomXTrackMDCPutFilter</filter-name>
+    <filter-class>org.terasoluna.gfw.web.logging.mdc.XTrackMDCPutFilter</filter-class>
+    <init-param>
+      <param-name>attributeName</param-name>
+      <param-value>X-TrackId</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>CustomXTrackMDCPutFilter</filter-name>
+    <url-pattern>/logging/xTrackMDCPutFilter/1_2</url-pattern>
+  </filter-mapping>
+
+  <filter>
+    <filter-name>CharacterEncodingFilter</filter-name>
+    <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+    <init-param>
+      <param-name>encoding</param-name>
+      <param-value>UTF-8</param-value>
+    </init-param>
+    <init-param>
+      <param-name>forceEncoding</param-name>
+      <param-value>true</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>CharacterEncodingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+  <filter>
+    <filter-name>springSecurityFilterChain</filter-name>
+    <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+  </filter>
+
+  <filter-mapping>
+    <filter-name>springSecurityFilterChain</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+  <filter>
+    <filter-name>UserIdMDCPutFilter</filter-name>
+    <filter-class>org.terasoluna.gfw.security.web.logging.UserIdMDCPutFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>UserIdMDCPutFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+  <filter>
+    <filter-name>CustomUserIdMDCPutFilter</filter-name>
+    <filter-class>org.terasoluna.gfw.security.web.logging.UserIdMDCPutFilter</filter-class>
+    <init-param>
+      <param-name>attributeName</param-name>
+      <param-value>X-UserId</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>CustomUserIdMDCPutFilter</filter-name>
+    <url-pattern>/logging/userIdMDCPutFilter/2_2</url-pattern>
+  </filter-mapping>
+
+  <filter>
+    <filter-name>ThrowIndexOutOfBoundsExceptionFilter</filter-name>
+    <filter-class>org.terasoluna.gfw.functionaltest.app.exceptionhandling.ThrowIndexOutOfBoundsExceptionFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>ThrowIndexOutOfBoundsExceptionFilter</filter-name>
+    <url-pattern>/exceptionhandling/4_3</url-pattern>
+  </filter-mapping>
+
+  <filter>
+    <filter-name>ThrowIOExceptionFilter</filter-name>
+    <filter-class>org.terasoluna.gfw.functionaltest.app.exceptionhandling.ThrowIOExceptionFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>ThrowIOExceptionFilter</filter-name>
+    <url-pattern>/exceptionhandling/4_4</url-pattern>
+  </filter-mapping>
+
+  <servlet>
+    <servlet-name>exceptionHandlingIgnoreResultMessages</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <init-param>
+      <param-name>contextClass</param-name>
+      <param-value>
+        org.springframework.web.context.support.AnnotationConfigWebApplicationContext
+      </param-value>
+    </init-param>
+    <init-param>
+      <param-name>contextConfigLocation</param-name>
+      <!-- ApplicationContext for Spring MVC -->
+      <param-value>org.terasoluna.gfw.functionaltest.config.web.SpringMvcExceptionhandlingIgnoreResultMessagesConfig</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>exceptionHandlingIgnoreResultMessages</servlet-name>
+    <url-pattern>/exceptionHandlingIgnoreResultMessages/*</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>exceptionHandlingChangeAttribute</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <init-param>
+      <param-name>contextClass</param-name>
+      <param-value>
+        org.springframework.web.context.support.AnnotationConfigWebApplicationContext
+      </param-value>
+    </init-param>
+    <init-param>
+      <param-name>contextConfigLocation</param-name>
+      <!-- ApplicationContext for Spring MVC -->
+      <param-value>org.terasoluna.gfw.functionaltest.config.web.SpringMvcExceptionhandlingChangeAttributeConfig</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>exceptionHandlingChangeAttribute</servlet-name>
+    <url-pattern>/exceptionHandlingChangeAttribute/*</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>exceptionHandlingRedirect</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <init-param>
+      <param-name>contextClass</param-name>
+      <param-value>
+        org.springframework.web.context.support.AnnotationConfigWebApplicationContext
+      </param-value>
+    </init-param>
+    <init-param>
+      <param-name>contextConfigLocation</param-name>
+      <!-- ApplicationContext for Spring MVC -->
+      <param-value>org.terasoluna.gfw.functionaltest.config.web.SpringMvcExceptionhandlingRedirectConfig</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>exceptionHandlingRedirect</servlet-name>
+    <url-pattern>/exceptionHandlingRedirect/*</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>exceptionHandlingExceptionLoggerVariation</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <init-param>
+      <param-name>contextClass</param-name>
+      <param-value>
+        org.springframework.web.context.support.AnnotationConfigWebApplicationContext
+      </param-value>
+    </init-param>
+    <init-param>
+      <param-name>contextConfigLocation</param-name>
+      <!-- ApplicationContext for Spring MVC -->
+      <param-value>org.terasoluna.gfw.functionaltest.config.web.SpringMvcExceptionhandlingExceptionloggerVariationConfig</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>exceptionHandlingExceptionLoggerVariation</servlet-name>
+    <url-pattern>/exceptionHandlingExceptionLoggerVariation/*</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>exceptionHandlingLogFormat</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <init-param>
+      <param-name>contextClass</param-name>
+      <param-value>
+        org.springframework.web.context.support.AnnotationConfigWebApplicationContext
+      </param-value>
+    </init-param>
+    <init-param>
+      <param-name>contextConfigLocation</param-name>
+      <!-- ApplicationContext for Spring MVC -->
+      <param-value>org.terasoluna.gfw.functionaltest.config.web.SpringMvcExceptionhandlingLogFormatConfig</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>exceptionHandlingLogFormat</servlet-name>
+    <url-pattern>/exceptionHandlingLogFormat/*</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>exceptionHandlingMessageExceptionCodeResolver</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <init-param>
+      <param-name>contextClass</param-name>
+      <param-value>
+        org.springframework.web.context.support.AnnotationConfigWebApplicationContext
+      </param-value>
+    </init-param>
+    <init-param>
+      <param-name>contextConfigLocation</param-name>
+      <!-- ApplicationContext for Spring MVC -->
+      <param-value>org.terasoluna.gfw.functionaltest.config.web.SpringMvcExceptionhandlingMessageExceptionCoderesolverConfig</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>exceptionHandlingMessageExceptionCodeResolver</servlet-name>
+    <url-pattern>/exceptionHandlingMessageExceptionCodeResolver/*</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>exceptionHandlingChangeDefaultStatusCode</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <init-param>
+      <param-name>contextClass</param-name>
+      <param-value>
+        org.springframework.web.context.support.AnnotationConfigWebApplicationContext
+      </param-value>
+    </init-param>
+    <init-param>
+      <param-name>contextConfigLocation</param-name>
+      <!-- ApplicationContext for Spring MVC -->
+      <param-value>org.terasoluna.gfw.functionaltest.config.web.SpringMvcExceptionhandlingChangeDefaultStatusCodeConfig</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>exceptionHandlingChangeDefaultStatusCode</servlet-name>
+    <url-pattern>/exceptionHandlingChangeDefaultStatusCode/*</url-pattern>
+  </servlet-mapping>
+
+  <jsp-config>
+    <jsp-property-group>
+      <url-pattern>*.jsp</url-pattern>
+      <el-ignored>false</el-ignored>
+      <page-encoding>UTF-8</page-encoding>
+      <scripting-invalid>false</scripting-invalid>
+      <include-prelude>/WEB-INF/views/common/include.jsp</include-prelude>
+    </jsp-property-group>
+  </jsp-config>
+
+  <error-page>
+    <error-code>403</error-code>
+    <location>/WEB-INF/views/common/error/accessDeniedError.jsp</location>
+  </error-page>
+
+  <error-page>
+    <error-code>404</error-code>
+    <location>/WEB-INF/views/common/error/notFoundError.jsp</location>
+  </error-page>
+
+  <error-page>
+    <exception-type>jakarta.servlet.ServletException</exception-type>
+    <location>/WEB-INF/views/common/error/servletError.jsp</location>
+  </error-page>
+
+  <error-page>
+    <exception-type>java.lang.Exception</exception-type>
+    <location>/WEB-INF/views/common/error/unhandledSystemError.html</location>
+  </error-page>
+
+  <session-config>
+    <!-- 30min -->
+    <session-timeout>30</session-timeout>
+    <cookie-config>
+      <http-only>true</http-only>
+      <!-- <secure>true</secure> -->
+    </cookie-config>
+    <tracking-mode>COOKIE</tracking-mode>
+  </session-config>
+
+</web-app>

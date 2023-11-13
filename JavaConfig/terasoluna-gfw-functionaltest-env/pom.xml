@@ -1,0 +1,85 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>terasoluna-gfw-functionaltest-env</artifactId>
+  <packaging>jar</packaging>
+  <parent>
+    <groupId>org.terasoluna.gfw.functionaltest</groupId>
+    <artifactId>terasoluna-gfw-functionaltest</artifactId>
+    <version>5.9.0-SNAPSHOT</version>
+    <relativePath>../pom.xml</relativePath>
+  </parent>
+  <name>TERASOLUNA Server Framework for Java (5.x) - Functionality Test Application - Environment Layer</name>
+  <description>Environment dependent layer of Functionality Test Application using TERASOLUNA Server Framework for Java (5.x)</description>
+  <build>
+    <finalName>${project.env.buildFinalName}</finalName>
+    <sourceDirectory>${project.env.main.directory}/java</sourceDirectory>
+    <resources>
+      <resource>
+        <directory>${project.env.main.directory}/resources</directory>
+        <excludes>
+          <exclude>**/*.env.ftl</exclude>
+        </excludes>
+      </resource>
+    </resources>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-resources-plugin</artifactId>
+        <configuration>
+          <encoding>${encoding}</encoding>
+          <overwrite>true</overwrite>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-source-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>xml-maven-plugin</artifactId>
+        <configuration>
+          <formatFileSets>
+            <formatFileSet>
+              <directory>${project.basedir}</directory>
+              <includes>
+                <include>configs/**/*.xml</include>
+                <include>configs/**/*.xml.env.ftl</include>
+              </includes>
+            </formatFileSet>
+          </formatFileSets>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+  <dependencies>
+    <!-- == Begin TERASOLUNA == -->
+    <dependency>
+      <groupId>org.terasoluna.gfw</groupId>
+      <artifactId>terasoluna-gfw-common-dependencies</artifactId>
+      <type>pom</type>
+    </dependency>
+    <dependency>
+      <groupId>org.terasoluna.gfw</groupId>
+      <artifactId>terasoluna-gfw-jpa-dependencies</artifactId>
+      <type>pom</type>
+    </dependency>
+    <dependency>
+      <groupId>org.terasoluna.gfw</groupId>
+      <artifactId>terasoluna-gfw-recommended-dependencies</artifactId>
+      <type>pom</type>
+    </dependency>
+    <!-- == End TERASOLUNA == -->
+  </dependencies>
+  <properties>
+    <project.root.basedir>${project.parent.basedir}</project.root.basedir>
+  </properties>
+</project>

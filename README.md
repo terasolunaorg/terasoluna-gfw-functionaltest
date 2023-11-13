@@ -58,7 +58,8 @@ The commands are different for XML-based configuration and Java-based configurat
 ```console
 $ cd {your repository directory}
 $ git checkout {target branch}
-$ mvn -U install -am -pl terasoluna-gfw-functionaltest-web,terasoluna-gfw-functionaltest-selenium
+$ cd {your repository directory}/XmlConfig
+$ mvn -U install -am -pl terasoluna-gfw-functionaltest-web
 ```
 
 **Java-based configuration**
@@ -66,7 +67,8 @@ $ mvn -U install -am -pl terasoluna-gfw-functionaltest-web,terasoluna-gfw-functi
 ```console
 $ cd {your repository directory}
 $ git checkout {target branch}
-$ mvn -U install -am -pl terasoluna-gfw-functionaltest-web,terasoluna-gfw-functionaltest-selenium -P warpack-env,warpack-jstl,java-config
+$ cd {your repository directory}/JavaConfig
+$ mvn -U install -am -pl terasoluna-gfw-functionaltest-web
 ```
 
 #### Case that use PostgreSQL as database
@@ -78,7 +80,8 @@ The commands are different for XML-based configuration and Java-based configurat
 ```console
 $ cd {your repository directory}
 $ git checkout {target branch}
-$ mvn -U install -am -pl terasoluna-gfw-functionaltest-web,terasoluna-gfw-functionaltest-selenium -P tomcat10-postgresql,warpack-env,warpack-jstl,travis,xml-config
+$ cd {your repository directory}/XmlConfig
+$ mvn -U install -am -pl terasoluna-gfw-functionaltest-web -P tomcat10-postgresql,warpack-env,warpack-jstl,travis
 ```
 
 **Java-based configuration**
@@ -86,7 +89,8 @@ $ mvn -U install -am -pl terasoluna-gfw-functionaltest-web,terasoluna-gfw-functi
 ```console
 $ cd {your repository directory}
 $ git checkout {target branch}
-$ mvn -U install -am -pl terasoluna-gfw-functionaltest-web,terasoluna-gfw-functionaltest-selenium -P tomcat10-postgresql,warpack-env,warpack-jstl,travis,java-config
+$ cd {your repository directory}/JavaConfig
+$ mvn -U install -am -pl terasoluna-gfw-functionaltest-web -P tomcat10-postgresql,warpack-env,warpack-jstl,travis
 ```
 
 > **Note:**
@@ -109,15 +113,37 @@ Startup Tomcat9 and deploy war file using [CARGO maven plugin](https://codehaus-
 
 #### Case that use embedded H2 as database
 
+The commands are different for XML-based configuration and Java-based configuration.
+
+**XML-based configuration**
+
 ```console
-$ cd {your repository directory}
+$ cd {your repository directory}/XmlConfig
+$ mvn -U cargo:run -pl terasoluna-gfw-functionaltest-web
+```
+
+**Java-based configuration**
+
+```console
+$ cd {your repository directory}/JavaConfig
 $ mvn -U cargo:run -pl terasoluna-gfw-functionaltest-web
 ```
 
 #### Case that use PostgreSQL as database (use Tomcat JNDI Resource)
 
+The commands are different for XML-based configuration and Java-based configuration.
+
+**XML-based configuration**
+
 ```console
-$ cd {your repository directory}
+$ cd {your repository directory}/XmlConfig
+$ mvn -U cargo:run -pl terasoluna-gfw-functionaltest-web -P travis
+```
+
+**Java-based configuration**
+
+```console
+$ cd {your repository directory}/JavaConfig
 $ mvn -U cargo:run -pl terasoluna-gfw-functionaltest-web -P travis
 ```
 
@@ -133,15 +159,15 @@ The commands are different for XML-based configuration and Java-based configurat
 **XML-based configuration**
 
 ```console
-$ cd {your repository directory}
-$ mvn -U test -pl terasoluna-gfw-functionaltest-selenium-xmlconfig -Dwdm.cachePath=/opt/geckodriver -Dwdm.geckoDriverVersion=0.32.0
+$ cd {your repository directory}/XmlConfig
+$ mvn -U test -pl terasoluna-gfw-functionaltest-selenium -Dwdm.cachePath=/opt/geckodriver -Dwdm.geckoDriverVersion=0.32.0
 ```
 
 **Java-based configuration**
 
 ```console
-$ cd {your repository directory}
-$ mvn -U test -pl terasoluna-gfw-functionaltest-selenium-javaconfig -Dwdm.cachePath=/opt/geckodriver -Dwdm.geckoDriverVersion=0.32.0
+$ cd {your repository directory}/JavaConfig
+$ mvn -U test -pl terasoluna-gfw-functionaltest-selenium -Dwdm.cachePath=/opt/geckodriver -Dwdm.geckoDriverVersion=0.32.0
 ```
 
 > **Note:**
@@ -181,16 +207,25 @@ $ mvn clean install
 
 ```
 terasoluna-gfw-functionaltest
-├─terasoluna-gfw-functionaltest-domain
-├─terasoluna-gfw-functionaltest-env
-├─terasoluna-gfw-functionaltest-initdb
-├─terasoluna-gfw-functionaltest-javaconfig
-├─terasoluna-gfw-functionaltest-selenium
-├─terasoluna-gfw-functionaltest-selenium-javaconfig
-├─terasoluna-gfw-functionaltest-selenium-xmlconfig
-├─terasoluna-gfw-functionaltest-web
-└─terasoluna-gfw-functionaltest-xmlconfig
+├─JavaConfig
+│  ├─terasoluna-gfw-functionaltest-domain
+│  ├─terasoluna-gfw-functionaltest-env
+│  ├─terasoluna-gfw-functionaltest-initdb
+│  ├─terasoluna-gfw-functionaltest-selenium
+│  └─terasoluna-gfw-functionaltest-web
+└─XmlConfig
+    ├─terasoluna-gfw-functionaltest-domain
+    ├─terasoluna-gfw-functionaltest-env
+    ├─terasoluna-gfw-functionaltest-initdb
+    ├─terasoluna-gfw-functionaltest-selenium
+    └─terasoluna-gfw-functionaltest-web
 ```
+
+
+This project is
+It is divided and managed in two directories: XML-based configuration and Java-based configuration.
+
+The project configurations under XML-based configuration and Java-based configuration are the same.
 
 - **terasoluna-gfw-functionaltest-domain**
 
@@ -204,26 +239,10 @@ terasoluna-gfw-functionaltest
 
   A project that manages the SQL file for initializing the database
 
-- **terasoluna-gfw-functionaltest-javaconfig**
-
-  A project that manages Java-based configuration definitions
-
 - **terasoluna-gfw-functionaltest-selenium**
 
-  A project that manages common modules used in selenium tests
-
-- **terasoluna-gfw-functionaltest-selenium-javaconfig**
-
-  A project to manage selenium tests running in an Java-based configuration
-
-- **terasoluna-gfw-functionaltest-selenium-xmlconfig**
-
-  A project to manage selenium tests running in an XML-based configuration
+  Project to manage Selenium tests
 
 - **terasoluna-gfw-functionaltest-web**
 
   A project that stores classes and configuration files related to the application layer
-
-- **terasoluna-gfw-functionaltest-xmlconfig**
-
-  A project that manages XML-based configuration definitions
