@@ -58,7 +58,7 @@ The commands are different for XML-based configuration and Java-based configurat
 ```console
 $ cd {your repository directory}
 $ git checkout {target branch}
-$ cd {your repository directory}/xmlconfig
+$ cd {your repository directory}/XmlConfig
 $ mvn -U install -am -pl terasoluna-gfw-functionaltest-web
 ```
 
@@ -67,7 +67,7 @@ $ mvn -U install -am -pl terasoluna-gfw-functionaltest-web
 ```console
 $ cd {your repository directory}
 $ git checkout {target branch}
-$ cd {your repository directory}/javaconfig
+$ cd {your repository directory}/JavaConfig
 $ mvn -U install -am -pl terasoluna-gfw-functionaltest-web
 ```
 
@@ -80,7 +80,7 @@ The commands are different for XML-based configuration and Java-based configurat
 ```console
 $ cd {your repository directory}
 $ git checkout {target branch}
-$ cd {your repository directory}/xmlconfig
+$ cd {your repository directory}/XmlConfig
 $ mvn -U install -am -pl terasoluna-gfw-functionaltest-web -P tomcat10-postgresql,warpack-env,warpack-jstl,travis
 ```
 
@@ -89,7 +89,7 @@ $ mvn -U install -am -pl terasoluna-gfw-functionaltest-web -P tomcat10-postgresq
 ```console
 $ cd {your repository directory}
 $ git checkout {target branch}
-$ cd {your repository directory}/javaconfig
+$ cd {your repository directory}/JavaConfig
 $ mvn -U install -am -pl terasoluna-gfw-functionaltest-web -P tomcat10-postgresql,warpack-env,warpack-jstl,travis
 ```
 
@@ -118,14 +118,14 @@ The commands are different for XML-based configuration and Java-based configurat
 **XML-based configuration**
 
 ```console
-$ cd {your repository directory}/xmlconfig
+$ cd {your repository directory}/XmlConfig
 $ mvn -U cargo:run -pl terasoluna-gfw-functionaltest-web
 ```
 
 **Java-based configuration**
 
 ```console
-$ cd {your repository directory}/javaconfig
+$ cd {your repository directory}/JavaConfig
 $ mvn -U cargo:run -pl terasoluna-gfw-functionaltest-web
 ```
 
@@ -136,14 +136,14 @@ The commands are different for XML-based configuration and Java-based configurat
 **XML-based configuration**
 
 ```console
-$ cd {your repository directory}/xmlconfig
+$ cd {your repository directory}/XmlConfig
 $ mvn -U cargo:run -pl terasoluna-gfw-functionaltest-web -P travis
 ```
 
 **Java-based configuration**
 
 ```console
-$ cd {your repository directory}/javaconfig
+$ cd {your repository directory}/JavaConfig
 $ mvn -U cargo:run -pl terasoluna-gfw-functionaltest-web -P travis
 ```
 
@@ -159,14 +159,14 @@ The commands are different for XML-based configuration and Java-based configurat
 **XML-based configuration**
 
 ```console
-$ cd {your repository directory}/xmlconfig
+$ cd {your repository directory}/XmlConfig
 $ mvn -U test -pl terasoluna-gfw-functionaltest-selenium -Dwdm.cachePath=/opt/geckodriver -Dwdm.geckoDriverVersion=0.32.0
 ```
 
 **Java-based configuration**
 
 ```console
-$ cd {your repository directory}/javaconfig
+$ cd {your repository directory}/JavaConfig
 $ mvn -U test -pl terasoluna-gfw-functionaltest-selenium -Dwdm.cachePath=/opt/geckodriver -Dwdm.geckoDriverVersion=0.32.0
 ```
 
@@ -207,13 +207,13 @@ $ mvn clean install
 
 ```
 terasoluna-gfw-functionaltest
-├─javaconfig
+├─JavaConfig
 │  ├─terasoluna-gfw-functionaltest-domain
 │  ├─terasoluna-gfw-functionaltest-env
 │  ├─terasoluna-gfw-functionaltest-initdb
 │  ├─terasoluna-gfw-functionaltest-selenium
 │  └─terasoluna-gfw-functionaltest-web
-└─xmlconfig
+└─XmlConfig
     ├─terasoluna-gfw-functionaltest-domain
     ├─terasoluna-gfw-functionaltest-env
     ├─terasoluna-gfw-functionaltest-initdb

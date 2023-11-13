@@ -10,7 +10,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.Import;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.terasoluna.gfw.common.exception.ExceptionCodeResolver;
 import org.terasoluna.gfw.common.exception.ExceptionLogger;
 import org.terasoluna.gfw.web.exception.HandlerExceptionResolverLoggingInterceptor;
@@ -20,10 +21,11 @@ import org.terasoluna.gfw.web.exception.SystemExceptionResolver;
  * Configure SpringMVC.
  */
 @Configuration
+@EnableWebMvc
 @EnableAspectJAutoProxy
 @Import(SpringMvcCommonConfig.class)
-public class SpringMvcExceptionhandlingRedirectConfig extends
-                                                      WebMvcConfigurationSupport {
+public class SpringMvcExceptionhandlingIgnoreResultMessagesConfig implements
+                                                                  WebMvcConfigurer {
 
     /**
      * Configure {@link SystemExceptionResolver} bean.
@@ -37,12 +39,13 @@ public class SpringMvcExceptionhandlingRedirectConfig extends
         SystemExceptionResolver bean = new SystemExceptionResolver();
         bean.setExceptionCodeResolver(exceptionCodeResolver);
         bean.setOrder(3);
+        bean.setResultMessagesAttribute(null);
 
         Properties exceptionMappings = new Properties();
         exceptionMappings.setProperty("InvalidTransactionTokenException",
                 "common/error/tokenError");
         exceptionMappings.setProperty("ResourceNotFoundException",
-                "common/error/notFoundError");
+                "common/error/resourceNotFoundError");
         exceptionMappings.setProperty("BusinessException",
                 "common/error/businessError");
         bean.setExceptionMappings(exceptionMappings);
@@ -50,13 +53,13 @@ public class SpringMvcExceptionhandlingRedirectConfig extends
         Properties statusCodes = new Properties();
         statusCodes.setProperty("common/error/tokenError", String.valueOf(
                 HttpStatus.CONFLICT.value()));
-        statusCodes.setProperty("common/error/notFoundError", String.valueOf(
-                HttpStatus.NOT_FOUND.value()));
+        statusCodes.setProperty("common/error/resourceNotFoundError", String
+                .valueOf(HttpStatus.NOT_FOUND.value()));
         statusCodes.setProperty("common/error/businessError", String.valueOf(
                 HttpStatus.CONFLICT.value()));
         bean.setStatusCodes(statusCodes);
 
-        bean.setDefaultErrorView("redirect:exceptionHandlingRedirect/3_4_1");
+        bean.setDefaultErrorView("common/error/systemError");
         bean.setDefaultStatusCode(HttpStatus.INTERNAL_SERVER_ERROR.value());
         return bean;
     }

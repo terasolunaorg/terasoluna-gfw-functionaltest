@@ -1,10 +1,10 @@
 package org.terasoluna.gfw.functionaltest.config.app;
 
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Properties;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 
 import javax.sql.DataSource;
 
@@ -22,28 +22,37 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.Database;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
-import org.springframework.scheduling.config.ContextLifecycleScheduledTaskRegistrar;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.SchedulingConfigurer;
 import org.springframework.scheduling.config.ScheduledTaskRegistrar;
-import org.springframework.scheduling.config.TriggerTask;
 import org.springframework.scheduling.support.CronTrigger;
-import org.springframework.scheduling.support.ScheduledMethodRunnable;
 import org.terasoluna.gfw.functionaltest.config.app.mybatis.MybatisConfig;
 import org.terasoluna.gfw.functionaltest.domain.DBLogCleaner;
+
+import jakarta.inject.Inject;
 
 /**
  * Bean definitions for infrastructure layer.
  */
 @Configuration
 @EnableJpaRepositories("org.terasoluna.gfw.functionaltest.domain.repository")
+@EnableScheduling
 @MapperScan("org.terasoluna.gfw.functionaltest.domain.repository")
 @Import({ TerasolunaGfwFunctionaltestEnvConfig.class })
-public class TerasolunaGfwFunctionaltestInfraConfig {
+public class TerasolunaGfwFunctionaltestInfraConfig implements
+                                                    SchedulingConfigurer {
 
     /**
      * Database property.
      */
     @Value("${database}")
-    Database database;
+    private Database database;
+
+    /**
+     * Bean of DataSource
+     */
+    @Inject
+    private DataSource dataSourceForLogging;
 
     /**
      * Configure {@link HibernateJpaVendorAdapter} bean.
@@ -134,49 +143,32 @@ public class TerasolunaGfwFunctionaltestInfraConfig {
 
     /**
      * Configure {@link DBLogCleaner} bean.
-     * @param dataSource Bean defined by TerasolunaGfwFunctionaltestEnvConfig#dataSourceForLogging()
      * @return Bean of configured {@link DBLogCleaner}
      */
     @Bean("dbLogCleaner")
-    public DBLogCleaner dbLogCleaner(DataSource dataSourceForLogging) {
+    public DBLogCleaner dbLogCleaner() {
         DBLogCleaner bean = new DBLogCleaner();
         bean.setDataSource(dataSourceForLogging);
         return bean;
     }
 
     /**
-     * Configure ScheduledTaskRegistrar.
-     * @param dbLogCleaner Bean defined by #dbLogCleaner()
-     * @return Bean of configured {@link ScheduledTaskRegistrar}
-     * @throws NoSuchMethodException if the bean could not get {@link ScheduledTaskRegistrar}
+     * {@inheritDoc}
+     */
+    @Override
+    public void configureTasks(ScheduledTaskRegistrar taskRegistrar) {
+        taskRegistrar.setScheduler(dbLogCleanupTaskScheduler());
+        taskRegistrar.addTriggerTask(() -> dbLogCleaner().cleanup(),
+                new CronTrigger("0 0 6 * * ?"));
+    }
+
+    /**
+     * Configure {@link Executor} bean.
+     * @return Bean of configured {@link Executor}
      */
     @Bean("dbLogCleanupTaskScheduler")
-    public ScheduledTaskRegistrar dbLogCleanupTaskScheduler(
-            DBLogCleaner dbLogCleaner) throws NoSuchMethodException {
-        ScheduledTaskRegistrar bean = new ContextLifecycleScheduledTaskRegistrar();
-        List<TriggerTask> list = new ArrayList<TriggerTask>();
-        list.add(new TriggerTask(dbLogCleanupTaskScheduledMethodRunnable(
-                dbLogCleaner), dbLogCleanupTrigger()));
-        bean.setTriggerTasksList(list);
-        return bean;
+    public Executor dbLogCleanupTaskScheduler() {
+        return Executors.newSingleThreadScheduledExecutor();
     }
 
-    /**
-     * Configure ScheduledMethodRunnable.
-     * @param dbLogCleaner Bean defined by #dbLogCleaner()
-     * @return Bean of configured {@link ScheduledMethodRunnable}
-     * @throws NoSuchMethodException if the bean could not get {@link ScheduledMethodRunnable}
-     */
-    private ScheduledMethodRunnable dbLogCleanupTaskScheduledMethodRunnable(
-            DBLogCleaner dbLogCleaner) throws NoSuchMethodException {
-        return new ScheduledMethodRunnable(dbLogCleaner, "cleanup");
-    }
-
-    /**
-     * Configure CronTrigger.
-     * @return Bean of configured {@link CronTrigger}
-     */
-    private CronTrigger dbLogCleanupTrigger() {
-        return new CronTrigger("0 0 6 * * ?");
-    }
 }

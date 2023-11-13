@@ -1,8 +1,6 @@
 package org.terasoluna.gfw.functionaltest.config.web;
 
-import java.util.HashSet;
 import java.util.Properties;
-import java.util.Set;
 
 import org.springframework.aop.Advisor;
 import org.springframework.aop.aspectj.AspectJExpressionPointcut;
@@ -11,13 +9,11 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.Import;
-import org.springframework.dao.PessimisticLockingFailureException;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.terasoluna.gfw.common.exception.ExceptionCodeResolver;
 import org.terasoluna.gfw.common.exception.ExceptionLogger;
-import org.terasoluna.gfw.common.exception.ResultMessagesNotificationException;
-import org.terasoluna.gfw.functionaltest.app.exceptionhandling.ExceptionHandlingController.ExceptionHandlingException;
 import org.terasoluna.gfw.web.exception.HandlerExceptionResolverLoggingInterceptor;
 import org.terasoluna.gfw.web.exception.SystemExceptionResolver;
 
@@ -25,9 +21,11 @@ import org.terasoluna.gfw.web.exception.SystemExceptionResolver;
  * Configure SpringMVC.
  */
 @Configuration
+@EnableWebMvc
 @EnableAspectJAutoProxy
 @Import(SpringMvcCommonConfig.class)
-public class SpringMvcConfig extends WebMvcConfigurationSupport {
+public class SpringMvcExceptionhandlingChangeDefaultStatusCodeConfig implements
+                                                                     WebMvcConfigurer {
 
     /**
      * Configure {@link SystemExceptionResolver} bean.
@@ -62,9 +60,8 @@ public class SpringMvcConfig extends WebMvcConfigurationSupport {
                 HttpStatus.CONFLICT.value()));
         bean.setStatusCodes(statusCodes);
 
-        bean.setExcludedExceptions(ExceptionHandlingException.class);
         bean.setDefaultErrorView("common/error/systemError");
-        bean.setDefaultStatusCode(HttpStatus.INTERNAL_SERVER_ERROR.value());
+        bean.setDefaultStatusCode(HttpStatus.BAD_REQUEST.value());
         return bean;
     }
 
@@ -79,11 +76,6 @@ public class SpringMvcConfig extends WebMvcConfigurationSupport {
             ExceptionLogger exceptionLogger) {
         HandlerExceptionResolverLoggingInterceptor bean = new HandlerExceptionResolverLoggingInterceptor();
         bean.setExceptionLogger(exceptionLogger);
-
-        Set<Class<? extends Exception>> ignore = new HashSet<Class<? extends Exception>>();
-        ignore.add(ResultMessagesNotificationException.class);
-        ignore.add(PessimisticLockingFailureException.class);
-        bean.setIgnoreExceptions(ignore);
         return bean;
     }
 

@@ -10,7 +10,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.Import;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.terasoluna.gfw.common.exception.ExceptionCodeResolver;
 import org.terasoluna.gfw.common.exception.ExceptionLogger;
 import org.terasoluna.gfw.web.exception.HandlerExceptionResolverLoggingInterceptor;
@@ -20,10 +21,11 @@ import org.terasoluna.gfw.web.exception.SystemExceptionResolver;
  * Configure SpringMVC.
  */
 @Configuration
+@EnableWebMvc
 @EnableAspectJAutoProxy
 @Import(SpringMvcCommonConfig.class)
-public class SpringMvcExceptionhandlingLogFormatConfig extends
-                                                       WebMvcConfigurationSupport {
+public class SpringMvcExceptionhandlingExceptionloggerVariationConfig implements
+                                                                      WebMvcConfigurer {
 
     /**
      * Configure {@link SystemExceptionResolver} bean.
@@ -63,15 +65,15 @@ public class SpringMvcExceptionhandlingLogFormatConfig extends
 
     /**
      * Configure messages logging AOP.
-     * @param changeFormatExceptionLogger Bean defined by ApplicationContext#changeFormatExceptionLogger
+     * @param changeCodeAndMessageExceptionLogger Bean defined by ApplicationContext#changeCodeAndMessageExceptionLogger
      * @see com.example.securelogin.config.app.ApplicationContext#exceptionLogger(ExceptionCodeResolver)
      * @return Bean of configured {@link HandlerExceptionResolverLoggingInterceptor}
      */
     @Bean("handlerExceptionResolverLoggingInterceptor")
     public HandlerExceptionResolverLoggingInterceptor handlerExceptionResolverLoggingInterceptor(
-            ExceptionLogger changeFormatExceptionLogger) {
+            ExceptionLogger changeCodeAndMessageExceptionLogger) {
         HandlerExceptionResolverLoggingInterceptor bean = new HandlerExceptionResolverLoggingInterceptor();
-        bean.setExceptionLogger(changeFormatExceptionLogger);
+        bean.setExceptionLogger(changeCodeAndMessageExceptionLogger);
         return bean;
     }
 

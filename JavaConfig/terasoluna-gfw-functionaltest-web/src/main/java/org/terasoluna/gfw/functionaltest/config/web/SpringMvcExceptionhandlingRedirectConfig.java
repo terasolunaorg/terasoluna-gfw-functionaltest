@@ -10,7 +10,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.Import;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.terasoluna.gfw.common.exception.ExceptionCodeResolver;
 import org.terasoluna.gfw.common.exception.ExceptionLogger;
 import org.terasoluna.gfw.web.exception.HandlerExceptionResolverLoggingInterceptor;
@@ -20,10 +21,11 @@ import org.terasoluna.gfw.web.exception.SystemExceptionResolver;
  * Configure SpringMVC.
  */
 @Configuration
+@EnableWebMvc
 @EnableAspectJAutoProxy
 @Import(SpringMvcCommonConfig.class)
-public class SpringMvcExceptionhandlingExceptionloggerVariationConfig extends
-                                                                      WebMvcConfigurationSupport {
+public class SpringMvcExceptionhandlingRedirectConfig implements
+                                                      WebMvcConfigurer {
 
     /**
      * Configure {@link SystemExceptionResolver} bean.
@@ -56,22 +58,22 @@ public class SpringMvcExceptionhandlingExceptionloggerVariationConfig extends
                 HttpStatus.CONFLICT.value()));
         bean.setStatusCodes(statusCodes);
 
-        bean.setDefaultErrorView("common/error/systemError");
+        bean.setDefaultErrorView("redirect:exceptionHandlingRedirect/3_4_1");
         bean.setDefaultStatusCode(HttpStatus.INTERNAL_SERVER_ERROR.value());
         return bean;
     }
 
     /**
      * Configure messages logging AOP.
-     * @param changeCodeAndMessageExceptionLogger Bean defined by ApplicationContext#changeCodeAndMessageExceptionLogger
+     * @param exceptionLogger Bean defined by ApplicationContext#exceptionLogger
      * @see com.example.securelogin.config.app.ApplicationContext#exceptionLogger(ExceptionCodeResolver)
      * @return Bean of configured {@link HandlerExceptionResolverLoggingInterceptor}
      */
     @Bean("handlerExceptionResolverLoggingInterceptor")
     public HandlerExceptionResolverLoggingInterceptor handlerExceptionResolverLoggingInterceptor(
-            ExceptionLogger changeCodeAndMessageExceptionLogger) {
+            ExceptionLogger exceptionLogger) {
         HandlerExceptionResolverLoggingInterceptor bean = new HandlerExceptionResolverLoggingInterceptor();
-        bean.setExceptionLogger(changeCodeAndMessageExceptionLogger);
+        bean.setExceptionLogger(exceptionLogger);
         return bean;
     }
 

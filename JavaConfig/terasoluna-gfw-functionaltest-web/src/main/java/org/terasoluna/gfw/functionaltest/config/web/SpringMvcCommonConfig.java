@@ -22,7 +22,7 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 import org.springframework.web.servlet.support.RequestDataValueProcessor;
@@ -38,7 +38,7 @@ import org.terasoluna.gfw.web.token.transaction.TransactionTokenRequestDataValue
  */
 @Configuration
 @ComponentScan(basePackages = { "org.terasoluna.gfw.functionaltest.app" })
-public class SpringMvcCommonConfig extends WebMvcConfigurationSupport {
+public class SpringMvcCommonConfig implements WebMvcConfigurer {
 
     /**
      * Configure {@link PropertySourcesPlaceholderConfigurer} bean.
@@ -117,7 +117,7 @@ public class SpringMvcCommonConfig extends WebMvcConfigurationSupport {
      * {@inheritDoc}
      */
     @Override
-    protected void addInterceptors(InterceptorRegistry registry) {
+    public void addInterceptors(InterceptorRegistry registry) {
         addInterceptor(registry, traceLoggingInterceptor(), "/**",
                 "/resources/**",
                 "/logging/traceLoggingInterceptor/customWarnHandling/**");
