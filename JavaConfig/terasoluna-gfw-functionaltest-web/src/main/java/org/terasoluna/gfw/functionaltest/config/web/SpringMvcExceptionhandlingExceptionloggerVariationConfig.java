@@ -94,17 +94,16 @@ public class SpringMvcExceptionhandlingExceptionloggerVariationConfig implements
 
     /**
      * Configure messages logging AOP advisor.
-     * @param changeCodeAndMessageExceptionLogger Bean defined by ApplicationContext#changeCodeAndMessageExceptionLogger
-     * @see com.example.securelogin.config.app.ApplicationContext#changeCodeAndMessageExceptionLogger()
+     * @param handlerExceptionResolverLoggingInterceptor Bean defined by #handlerExceptionResolverLoggingInterceptor
+     * @see #handlerExceptionResolverLoggingInterceptor(ExceptionLogger)
      * @return Advisor configured for PointCut
      */
     @Bean
     public Advisor handlerExceptionResolverLoggingInterceptorAdvisor(
-            ExceptionLogger changeCodeAndMessageExceptionLogger) {
+            HandlerExceptionResolverLoggingInterceptor handlerExceptionResolverLoggingInterceptor) {
         AspectJExpressionPointcut pointcut = new AspectJExpressionPointcut();
         pointcut.setExpression(
                 "execution(* org.springframework.web.servlet.HandlerExceptionResolver.resolveException(..))");
-        return new DefaultPointcutAdvisor(pointcut, handlerExceptionResolverLoggingInterceptor(
-                changeCodeAndMessageExceptionLogger));
+        return new DefaultPointcutAdvisor(pointcut, handlerExceptionResolverLoggingInterceptor);
     }
 }

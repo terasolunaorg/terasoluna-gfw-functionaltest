@@ -91,33 +91,31 @@ public class TerasolunaGfwFunctionaltestDomainConfig {
 
     /**
      * Configure messages logging AOP advisor.
-     * @param exceptionLogger Bean defined by ApplicationContextConfig#exceptionLogger
-     * @see org.terasoluna.gfw.functionaltest.config.app.ApplicationContextConfig#exceptionLogger()
+     * @param resultMessagesLoggingInterceptor Bean defined by #resultMessagesLoggingInterceptor
+     * @see #resultMessagesLoggingInterceptor(ExceptionLogger)
      * @return Advisor configured for PointCut
      */
     @Bean
     public Advisor resultMessagesLoggingInterceptorAdvisor(
-            ExceptionLogger exceptionLogger) {
+            ResultMessagesLoggingInterceptor resultMessagesLoggingInterceptor) {
         AspectJExpressionPointcut pointcut = new AspectJExpressionPointcut();
         pointcut.setExpression(
                 "@within(org.springframework.stereotype.Service) && !@within(org.terasoluna.gfw.functionaltest.domain.exception.InfoLogging)");
-        return new DefaultPointcutAdvisor(pointcut, resultMessagesLoggingInterceptor(
-                exceptionLogger));
+        return new DefaultPointcutAdvisor(pointcut, resultMessagesLoggingInterceptor);
     }
 
     /**
      * Configure messages logging AOP advisor.
-     * @param exceptionLogger Bean defined by ApplicationContextConfig#exceptionLogger
-     * @see org.terasoluna.gfw.functionaltest.config.app.ApplicationContextConfig#exceptionLogger()
+     * @param resultMessagesInfoLoggingInterceptor Bean defined by #resultMessagesInfoLoggingInterceptor
+     * @see #resultMessagesInfoLoggingInterceptor(ExceptionLogger)
      * @return Advisor configured for PointCut
      */
     @Bean
     public Advisor resultMessagesInfoLoggingInterceptorAdvisor(
-            ExceptionLogger exceptionLogger) {
+            ResultMessagesInfoLoggingInterceptor resultMessagesInfoLoggingInterceptor) {
         AspectJExpressionPointcut pointcut = new AspectJExpressionPointcut();
         pointcut.setExpression(
                 "@within(org.terasoluna.gfw.functionaltest.domain.exception.InfoLogging)");
-        return new DefaultPointcutAdvisor(pointcut, resultMessagesInfoLoggingInterceptor(
-                exceptionLogger));
+        return new DefaultPointcutAdvisor(pointcut, resultMessagesInfoLoggingInterceptor);
     }
 }
