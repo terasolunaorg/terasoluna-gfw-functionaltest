@@ -1,3 +1,18 @@
+/*
+ * Copyright(c) 2023 NTT Corporation.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
+ * either express or implied. See the License for the specific language
+ * governing permissions and limitations under the License.
+ */
 package org.terasoluna.gfw.functionaltest.config.app;
 
 import java.math.BigInteger;
@@ -8,13 +23,10 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 import org.apache.commons.dbcp2.BasicDataSource;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.init.DataSourceInitializer;
-import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
 import org.springframework.jndi.JndiObjectFactoryBean;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -42,6 +54,7 @@ public class TerasolunaGfwFunctionaltestEnvConfig {
     /**
      * Configure {@link DataSource} bean.
      * @return Bean of configured {@link JndiObjectFactoryBean}
+     * @throws NamingException
      */
     @Bean(name = "dataSource")
     public DataSource dataSource() throws NamingException {
@@ -55,13 +68,13 @@ public class TerasolunaGfwFunctionaltestEnvConfig {
 
     /**
      * Configure {@link JdbcSequencer} bean.
-     * @param dataSource DataSource defined by #dataSource()
      * @return Bean of configured {@link JdbcSequencer}
+     * @throws NamingException
      */
     @Bean("integerSeq")
-    public JdbcSequencer<Integer> integerSeq(DataSource dataSource) {
+    public JdbcSequencer<Integer> integerSeq() throws NamingException {
         JdbcSequencer<Integer> jdbcSequencer = new JdbcSequencer<Integer>();
-        jdbcSequencer.setDataSource(dataSource);
+        jdbcSequencer.setDataSource(dataSource());
         jdbcSequencer.setSequenceClass(java.lang.Integer.class);
         jdbcSequencer.setNextValueQuery("SELECT nextval('INTEGER_SEQ') AS seq");
         jdbcSequencer.setCurrentValueQuery(
@@ -71,13 +84,13 @@ public class TerasolunaGfwFunctionaltestEnvConfig {
 
     /**
      * Configure {@link JdbcSequencer} bean.
-     * @param dataSource DataSource defined by #dataSource()
      * @return Bean of configured {@link JdbcSequencer}
+     * @throws NamingException
      */
     @Bean("longSeq")
-    public JdbcSequencer<Long> longSeq(DataSource dataSource) {
+    public JdbcSequencer<Long> longSeq() throws NamingException {
         JdbcSequencer<Long> jdbcSequencer = new JdbcSequencer<Long>();
-        jdbcSequencer.setDataSource(dataSource);
+        jdbcSequencer.setDataSource(dataSource());
         jdbcSequencer.setSequenceClass(java.lang.Long.class);
         jdbcSequencer.setNextValueQuery("SELECT nextval('LONG_SEQ') AS seq");
         jdbcSequencer.setCurrentValueQuery("SELECT currval('LONG_SEQ') AS seq");
@@ -86,13 +99,13 @@ public class TerasolunaGfwFunctionaltestEnvConfig {
 
     /**
      * Configure {@link JdbcSequencer} bean.
-     * @param dataSource DataSource defined by #dataSource()
      * @return Bean of configured {@link JdbcSequencer}
+     * @throws NamingException
      */
     @Bean("bigIntegerSeq")
-    public JdbcSequencer<BigInteger> bigIntegerSeq(DataSource dataSource) {
+    public JdbcSequencer<BigInteger> bigIntegerSeq() throws NamingException {
         JdbcSequencer<BigInteger> jdbcSequencer = new JdbcSequencer<BigInteger>();
-        jdbcSequencer.setDataSource(dataSource);
+        jdbcSequencer.setDataSource(dataSource());
         jdbcSequencer.setSequenceClass(java.math.BigInteger.class);
         jdbcSequencer.setNextValueQuery(
                 "SELECT nextval('BIG_INTEGER_SEQ') AS seq");
@@ -103,13 +116,13 @@ public class TerasolunaGfwFunctionaltestEnvConfig {
 
     /**
      * Configure {@link JdbcSequencer} bean.
-     * @param dataSource DataSource defined by #dataSource()
      * @return Bean of configured {@link JdbcSequencer}
+     * @throws NamingException
      */
     @Bean("stringSeq")
-    public JdbcSequencer<String> stringSeq(DataSource dataSource) {
+    public JdbcSequencer<String> stringSeq() throws NamingException {
         JdbcSequencer<String> jdbcSequencer = new JdbcSequencer<String>();
-        jdbcSequencer.setDataSource(dataSource);
+        jdbcSequencer.setDataSource(dataSource());
         jdbcSequencer.setSequenceClass(java.lang.String.class);
         jdbcSequencer.setNextValueQuery(
                 "SELECT TO_CHAR(nextval('STRING_SEQ'),'FM0000000000') AS seq");
@@ -120,13 +133,13 @@ public class TerasolunaGfwFunctionaltestEnvConfig {
 
     /**
      * Configure {@link JdbcSequencer} bean.
-     * @param dataSource DataSource defined by #dataSource()
      * @return Bean of configured {@link JdbcSequencer}
+     * @throws NamingException
      */
     @Bean("notFoundSeq")
-    public JdbcSequencer<Integer> notFoundSeq(DataSource dataSource) {
+    public JdbcSequencer<Integer> notFoundSeq() throws NamingException {
         JdbcSequencer<Integer> jdbcSequencer = new JdbcSequencer<Integer>();
-        jdbcSequencer.setDataSource(dataSource);
+        jdbcSequencer.setDataSource(dataSource());
         jdbcSequencer.setSequenceClass(java.lang.Integer.class);
         jdbcSequencer.setNextValueQuery(
                 "SELECT nextval('NOT_FOUND_SEQ') AS seq");
@@ -137,26 +150,25 @@ public class TerasolunaGfwFunctionaltestEnvConfig {
 
     /**
      * Configuration to set up database during initialization.
-     * @param dataSource Bean defined by #dataSource()
      * @return Bean of configured {@link DataSourceInitializer}
+     * @throws NamingException
      */
     @Bean
-    public DataSourceInitializer dataSourceInitializer(DataSource dataSource) {
+    public DataSourceInitializer dataSourceInitializer() throws NamingException {
         DataSourceInitializer bean = new DataSourceInitializer();
-        bean.setDataSource(dataSource);
+        bean.setDataSource(dataSource());
         return bean;
     }
 
     /**
      * Configure {@link TransactionManager} bean.
-     * @param dataSource Bean defined by #dataSource()
      * @return Bean of configured {@link DataSourceTransactionManager}
+     * @throws NamingException
      */
     @Bean("dataSourceTransactionManager")
-    public TransactionManager dataSourceTransactionManager(
-            DataSource dataSource) {
+    public TransactionManager dataSourceTransactionManager() throws NamingException {
         DataSourceTransactionManager bean = new DataSourceTransactionManager();
-        bean.setDataSource(dataSource);
+        bean.setDataSource(dataSource());
         bean.setRollbackOnCommitFailure(true);
         return bean;
     }

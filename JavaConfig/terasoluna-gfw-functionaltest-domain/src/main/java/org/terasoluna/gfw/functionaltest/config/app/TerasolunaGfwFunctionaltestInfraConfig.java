@@ -1,3 +1,18 @@
+/*
+ * Copyright(c) 2023 NTT Corporation.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
+ * either express or implied. See the License for the specific language
+ * governing permissions and limitations under the License.
+ */
 package org.terasoluna.gfw.functionaltest.config.app;
 
 import java.util.LinkedHashMap;
@@ -12,7 +27,6 @@ import org.apache.ibatis.mapping.VendorDatabaseIdProvider;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -69,19 +83,17 @@ public class TerasolunaGfwFunctionaltestInfraConfig implements
     /**
      * Configure {@link LocalContainerEntityManagerFactoryBean} bean.
      * @param dataSource DataSource defined by TerasolunaGfwFunctionaltestEnvConfig#dataSource()
-     * @param jpaVendorAdapter DataSource defined by #jpaVendorAdapter()
      * @return Bean of configured {@link LocalContainerEntityManagerFactoryBean}
      */
     @Bean("entityManagerFactory")
     public LocalContainerEntityManagerFactoryBean entityManagerFactory(
-            DataSource dataSource,
-            @Qualifier("jpaVendorAdapter") HibernateJpaVendorAdapter jpaVendorAdapter) {
+            DataSource dataSource) {
 
         LocalContainerEntityManagerFactoryBean bean = TerasolunaGfwFunctionaltestEnvConfig
                 .abstractEntityManagerFactory();
         bean.setPackagesToScan(
                 "org.terasoluna.gfw.functionaltest.domain.model");
-        bean.setJpaVendorAdapter(jpaVendorAdapter);
+        bean.setJpaVendorAdapter(jpaVendorAdapter());
         bean.setDataSource(dataSource);
 
         Map<String, Object> param = new LinkedHashMap<String, Object>();
@@ -128,16 +140,14 @@ public class TerasolunaGfwFunctionaltestInfraConfig implements
     /**
      * Configure {@link SqlSessionFactory} bean.
      * @param dataSource DataSource defined by TerasolunaGfwFunctionaltestEnvConfig#dataSource()
-     * @param databaseIdProvider defined by #databaseIdProvider()
      * @return Bean of configured {@link SqlSessionFactoryBean}
      */
     @Bean("sqlSessionFactory")
-    public SqlSessionFactoryBean sqlSessionFactory(DataSource dataSource,
-            @Qualifier("databaseIdProvider") VendorDatabaseIdProvider databaseIdProvider) {
+    public SqlSessionFactoryBean sqlSessionFactory(DataSource dataSource) {
         SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
         bean.setDataSource(dataSource);
         bean.setConfiguration(MybatisConfig.configuration());
-        bean.setDatabaseIdProvider(databaseIdProvider);
+        bean.setDatabaseIdProvider(databaseIdProvider());
         return bean;
     }
 

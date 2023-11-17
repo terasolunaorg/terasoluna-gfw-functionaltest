@@ -1,9 +1,23 @@
+/*
+ * Copyright(c) 2023 NTT Corporation.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
+ * either express or implied. See the License for the specific language
+ * governing permissions and limitations under the License.
+ */
 package org.terasoluna.gfw.functionaltest.config;
 
 import javax.sql.DataSource;
 
 import org.apache.commons.dbcp2.BasicDataSource;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -83,15 +97,12 @@ public class SeleniumContextConfig {
 
     /**
      * Configure the {@link TransactionManager} bean.
-     * @param dataSource Bean defined by #dataSource()
-     * @see #dataSource()
      * @return Bean of configured {@link DataSourceTransactionManager}
      */
     @Bean("transactionManager")
-    public TransactionManager transactionManager(
-            @Qualifier("dataSourceForLogging") DataSource dataSource) {
+    public TransactionManager transactionManager() {
         DataSourceTransactionManager bean = new DataSourceTransactionManager();
-        bean.setDataSource(dataSource);
+        bean.setDataSource(dataSource());
         bean.setRollbackOnCommitFailure(true);
         return bean;
     }
@@ -125,56 +136,45 @@ public class SeleniumContextConfig {
 
     /**
      * Configure the {@link JdbcTemplate} bean.
-     * @param DataSource Bean defined by #dataSource()
-     * @see #dataSource()
      * @return Bean of configured {@link JdbcTemplate}
      */
     @Bean("jdbcTemplate")
-    public JdbcTemplate jdbcTemplate(
-            @Qualifier("dataSourceForLogging") DataSource dataSource) {
+    public JdbcTemplate jdbcTemplate() {
         JdbcTemplate bean = new JdbcTemplate();
-        bean.setDataSource(dataSource);
+        bean.setDataSource(dataSource());
         bean.setFetchSize(100);
         return bean;
     }
 
     /**
      * Configure the {@link DBLogProvider}.
-     * @param JdbcTemplate Bean defined by #JdbcTemplate()
-     * @see #JdbcTemplate()
      * @return Bean of configured {@link DBLogProvider}
      */
     @Bean("dbLogAssertOperations")
-    public DBLogProvider dbLogAssertOperations(JdbcTemplate jdbcTemplate) {
-        DBLogProvider bean = new DBLogProvider(jdbcTemplate);
+    public DBLogProvider dbLogAssertOperations() {
+        DBLogProvider bean = new DBLogProvider(jdbcTemplate());
         return bean;
     }
 
     /**
      * Configure the {@link DBLog} bean.
-     * @param DataSource Bean defined by #dataSource()
-     * @see #dataSource()
      * @return Bean of configured {@link DBLog}
      */
     @Bean("dbLog")
-    public DBLog dbLog(
-            @Qualifier("dataSourceForLogging") DataSource dataSource) {
+    public DBLog dbLog() {
         DBLog bean = new DBLog();
-        bean.setDataSource(dataSource);
+        bean.setDataSource(dataSource());
         return bean;
     }
 
     /**
      * Configure the {@link DBLogCleaner} bean.
-     * @param DataSource Bean defined by #dataSource()
-     * @see #dataSource()
      * @return Bean of configured {@link DBLogCleaner}
      */
     @Bean("dbLogCleaner")
-    public DBLogCleaner dbLogCleaner(
-            @Qualifier("dataSourceForLogging") DataSource dataSource) {
+    public DBLogCleaner dbLogCleaner() {
         DBLogCleaner bean = new DBLogCleaner();
-        bean.setDataSource(dataSource);
+        bean.setDataSource(dataSource());
         return bean;
     }
 
