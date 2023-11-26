@@ -1,3 +1,18 @@
+/*
+ * Copyright(c) 2023 NTT Corporation.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
+ * either express or implied. See the License for the specific language
+ * governing permissions and limitations under the License.
+ */
 package org.terasoluna.gfw.functionaltest.config.web;
 
 import java.util.List;
@@ -293,8 +308,8 @@ public class SpringMvcCommonConfig implements WebMvcConfigurer {
     }
 
     /**
-     * Configure {@link SessionLocaleResolver} bean.
-     * @return Bean of configured {@link SessionLocaleResolver}
+     * Configure {@link StandardServletMultipartResolver} bean.
+     * @return Bean of configured {@link StandardServletMultipartResolver}
      */
     @Bean("multipartResolver")
     public StandardServletMultipartResolver multipartResolver() {
@@ -303,15 +318,11 @@ public class SpringMvcCommonConfig implements WebMvcConfigurer {
 
     /**
      * Configure {@link RequestDataValueProcessor} bean.
-     * @param csrfRequestDataValueProcessor Bean defined by #csrfRequestDataValueProcessor()
-     * @param transactionTokenRequestDataValueProcessor Bean defined by #transactionTokenRequestDataValueProcessor()
      * @return Bean of configured {@link CompositeRequestDataValueProcessor}
      */
     @Bean("requestDataValueProcessor")
-    public RequestDataValueProcessor requestDataValueProcessor(
-            CsrfRequestDataValueProcessor csrfRequestDataValueProcessor,
-            TransactionTokenRequestDataValueProcessor transactionTokenRequestDataValueProcessor) {
-        return new CompositeRequestDataValueProcessor(csrfRequestDataValueProcessor, transactionTokenRequestDataValueProcessor);
+    public RequestDataValueProcessor requestDataValueProcessor() {
+        return new CompositeRequestDataValueProcessor(csrfRequestDataValueProcessor(), transactionTokenRequestDataValueProcessor());
     }
 
     /**

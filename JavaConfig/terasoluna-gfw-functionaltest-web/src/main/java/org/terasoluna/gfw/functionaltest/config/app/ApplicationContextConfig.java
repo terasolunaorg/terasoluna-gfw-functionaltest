@@ -1,3 +1,18 @@
+/*
+ * Copyright(c) 2023 NTT Corporation.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
+ * either express or implied. See the License for the specific language
+ * governing permissions and limitations under the License.
+ */
 package org.terasoluna.gfw.functionaltest.config.app;
 
 import java.util.HashMap;
@@ -38,17 +53,13 @@ public class ApplicationContextConfig {
 
     /**
      * Configure {@link PasswordEncoder} bean.
-     * @param pbkdf2PasswordEncoder PasswordEncoder defined by #pbkdf2PasswordEncoder()
-     * @param bCryptPasswordEncoder PasswordEncoder defined by #bCryptPasswordEncoder()
      * @return Bean of configured {@link DelegatingPasswordEncoder}
      */
     @Bean("passwordEncoder")
-    public PasswordEncoder passwordEncoder(
-            Pbkdf2PasswordEncoder pbkdf2PasswordEncoder,
-            BCryptPasswordEncoder bCryptPasswordEncoder) {
+    public PasswordEncoder passwordEncoder() {
         Map<String, PasswordEncoder> idToPasswordEncoder = new HashMap<>();
-        idToPasswordEncoder.put("pbkdf2", pbkdf2PasswordEncoder);
-        idToPasswordEncoder.put("bcrypt", bCryptPasswordEncoder);
+        idToPasswordEncoder.put("pbkdf2", pbkdf2PasswordEncoder());
+        idToPasswordEncoder.put("bcrypt", bCryptPasswordEncoder());
         return new DelegatingPasswordEncoder("pbkdf2", idToPasswordEncoder);
     }
 
@@ -138,30 +149,24 @@ public class ApplicationContextConfig {
 
     /**
      * Configure {@link ExceptionLogger} bean.
-     * @param exceptionCodeResolver Bean defined by #exceptionCodeResolver
      * @return Bean of configured {@link ExceptionLogger}
      */
     @Bean("exceptionLogger")
-    public ExceptionLogger exceptionLogger(
-            ExceptionCodeResolver exceptionCodeResolver) {
+    public ExceptionLogger exceptionLogger() {
         ExceptionLogger bean = new ExceptionLogger();
-        bean.setExceptionCodeResolver(exceptionCodeResolver);
+        bean.setExceptionCodeResolver(exceptionCodeResolver());
         return bean;
     }
 
     /**
      * Configure {@link ExceptionLogger} bean.
-     * @param exceptionCodeResolver Bean defined by #exceptionCodeResolver
-     * @param variationExceptionLevelResolver Bean defined by #variationExceptionLevelResolver
      * @return Bean of configured {@link ExceptionLogger}
      */
     @Bean("variationExceptionLogger")
-    public ExceptionLogger variationExceptionLogger(
-            ExceptionCodeResolver exceptionCodeResolver,
-            VariationExceptionLevelResolver variationExceptionLevelResolver) {
+    public ExceptionLogger variationExceptionLogger() {
         ExceptionLogger bean = new ExceptionLogger();
-        bean.setExceptionCodeResolver(exceptionCodeResolver);
-        bean.setExceptionLevelResolver(variationExceptionLevelResolver);
+        bean.setExceptionCodeResolver(exceptionCodeResolver());
+        bean.setExceptionLevelResolver(variationExceptionLevelResolver());
         return bean;
     }
 
@@ -189,14 +194,12 @@ public class ApplicationContextConfig {
 
     /**
      * Configure {@link ExceptionLogger} bean.
-     * @param exceptionCodeResolver Bean defined by #exceptionCodeResolver
      * @return Bean of configured {@link ExceptionLogger}
      */
     @Bean("changeFormatExceptionLogger")
-    public ExceptionLogger changeFormatExceptionLogger(
-            ExceptionCodeResolver exceptionCodeResolver) {
+    public ExceptionLogger changeFormatExceptionLogger() {
         ExceptionLogger bean = new ExceptionLogger();
-        bean.setExceptionCodeResolver(exceptionCodeResolver);
+        bean.setExceptionCodeResolver(exceptionCodeResolver());
         bean.setTrimLogMessage(false);
         bean.setLogMessageFormat("[{0}][{1}]");
         return bean;
@@ -207,36 +210,31 @@ public class ApplicationContextConfig {
      * @return Bean of configured {@link ExceptionLogger}
      */
     @Bean("messageExceptionLogger")
-    public ExceptionLogger messageExceptionLogger(
-            ExceptionCodeResolver messageExceptionCodeResolver) {
+    public ExceptionLogger messageExceptionLogger() {
         ExceptionLogger bean = new ExceptionLogger();
-        bean.setExceptionCodeResolver(messageExceptionCodeResolver);
+        bean.setExceptionCodeResolver(messageExceptionCodeResolver());
         return bean;
     }
 
     /**
      * Configure {@link ExceptionLoggingFilter} bean.
-     * @param exceptionLogger Bean defined by #exceptionLogger
      * @return Bean of configured {@link ExceptionLoggingFilter}
      */
     @Bean("exceptionLoggingFilter")
-    public ExceptionLoggingFilter exceptionLoggingFilter(
-            ExceptionLogger exceptionLogger) {
+    public ExceptionLoggingFilter exceptionLoggingFilter() {
         ExceptionLoggingFilter bean = new ExceptionLoggingFilter();
-        bean.setExceptionLogger(exceptionLogger);
+        bean.setExceptionLogger(exceptionLogger());
         return bean;
     }
 
     /**
      * Configure {@link ExceptionLoggingFilter} bean.
-     * @param exceptionLogger Bean defined by #exceptionLogger
      * @return Bean of configured {@link ExceptionLoggingFilter}
      */
     @Bean("variationExceptionLoggingFilter")
-    public ExceptionLoggingFilter variationExceptionLoggingFilter(
-            ExceptionLogger variationExceptionLogger) {
+    public ExceptionLoggingFilter variationExceptionLoggingFilter() {
         ExceptionCodeExceptionLoggingFilter bean = new ExceptionCodeExceptionLoggingFilter();
-        bean.setExceptionLogger(variationExceptionLogger);
+        bean.setExceptionLogger(variationExceptionLogger());
         return bean;
     }
 }
