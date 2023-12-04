@@ -16,6 +16,7 @@
 package org.terasoluna.gfw.functionaltest.config.app;
 
 import java.math.BigInteger;
+import java.time.Duration;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -121,7 +122,7 @@ public class TerasolunaGfwFunctionaltestEnvConfig {
         bean.setMaxTotal(maxActive);
         bean.setMaxIdle(maxIdle);
         bean.setMinIdle(minIdle);
-        bean.setMaxWaitMillis(maxWait);
+        bean.setMaxWait(Duration.ofMillis(maxWait));
         return bean;
     }
 

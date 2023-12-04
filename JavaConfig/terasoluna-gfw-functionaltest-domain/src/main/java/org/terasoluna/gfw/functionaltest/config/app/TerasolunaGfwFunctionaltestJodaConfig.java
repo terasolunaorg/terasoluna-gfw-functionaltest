@@ -17,6 +17,7 @@ package org.terasoluna.gfw.functionaltest.config.app;
 
 import javax.sql.DataSource;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.terasoluna.gfw.common.date.jodatime.DefaultJodaTimeDateFactory;
@@ -45,7 +46,7 @@ public class TerasolunaGfwFunctionaltestJodaConfig {
      */
     @Bean("jdbcFixedDateFactory")
     public JdbcFixedJodaTimeDateFactory jdbcFixedJodaTimeDateFactory(
-            DataSource dataSource) {
+            @Qualifier("dataSource") DataSource dataSource) {
         JdbcFixedJodaTimeDateFactory factory = new JdbcFixedJodaTimeDateFactory();
         factory.setDataSource(dataSource);
         factory.setCurrentTimestampQuery(
@@ -60,7 +61,7 @@ public class TerasolunaGfwFunctionaltestJodaConfig {
      */
     @Bean("dbErrorJdbcFixedDateFactory")
     public JdbcFixedJodaTimeDateFactory dbErrorJdbcFixedDateFactory(
-            DataSource dataSource) {
+            @Qualifier("dataSource") DataSource dataSource) {
         JdbcFixedJodaTimeDateFactory factory = new JdbcFixedJodaTimeDateFactory();
         factory.setDataSource(dataSource);
         factory.setCurrentTimestampQuery(
@@ -75,7 +76,7 @@ public class TerasolunaGfwFunctionaltestJodaConfig {
      */
     @Bean("msecJdbcAdjustedDateFactory")
     public JdbcAdjustedJodaTimeDateFactory msecJdbcAdjustedDateFactory(
-            DataSource dataSource) {
+            @Qualifier("dataSource") DataSource dataSource) {
         JdbcAdjustedJodaTimeDateFactory factory = new JdbcAdjustedJodaTimeDateFactory();
         factory.setDataSource(dataSource);
         factory.setAdjustedValueQuery(
@@ -90,7 +91,7 @@ public class TerasolunaGfwFunctionaltestJodaConfig {
      */
     @Bean("secJdbcAdjustedDateFactory")
     public JdbcAdjustedJodaTimeDateFactory secJdbcAdjustedDateFactory(
-            DataSource dataSource) {
+            @Qualifier("dataSource") DataSource dataSource) {
         JdbcAdjustedJodaTimeDateFactory factory = new JdbcAdjustedJodaTimeDateFactory();
         factory.setDataSource(dataSource);
         factory.setAdjustedValueQuery(
@@ -105,7 +106,7 @@ public class TerasolunaGfwFunctionaltestJodaConfig {
      */
     @Bean("minuteJdbcAdjustedDateFactory")
     public JdbcAdjustedJodaTimeDateFactory minuteJdbcAdjustedDateFactory(
-            DataSource dataSource) {
+            @Qualifier("dataSource") DataSource dataSource) {
         JdbcAdjustedJodaTimeDateFactory factory = new JdbcAdjustedJodaTimeDateFactory();
         factory.setDataSource(dataSource);
         factory.setAdjustedValueQuery(
@@ -120,7 +121,7 @@ public class TerasolunaGfwFunctionaltestJodaConfig {
      */
     @Bean("hourJdbcAdjustedDateFactory")
     public JdbcAdjustedJodaTimeDateFactory hourJdbcAdjustedDateFactory(
-            DataSource dataSource) {
+            @Qualifier("dataSource") DataSource dataSource) {
         JdbcAdjustedJodaTimeDateFactory factory = new JdbcAdjustedJodaTimeDateFactory();
         factory.setDataSource(dataSource);
         factory.setAdjustedValueQuery(
@@ -135,7 +136,7 @@ public class TerasolunaGfwFunctionaltestJodaConfig {
      */
     @Bean("dayJdbcAdjustedDateFactory")
     public JdbcAdjustedJodaTimeDateFactory dayJdbcAdjustedDateFactory(
-            DataSource dataSource) {
+            @Qualifier("dataSource") DataSource dataSource) {
         JdbcAdjustedJodaTimeDateFactory factory = new JdbcAdjustedJodaTimeDateFactory();
         factory.setDataSource(dataSource);
         factory.setAdjustedValueQuery(
@@ -150,7 +151,7 @@ public class TerasolunaGfwFunctionaltestJodaConfig {
      */
     @Bean("useCacheDayJdbcAdjustedDateFactory")
     public JdbcAdjustedJodaTimeDateFactory useCacheDayJdbcAdjustedDateFactory(
-            DataSource dataSource) {
+            @Qualifier("dataSource") DataSource dataSource) {
         JdbcAdjustedJodaTimeDateFactory factory = new JdbcAdjustedJodaTimeDateFactory();
         factory.setDataSource(dataSource);
         factory.setUseCache(true);
@@ -166,7 +167,7 @@ public class TerasolunaGfwFunctionaltestJodaConfig {
      */
     @Bean("noCacheJdbcAdjustedDateFactory")
     public JdbcAdjustedJodaTimeDateFactory noCacheJdbcAdjustedDateFactory(
-            DataSource dataSource) {
+            @Qualifier("dataSource") DataSource dataSource) {
         JdbcAdjustedJodaTimeDateFactory factory = new JdbcAdjustedJodaTimeDateFactory();
         factory.setDataSource(dataSource);
         factory.setUseCache(false);
@@ -182,7 +183,7 @@ public class TerasolunaGfwFunctionaltestJodaConfig {
      */
     @Bean("dbErrorJdbcAdjustedDateFactory")
     public JdbcAdjustedJodaTimeDateFactory dbErrorJdbcAdjustedDateFactory(
-            DataSource dataSource) {
+            @Qualifier("dataSource") DataSource dataSource) {
         JdbcAdjustedJodaTimeDateFactory factory = new JdbcAdjustedJodaTimeDateFactory();
         factory.setDataSource(dataSource);
         factory.setAdjustedValueQuery(

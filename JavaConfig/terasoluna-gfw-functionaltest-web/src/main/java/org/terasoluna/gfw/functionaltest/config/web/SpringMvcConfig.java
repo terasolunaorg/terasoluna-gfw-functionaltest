@@ -22,6 +22,7 @@ import java.util.Set;
 import org.springframework.aop.Advisor;
 import org.springframework.aop.aspectj.AspectJExpressionPointcut;
 import org.springframework.aop.support.DefaultPointcutAdvisor;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
@@ -54,7 +55,7 @@ public class SpringMvcConfig implements WebMvcConfigurer {
      */
     @Bean
     public SystemExceptionResolver systemExceptionResolver(
-            ExceptionCodeResolver exceptionCodeResolver) {
+            @Qualifier("exceptionCodeResolver") ExceptionCodeResolver exceptionCodeResolver) {
         SystemExceptionResolver bean = new SystemExceptionResolver();
         bean.setExceptionCodeResolver(exceptionCodeResolver);
         bean.setOrder(3);
@@ -93,7 +94,7 @@ public class SpringMvcConfig implements WebMvcConfigurer {
      */
     @Bean("handlerExceptionResolverLoggingInterceptor")
     public HandlerExceptionResolverLoggingInterceptor handlerExceptionResolverLoggingInterceptor(
-            ExceptionLogger exceptionLogger) {
+            @Qualifier("exceptionLogger") ExceptionLogger exceptionLogger) {
         HandlerExceptionResolverLoggingInterceptor bean = new HandlerExceptionResolverLoggingInterceptor();
         bean.setExceptionLogger(exceptionLogger);
 
@@ -112,7 +113,7 @@ public class SpringMvcConfig implements WebMvcConfigurer {
      */
     @Bean
     public Advisor handlerExceptionResolverLoggingInterceptorAdvisor(
-            HandlerExceptionResolverLoggingInterceptor handlerExceptionResolverLoggingInterceptor) {
+            @Qualifier("handlerExceptionResolverLoggingInterceptor") HandlerExceptionResolverLoggingInterceptor handlerExceptionResolverLoggingInterceptor) {
         AspectJExpressionPointcut pointcut = new AspectJExpressionPointcut();
         pointcut.setExpression(
                 "execution(* org.springframework.web.servlet.HandlerExceptionResolver.resolveException(..))");

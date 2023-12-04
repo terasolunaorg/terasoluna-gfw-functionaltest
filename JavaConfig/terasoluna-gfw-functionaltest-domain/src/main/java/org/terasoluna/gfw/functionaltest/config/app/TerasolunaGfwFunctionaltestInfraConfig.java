@@ -27,6 +27,7 @@ import org.apache.ibatis.mapping.VendorDatabaseIdProvider;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -87,7 +88,7 @@ public class TerasolunaGfwFunctionaltestInfraConfig implements
      */
     @Bean("entityManagerFactory")
     public LocalContainerEntityManagerFactoryBean entityManagerFactory(
-            DataSource dataSource) {
+            @Qualifier("dataSource") DataSource dataSource) {
 
         LocalContainerEntityManagerFactoryBean bean = TerasolunaGfwFunctionaltestEnvConfig
                 .abstractEntityManagerFactory();
@@ -117,7 +118,8 @@ public class TerasolunaGfwFunctionaltestInfraConfig implements
      * @return Bean of configured {@link NamedParameterJdbcTemplate}
      */
     @Bean("jdbcTemplate")
-    public NamedParameterJdbcTemplate jdbcTemplate(DataSource dataSource) {
+    public NamedParameterJdbcTemplate jdbcTemplate(
+            @Qualifier("dataSource") DataSource dataSource) {
         NamedParameterJdbcTemplate bean = new NamedParameterJdbcTemplate(dataSource);
         return bean;
     }
@@ -143,7 +145,8 @@ public class TerasolunaGfwFunctionaltestInfraConfig implements
      * @return Bean of configured {@link SqlSessionFactoryBean}
      */
     @Bean("sqlSessionFactory")
-    public SqlSessionFactoryBean sqlSessionFactory(DataSource dataSource) {
+    public SqlSessionFactoryBean sqlSessionFactory(
+            @Qualifier("dataSource") DataSource dataSource) {
         SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
         bean.setDataSource(dataSource);
         bean.setConfiguration(MybatisConfig.configuration());
