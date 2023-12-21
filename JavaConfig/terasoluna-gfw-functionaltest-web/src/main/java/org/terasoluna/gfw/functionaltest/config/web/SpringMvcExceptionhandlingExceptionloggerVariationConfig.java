@@ -20,6 +20,7 @@ import java.util.Properties;
 import org.springframework.aop.Advisor;
 import org.springframework.aop.aspectj.AspectJExpressionPointcut;
 import org.springframework.aop.support.DefaultPointcutAdvisor;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
@@ -50,7 +51,7 @@ public class SpringMvcExceptionhandlingExceptionloggerVariationConfig implements
      */
     @Bean
     public SystemExceptionResolver systemExceptionResolver(
-            ExceptionCodeResolver exceptionCodeResolver) {
+            @Qualifier("exceptionCodeResolver") ExceptionCodeResolver exceptionCodeResolver) {
         SystemExceptionResolver bean = new SystemExceptionResolver();
         bean.setExceptionCodeResolver(exceptionCodeResolver);
         bean.setOrder(3);
@@ -86,7 +87,7 @@ public class SpringMvcExceptionhandlingExceptionloggerVariationConfig implements
      */
     @Bean("handlerExceptionResolverLoggingInterceptor")
     public HandlerExceptionResolverLoggingInterceptor handlerExceptionResolverLoggingInterceptor(
-            ExceptionLogger changeCodeAndMessageExceptionLogger) {
+            @Qualifier("changeCodeAndMessageExceptionLogger") ExceptionLogger changeCodeAndMessageExceptionLogger) {
         HandlerExceptionResolverLoggingInterceptor bean = new HandlerExceptionResolverLoggingInterceptor();
         bean.setExceptionLogger(changeCodeAndMessageExceptionLogger);
         return bean;
@@ -100,7 +101,7 @@ public class SpringMvcExceptionhandlingExceptionloggerVariationConfig implements
      */
     @Bean
     public Advisor handlerExceptionResolverLoggingInterceptorAdvisor(
-            HandlerExceptionResolverLoggingInterceptor handlerExceptionResolverLoggingInterceptor) {
+            @Qualifier("handlerExceptionResolverLoggingInterceptor") HandlerExceptionResolverLoggingInterceptor handlerExceptionResolverLoggingInterceptor) {
         AspectJExpressionPointcut pointcut = new AspectJExpressionPointcut();
         pointcut.setExpression(
                 "execution(* org.springframework.web.servlet.HandlerExceptionResolver.resolveException(..))");

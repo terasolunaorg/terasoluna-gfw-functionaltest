@@ -20,6 +20,7 @@ import java.time.temporal.ChronoUnit;
 
 import javax.sql.DataSource;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.terasoluna.gfw.common.time.ConfigurableAdjustClockFactory;
@@ -89,7 +90,8 @@ public class TerasolunaGfwFunctionaltestJsr310Config {
      * @return Bean of configured {@link JdbcClockFactory}
      */
     @Bean("defaultJdbcClockFactory")
-    public JdbcClockFactory defaultJdbcClockFactory(DataSource dataSource) {
+    public JdbcClockFactory defaultJdbcClockFactory(
+            @Qualifier("dataSource") DataSource dataSource) {
         JdbcClockFactory factory = new JdbcClockFactory(dataSource, "SELECT now FROM system_date");
         return factory;
     }
@@ -101,7 +103,7 @@ public class TerasolunaGfwFunctionaltestJsr310Config {
      */
     @Bean("adjustJdbcClockFactory")
     public JdbcAdjustClockFactory adjustJdbcClockFactory(
-            DataSource dataSource) {
+            @Qualifier("dataSource") DataSource dataSource) {
         JdbcAdjustClockFactory factory = new JdbcAdjustClockFactory(dataSource, "SELECT diff FROM operation_date where operation_date_id='2'", ChronoUnit.SECONDS);
         return factory;
     }

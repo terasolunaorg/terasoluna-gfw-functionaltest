@@ -18,6 +18,7 @@ package org.terasoluna.gfw.functionaltest.config.app;
 import org.springframework.aop.Advisor;
 import org.springframework.aop.aspectj.AspectJExpressionPointcut;
 import org.springframework.aop.support.DefaultPointcutAdvisor;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -69,7 +70,7 @@ public class TerasolunaGfwFunctionaltestDomainConfig {
      */
     @Bean("resultMessagesLoggingInterceptor")
     public ResultMessagesLoggingInterceptor resultMessagesLoggingInterceptor(
-            ExceptionLogger exceptionLogger) {
+            @Qualifier("exceptionLogger") ExceptionLogger exceptionLogger) {
         ResultMessagesLoggingInterceptor bean = new ResultMessagesLoggingInterceptor();
         bean.setExceptionLogger(exceptionLogger);
         return bean;
@@ -83,7 +84,7 @@ public class TerasolunaGfwFunctionaltestDomainConfig {
      */
     @Bean("resultMessagesInfoLoggingInterceptor")
     public ResultMessagesInfoLoggingInterceptor resultMessagesInfoLoggingInterceptor(
-            ExceptionLogger exceptionLogger) {
+            @Qualifier("exceptionLogger") ExceptionLogger exceptionLogger) {
         ResultMessagesInfoLoggingInterceptor bean = new ResultMessagesInfoLoggingInterceptor();
         bean.setExceptionLogger(exceptionLogger);
         return bean;
@@ -97,7 +98,7 @@ public class TerasolunaGfwFunctionaltestDomainConfig {
      */
     @Bean
     public Advisor resultMessagesLoggingInterceptorAdvisor(
-            ResultMessagesLoggingInterceptor resultMessagesLoggingInterceptor) {
+            @Qualifier("resultMessagesLoggingInterceptor") ResultMessagesLoggingInterceptor resultMessagesLoggingInterceptor) {
         AspectJExpressionPointcut pointcut = new AspectJExpressionPointcut();
         pointcut.setExpression(
                 "@within(org.springframework.stereotype.Service) && !@within(org.terasoluna.gfw.functionaltest.domain.exception.InfoLogging)");
@@ -112,7 +113,7 @@ public class TerasolunaGfwFunctionaltestDomainConfig {
      */
     @Bean
     public Advisor resultMessagesInfoLoggingInterceptorAdvisor(
-            ResultMessagesInfoLoggingInterceptor resultMessagesInfoLoggingInterceptor) {
+            @Qualifier("resultMessagesInfoLoggingInterceptor") ResultMessagesInfoLoggingInterceptor resultMessagesInfoLoggingInterceptor) {
         AspectJExpressionPointcut pointcut = new AspectJExpressionPointcut();
         pointcut.setExpression(
                 "@within(org.terasoluna.gfw.functionaltest.domain.exception.InfoLogging)");
