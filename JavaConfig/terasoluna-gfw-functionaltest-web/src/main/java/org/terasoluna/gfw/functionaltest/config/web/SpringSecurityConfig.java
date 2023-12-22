@@ -17,6 +17,7 @@ package org.terasoluna.gfw.functionaltest.config.web;
 
 import java.util.LinkedHashMap;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.access.AccessDeniedException;
@@ -100,7 +101,7 @@ public class SpringSecurityConfig {
      */
     @Bean
     public AuthenticationProvider authProvider(
-            PasswordEncoder passwordEncoder) {
+            @Qualifier("passwordEncoder") PasswordEncoder passwordEncoder) {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
         authProvider.setUserDetailsService(userDetailsService());
         authProvider.setPasswordEncoder(passwordEncoder);

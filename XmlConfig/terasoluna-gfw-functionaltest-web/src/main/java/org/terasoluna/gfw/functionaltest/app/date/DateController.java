@@ -35,6 +35,7 @@ import org.terasoluna.gfw.functionaltest.domain.service.date.DateService;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 
+@SuppressWarnings("deprecation")
 @Controller
 @RequestMapping(value = "date")
 public class DateController {
