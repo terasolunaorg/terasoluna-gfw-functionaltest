@@ -273,7 +273,7 @@
     <com.mycila.license-maven-plugin.version>4.2.rc3</com.mycila.license-maven-plugin.version>
     <!-- == Dependency Versions == -->
     <postgresql.version>42.7.1</postgresql.version>
-    <ojdbc.version>21.8.0.0</ojdbc.version>
+    <ojdbc.version>23.3.0.23.09</ojdbc.version>
     <webdrivermanager.version>5.6.3</webdrivermanager.version>
     <logback-db.version>1.2.11.1</logback-db.version>
     <!-- == Project Properties == -->
