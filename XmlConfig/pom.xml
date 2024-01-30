@@ -50,17 +50,18 @@
   <build>
     <pluginManagement>
       <plugins>
-        <!--
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-compiler-plugin</artifactId>
           <configuration>
+            <parameters>true</parameters>
             <annotationProcessorPaths>
               <path>
                 <groupId>org.mapstruct</groupId>
                 <artifactId>mapstruct-processor</artifactId>
                 <version>${mapstruct.version}</version>
               </path>
+              <!-- REMOVE THIS LINE IF YOU USE MapStruct AND Lombok
               <path>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
@@ -71,13 +72,13 @@
                 <artifactId>lombok-mapstruct-binding</artifactId>
                 <version>${lombok-mapstruct-binding.version}</version>
               </path>
+              REMOVE THIS LINE IF YOU USE MapStruct AND Lombok -->
             </annotationProcessorPaths>
             <compilerArgs>
               <arg>-Amapstruct.defaultComponentModel=spring</arg>
             </compilerArgs>
           </configuration>
         </plugin>
-        -->
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-failsafe-plugin</artifactId>
