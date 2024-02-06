@@ -203,6 +203,11 @@
         <artifactId>webdrivermanager</artifactId>
         <version>${webdrivermanager.version}</version>
       </dependency>
+      <dependency>
+        <groupId>org.apache.httpcomponents.client5</groupId>
+        <artifactId>httpclient5</artifactId>
+        <version>${httpclient5.version}</version>
+      </dependency>
       <!-- == End Test == -->
 
       <!-- == Begin Database == -->
@@ -239,9 +244,10 @@
     <org.codehaus.mojo.xml-maven-plugin.version>1.0.2</org.codehaus.mojo.xml-maven-plugin.version>
     <com.mycila.license-maven-plugin.version>4.1</com.mycila.license-maven-plugin.version>
     <!-- == Dependency Versions == -->
-    <postgresql.version>42.5.1</postgresql.version>
-    <ojdbc.version>21.8.0.0</ojdbc.version>
-    <webdrivermanager.version>5.3.1</webdrivermanager.version>
+    <postgresql.version>42.7.1</postgresql.version>
+    <ojdbc.version>23.3.0.23.09</ojdbc.version>
+    <webdrivermanager.version>5.6.3</webdrivermanager.version>
+    <httpclient5.version>5.2.3</httpclient5.version>
     <logback-db.version>1.2.11.1</logback-db.version>
     <!-- == Project Properties == -->
     <project.env.main.directory>src/main</project.env.main.directory>
