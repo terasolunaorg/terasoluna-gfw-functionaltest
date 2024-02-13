@@ -323,20 +323,6 @@
       </build>
     </profile>
     <profile>
-      <id>tomcat9-postgresql</id>
-      <properties>
-        <project.env.main.directory>configs/tomcat9-postgresql</project.env.main.directory>
-        <project.env.buildFinalName>${project.artifactId}-${project.version}-tomcat9-postgresql</project.env.buildFinalName>
-      </properties>
-    </profile>
-    <profile>
-      <id>tomcat9-oracle</id>
-      <properties>
-        <project.env.main.directory>configs/tomcat9-oracle</project.env.main.directory>
-        <project.env.buildFinalName>${project.artifactId}-${project.version}-tomcat9-oracle</project.env.buildFinalName>
-      </properties>
-    </profile>
-    <profile>
       <id>tomcat10-postgresql</id>
       <properties>
         <project.env.main.directory>configs/tomcat10-postgresql</project.env.main.directory>
@@ -348,13 +334,6 @@
       <properties>
         <project.env.main.directory>configs/tomcat10-oracle</project.env.main.directory>
         <project.env.buildFinalName>${project.artifactId}-${project.version}-tomcat10-oracle</project.env.buildFinalName>
-      </properties>
-    </profile>
-    <profile>
-      <id>weblogic-oracle</id>
-      <properties>
-        <project.env.main.directory>configs/weblogic-oracle</project.env.main.directory>
-        <project.env.buildFinalName>${project.artifactId}-${project.version}-weblogic-oracle</project.env.buildFinalName>
       </properties>
     </profile>
   </profiles>
