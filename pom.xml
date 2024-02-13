@@ -309,13 +309,6 @@
       </properties>
     </profile>
     <profile>
-      <id>weblogic-oracle</id>
-      <properties>
-        <project.env.main.directory>configs/weblogic-oracle</project.env.main.directory>
-        <project.env.buildFinalName>${project.artifactId}-${project.version}-weblogic-oracle</project.env.buildFinalName>
-      </properties>
-    </profile>
-    <profile>
       <id>jdk11</id>
       <activation>
         <jdk>11</jdk>
