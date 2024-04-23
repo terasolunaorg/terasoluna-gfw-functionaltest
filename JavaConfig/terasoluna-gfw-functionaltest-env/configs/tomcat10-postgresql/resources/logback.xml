@@ -87,7 +87,7 @@
   <logger name="org.springframework.jdbc.datasource.DataSourceTransactionManager" level="debug" />
 
   <logger name="org.hibernate.SQL" additivity="true" level="debug" />
-  <logger name="org.hibernate.type" level="trace" />
+  <logger name="org.hibernate.orm.jdbc.bind" level="trace" />
   <logger name="org.hibernate.engine.transaction" level="debug" />
 
   <root level="warn">
