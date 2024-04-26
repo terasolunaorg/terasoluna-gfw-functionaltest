@@ -58,64 +58,37 @@
   </appender>
 
   <!-- Application Loggers -->
-  <logger name="org.terasoluna.gfw.functionaltest">
-    <level value="debug" />
-  </logger>
-  <logger name="org.terasoluna.gfw.functionaltest.domain.repository">
-    <level value="trace" />
-  </logger>
+  <logger name="org.terasoluna.gfw.functionaltest" level="debug" />
+  <logger name="org.terasoluna.gfw.functionaltest.domain.repository" level="trace" />
 
   <!-- TERASOLUNA -->
-  <logger name="org.terasoluna.gfw">
-    <level value="debug" />
-  </logger>
-  <logger name="org.terasoluna.gfw.web.logging.TraceLoggingInterceptor">
-    <level value="trace" />
+  <logger name="org.terasoluna.gfw" level="debug" />
+  <logger name="org.terasoluna.gfw.web.logging.TraceLoggingInterceptor" level="trace">
     <appender-ref ref="TRACE_LOGGING_INTERCEPTER_TEST_LOG_FILE" />
   </logger>
-  <logger name="org.terasoluna.gfw.common.exception.ExceptionLogger">
-    <level value="info" />
-  </logger>
-  <logger name="org.terasoluna.gfw.common.exception.ExceptionLogger.Monitoring" additivity="false">
-    <level value="info" />
+  <logger name="org.terasoluna.gfw.common.exception.ExceptionLogger" level="info" />
+  <logger name="org.terasoluna.gfw.common.exception.ExceptionLogger.Monitoring" additivity="false" level="info">
     <appender-ref ref="MONITORING_LOG_FILE" />
     <appender-ref ref="DB" />
   </logger>
   <logger name="org.terasoluna.gfw.functionaltest.app.logging.traceLoggingInterceptor"
-    additivity="false">
-    <level value="trace" />
+    additivity="false" level="trace">
     <appender-ref ref="TRACE_LOGGING_INTERCEPTER_TEST_LOG_FILE" />
   </logger>
 
   <!-- 3rdparty Loggers -->
-  <logger name="org.springframework">
-    <level value="warn" />
-  </logger>
+  <logger name="org.springframework" level="warn" />
 
-  <logger name="org.springframework.web.servlet">
-    <level value="info" />
-  </logger>
+  <logger name="org.springframework.web.servlet" level="info" />
 
-  <logger name="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping">
-    <level value="trace" />
-  </logger>
+  <logger name="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping" level="trace" />
 
-  <logger name="org.springframework.jdbc.core.JdbcTemplate">
-    <level value="trace" />
-  </logger>
-  <logger name="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-    <level value="debug" />
-  </logger>
+  <logger name="org.springframework.jdbc.core.JdbcTemplate" level="trace" />
+  <logger name="org.springframework.jdbc.datasource.DataSourceTransactionManager" level="debug" />
 
-  <logger name="org.hibernate.SQL" additivity="true">
-    <level value="debug" />
-  </logger>
-  <logger name="org.hibernate.type">
-    <level value="trace" />
-  </logger>
-  <logger name="org.hibernate.engine.transaction">
-    <level value="debug" />
-  </logger>
+  <logger name="org.hibernate.SQL" additivity="true" level="debug" />
+  <logger name="org.hibernate.type" level="trace" />
+  <logger name="org.hibernate.engine.transaction" level="debug" />
 
   <root level="warn">
     <appender-ref ref="STDOUT" />
