@@ -16,11 +16,12 @@
 package org.terasoluna.gfw.functionaltest.app.webdrivers;
 
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class EdgeDriverFactoryBean extends
-                                   WebDriverManagerFactoryBean<EdgeDriver> {
+                                   HeadlessWebDriverManagerFactoryBean<EdgeDriver> {
 
     @Override
     public EdgeDriver getObject() {
@@ -35,7 +36,13 @@ public class EdgeDriverFactoryBean extends
             edge.setup();
         }
 
-        return new EdgeDriver();
+        EdgeOptions options = new EdgeOptions();
+
+        if (super.headless) {
+            options.addArguments("--headless=new");
+        }
+
+        return new EdgeDriver(options);
     }
 
     @Override

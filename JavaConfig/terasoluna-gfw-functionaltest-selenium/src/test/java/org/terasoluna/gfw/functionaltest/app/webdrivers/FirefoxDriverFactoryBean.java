@@ -22,7 +22,7 @@ import org.openqa.selenium.firefox.FirefoxProfile;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class FirefoxDriverFactoryBean extends
-                                      WebDriverManagerFactoryBean<FirefoxDriver> {
+                                      HeadlessWebDriverManagerFactoryBean<FirefoxDriver> {
 
     @Override
     public FirefoxDriver getObject() {
@@ -42,6 +42,11 @@ public class FirefoxDriverFactoryBean extends
                 "ignore");
         profile.setPreference("network.proxy.type", 0);
         FirefoxOptions options = new FirefoxOptions().setProfile(profile);
+
+        if (super.headless) {
+            options.addArguments("--headless");
+        }
+
         return new FirefoxDriver(options);
     }
 

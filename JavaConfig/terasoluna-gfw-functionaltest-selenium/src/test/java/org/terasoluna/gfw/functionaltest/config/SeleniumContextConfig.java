@@ -68,6 +68,12 @@ public class SeleniumContextConfig {
     private String htmlUnitBrowserVersion;
 
     /**
+     * selenium.headless property.
+     */
+    @Value("${selenium.headless}")
+    private boolean headless;
+
+    /**
      * Configure {@link PropertySourcesPlaceholderConfigurer} bean.
      * @param properties Path where the property file is located
      * @return Bean of configured {@link PropertySourcesPlaceholderConfigurer}
@@ -189,6 +195,7 @@ public class SeleniumContextConfig {
     public FirefoxDriverFactoryBean firefoxDriverFactoryBean() {
         FirefoxDriverFactoryBean bean = new FirefoxDriverFactoryBean();
         bean.setPropertyFileLocation("wdm.properties");
+        bean.setHeadless(this.headless);
         return bean;
     }
 
@@ -202,6 +209,7 @@ public class SeleniumContextConfig {
     public EdgeDriverFactoryBean edgeDriverFactoryBean() {
         EdgeDriverFactoryBean bean = new EdgeDriverFactoryBean();
         bean.setPropertyFileLocation("wdm.properties");
+        bean.setHeadless(this.headless);
         return bean;
     }
 
@@ -215,6 +223,7 @@ public class SeleniumContextConfig {
     public ChromeDriverFactoryBean chromeDriverFactoryBean() {
         ChromeDriverFactoryBean bean = new ChromeDriverFactoryBean();
         bean.setPropertyFileLocation("wdm.properties");
+        bean.setHeadless(this.headless);
         return bean;
     }
 
