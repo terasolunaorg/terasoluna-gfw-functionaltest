@@ -35,6 +35,7 @@ import org.terasoluna.gfw.functionaltest.app.DBLogProvider;
 import org.terasoluna.gfw.functionaltest.app.PageSource;
 import org.terasoluna.gfw.functionaltest.app.ScreenCapture;
 import org.terasoluna.gfw.functionaltest.app.webdrivers.ChromeDriverFactoryBean;
+import org.terasoluna.gfw.functionaltest.app.webdrivers.EdgeDriverFactoryBean;
 import org.terasoluna.gfw.functionaltest.app.webdrivers.FirefoxDriverFactoryBean;
 import org.terasoluna.gfw.functionaltest.app.webdrivers.HtmlUnitDriverEx;
 import org.terasoluna.gfw.functionaltest.domain.DBLogCleaner;
@@ -187,6 +188,19 @@ public class SeleniumContextConfig {
     @Scope("prototype")
     public FirefoxDriverFactoryBean firefoxDriverFactoryBean() {
         FirefoxDriverFactoryBean bean = new FirefoxDriverFactoryBean();
+        bean.setPropertyFileLocation("wdm.properties");
+        return bean;
+    }
+
+    /**
+     * Configure the {@link ChromeDriverFactoryBean} bean.
+     * @return Bean of configured {@link ChromeDriverFactoryBean}
+     */
+    @Bean("webDriver")
+    @Profile({ "edge" })
+    @Scope("prototype")
+    public EdgeDriverFactoryBean edgeDriverFactoryBean() {
+        EdgeDriverFactoryBean bean = new EdgeDriverFactoryBean();
         bean.setPropertyFileLocation("wdm.properties");
         return bean;
     }
