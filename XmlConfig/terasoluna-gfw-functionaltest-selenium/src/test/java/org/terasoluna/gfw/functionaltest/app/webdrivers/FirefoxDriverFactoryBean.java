@@ -26,8 +26,15 @@ public class FirefoxDriverFactoryBean extends
 
     @Override
     public FirefoxDriver getObject() {
+
         if (System.getenv("webdriver.gecko.driver") == null) {
-            WebDriverManager.firefoxdriver().setup();
+            WebDriverManager firefox = WebDriverManager.firefoxdriver();
+
+            if (super.propertyFileLocation != null) {
+                firefox.config().setProperties(super.propertyFileLocation);
+            }
+
+            firefox.setup();
         }
 
         FirefoxProfile profile = new FirefoxProfile();

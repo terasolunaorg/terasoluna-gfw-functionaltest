@@ -24,8 +24,15 @@ public class ChromeDriverFactoryBean extends
 
     @Override
     public ChromeDriver getObject() {
+
         if (System.getenv("webdriver.chrome.driver") == null) {
-            WebDriverManager.chromedriver().setup();
+            WebDriverManager chrome = WebDriverManager.chromedriver();
+
+            if (super.propertyFileLocation != null) {
+                chrome.config().setProperties(super.propertyFileLocation);
+            }
+
+            chrome.setup();
         }
 
         return new ChromeDriver();

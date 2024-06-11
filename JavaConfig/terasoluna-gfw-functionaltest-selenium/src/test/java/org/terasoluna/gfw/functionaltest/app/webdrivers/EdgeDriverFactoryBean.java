@@ -26,7 +26,13 @@ public class EdgeDriverFactoryBean extends
     public EdgeDriver getObject() {
 
         if (System.getenv("webdriver.edge.driver") == null) {
-            WebDriverManager.edgedriver().setup();
+            WebDriverManager edge = WebDriverManager.edgedriver();
+
+            if (super.propertyFileLocation != null) {
+                edge.config().setProperties(super.propertyFileLocation);
+            }
+
+            edge.setup();
         }
 
         return new EdgeDriver();
