@@ -25,17 +25,12 @@ public class FirefoxDriverFactoryBean extends
                                       HeadlessWebDriverManagerFactoryBean<FirefoxDriver> {
 
     @Override
-    public FirefoxDriver getObject() {
+    protected WebDriverManager getWebDriverManager() {
+        return WebDriverManager.firefoxdriver();
+    }
 
-        if (System.getenv("webdriver.gecko.driver") == null) {
-            WebDriverManager firefox = WebDriverManager.firefoxdriver();
-
-            if (super.propertyFileLocation != null) {
-                firefox.config().setProperties(super.propertyFileLocation);
-            }
-
-            firefox.setup();
-        }
+    @Override
+    protected FirefoxDriver createWebDriver() {
 
         FirefoxProfile profile = new FirefoxProfile();
         profile.setPreference("browser.startup.homepage_override.mstone",
@@ -49,15 +44,4 @@ public class FirefoxDriverFactoryBean extends
 
         return new FirefoxDriver(options);
     }
-
-    @Override
-    public Class<?> getObjectType() {
-        return FirefoxDriver.class;
-    }
-
-    @Override
-    public boolean isSingleton() {
-        return false;
-    }
-
 }

@@ -24,17 +24,12 @@ public class ChromeDriverFactoryBean extends
                                      HeadlessWebDriverManagerFactoryBean<ChromeDriver> {
 
     @Override
-    public ChromeDriver getObject() {
+    protected WebDriverManager getWebDriverManager() {
+        return WebDriverManager.chromedriver();
+    }
 
-        if (System.getenv("webdriver.chrome.driver") == null) {
-            WebDriverManager chrome = WebDriverManager.chromedriver();
-
-            if (super.propertyFileLocation != null) {
-                chrome.config().setProperties(super.propertyFileLocation);
-            }
-
-            chrome.setup();
-        }
+    @Override
+    protected ChromeDriver createWebDriver() {
 
         ChromeOptions options = new ChromeOptions();
 
@@ -44,15 +39,4 @@ public class ChromeDriverFactoryBean extends
 
         return new ChromeDriver(options);
     }
-
-    @Override
-    public Class<?> getObjectType() {
-        return ChromeDriver.class;
-    }
-
-    @Override
-    public boolean isSingleton() {
-        return false;
-    }
-
 }

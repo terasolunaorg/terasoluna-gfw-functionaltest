@@ -24,17 +24,12 @@ public class EdgeDriverFactoryBean extends
                                    HeadlessWebDriverManagerFactoryBean<EdgeDriver> {
 
     @Override
-    public EdgeDriver getObject() {
+    protected WebDriverManager getWebDriverManager() {
+        return WebDriverManager.edgedriver();
+    }
 
-        if (System.getenv("webdriver.edge.driver") == null) {
-            WebDriverManager edge = WebDriverManager.edgedriver();
-
-            if (super.propertyFileLocation != null) {
-                edge.config().setProperties(super.propertyFileLocation);
-            }
-
-            edge.setup();
-        }
+    @Override
+    protected EdgeDriver createWebDriver() {
 
         EdgeOptions options = new EdgeOptions();
 
@@ -43,15 +38,5 @@ public class EdgeDriverFactoryBean extends
         }
 
         return new EdgeDriver(options);
-    }
-
-    @Override
-    public Class<?> getObjectType() {
-        return EdgeDriver.class;
-    }
-
-    @Override
-    public boolean isSingleton() {
-        return false;
     }
 }
