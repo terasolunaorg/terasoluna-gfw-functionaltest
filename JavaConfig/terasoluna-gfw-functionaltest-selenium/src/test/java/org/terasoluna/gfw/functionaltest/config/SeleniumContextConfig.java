@@ -200,8 +200,8 @@ public class SeleniumContextConfig {
     }
 
     /**
-     * Configure the {@link ChromeDriverFactoryBean} bean.
-     * @return Bean of configured {@link ChromeDriverFactoryBean}
+     * Configure the {@link EdgeDriverFactoryBean} bean.
+     * @return Bean of configured {@link EdgeDriverFactoryBean}
      */
     @Bean("webDriver")
     @Profile({ "edge" })
