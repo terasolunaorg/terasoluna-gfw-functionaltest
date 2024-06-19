@@ -1,5 +1,5 @@
 /*
- * Copyright(c) 2024 NTT DATA Group Corporation.
+ * Copyright(c) 2025 NTT DATA Group Corporation.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,29 +15,29 @@
  */
 package org.terasoluna.gfw.functionaltest.app.webdrivers;
 
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class ChromeDriverFactoryBean extends
-                                     HeadlessWebDriverManagerFactoryBean<ChromeDriver> {
+public class EdgeDriverFactoryBean extends
+                                   HeadlessWebDriverManagerFactoryBean<EdgeDriver> {
 
     @Override
     protected WebDriverManager getWebDriverManager() {
-        return WebDriverManager.chromedriver();
+        return WebDriverManager.edgedriver();
     }
 
     @Override
-    protected ChromeDriver createWebDriver() {
+    protected EdgeDriver createWebDriver() {
 
-        ChromeOptions options = new ChromeOptions();
+        EdgeOptions options = new EdgeOptions();
         options.addArguments("--remote-allow-origins=*");
 
         if (super.headless) {
             options.addArguments("--headless=new");
         }
 
-        return new ChromeDriver(options);
+        return new EdgeDriver(options);
     }
 }
