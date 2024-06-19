@@ -35,6 +35,7 @@ import org.terasoluna.gfw.functionaltest.app.DBLogProvider;
 import org.terasoluna.gfw.functionaltest.app.PageSource;
 import org.terasoluna.gfw.functionaltest.app.ScreenCapture;
 import org.terasoluna.gfw.functionaltest.app.webdrivers.ChromeDriverFactoryBean;
+import org.terasoluna.gfw.functionaltest.app.webdrivers.EdgeDriverFactoryBean;
 import org.terasoluna.gfw.functionaltest.app.webdrivers.FirefoxDriverFactoryBean;
 import org.terasoluna.gfw.functionaltest.app.webdrivers.HtmlUnitDriverEx;
 import org.terasoluna.gfw.functionaltest.domain.DBLogCleaner;
@@ -65,6 +66,12 @@ public class SeleniumContextConfig {
      */
     @Value("${selenium.htmlUnitBrowserVersion}")
     private String htmlUnitBrowserVersion;
+
+    /**
+     * selenium.headless property.
+     */
+    @Value("${selenium.headless}")
+    private boolean headless;
 
     /**
      * Configure {@link PropertySourcesPlaceholderConfigurer} bean.
@@ -188,6 +195,21 @@ public class SeleniumContextConfig {
     public FirefoxDriverFactoryBean firefoxDriverFactoryBean() {
         FirefoxDriverFactoryBean bean = new FirefoxDriverFactoryBean();
         bean.setPropertyFileLocation("wdm.properties");
+        bean.setHeadless(this.headless);
+        return bean;
+    }
+
+    /**
+     * Configure the {@link EdgeDriverFactoryBean} bean.
+     * @return Bean of configured {@link EdgeDriverFactoryBean}
+     */
+    @Bean("webDriver")
+    @Profile({ "edge" })
+    @Scope("prototype")
+    public EdgeDriverFactoryBean edgeDriverFactoryBean() {
+        EdgeDriverFactoryBean bean = new EdgeDriverFactoryBean();
+        bean.setPropertyFileLocation("wdm.properties");
+        bean.setHeadless(this.headless);
         return bean;
     }
 
@@ -201,6 +223,7 @@ public class SeleniumContextConfig {
     public ChromeDriverFactoryBean chromeDriverFactoryBean() {
         ChromeDriverFactoryBean bean = new ChromeDriverFactoryBean();
         bean.setPropertyFileLocation("wdm.properties");
+        bean.setHeadless(this.headless);
         return bean;
     }
 

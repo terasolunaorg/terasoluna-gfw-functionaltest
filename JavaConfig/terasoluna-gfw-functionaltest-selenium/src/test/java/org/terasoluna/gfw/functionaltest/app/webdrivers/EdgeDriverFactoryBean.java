@@ -1,5 +1,5 @@
 /*
- * Copyright(c) 2024 NTT DATA Group Corporation.
+ * Copyright(c) 2025 NTT DATA Group Corporation.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,33 +15,28 @@
  */
 package org.terasoluna.gfw.functionaltest.app.webdrivers;
 
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxOptions;
-import org.openqa.selenium.firefox.FirefoxProfile;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class FirefoxDriverFactoryBean extends
-                                      HeadlessWebDriverManagerFactoryBean<FirefoxDriver> {
+public class EdgeDriverFactoryBean extends
+                                   HeadlessWebDriverManagerFactoryBean<EdgeDriver> {
 
     @Override
     protected WebDriverManager getWebDriverManager() {
-        return WebDriverManager.firefoxdriver();
+        return WebDriverManager.edgedriver();
     }
 
     @Override
-    protected FirefoxDriver createWebDriver() {
+    protected EdgeDriver createWebDriver() {
 
-        FirefoxProfile profile = new FirefoxProfile();
-        profile.setPreference("browser.startup.homepage_override.mstone",
-                "ignore");
-        profile.setPreference("network.proxy.type", 0);
-        FirefoxOptions options = new FirefoxOptions().setProfile(profile);
+        EdgeOptions options = new EdgeOptions();
 
         if (super.headless) {
-            options.addArguments("--headless");
+            options.addArguments("--headless=new");
         }
 
-        return new FirefoxDriver(options);
+        return new EdgeDriver(options);
     }
 }

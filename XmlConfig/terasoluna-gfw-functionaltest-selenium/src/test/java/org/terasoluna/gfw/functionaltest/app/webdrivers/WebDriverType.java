@@ -21,11 +21,11 @@ import org.openqa.selenium.WebDriver;
  * Supported {@link WebDriver} types.
  */
 public enum WebDriverType {
-    FIREFOX, CHROME, HTMLUNIT;
+    FIREFOX, EDGE, CHROME, HTMLUNIT;
 
     /**
      * The default {@link WebDriver} type.
-     * @return {@link #HTMLUNIT}
+     * @return {@link #FIREFOX}
      */
     public static WebDriverType DEFAULT() {
         return FIREFOX;
