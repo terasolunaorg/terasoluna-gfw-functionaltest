@@ -37,6 +37,8 @@ import org.terasoluna.gfw.functionaltest.domain.exception.ContinueException;
 import org.terasoluna.gfw.functionaltest.domain.exception.ExceptionLoggerDefaultException;
 import org.terasoluna.gfw.functionaltest.domain.exception.MultipleChoicesException;
 import org.terasoluna.gfw.functionaltest.domain.exception.NormalException;
+import org.terasoluna.gfw.functionaltest.domain.exception.SubClassException;
+import org.terasoluna.gfw.functionaltest.domain.exception.WrappingException;
 import org.terasoluna.gfw.functionaltest.domain.service.exceptionhandling.ExceptionHandlingService;
 import org.terasoluna.gfw.functionaltest.domain.service.exceptionhandling.InfoLoggingExceptionHandlingService;
 import org.terasoluna.gfw.web.token.transaction.TransactionTokenCheck;
@@ -235,25 +237,29 @@ public class ExceptionHandlingController {
     }
 
     @GetMapping(value = "4_2")
-    public String servletFrameworkHandling_04_2() throws ExceptionHandlingException {
+    public String webApplicationHandling_04_02() throws SubClassException {
 
-        try {
-            exceptionHandlingService.throwAssertionError();
-        } catch (Throwable t) {
-            throw new ExceptionHandlingException(t);
-        }
+        exceptionHandlingService.throwSubClassException();
 
         return "exceptionhandling/index";
     }
 
     @GetMapping(value = "4_3")
-    public String webApplicationHandling_04_03() {
+    public String webApplicationHandling_04_03() throws WrappingException {
+
+        exceptionHandlingService.throwWrappingException();
 
         return "exceptionhandling/index";
     }
 
     @GetMapping(value = "4_4")
     public String webApplicationHandling_04_04() {
+
+        return "exceptionhandling/index";
+    }
+
+    @GetMapping(value = "4_5")
+    public String webApplicationHandling_04_05() {
 
         return "exceptionhandling/index";
     }

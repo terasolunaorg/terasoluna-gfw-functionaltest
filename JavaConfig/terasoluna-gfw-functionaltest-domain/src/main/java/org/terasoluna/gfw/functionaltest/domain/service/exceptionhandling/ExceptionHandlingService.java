@@ -15,6 +15,9 @@
  */
 package org.terasoluna.gfw.functionaltest.domain.service.exceptionhandling;
 
+import org.terasoluna.gfw.functionaltest.domain.exception.SubClassException;
+import org.terasoluna.gfw.functionaltest.domain.exception.WrappingException;
+
 public interface ExceptionHandlingService {
 
     void throwException(RuntimeException e);
@@ -24,4 +27,8 @@ public interface ExceptionHandlingService {
     void throwExceptionInSharedServiceCatchThis(RuntimeException e);
 
     void throwExceptionInSharedServiceNotCatchThis(RuntimeException e);
+
+    void throwWrappingException() throws WrappingException;
+
+    void throwSubClassException() throws SubClassException;
 }
