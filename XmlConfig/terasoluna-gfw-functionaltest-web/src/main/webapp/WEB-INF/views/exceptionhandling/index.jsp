@@ -117,17 +117,22 @@
   </tr>
   <tr>
     <td><a id="webApplicationHandling_04_02"
-      href="${pageContext.request.contextPath}/exceptionhandling/4_2">webApplicationHandling_04_02</a>
+      href="${pageContext.request.contextPath}/exceptionHandlingCheckSubClass/exceptionhandling/4_2">webApplicationHandling_04_02</a>
     </td>
   </tr>
   <tr>
     <td><a id="webApplicationHandling_04_03"
-      href="${pageContext.request.contextPath}/exceptionhandling/4_3">webApplicationHandling_04_03</a>
+      href="${pageContext.request.contextPath}/exceptionHandlingCheckCause/exceptionhandling/4_3">webApplicationHandling_04_03</a>
     </td>
   </tr>
   <tr>
     <td><a id="webApplicationHandling_04_04"
       href="${pageContext.request.contextPath}/exceptionhandling/4_4">webApplicationHandling_04_04</a>
+    </td>
+  </tr>
+  <tr>
+    <td><a id="webApplicationHandling_04_05"
+      href="${pageContext.request.contextPath}/exceptionhandling/4_5">webApplicationHandling_04_05</a>
     </td>
   </tr>
   <tr>
