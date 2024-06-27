@@ -145,7 +145,7 @@
   </filter>
   <filter-mapping>
     <filter-name>ThrowIndexOutOfBoundsExceptionFilter</filter-name>
-    <url-pattern>/exceptionhandling/4_3</url-pattern>
+    <url-pattern>/exceptionhandling/4_4</url-pattern>
   </filter-mapping>
 
   <filter>
@@ -154,7 +154,7 @@
   </filter>
   <filter-mapping>
     <filter-name>ThrowIOExceptionFilter</filter-name>
-    <url-pattern>/exceptionhandling/4_4</url-pattern>
+    <url-pattern>/exceptionhandling/4_5</url-pattern>
   </filter-mapping>
 
   <servlet>
@@ -260,6 +260,36 @@
   <servlet-mapping>
     <servlet-name>exceptionHandlingChangeDefaultStatusCode</servlet-name>
     <url-pattern>/exceptionHandlingChangeDefaultStatusCode/*</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>exceptionHandlingCheckSubClass</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <init-param>
+      <param-name>contextConfigLocation</param-name>
+      <!-- ApplicationContext for Spring MVC -->
+      <param-value>classpath*:META-INF/spring/spring-mvc-exceptionhandling-check-subclass.xml</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>exceptionHandlingCheckSubClass</servlet-name>
+    <url-pattern>/exceptionHandlingCheckSubClass/*</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>exceptionHandlingCheckCause</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <init-param>
+      <param-name>contextConfigLocation</param-name>
+      <!-- ApplicationContext for Spring MVC -->
+      <param-value>classpath*:META-INF/spring/spring-mvc-exceptionhandling-check-cause.xml</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>exceptionHandlingCheckCause</servlet-name>
+    <url-pattern>/exceptionHandlingCheckCause/*</url-pattern>
   </servlet-mapping>
 
   <jsp-config>
