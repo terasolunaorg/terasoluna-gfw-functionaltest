@@ -577,12 +577,56 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
 
         driver.findElement(By.id("webApplicationHandling_04_03")).click();
 
+        webDriverWait.until(titleIs("Servlet Error"));
+        assertThat(dbLogProvider.countContainsMessageAndLevelsAndLogger(
+                "\\[e.xx.9999\\] Request processing failed; nested exception is org.terasoluna.gfw.functionaltest.domain.exception.SubClassException",
+                "ERROR", "org.terasoluna.gfw.common.exception.ExceptionLogger"),
+                is(1L));
+        assertThat(dbLogProvider.countContainsMessageAndLevelsAndLogger(
+                "\\[e.xx.9999\\] Request processing failed; nested exception is org.terasoluna.gfw.functionaltest.domain.exception.SubClassException",
+                "ERROR",
+                "org.terasoluna.gfw.common.exception.ExceptionLogger.Monitoring"),
+                is(1L));
+
+        // error page screen
+        assertThat(driver.findElement(By.cssSelector("h2")).getText(), is(
+                "Servlet Error..."));
+
+    }
+
+    @Test
+    public void test04_04_webApplicationHandling() {
+
+        driver.findElement(By.id("webApplicationHandling_04_04")).click();
+
+        webDriverWait.until(titleIs("Servlet Error"));
+        assertThat(dbLogProvider.countContainsMessageAndLevelsAndLogger(
+                "\\[e.xx.9999\\] Request processing failed; nested exception is org.terasoluna.gfw.functionaltest.domain.exception.WrappingException: org.terasoluna.gfw.functionaltest.domain.exception.CauseException",
+                "ERROR", "org.terasoluna.gfw.common.exception.ExceptionLogger"),
+                is(1L));
+        assertThat(dbLogProvider.countContainsMessageAndLevelsAndLogger(
+                "\\[e.xx.9999\\] Request processing failed; nested exception is org.terasoluna.gfw.functionaltest.domain.exception.WrappingException: org.terasoluna.gfw.functionaltest.domain.exception.CauseException",
+                "ERROR",
+                "org.terasoluna.gfw.common.exception.ExceptionLogger.Monitoring"),
+                is(1L));
+
+        // error page screen
+        assertThat(driver.findElement(By.cssSelector("h2")).getText(), is(
+                "Servlet Error..."));
+
+    }
+
+    @Test
+    public void test04_05_webApplicationHandling() {
+
+        driver.findElement(By.id("webApplicationHandling_04_05")).click();
+
         webDriverWait.until(titleIs(""));
         assertThat(dbLogProvider.countContainsMessageAndLevelsAndLogger(
-                "\\[w.xx.0011\\] 4_3 Error", "ERROR",
+                "\\[w.xx.0011\\] 4_5 Error", "ERROR",
                 "org.terasoluna.gfw.common.exception.ExceptionLogger"), is(1L));
         assertThat(dbLogProvider.countContainsMessageAndLevelsAndLogger(
-                "\\[w.xx.0011\\] 4_3 Error", "ERROR",
+                "\\[w.xx.0011\\] 4_5 Error", "ERROR",
                 "org.terasoluna.gfw.common.exception.ExceptionLogger.Monitoring"),
                 is(1L));
 
@@ -593,16 +637,16 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
     }
 
     @Test
-    public void test04_04_webApplicationHandling() {
+    public void test04_06_webApplicationHandling() {
 
-        driver.findElement(By.id("webApplicationHandling_04_04")).click();
+        driver.findElement(By.id("webApplicationHandling_04_06")).click();
 
         webDriverWait.until(titleIs(""));
         assertThat(dbLogProvider.countContainsMessageAndLevelsAndLogger(
-                "\\[e.xx.9999\\] 4_4 Error", "ERROR",
+                "\\[e.xx.9999\\] 4_6 Error", "ERROR",
                 "org.terasoluna.gfw.common.exception.ExceptionLogger"), is(1L));
         assertThat(dbLogProvider.countContainsMessageAndLevelsAndLogger(
-                "\\[e.xx.9999\\] 4_4 Error", "ERROR",
+                "\\[e.xx.9999\\] 4_6 Error", "ERROR",
                 "org.terasoluna.gfw.common.exception.ExceptionLogger.Monitoring"),
                 is(1L));
 
