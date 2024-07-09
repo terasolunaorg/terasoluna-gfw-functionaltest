@@ -19,6 +19,9 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 import org.terasoluna.gfw.common.exception.BusinessException;
+import org.terasoluna.gfw.functionaltest.domain.exception.CauseException;
+import org.terasoluna.gfw.functionaltest.domain.exception.SubClassException;
+import org.terasoluna.gfw.functionaltest.domain.exception.WrappingException;
 
 @Service
 public class ExceptionHandlingServiceImpl implements ExceptionHandlingService {
@@ -50,6 +53,20 @@ public class ExceptionHandlingServiceImpl implements ExceptionHandlingService {
         } catch (BusinessException be) {
             // non op
         }
+    }
+
+    @Override
+    public void throwWrappingException() throws WrappingException {
+
+        throw new WrappingException(new CauseException());
+
+    }
+
+    @Override
+    public void throwSubClassException() throws SubClassException {
+
+        throw new SubClassException();
+
     }
 
 }

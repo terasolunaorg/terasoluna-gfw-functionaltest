@@ -39,6 +39,8 @@ import org.terasoluna.gfw.functionaltest.domain.exception.ContinueException;
 import org.terasoluna.gfw.functionaltest.domain.exception.ExceptionLoggerDefaultException;
 import org.terasoluna.gfw.functionaltest.domain.exception.MultipleChoicesException;
 import org.terasoluna.gfw.functionaltest.domain.exception.NormalException;
+import org.terasoluna.gfw.functionaltest.domain.exception.SubClassException;
+import org.terasoluna.gfw.functionaltest.domain.exception.WrappingException;
 import org.terasoluna.gfw.functionaltest.domain.service.exceptionhandling.ExceptionHandlingService;
 import org.terasoluna.gfw.functionaltest.domain.service.exceptionhandling.InfoLoggingExceptionHandlingService;
 import org.terasoluna.gfw.web.token.transaction.TransactionTokenCheck;
@@ -242,13 +244,29 @@ public class ExceptionHandlingController {
     }
 
     @RequestMapping(value = "4_3", method = RequestMethod.GET)
-    public String webApplicationHandling_04_03() {
+    public String webApplicationHandling_04_03() throws SubClassException {
+
+        exceptionHandlingService.throwSubClassException();
 
         return "exceptionhandling/index";
     }
 
     @RequestMapping(value = "4_4", method = RequestMethod.GET)
-    public String webApplicationHandling_04_04() {
+    public String webApplicationHandling_04_04() throws WrappingException {
+
+        exceptionHandlingService.throwWrappingException();
+
+        return "exceptionhandling/index";
+    }
+
+    @RequestMapping(value = "4_5", method = RequestMethod.GET)
+    public String webApplicationHandling_04_05() {
+
+        return "exceptionhandling/index";
+    }
+
+    @RequestMapping(value = "4_6", method = RequestMethod.GET)
+    public String webApplicationHandling_04_06() {
 
         return "exceptionhandling/index";
     }

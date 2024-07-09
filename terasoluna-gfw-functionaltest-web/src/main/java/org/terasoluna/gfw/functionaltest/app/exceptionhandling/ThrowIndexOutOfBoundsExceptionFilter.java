@@ -30,7 +30,7 @@ public class ThrowIndexOutOfBoundsExceptionFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request,
             HttpServletResponse response,
             FilterChain filterChain) throws ServletException, IOException {
-        throw new IndexOutOfBoundsException("4_3 Error");
+        throw new IndexOutOfBoundsException("4_5 Error");
     }
 
 }
