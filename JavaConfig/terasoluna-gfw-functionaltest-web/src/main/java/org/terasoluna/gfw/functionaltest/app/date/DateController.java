@@ -87,8 +87,8 @@ public class DateController {
     @Inject
     protected DateService dateService;
 
-    private static final DateTimeFormatter JODA_TIME_DATE_FORMATTER = DateTimeFormat
-            .forPattern("yyyy-MM-dd HH:mm:ss.SSS");
+    private static final DateTimeFormatter JODA_TIME_DATE_FORMATTER =
+            DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss.SSS");
 
     @GetMapping
     public String index() {
@@ -142,15 +142,15 @@ public class DateController {
     @GetMapping(value = "1_4")
     public String serverTimeReturn_01_04(Model model) {
 
-        model.addAttribute("firstExpectedDate", DateConvertUtils
-                .convertToSqlDate(new java.util.Date()));
+        model.addAttribute("firstExpectedDate",
+                DateConvertUtils.convertToSqlDate(new java.util.Date()));
 
         java.sql.Date sqlDate = dateFactory.newSqlDate();
 
         model.addAttribute("serverTime", sqlDate);
         model.addAttribute("type", sqlDate.getClass());
-        model.addAttribute("lastExpectedDate", DateConvertUtils
-                .convertToSqlDate(new java.util.Date()));
+        model.addAttribute("lastExpectedDate",
+                DateConvertUtils.convertToSqlDate(new java.util.Date()));
 
         return "date/dateDisplay";
     }
@@ -279,15 +279,15 @@ public class DateController {
     @GetMapping(value = "3_4")
     public String adjustedDateReturn_03_04(Model model) {
 
-        model.addAttribute("firstExpectedDate", DateConvertUtils
-                .convertToSqlDate(new java.util.Date()));
+        model.addAttribute("firstExpectedDate",
+                DateConvertUtils.convertToSqlDate(new java.util.Date()));
 
         java.sql.Date sqlDate = msecJdbcAdjustedDateFactory.newSqlDate();
 
         model.addAttribute("serverTime", sqlDate);
         model.addAttribute("type", sqlDate.getClass());
-        model.addAttribute("lastExpectedDate", DateConvertUtils
-                .convertToSqlDate(new java.util.Date()));
+        model.addAttribute("lastExpectedDate",
+                DateConvertUtils.convertToSqlDate(new java.util.Date()));
 
         return "date/dateDisplay";
     }

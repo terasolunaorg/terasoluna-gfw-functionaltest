@@ -35,8 +35,7 @@ public class UserForm implements Serializable {
         this.item = item;
     }
 
-    public UserForm() {
-    }
+    public UserForm() {}
 
     public String getName() {
         return name;

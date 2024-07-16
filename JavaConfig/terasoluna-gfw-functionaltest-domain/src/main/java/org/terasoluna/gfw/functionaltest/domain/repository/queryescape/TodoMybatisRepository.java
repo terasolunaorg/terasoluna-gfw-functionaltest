@@ -27,12 +27,9 @@ public interface TodoMybatisRepository {
 
     List<Todo> findAllByTitleLikePartical(String todoTitle);
 
-    List<Todo> findAllByTitleLikePrefixEscapingFullWidthWildCard(
-            String todoTitle);
+    List<Todo> findAllByTitleLikePrefixEscapingFullWidthWildCard(String todoTitle);
 
-    List<Todo> findAllByTitleLikeSuffixEscapingFullWidthWildCard(
-            String todoTitle);
+    List<Todo> findAllByTitleLikeSuffixEscapingFullWidthWildCard(String todoTitle);
 
-    List<Todo> findAllByTitleLikeParticalEscapingFullWidthWildCard(
-            String todoTitle);
+    List<Todo> findAllByTitleLikeParticalEscapingFullWidthWildCard(String todoTitle);
 }

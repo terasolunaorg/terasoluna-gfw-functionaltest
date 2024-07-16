@@ -29,15 +29,13 @@ public class ListFormItem implements Serializable {
 
     private List<String> listC;
 
-    public ListFormItem(List<String> listA, List<String> listB,
-            List<String> listC) {
+    public ListFormItem(List<String> listA, List<String> listB, List<String> listC) {
         this.listA = listA;
         this.listB = listB;
         this.listC = listC;
     }
 
-    public ListFormItem() {
-    }
+    public ListFormItem() {}
 
     public List<String> getListA() {
         return listA;

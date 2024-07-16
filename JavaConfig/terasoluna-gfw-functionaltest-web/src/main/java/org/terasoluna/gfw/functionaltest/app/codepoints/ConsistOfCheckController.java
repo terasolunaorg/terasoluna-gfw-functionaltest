@@ -32,15 +32,14 @@ public class ConsistOfCheckController {
         return new ConsistOfCheckForm();
     }
 
-    @GetMapping(value = "consistOfCheck", params = { "form" })
+    @GetMapping(value = "consistOfCheck", params = {"form"})
     public String consistOfCheck_form() {
 
         return "codepoints/consistOfCheck_form";
     }
 
     @PostMapping(value = "consistOfCheck")
-    public String consistOfCheck(@Validated ConsistOfCheckForm form,
-            BindingResult result) {
+    public String consistOfCheck(@Validated ConsistOfCheckForm form, BindingResult result) {
 
         if (result.hasErrors()) {
             return consistOfCheck_form();

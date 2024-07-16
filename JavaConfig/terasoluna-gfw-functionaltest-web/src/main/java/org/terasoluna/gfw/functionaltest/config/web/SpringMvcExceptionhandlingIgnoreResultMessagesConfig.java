@@ -40,8 +40,7 @@ import org.terasoluna.gfw.web.exception.SystemExceptionResolver;
 @EnableWebMvc
 @EnableAspectJAutoProxy
 @Import(SpringMvcCommonConfig.class)
-public class SpringMvcExceptionhandlingIgnoreResultMessagesConfig implements
-                                                                  WebMvcConfigurer {
+public class SpringMvcExceptionhandlingIgnoreResultMessagesConfig implements WebMvcConfigurer {
 
     /**
      * Configure {@link SystemExceptionResolver} bean.
@@ -62,17 +61,16 @@ public class SpringMvcExceptionhandlingIgnoreResultMessagesConfig implements
                 "common/error/tokenError");
         exceptionMappings.setProperty("ResourceNotFoundException",
                 "common/error/resourceNotFoundError");
-        exceptionMappings.setProperty("BusinessException",
-                "common/error/businessError");
+        exceptionMappings.setProperty("BusinessException", "common/error/businessError");
         bean.setExceptionMappings(exceptionMappings);
 
         Properties statusCodes = new Properties();
-        statusCodes.setProperty("common/error/tokenError", String.valueOf(
-                HttpStatus.CONFLICT.value()));
-        statusCodes.setProperty("common/error/resourceNotFoundError", String
-                .valueOf(HttpStatus.NOT_FOUND.value()));
-        statusCodes.setProperty("common/error/businessError", String.valueOf(
-                HttpStatus.CONFLICT.value()));
+        statusCodes.setProperty("common/error/tokenError",
+                String.valueOf(HttpStatus.CONFLICT.value()));
+        statusCodes.setProperty("common/error/resourceNotFoundError",
+                String.valueOf(HttpStatus.NOT_FOUND.value()));
+        statusCodes.setProperty("common/error/businessError",
+                String.valueOf(HttpStatus.CONFLICT.value()));
         bean.setStatusCodes(statusCodes);
 
         bean.setDefaultErrorView("common/error/systemError");
@@ -89,14 +87,16 @@ public class SpringMvcExceptionhandlingIgnoreResultMessagesConfig implements
     @Bean("handlerExceptionResolverLoggingInterceptor")
     public HandlerExceptionResolverLoggingInterceptor handlerExceptionResolverLoggingInterceptor(
             @Qualifier("exceptionLogger") ExceptionLogger exceptionLogger) {
-        HandlerExceptionResolverLoggingInterceptor bean = new HandlerExceptionResolverLoggingInterceptor();
+        HandlerExceptionResolverLoggingInterceptor bean =
+                new HandlerExceptionResolverLoggingInterceptor();
         bean.setExceptionLogger(exceptionLogger);
         return bean;
     }
 
     /**
      * Configure messages logging AOP advisor.
-     * @param handlerExceptionResolverLoggingInterceptor Bean defined by #handlerExceptionResolverLoggingInterceptor
+     * @param handlerExceptionResolverLoggingInterceptor Bean defined by
+     *        #handlerExceptionResolverLoggingInterceptor
      * @see #handlerExceptionResolverLoggingInterceptor(ExceptionLogger)
      * @return Advisor configured for PointCut
      */

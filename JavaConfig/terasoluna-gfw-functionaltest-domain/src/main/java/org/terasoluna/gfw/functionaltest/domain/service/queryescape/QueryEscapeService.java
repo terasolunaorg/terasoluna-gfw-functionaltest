@@ -27,12 +27,9 @@ public interface QueryEscapeService {
 
     List<Todo> findAllByTitleLikePartical(String title);
 
-    List<Todo> findAllByTitleLikePrefixEscapingFullWidthWildCard(
-            String todoTitle);
+    List<Todo> findAllByTitleLikePrefixEscapingFullWidthWildCard(String todoTitle);
 
-    List<Todo> findAllByTitleLikeSuffixEscapingFullWidthWildCard(
-            String todoTitle);
+    List<Todo> findAllByTitleLikeSuffixEscapingFullWidthWildCard(String todoTitle);
 
-    List<Todo> findAllByTitleLikeParticalEscapingFullWidthWildCard(
-            String todoTitle);
+    List<Todo> findAllByTitleLikeParticalEscapingFullWidthWildCard(String todoTitle);
 }

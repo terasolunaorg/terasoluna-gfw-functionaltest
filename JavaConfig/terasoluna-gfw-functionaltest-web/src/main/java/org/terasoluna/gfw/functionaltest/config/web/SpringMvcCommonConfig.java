@@ -52,7 +52,7 @@ import org.terasoluna.gfw.web.token.transaction.TransactionTokenRequestDataValue
  * Configuration of SpringMVC common part.
  */
 @Configuration
-@ComponentScan(basePackages = { "org.terasoluna.gfw.functionaltest.app" })
+@ComponentScan(basePackages = {"org.terasoluna.gfw.functionaltest.app"})
 public class SpringMvcCommonConfig implements WebMvcConfigurer {
 
     /**
@@ -72,11 +72,9 @@ public class SpringMvcCommonConfig implements WebMvcConfigurer {
      * {@inheritDoc}
      */
     @Override
-    public void addArgumentResolvers(
-            List<HandlerMethodArgumentResolver> argumentResolvers) {
+    public void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {
         argumentResolvers.add(pageableHandlerMethodArgumentResolver());
-        argumentResolvers.add(
-                transactionTokenContextHandlerMethodArgumentResolver());
+        argumentResolvers.add(transactionTokenContextHandlerMethodArgumentResolver());
     }
 
     /**
@@ -101,8 +99,7 @@ public class SpringMvcCommonConfig implements WebMvcConfigurer {
      * {@inheritDoc}
      */
     @Override
-    public void configureDefaultServletHandling(
-            DefaultServletHandlerConfigurer configurer) {
+    public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
         configurer.enable();
     }
 
@@ -123,9 +120,9 @@ public class SpringMvcCommonConfig implements WebMvcConfigurer {
      */
     @Override
     public void addResourceHandlers(final ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/resources/**").addResourceLocations(
-                "/resources/", "classpath:META-INF/resources/").setCachePeriod(
-                        60 * 60);
+        registry.addResourceHandler("/resources/**")
+                .addResourceLocations("/resources/", "classpath:META-INF/resources/")
+                .setCachePeriod(60 * 60);
     }
 
     /**
@@ -133,28 +130,22 @@ public class SpringMvcCommonConfig implements WebMvcConfigurer {
      */
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        addInterceptor(registry, traceLoggingInterceptor(), "/**",
-                "/resources/**",
+        addInterceptor(registry, traceLoggingInterceptor(), "/**", "/resources/**",
                 "/logging/traceLoggingInterceptor/customWarnHandling/**");
-        addInterceptor(registry, transactionTokenInterceptor(), "/**",
-                "/resources/**",
+        addInterceptor(registry, transactionTokenInterceptor(), "/**", "/resources/**",
                 "/transactiontoken/customTransactionStoreSize2/**",
                 "/transactiontoken/customTransactionStoreSize1/**");
         addInterceptor(registry, size2TransactionTokenInterceptor(),
                 "/transactiontoken/customTransactionStoreSize2/**");
         addInterceptor(registry, size1TransactionTokenInterceptor(),
                 "/transactiontoken/customTransactionStoreSize1/**");
-        addInterceptor(registry, localeChangeInterceptor(), "/**",
+        addInterceptor(registry, localeChangeInterceptor(), "/**", "/resources/**");
+        addWebRequestInterceptor(registry, openEntityManagerInViewInterceptor(), "/**",
                 "/resources/**");
-        addWebRequestInterceptor(registry, openEntityManagerInViewInterceptor(),
-                "/**", "/resources/**");
-        addInterceptor(registry, anyPathCodeListInterceptor(), "/**",
-                "/resources/**", "/codelist/noPattern/**",
-                "/codelist/jdbcCodeListTestDBError/**");
-        addInterceptor(registry, multiplePatternListInterceptor(),
-                "/codelist/multiplePattern/**");
-        addInterceptor(registry, jdbcCodeListInterceptor(),
-                "/codelist/jdbcCodeListTestDBError/**");
+        addInterceptor(registry, anyPathCodeListInterceptor(), "/**", "/resources/**",
+                "/codelist/noPattern/**", "/codelist/jdbcCodeListTestDBError/**");
+        addInterceptor(registry, multiplePatternListInterceptor(), "/codelist/multiplePattern/**");
+        addInterceptor(registry, jdbcCodeListInterceptor(), "/codelist/jdbcCodeListTestDBError/**");
         addInterceptor(registry, warnHandlingTraceLoggingInterceptor(),
                 "/logging/traceLoggingInterceptor/customWarnHandling/**");
     }
@@ -166,9 +157,8 @@ public class SpringMvcCommonConfig implements WebMvcConfigurer {
      * @param mappingPath target path
      * @param excludePath paths to exclude
      */
-    private void addInterceptor(InterceptorRegistry registry,
-            HandlerInterceptor interceptor, String mappingPath,
-            String... excludePath) {
+    private void addInterceptor(InterceptorRegistry registry, HandlerInterceptor interceptor,
+            String mappingPath, String... excludePath) {
         registry.addInterceptor(interceptor).addPathPatterns(mappingPath)
                 .excludePathPatterns(excludePath);
     }
@@ -181,10 +171,9 @@ public class SpringMvcCommonConfig implements WebMvcConfigurer {
      * @param excludePath paths to exclude
      */
     private void addWebRequestInterceptor(InterceptorRegistry registry,
-            WebRequestInterceptor interceptor, String mappingPath,
-            String... excludePath) {
-        registry.addWebRequestInterceptor(interceptor).addPathPatterns(
-                mappingPath).excludePathPatterns(excludePath);
+            WebRequestInterceptor interceptor, String mappingPath, String... excludePath) {
+        registry.addWebRequestInterceptor(interceptor).addPathPatterns(mappingPath)
+                .excludePathPatterns(excludePath);
     }
 
     /**
@@ -322,7 +311,8 @@ public class SpringMvcCommonConfig implements WebMvcConfigurer {
      */
     @Bean("requestDataValueProcessor")
     public RequestDataValueProcessor requestDataValueProcessor() {
-        return new CompositeRequestDataValueProcessor(csrfRequestDataValueProcessor(), transactionTokenRequestDataValueProcessor());
+        return new CompositeRequestDataValueProcessor(csrfRequestDataValueProcessor(),
+                transactionTokenRequestDataValueProcessor());
     }
 
     /**

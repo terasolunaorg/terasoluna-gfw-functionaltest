@@ -40,8 +40,7 @@ import org.terasoluna.gfw.web.exception.SystemExceptionResolver;
 @EnableWebMvc
 @EnableAspectJAutoProxy
 @Import(SpringMvcCommonConfig.class)
-public class SpringMvcExceptionhandlingExceptionloggerVariationConfig implements
-                                                                      WebMvcConfigurer {
+public class SpringMvcExceptionhandlingExceptionloggerVariationConfig implements WebMvcConfigurer {
 
     /**
      * Configure {@link SystemExceptionResolver} bean.
@@ -59,19 +58,17 @@ public class SpringMvcExceptionhandlingExceptionloggerVariationConfig implements
         Properties exceptionMappings = new Properties();
         exceptionMappings.setProperty("InvalidTransactionTokenException",
                 "common/error/tokenError");
-        exceptionMappings.setProperty("ResourceNotFoundException",
-                "common/error/notFoundError");
-        exceptionMappings.setProperty("BusinessException",
-                "common/error/businessError");
+        exceptionMappings.setProperty("ResourceNotFoundException", "common/error/notFoundError");
+        exceptionMappings.setProperty("BusinessException", "common/error/businessError");
         bean.setExceptionMappings(exceptionMappings);
 
         Properties statusCodes = new Properties();
-        statusCodes.setProperty("common/error/tokenError", String.valueOf(
-                HttpStatus.CONFLICT.value()));
-        statusCodes.setProperty("common/error/notFoundError", String.valueOf(
-                HttpStatus.NOT_FOUND.value()));
-        statusCodes.setProperty("common/error/businessError", String.valueOf(
-                HttpStatus.CONFLICT.value()));
+        statusCodes.setProperty("common/error/tokenError",
+                String.valueOf(HttpStatus.CONFLICT.value()));
+        statusCodes.setProperty("common/error/notFoundError",
+                String.valueOf(HttpStatus.NOT_FOUND.value()));
+        statusCodes.setProperty("common/error/businessError",
+                String.valueOf(HttpStatus.CONFLICT.value()));
         bean.setStatusCodes(statusCodes);
 
         bean.setDefaultErrorView("common/error/systemError");
@@ -81,21 +78,24 @@ public class SpringMvcExceptionhandlingExceptionloggerVariationConfig implements
 
     /**
      * Configure messages logging AOP.
-     * @param changeCodeAndMessageExceptionLogger Bean defined by ApplicationContext#changeCodeAndMessageExceptionLogger
+     * @param changeCodeAndMessageExceptionLogger Bean defined by
+     *        ApplicationContext#changeCodeAndMessageExceptionLogger
      * @see com.example.securelogin.config.app.ApplicationContext#changeCodeAndMessageExceptionLogger()
      * @return Bean of configured {@link HandlerExceptionResolverLoggingInterceptor}
      */
     @Bean("handlerExceptionResolverLoggingInterceptor")
     public HandlerExceptionResolverLoggingInterceptor handlerExceptionResolverLoggingInterceptor(
             @Qualifier("changeCodeAndMessageExceptionLogger") ExceptionLogger changeCodeAndMessageExceptionLogger) {
-        HandlerExceptionResolverLoggingInterceptor bean = new HandlerExceptionResolverLoggingInterceptor();
+        HandlerExceptionResolverLoggingInterceptor bean =
+                new HandlerExceptionResolverLoggingInterceptor();
         bean.setExceptionLogger(changeCodeAndMessageExceptionLogger);
         return bean;
     }
 
     /**
      * Configure messages logging AOP advisor.
-     * @param handlerExceptionResolverLoggingInterceptor Bean defined by #handlerExceptionResolverLoggingInterceptor
+     * @param handlerExceptionResolverLoggingInterceptor Bean defined by
+     *        #handlerExceptionResolverLoggingInterceptor
      * @see #handlerExceptionResolverLoggingInterceptor(ExceptionLogger)
      * @return Advisor configured for PointCut
      */

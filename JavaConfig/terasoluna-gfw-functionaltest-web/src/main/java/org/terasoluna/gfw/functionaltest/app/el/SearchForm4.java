@@ -24,8 +24,7 @@ public class SearchForm4 {
         this.etc = etc;
     }
 
-    public SearchForm4() {
-    }
+    public SearchForm4() {}
 
     public Map<String, String> getEtc() {
         return etc;

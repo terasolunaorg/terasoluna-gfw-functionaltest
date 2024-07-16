@@ -94,8 +94,8 @@ public class SeleniumContextConfig {
     public DataSource dataSource() {
         BasicDataSource bean = new BasicDataSource();
         bean.setDriverClassName("org.h2.Driver");
-        bean.setUrl("jdbc:h2:tcp://" + dbHost + ":" + dbPort
-                + "/mem:terasoluna-gfw-functionaltest");
+        bean.setUrl(
+                "jdbc:h2:tcp://" + dbHost + ":" + dbPort + "/mem:terasoluna-gfw-functionaltest");
         bean.setUsername("sa");
         bean.setPassword("");
         bean.setDefaultAutoCommit(false);
@@ -190,7 +190,7 @@ public class SeleniumContextConfig {
      * @return Bean of configured {@link FirefoxDriverFactoryBean}
      */
     @Bean("webDriver")
-    @Profile({ "firefox", "default" })
+    @Profile({"firefox", "default"})
     @Scope("prototype")
     public FirefoxDriverFactoryBean firefoxDriverFactoryBean() {
         FirefoxDriverFactoryBean bean = new FirefoxDriverFactoryBean();
@@ -204,7 +204,7 @@ public class SeleniumContextConfig {
      * @return Bean of configured {@link EdgeDriverFactoryBean}
      */
     @Bean("webDriver")
-    @Profile({ "edge" })
+    @Profile({"edge"})
     @Scope("prototype")
     public EdgeDriverFactoryBean edgeDriverFactoryBean() {
         EdgeDriverFactoryBean bean = new EdgeDriverFactoryBean();
@@ -218,7 +218,7 @@ public class SeleniumContextConfig {
      * @return Bean of configured {@link ChromeDriverFactoryBean}
      */
     @Bean("webDriver")
-    @Profile({ "chrome" })
+    @Profile({"chrome"})
     @Scope("prototype")
     public ChromeDriverFactoryBean chromeDriverFactoryBean() {
         ChromeDriverFactoryBean bean = new ChromeDriverFactoryBean();
@@ -248,11 +248,11 @@ public class SeleniumContextConfig {
      * @return Bean of configured {@link HtmlUnitDriverEx}
      */
     @Bean("webDriver")
-    @Profile({ "htmlunit" })
+    @Profile({"htmlunit"})
     @Scope("prototype")
     public HtmlUnitDriverEx htmlUnitDriverEx() {
-        HtmlUnitDriverEx bean = new HtmlUnitDriverEx(getBrowserVersion(
-                htmlUnitBrowserVersion), true);
+        HtmlUnitDriverEx bean =
+                new HtmlUnitDriverEx(getBrowserVersion(htmlUnitBrowserVersion), true);
         return bean;
     }
 

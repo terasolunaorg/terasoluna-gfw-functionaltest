@@ -54,8 +54,7 @@ public class SequencerController {
 
     @GetMapping(value = "1_1", params = "sameTransaction")
     public String fuinctionTest_1_1_sameTransaction(Model model) {
-        LinkedHashMap<String, Integer> resultMap = sequencerService
-                .getSequencerIntegers();
+        LinkedHashMap<String, Integer> resultMap = sequencerService.getSequencerIntegers();
         model.addAttribute("mode", "Integer");
         model.addAttribute("valuesMap", resultMap);
         return "sequencer/showSameTransaction";
@@ -63,8 +62,7 @@ public class SequencerController {
 
     @GetMapping(value = "1_2", params = "sameTransaction")
     public String fuinctionTest_1_2_sameTransaction(Model model) {
-        LinkedHashMap<String, Long> resultMap = sequencerService
-                .getSequencerLongs();
+        LinkedHashMap<String, Long> resultMap = sequencerService.getSequencerLongs();
         model.addAttribute("mode", "Long");
         model.addAttribute("valuesMap", resultMap);
         return "sequencer/showSameTransaction";
@@ -72,8 +70,7 @@ public class SequencerController {
 
     @GetMapping(value = "1_3", params = "sameTransaction")
     public String fuinctionTest_1_3_sameTransaction(Model model) {
-        LinkedHashMap<String, BigInteger> resultMap = sequencerService
-                .getSequencerBigIntegers();
+        LinkedHashMap<String, BigInteger> resultMap = sequencerService.getSequencerBigIntegers();
         model.addAttribute("mode", "BigInteger");
         model.addAttribute("valuesMap", resultMap);
         return "sequencer/showSameTransaction";
@@ -81,8 +78,7 @@ public class SequencerController {
 
     @GetMapping(value = "1_4", params = "sameTransaction")
     public String fuinctionTest_1_4_sameTransaction(Model model) {
-        LinkedHashMap<String, String> resultMap = sequencerService
-                .getSequencerStrings();
+        LinkedHashMap<String, String> resultMap = sequencerService.getSequencerStrings();
         model.addAttribute("mode", "String");
         model.addAttribute("valuesMap", resultMap);
         return "sequencer/showSameTransaction";

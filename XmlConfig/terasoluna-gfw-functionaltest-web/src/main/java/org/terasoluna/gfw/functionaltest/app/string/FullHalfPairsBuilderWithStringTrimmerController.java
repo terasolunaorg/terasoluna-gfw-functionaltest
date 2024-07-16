@@ -32,8 +32,7 @@ public class FullHalfPairsBuilderWithStringTrimmerController {
 
     @InitBinder
     public void initConvertPairFormWebDataBinder(WebDataBinder binder) {
-        binder.registerCustomEditor(String.class,
-                new StringTrimmerEditor(true));
+        binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
     }
 
     @ModelAttribute("targetTitle")
@@ -51,7 +50,7 @@ public class FullHalfPairsBuilderWithStringTrimmerController {
         return new FullHalfPairForm();
     }
 
-    @GetMapping(params = { "form" })
+    @GetMapping(params = {"form"})
     public String form() {
         return "string/pair";
     }

@@ -25,8 +25,7 @@ public class SearchUserCriteriaForm3 {
         this.age = age;
     }
 
-    public SearchUserCriteriaForm3() {
-    }
+    public SearchUserCriteriaForm3() {}
 
     public String getName() {
         return name;

@@ -46,9 +46,8 @@ import org.terasoluna.gfw.web.exception.ExceptionLoggingFilter;
  */
 @Configuration
 @EnableAspectJAutoProxy
-@Import({ TerasolunaGfwFunctionaltestDomainConfig.class })
-@ComponentScan(basePackages = {
-        "org.terasoluna.gfw.functionaltest.config.env" })
+@Import({TerasolunaGfwFunctionaltestDomainConfig.class})
+@ComponentScan(basePackages = {"org.terasoluna.gfw.functionaltest.config.env"})
 public class ApplicationContextConfig {
 
     /**

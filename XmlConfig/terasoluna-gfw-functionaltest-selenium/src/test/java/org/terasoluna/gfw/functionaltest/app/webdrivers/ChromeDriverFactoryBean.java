@@ -20,8 +20,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class ChromeDriverFactoryBean extends
-                                     HeadlessWebDriverManagerFactoryBean<ChromeDriver> {
+public class ChromeDriverFactoryBean extends HeadlessWebDriverManagerFactoryBean<ChromeDriver> {
 
     @Override
     protected WebDriverManager getWebDriverManager() {

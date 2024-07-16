@@ -54,20 +54,17 @@ public class SpringSecurityConfig {
 
         http.securityMatcher(new AntPathRequestMatcher("/logging/**"));
 
-        http.authorizeHttpRequests(authz -> authz.requestMatchers(
-                new AntPathRequestMatcher("/**")).permitAll());
+        http.authorizeHttpRequests(
+                authz -> authz.requestMatchers(new AntPathRequestMatcher("/**")).permitAll());
 
-        http.exceptionHandling(ex -> ex.accessDeniedHandler(
-                accessDeniedHandler()));
+        http.exceptionHandling(ex -> ex.accessDeniedHandler(accessDeniedHandler()));
 
         http.formLogin(login -> login.loginPage("/logging/userIdMDCPutFilter")
-                .loginProcessingUrl("/logging/login").defaultSuccessUrl(
-                        "/logging/userIdMDCPutFilter/login"));
+                .loginProcessingUrl("/logging/login")
+                .defaultSuccessUrl("/logging/userIdMDCPutFilter/login"));
 
-        http.logout(logout -> logout.logoutUrl(
-                "/logging/userIdMDCPutFilter/logout").logoutSuccessUrl(
-                        "/logging/userIdMDCPutFilter").deleteCookies(
-                                "JSESSIONID"));
+        http.logout(logout -> logout.logoutUrl("/logging/userIdMDCPutFilter/logout")
+                .logoutSuccessUrl("/logging/userIdMDCPutFilter").deleteCookies("JSESSIONID"));
         return http.build();
     }
 
@@ -77,19 +74,17 @@ public class SpringSecurityConfig {
      */
     @Bean("accessDeniedHandler")
     public AccessDeniedHandler accessDeniedHandler() {
-        LinkedHashMap<Class<? extends AccessDeniedException>, AccessDeniedHandler> errorHandlers = new LinkedHashMap<>();
+        LinkedHashMap<Class<? extends AccessDeniedException>, AccessDeniedHandler> errorHandlers =
+                new LinkedHashMap<>();
 
         // Invalid CSRF authenticator error handler
         AccessDeniedHandlerImpl invalidCsrfTokenErrorHandler = new AccessDeniedHandlerImpl();
-        invalidCsrfTokenErrorHandler.setErrorPage(
-                "/WEB-INF/views/common/error/csrfTokenError.jsp");
-        errorHandlers.put(InvalidCsrfTokenException.class,
-                invalidCsrfTokenErrorHandler);
+        invalidCsrfTokenErrorHandler.setErrorPage("/WEB-INF/views/common/error/csrfTokenError.jsp");
+        errorHandlers.put(InvalidCsrfTokenException.class, invalidCsrfTokenErrorHandler);
 
         // Default error handler
         AccessDeniedHandlerImpl defaultErrorHandler = new AccessDeniedHandlerImpl();
-        defaultErrorHandler.setErrorPage(
-                "/WEB-INF/views/common/error/accessDeniedError.jsp");
+        defaultErrorHandler.setErrorPage("/WEB-INF/views/common/error/accessDeniedError.jsp");
 
         return new DelegatingAccessDeniedHandler(errorHandlers, defaultErrorHandler);
     }

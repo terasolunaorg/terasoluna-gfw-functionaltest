@@ -49,8 +49,7 @@ public class MybatisConfig {
      * @param typeAliasRegistry Accepted at configuration
      */
     private static void setTypeAliases(TypeAliasRegistry typeAliasRegistry) {
-        typeAliasRegistry.registerAliases(
-                "org.terasoluna.gfw.functionaltest.domain.model");
+        typeAliasRegistry.registerAliases("org.terasoluna.gfw.functionaltest.domain.model");
     }
 
 }

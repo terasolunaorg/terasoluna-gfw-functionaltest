@@ -4,31 +4,27 @@
 <!--[if IE 8]>    <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!-->
 <html class="no-js">
-<!--<![endif]-->
-<head>
-<meta charset="utf-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width" />
+    <!--<![endif]-->
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <meta name="viewport" content="width=device-width" />
 
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/app/css/style.css"
-  type="text/css" media="screen, projection">
-<script type="text/javascript"
-  src="${pageContext.request.contextPath}/resources/vendor/js/jquery-1.7.2.js"></script>
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/app/css/style.css" type="text/css" media="screen, projection" />
+        <script type="text/javascript" src="${pageContext.request.contextPath}/resources/vendor/js/jquery-1.7.2.js"></script>
 
-<c:set var="titleKey" value="title.message.elementSpecified" />
-<title><spring:message code="${titleKey}" text="terasoluna-gfw-functionaltest" /></title>
-</head>
-<body>
-  <div class="wrapper">
-    <jsp:include page="/WEB-INF/views/layout/header.jsp" />
+        <c:set var="titleKey" value="title.message.elementSpecified" />
+        <title><spring:message code="${titleKey}" text="terasoluna-gfw-functionaltest" /></title>
+    </head>
+    <body>
+        <div class="wrapper">
+            <jsp:include page="/WEB-INF/views/layout/header.jsp" />
 
-<link rel="stylesheet"
-  href="${pageContext.request.contextPath}/resources/vendor/bootstrap-3.0.0/css/bootstrap.css"
-  type="text/css" media="screen, projection">
-<h2>Output Message</h2>
-<t:messagesPanel panelElement="table" outerElement="tr" innerElement="td" />
+            <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/vendor/bootstrap-3.0.0/css/bootstrap.css" type="text/css" media="screen, projection" />
+            <h2>Output Message</h2>
+            <t:messagesPanel panelElement="table" outerElement="tr" innerElement="td" />
 
-    <jsp:include page="/WEB-INF/views/layout/footer.jsp" />
-  </div>
-</body>
+            <jsp:include page="/WEB-INF/views/layout/footer.jsp" />
+        </div>
+    </body>
 </html>

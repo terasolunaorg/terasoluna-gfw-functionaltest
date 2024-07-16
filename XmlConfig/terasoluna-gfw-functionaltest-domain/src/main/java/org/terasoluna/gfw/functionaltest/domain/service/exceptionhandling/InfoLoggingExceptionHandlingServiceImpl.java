@@ -20,8 +20,8 @@ import org.terasoluna.gfw.functionaltest.domain.exception.InfoLogging;
 
 @Service
 @InfoLogging
-public class InfoLoggingExceptionHandlingServiceImpl implements
-                                                     InfoLoggingExceptionHandlingService {
+public class InfoLoggingExceptionHandlingServiceImpl
+        implements InfoLoggingExceptionHandlingService {
 
     @Override
     public void throwException(RuntimeException e) {

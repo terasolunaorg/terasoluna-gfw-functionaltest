@@ -42,7 +42,7 @@ public class FullHalfPairsBuilderController {
         return "fullHalfPairsBuilder";
     }
 
-    @GetMapping(params = { "form" })
+    @GetMapping(params = {"form"})
     public String form() {
         return "string/pair";
     }

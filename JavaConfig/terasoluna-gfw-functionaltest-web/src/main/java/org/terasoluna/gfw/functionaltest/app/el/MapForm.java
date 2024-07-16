@@ -32,8 +32,7 @@ public class MapForm implements Serializable {
         this.item = item;
     }
 
-    public MapForm() {
-    }
+    public MapForm() {}
 
     public Map<String, String> getMapA() {
         return mapA;

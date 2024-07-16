@@ -21,6 +21,5 @@ import org.terasoluna.gfw.common.codelist.ExistInCodeList;
 @Validated
 public interface ExistInCodeListService {
 
-    String getLabel(
-            @ExistInCodeList(codeListId = "CL_CODELIST08_08") String item1);
+    String getLabel(@ExistInCodeList(codeListId = "CL_CODELIST08_08") String item1);
 }

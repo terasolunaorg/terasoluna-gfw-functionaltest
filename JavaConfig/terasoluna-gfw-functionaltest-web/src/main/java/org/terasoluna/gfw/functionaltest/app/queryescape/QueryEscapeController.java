@@ -32,10 +32,8 @@ public class QueryEscapeController {
 
     @GetMapping
     public String index(Model model) {
-        model.addAttribute("databaseId", databaseMetaInfoService
-                .getDatabaseId());
-        model.addAttribute("databaseVersion", databaseMetaInfoService
-                .getOracleVersion());
+        model.addAttribute("databaseId", databaseMetaInfoService.getDatabaseId());
+        model.addAttribute("databaseVersion", databaseMetaInfoService.getOracleVersion());
         return "queryescape/index";
     }
 }

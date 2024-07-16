@@ -49,8 +49,7 @@ public class ItemCode implements Serializable {
     @Column(name = "label")
     private String label;
 
-    public ItemCode() {
-    }
+    public ItemCode() {}
 
     public ItemCode(String code, String label) {
         this.code = code;

@@ -34,8 +34,7 @@ import org.terasoluna.gfw.functionaltest.app.FunctionTestSupport;
 import jakarta.inject.Inject;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {
-        "classpath:META-INF/spring/seleniumContext.xml" })
+@ContextConfiguration(locations = {"classpath:META-INF/spring/seleniumContext.xml"})
 public class LoggingTest extends FunctionTestSupport {
 
     @Inject
@@ -51,8 +50,7 @@ public class LoggingTest extends FunctionTestSupport {
         // cut x-Track MDC
         String targetMdc = driver.findElement(By.id("xTrackMDC")).getText();
         String footerMdc = driver.findElement(By.id("xtrack")).getText();
-        footerMdc = footerMdc.substring(footerMdc.indexOf(":") + 1, footerMdc
-                .indexOf(":") + 33);
+        footerMdc = footerMdc.substring(footerMdc.indexOf(":") + 1, footerMdc.indexOf(":") + 33);
         // check default x-Track MDC
         assertThat(targetMdc.matches("[0-9a-zA-Z]{32}"), is(true));
         assertThat(targetMdc, is(footerMdc));
@@ -68,8 +66,7 @@ public class LoggingTest extends FunctionTestSupport {
         // cut x-Track MDC
         String targetMdc = driver.findElement(By.id("xTrackMDC")).getText();
         String footerMdc = driver.findElement(By.id("xtrack")).getText();
-        footerMdc = footerMdc.substring(footerMdc.indexOf(":") + 1, footerMdc
-                .indexOf(":") + 33);
+        footerMdc = footerMdc.substring(footerMdc.indexOf(":") + 1, footerMdc.indexOf(":") + 33);
         // check custom x-Track MDC
         assertThat(targetMdc.matches("[0-9a-zA-Z]{32}"), is(true));
         assertThat(targetMdc, not(footerMdc));
@@ -80,14 +77,12 @@ public class LoggingTest extends FunctionTestSupport {
         // test Check consistency HTTP Request Header to Response Header
         HttpHeaders requestHeaders = new HttpHeaders();
         requestHeaders.set("X-Track", "12345678901234567890123456789012");
-        ResponseEntity<byte[]> response = restTemplate.exchange(
-                applicationContextUrl + "/logging/xTrackMDCPutFilter/1_4",
-                HttpMethod.GET, new HttpEntity<byte[]>(requestHeaders),
-                byte[].class);
+        ResponseEntity<byte[]> response =
+                restTemplate.exchange(applicationContextUrl + "/logging/xTrackMDCPutFilter/1_4",
+                        HttpMethod.GET, new HttpEntity<byte[]>(requestHeaders), byte[].class);
 
         HttpHeaders headers = response.getHeaders();
-        assertThat(headers.getFirst("X-Track"), is(
-                "12345678901234567890123456789012"));
+        assertThat(headers.getFirst("X-Track"), is("12345678901234567890123456789012"));
     }
 
     @Test
@@ -115,9 +110,8 @@ public class LoggingTest extends FunctionTestSupport {
         // logging same x-track MDC HTTP Request Header
         HttpHeaders requestHeaders = new HttpHeaders();
         requestHeaders.set("X-Track", targetMdc);
-        restTemplate.exchange(applicationContextUrl
-                + "/logging/xTrackMDCPutFilter/1_4", HttpMethod.GET,
-                new HttpEntity<byte[]>(requestHeaders), byte[].class);
+        restTemplate.exchange(applicationContextUrl + "/logging/xTrackMDCPutFilter/1_4",
+                HttpMethod.GET, new HttpEntity<byte[]>(requestHeaders), byte[].class);
 
         // check XTrack logging same transaction in HTTP Request Header to logfile
         // check visually the log file
@@ -138,8 +132,7 @@ public class LoggingTest extends FunctionTestSupport {
         driver.findElement(By.id("userIdMDCPutFilterDefault")).click();
 
         // check default userId MDC
-        assertThat(driver.findElement(By.id("userIdMDC")).getText(), is(
-                "anonymousUser"));
+        assertThat(driver.findElement(By.id("userIdMDC")).getText(), is("anonymousUser"));
     }
 
     @Test
@@ -156,8 +149,7 @@ public class LoggingTest extends FunctionTestSupport {
         driver.findElement(By.id("userIdMDCPutFilterCustom")).click();
 
         // check custom userId MDC
-        assertThat(driver.findElement(By.id("userIdMDC")).getText(), is(
-                "anonymousUser"));
+        assertThat(driver.findElement(By.id("userIdMDC")).getText(), is("anonymousUser"));
     }
 
     @Test
@@ -173,8 +165,7 @@ public class LoggingTest extends FunctionTestSupport {
         driver.findElement(By.id("userIdMDCPutFilterDefault")).click();
 
         // check default userId MDC
-        assertThat(driver.findElement(By.id("userIdMDC")).getText(), is(
-                "user1"));
+        assertThat(driver.findElement(By.id("userIdMDC")).getText(), is("user1"));
     }
 
     @Test
@@ -187,8 +178,7 @@ public class LoggingTest extends FunctionTestSupport {
         driver.findElement(By.id("btn1")).click();
 
         // Screen transition
-        driver.findElement(By.linkText("terasoluna-gfw-functionaltest"))
-                .click();
+        driver.findElement(By.linkText("terasoluna-gfw-functionaltest")).click();
         driver.findElement(By.id("logging")).click();
         driver.findElement(By.id("userIdMDCPutFilter")).click();
 
@@ -196,8 +186,7 @@ public class LoggingTest extends FunctionTestSupport {
         driver.findElement(By.id("userIdMDCPutFilterDefault")).click();
 
         // check default userId MDC
-        assertThat(driver.findElement(By.id("userIdMDC")).getText(), is(
-                "user1"));
+        assertThat(driver.findElement(By.id("userIdMDC")).getText(), is("user1"));
 
         // check trace logging
         // check visually the log file

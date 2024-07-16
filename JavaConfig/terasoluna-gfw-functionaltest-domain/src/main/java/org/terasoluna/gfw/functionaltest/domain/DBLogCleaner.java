@@ -31,8 +31,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Component
 public class DBLogCleaner {
 
-    private static final Logger logger = LoggerFactory.getLogger(
-            DBLogCleaner.class);
+    private static final Logger logger = LoggerFactory.getLogger(DBLogCleaner.class);
 
     private long savedPeriodMinutes = TimeUnit.MINUTES.toHours(24);
 
@@ -68,8 +67,8 @@ public class DBLogCleaner {
 
     private int cleanup(long savedPeriodMinutes) {
         // calculate cutoff date.
-        Date cutoffDate = new Date(System.currentTimeMillis()
-                - (TimeUnit.MINUTES.toMillis(savedPeriodMinutes)));
+        Date cutoffDate = new Date(
+                System.currentTimeMillis() - (TimeUnit.MINUTES.toMillis(savedPeriodMinutes)));
 
         logger.info("Begin cleanup. cutoffDate is '{}'.", cutoffDate);
 
@@ -92,10 +91,8 @@ public class DBLogCleaner {
                     "DELETE FROM logging_event_property WHERE event_id <= :eventId",
                     deleteParameters);
             deletedCount = namedParameterJdbcTemplate.update(
-                    "DELETE FROM logging_event WHERE event_id <= :eventId",
-                    deleteParameters);
-            logger.info("Finished cleanup. Deleted log count is '{}'.",
-                    deletedCount);
+                    "DELETE FROM logging_event WHERE event_id <= :eventId", deleteParameters);
+            logger.info("Finished cleanup. Deleted log count is '{}'.", deletedCount);
         } else {
             logger.info("Finished cleanup. Not exists target log.");
         }

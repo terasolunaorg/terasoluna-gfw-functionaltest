@@ -22,14 +22,12 @@ public class SearchAndBatchUpdateUserForm3 {
 
     private List<User3> users;
 
-    public SearchAndBatchUpdateUserForm3(SearchUserCriteriaForm3 criteria,
-            List<User3> users) {
+    public SearchAndBatchUpdateUserForm3(SearchUserCriteriaForm3 criteria, List<User3> users) {
         this.criteria = criteria;
         this.users = users;
     }
 
-    public SearchAndBatchUpdateUserForm3() {
-    }
+    public SearchAndBatchUpdateUserForm3() {}
 
     public SearchUserCriteriaForm3 getCriteria() {
         return criteria;

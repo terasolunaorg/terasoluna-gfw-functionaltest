@@ -77,8 +77,7 @@ public class TerasolunaGfwFunctionaltestEnvConfig {
         jdbcSequencer.setDataSource(dataSource());
         jdbcSequencer.setSequenceClass(java.lang.Integer.class);
         jdbcSequencer.setNextValueQuery("SELECT nextval('INTEGER_SEQ') AS seq");
-        jdbcSequencer.setCurrentValueQuery(
-                "SELECT currval('INTEGER_SEQ') AS seq");
+        jdbcSequencer.setCurrentValueQuery("SELECT currval('INTEGER_SEQ') AS seq");
         return jdbcSequencer;
     }
 
@@ -107,10 +106,8 @@ public class TerasolunaGfwFunctionaltestEnvConfig {
         JdbcSequencer<BigInteger> jdbcSequencer = new JdbcSequencer<BigInteger>();
         jdbcSequencer.setDataSource(dataSource());
         jdbcSequencer.setSequenceClass(java.math.BigInteger.class);
-        jdbcSequencer.setNextValueQuery(
-                "SELECT nextval('BIG_INTEGER_SEQ') AS seq");
-        jdbcSequencer.setCurrentValueQuery(
-                "SELECT currval('BIG_INTEGER_SEQ') AS seq");
+        jdbcSequencer.setNextValueQuery("SELECT nextval('BIG_INTEGER_SEQ') AS seq");
+        jdbcSequencer.setCurrentValueQuery("SELECT currval('BIG_INTEGER_SEQ') AS seq");
         return jdbcSequencer;
     }
 
@@ -124,8 +121,8 @@ public class TerasolunaGfwFunctionaltestEnvConfig {
         JdbcSequencer<String> jdbcSequencer = new JdbcSequencer<String>();
         jdbcSequencer.setDataSource(dataSource());
         jdbcSequencer.setSequenceClass(java.lang.String.class);
-        jdbcSequencer.setNextValueQuery(
-                "SELECT TO_CHAR(nextval('STRING_SEQ'),'FM0000000000') AS seq");
+        jdbcSequencer
+                .setNextValueQuery("SELECT TO_CHAR(nextval('STRING_SEQ'),'FM0000000000') AS seq");
         jdbcSequencer.setCurrentValueQuery(
                 "SELECT TO_CHAR(currval('STRING_SEQ'),'FM0000000000') AS seq");
         return jdbcSequencer;
@@ -141,10 +138,8 @@ public class TerasolunaGfwFunctionaltestEnvConfig {
         JdbcSequencer<Integer> jdbcSequencer = new JdbcSequencer<Integer>();
         jdbcSequencer.setDataSource(dataSource());
         jdbcSequencer.setSequenceClass(java.lang.Integer.class);
-        jdbcSequencer.setNextValueQuery(
-                "SELECT nextval('NOT_FOUND_SEQ') AS seq");
-        jdbcSequencer.setCurrentValueQuery(
-                "SELECT currval('NOT_FOUND_SEQ') AS seq");
+        jdbcSequencer.setNextValueQuery("SELECT nextval('NOT_FOUND_SEQ') AS seq");
+        jdbcSequencer.setCurrentValueQuery("SELECT currval('NOT_FOUND_SEQ') AS seq");
         return jdbcSequencer;
     }
 
@@ -179,8 +174,7 @@ public class TerasolunaGfwFunctionaltestEnvConfig {
      * @return Bean of configured {@link JpaTransactionManager}
      */
     @Bean("transactionManager")
-    public TransactionManager jpaTransactionManager(
-            EntityManagerFactory entityManagerFactory) {
+    public TransactionManager jpaTransactionManager(EntityManagerFactory entityManagerFactory) {
         JpaTransactionManager bean = new JpaTransactionManager();
         bean.setEntityManagerFactory(entityManagerFactory);
         return bean;
@@ -205,8 +199,7 @@ public class TerasolunaGfwFunctionaltestEnvConfig {
     public DataSource dataSourceForLogging() {
         BasicDataSource bean = new BasicDataSource();
         bean.setDriverClassName("org.h2.Driver");
-        bean.setUrl(
-                "jdbc:h2:mem:terasoluna-gfw-functionaltest;DB_CLOSE_DELAY=-1");
+        bean.setUrl("jdbc:h2:mem:terasoluna-gfw-functionaltest;DB_CLOSE_DELAY=-1");
         bean.setUsername("sa");
         bean.setPassword("");
         bean.setDefaultAutoCommit(false);

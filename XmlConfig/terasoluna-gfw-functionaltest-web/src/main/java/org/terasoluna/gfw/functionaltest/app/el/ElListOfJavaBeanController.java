@@ -45,8 +45,7 @@ public class ElListOfJavaBeanController {
     }
 
     @GetMapping(value = "6_10/search")
-    public String listOfJavaBeanQueryString(
-            BatchUpdateUserForm2 batchUpdateUserForm2,
+    public String listOfJavaBeanQueryString(BatchUpdateUserForm2 batchUpdateUserForm2,
             @PageableDefault Pageable pageable, Model model) {
 
         // Create Dummy Data
