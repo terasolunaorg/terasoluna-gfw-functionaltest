@@ -133,26 +133,26 @@ public class CodeListController {
     }
 
     // test case 03_01
-    @RequestMapping(value = "next", method = RequestMethod.GET, params = "jdbcCodeListTestSelectCodeList")
-    public String testJdbcCodeListTestSelectCodeList(CodeListForm form,
-            Model model) {
+    @RequestMapping(value = "next", method = RequestMethod.GET,
+            params = "jdbcCodeListTestSelectCodeList")
+    public String testJdbcCodeListTestSelectCodeList(CodeListForm form, Model model) {
         model.addAttribute("jdbcCodeList", codeListService.findCodeList());
         return "codelist/jdbcCodeListTestSelectCodeList";
     }
 
     // test case 03_01
     @RequestMapping(value = "next/{id}", method = RequestMethod.GET)
-    public String testJdbcCodeListTestEditCodeList(
-            @PathVariable("id") Integer id, CodeListMngForm form, Model model) {
+    public String testJdbcCodeListTestEditCodeList(@PathVariable("id") Integer id,
+            CodeListMngForm form, Model model) {
         ItemCode code = codeListService.findOne(id);
         form.setCode(code.getCode());
         form.setValue(code.getLabel());
         return "codelist/jdbcCodeListTestEditCodeList";
     }
 
-    @RequestMapping(value = "next", method = RequestMethod.POST, params = "jdbcCodeListTestUpdateCodeList")
-    public String testJdbcCodeListTestUpdateCodeList(CodeListMngForm form,
-            Model model) {
+    @RequestMapping(value = "next", method = RequestMethod.POST,
+            params = "jdbcCodeListTestUpdateCodeList")
+    public String testJdbcCodeListTestUpdateCodeList(CodeListMngForm form, Model model) {
         ItemCode row = codeListService.findOne(form.getId());
         row.setCode(form.getCode());
         row.setLabel(form.getValue());
@@ -160,24 +160,23 @@ public class CodeListController {
         return "codelist/jdbcCodeListTestUpdateCodeList";
     }
 
-    @RequestMapping(value = "next", method = RequestMethod.GET, params = "jdbcCodeListTestRefreshCodeList")
-    public String testJdbcCodeListTestRefreshCodeList(CodeListMngForm form,
-            Model model) {
+    @RequestMapping(value = "next", method = RequestMethod.GET,
+            params = "jdbcCodeListTestRefreshCodeList")
+    public String testJdbcCodeListTestRefreshCodeList(CodeListMngForm form, Model model) {
         codeListService.refresh();
         return "codelist/jdbcCodeListTestReflesh";
     }
 
     // test case 03_02
     @RequestMapping(value = "jdbcCodeListTestCodeListIsEmpty", method = RequestMethod.GET)
-    public String testJdbcCodeListTestCodeListIsEmpty(CodeListForm form,
-            Model model) {
+    public String testJdbcCodeListTestCodeListIsEmpty(CodeListForm form, Model model) {
         return "codelist/jdbcCodeListTestCodeListIsEmpty";
     }
 
     // test case 03_03
     @RequestMapping(value = "jdbcCodeListTestDBError", method = RequestMethod.GET)
-    public String testJdbcCodeListTestDBError(CodeListForm form,
-            HttpServletRequest request, Model model) {
+    public String testJdbcCodeListTestDBError(CodeListForm form, HttpServletRequest request,
+            Model model) {
         request.setAttribute("clCodeListWrongItem", codeList.asMap());
         return "codelist/jdbcCodeListTestDBError";
     }
@@ -240,8 +239,7 @@ public class CodeListController {
 
     // test case 12_01
     @RequestMapping(value = "12_01_form", method = RequestMethod.POST, params = "refreshAll")
-    public String test12_01_form_refrashAll(I18nCodeListForm form,
-            Model model) {
+    public String test12_01_form_refrashAll(I18nCodeListForm form, Model model) {
         i18nCodeListService.refreshAll();
         model.addAttribute("items", i18nCodeListService.findAll());
         return "codelist/12_01_form";
@@ -262,16 +260,14 @@ public class CodeListController {
     // test case 10_01
     @RequestMapping(value = "10_01_form", method = RequestMethod.GET)
     public String test10_01_form(CodeListForm form, Model model) {
-        throw new BusinessException(ResultMessages.warning().add(
-                "w.gt.me.0001"));
+        throw new BusinessException(ResultMessages.warning().add("w.gt.me.0001"));
     }
 
     // test case 10_02
     @RequestMapping(value = "10_02_form", method = RequestMethod.GET)
     public String test10_02_form(CodeListForm form, Model model) {
         try {
-            throw new BusinessException(ResultMessages.warning().add(
-                    "w.gt.me.0001"));
+            throw new BusinessException(ResultMessages.warning().add("w.gt.me.0001"));
         } catch (BusinessException e) {
             model.addAttribute(e.getResultMessages());
         }
@@ -296,8 +292,7 @@ public class CodeListController {
 
     // test case 08_01
     @RequestMapping(value = "next", method = RequestMethod.GET, params = "existInCheckString")
-    public String test08_01_check(@Valid ExistInCheckForm form,
-            BindingResult result, Model model) {
+    public String test08_01_check(@Valid ExistInCheckForm form, BindingResult result, Model model) {
         return "codelist/08_01_form";
     }
 
@@ -309,8 +304,7 @@ public class CodeListController {
 
     // test case 08_02
     @RequestMapping(value = "next", method = RequestMethod.GET, params = "existInCheckCharacter")
-    public String test08_02_check(@Valid ExistInCheckForm form,
-            BindingResult result, Model model) {
+    public String test08_02_check(@Valid ExistInCheckForm form, BindingResult result, Model model) {
         return "codelist/08_02_form";
     }
 
@@ -322,8 +316,7 @@ public class CodeListController {
 
     // test case 08_03
     @RequestMapping(value = "next", method = RequestMethod.GET, params = "existInCheckNumber")
-    public String test08_03_check(@Valid ExistInCheckForm form,
-            BindingResult result, Model model) {
+    public String test08_03_check(@Valid ExistInCheckForm form, BindingResult result, Model model) {
         return "codelist/08_03_form";
     }
 
@@ -334,23 +327,23 @@ public class CodeListController {
     }
 
     // test case 08_04
-    @RequestMapping(value = "next", method = RequestMethod.GET, params = "existInCheckNumberFormatted")
-    public String test08_04_check(@Valid ExistInCheckForm form,
-            BindingResult result, Model model) {
+    @RequestMapping(value = "next", method = RequestMethod.GET,
+            params = "existInCheckNumberFormatted")
+    public String test08_04_check(@Valid ExistInCheckForm form, BindingResult result, Model model) {
         return "codelist/08_04_form";
     }
 
     // test case 08_05
     @RequestMapping(value = "/08_05_form", method = RequestMethod.GET)
-    public String test08_05_form(ExistInCheckWrongCodeListForm form,
-            Model model) {
+    public String test08_05_form(ExistInCheckWrongCodeListForm form, Model model) {
         return "codelist/08_05_form";
     }
 
     // test case 08_05
-    @RequestMapping(value = "next", method = RequestMethod.GET, params = "existInCheckWrongCodeList")
-    public String test08_05_check(@Valid ExistInCheckWrongCodeListForm form,
-            BindingResult result, Model model) {
+    @RequestMapping(value = "next", method = RequestMethod.GET,
+            params = "existInCheckWrongCodeList")
+    public String test08_05_check(@Valid ExistInCheckWrongCodeListForm form, BindingResult result,
+            Model model) {
         return "codelist/08_05_form";
     }
 
@@ -361,9 +354,9 @@ public class CodeListController {
     }
 
     // test case 08_06
-    @RequestMapping(value = "next", method = RequestMethod.GET, params = "existInCheckMethodAnnotation")
-    public String test08_06_check(@Valid ExistInCheckForm form,
-            BindingResult result, Model model) {
+    @RequestMapping(value = "next", method = RequestMethod.GET,
+            params = "existInCheckMethodAnnotation")
+    public String test08_06_check(@Valid ExistInCheckForm form, BindingResult result, Model model) {
         return "codelist/08_06_form";
     }
 
@@ -374,9 +367,9 @@ public class CodeListController {
     }
 
     // test case 08_07
-    @RequestMapping(value = "next", method = RequestMethod.GET, params = "existInCheckCustomMessage")
-    public String test08_07_check(@Valid ExistInCheckForm form,
-            BindingResult result, Model model) {
+    @RequestMapping(value = "next", method = RequestMethod.GET,
+            params = "existInCheckCustomMessage")
+    public String test08_07_check(@Valid ExistInCheckForm form, BindingResult result, Model model) {
         return "codelist/08_07_form";
     }
 
@@ -387,9 +380,9 @@ public class CodeListController {
     }
 
     // test case 08_08
-    @RequestMapping(value = "next", method = RequestMethod.GET, params = "existInCheckExtendedCodeList")
-    public String test08_08_check(@Valid ExistInCheckForm form,
-            BindingResult result, Model model) {
+    @RequestMapping(value = "next", method = RequestMethod.GET,
+            params = "existInCheckExtendedCodeList")
+    public String test08_08_check(@Valid ExistInCheckForm form, BindingResult result, Model model) {
         return "codelist/08_08_form";
     }
 
@@ -400,9 +393,9 @@ public class CodeListController {
     }
 
     // test case 08_09
-    @RequestMapping(value = "next", method = RequestMethod.GET, params = "existInCheckMultipleCustomCodeList")
-    public String test08_09_check(@Valid ExistInCheckForm form,
-            BindingResult result, Model model) {
+    @RequestMapping(value = "next", method = RequestMethod.GET,
+            params = "existInCheckMultipleCustomCodeList")
+    public String test08_09_check(@Valid ExistInCheckForm form, BindingResult result, Model model) {
         return "codelist/08_09_form";
     }
 
@@ -413,14 +406,14 @@ public class CodeListController {
     }
 
     // test case 08_10
-    @RequestMapping(value = "next", method = RequestMethod.GET, params = "existInCheckParamAnnotation")
+    @RequestMapping(value = "next", method = RequestMethod.GET,
+            params = "existInCheckParamAnnotation")
     public String test08_10_check(CodeListForm form, Model model) {
         try {
-            model.addAttribute("item1Label", existInCodeListService.getLabel(
-                    form.getItem1()));
+            model.addAttribute("item1Label", existInCodeListService.getLabel(form.getItem1()));
         } catch (ConstraintViolationException e) {
-            model.addAttribute("item1Error", e.getConstraintViolations()
-                    .iterator().next().getMessage());
+            model.addAttribute("item1Error",
+                    e.getConstraintViolations().iterator().next().getMessage());
             return "codelist/08_10_form";
         }
         return "codelist/08_10_form";

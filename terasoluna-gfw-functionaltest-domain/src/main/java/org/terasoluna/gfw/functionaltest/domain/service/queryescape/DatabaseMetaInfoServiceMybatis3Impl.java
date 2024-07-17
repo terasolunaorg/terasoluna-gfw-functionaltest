@@ -24,8 +24,7 @@ import org.terasoluna.gfw.functionaltest.domain.TransactionManagers;
 
 @Service
 @Transactional(value = TransactionManagers.DATASOURCE, readOnly = true)
-public class DatabaseMetaInfoServiceMybatis3Impl extends
-                                                 AbstractDatabaseMetaInfoService {
+public class DatabaseMetaInfoServiceMybatis3Impl extends AbstractDatabaseMetaInfoService {
     @Inject
     SqlSessionFactory sqlSessionFactory;
 

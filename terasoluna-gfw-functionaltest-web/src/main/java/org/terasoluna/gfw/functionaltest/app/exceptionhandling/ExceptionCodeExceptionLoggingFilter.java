@@ -23,8 +23,7 @@ import javax.servlet.ServletResponse;
 
 import org.terasoluna.gfw.web.exception.ExceptionLoggingFilter;
 
-public class ExceptionCodeExceptionLoggingFilter extends
-                                                 ExceptionLoggingFilter {
+public class ExceptionCodeExceptionLoggingFilter extends ExceptionLoggingFilter {
 
     @Override
     protected void logIOException(IOException ex, ServletRequest request,
@@ -33,14 +32,14 @@ public class ExceptionCodeExceptionLoggingFilter extends
     }
 
     @Override
-    protected void logServletException(ServletException ex,
-            ServletRequest request, ServletResponse response) {
+    protected void logServletException(ServletException ex, ServletRequest request,
+            ServletResponse response) {
         getExceptionLogger().log(ex);
     }
 
     @Override
-    protected void logRuntimeException(RuntimeException ex,
-            ServletRequest request, ServletResponse response) {
+    protected void logRuntimeException(RuntimeException ex, ServletRequest request,
+            ServletResponse response) {
         getExceptionLogger().log(ex);
     }
 

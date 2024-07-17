@@ -34,7 +34,9 @@ public class ElArrayController {
 
     @ModelAttribute
     public ArrayForm6 setUpForm() {
-        ArrayForm6 arrayForm6 = new ArrayForm6(new int[3], new double[2], new byte[3], new String[3], new ArrayFormItem6(new int[3], new double[3], new byte[3], new String[3]));
+        ArrayForm6 arrayForm6 =
+                new ArrayForm6(new int[3], new double[2], new byte[3], new String[3],
+                        new ArrayFormItem6(new int[3], new double[3], new byte[3], new String[3]));
         return arrayForm6;
     }
 

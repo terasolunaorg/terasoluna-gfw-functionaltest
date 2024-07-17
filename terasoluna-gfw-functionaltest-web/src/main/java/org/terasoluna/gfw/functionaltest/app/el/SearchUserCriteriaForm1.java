@@ -28,8 +28,7 @@ public class SearchUserCriteriaForm1 {
         this.setMain(main);
     }
 
-    public SearchUserCriteriaForm1() {
-    }
+    public SearchUserCriteriaForm1() {}
 
     public String getName() {
         return name;

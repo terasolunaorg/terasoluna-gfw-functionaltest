@@ -56,10 +56,10 @@ public class TransactionTokenFlow1Controller {
         return "transactiontoken/flow1Step3";
     }
 
-    @RequestMapping(value = "flow1", method = RequestMethod.POST, params = "intermediateWithFinishError")
+    @RequestMapping(value = "flow1", method = RequestMethod.POST,
+            params = "intermediateWithFinishError")
     @TransactionTokenCheck(type = TransactionTokenType.IN)
-    public String flow1Step3_withFinishError(
-            TransactionTokenContext transactionTokenContext) {
+    public String flow1Step3_withFinishError(TransactionTokenContext transactionTokenContext) {
         // Navigate to intermediate screen again
         // Transaction token will be updated
         return "transactiontoken/flow1Step2";

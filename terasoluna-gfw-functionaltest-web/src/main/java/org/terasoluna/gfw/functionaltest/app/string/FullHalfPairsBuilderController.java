@@ -41,7 +41,7 @@ public class FullHalfPairsBuilderController {
         return "fullHalfPairsBuilder";
     }
 
-    @RequestMapping(method = RequestMethod.GET, params = { "form" })
+    @RequestMapping(method = RequestMethod.GET, params = {"form"})
     public String form() {
         return "string/pair";
     }

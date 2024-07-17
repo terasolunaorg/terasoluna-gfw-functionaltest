@@ -36,8 +36,9 @@ import org.terasoluna.gfw.functionaltest.app.codelist.ExistInSampleCodeList.List
 
 @Documented
 @Constraint(validatedBy = {})
-@ExistInCodeList(codeListId = "SAMPLE_CODELIST", message = "This message comes from extended codelist notifying that value doesn't exist in sample codelist")
-@Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE })
+@ExistInCodeList(codeListId = "SAMPLE_CODELIST",
+        message = "This message comes from extended codelist notifying that value doesn't exist in sample codelist")
+@Target({METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE})
 @Retention(RUNTIME)
 @Repeatable(List.class)
 public @interface ExistInSampleCodeList {
@@ -51,8 +52,7 @@ public @interface ExistInSampleCodeList {
     /**
      * Defines several {@code @ExistInSampleCodeList} annotations on the same element.
      */
-    @Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER,
-            TYPE_USE })
+    @Target({METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE})
     @Retention(RUNTIME)
     @Documented
     public @interface List {

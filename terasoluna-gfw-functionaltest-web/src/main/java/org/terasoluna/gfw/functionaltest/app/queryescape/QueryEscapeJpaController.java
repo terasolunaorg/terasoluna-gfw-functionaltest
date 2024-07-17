@@ -58,8 +58,7 @@ public class QueryEscapeJpaController {
     @RequestMapping(value = "search", method = RequestMethod.GET, params = "prefix")
     public String searchWithPrefix_04_XX(TodoForm form, Model model) {
 
-        List<Todo> list = queryEscapeService.findAllByTitleLikePrefix(form
-                .getTodoTitle());
+        List<Todo> list = queryEscapeService.findAllByTitleLikePrefix(form.getTodoTitle());
 
         queryEscapeHelper.bindToModel("prefix search", list, model);
 
@@ -69,8 +68,7 @@ public class QueryEscapeJpaController {
     @RequestMapping(value = "search", method = RequestMethod.GET, params = "suffix")
     public String searchWithSuffix_05_XX(TodoForm form, Model model) {
 
-        List<Todo> list = queryEscapeService.findAllByTitleLikeSuffix(form
-                .getTodoTitle());
+        List<Todo> list = queryEscapeService.findAllByTitleLikeSuffix(form.getTodoTitle());
 
         queryEscapeHelper.bindToModel("suffix search", list, model);
 
@@ -80,8 +78,7 @@ public class QueryEscapeJpaController {
     @RequestMapping(value = "search", method = RequestMethod.GET, params = "partical")
     public String searchWithPartical_06_XX(TodoForm form, Model model) {
 
-        List<Todo> list = queryEscapeService.findAllByTitleLikePartical(form
-                .getTodoTitle());
+        List<Todo> list = queryEscapeService.findAllByTitleLikePartical(form.getTodoTitle());
 
         queryEscapeHelper.bindToModel("partical search", list, model);
 

@@ -59,8 +59,7 @@ public class QueryEscapeJpaWithFullWidthController {
     public String searchWithPrefix_04_XX(TodoForm form, Model model) {
 
         List<Todo> list = queryEscapeService
-                .findAllByTitleLikePrefixEscapingFullWidthWildCard(form
-                        .getTodoTitle());
+                .findAllByTitleLikePrefixEscapingFullWidthWildCard(form.getTodoTitle());
 
         queryEscapeHelper.bindToModel("prefix search", list, model);
 
@@ -71,8 +70,7 @@ public class QueryEscapeJpaWithFullWidthController {
     public String searchWithSuffix_05_XX(TodoForm form, Model model) {
 
         List<Todo> list = queryEscapeService
-                .findAllByTitleLikeSuffixEscapingFullWidthWildCard(form
-                        .getTodoTitle());
+                .findAllByTitleLikeSuffixEscapingFullWidthWildCard(form.getTodoTitle());
 
         queryEscapeHelper.bindToModel("suffix search", list, model);
 
@@ -83,8 +81,7 @@ public class QueryEscapeJpaWithFullWidthController {
     public String searchWithPartical_06_XX(TodoForm form, Model model) {
 
         List<Todo> list = queryEscapeService
-                .findAllByTitleLikeParticalEscapingFullWidthWildCard(form
-                        .getTodoTitle());
+                .findAllByTitleLikeParticalEscapingFullWidthWildCard(form.getTodoTitle());
 
         queryEscapeHelper.bindToModel("partical search", list, model);
 
@@ -94,8 +91,8 @@ public class QueryEscapeJpaWithFullWidthController {
     @RequestMapping(value = "search", method = RequestMethod.GET, params = "nullTodoTitle")
     public String searchWithPrefix_XX_YY(Model model) {
 
-        List<Todo> list = queryEscapeService
-                .findAllByTitleLikePrefixEscapingFullWidthWildCard(null);
+        List<Todo> list =
+                queryEscapeService.findAllByTitleLikePrefixEscapingFullWidthWildCard(null);
 
         queryEscapeHelper.bindToModel("null todo title search", list, model);
 

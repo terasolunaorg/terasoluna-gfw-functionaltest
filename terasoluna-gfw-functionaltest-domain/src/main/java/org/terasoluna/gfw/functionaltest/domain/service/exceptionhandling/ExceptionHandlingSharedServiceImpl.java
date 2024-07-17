@@ -18,8 +18,7 @@ package org.terasoluna.gfw.functionaltest.domain.service.exceptionhandling;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ExceptionHandlingSharedServiceImpl implements
-                                                ExceptionHandlingSharedService {
+public class ExceptionHandlingSharedServiceImpl implements ExceptionHandlingSharedService {
 
     @Override
     public void throwException(RuntimeException e) {

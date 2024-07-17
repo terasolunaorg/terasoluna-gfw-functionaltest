@@ -30,7 +30,8 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class DownloadServiceImpl implements DownloadService {
-    private static final String FIND_CONTENTS_BY_ID = "select contents from document where document_id=:documentId";
+    private static final String FIND_CONTENTS_BY_ID =
+            "select contents from document where document_id=:documentId";
 
     @Inject
     protected NamedParameterJdbcTemplate jdbcTemplate;
@@ -39,16 +40,13 @@ public class DownloadServiceImpl implements DownloadService {
 
     @Override
     public InputStream findContentsById(int documentId) {
-        InputStream contentsStream = jdbcTemplate.queryForObject(
-                FIND_CONTENTS_BY_ID, Collections.singletonMap("documentId",
-                        documentId), new RowMapper<InputStream>() {
-                            public InputStream mapRow(ResultSet rs,
-                                    int i) throws SQLException {
-                                InputStream blobStream = lobHandler
-                                        .getBlobAsBinaryStream(rs, "contents");
-                                return blobStream;
-                            }
-                        });
+        InputStream contentsStream = jdbcTemplate.queryForObject(FIND_CONTENTS_BY_ID,
+                Collections.singletonMap("documentId", documentId), new RowMapper<InputStream>() {
+                    public InputStream mapRow(ResultSet rs, int i) throws SQLException {
+                        InputStream blobStream = lobHandler.getBlobAsBinaryStream(rs, "contents");
+                        return blobStream;
+                    }
+                });
         return contentsStream;
     }
 }

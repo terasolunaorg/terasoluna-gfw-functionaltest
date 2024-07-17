@@ -1,4 +1,3 @@
-
 <h2>Map Query Display f:query()</h2>
 
 <span>Output Data</span>

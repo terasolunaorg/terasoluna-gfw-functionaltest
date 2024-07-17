@@ -28,8 +28,7 @@ import org.slf4j.LoggerFactory;
  */
 public class WebDriverOperations {
 
-    private static final Logger logger = LoggerFactory.getLogger(
-            WebDriverOperations.class);
+    private static final Logger logger = LoggerFactory.getLogger(WebDriverOperations.class);
 
     protected final WebDriver webDriver;
 
@@ -41,10 +40,10 @@ public class WebDriverOperations {
 
     /**
      * Set the default timeout value of the waiting process to find the element.
-     * @param defaultTimeoutSecForImplicitlyWait The default timeout value of the waiting process to find the element (s)
+     * @param defaultTimeoutSecForImplicitlyWait The default timeout value of the waiting process to
+     *        find the element (s)
      */
-    public void setDefaultTimeoutForImplicitlyWait(
-            Duration defaultTimeoutSecForImplicitlyWait) {
+    public void setDefaultTimeoutForImplicitlyWait(Duration defaultTimeoutSecForImplicitlyWait) {
         this.defaultTimeoutSecForImplicitlyWait = defaultTimeoutSecForImplicitlyWait;
     }
 
@@ -86,13 +85,11 @@ public class WebDriverOperations {
      * @return application server name
      */
     public ApServerName getApServerName() {
-        String serverName = webDriver.findElement(By.id("apServerName"))
-                .getText().toUpperCase();
+        String serverName = webDriver.findElement(By.id("apServerName")).getText().toUpperCase();
         try {
             return ApServerName.valueOf(serverName);
         } catch (IllegalArgumentException e) {
-            logger.warn("Unkown application server name:{} is detected.",
-                    serverName);
+            logger.warn("Unkown application server name:{} is detected.", serverName);
             // If server name not defined in the ApServerName class, set it to UNKNOWN.
             return ApServerName.UNKNOWN;
         }

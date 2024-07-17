@@ -4,27 +4,25 @@
 <!--[if IE 8]>    <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!-->
 <html class="no-js">
-<!--<![endif]-->
-<head>
-<meta charset="utf-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width" />
+    <!--<![endif]-->
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <meta name="viewport" content="width=device-width" />
 
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/app/css/style.css"
-  type="text/css" media="screen, projection">
-<script type="text/javascript"
-  src="${pageContext.request.contextPath}/resources/vendor/js/jquery-1.7.2.js"></script>
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/app/css/style.css" type="text/css" media="screen, projection" />
+        <script type="text/javascript" src="${pageContext.request.contextPath}/resources/vendor/js/jquery-1.7.2.js"></script>
 
-<c:set var="titleKey">
-  <tiles:insertAttribute name="title" ignore="true" />
-</c:set>
-<title><spring:message code="${titleKey}" text="terasoluna-gfw-functionaltest" /></title>
-</head>
-<body>
-  <div class="wrapper">
-    <tiles:insertAttribute name="header" />
-    <tiles:insertAttribute name="body" />
-    <tiles:insertAttribute name="footer" />
-  </div>
-</body>
+        <c:set var="titleKey">
+            <tiles:insertAttribute name="title" ignore="true" />
+        </c:set>
+        <title><spring:message code="${titleKey}" text="terasoluna-gfw-functionaltest" /></title>
+    </head>
+    <body>
+        <div class="wrapper">
+            <tiles:insertAttribute name="header" />
+            <tiles:insertAttribute name="body" />
+            <tiles:insertAttribute name="footer" />
+        </div>
+    </body>
 </html>

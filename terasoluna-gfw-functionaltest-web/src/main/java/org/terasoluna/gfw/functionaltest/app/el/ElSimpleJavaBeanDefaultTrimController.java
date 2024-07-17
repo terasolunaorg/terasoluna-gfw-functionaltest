@@ -38,8 +38,7 @@ public class ElSimpleJavaBeanDefaultTrimController {
 
     @InitBinder
     public void bindTrimmingEditor(WebDataBinder binder) {
-        binder.registerCustomEditor(String.class,
-                new StringTrimmerEditor(true));
+        binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
     }
 
     @ModelAttribute
@@ -55,8 +54,8 @@ public class ElSimpleJavaBeanDefaultTrimController {
     }
 
     @RequestMapping(value = "6_15/search", method = RequestMethod.GET)
-    public String nestedJavaBeanQueryString(UserForm userForm,
-            @PageableDefault Pageable pageable, Model model) {
+    public String nestedJavaBeanQueryString(UserForm userForm, @PageableDefault Pageable pageable,
+            Model model) {
 
         // Create Dummy Data
         List<String> dummyList = new ArrayList<String>();

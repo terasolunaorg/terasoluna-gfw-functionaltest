@@ -48,8 +48,7 @@ public class PaginationController {
     }
 
     @RequestMapping(value = "1_1", method = RequestMethod.GET)
-    public String fuinctionTest_1_1(Model model,
-            @PageableDefault(value = 100) Pageable pageable) {
+    public String fuinctionTest_1_1(Model model, @PageableDefault(value = 100) Pageable pageable) {
 
         Page<Person> page = paginationService.findPerson(pageable);
 
@@ -59,8 +58,7 @@ public class PaginationController {
     }
 
     @RequestMapping(value = "1_2", method = RequestMethod.GET)
-    public String fuinctionTest_1_2(Model model,
-            @PageableDefault(value = 30) Pageable pageable) {
+    public String fuinctionTest_1_2(Model model, @PageableDefault(value = 30) Pageable pageable) {
 
         Page<Person> page = paginationService.findPerson(pageable);
 
@@ -70,8 +68,7 @@ public class PaginationController {
     }
 
     @RequestMapping(value = "1_3", method = RequestMethod.GET)
-    public String fuinctionTest_1_3(Model model,
-            @PageableDefault(value = 15) Pageable pageable) {
+    public String fuinctionTest_1_3(Model model, @PageableDefault(value = 15) Pageable pageable) {
 
         Page<Person> page = paginationService.findPerson(pageable);
 
@@ -81,8 +78,7 @@ public class PaginationController {
     }
 
     @RequestMapping(value = "1_4", method = RequestMethod.GET)
-    public String fuinctionTest_1_4(Model model,
-            @PageableDefault Pageable pageable) {
+    public String fuinctionTest_1_4(Model model, @PageableDefault Pageable pageable) {
 
         List<Person> nameList = new ArrayList<Person>();
 
@@ -92,8 +88,7 @@ public class PaginationController {
     }
 
     @RequestMapping(value = "1_5", method = RequestMethod.GET)
-    public String fuinctionTest_1_5(Model model,
-            @PageableDefault Pageable pageable) {
+    public String fuinctionTest_1_5(Model model, @PageableDefault Pageable pageable) {
 
         model.addAttribute("page", null);
 
@@ -101,8 +96,7 @@ public class PaginationController {
     }
 
     @RequestMapping(value = "1_6", method = RequestMethod.GET)
-    public String fuinctionTest_1_6(Model model,
-            @PageableDefault(value = 100) Pageable pageable) {
+    public String fuinctionTest_1_6(Model model, @PageableDefault(value = 100) Pageable pageable) {
 
         Page<Person> page = paginationService.findPerson(pageable);
 
@@ -112,8 +106,7 @@ public class PaginationController {
     }
 
     @RequestMapping(value = "1_7", method = RequestMethod.GET)
-    public String fuinctionTest_1_7(Model model,
-            @PageableDefault(value = 100) Pageable pageable) {
+    public String fuinctionTest_1_7(Model model, @PageableDefault(value = 100) Pageable pageable) {
 
         Page<Person> page = paginationService.findPerson(pageable);
 
@@ -123,8 +116,7 @@ public class PaginationController {
     }
 
     @RequestMapping(value = "1_8", method = RequestMethod.GET)
-    public String fuinctionTest_1_8(Model model,
-            @PageableDefault(value = 100) Pageable pageable) {
+    public String fuinctionTest_1_8(Model model, @PageableDefault(value = 100) Pageable pageable) {
 
         Page<Person> page = paginationService.findPerson(pageable);
 
@@ -134,8 +126,7 @@ public class PaginationController {
     }
 
     @RequestMapping(value = "1_9", method = RequestMethod.GET)
-    public String fuinctionTest_1_9(Model model,
-            @PageableDefault(value = 15) Pageable pageable) {
+    public String fuinctionTest_1_9(Model model, @PageableDefault(value = 15) Pageable pageable) {
 
         Page<Person> page = paginationService.findPerson(pageable);
 
@@ -145,8 +136,7 @@ public class PaginationController {
     }
 
     @RequestMapping(value = "1_10", method = RequestMethod.GET)
-    public String fuinctionTest_1_10(Model model,
-            @PageableDefault(value = 15) Pageable pageable) {
+    public String fuinctionTest_1_10(Model model, @PageableDefault(value = 15) Pageable pageable) {
 
         Page<Person> page = paginationService.findPerson(pageable);
 
@@ -156,8 +146,7 @@ public class PaginationController {
     }
 
     @RequestMapping(value = "1_11", method = RequestMethod.GET)
-    public String fuinctionTest_1_11(Model model,
-            @PageableDefault(value = 15) Pageable pageable) {
+    public String fuinctionTest_1_11(Model model, @PageableDefault(value = 15) Pageable pageable) {
 
         Page<Person> page = paginationService.findPerson(pageable);
 
@@ -167,8 +156,7 @@ public class PaginationController {
     }
 
     @RequestMapping(value = "2_1", method = RequestMethod.GET)
-    public String fuinctionTest_2_1(Model model,
-            @PageableDefault(value = 100) Pageable pageable) {
+    public String fuinctionTest_2_1(Model model, @PageableDefault(value = 100) Pageable pageable) {
 
         Page<Person> page = paginationService.findPerson(pageable);
 
@@ -178,9 +166,8 @@ public class PaginationController {
     }
 
     @RequestMapping(value = "3_1", method = RequestMethod.GET)
-    public String fuinctionTest_3_1(Model model,
-            @PageableDefault(value = 100, sort = { "firstname",
-                    "lastname" }, direction = Direction.DESC) Pageable pageable) {
+    public String fuinctionTest_3_1(Model model, @PageableDefault(value = 100,
+            sort = {"firstname", "lastname"}, direction = Direction.DESC) Pageable pageable) {
 
         Page<Person> page = paginationService.findPerson(pageable);
 
@@ -190,8 +177,7 @@ public class PaginationController {
     }
 
     @RequestMapping(value = "4_1", method = RequestMethod.GET)
-    public String fuinctionTest_4_1(Model model,
-            @PageableDefault(value = 10) Pageable pageable) {
+    public String fuinctionTest_4_1(Model model, @PageableDefault(value = 10) Pageable pageable) {
 
         Page<Person> page = paginationService.findPerson(pageable);
 
@@ -201,8 +187,7 @@ public class PaginationController {
     }
 
     @RequestMapping(value = "4_2", method = RequestMethod.GET)
-    public String fuinctionTest_4_2(Model model,
-            @PageableDefault(value = 10) Pageable pageable) {
+    public String fuinctionTest_4_2(Model model, @PageableDefault(value = 10) Pageable pageable) {
 
         Page<Person> page = paginationService.findPerson(pageable);
 
@@ -212,8 +197,7 @@ public class PaginationController {
     }
 
     @RequestMapping(value = "5_1", method = RequestMethod.GET)
-    public String fuinctionTest_5_1(Model model,
-            @PageableDefault(value = 100) Pageable pageable) {
+    public String fuinctionTest_5_1(Model model, @PageableDefault(value = 100) Pageable pageable) {
 
         Page<Person> page = paginationService.findPerson(pageable);
 
@@ -223,8 +207,7 @@ public class PaginationController {
     }
 
     @RequestMapping(value = "6_1", method = RequestMethod.GET)
-    public String fuinctionTest_6_1(Model model,
-            @PageableDefault(value = 100) Pageable pageable) {
+    public String fuinctionTest_6_1(Model model, @PageableDefault(value = 100) Pageable pageable) {
 
         Page<Person> page = paginationService.findPerson(pageable);
 
@@ -234,8 +217,7 @@ public class PaginationController {
     }
 
     @RequestMapping(value = "7_1", method = RequestMethod.GET)
-    public String fuinctionTest_7_1(Model model,
-            @PageableDefault(value = 100) Pageable pageable) {
+    public String fuinctionTest_7_1(Model model, @PageableDefault(value = 100) Pageable pageable) {
 
         Page<Person> page = paginationService.findPerson(pageable);
 
@@ -245,8 +227,7 @@ public class PaginationController {
     }
 
     @RequestMapping(value = "7_2", method = RequestMethod.GET)
-    public String fuinctionTest_7_2(Model model,
-            @PageableDefault(value = 100) Pageable pageable) {
+    public String fuinctionTest_7_2(Model model, @PageableDefault(value = 100) Pageable pageable) {
 
         Page<Person> page = paginationService.findPerson(pageable);
 
@@ -256,8 +237,7 @@ public class PaginationController {
     }
 
     @RequestMapping(value = "8_1", method = RequestMethod.GET)
-    public String fuinctionTest_8_1(Model model,
-            @PageableDefault(value = 100) Pageable pageable) {
+    public String fuinctionTest_8_1(Model model, @PageableDefault(value = 100) Pageable pageable) {
 
         Page<Person> page = paginationService.findPerson(pageable);
 
@@ -267,8 +247,7 @@ public class PaginationController {
     }
 
     @RequestMapping(value = "8_2", method = RequestMethod.GET)
-    public String fuinctionTest_8_2(Model model,
-            @PageableDefault(value = 100) Pageable pageable) {
+    public String fuinctionTest_8_2(Model model, @PageableDefault(value = 100) Pageable pageable) {
 
         Page<Person> page = paginationService.findPerson(pageable);
 
@@ -278,8 +257,7 @@ public class PaginationController {
     }
 
     @RequestMapping(value = "9_1", method = RequestMethod.GET)
-    public String fuinctionTest_9_1(Model model,
-            @PageableDefault(value = 100) Pageable pageable) {
+    public String fuinctionTest_9_1(Model model, @PageableDefault(value = 100) Pageable pageable) {
 
         Page<Person> page = paginationService.findPerson(pageable);
 
@@ -289,8 +267,7 @@ public class PaginationController {
     }
 
     @RequestMapping(value = "9_2", method = RequestMethod.GET)
-    public String fuinctionTest_9_2(Model model,
-            @PageableDefault(value = 100) Pageable pageable) {
+    public String fuinctionTest_9_2(Model model, @PageableDefault(value = 100) Pageable pageable) {
 
         Page<Person> page = paginationService.findPerson(pageable);
 
@@ -300,8 +277,7 @@ public class PaginationController {
     }
 
     @RequestMapping(value = "10_1", method = RequestMethod.GET)
-    public String fuinctionTest_10_1(Model model,
-            @PageableDefault(value = 100) Pageable pageable) {
+    public String fuinctionTest_10_1(Model model, @PageableDefault(value = 100) Pageable pageable) {
 
         Page<Person> page = paginationService.findPerson(pageable);
 
@@ -311,8 +287,7 @@ public class PaginationController {
     }
 
     @RequestMapping(value = "10_2", method = RequestMethod.GET)
-    public String fuinctionTest_10_2(Model model,
-            @PageableDefault(value = 100) Pageable pageable) {
+    public String fuinctionTest_10_2(Model model, @PageableDefault(value = 100) Pageable pageable) {
 
         Page<Person> page = paginationService.findPerson(pageable);
 
@@ -322,8 +297,7 @@ public class PaginationController {
     }
 
     @RequestMapping(value = "11_1", method = RequestMethod.GET)
-    public String fuinctionTest_11_1(Model model,
-            @PageableDefault(value = 100) Pageable pageable) {
+    public String fuinctionTest_11_1(Model model, @PageableDefault(value = 100) Pageable pageable) {
 
         Page<Person> page = paginationService.findPerson(pageable);
 
@@ -333,8 +307,7 @@ public class PaginationController {
     }
 
     @RequestMapping(value = "11_2", method = RequestMethod.GET)
-    public String fuinctionTest_11_2(Model model,
-            @PageableDefault(value = 100) Pageable pageable) {
+    public String fuinctionTest_11_2(Model model, @PageableDefault(value = 100) Pageable pageable) {
 
         Page<Person> page = paginationService.findPerson(pageable);
 
@@ -344,8 +317,7 @@ public class PaginationController {
     }
 
     @RequestMapping(value = "12_1", method = RequestMethod.GET)
-    public String fuinctionTest_12_1(Model model,
-            @PageableDefault(value = 100) Pageable pageable) {
+    public String fuinctionTest_12_1(Model model, @PageableDefault(value = 100) Pageable pageable) {
 
         Page<Person> page = paginationService.findPerson(pageable);
 
@@ -355,8 +327,7 @@ public class PaginationController {
     }
 
     @RequestMapping(value = "12_2", method = RequestMethod.GET)
-    public String fuinctionTest_12_2(Model model,
-            @PageableDefault(value = 100) Pageable pageable) {
+    public String fuinctionTest_12_2(Model model, @PageableDefault(value = 100) Pageable pageable) {
 
         Page<Person> page = paginationService.findPerson(pageable);
 
@@ -366,8 +337,7 @@ public class PaginationController {
     }
 
     @RequestMapping(value = "13_1", method = RequestMethod.GET)
-    public String fuinctionTest_13_1(Model model,
-            @PageableDefault(value = 100) Pageable pageable) {
+    public String fuinctionTest_13_1(Model model, @PageableDefault(value = 100) Pageable pageable) {
 
         Page<Person> page = paginationService.findPerson(pageable);
 
@@ -377,8 +347,7 @@ public class PaginationController {
     }
 
     @RequestMapping(value = "13_2", method = RequestMethod.GET)
-    public String fuinctionTest_13_2(Model model,
-            @PageableDefault(value = 100) Pageable pageable) {
+    public String fuinctionTest_13_2(Model model, @PageableDefault(value = 100) Pageable pageable) {
 
         Page<Person> page = paginationService.findPerson(pageable);
 
@@ -388,8 +357,7 @@ public class PaginationController {
     }
 
     @RequestMapping(value = "14_1", method = RequestMethod.GET)
-    public String fuinctionTest_14_1(Model model,
-            @PageableDefault(value = 100) Pageable pageable) {
+    public String fuinctionTest_14_1(Model model, @PageableDefault(value = 100) Pageable pageable) {
 
         Page<Person> page = paginationService.findPerson(pageable);
 
@@ -402,8 +370,7 @@ public class PaginationController {
     public String fuinctionTest_14_1_confirm(@PathVariable("page") int page,
             @PathVariable("size") int size, Model model) {
 
-        Page<Person> namePage = paginationService.findPerson(PageRequest.of(
-                page, size));
+        Page<Person> namePage = paginationService.findPerson(PageRequest.of(page, size));
 
         model.addAttribute("page", namePage);
 
@@ -411,8 +378,7 @@ public class PaginationController {
     }
 
     @RequestMapping(value = "15_1", method = RequestMethod.GET)
-    public String fuinctionTest_15_1(Model model,
-            @PageableDefault(value = 100) Pageable pageable) {
+    public String fuinctionTest_15_1(Model model, @PageableDefault(value = 100) Pageable pageable) {
 
         Page<Person> page = paginationService.findPerson(pageable);
 
@@ -422,8 +388,7 @@ public class PaginationController {
     }
 
     @RequestMapping(value = "16_1", method = RequestMethod.GET)
-    public String fuinctionTest_16_1(Model model,
-            @PageableDefault(value = 100) Pageable pageable) {
+    public String fuinctionTest_16_1(Model model, @PageableDefault(value = 100) Pageable pageable) {
 
         Page<Person> page = paginationService.findPerson(pageable);
 
@@ -433,8 +398,7 @@ public class PaginationController {
     }
 
     @RequestMapping(value = "16_2", method = RequestMethod.GET)
-    public String fuinctionTest_16_2(Model model,
-            @PageableDefault(value = 100) Pageable pageable) {
+    public String fuinctionTest_16_2(Model model, @PageableDefault(value = 100) Pageable pageable) {
 
         Page<Person> page = paginationService.findPerson(pageable);
 
@@ -444,8 +408,7 @@ public class PaginationController {
     }
 
     @RequestMapping(value = "17_1", method = RequestMethod.GET)
-    public String fuinctionTest_17_1(Model model,
-            @PageableDefault(value = 100) Pageable pageable) {
+    public String fuinctionTest_17_1(Model model, @PageableDefault(value = 100) Pageable pageable) {
 
         Page<Person> page = paginationService.findPerson(pageable);
 
@@ -455,8 +418,7 @@ public class PaginationController {
     }
 
     @RequestMapping(value = "18_1", method = RequestMethod.GET)
-    public String fuinctionTest_18_1(Model model,
-            @PageableDefault(value = 100) Pageable pageable) {
+    public String fuinctionTest_18_1(Model model, @PageableDefault(value = 100) Pageable pageable) {
 
         Page<Person> page = paginationService.findPerson(pageable);
 
@@ -466,8 +428,7 @@ public class PaginationController {
     }
 
     @RequestMapping(value = "18_2", method = RequestMethod.GET)
-    public String fuinctionTest_18_2(Model model,
-            @PageableDefault(value = 100) Pageable pageable) {
+    public String fuinctionTest_18_2(Model model, @PageableDefault(value = 100) Pageable pageable) {
 
         Page<Person> page = paginationService.findPerson(pageable);
 
@@ -477,8 +438,7 @@ public class PaginationController {
     }
 
     @RequestMapping(value = "18_3", method = RequestMethod.GET)
-    public String fuinctionTest_18_3(Model model,
-            @PageableDefault(value = 100) Pageable pageable) {
+    public String fuinctionTest_18_3(Model model, @PageableDefault(value = 100) Pageable pageable) {
 
         Page<Person> page = paginationService.findPerson(pageable);
 
@@ -488,8 +448,7 @@ public class PaginationController {
     }
 
     @RequestMapping(value = "19_1", method = RequestMethod.GET)
-    public String fuinctionTest_19_1(Model model,
-            @PageableDefault(value = 100) Pageable pageable) {
+    public String fuinctionTest_19_1(Model model, @PageableDefault(value = 100) Pageable pageable) {
 
         Page<Person> page = paginationService.findPerson(pageable);
 
@@ -498,43 +457,38 @@ public class PaginationController {
         return "pagination/pager";
     }
 
-    @RequestMapping(value = { "20_1", "20_2", "20_3", "20_4",
-            "20_5" }, method = RequestMethod.GET)
+    @RequestMapping(value = {"20_1", "20_2", "20_3", "20_4", "20_5"}, method = RequestMethod.GET)
     public String fuinctionTest_20_x(PersonSearchForm form,
-            @PageableDefault(sort = "personId") Pageable pageable,
-            Model model) {
+            @PageableDefault(sort = "personId") Pageable pageable, Model model) {
 
         if (!StringUtils.hasLength(form.getName())) {
             return "pagination/search";
         }
 
-        Page<Person> page = paginationService.findPersonByName(form.getName(),
-                pageable);
+        Page<Person> page = paginationService.findPersonByName(form.getName(), pageable);
 
         model.addAttribute("page", page);
 
         return "pagination/search";
     }
 
-    @RequestMapping(value = { "21_1", "21_1/{page}/{size}", "21_2",
-            "21_2/{page}/{size}" }, method = RequestMethod.GET)
+    @RequestMapping(value = {"21_1", "21_1/{page}/{size}", "21_2", "21_2/{page}/{size}"},
+            method = RequestMethod.GET)
     public String fuinctionTest_21_x(PersonSearchForm form,
-            @PageableDefault(sort = "personId") Pageable pageable,
-            Model model) {
+            @PageableDefault(sort = "personId") Pageable pageable, Model model) {
 
         if (!StringUtils.hasLength(form.getName())) {
             return "pagination/searchPathTmplAndCriteriaQuery";
         }
 
-        Page<Person> page = paginationService.findPersonByName(form.getName(),
-                pageable);
+        Page<Person> page = paginationService.findPersonByName(form.getName(), pageable);
 
         model.addAttribute("page", page);
 
         return "pagination/searchPathTmplAndCriteriaQuery";
     }
 
-    @RequestMapping(value = { "22_1", "22_2" }, method = RequestMethod.GET)
+    @RequestMapping(value = {"22_1", "22_2"}, method = RequestMethod.GET)
     public String fuinctionTest_22_x(PersonSearchForm form,
             @PageableDefault(sort = "personId", direction = Direction.DESC) Pageable pageable,
             Model model) {
@@ -543,16 +497,15 @@ public class PaginationController {
             return "pagination/searchQueryTmplAndCriteriaQuery";
         }
 
-        Page<Person> page = paginationService.findPersonByName(form.getName(),
-                pageable);
+        Page<Person> page = paginationService.findPersonByName(form.getName(), pageable);
 
         model.addAttribute("page", page);
 
         return "pagination/searchQueryTmplAndCriteriaQuery";
     }
 
-    @RequestMapping(value = { "23_1", "23_1/{page}/{size}", "23_2",
-            "23_2/{page}/{size}" }, method = RequestMethod.GET)
+    @RequestMapping(value = {"23_1", "23_1/{page}/{size}", "23_2", "23_2/{page}/{size}"},
+            method = RequestMethod.GET)
     public String fuinctionTest_23_x(PersonSearchForm form,
             @PageableDefault(sort = "firstname", direction = Direction.DESC) Pageable pageable,
             Model model) {
@@ -561,8 +514,7 @@ public class PaginationController {
             return "pagination/searchPathTmplAndQueryTmplAndCriteriaQuery";
         }
 
-        Page<Person> page = paginationService.findPersonByName(form.getName(),
-                pageable);
+        Page<Person> page = paginationService.findPersonByName(form.getName(), pageable);
 
         model.addAttribute("page", page);
 
@@ -570,8 +522,7 @@ public class PaginationController {
     }
 
     @RequestMapping(value = "24_1", method = RequestMethod.GET)
-    public String fuinctionTest_24_1(Model model,
-            @PageableDefault(value = 15) Pageable pageable) {
+    public String fuinctionTest_24_1(Model model, @PageableDefault(value = 15) Pageable pageable) {
 
         Page<Person> page = paginationService.findPerson(pageable);
 
@@ -581,8 +532,7 @@ public class PaginationController {
     }
 
     @RequestMapping(value = "25_1", method = RequestMethod.GET)
-    public String fuinctionTest_25_1(Model model,
-            @PageableDefault(value = 15) Pageable pageable) {
+    public String fuinctionTest_25_1(Model model, @PageableDefault(value = 15) Pageable pageable) {
 
         Page<Person> page = paginationService.findPerson(pageable);
 
@@ -592,8 +542,7 @@ public class PaginationController {
     }
 
     @RequestMapping(value = "26_1", method = RequestMethod.GET)
-    public String fuinctionTest_26_1(Model model,
-            @PageableDefault(value = 100) Pageable pageable) {
+    public String fuinctionTest_26_1(Model model, @PageableDefault(value = 100) Pageable pageable) {
 
         Page<Person> page = paginationService.findPerson(pageable);
 

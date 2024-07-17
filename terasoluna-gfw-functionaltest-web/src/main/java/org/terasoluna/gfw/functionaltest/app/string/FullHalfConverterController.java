@@ -40,25 +40,23 @@ public class FullHalfConverterController {
         return "fullHalfConverter";
     }
 
-    @RequestMapping(method = RequestMethod.GET, params = { "form" })
+    @RequestMapping(method = RequestMethod.GET, params = {"form"})
     public String form() {
         return "string/fullHalf";
     }
 
-    @RequestMapping(method = RequestMethod.POST, params = { "full" })
+    @RequestMapping(method = RequestMethod.POST, params = {"full"})
     public String toFullwidth(FullHalfForm form) {
 
-        form.setFullwidth(DefaultFullHalf.INSTANCE.toFullwidth(form
-                .getHalfwidth()));
+        form.setFullwidth(DefaultFullHalf.INSTANCE.toFullwidth(form.getHalfwidth()));
 
         return "string/fullHalf";
     }
 
-    @RequestMapping(method = RequestMethod.POST, params = { "half" })
+    @RequestMapping(method = RequestMethod.POST, params = {"half"})
     public String toHalfwidth(FullHalfForm form) {
 
-        form.setHalfwidth(DefaultFullHalf.INSTANCE.toHalfwidth(form
-                .getFullwidth()));
+        form.setHalfwidth(DefaultFullHalf.INSTANCE.toHalfwidth(form.getFullwidth()));
 
         return "string/fullHalf";
     }

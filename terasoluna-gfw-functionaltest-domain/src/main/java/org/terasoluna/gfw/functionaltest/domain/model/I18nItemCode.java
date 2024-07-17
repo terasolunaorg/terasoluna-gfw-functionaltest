@@ -55,8 +55,7 @@ public class I18nItemCode implements Serializable {
     @Column(name = "label_ja")
     private String labelJa;
 
-    public I18nItemCode() {
-    }
+    public I18nItemCode() {}
 
     public I18nItemCode(String code, String labelEn, String labelJa) {
         this.code = code;
