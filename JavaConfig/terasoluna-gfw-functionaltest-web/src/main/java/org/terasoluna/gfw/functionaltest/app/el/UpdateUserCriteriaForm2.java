@@ -25,8 +25,7 @@ public class UpdateUserCriteriaForm2 {
         this.age = age;
     }
 
-    public UpdateUserCriteriaForm2() {
-    }
+    public UpdateUserCriteriaForm2() {}
 
     public String getName() {
         return name;

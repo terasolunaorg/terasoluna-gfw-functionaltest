@@ -32,16 +32,14 @@ public class ListForm implements Serializable {
 
     private ListFormItem item;
 
-    public ListForm(List<String> listA, List<String> listB, List<String> listC,
-            ListFormItem item) {
+    public ListForm(List<String> listA, List<String> listB, List<String> listC, ListFormItem item) {
         this.listA = listA;
         this.listB = listB;
         this.listC = listC;
         this.item = item;
     }
 
-    public ListForm() {
-    }
+    public ListForm() {}
 
     public List<String> getListA() {
         return listA;

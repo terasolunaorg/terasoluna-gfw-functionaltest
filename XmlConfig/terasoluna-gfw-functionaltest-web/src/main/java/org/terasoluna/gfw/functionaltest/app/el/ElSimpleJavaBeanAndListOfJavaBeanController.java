@@ -34,7 +34,8 @@ public class ElSimpleJavaBeanAndListOfJavaBeanController {
 
     @ModelAttribute
     public SearchAndBatchUpdateUserForm3 setUpForm() {
-        SearchAndBatchUpdateUserForm3 searchAndBatchUpdateUserForm3 = new SearchAndBatchUpdateUserForm3();
+        SearchAndBatchUpdateUserForm3 searchAndBatchUpdateUserForm3 =
+                new SearchAndBatchUpdateUserForm3();
         return searchAndBatchUpdateUserForm3;
     }
 

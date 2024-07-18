@@ -43,7 +43,7 @@ public class ConsistOfCheckForm implements Serializable {
     @ConsistOf(JIS_X_0208_Hiragana.class)
     private String jisX208Hiragana;
 
-    @ConsistOf({ JIS_X_0208_Hiragana.class, JIS_X_0208_Katakana.class })
+    @ConsistOf({JIS_X_0208_Hiragana.class, JIS_X_0208_Katakana.class})
     private String jisX208HiraganaKatakana;
 
     @ConsistOf(ASCIIControlChars.class)

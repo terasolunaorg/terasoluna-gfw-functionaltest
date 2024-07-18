@@ -165,7 +165,7 @@ public class TerasolunaGfwFunctionaltestCodeListConfig {
      * @return Bean of configured {@link JdbcCodeList}
      */
     @Bean("CL_CODELIST_ITEM1")
-    @DependsOn({ "dataSourceInitializer" })
+    @DependsOn({"dataSourceInitializer"})
     public JdbcCodeList clCodeListItem1() {
         JdbcCodeList jdbcCodeList = abstractJdbcCodeList();
         jdbcCodeList.setQuerySql("select code, label from item1 ORDER BY code");
@@ -179,7 +179,7 @@ public class TerasolunaGfwFunctionaltestCodeListConfig {
      * @return Bean of configured {@link JdbcCodeList}
      */
     @Bean("CL_CODELIST_ITEM2")
-    @DependsOn({ "dataSourceInitializer" })
+    @DependsOn({"dataSourceInitializer"})
     public JdbcCodeList clCodeListItem2() {
         JdbcCodeList jdbcCodeList = abstractJdbcCodeList();
         jdbcCodeList.setQuerySql("select code, label from item2 ORDER BY code");
@@ -193,12 +193,11 @@ public class TerasolunaGfwFunctionaltestCodeListConfig {
      * @return Bean of configured {@link JdbcCodeList}
      */
     @Bean("CODELIST_WRONG_ITEM")
-    @DependsOn({ "dataSourceInitializer" })
+    @DependsOn({"dataSourceInitializer"})
     public JdbcCodeList codeListWrongItem() {
         JdbcCodeList jdbcCodeList = abstractJdbcCodeList();
         jdbcCodeList.setLazyInit(true);
-        jdbcCodeList.setQuerySql(
-                "select code, label_wrong from item2 ORDER BY code");
+        jdbcCodeList.setQuerySql("select code, label_wrong from item2 ORDER BY code");
         jdbcCodeList.setValueColumn("code");
         jdbcCodeList.setLabelColumn("label");
         return jdbcCodeList;
@@ -279,7 +278,8 @@ public class TerasolunaGfwFunctionaltestCodeListConfig {
      */
     @Bean("CL_CODELIST06_03")
     public SimpleI18nCodeList clCodeList06_03() {
-        Map<String, Map<Locale, String>> columnsMap = new LinkedHashMap<String, Map<Locale, String>>();
+        Map<String, Map<Locale, String>> columnsMap =
+                new LinkedHashMap<String, Map<Locale, String>>();
         Map<Locale, String> key1Map = new LinkedHashMap<Locale, String>();
         key1Map.put(Locale.ENGLISH, "label1");
         key1Map.put(Locale.JAPANESE, "ラベル1");
@@ -383,7 +383,7 @@ public class TerasolunaGfwFunctionaltestCodeListConfig {
      * @return Bean of configured {@link SimpleReloadableI18nCodeList}
      */
     @Bean("CL_CODELIST12_01")
-    @DependsOn({ "dataSourceInitializer" })
+    @DependsOn({"dataSourceInitializer"})
     public SimpleReloadableI18nCodeList clCodeList12_01() {
         Map<Locale, ReloadableCodeList> rowsMap = new LinkedHashMap<Locale, ReloadableCodeList>();
         rowsMap.put(Locale.ENGLISH, clCodeListItem3_En());
@@ -399,11 +399,10 @@ public class TerasolunaGfwFunctionaltestCodeListConfig {
      * @return Bean of configured {@link JdbcCodeList}
      */
     @Bean("CL_CODELIST_ITEM3_EN")
-    @DependsOn({ "dataSourceInitializer" })
+    @DependsOn({"dataSourceInitializer"})
     public JdbcCodeList clCodeListItem3_En() {
         JdbcCodeList jdbcCodeList = abstractJdbcCodeList();
-        jdbcCodeList.setQuerySql(
-                "select code, label_en from item3 ORDER BY code");
+        jdbcCodeList.setQuerySql("select code, label_en from item3 ORDER BY code");
         jdbcCodeList.setValueColumn("code");
         jdbcCodeList.setLabelColumn("label_en");
         return jdbcCodeList;
@@ -414,11 +413,10 @@ public class TerasolunaGfwFunctionaltestCodeListConfig {
      * @return Bean of configured {@link JdbcCodeList}
      */
     @Bean("CL_CODELIST_ITEM3_JA")
-    @DependsOn({ "dataSourceInitializer" })
+    @DependsOn({"dataSourceInitializer"})
     public JdbcCodeList clCodeListItem3_Ja() {
         JdbcCodeList jdbcCodeList = abstractJdbcCodeList();
-        jdbcCodeList.setQuerySql(
-                "select code, label_ja from item3 ORDER BY code");
+        jdbcCodeList.setQuerySql("select code, label_ja from item3 ORDER BY code");
         jdbcCodeList.setValueColumn("code");
         jdbcCodeList.setLabelColumn("label_ja");
         return jdbcCodeList;

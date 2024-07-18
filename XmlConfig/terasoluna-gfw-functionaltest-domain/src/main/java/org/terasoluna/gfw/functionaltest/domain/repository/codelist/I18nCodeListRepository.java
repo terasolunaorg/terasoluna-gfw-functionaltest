@@ -18,6 +18,5 @@ package org.terasoluna.gfw.functionaltest.domain.repository.codelist;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.terasoluna.gfw.functionaltest.domain.model.I18nItemCode;
 
-public interface I18nCodeListRepository extends
-                                        JpaRepository<I18nItemCode, Integer> {
+public interface I18nCodeListRepository extends JpaRepository<I18nItemCode, Integer> {
 }

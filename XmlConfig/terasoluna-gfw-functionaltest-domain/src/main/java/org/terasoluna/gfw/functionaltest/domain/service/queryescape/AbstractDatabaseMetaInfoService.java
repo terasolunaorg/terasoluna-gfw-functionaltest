@@ -18,8 +18,7 @@ package org.terasoluna.gfw.functionaltest.domain.service.queryescape;
 import jakarta.annotation.PostConstruct;
 import jakarta.inject.Inject;
 
-public abstract class AbstractDatabaseMetaInfoService implements
-                                                      DatabaseMetaInfoService {
+public abstract class AbstractDatabaseMetaInfoService implements DatabaseMetaInfoService {
     private String databaseId;
 
     private String oracleVersion;

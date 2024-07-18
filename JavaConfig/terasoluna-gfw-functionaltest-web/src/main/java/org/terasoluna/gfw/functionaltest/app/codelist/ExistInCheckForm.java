@@ -40,15 +40,17 @@ public class ExistInCheckForm implements Serializable {
 
     private String item6;
 
-    @ExistInCodeList(codeListId = "SAMPLE_CODELIST", message = "This is a custom message notifying that value doesn't exist in sample codelist")
+    @ExistInCodeList(codeListId = "SAMPLE_CODELIST",
+            message = "This is a custom message notifying that value doesn't exist in sample codelist")
     private String item7;
 
     @ExistInSampleCodeList
     private String item8;
 
-    @ExistInCodeList.List(value = {
-            @ExistInCodeList(codeListId = "SAMPLE_CODELIST", message = "This is a custom message notifying that value doesn't exist in sample codelist"),
-            @ExistInCodeList(codeListId = "SAMPLE_MUTIPLE_CODELIST", message = "This is a custom message notifying that value doesn't exist in sample multiple codelist") })
+    @ExistInCodeList.List(value = {@ExistInCodeList(codeListId = "SAMPLE_CODELIST",
+            message = "This is a custom message notifying that value doesn't exist in sample codelist"),
+            @ExistInCodeList(codeListId = "SAMPLE_MUTIPLE_CODELIST",
+                    message = "This is a custom message notifying that value doesn't exist in sample multiple codelist")})
     private String item9;
 
     public String getItem1() {

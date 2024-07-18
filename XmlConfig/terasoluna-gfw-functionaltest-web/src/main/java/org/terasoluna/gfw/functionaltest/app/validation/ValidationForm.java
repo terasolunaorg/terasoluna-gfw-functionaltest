@@ -26,24 +26,27 @@ import org.terasoluna.gfw.common.validator.constraints.Compare;
  * Validation form object.
  */
 @Compare.List({
-        @Compare(left = "left", right = "right", operator = Compare.Operator.EQUAL, requireBoth = true, node = Compare.Node.PROPERTY, groups = {
-                ValidationForm.ValidateCompare.class }),
-        @Compare(left = "left", right = "right", operator = Compare.Operator.EQUAL, groups = {
-                ValidationForm.ValidateCompareOperatorEqual.class }),
-        @Compare(left = "left", right = "right", operator = Compare.Operator.NOT_EQUAL, groups = {
-                ValidationForm.ValidateCompareOperatorNotEqual.class }),
-        @Compare(left = "left", right = "right", operator = Compare.Operator.GREATER_THAN, groups = {
-                ValidationForm.ValidateCompareOperatorGreaterThan.class }),
-        @Compare(left = "left", right = "right", operator = Compare.Operator.GREATER_THAN_OR_EQUAL, groups = {
-                ValidationForm.ValidateCompareOperatorGreaterThanOrEqual.class }),
-        @Compare(left = "left", right = "right", operator = Compare.Operator.LESS_THAN, groups = {
-                ValidationForm.ValidateCompareOperatorLessThan.class }),
-        @Compare(left = "left", right = "right", operator = Compare.Operator.LESS_THAN_OR_EQUAL, groups = {
-                ValidationForm.ValidateCompareOperatorLessThanOrEqual.class }),
-        @Compare(left = "left", right = "right", operator = Compare.Operator.EQUAL, node = Compare.Node.PROPERTY, groups = {
-                ValidationForm.ValidateCompareNodeProperty.class }),
-        @Compare(left = "left", right = "right", operator = Compare.Operator.EQUAL, node = Compare.Node.ROOT_BEAN, groups = {
-                ValidationForm.ValidateCompareNodeRootBean.class }),
+        @Compare(left = "left", right = "right", operator = Compare.Operator.EQUAL,
+                requireBoth = true, node = Compare.Node.PROPERTY,
+                groups = {ValidationForm.ValidateCompare.class}),
+        @Compare(left = "left", right = "right", operator = Compare.Operator.EQUAL,
+                groups = {ValidationForm.ValidateCompareOperatorEqual.class}),
+        @Compare(left = "left", right = "right", operator = Compare.Operator.NOT_EQUAL,
+                groups = {ValidationForm.ValidateCompareOperatorNotEqual.class}),
+        @Compare(left = "left", right = "right", operator = Compare.Operator.GREATER_THAN,
+                groups = {ValidationForm.ValidateCompareOperatorGreaterThan.class}),
+        @Compare(left = "left", right = "right", operator = Compare.Operator.GREATER_THAN_OR_EQUAL,
+                groups = {ValidationForm.ValidateCompareOperatorGreaterThanOrEqual.class}),
+        @Compare(left = "left", right = "right", operator = Compare.Operator.LESS_THAN,
+                groups = {ValidationForm.ValidateCompareOperatorLessThan.class}),
+        @Compare(left = "left", right = "right", operator = Compare.Operator.LESS_THAN_OR_EQUAL,
+                groups = {ValidationForm.ValidateCompareOperatorLessThanOrEqual.class}),
+        @Compare(left = "left", right = "right", operator = Compare.Operator.EQUAL,
+                node = Compare.Node.PROPERTY,
+                groups = {ValidationForm.ValidateCompareNodeProperty.class}),
+        @Compare(left = "left", right = "right", operator = Compare.Operator.EQUAL,
+                node = Compare.Node.ROOT_BEAN,
+                groups = {ValidationForm.ValidateCompareNodeRootBean.class}),
 
 })
 public class ValidationForm implements Serializable {
@@ -85,12 +88,9 @@ public class ValidationForm implements Serializable {
     static interface ValidateCompareNodeRootBean {
     };
 
-    @ByteMin(value = 6, charset = "Shift_JIS", groups = {
-            ValidateByteMin.class })
-    @ByteMax(value = 6, charset = "Shift_JIS", groups = {
-            ValidateByteMax.class })
-    @ByteSize(min = 6, max = 6, charset = "Shift_JIS", groups = {
-            ValidateByteSize.class })
+    @ByteMin(value = 6, charset = "Shift_JIS", groups = {ValidateByteMin.class})
+    @ByteMax(value = 6, charset = "Shift_JIS", groups = {ValidateByteMax.class})
+    @ByteSize(min = 6, max = 6, charset = "Shift_JIS", groups = {ValidateByteSize.class})
     private String userName;
 
     private Integer left;

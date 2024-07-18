@@ -39,18 +39,15 @@ public class ElListOfSimpleValueDefaultTrimController {
 
     @InitBinder
     public void bindTrimmingEditor(WebDataBinder binder) {
-        binder.registerCustomEditor(String.class,
-                new StringTrimmerEditor(true));
+        binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
     }
 
     @ModelAttribute
     public ListForm setUpForm() {
-        ListForm listForm = new ListForm(Arrays.asList("a0", "a1", "a2"), Arrays
-                .asList("b0", "b1", "b2"), Arrays.asList("c0", "c1",
-                        "c2"), new ListFormItem(Arrays.asList("aa0", "aa1",
-                                "aa2"), Arrays.asList("bb0", "bb1",
-                                        "bb2"), Arrays.asList("cc0", "cc1",
-                                                "cc2")));
+        ListForm listForm = new ListForm(Arrays.asList("a0", "a1", "a2"),
+                Arrays.asList("b0", "b1", "b2"), Arrays.asList("c0", "c1", "c2"),
+                new ListFormItem(Arrays.asList("aa0", "aa1", "aa2"),
+                        Arrays.asList("bb0", "bb1", "bb2"), Arrays.asList("cc0", "cc1", "cc2")));
         return listForm;
     }
 
@@ -61,8 +58,8 @@ public class ElListOfSimpleValueDefaultTrimController {
     }
 
     @GetMapping(value = "6_16/search")
-    public String nestedJavaBeanQueryString(ListForm listForm,
-            @PageableDefault Pageable pageable, Model model) {
+    public String nestedJavaBeanQueryString(ListForm listForm, @PageableDefault Pageable pageable,
+            Model model) {
 
         // Create Dummy Data
         List<String> dummyList = new ArrayList<String>();
@@ -85,16 +82,11 @@ public class ElListOfSimpleValueDefaultTrimController {
         model.addAttribute("listBString", listBString);
         model.addAttribute("listCString", listCString);
 
-        String listA0StringItem = Objects.toString(listForm.getItem().getListA()
-                .get(0));
-        String listA1StringItem = Objects.toString(listForm.getItem().getListA()
-                .get(1));
-        String listA2StringItem = Objects.toString(listForm.getItem().getListA()
-                .get(2));
-        String listBStringItem = Objects.toString(listForm.getItem()
-                .getListB());
-        String listCStringItem = Objects.toString(listForm.getItem()
-                .getListC());
+        String listA0StringItem = Objects.toString(listForm.getItem().getListA().get(0));
+        String listA1StringItem = Objects.toString(listForm.getItem().getListA().get(1));
+        String listA2StringItem = Objects.toString(listForm.getItem().getListA().get(2));
+        String listBStringItem = Objects.toString(listForm.getItem().getListB());
+        String listCStringItem = Objects.toString(listForm.getItem().getListC());
 
         model.addAttribute("listA0StringItem", listA0StringItem);
         model.addAttribute("listA1StringItem", listA1StringItem);

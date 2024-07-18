@@ -53,9 +53,8 @@ import jakarta.inject.Inject;
 @EnableJpaRepositories("org.terasoluna.gfw.functionaltest.domain.repository")
 @EnableScheduling
 @MapperScan("org.terasoluna.gfw.functionaltest.domain.repository")
-@Import({ TerasolunaGfwFunctionaltestEnvConfig.class })
-public class TerasolunaGfwFunctionaltestInfraConfig implements
-                                                    SchedulingConfigurer {
+@Import({TerasolunaGfwFunctionaltestEnvConfig.class})
+public class TerasolunaGfwFunctionaltestInfraConfig implements SchedulingConfigurer {
 
     /**
      * Database property.
@@ -90,17 +89,15 @@ public class TerasolunaGfwFunctionaltestInfraConfig implements
     public LocalContainerEntityManagerFactoryBean entityManagerFactory(
             @Qualifier("dataSource") DataSource dataSource) {
 
-        LocalContainerEntityManagerFactoryBean bean = TerasolunaGfwFunctionaltestEnvConfig
-                .abstractEntityManagerFactory();
-        bean.setPackagesToScan(
-                "org.terasoluna.gfw.functionaltest.domain.model");
+        LocalContainerEntityManagerFactoryBean bean =
+                TerasolunaGfwFunctionaltestEnvConfig.abstractEntityManagerFactory();
+        bean.setPackagesToScan("org.terasoluna.gfw.functionaltest.domain.model");
         bean.setJpaVendorAdapter(jpaVendorAdapter());
         bean.setDataSource(dataSource);
 
         Map<String, Object> param = new LinkedHashMap<String, Object>();
         param.put("hibernate.hbm2ddl.auto", "none");
-        param.put("hibernate.ejb.naming_strategy",
-                "org.hibernate.cfg.ImprovedNamingStrategy");
+        param.put("hibernate.ejb.naming_strategy", "org.hibernate.cfg.ImprovedNamingStrategy");
         param.put("hibernate.connection.charSet", "UTF-8");
         param.put("hibernate.show_sql", false);
         param.put("hibernate.format_sql", false);
@@ -118,8 +115,7 @@ public class TerasolunaGfwFunctionaltestInfraConfig implements
      * @return Bean of configured {@link NamedParameterJdbcTemplate}
      */
     @Bean("jdbcTemplate")
-    public NamedParameterJdbcTemplate jdbcTemplate(
-            @Qualifier("dataSource") DataSource dataSource) {
+    public NamedParameterJdbcTemplate jdbcTemplate(@Qualifier("dataSource") DataSource dataSource) {
         NamedParameterJdbcTemplate bean = new NamedParameterJdbcTemplate(dataSource);
         return bean;
     }
@@ -145,8 +141,7 @@ public class TerasolunaGfwFunctionaltestInfraConfig implements
      * @return Bean of configured {@link SqlSessionFactoryBean}
      */
     @Bean("sqlSessionFactory")
-    public SqlSessionFactoryBean sqlSessionFactory(
-            @Qualifier("dataSource") DataSource dataSource) {
+    public SqlSessionFactoryBean sqlSessionFactory(@Qualifier("dataSource") DataSource dataSource) {
         SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
         bean.setDataSource(dataSource);
         bean.setConfiguration(MybatisConfig.configuration());

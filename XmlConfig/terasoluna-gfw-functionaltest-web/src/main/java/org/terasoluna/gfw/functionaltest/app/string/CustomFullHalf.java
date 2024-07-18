@@ -34,30 +34,25 @@ public class CustomFullHalf {
             builder.pair(fullwidth, String.valueOf(c));
         }
 
-        builder.pair("。", "｡").pair("「", "｢").pair("」", "｣").pair("、", "､")
-                .pair("・", "･").pair("ァ", "ｧ").pair("ィ", "ｨ").pair("ゥ", "ｩ")
-                .pair("ェ", "ｪ").pair("ォ", "ｫ").pair("ャ", "ｬ").pair("ュ", "ｭ")
-                .pair("ョ", "ｮ").pair("ッ", "ｯ").pair("ア", "ｱ").pair("イ", "ｲ")
-                .pair("ウ", "ｳ").pair("エ", "ｴ").pair("オ", "ｵ").pair("カ", "ｶ")
-                .pair("キ", "ｷ").pair("ク", "ｸ").pair("ケ", "ｹ").pair("コ", "ｺ")
-                .pair("サ", "ｻ").pair("シ", "ｼ").pair("ス", "ｽ").pair("セ", "ｾ")
-                .pair("ソ", "ｿ").pair("タ", "ﾀ").pair("チ", "ﾁ").pair("ツ", "ﾂ")
-                .pair("テ", "ﾃ").pair("ト", "ﾄ").pair("ナ", "ﾅ").pair("ニ", "ﾆ")
-                .pair("ヌ", "ﾇ").pair("ネ", "ﾈ").pair("ノ", "ﾉ").pair("ハ", "ﾊ")
-                .pair("ヒ", "ﾋ").pair("フ", "ﾌ").pair("ヘ", "ﾍ").pair("ホ", "ﾎ")
-                .pair("マ", "ﾏ").pair("ミ", "ﾐ").pair("ム", "ﾑ").pair("メ", "ﾒ")
-                .pair("モ", "ﾓ").pair("ヤ", "ﾔ").pair("ユ", "ﾕ").pair("ヨ", "ﾖ")
-                .pair("ラ", "ﾗ").pair("リ", "ﾘ").pair("ル", "ﾙ").pair("レ", "ﾚ")
-                .pair("ロ", "ﾛ").pair("ワ", "ﾜ").pair("ヲ", "ｦ").pair("ン", "ﾝ")
-                .pair("ガ", "ｶﾞ").pair("ギ", "ｷﾞ").pair("グ", "ｸﾞ").pair("ゲ", "ｹﾞ")
-                .pair("ゴ", "ｺﾞ").pair("ザ", "ｻﾞ").pair("ジ", "ｼﾞ").pair("ズ", "ｽﾞ")
-                .pair("ゼ", "ｾﾞ").pair("ゾ", "ｿﾞ").pair("ダ", "ﾀﾞ").pair("ヂ", "ﾁﾞ")
-                .pair("ヅ", "ﾂﾞ").pair("デ", "ﾃﾞ").pair("ド", "ﾄﾞ").pair("バ", "ﾊﾞ")
-                .pair("ビ", "ﾋﾞ").pair("ブ", "ﾌﾞ").pair("ベ", "ﾍﾞ").pair("ボ", "ﾎﾞ")
-                .pair("パ", "ﾊﾟ").pair("ピ", "ﾋﾟ").pair("プ", "ﾌﾟ").pair("ペ", "ﾍﾟ")
-                .pair("ポ", "ﾎﾟ").pair("ヴ", "ｳﾞ").pair("\u30f7", "ﾜﾞ").pair(
-                        "\u30fa", "ｦﾞ").pair("゛", "ﾞ").pair("゜", "ﾟ").pair(
-                                "\u3000", " ");
+        builder.pair("。", "｡").pair("「", "｢").pair("」", "｣").pair("、", "､").pair("・", "･")
+                .pair("ァ", "ｧ").pair("ィ", "ｨ").pair("ゥ", "ｩ").pair("ェ", "ｪ").pair("ォ", "ｫ")
+                .pair("ャ", "ｬ").pair("ュ", "ｭ").pair("ョ", "ｮ").pair("ッ", "ｯ").pair("ア", "ｱ")
+                .pair("イ", "ｲ").pair("ウ", "ｳ").pair("エ", "ｴ").pair("オ", "ｵ").pair("カ", "ｶ")
+                .pair("キ", "ｷ").pair("ク", "ｸ").pair("ケ", "ｹ").pair("コ", "ｺ").pair("サ", "ｻ")
+                .pair("シ", "ｼ").pair("ス", "ｽ").pair("セ", "ｾ").pair("ソ", "ｿ").pair("タ", "ﾀ")
+                .pair("チ", "ﾁ").pair("ツ", "ﾂ").pair("テ", "ﾃ").pair("ト", "ﾄ").pair("ナ", "ﾅ")
+                .pair("ニ", "ﾆ").pair("ヌ", "ﾇ").pair("ネ", "ﾈ").pair("ノ", "ﾉ").pair("ハ", "ﾊ")
+                .pair("ヒ", "ﾋ").pair("フ", "ﾌ").pair("ヘ", "ﾍ").pair("ホ", "ﾎ").pair("マ", "ﾏ")
+                .pair("ミ", "ﾐ").pair("ム", "ﾑ").pair("メ", "ﾒ").pair("モ", "ﾓ").pair("ヤ", "ﾔ")
+                .pair("ユ", "ﾕ").pair("ヨ", "ﾖ").pair("ラ", "ﾗ").pair("リ", "ﾘ").pair("ル", "ﾙ")
+                .pair("レ", "ﾚ").pair("ロ", "ﾛ").pair("ワ", "ﾜ").pair("ヲ", "ｦ").pair("ン", "ﾝ")
+                .pair("ガ", "ｶﾞ").pair("ギ", "ｷﾞ").pair("グ", "ｸﾞ").pair("ゲ", "ｹﾞ").pair("ゴ", "ｺﾞ")
+                .pair("ザ", "ｻﾞ").pair("ジ", "ｼﾞ").pair("ズ", "ｽﾞ").pair("ゼ", "ｾﾞ").pair("ゾ", "ｿﾞ")
+                .pair("ダ", "ﾀﾞ").pair("ヂ", "ﾁﾞ").pair("ヅ", "ﾂﾞ").pair("デ", "ﾃﾞ").pair("ド", "ﾄﾞ")
+                .pair("バ", "ﾊﾞ").pair("ビ", "ﾋﾞ").pair("ブ", "ﾌﾞ").pair("ベ", "ﾍﾞ").pair("ボ", "ﾎﾞ")
+                .pair("パ", "ﾊﾟ").pair("ピ", "ﾋﾟ").pair("プ", "ﾌﾟ").pair("ペ", "ﾍﾟ").pair("ポ", "ﾎﾟ")
+                .pair("ヴ", "ｳﾞ").pair("\u30f7", "ﾜﾞ").pair("\u30fa", "ｦﾞ").pair("゛", "ﾞ")
+                .pair("゜", "ﾟ").pair("\u3000", " ");
 
         INSTANCE = new FullHalfConverter(builder.build());
     }

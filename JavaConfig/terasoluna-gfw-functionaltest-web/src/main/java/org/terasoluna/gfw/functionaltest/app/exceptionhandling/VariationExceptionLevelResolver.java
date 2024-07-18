@@ -24,14 +24,12 @@ public class VariationExceptionLevelResolver implements ExceptionLevelResolver {
 
     public ExceptionLevel resolveExceptionLevel(Exception ex) {
         BusinessTestException we = (BusinessTestException) ex;
-        String exceptionCode = we.getResultMessages().getList().get(0)
-                .getCode();
+        String exceptionCode = we.getResultMessages().getList().get(0).getCode();
 
         if (!StringUtils.hasText(exceptionCode)) {
             return ExceptionLevel.ERROR;
         }
-        String exceptionCodePrefix = exceptionCode.substring(0, 1)
-                .toLowerCase();
+        String exceptionCodePrefix = exceptionCode.substring(0, 1).toLowerCase();
         if ("d".equals(exceptionCodePrefix)) {
             return ExceptionLevel.ERROR;
         }

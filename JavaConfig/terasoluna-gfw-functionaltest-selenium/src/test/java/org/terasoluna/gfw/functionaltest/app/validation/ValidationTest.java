@@ -28,13 +28,12 @@ import org.terasoluna.gfw.functionaltest.app.FunctionTestSupport;
 import org.terasoluna.gfw.functionaltest.config.SeleniumContextConfig;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { SeleniumContextConfig.class })
+@ContextConfiguration(classes = {SeleniumContextConfig.class})
 public class ValidationTest extends FunctionTestSupport {
 
     private static final String SUCCESS = "Validation successfully!";
 
-    public ValidationTest() {
-    }
+    public ValidationTest() {}
 
     @Before
     public void setUpLocale() {
@@ -56,8 +55,8 @@ public class ValidationTest extends FunctionTestSupport {
 
         inputFieldAccessor.overrideValue(By.id("userName"), "あいu", driver);
         driver.findElement(By.id("btn_validate")).click();
-        assertThat(driver.findElement(By.id("userName.errors")).getText(), is(
-                "must be greater than or equal to 6 bytes"));
+        assertThat(driver.findElement(By.id("userName.errors")).getText(),
+                is("must be greater than or equal to 6 bytes"));
     }
 
     @Test
@@ -68,8 +67,8 @@ public class ValidationTest extends FunctionTestSupport {
 
         inputFieldAccessor.overrideValue(By.id("userName"), "あいu", driver);
         driver.findElement(By.id("btn_validate")).click();
-        assertThat(driver.findElement(By.id("userName.errors")).getText(), is(
-                "6 バイト以上のサイズにしてください"));
+        assertThat(driver.findElement(By.id("userName.errors")).getText(),
+                is("6 バイト以上のサイズにしてください"));
     }
 
     @Test
@@ -87,8 +86,8 @@ public class ValidationTest extends FunctionTestSupport {
 
         inputFieldAccessor.overrideValue(By.id("userName"), "あいうe", driver);
         driver.findElement(By.id("btn_validate")).click();
-        assertThat(driver.findElement(By.id("userName.errors")).getText(), is(
-                "must be less than or equal to 6 bytes"));
+        assertThat(driver.findElement(By.id("userName.errors")).getText(),
+                is("must be less than or equal to 6 bytes"));
     }
 
     @Test
@@ -99,8 +98,8 @@ public class ValidationTest extends FunctionTestSupport {
 
         inputFieldAccessor.overrideValue(By.id("userName"), "あいうe", driver);
         driver.findElement(By.id("btn_validate")).click();
-        assertThat(driver.findElement(By.id("userName.errors")).getText(), is(
-                "6 バイト以下のサイズにしてください"));
+        assertThat(driver.findElement(By.id("userName.errors")).getText(),
+                is("6 バイト以下のサイズにしてください"));
     }
 
     @Test
@@ -118,13 +117,13 @@ public class ValidationTest extends FunctionTestSupport {
 
         inputFieldAccessor.overrideValue(By.id("userName"), "あいu", driver);
         driver.findElement(By.id("btn_validate")).click();
-        assertThat(driver.findElement(By.id("userName.errors")).getText(), is(
-                "must be between 6 and 6 bytes"));
+        assertThat(driver.findElement(By.id("userName.errors")).getText(),
+                is("must be between 6 and 6 bytes"));
 
         inputFieldAccessor.overrideValue(By.id("userName"), "あいうe", driver);
         driver.findElement(By.id("btn_validate")).click();
-        assertThat(driver.findElement(By.id("userName.errors")).getText(), is(
-                "must be between 6 and 6 bytes"));
+        assertThat(driver.findElement(By.id("userName.errors")).getText(),
+                is("must be between 6 and 6 bytes"));
     }
 
     @Test
@@ -135,13 +134,13 @@ public class ValidationTest extends FunctionTestSupport {
 
         inputFieldAccessor.overrideValue(By.id("userName"), "あいu", driver);
         driver.findElement(By.id("btn_validate")).click();
-        assertThat(driver.findElement(By.id("userName.errors")).getText(), is(
-                "6 から 6 バイトの間のサイズにしてください"));
+        assertThat(driver.findElement(By.id("userName.errors")).getText(),
+                is("6 から 6 バイトの間のサイズにしてください"));
 
         inputFieldAccessor.overrideValue(By.id("userName"), "あいうe", driver);
         driver.findElement(By.id("btn_validate")).click();
-        assertThat(driver.findElement(By.id("userName.errors")).getText(), is(
-                "6 から 6 バイトの間のサイズにしてください"));
+        assertThat(driver.findElement(By.id("userName.errors")).getText(),
+                is("6 から 6 バイトの間のサイズにしてください"));
     }
 
     @Test
@@ -161,8 +160,8 @@ public class ValidationTest extends FunctionTestSupport {
         inputFieldAccessor.overrideValue(By.id("left"), "100", driver);
         inputFieldAccessor.overrideValue(By.id("right"), "101", driver);
         driver.findElement(By.id("btn_eq")).click();
-        assertThat(driver.findElement(By.id("left.errors")).getText(), is(
-                "invalid combination of left and right"));
+        assertThat(driver.findElement(By.id("left.errors")).getText(),
+                is("invalid combination of left and right"));
     }
 
     @Test
@@ -182,8 +181,8 @@ public class ValidationTest extends FunctionTestSupport {
         inputFieldAccessor.overrideValue(By.id("left"), "100", driver);
         inputFieldAccessor.overrideValue(By.id("right"), "101", driver);
         driver.findElement(By.id("btn_eq")).click();
-        assertThat(driver.findElement(By.id("left.errors")).getText(), is(
-                "invalid combination of left and right"));
+        assertThat(driver.findElement(By.id("left.errors")).getText(),
+                is("invalid combination of left and right"));
     }
 
     @Test
@@ -203,8 +202,8 @@ public class ValidationTest extends FunctionTestSupport {
         inputFieldAccessor.overrideValue(By.id("left"), "100", driver);
         inputFieldAccessor.overrideValue(By.id("right"), "100", driver);
         driver.findElement(By.id("btn_ne")).click();
-        assertThat(driver.findElement(By.id("left.errors")).getText(), is(
-                "invalid combination of left and right"));
+        assertThat(driver.findElement(By.id("left.errors")).getText(),
+                is("invalid combination of left and right"));
     }
 
     @Test
@@ -225,16 +224,16 @@ public class ValidationTest extends FunctionTestSupport {
             inputFieldAccessor.overrideValue(By.id("left"), "100", driver);
             inputFieldAccessor.overrideValue(By.id("right"), "100", driver);
             driver.findElement(By.id("btn_gt")).click();
-            assertThat(driver.findElement(By.id("left.errors")).getText(), is(
-                    "invalid combination of left and right"));
+            assertThat(driver.findElement(By.id("left.errors")).getText(),
+                    is("invalid combination of left and right"));
         }
 
         {
             inputFieldAccessor.overrideValue(By.id("left"), "100", driver);
             inputFieldAccessor.overrideValue(By.id("right"), "101", driver);
             driver.findElement(By.id("btn_gt")).click();
-            assertThat(driver.findElement(By.id("left.errors")).getText(), is(
-                    "invalid combination of left and right"));
+            assertThat(driver.findElement(By.id("left.errors")).getText(),
+                    is("invalid combination of left and right"));
         }
     }
 
@@ -246,16 +245,14 @@ public class ValidationTest extends FunctionTestSupport {
             inputFieldAccessor.overrideValue(By.id("left"), "100", driver);
             inputFieldAccessor.overrideValue(By.id("right"), "99", driver);
             driver.findElement(By.id("btn_ge")).click();
-            assertThat(driver.findElement(By.id("message")).getText(), is(
-                    SUCCESS));
+            assertThat(driver.findElement(By.id("message")).getText(), is(SUCCESS));
         }
 
         {
             inputFieldAccessor.overrideValue(By.id("left"), "100", driver);
             inputFieldAccessor.overrideValue(By.id("right"), "100", driver);
             driver.findElement(By.id("btn_ge")).click();
-            assertThat(driver.findElement(By.id("message")).getText(), is(
-                    SUCCESS));
+            assertThat(driver.findElement(By.id("message")).getText(), is(SUCCESS));
         }
     }
 
@@ -266,8 +263,8 @@ public class ValidationTest extends FunctionTestSupport {
         inputFieldAccessor.overrideValue(By.id("left"), "100", driver);
         inputFieldAccessor.overrideValue(By.id("right"), "101", driver);
         driver.findElement(By.id("btn_ge")).click();
-        assertThat(driver.findElement(By.id("left.errors")).getText(), is(
-                "invalid combination of left and right"));
+        assertThat(driver.findElement(By.id("left.errors")).getText(),
+                is("invalid combination of left and right"));
     }
 
     @Test
@@ -288,16 +285,16 @@ public class ValidationTest extends FunctionTestSupport {
             inputFieldAccessor.overrideValue(By.id("left"), "100", driver);
             inputFieldAccessor.overrideValue(By.id("right"), "100", driver);
             driver.findElement(By.id("btn_lt")).click();
-            assertThat(driver.findElement(By.id("left.errors")).getText(), is(
-                    "invalid combination of left and right"));
+            assertThat(driver.findElement(By.id("left.errors")).getText(),
+                    is("invalid combination of left and right"));
         }
 
         {
             inputFieldAccessor.overrideValue(By.id("left"), "100", driver);
             inputFieldAccessor.overrideValue(By.id("right"), "99", driver);
             driver.findElement(By.id("btn_lt")).click();
-            assertThat(driver.findElement(By.id("left.errors")).getText(), is(
-                    "invalid combination of left and right"));
+            assertThat(driver.findElement(By.id("left.errors")).getText(),
+                    is("invalid combination of left and right"));
         }
     }
 
@@ -309,16 +306,14 @@ public class ValidationTest extends FunctionTestSupport {
             inputFieldAccessor.overrideValue(By.id("left"), "100", driver);
             inputFieldAccessor.overrideValue(By.id("right"), "101", driver);
             driver.findElement(By.id("btn_le")).click();
-            assertThat(driver.findElement(By.id("message")).getText(), is(
-                    SUCCESS));
+            assertThat(driver.findElement(By.id("message")).getText(), is(SUCCESS));
         }
 
         {
             inputFieldAccessor.overrideValue(By.id("left"), "100", driver);
             inputFieldAccessor.overrideValue(By.id("right"), "100", driver);
             driver.findElement(By.id("btn_le")).click();
-            assertThat(driver.findElement(By.id("message")).getText(), is(
-                    SUCCESS));
+            assertThat(driver.findElement(By.id("message")).getText(), is(SUCCESS));
         }
     }
 
@@ -329,8 +324,8 @@ public class ValidationTest extends FunctionTestSupport {
         inputFieldAccessor.overrideValue(By.id("left"), "100", driver);
         inputFieldAccessor.overrideValue(By.id("right"), "99", driver);
         driver.findElement(By.id("btn_le")).click();
-        assertThat(driver.findElement(By.id("left.errors")).getText(), is(
-                "invalid combination of left and right"));
+        assertThat(driver.findElement(By.id("left.errors")).getText(),
+                is("invalid combination of left and right"));
     }
 
     @Test
@@ -340,8 +335,8 @@ public class ValidationTest extends FunctionTestSupport {
         inputFieldAccessor.overrideValue(By.id("left"), "100", driver);
         inputFieldAccessor.overrideValue(By.id("right"), "101", driver);
         driver.findElement(By.id("btn_prop")).click();
-        assertThat(driver.findElement(By.id("left.errors")).getText(), is(
-                "invalid combination of left and right"));
+        assertThat(driver.findElement(By.id("left.errors")).getText(),
+                is("invalid combination of left and right"));
     }
 
     @Test
@@ -364,7 +359,7 @@ public class ValidationTest extends FunctionTestSupport {
         inputFieldAccessor.overrideValue(By.id("left"), "100", driver);
         inputFieldAccessor.overrideValue(By.id("right"), "101", driver);
         driver.findElement(By.id("btn_eq")).click();
-        assertThat(driver.findElement(By.id("left.errors")).getText(), is(
-                "正しくない left と right の組合せです"));
+        assertThat(driver.findElement(By.id("left.errors")).getText(),
+                is("正しくない left と right の組合せです"));
     }
 }

@@ -50,8 +50,7 @@ public class TerasolunaGfwFunctionaltestJodaConfig {
             @Qualifier("dataSource") DataSource dataSource) {
         JdbcFixedJodaTimeDateFactory factory = new JdbcFixedJodaTimeDateFactory();
         factory.setDataSource(dataSource);
-        factory.setCurrentTimestampQuery(
-                "SELECT now FROM system_date where system_date_id='1'");
+        factory.setCurrentTimestampQuery("SELECT now FROM system_date where system_date_id='1'");
         return factory;
     }
 
@@ -65,8 +64,7 @@ public class TerasolunaGfwFunctionaltestJodaConfig {
             @Qualifier("dataSource") DataSource dataSource) {
         JdbcFixedJodaTimeDateFactory factory = new JdbcFixedJodaTimeDateFactory();
         factory.setDataSource(dataSource);
-        factory.setCurrentTimestampQuery(
-                "SELECT now FROM system_date where system_date_id='2'");
+        factory.setCurrentTimestampQuery("SELECT now FROM system_date where system_date_id='2'");
         return factory;
     }
 

@@ -24,8 +24,7 @@ import jakarta.inject.Inject;
 
 @Service
 @Transactional(value = TransactionManagers.DATASOURCE, readOnly = true)
-public class DatabaseMetaInfoServiceMybatis3Impl extends
-                                                 AbstractDatabaseMetaInfoService {
+public class DatabaseMetaInfoServiceMybatis3Impl extends AbstractDatabaseMetaInfoService {
     @Inject
     SqlSessionFactory sqlSessionFactory;
 

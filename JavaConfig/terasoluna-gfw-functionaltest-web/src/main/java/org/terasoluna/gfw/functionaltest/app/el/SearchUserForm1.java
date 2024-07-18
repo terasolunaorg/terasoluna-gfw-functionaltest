@@ -20,14 +20,12 @@ public class SearchUserForm1 {
 
     private boolean rememberCriteria;
 
-    public SearchUserForm1(SearchUserCriteriaForm1 criteria,
-            boolean rememberCriteria) {
+    public SearchUserForm1(SearchUserCriteriaForm1 criteria, boolean rememberCriteria) {
         this.criteria = criteria;
         this.rememberCriteria = rememberCriteria;
     }
 
-    public SearchUserForm1() {
-    }
+    public SearchUserForm1() {}
 
     public SearchUserCriteriaForm1 getCriteria() {
         return criteria;

@@ -20,8 +20,7 @@ import org.springframework.beans.factory.FactoryBean;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public abstract class WebDriverManagerFactoryBean<T extends WebDriver>
-                                                 implements FactoryBean<T> {
+public abstract class WebDriverManagerFactoryBean<T extends WebDriver> implements FactoryBean<T> {
 
     protected String propertyFileLocation;
 

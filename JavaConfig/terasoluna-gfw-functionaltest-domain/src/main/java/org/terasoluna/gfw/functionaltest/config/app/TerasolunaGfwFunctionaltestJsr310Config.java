@@ -60,7 +60,8 @@ public class TerasolunaGfwFunctionaltestJsr310Config {
      */
     @Bean("patternConfigurableClockFactory")
     public ConfigurableClockFactory patternConfigurableClockFactory() {
-        ConfigurableClockFactory factory = new ConfigurableClockFactory("2012/09/11 02:25:15", "uuuu/MM/dd HH:mm:ss");
+        ConfigurableClockFactory factory =
+                new ConfigurableClockFactory("2012/09/11 02:25:15", "uuuu/MM/dd HH:mm:ss");
         return factory;
     }
 
@@ -70,7 +71,8 @@ public class TerasolunaGfwFunctionaltestJsr310Config {
      */
     @Bean("dateAndTimeConfigurableClockFactory")
     public ConfigurableClockFactory dateAndTimeConfigurableClockFactory() {
-        ConfigurableClockFactory factory = new ConfigurableClockFactory("2012/09/11 02:25:15", FormatStyle.MEDIUM, FormatStyle.MEDIUM);
+        ConfigurableClockFactory factory = new ConfigurableClockFactory("2012/09/11 02:25:15",
+                FormatStyle.MEDIUM, FormatStyle.MEDIUM);
         return factory;
     }
 
@@ -80,7 +82,8 @@ public class TerasolunaGfwFunctionaltestJsr310Config {
      */
     @Bean("configurableAdjustClockFactory")
     public ConfigurableAdjustClockFactory configurableAdjustClockFactory() {
-        ConfigurableAdjustClockFactory factory = new ConfigurableAdjustClockFactory(1, ChronoUnit.DAYS);
+        ConfigurableAdjustClockFactory factory =
+                new ConfigurableAdjustClockFactory(1, ChronoUnit.DAYS);
         return factory;
     }
 
@@ -104,7 +107,8 @@ public class TerasolunaGfwFunctionaltestJsr310Config {
     @Bean("adjustJdbcClockFactory")
     public JdbcAdjustClockFactory adjustJdbcClockFactory(
             @Qualifier("dataSource") DataSource dataSource) {
-        JdbcAdjustClockFactory factory = new JdbcAdjustClockFactory(dataSource, "SELECT diff FROM operation_date where operation_date_id='2'", ChronoUnit.SECONDS);
+        JdbcAdjustClockFactory factory = new JdbcAdjustClockFactory(dataSource,
+                "SELECT diff FROM operation_date where operation_date_id='2'", ChronoUnit.SECONDS);
         return factory;
     }
 }

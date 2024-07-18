@@ -49,8 +49,7 @@ public class Person implements Serializable {
     @Column(name = "lastname")
     private String lastname;
 
-    public Person() {
-    }
+    public Person() {}
 
     public Person(Integer personId) {
         this.personId = personId;

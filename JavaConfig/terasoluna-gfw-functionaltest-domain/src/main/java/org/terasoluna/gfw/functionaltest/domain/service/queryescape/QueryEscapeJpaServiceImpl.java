@@ -52,26 +52,20 @@ public class QueryEscapeJpaServiceImpl implements QueryEscapeService {
     }
 
     @Override
-    public List<Todo> findAllByTitleLikePrefixEscapingFullWidthWildCard(
-            String title) {
-        String condition = QueryEscapeUtils.withFullWidth()
-                .toStartingWithCondition(title);
+    public List<Todo> findAllByTitleLikePrefixEscapingFullWidthWildCard(String title) {
+        String condition = QueryEscapeUtils.withFullWidth().toStartingWithCondition(title);
         return queryEscapeJpaRepository.findAllByTitleLike(condition);
     }
 
     @Override
-    public List<Todo> findAllByTitleLikeSuffixEscapingFullWidthWildCard(
-            String title) {
-        String condition = QueryEscapeUtils.withFullWidth()
-                .toEndingWithCondition(title);
+    public List<Todo> findAllByTitleLikeSuffixEscapingFullWidthWildCard(String title) {
+        String condition = QueryEscapeUtils.withFullWidth().toEndingWithCondition(title);
         return queryEscapeJpaRepository.findAllByTitleLike(condition);
     }
 
     @Override
-    public List<Todo> findAllByTitleLikeParticalEscapingFullWidthWildCard(
-            String title) {
-        String condition = QueryEscapeUtils.withFullWidth()
-                .toContainingCondition(title);
+    public List<Todo> findAllByTitleLikeParticalEscapingFullWidthWildCard(String title) {
+        String condition = QueryEscapeUtils.withFullWidth().toContainingCondition(title);
         return queryEscapeJpaRepository.findAllByTitleLike(condition);
     }
 }

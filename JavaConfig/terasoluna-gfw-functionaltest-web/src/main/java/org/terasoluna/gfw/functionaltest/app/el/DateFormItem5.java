@@ -27,8 +27,7 @@ public class DateFormItem5 {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate localDate;
 
-    public DateFormItem5() {
-    }
+    public DateFormItem5() {}
 
     public DateFormItem5(Date date, LocalDate localDate) {
         this.date = date;

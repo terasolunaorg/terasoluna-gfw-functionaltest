@@ -32,8 +32,8 @@ public class TraceLoggingInterceptorCustomController {
     @Inject
     protected TraceLoggingInterceptorService traceLoggingInterceptorService;
 
-    private static final Logger logger = LoggerFactory.getLogger(
-            TraceLoggingInterceptorCustomController.class);
+    private static final Logger logger =
+            LoggerFactory.getLogger(TraceLoggingInterceptorCustomController.class);
 
     @GetMapping(value = "4_3")
     public String customTraceLoggingAsTraceLevel_04_03(Model model) {
@@ -46,10 +46,9 @@ public class TraceLoggingInterceptorCustomController {
 
         long finishTime = traceLoggingInterceptorService.getTime();
 
-        model.addAttribute("requestType",
-                "request custom traceLogging as trace level");
-        model.addAttribute("processingTime", traceLoggingInterceptorService
-                .calcProcessingTime(startTime, finishTime));
+        model.addAttribute("requestType", "request custom traceLogging as trace level");
+        model.addAttribute("processingTime",
+                traceLoggingInterceptorService.calcProcessingTime(startTime, finishTime));
 
         return "logging/traceLoggingInterceptor";
     }
@@ -65,10 +64,9 @@ public class TraceLoggingInterceptorCustomController {
 
         long finishTime = traceLoggingInterceptorService.getTime();
 
-        model.addAttribute("requestType",
-                "request custom traceLogging as warn level");
-        model.addAttribute("processingTime", traceLoggingInterceptorService
-                .calcProcessingTime(startTime, finishTime));
+        model.addAttribute("requestType", "request custom traceLogging as warn level");
+        model.addAttribute("processingTime",
+                traceLoggingInterceptorService.calcProcessingTime(startTime, finishTime));
 
         return "logging/traceLoggingInterceptor";
     }

@@ -36,8 +36,7 @@ import org.terasoluna.gfw.functionaltest.app.FunctionTestSupport;
 import jakarta.inject.Inject;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {
-        "classpath:META-INF/spring/seleniumContext.xml" })
+@ContextConfiguration(locations = {"classpath:META-INF/spring/seleniumContext.xml"})
 public class DownloadTest extends FunctionTestSupport {
     @Inject
     protected RestTemplate restTemplate;
@@ -48,17 +47,15 @@ public class DownloadTest extends FunctionTestSupport {
 
     @Test
     public void test01_01_fileDownload() throws IOException {
-        ResponseEntity<byte[]> response = restTemplate.getForEntity(
-                applicationContextUrl + "/download/1_1", byte[].class);
+        ResponseEntity<byte[]> response =
+                restTemplate.getForEntity(applicationContextUrl + "/download/1_1", byte[].class);
         ClassPathResource images = new ClassPathResource("/image/Duke.png");
 
         byte[] expected = StreamUtils.copyToByteArray(images.getInputStream());
 
         HttpHeaders headers = response.getHeaders();
-        System.out.println("test01_01_fileDownload: X-Track=" + headers
-                .getFirst("X-Track"));
-        assertThat(headers.getFirst("Content-Disposition"), is(
-                "attachment; filename=Duke.png"));
+        System.out.println("test01_01_fileDownload: X-Track=" + headers.getFirst("X-Track"));
+        assertThat(headers.getFirst("Content-Disposition"), is("attachment; filename=Duke.png"));
 
         MediaType contentType = headers.getContentType();
         assertThat(contentType.getType(), is("image"));
@@ -69,21 +66,19 @@ public class DownloadTest extends FunctionTestSupport {
 
     @Test
     public void test01_02_fileDownload() {
-        ResponseEntity<String> response = restTemplate.getForEntity(
-                applicationContextUrl + "/download/1_2", String.class);
+        ResponseEntity<String> response =
+                restTemplate.getForEntity(applicationContextUrl + "/download/1_2", String.class);
 
         HttpHeaders headers = response.getHeaders();
-        System.out.println("test01_02_fileDownload: X-Track=" + headers
-                .getFirst("X-Track"));
+        System.out.println("test01_02_fileDownload: X-Track=" + headers.getFirst("X-Track"));
 
-        assertThat(headers.getFirst("Content-Disposition"), is(
-                "attachment; filename=framework.txt"));
+        assertThat(headers.getFirst("Content-Disposition"),
+                is("attachment; filename=framework.txt"));
 
         MediaType contentType = headers.getContentType();
         assertThat(contentType.getType(), is("text"));
         assertThat(contentType.getSubtype(), is("plain"));
-        assertThat(contentType.getParameter("charset"), equalToIgnoringCase(
-                "UTF-8"));
+        assertThat(contentType.getParameter("charset"), equalToIgnoringCase("UTF-8"));
 
         assertThat(response.getBody(), is("Spring Framework"));
 

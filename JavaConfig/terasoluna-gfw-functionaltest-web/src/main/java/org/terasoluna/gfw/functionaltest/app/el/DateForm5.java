@@ -29,8 +29,7 @@ public class DateForm5 {
 
     private DateFormItem5 item;
 
-    public DateForm5() {
-    }
+    public DateForm5() {}
 
     public DateForm5(Date date, LocalDate localDate, DateFormItem5 item) {
         this.date = date;

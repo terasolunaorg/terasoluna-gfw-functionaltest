@@ -35,11 +35,10 @@ import org.terasoluna.gfw.functionaltest.domain.exception.ResultMessagesInfoLogg
  */
 @Configuration
 @EnableTransactionManagement
-@ComponentScan(basePackages = { "org.terasoluna.gfw.functionaltest.domain" })
-@Import({ TerasolunaGfwFunctionaltestInfraConfig.class,
+@ComponentScan(basePackages = {"org.terasoluna.gfw.functionaltest.domain"})
+@Import({TerasolunaGfwFunctionaltestInfraConfig.class,
         TerasolunaGfwFunctionaltestCodeListConfig.class,
-        TerasolunaGfwFunctionaltestJodaConfig.class,
-        TerasolunaGfwFunctionaltestJsr310Config.class })
+        TerasolunaGfwFunctionaltestJodaConfig.class, TerasolunaGfwFunctionaltestJsr310Config.class})
 public class TerasolunaGfwFunctionaltestDomainConfig {
 
     /**
@@ -107,7 +106,8 @@ public class TerasolunaGfwFunctionaltestDomainConfig {
 
     /**
      * Configure messages logging AOP advisor.
-     * @param resultMessagesInfoLoggingInterceptor Bean defined by #resultMessagesInfoLoggingInterceptor
+     * @param resultMessagesInfoLoggingInterceptor Bean defined by
+     *        #resultMessagesInfoLoggingInterceptor
      * @see #resultMessagesInfoLoggingInterceptor(ExceptionLogger)
      * @return Advisor configured for PointCut
      */

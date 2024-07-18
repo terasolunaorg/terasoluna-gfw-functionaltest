@@ -1,39 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
-  ">
+    xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+                        ">
 
-  <bean id="defaultClockFactory" class="org.terasoluna.gfw.common.time.DefaultClockFactory" />
-  
-  <bean id="defaultConfigurableClockFactory" class="org.terasoluna.gfw.common.time.ConfigurableClockFactory">
-    <constructor-arg name="localDateTimeString" value="2012-09-11T02:25:15" />
-  </bean>
-  
-  <bean id="patternConfigurableClockFactory" class="org.terasoluna.gfw.common.time.ConfigurableClockFactory">
-    <constructor-arg name="localDateTimeString" value="2012/09/11 02:25:15" />
-    <constructor-arg name="pattern" value="uuuu/MM/dd HH:mm:ss" />
-  </bean>
-  
-  <bean id="dateAndTimeConfigurableClockFactory" class="org.terasoluna.gfw.common.time.ConfigurableClockFactory">
-    <constructor-arg name="localDateTimeString" value="2012/09/11 02:25:15" />
-    <constructor-arg name="dateStyle" value="#{T(java.time.format.FormatStyle).MEDIUM}" />
-    <constructor-arg name="timeStyle" value="#{T(java.time.format.FormatStyle).MEDIUM}" />
-  </bean>
-  
-  <bean id="configurableAdjustClockFactory" class="org.terasoluna.gfw.common.time.ConfigurableAdjustClockFactory">
-    <constructor-arg name="adjustedValue" value="1" />
-    <constructor-arg name="adjustedValueUnit" value="#{T(java.time.temporal.ChronoUnit).DAYS}" />
-  </bean>
-  
-  <bean id="defaultJdbcClockFactory" class="org.terasoluna.gfw.common.time.JdbcClockFactory">
-    <constructor-arg name="dataSource" ref="dataSource" />
-    <constructor-arg name="currentTimestampQuery" value="SELECT now FROM system_date" />
-  </bean>
-  
-  <bean id="adjustJdbcClockFactory" class="org.terasoluna.gfw.common.time.JdbcAdjustClockFactory">
-    <constructor-arg name="dataSource" ref="dataSource" />
-    <constructor-arg name="adjustedValueQuery" value="SELECT diff FROM operation_date where operation_date_id='2'" />
-    <constructor-arg name="adjustedValueUnit" value="#{T(java.time.temporal.ChronoUnit).SECONDS}" />
-  </bean>
+    <bean id="defaultClockFactory" class="org.terasoluna.gfw.common.time.DefaultClockFactory" />
+
+    <bean id="defaultConfigurableClockFactory" class="org.terasoluna.gfw.common.time.ConfigurableClockFactory">
+        <constructor-arg name="localDateTimeString" value="2012-09-11T02:25:15" />
+    </bean>
+
+    <bean id="patternConfigurableClockFactory" class="org.terasoluna.gfw.common.time.ConfigurableClockFactory">
+        <constructor-arg name="localDateTimeString" value="2012/09/11 02:25:15" />
+        <constructor-arg name="pattern" value="uuuu/MM/dd HH:mm:ss" />
+    </bean>
+
+    <bean id="dateAndTimeConfigurableClockFactory" class="org.terasoluna.gfw.common.time.ConfigurableClockFactory">
+        <constructor-arg name="localDateTimeString" value="2012/09/11 02:25:15" />
+        <constructor-arg name="dateStyle" value="#{T(java.time.format.FormatStyle).MEDIUM}" />
+        <constructor-arg name="timeStyle" value="#{T(java.time.format.FormatStyle).MEDIUM}" />
+    </bean>
+
+    <bean id="configurableAdjustClockFactory" class="org.terasoluna.gfw.common.time.ConfigurableAdjustClockFactory">
+        <constructor-arg name="adjustedValue" value="1" />
+        <constructor-arg name="adjustedValueUnit" value="#{T(java.time.temporal.ChronoUnit).DAYS}" />
+    </bean>
+
+    <bean id="defaultJdbcClockFactory" class="org.terasoluna.gfw.common.time.JdbcClockFactory">
+        <constructor-arg name="dataSource" ref="dataSource" />
+        <constructor-arg name="currentTimestampQuery" value="SELECT now FROM system_date" />
+    </bean>
+
+    <bean id="adjustJdbcClockFactory" class="org.terasoluna.gfw.common.time.JdbcAdjustClockFactory">
+        <constructor-arg name="dataSource" ref="dataSource" />
+        <constructor-arg name="adjustedValueQuery" value="SELECT diff FROM operation_date where operation_date_id='2'" />
+        <constructor-arg name="adjustedValueUnit" value="#{T(java.time.temporal.ChronoUnit).SECONDS}" />
+    </bean>
 
 </beans>

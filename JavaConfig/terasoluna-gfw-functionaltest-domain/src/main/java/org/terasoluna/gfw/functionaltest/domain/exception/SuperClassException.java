@@ -15,7 +15,7 @@
  */
 package org.terasoluna.gfw.functionaltest.domain.exception;
 
-public class SuperClassException extends Exception{
+public class SuperClassException extends Exception {
 
     private static final long serialVersionUID = 1L;
 

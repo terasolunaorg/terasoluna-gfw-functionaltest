@@ -65,8 +65,7 @@ public class XTrackMDCPutFilterController {
     }
 
     @GetMapping(value = "1_4")
-    public String checkConsistencyXtrackMDCRequestToResponse_01_04(
-            Model model) {
+    public String checkConsistencyXtrackMDCRequestToResponse_01_04(Model model) {
 
         // If you check(change Request Header to response) with the case, use selenium.
         return "logging/xTrackMDCPutFilter";

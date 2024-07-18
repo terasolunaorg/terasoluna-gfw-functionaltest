@@ -24,11 +24,9 @@ public class ArrayFormItem6 {
 
     private String[] array4;
 
-    public ArrayFormItem6() {
-    }
+    public ArrayFormItem6() {}
 
-    public ArrayFormItem6(int[] array1, double[] array2, byte[] array3,
-            String[] array4) {
+    public ArrayFormItem6(int[] array1, double[] array2, byte[] array3, String[] array4) {
         this.array1 = array1;
         this.array2 = array2;
         this.array3 = array3;

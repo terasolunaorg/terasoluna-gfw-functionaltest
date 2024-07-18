@@ -63,21 +63,18 @@ public class SpringMvcConfig implements WebMvcConfigurer {
         Properties exceptionMappings = new Properties();
         exceptionMappings.setProperty("InvalidTransactionTokenException",
                 "common/error/tokenError");
-        exceptionMappings.setProperty("ResourceNotFoundException",
-                "common/error/notFoundError");
-        exceptionMappings.setProperty("BusinessException",
-                "common/error/businessError");
-        exceptionMappings.setProperty("DataAccessException",
-                "common/error/dataAccessError");
+        exceptionMappings.setProperty("ResourceNotFoundException", "common/error/notFoundError");
+        exceptionMappings.setProperty("BusinessException", "common/error/businessError");
+        exceptionMappings.setProperty("DataAccessException", "common/error/dataAccessError");
         bean.setExceptionMappings(exceptionMappings);
 
         Properties statusCodes = new Properties();
-        statusCodes.setProperty("common/error/tokenError", String.valueOf(
-                HttpStatus.CONFLICT.value()));
-        statusCodes.setProperty("common/error/notFoundError", String.valueOf(
-                HttpStatus.NOT_FOUND.value()));
-        statusCodes.setProperty("common/error/businessError", String.valueOf(
-                HttpStatus.CONFLICT.value()));
+        statusCodes.setProperty("common/error/tokenError",
+                String.valueOf(HttpStatus.CONFLICT.value()));
+        statusCodes.setProperty("common/error/notFoundError",
+                String.valueOf(HttpStatus.NOT_FOUND.value()));
+        statusCodes.setProperty("common/error/businessError",
+                String.valueOf(HttpStatus.CONFLICT.value()));
         bean.setStatusCodes(statusCodes);
 
         bean.setExcludedExceptions(ExceptionHandlingException.class);
@@ -95,7 +92,8 @@ public class SpringMvcConfig implements WebMvcConfigurer {
     @Bean("handlerExceptionResolverLoggingInterceptor")
     public HandlerExceptionResolverLoggingInterceptor handlerExceptionResolverLoggingInterceptor(
             @Qualifier("exceptionLogger") ExceptionLogger exceptionLogger) {
-        HandlerExceptionResolverLoggingInterceptor bean = new HandlerExceptionResolverLoggingInterceptor();
+        HandlerExceptionResolverLoggingInterceptor bean =
+                new HandlerExceptionResolverLoggingInterceptor();
         bean.setExceptionLogger(exceptionLogger);
 
         Set<Class<? extends Exception>> ignore = new HashSet<Class<? extends Exception>>();
@@ -107,7 +105,8 @@ public class SpringMvcConfig implements WebMvcConfigurer {
 
     /**
      * Configure messages logging AOP advisor.
-     * @param handlerExceptionResolverLoggingInterceptor Bean defined by #handlerExceptionResolverLoggingInterceptor
+     * @param handlerExceptionResolverLoggingInterceptor Bean defined by
+     *        #handlerExceptionResolverLoggingInterceptor
      * @see #handlerExceptionResolverLoggingInterceptor(ExceptionLogger)
      * @return Advisor configured for PointCut
      */

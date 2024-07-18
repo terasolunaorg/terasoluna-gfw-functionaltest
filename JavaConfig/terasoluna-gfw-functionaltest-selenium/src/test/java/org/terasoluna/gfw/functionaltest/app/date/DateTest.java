@@ -31,41 +31,33 @@ import org.terasoluna.gfw.functionaltest.app.FunctionTestSupport;
 import org.terasoluna.gfw.functionaltest.config.SeleniumContextConfig;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { SeleniumContextConfig.class })
+@ContextConfiguration(classes = {SeleniumContextConfig.class})
 public class DateTest extends FunctionTestSupport {
 
-    private static final DateTimeFormatter dateTimeFormat = DateTimeFormat
-            .forPattern("yyyy-MM-dd HH:mm:ss.SSS");
+    private static final DateTimeFormatter dateTimeFormat =
+            DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss.SSS");
 
-    private static final DateTimeFormatter timeFormat = DateTimeFormat
-            .forPattern("HH:mm:ss.SSS");
+    private static final DateTimeFormatter timeFormat = DateTimeFormat.forPattern("HH:mm:ss.SSS");
 
     @Test
     public void test01_01_serverTimeReturn() {
         driver.findElement(By.id("serverTimeReturn_01_01")).click();
 
         // screen date get
-        String serverTimeString = driver.findElement(By.id("serverTime"))
-                .getText();
-        String firstExpectedDateString = driver.findElement(By.id(
-                "firstExpectedDate")).getText();
-        String lastExpectedDateString = driver.findElement(By.id(
-                "lastExpectedDate")).getText();
+        String serverTimeString = driver.findElement(By.id("serverTime")).getText();
+        String firstExpectedDateString = driver.findElement(By.id("firstExpectedDate")).getText();
+        String lastExpectedDateString = driver.findElement(By.id("lastExpectedDate")).getText();
 
         // convert String from DateTime
-        long actualDate = dateTimeFormat.parseDateTime(serverTimeString)
-                .getMillis();
-        long firstExpectedDate = dateTimeFormat.parseDateTime(
-                firstExpectedDateString).getMillis();
-        long lastExpectedDate = dateTimeFormat.parseDateTime(
-                lastExpectedDateString).getMillis();
+        long actualDate = dateTimeFormat.parseDateTime(serverTimeString).getMillis();
+        long firstExpectedDate = dateTimeFormat.parseDateTime(firstExpectedDateString).getMillis();
+        long lastExpectedDate = dateTimeFormat.parseDateTime(lastExpectedDateString).getMillis();
 
         // check Date
         assertDate(actualDate, firstExpectedDate, lastExpectedDate);
 
         // check return type
-        assertThat(driver.findElement(By.id("type")).getText(), is(
-                "class org.joda.time.DateTime"));
+        assertThat(driver.findElement(By.id("type")).getText(), is("class org.joda.time.DateTime"));
 
     }
 
@@ -74,27 +66,20 @@ public class DateTest extends FunctionTestSupport {
         driver.findElement(By.id("serverTimeReturn_01_02")).click();
 
         // screen date get
-        String serverTimeString = driver.findElement(By.id("serverTime"))
-                .getText();
-        String firstExpectedDateString = driver.findElement(By.id(
-                "firstExpectedDate")).getText();
-        String lastExpectedDateString = driver.findElement(By.id(
-                "lastExpectedDate")).getText();
+        String serverTimeString = driver.findElement(By.id("serverTime")).getText();
+        String firstExpectedDateString = driver.findElement(By.id("firstExpectedDate")).getText();
+        String lastExpectedDateString = driver.findElement(By.id("lastExpectedDate")).getText();
 
         // convert String from DateTime
-        long actualDate = dateTimeFormat.parseDateTime(serverTimeString)
-                .getMillis();
-        long firstExpectedDate = dateTimeFormat.parseDateTime(
-                firstExpectedDateString).getMillis();
-        long lastExpectedDate = dateTimeFormat.parseDateTime(
-                lastExpectedDateString).getMillis();
+        long actualDate = dateTimeFormat.parseDateTime(serverTimeString).getMillis();
+        long firstExpectedDate = dateTimeFormat.parseDateTime(firstExpectedDateString).getMillis();
+        long lastExpectedDate = dateTimeFormat.parseDateTime(lastExpectedDateString).getMillis();
 
         // check Date
         assertDate(actualDate, firstExpectedDate, lastExpectedDate);
 
         // check return type
-        assertThat(driver.findElement(By.id("type")).getText(), is(
-                "class java.sql.Timestamp"));
+        assertThat(driver.findElement(By.id("type")).getText(), is("class java.sql.Timestamp"));
 
     }
 
@@ -103,27 +88,20 @@ public class DateTest extends FunctionTestSupport {
         driver.findElement(By.id("serverTimeReturn_01_03")).click();
 
         // screen date get
-        String serverTimeString = driver.findElement(By.id("serverTime"))
-                .getText();
-        String firstExpectedDateString = driver.findElement(By.id(
-                "firstExpectedDate")).getText();
-        String lastExpectedDateString = driver.findElement(By.id(
-                "lastExpectedDate")).getText();
+        String serverTimeString = driver.findElement(By.id("serverTime")).getText();
+        String firstExpectedDateString = driver.findElement(By.id("firstExpectedDate")).getText();
+        String lastExpectedDateString = driver.findElement(By.id("lastExpectedDate")).getText();
 
         // convert String from DateTime
-        long actualDate = dateTimeFormat.parseDateTime(serverTimeString)
-                .getMillis();
-        long firstExpectedDate = dateTimeFormat.parseDateTime(
-                firstExpectedDateString).getMillis();
-        long lastExpectedDate = dateTimeFormat.parseDateTime(
-                lastExpectedDateString).getMillis();
+        long actualDate = dateTimeFormat.parseDateTime(serverTimeString).getMillis();
+        long firstExpectedDate = dateTimeFormat.parseDateTime(firstExpectedDateString).getMillis();
+        long lastExpectedDate = dateTimeFormat.parseDateTime(lastExpectedDateString).getMillis();
 
         // check Date
         assertDate(actualDate, firstExpectedDate, lastExpectedDate);
 
         // check return type
-        assertThat(driver.findElement(By.id("type")).getText(), is(
-                "class java.util.Date"));
+        assertThat(driver.findElement(By.id("type")).getText(), is("class java.util.Date"));
 
     }
 
@@ -132,27 +110,20 @@ public class DateTest extends FunctionTestSupport {
         driver.findElement(By.id("serverTimeReturn_01_04")).click();
 
         // screen date get
-        String serverTimeString = driver.findElement(By.id("serverTime"))
-                .getText();
-        String firstExpectedDateString = driver.findElement(By.id(
-                "firstExpectedDate")).getText();
-        String lastExpectedDateString = driver.findElement(By.id(
-                "lastExpectedDate")).getText();
+        String serverTimeString = driver.findElement(By.id("serverTime")).getText();
+        String firstExpectedDateString = driver.findElement(By.id("firstExpectedDate")).getText();
+        String lastExpectedDateString = driver.findElement(By.id("lastExpectedDate")).getText();
 
         // convert String from DateTime
-        long actualDate = dateTimeFormat.parseDateTime(serverTimeString)
-                .getMillis();
-        long firstExpectedDate = dateTimeFormat.parseDateTime(
-                firstExpectedDateString).getMillis();
-        long lastExpectedDate = dateTimeFormat.parseDateTime(
-                lastExpectedDateString).getMillis();
+        long actualDate = dateTimeFormat.parseDateTime(serverTimeString).getMillis();
+        long firstExpectedDate = dateTimeFormat.parseDateTime(firstExpectedDateString).getMillis();
+        long lastExpectedDate = dateTimeFormat.parseDateTime(lastExpectedDateString).getMillis();
 
         // check Date
         assertDate(actualDate, firstExpectedDate, lastExpectedDate);
 
         // check return type
-        assertThat(driver.findElement(By.id("type")).getText(), is(
-                "class java.sql.Date"));
+        assertThat(driver.findElement(By.id("type")).getText(), is("class java.sql.Date"));
 
     }
 
@@ -161,27 +132,20 @@ public class DateTest extends FunctionTestSupport {
         driver.findElement(By.id("serverTimeReturn_01_05")).click();
 
         // screen date get
-        String serverTimeString = driver.findElement(By.id("serverTime"))
-                .getText();
-        String firstExpectedDateString = driver.findElement(By.id(
-                "firstExpectedDate")).getText();
-        String lastExpectedDateString = driver.findElement(By.id(
-                "lastExpectedDate")).getText();
+        String serverTimeString = driver.findElement(By.id("serverTime")).getText();
+        String firstExpectedDateString = driver.findElement(By.id("firstExpectedDate")).getText();
+        String lastExpectedDateString = driver.findElement(By.id("lastExpectedDate")).getText();
 
         // convert String from DateTime
-        long actualDate = timeFormat.parseDateTime(serverTimeString)
-                .getMillis();
-        long firstExpectedDate = timeFormat.parseDateTime(
-                firstExpectedDateString).getMillis();
-        long lastExpectedDate = timeFormat.parseDateTime(lastExpectedDateString)
-                .getMillis();
+        long actualDate = timeFormat.parseDateTime(serverTimeString).getMillis();
+        long firstExpectedDate = timeFormat.parseDateTime(firstExpectedDateString).getMillis();
+        long lastExpectedDate = timeFormat.parseDateTime(lastExpectedDateString).getMillis();
 
         // check Date
         assertDate(actualDate, firstExpectedDate, lastExpectedDate);
 
         // check return type
-        assertThat(driver.findElement(By.id("type")).getText(), is(
-                "class java.sql.Time"));
+        assertThat(driver.findElement(By.id("type")).getText(), is("class java.sql.Time"));
 
     }
 
@@ -190,15 +154,13 @@ public class DateTest extends FunctionTestSupport {
         driver.findElement(By.id("dbFixationTimeReturn_02_01")).click();
 
         // screen date get
-        String serverTimeString = driver.findElement(By.id("serverTime"))
-                .getText();
+        String serverTimeString = driver.findElement(By.id("serverTime")).getText();
 
         // check Date
         assertThat(serverTimeString, is("2013-01-01 01:01:01.000"));
 
         // check return type
-        assertThat(driver.findElement(By.id("type")).getText(), is(
-                "class org.joda.time.DateTime"));
+        assertThat(driver.findElement(By.id("type")).getText(), is("class org.joda.time.DateTime"));
 
     }
 
@@ -207,15 +169,13 @@ public class DateTest extends FunctionTestSupport {
         driver.findElement(By.id("dbFixationTimeReturn_02_02")).click();
 
         // screen date get
-        String serverTimeString = driver.findElement(By.id("serverTime"))
-                .getText();
+        String serverTimeString = driver.findElement(By.id("serverTime")).getText();
 
         // check Date
         assertThat(serverTimeString, is("2013-01-01 01:01:01.000"));
 
         // check return type
-        assertThat(driver.findElement(By.id("type")).getText(), is(
-                "class java.sql.Timestamp"));
+        assertThat(driver.findElement(By.id("type")).getText(), is("class java.sql.Timestamp"));
 
     }
 
@@ -224,15 +184,13 @@ public class DateTest extends FunctionTestSupport {
         driver.findElement(By.id("dbFixationTimeReturn_02_03")).click();
 
         // screen date get
-        String serverTimeString = driver.findElement(By.id("serverTime"))
-                .getText();
+        String serverTimeString = driver.findElement(By.id("serverTime")).getText();
 
         // check Date
         assertThat(serverTimeString, is("2013-01-01 01:01:01.000"));
 
         // check return type
-        assertThat(driver.findElement(By.id("type")).getText(), is(
-                "class java.util.Date"));
+        assertThat(driver.findElement(By.id("type")).getText(), is("class java.util.Date"));
 
     }
 
@@ -241,15 +199,13 @@ public class DateTest extends FunctionTestSupport {
         driver.findElement(By.id("dbFixationTimeReturn_02_04")).click();
 
         // screen date get
-        String serverTimeString = driver.findElement(By.id("serverTime"))
-                .getText();
+        String serverTimeString = driver.findElement(By.id("serverTime")).getText();
 
         // check Date
         assertThat(serverTimeString, is("2013-01-01 00:00:00.000"));
 
         // check return type
-        assertThat(driver.findElement(By.id("type")).getText(), is(
-                "class java.sql.Date"));
+        assertThat(driver.findElement(By.id("type")).getText(), is("class java.sql.Date"));
 
     }
 
@@ -258,15 +214,13 @@ public class DateTest extends FunctionTestSupport {
         driver.findElement(By.id("dbFixationTimeReturn_02_05")).click();
 
         // screen date get
-        String serverTimeString = driver.findElement(By.id("serverTime"))
-                .getText();
+        String serverTimeString = driver.findElement(By.id("serverTime")).getText();
 
         // check Date
         assertThat(serverTimeString, is("01:01:01.000"));
 
         // check return type
-        assertThat(driver.findElement(By.id("type")).getText(), is(
-                "class java.sql.Time"));
+        assertThat(driver.findElement(By.id("type")).getText(), is("class java.sql.Time"));
 
     }
 
@@ -280,8 +234,7 @@ public class DateTest extends FunctionTestSupport {
         driver.findElement(By.id("dbFixationTimeReturn_02_06")).click();
 
         // error page screen
-        assertThat(driver.findElement(By.cssSelector("h2")).getText(), is(
-                "Data Access Error..."));
+        assertThat(driver.findElement(By.cssSelector("h2")).getText(), is("Data Access Error..."));
 
     }
 
@@ -289,34 +242,26 @@ public class DateTest extends FunctionTestSupport {
     public void test03_01_adjustedDateReturn() {
         // update adjustedValue
         driver.findElement(By.id("management")).click();
-        inputFieldAccessor.overrideValue(By.id("diffTime"), "-86400000",
-                driver);
+        inputFieldAccessor.overrideValue(By.id("diffTime"), "-86400000", driver);
         driver.findElement(By.id("btn-diff")).click();
 
         driver.findElement(By.id("adjustedDateReturn_03_01")).click();
 
         // screen date get
-        String serverTimeString = driver.findElement(By.id("serverTime"))
-                .getText();
-        String firstExpectedDateString = driver.findElement(By.id(
-                "firstExpectedDate")).getText();
-        String lastExpectedDateString = driver.findElement(By.id(
-                "lastExpectedDate")).getText();
+        String serverTimeString = driver.findElement(By.id("serverTime")).getText();
+        String firstExpectedDateString = driver.findElement(By.id("firstExpectedDate")).getText();
+        String lastExpectedDateString = driver.findElement(By.id("lastExpectedDate")).getText();
 
         // convert String from DateTime
-        long actualDate = dateTimeFormat.parseDateTime(serverTimeString)
-                .plusDays(1).getMillis();
-        long firstExpectedDate = dateTimeFormat.parseDateTime(
-                firstExpectedDateString).getMillis();
-        long lastExpectedDate = dateTimeFormat.parseDateTime(
-                lastExpectedDateString).getMillis();
+        long actualDate = dateTimeFormat.parseDateTime(serverTimeString).plusDays(1).getMillis();
+        long firstExpectedDate = dateTimeFormat.parseDateTime(firstExpectedDateString).getMillis();
+        long lastExpectedDate = dateTimeFormat.parseDateTime(lastExpectedDateString).getMillis();
 
         // check Date
         assertDate(actualDate, firstExpectedDate, lastExpectedDate);
 
         // check return type
-        assertThat(driver.findElement(By.id("type")).getText(), is(
-                "class org.joda.time.DateTime"));
+        assertThat(driver.findElement(By.id("type")).getText(), is("class org.joda.time.DateTime"));
 
     }
 
@@ -324,34 +269,26 @@ public class DateTest extends FunctionTestSupport {
     public void test03_02_adjustedDateReturn() {
         // update adjustedValue
         driver.findElement(By.id("management")).click();
-        inputFieldAccessor.overrideValue(By.id("diffTime"), "-86400000",
-                driver);
+        inputFieldAccessor.overrideValue(By.id("diffTime"), "-86400000", driver);
         driver.findElement(By.id("btn-diff")).click();
 
         driver.findElement(By.id("adjustedDateReturn_03_02")).click();
 
         // screen date get
-        String serverTimeString = driver.findElement(By.id("serverTime"))
-                .getText();
-        String firstExpectedDateString = driver.findElement(By.id(
-                "firstExpectedDate")).getText();
-        String lastExpectedDateString = driver.findElement(By.id(
-                "lastExpectedDate")).getText();
+        String serverTimeString = driver.findElement(By.id("serverTime")).getText();
+        String firstExpectedDateString = driver.findElement(By.id("firstExpectedDate")).getText();
+        String lastExpectedDateString = driver.findElement(By.id("lastExpectedDate")).getText();
 
         // convert String from DateTime
-        long actualDate = dateTimeFormat.parseDateTime(serverTimeString)
-                .plusDays(1).getMillis();
-        long firstExpectedDate = dateTimeFormat.parseDateTime(
-                firstExpectedDateString).getMillis();
-        long lastExpectedDate = dateTimeFormat.parseDateTime(
-                lastExpectedDateString).getMillis();
+        long actualDate = dateTimeFormat.parseDateTime(serverTimeString).plusDays(1).getMillis();
+        long firstExpectedDate = dateTimeFormat.parseDateTime(firstExpectedDateString).getMillis();
+        long lastExpectedDate = dateTimeFormat.parseDateTime(lastExpectedDateString).getMillis();
 
         // check Date
         assertDate(actualDate, firstExpectedDate, lastExpectedDate);
 
         // check return type
-        assertThat(driver.findElement(By.id("type")).getText(), is(
-                "class java.sql.Timestamp"));
+        assertThat(driver.findElement(By.id("type")).getText(), is("class java.sql.Timestamp"));
 
     }
 
@@ -359,68 +296,52 @@ public class DateTest extends FunctionTestSupport {
     public void test03_03_adjustedDateReturn() {
         // update adjustedValue
         driver.findElement(By.id("management")).click();
-        inputFieldAccessor.overrideValue(By.id("diffTime"), "-86400000",
-                driver);
+        inputFieldAccessor.overrideValue(By.id("diffTime"), "-86400000", driver);
         driver.findElement(By.id("btn-diff")).click();
 
         driver.findElement(By.id("adjustedDateReturn_03_03")).click();
 
         // screen date get
-        String serverTimeString = driver.findElement(By.id("serverTime"))
-                .getText();
-        String firstExpectedDateString = driver.findElement(By.id(
-                "firstExpectedDate")).getText();
-        String lastExpectedDateString = driver.findElement(By.id(
-                "lastExpectedDate")).getText();
+        String serverTimeString = driver.findElement(By.id("serverTime")).getText();
+        String firstExpectedDateString = driver.findElement(By.id("firstExpectedDate")).getText();
+        String lastExpectedDateString = driver.findElement(By.id("lastExpectedDate")).getText();
 
         // convert String from DateTime
-        long actualDate = dateTimeFormat.parseDateTime(serverTimeString)
-                .plusDays(1).getMillis();
-        long firstExpectedDate = dateTimeFormat.parseDateTime(
-                firstExpectedDateString).getMillis();
-        long lastExpectedDate = dateTimeFormat.parseDateTime(
-                lastExpectedDateString).getMillis();
+        long actualDate = dateTimeFormat.parseDateTime(serverTimeString).plusDays(1).getMillis();
+        long firstExpectedDate = dateTimeFormat.parseDateTime(firstExpectedDateString).getMillis();
+        long lastExpectedDate = dateTimeFormat.parseDateTime(lastExpectedDateString).getMillis();
 
         // check Date
         assertDate(actualDate, firstExpectedDate, lastExpectedDate);
 
         // check return type
-        assertThat(driver.findElement(By.id("type")).getText(), is(
-                "class java.util.Date"));
+        assertThat(driver.findElement(By.id("type")).getText(), is("class java.util.Date"));
     }
 
     @Test
     public void test03_04_adjustedDateReturn() {
         // update adjustedValue
         driver.findElement(By.id("management")).click();
-        inputFieldAccessor.overrideValue(By.id("diffTime"), "-86400000",
-                driver);
+        inputFieldAccessor.overrideValue(By.id("diffTime"), "-86400000", driver);
         driver.findElement(By.id("btn-diff")).click();
 
         driver.findElement(By.id("adjustedDateReturn_03_04")).click();
 
         // screen date get
-        String serverTimeString = driver.findElement(By.id("serverTime"))
-                .getText();
-        String firstExpectedDateString = driver.findElement(By.id(
-                "firstExpectedDate")).getText();
-        String lastExpectedDateString = driver.findElement(By.id(
-                "lastExpectedDate")).getText();
+        String serverTimeString = driver.findElement(By.id("serverTime")).getText();
+        String firstExpectedDateString = driver.findElement(By.id("firstExpectedDate")).getText();
+        String lastExpectedDateString = driver.findElement(By.id("lastExpectedDate")).getText();
 
         // convert String from DateTime
-        long actualDate = dateTimeFormat.parseDateTime(serverTimeString)
-                .plusDays(1).getMillis();
-        long firstExpectedDate = dateTimeFormat.parseDateTime(
-                firstExpectedDateString).getMillis();
-        long lastExpectedDate = dateTimeFormat.parseDateTime(
-                lastExpectedDateString).getMillis();
+        long actualDate = dateTimeFormat.parseDateTime(serverTimeString).plusDays(1).getMillis();
+        long firstExpectedDate = dateTimeFormat.parseDateTime(firstExpectedDateString).getMillis();
+        long lastExpectedDate = dateTimeFormat.parseDateTime(lastExpectedDateString).getMillis();
 
         // check Date
         assertDate(actualDate, firstExpectedDate, lastExpectedDate);
 
         // check return type
-        assertThat(driver.findElement(By.id("type")).getText(), is(
-                "class java.sql.Date"));
+        assertThat(driver.findElement(By.id("type")).getText(), is("class java.sql.Date"));
 
     }
 
@@ -434,32 +355,22 @@ public class DateTest extends FunctionTestSupport {
         driver.findElement(By.id("adjustedDateReturn_03_05")).click();
 
         // screen date get
-        String serverTimeString = driver.findElement(By.id("serverTime"))
-                .getText();
-        String firstExpectedDateString = driver.findElement(By.id(
-                "firstExpectedDate")).getText();
-        String lastExpectedDateString = driver.findElement(By.id(
-                "lastExpectedDate")).getText();
+        String serverTimeString = driver.findElement(By.id("serverTime")).getText();
+        String firstExpectedDateString = driver.findElement(By.id("firstExpectedDate")).getText();
+        String lastExpectedDateString = driver.findElement(By.id("lastExpectedDate")).getText();
 
         // convert String from DateTime
-        long actualDate = timeFormat.parseDateTime(serverTimeString).plusHours(
-                1).getMillis();
-        long firstExpectedDate = timeFormat.parseDateTime(
-                firstExpectedDateString).getMillis();
-        long lastExpectedDate = timeFormat.parseDateTime(lastExpectedDateString)
-                .getMillis();
+        long actualDate = timeFormat.parseDateTime(serverTimeString).plusHours(1).getMillis();
+        long firstExpectedDate = timeFormat.parseDateTime(firstExpectedDateString).getMillis();
+        long lastExpectedDate = timeFormat.parseDateTime(lastExpectedDateString).getMillis();
 
         // converting "actualDate" correctly
-        long millisecZeroOclock = timeFormat.parseDateTime("00:00:00.000")
-                .getMillis();
-        long millisecOneOclock = timeFormat.parseDateTime("01:00:00.000")
-                .getMillis();
-        long millisecTwentythreeOclock = timeFormat.parseDateTime(
-                "23:00:00.000").getMillis();
+        long millisecZeroOclock = timeFormat.parseDateTime("00:00:00.000").getMillis();
+        long millisecOneOclock = timeFormat.parseDateTime("01:00:00.000").getMillis();
+        long millisecTwentythreeOclock = timeFormat.parseDateTime("23:00:00.000").getMillis();
         int millsecTwentyfourHours = 86400000;
         // 00:00:00.000 <= firstExpectedDate < 01:00:00.000 & 23:00:00.000 <= actualDate
-        if (millisecZeroOclock <= firstExpectedDate
-                && firstExpectedDate < millisecOneOclock
+        if (millisecZeroOclock <= firstExpectedDate && firstExpectedDate < millisecOneOclock
                 && millisecTwentythreeOclock <= actualDate) {
             actualDate = actualDate - millsecTwentyfourHours;
         }
@@ -468,8 +379,7 @@ public class DateTest extends FunctionTestSupport {
         assertDate(actualDate, firstExpectedDate, lastExpectedDate);
 
         // check return type
-        assertThat(driver.findElement(By.id("type")).getText(), is(
-                "class java.sql.Time"));
+        assertThat(driver.findElement(By.id("type")).getText(), is("class java.sql.Time"));
 
     }
 
@@ -483,27 +393,20 @@ public class DateTest extends FunctionTestSupport {
         driver.findElement(By.id("adjustedDateReturn_03_06")).click();
 
         // screen date get
-        String serverTimeString = driver.findElement(By.id("serverTime"))
-                .getText();
-        String firstExpectedDateString = driver.findElement(By.id(
-                "firstExpectedDate")).getText();
-        String lastExpectedDateString = driver.findElement(By.id(
-                "lastExpectedDate")).getText();
+        String serverTimeString = driver.findElement(By.id("serverTime")).getText();
+        String firstExpectedDateString = driver.findElement(By.id("firstExpectedDate")).getText();
+        String lastExpectedDateString = driver.findElement(By.id("lastExpectedDate")).getText();
 
         // convert String from DateTime
-        long actualDate = dateTimeFormat.parseDateTime(serverTimeString)
-                .plusDays(1).getMillis();
-        long firstExpectedDate = dateTimeFormat.parseDateTime(
-                firstExpectedDateString).getMillis();
-        long lastExpectedDate = dateTimeFormat.parseDateTime(
-                lastExpectedDateString).getMillis();
+        long actualDate = dateTimeFormat.parseDateTime(serverTimeString).plusDays(1).getMillis();
+        long firstExpectedDate = dateTimeFormat.parseDateTime(firstExpectedDateString).getMillis();
+        long lastExpectedDate = dateTimeFormat.parseDateTime(lastExpectedDateString).getMillis();
 
         // check Date
         assertDate(actualDate, firstExpectedDate, lastExpectedDate);
 
         // check return type
-        assertThat(driver.findElement(By.id("type")).getText(), is(
-                "class org.joda.time.DateTime"));
+        assertThat(driver.findElement(By.id("type")).getText(), is("class org.joda.time.DateTime"));
 
         // screen capture
         screenCapture.save(driver);
@@ -519,27 +422,22 @@ public class DateTest extends FunctionTestSupport {
         driver.findElement(By.id("adjustedDateReturn_03_07")).click();
 
         // screen date get
-        String serverTimeString = driver.findElement(By.id("serverTime"))
-                .getText();
-        String firstExpectedDateString = driver.findElement(By.id(
-                "firstExpectedDate")).getText();
-        String lastExpectedDateString = driver.findElement(By.id(
-                "lastExpectedDate")).getText();
+        String serverTimeString = driver.findElement(By.id("serverTime")).getText();
+        String firstExpectedDateString = driver.findElement(By.id("firstExpectedDate")).getText();
+        String lastExpectedDateString = driver.findElement(By.id("lastExpectedDate")).getText();
 
         // convert String from DateTime
-        long actualDate = dateTimeFormat.parseDateTime(serverTimeString)
-                .getMillis();
-        long firstExpectedDate = dateTimeFormat.parseDateTime(
-                firstExpectedDateString).plusDays(1).getMillis();
-        long lastExpectedDate = dateTimeFormat.parseDateTime(
-                lastExpectedDateString).plusDays(1).getMillis();
+        long actualDate = dateTimeFormat.parseDateTime(serverTimeString).getMillis();
+        long firstExpectedDate =
+                dateTimeFormat.parseDateTime(firstExpectedDateString).plusDays(1).getMillis();
+        long lastExpectedDate =
+                dateTimeFormat.parseDateTime(lastExpectedDateString).plusDays(1).getMillis();
 
         // check Date
         assertDate(actualDate, firstExpectedDate, lastExpectedDate);
 
         // check return type
-        assertThat(driver.findElement(By.id("type")).getText(), is(
-                "class org.joda.time.DateTime"));
+        assertThat(driver.findElement(By.id("type")).getText(), is("class org.joda.time.DateTime"));
 
     }
 
@@ -553,27 +451,20 @@ public class DateTest extends FunctionTestSupport {
         driver.findElement(By.id("adjustedDateReturn_03_08")).click();
 
         // screen date get
-        String serverTimeString = driver.findElement(By.id("serverTime"))
-                .getText();
-        String firstExpectedDateString = driver.findElement(By.id(
-                "firstExpectedDate")).getText();
-        String lastExpectedDateString = driver.findElement(By.id(
-                "lastExpectedDate")).getText();
+        String serverTimeString = driver.findElement(By.id("serverTime")).getText();
+        String firstExpectedDateString = driver.findElement(By.id("firstExpectedDate")).getText();
+        String lastExpectedDateString = driver.findElement(By.id("lastExpectedDate")).getText();
 
         // convert String from DateTime
-        long actualDate = dateTimeFormat.parseDateTime(serverTimeString)
-                .plusDays(1).getMillis();
-        long firstExpectedDate = dateTimeFormat.parseDateTime(
-                firstExpectedDateString).getMillis();
-        long lastExpectedDate = dateTimeFormat.parseDateTime(
-                lastExpectedDateString).getMillis();
+        long actualDate = dateTimeFormat.parseDateTime(serverTimeString).plusDays(1).getMillis();
+        long firstExpectedDate = dateTimeFormat.parseDateTime(firstExpectedDateString).getMillis();
+        long lastExpectedDate = dateTimeFormat.parseDateTime(lastExpectedDateString).getMillis();
 
         // check Date
         assertDate(actualDate, firstExpectedDate, lastExpectedDate);
 
         // check return type
-        assertThat(driver.findElement(By.id("type")).getText(), is(
-                "class org.joda.time.DateTime"));
+        assertThat(driver.findElement(By.id("type")).getText(), is("class org.joda.time.DateTime"));
 
         // screen capture
         screenCapture.save(driver);
@@ -589,27 +480,22 @@ public class DateTest extends FunctionTestSupport {
         driver.findElement(By.id("adjustedDateReturn_03_09")).click();
 
         // screen date get
-        String serverTimeString = driver.findElement(By.id("serverTime"))
-                .getText();
-        String firstExpectedDateString = driver.findElement(By.id(
-                "firstExpectedDate")).getText();
-        String lastExpectedDateString = driver.findElement(By.id(
-                "lastExpectedDate")).getText();
+        String serverTimeString = driver.findElement(By.id("serverTime")).getText();
+        String firstExpectedDateString = driver.findElement(By.id("firstExpectedDate")).getText();
+        String lastExpectedDateString = driver.findElement(By.id("lastExpectedDate")).getText();
 
         // convert String from DateTime
-        long actualDate = dateTimeFormat.parseDateTime(serverTimeString)
-                .getMillis();
-        long firstExpectedDate = dateTimeFormat.parseDateTime(
-                firstExpectedDateString).plusDays(1).getMillis();
-        long lastExpectedDate = dateTimeFormat.parseDateTime(
-                lastExpectedDateString).plusDays(1).getMillis();
+        long actualDate = dateTimeFormat.parseDateTime(serverTimeString).getMillis();
+        long firstExpectedDate =
+                dateTimeFormat.parseDateTime(firstExpectedDateString).plusDays(1).getMillis();
+        long lastExpectedDate =
+                dateTimeFormat.parseDateTime(lastExpectedDateString).plusDays(1).getMillis();
 
         // check Date
         assertDate(actualDate, firstExpectedDate, lastExpectedDate);
 
         // check return type
-        assertThat(driver.findElement(By.id("type")).getText(), is(
-                "class org.joda.time.DateTime"));
+        assertThat(driver.findElement(By.id("type")).getText(), is("class org.joda.time.DateTime"));
 
         // screen capture
         screenCapture.save(driver);
@@ -628,27 +514,22 @@ public class DateTest extends FunctionTestSupport {
         driver.findElement(By.id("adjustedDateReturn_03_10")).click();
 
         // screen date get
-        String serverTimeString = driver.findElement(By.id("serverTime"))
-                .getText();
-        String firstExpectedDateString = driver.findElement(By.id(
-                "firstExpectedDate")).getText();
-        String lastExpectedDateString = driver.findElement(By.id(
-                "lastExpectedDate")).getText();
+        String serverTimeString = driver.findElement(By.id("serverTime")).getText();
+        String firstExpectedDateString = driver.findElement(By.id("firstExpectedDate")).getText();
+        String lastExpectedDateString = driver.findElement(By.id("lastExpectedDate")).getText();
 
         // convert String from DateTime
-        long actualDate = dateTimeFormat.parseDateTime(serverTimeString)
-                .getMillis();
-        long firstExpectedDate = dateTimeFormat.parseDateTime(
-                firstExpectedDateString).plusDays(1).getMillis();
-        long lastExpectedDate = dateTimeFormat.parseDateTime(
-                lastExpectedDateString).plusDays(1).getMillis();
+        long actualDate = dateTimeFormat.parseDateTime(serverTimeString).getMillis();
+        long firstExpectedDate =
+                dateTimeFormat.parseDateTime(firstExpectedDateString).plusDays(1).getMillis();
+        long lastExpectedDate =
+                dateTimeFormat.parseDateTime(lastExpectedDateString).plusDays(1).getMillis();
 
         // check Date
         assertDate(actualDate, firstExpectedDate, lastExpectedDate);
 
         // check return type
-        assertThat(driver.findElement(By.id("type")).getText(), is(
-                "class org.joda.time.DateTime"));
+        assertThat(driver.findElement(By.id("type")).getText(), is("class org.joda.time.DateTime"));
 
         // screen capture
         screenCapture.save(driver);
@@ -668,24 +549,21 @@ public class DateTest extends FunctionTestSupport {
 
         // screen date get
         serverTimeString = driver.findElement(By.id("serverTime")).getText();
-        firstExpectedDateString = driver.findElement(By.id("firstExpectedDate"))
-                .getText();
-        lastExpectedDateString = driver.findElement(By.id("lastExpectedDate"))
-                .getText();
+        firstExpectedDateString = driver.findElement(By.id("firstExpectedDate")).getText();
+        lastExpectedDateString = driver.findElement(By.id("lastExpectedDate")).getText();
 
         // convert String from DateTime
         actualDate = dateTimeFormat.parseDateTime(serverTimeString).getMillis();
-        firstExpectedDate = dateTimeFormat.parseDateTime(
-                firstExpectedDateString).plusDays(2).getMillis();
-        lastExpectedDate = dateTimeFormat.parseDateTime(lastExpectedDateString)
-                .plusDays(2).getMillis();
+        firstExpectedDate =
+                dateTimeFormat.parseDateTime(firstExpectedDateString).plusDays(2).getMillis();
+        lastExpectedDate =
+                dateTimeFormat.parseDateTime(lastExpectedDateString).plusDays(2).getMillis();
 
         // check Date
         assertDate(actualDate, firstExpectedDate, lastExpectedDate);
 
         // check return type
-        assertThat(driver.findElement(By.id("type")).getText(), is(
-                "class org.joda.time.DateTime"));
+        assertThat(driver.findElement(By.id("type")).getText(), is("class org.joda.time.DateTime"));
 
         // screen capture
         screenCapture.save(driver);
@@ -702,27 +580,22 @@ public class DateTest extends FunctionTestSupport {
         driver.findElement(By.id("adjustedDateReturn_03_11")).click();
 
         // screen date get
-        String serverTimeString = driver.findElement(By.id("serverTime"))
-                .getText();
-        String firstExpectedDateString = driver.findElement(By.id(
-                "firstExpectedDate")).getText();
-        String lastExpectedDateString = driver.findElement(By.id(
-                "lastExpectedDate")).getText();
+        String serverTimeString = driver.findElement(By.id("serverTime")).getText();
+        String firstExpectedDateString = driver.findElement(By.id("firstExpectedDate")).getText();
+        String lastExpectedDateString = driver.findElement(By.id("lastExpectedDate")).getText();
 
         // convert String from DateTime
-        long actualDate = dateTimeFormat.parseDateTime(serverTimeString)
-                .getMillis();
-        long firstExpectedDate = dateTimeFormat.parseDateTime(
-                firstExpectedDateString).plusDays(1).getMillis();
-        long lastExpectedDate = dateTimeFormat.parseDateTime(
-                lastExpectedDateString).plusDays(1).getMillis();
+        long actualDate = dateTimeFormat.parseDateTime(serverTimeString).getMillis();
+        long firstExpectedDate =
+                dateTimeFormat.parseDateTime(firstExpectedDateString).plusDays(1).getMillis();
+        long lastExpectedDate =
+                dateTimeFormat.parseDateTime(lastExpectedDateString).plusDays(1).getMillis();
 
         // check Date
         assertDate(actualDate, firstExpectedDate, lastExpectedDate);
 
         // check return type
-        assertThat(driver.findElement(By.id("type")).getText(), is(
-                "class org.joda.time.DateTime"));
+        assertThat(driver.findElement(By.id("type")).getText(), is("class org.joda.time.DateTime"));
 
         // screen capture
         screenCapture.save(driver);
@@ -739,24 +612,21 @@ public class DateTest extends FunctionTestSupport {
 
         // screen date get
         serverTimeString = driver.findElement(By.id("serverTime")).getText();
-        firstExpectedDateString = driver.findElement(By.id("firstExpectedDate"))
-                .getText();
-        lastExpectedDateString = driver.findElement(By.id("lastExpectedDate"))
-                .getText();
+        firstExpectedDateString = driver.findElement(By.id("firstExpectedDate")).getText();
+        lastExpectedDateString = driver.findElement(By.id("lastExpectedDate")).getText();
 
         // convert String from DateTime
         actualDate = dateTimeFormat.parseDateTime(serverTimeString).getMillis();
-        firstExpectedDate = dateTimeFormat.parseDateTime(
-                firstExpectedDateString).plusDays(3).getMillis();
-        lastExpectedDate = dateTimeFormat.parseDateTime(lastExpectedDateString)
-                .plusDays(3).getMillis();
+        firstExpectedDate =
+                dateTimeFormat.parseDateTime(firstExpectedDateString).plusDays(3).getMillis();
+        lastExpectedDate =
+                dateTimeFormat.parseDateTime(lastExpectedDateString).plusDays(3).getMillis();
 
         // check Date
         assertDate(actualDate, firstExpectedDate, lastExpectedDate);
 
         // check return type
-        assertThat(driver.findElement(By.id("type")).getText(), is(
-                "class org.joda.time.DateTime"));
+        assertThat(driver.findElement(By.id("type")).getText(), is("class org.joda.time.DateTime"));
 
         // screen capture
         screenCapture.save(driver);
@@ -773,24 +643,19 @@ public class DateTest extends FunctionTestSupport {
 
         // screen date get
         serverTimeString = driver.findElement(By.id("serverTime")).getText();
-        firstExpectedDateString = driver.findElement(By.id("firstExpectedDate"))
-                .getText();
-        lastExpectedDateString = driver.findElement(By.id("lastExpectedDate"))
-                .getText();
+        firstExpectedDateString = driver.findElement(By.id("firstExpectedDate")).getText();
+        lastExpectedDateString = driver.findElement(By.id("lastExpectedDate")).getText();
 
         // convert String from DateTime
         actualDate = dateTimeFormat.parseDateTime(serverTimeString).getMillis();
-        firstExpectedDate = dateTimeFormat.parseDateTime(
-                firstExpectedDateString).getMillis();
-        lastExpectedDate = dateTimeFormat.parseDateTime(lastExpectedDateString)
-                .getMillis();
+        firstExpectedDate = dateTimeFormat.parseDateTime(firstExpectedDateString).getMillis();
+        lastExpectedDate = dateTimeFormat.parseDateTime(lastExpectedDateString).getMillis();
 
         // check Date
         assertDate(actualDate, firstExpectedDate, lastExpectedDate);
 
         // check return type
-        assertThat(driver.findElement(By.id("type")).getText(), is(
-                "class org.joda.time.DateTime"));
+        assertThat(driver.findElement(By.id("type")).getText(), is("class org.joda.time.DateTime"));
 
     }
 
@@ -804,8 +669,7 @@ public class DateTest extends FunctionTestSupport {
         driver.findElement(By.id("adjustedDateReturn_03_12")).click();
 
         // error page screen
-        assertThat(driver.findElement(By.cssSelector("h2")).getText(), is(
-                "Data Access Error..."));
+        assertThat(driver.findElement(By.cssSelector("h2")).getText(), is("Data Access Error..."));
 
         // screen capture
         screenCapture.save(driver);
@@ -818,8 +682,7 @@ public class DateTest extends FunctionTestSupport {
         driver.findElement(By.id("insertOperationDate")).click();
     }
 
-    private void assertDate(long actualDate, long firstExpectedDate,
-            long lastExpectedDate) {
+    private void assertDate(long actualDate, long firstExpectedDate, long lastExpectedDate) {
         assertThat(actualDate, greaterThanOrEqualTo(firstExpectedDate));
         assertThat(actualDate, lessThanOrEqualTo(lastExpectedDate));
     }

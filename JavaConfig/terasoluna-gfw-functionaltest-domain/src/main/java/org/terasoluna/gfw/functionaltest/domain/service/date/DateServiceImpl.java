@@ -30,13 +30,17 @@ import jakarta.inject.Inject;
 @Transactional(value = TransactionManagers.DATASOURCE)
 public class DateServiceImpl implements DateService {
 
-    private static final String INSERT_OPERATION_DATE = "INSERT INTO operation_date(operation_date_id, diff) VALUES (:operation_date_id, :diff)";
+    private static final String INSERT_OPERATION_DATE =
+            "INSERT INTO operation_date(operation_date_id, diff) VALUES (:operation_date_id, :diff)";
 
-    private static final String UPDATE_DIFF_BY_ID = "UPDATE operation_date SET diff=:diff where operation_date_id=:operation_date_id";
+    private static final String UPDATE_DIFF_BY_ID =
+            "UPDATE operation_date SET diff=:diff where operation_date_id=:operation_date_id";
 
-    private static final String DELETE_OPERATION_DATE_BY_ID = "delete from operation_date where operation_date_id=:operation_date_id";
+    private static final String DELETE_OPERATION_DATE_BY_ID =
+            "delete from operation_date where operation_date_id=:operation_date_id";
 
-    private static final String DELETE_SYSTEM_DATE_BY_ID = "delete from system_date where system_date_id=:system_date_id";
+    private static final String DELETE_SYSTEM_DATE_BY_ID =
+            "delete from system_date where system_date_id=:system_date_id";
 
     @Inject
     protected NamedParameterJdbcTemplate jdbcTemplate;
@@ -61,14 +65,14 @@ public class DateServiceImpl implements DateService {
 
     @Override
     public void deleteOperationDate(int id) {
-        jdbcTemplate.update(DELETE_OPERATION_DATE_BY_ID, Collections
-                .singletonMap("operation_date_id", Integer.valueOf(id)));
+        jdbcTemplate.update(DELETE_OPERATION_DATE_BY_ID,
+                Collections.singletonMap("operation_date_id", Integer.valueOf(id)));
     }
 
     @Override
     public void deleteSystemDate(int id) {
-        jdbcTemplate.update(DELETE_SYSTEM_DATE_BY_ID, Collections.singletonMap(
-                "system_date_id", Integer.valueOf(id)));
+        jdbcTemplate.update(DELETE_SYSTEM_DATE_BY_ID,
+                Collections.singletonMap("system_date_id", Integer.valueOf(id)));
     }
 
 }

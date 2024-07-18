@@ -27,8 +27,7 @@ import jakarta.servlet.http.HttpServletResponse;
 public class ThrowIndexOutOfBoundsExceptionFilter extends OncePerRequestFilter {
 
     @Override
-    protected void doFilterInternal(HttpServletRequest request,
-            HttpServletResponse response,
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response,
             FilterChain filterChain) throws ServletException, IOException {
         throw new IndexOutOfBoundsException("4_4 Error");
     }

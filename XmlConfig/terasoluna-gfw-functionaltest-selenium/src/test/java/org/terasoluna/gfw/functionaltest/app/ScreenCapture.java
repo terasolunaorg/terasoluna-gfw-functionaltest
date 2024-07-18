@@ -30,8 +30,7 @@ import org.springframework.util.StringUtils;
 
 public class ScreenCapture {
 
-    private static final Logger logger = LoggerFactory.getLogger(
-            ScreenCapture.class);
+    private static final Logger logger = LoggerFactory.getLogger(ScreenCapture.class);
 
     @Value("${selenium.enableCapture}")
     protected boolean enableCapture;
@@ -40,8 +39,7 @@ public class ScreenCapture {
 
     final private AtomicInteger sequence = new AtomicInteger(0);
 
-    public ScreenCapture() {
-    }
+    public ScreenCapture() {}
 
     public void setUp(File evidenceSavingDirectory) {
         sequence.set(0);
@@ -66,9 +64,7 @@ public class ScreenCapture {
             takesScreenshot = (TakesScreenshot) webDriver;
         }
         if (takesScreenshot == null) {
-            logger.warn(
-                    "WebDriver is not supported screenshot. WebDeiver is {}.",
-                    webDriver);
+            logger.warn("WebDriver is not supported screenshot. WebDeiver is {}.", webDriver);
             return;
         }
 
@@ -77,12 +73,10 @@ public class ScreenCapture {
         File screenshotFile = takesScreenshot.getScreenshotAs(OutputType.FILE);
 
         int sequenceNo = sequence.incrementAndGet();
-        String evidenceFile = String.format("screen_capture_%03d%s.png",
-                sequenceNo, subTitle);
+        String evidenceFile = String.format("screen_capture_%03d%s.png", sequenceNo, subTitle);
 
         try {
-            FileUtils.copyFile(screenshotFile,
-                    new File(evidenceSavingDirectory, evidenceFile));
+            FileUtils.copyFile(screenshotFile, new File(evidenceSavingDirectory, evidenceFile));
         } catch (IOException e) {
             logger.error(e.toString());
         }

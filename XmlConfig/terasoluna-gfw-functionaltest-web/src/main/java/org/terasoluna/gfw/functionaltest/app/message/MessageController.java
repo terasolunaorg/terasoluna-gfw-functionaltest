@@ -46,9 +46,8 @@ public class MessageController {
     @GetMapping(value = "1_2")
     public String defaultSpecified_01_02(Model model) {
 
-        model.addAttribute(ResultMessages.success().addAll(ResultMessage
-                .fromCode("i.gt.me.0001"), ResultMessage.fromCode(
-                        "i.gt.me.0002")));
+        model.addAttribute(ResultMessages.success().addAll(ResultMessage.fromCode("i.gt.me.0001"),
+                ResultMessage.fromCode("i.gt.me.0002")));
 
         return "message/default";
     }
@@ -56,8 +55,7 @@ public class MessageController {
     @GetMapping(value = "1_3")
     public String defaultSpecified_01_03(Model model) {
 
-        model.addAttribute(ResultMessages.error().add(ResultMessage.fromText(
-                "Error Message!!")));
+        model.addAttribute(ResultMessages.error().add(ResultMessage.fromText("Error Message!!")));
 
         return "message/default";
     }
@@ -129,8 +127,8 @@ public class MessageController {
     @GetMapping(value = "1_12")
     public String defaultSpecified_01_12(Model model) {
 
-        throw new BusinessException(ResultMessages.error().add(ResultMessage
-                .fromText("Error Message!!")));
+        throw new BusinessException(
+                ResultMessages.error().add(ResultMessage.fromText("Error Message!!")));
     }
 
     @GetMapping(value = "1_13")
@@ -144,8 +142,7 @@ public class MessageController {
     @GetMapping(value = "1_14")
     public String defaultSpecified_01_14(Model model) {
 
-        model.addAttribute(ResultMessages.success().add("i.gt.me.0005",
-                "Terasoluna"));
+        model.addAttribute(ResultMessages.success().add("i.gt.me.0005", "Terasoluna"));
 
         return "message/default";
     }
@@ -153,8 +150,8 @@ public class MessageController {
     @GetMapping(value = "1_15")
     public String defaultSpecified_01_15(Model model) {
 
-        model.addAttribute(ResultMessages.success().add(ResultMessage.fromCode(
-                "i.gt.me.0005", "Terasoluna")));
+        model.addAttribute(
+                ResultMessages.success().add(ResultMessage.fromCode("i.gt.me.0005", "Terasoluna")));
 
         return "message/default";
     }
@@ -182,8 +179,7 @@ public class MessageController {
     @GetMapping(value = "2_1")
     public String messagesAttributeNameSpecified_02_01(Model model) {
 
-        model.addAttribute("successMessage", ResultMessages.success().add(
-                "i.gt.me.0001"));
+        model.addAttribute("successMessage", ResultMessages.success().add("i.gt.me.0001"));
 
         return "message/messagesAttributeName";
     }
@@ -191,8 +187,8 @@ public class MessageController {
     @GetMapping(value = "2_2")
     public String messagesAttributeNameSpecified_02_02(Model model) {
 
-        model.addAttribute("errorMessage", ResultMessages.error().add(
-                ResultMessage.fromText("Error Message!!")));
+        model.addAttribute("errorMessage",
+                ResultMessages.error().add(ResultMessage.fromText("Error Message!!")));
 
         return "message/messagesAttributeNameStringSpecified";
     }
@@ -200,8 +196,7 @@ public class MessageController {
     @GetMapping(value = "2_3")
     public String messagesAttributeNameSpecified_02_03(Model model) {
 
-        model.addAttribute("successMessage", ResultMessages.success().add(
-                "i.gt.me.0001"));
+        model.addAttribute("successMessage", ResultMessages.success().add("i.gt.me.0001"));
 
         return "message/messagesAttributeNameSingleSpecified";
     }
@@ -212,8 +207,7 @@ public class MessageController {
         List<ResultMessage> resultMessageList = new ArrayList<ResultMessage>();
         resultMessageList.add(ResultMessage.fromCode("i.gt.me.0001"));
         resultMessageList.add(ResultMessage.fromCode("i.gt.me.0002"));
-        model.addAttribute("successMessages", ResultMessages.success().addAll(
-                resultMessageList));
+        model.addAttribute("successMessages", ResultMessages.success().addAll(resultMessageList));
 
         return "message/messagesAttributeNameMultiSpecified";
     }
@@ -277,8 +271,8 @@ public class MessageController {
     @GetMapping(value = "5_1")
     public String messagesTypeSpecified_05_01(Model model) {
 
-        model.addAttribute("login_error_message", ResultMessages.warning().add(
-                ResultMessage.fromText("Warn Message!!")));
+        model.addAttribute("login_error_message",
+                ResultMessages.warning().add(ResultMessage.fromText("Warn Message!!")));
 
         return "message/messageTypeSpecified";
     }
@@ -286,8 +280,7 @@ public class MessageController {
     @GetMapping(value = "5_2")
     public String messagesTypeSpecified_05_02(Model model) {
 
-        model.addAttribute("login_error_message", ResultMessages.error().add(
-                "w.gt.me.0001"));
+        model.addAttribute("login_error_message", ResultMessages.error().add("w.gt.me.0001"));
 
         return "message/messageTypeSpecified";
     }
@@ -295,9 +288,8 @@ public class MessageController {
     @GetMapping(value = "5_3")
     public String messagesTypeSpecified_05_03(Model model) {
 
-        model.addAttribute("login_error_messages", ResultMessages.error()
-                .addAll(ResultMessage.fromCode("w.gt.me.0001"), ResultMessage
-                        .fromCode("e.gt.me.0001")));
+        model.addAttribute("login_error_messages", ResultMessages.error().addAll(
+                ResultMessage.fromCode("w.gt.me.0001"), ResultMessage.fromCode("e.gt.me.0001")));
 
         return "message/messagesTypeSpecified";
     }
@@ -305,8 +297,8 @@ public class MessageController {
     @GetMapping(value = "6_1")
     public String customResultMessageTypeImpl_06_01(Model model) {
 
-        model.addAttribute(new ResultMessages(BlueprintResultMessageType.NOTICE)
-                .add("w.gt.me.0002"));
+        model.addAttribute(
+                new ResultMessages(BlueprintResultMessageType.NOTICE).add("w.gt.me.0002"));
 
         return "message/resultMessageType";
     }
@@ -314,8 +306,8 @@ public class MessageController {
     @GetMapping(value = "6_2")
     public String customResultMessageTypeImpl_06_02(Model model) {
 
-        model.addAttribute(new ResultMessages(BlueprintResultMessageType.ERROR)
-                .add("e.gt.me.0002"));
+        model.addAttribute(
+                new ResultMessages(BlueprintResultMessageType.ERROR).add("e.gt.me.0002"));
 
         return "message/resultMessageType";
     }
@@ -324,8 +316,7 @@ public class MessageController {
     public String customResultMessageTypeImpl_06_03(Model model) {
 
         model.addAttribute(
-                new ResultMessages(BlueprintResultMessageType.SUCCESS).add(
-                        "i.gt.me.0003"));
+                new ResultMessages(BlueprintResultMessageType.SUCCESS).add("i.gt.me.0003"));
 
         return "message/resultMessageType";
     }
@@ -333,8 +324,7 @@ public class MessageController {
     @GetMapping(value = "6_4")
     public String customResultMessageTypeImpl_06_04(Model model) {
 
-        model.addAttribute(new ResultMessages(BlueprintResultMessageType.INFO)
-                .add("i.gt.me.0004"));
+        model.addAttribute(new ResultMessages(BlueprintResultMessageType.INFO).add("i.gt.me.0004"));
 
         return "message/resultMessageType";
     }
@@ -342,9 +332,8 @@ public class MessageController {
     @GetMapping(value = "7_1")
     public String outputMessage_07_01(Model model) {
 
-        model.addAttribute(ResultMessages.success().addAll(ResultMessage
-                .fromText("Hello World!!"), ResultMessage.fromText(
-                        "Hello Message!!")));
+        model.addAttribute(ResultMessages.success().addAll(ResultMessage.fromText("Hello World!!"),
+                ResultMessage.fromText("Hello Message!!")));
 
         return "message/outputMessage";
     }
@@ -372,8 +361,7 @@ public class MessageController {
     public String outputMessage_07_05(Model model) {
 
         model.addAttribute(ResultMessages.success().add("i.gt.me.0001"));
-        model.addAttribute("error_message", ResultMessages.error().add(
-                "e.gt.me.0001"));
+        model.addAttribute("error_message", ResultMessages.error().add("e.gt.me.0001"));
 
         return "message/outputMessageMultiSpecified";
     }

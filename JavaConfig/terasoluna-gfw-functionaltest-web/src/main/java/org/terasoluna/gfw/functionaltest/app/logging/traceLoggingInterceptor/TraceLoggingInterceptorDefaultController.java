@@ -32,8 +32,8 @@ public class TraceLoggingInterceptorDefaultController {
     @Inject
     protected TraceLoggingInterceptorService traceLoggingInterceptorService;
 
-    private static final Logger logger = LoggerFactory.getLogger(
-            TraceLoggingInterceptorDefaultController.class);
+    private static final Logger logger =
+            LoggerFactory.getLogger(TraceLoggingInterceptorDefaultController.class);
 
     @GetMapping(value = "4_1")
     public String defaultTraceLoggingAsTraceLevel_04_01(Model model) {
@@ -42,10 +42,9 @@ public class TraceLoggingInterceptorDefaultController {
         logger.trace("request defaultTraceLoggingAsTraceLevel_04_01");
         long finishTime = traceLoggingInterceptorService.getTime();
 
-        model.addAttribute("requestType",
-                "request default traceLogging as trace level");
-        model.addAttribute("processingTime", traceLoggingInterceptorService
-                .calcProcessingTime(startTime, finishTime));
+        model.addAttribute("requestType", "request default traceLogging as trace level");
+        model.addAttribute("processingTime",
+                traceLoggingInterceptorService.calcProcessingTime(startTime, finishTime));
 
         return "logging/traceLoggingInterceptor";
     }
@@ -61,10 +60,9 @@ public class TraceLoggingInterceptorDefaultController {
 
         long finishTime = traceLoggingInterceptorService.getTime();
 
-        model.addAttribute("requestType",
-                "request default traceLogging as warn level");
-        model.addAttribute("processingTime", traceLoggingInterceptorService
-                .calcProcessingTime(startTime, finishTime));
+        model.addAttribute("requestType", "request default traceLogging as warn level");
+        model.addAttribute("processingTime",
+                traceLoggingInterceptorService.calcProcessingTime(startTime, finishTime));
 
         return "logging/traceLoggingInterceptor";
     }
