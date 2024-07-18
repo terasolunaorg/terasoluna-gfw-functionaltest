@@ -1,119 +1,119 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:context="http://www.springframework.org/schema/context" xmlns:aop="http://www.springframework.org/schema/aop"
-  xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
-        http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd
-        http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
+    xmlns:context="http://www.springframework.org/schema/context" xmlns:aop="http://www.springframework.org/schema/aop"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+                        http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd
+                        http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
 
-  <import resource="classpath:/META-INF/spring/terasoluna-gfw-functionaltest-domain.xml" />
+    <import resource="classpath:/META-INF/spring/terasoluna-gfw-functionaltest-domain.xml" />
 
-  <bean id="passwordEncoder" class="org.springframework.security.crypto.password.DelegatingPasswordEncoder">
-    <constructor-arg name="idForEncode" value="pbkdf2" />
-    <constructor-arg name="idToPasswordEncoder">
-      <map>
-        <entry key="pbkdf2">
-          <bean class="org.springframework.security.crypto.password.Pbkdf2PasswordEncoder" />
-        </entry>
-        <entry key="bcrypt">
-          <bean class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
-        </entry>
-        <!-- When using commented out PasswordEncoders, you need to add bcprov-jdk15on.jar to the dependency.
-        <entry key="argon2">
-          <bean class="org.springframework.security.crypto.argon2.Argon2PasswordEncoder" />
-        </entry>
-        <entry key="scrypt">
-          <bean class="org.springframework.security.crypto.scrypt.SCryptPasswordEncoder" />
-        </entry>
-        -->
-      </map>
-    </constructor-arg>
-  </bean>
+    <bean id="passwordEncoder" class="org.springframework.security.crypto.password.DelegatingPasswordEncoder">
+        <constructor-arg name="idForEncode" value="pbkdf2" />
+        <constructor-arg name="idToPasswordEncoder">
+            <map>
+                <entry key="pbkdf2">
+                    <bean class="org.springframework.security.crypto.password.Pbkdf2PasswordEncoder" />
+                </entry>
+                <entry key="bcrypt">
+                    <bean class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
+                </entry>
+                <!-- When using commented out PasswordEncoders, you need to add bcprov-jdk15on.jar to the dependency.
+                <entry key="argon2">
+                    <bean class="org.springframework.security.crypto.argon2.Argon2PasswordEncoder" />
+                </entry>
+                <entry key="scrypt">
+                    <bean class="org.springframework.security.crypto.scrypt.SCryptPasswordEncoder" />
+                </entry>
+                -->
+            </map>
+        </constructor-arg>
+    </bean>
 
-  <context:property-placeholder location="classpath*:/META-INF/spring/*.properties" />
+    <context:property-placeholder location="classpath*:/META-INF/spring/*.properties" />
 
-  <context:component-scan base-package="org.terasoluna.gfw.functionaltest.config" />
+    <context:component-scan base-package="org.terasoluna.gfw.functionaltest.config" />
 
-  <bean class="com.github.dozermapper.spring.DozerBeanMapperFactoryBean">
-    <property name="mappingFiles" value="classpath*:/META-INF/dozer/**/*-mapping.xml" />
-  </bean>
+    <bean class="com.github.dozermapper.spring.DozerBeanMapperFactoryBean">
+        <property name="mappingFiles" value="classpath*:/META-INF/dozer/**/*-mapping.xml" />
+    </bean>
 
-  <!-- Message -->
-  <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
-    <property name="basenames">
-      <list>
-        <value>i18n/application-messages</value>
-      </list>
-    </property>
-  </bean>
+    <!-- Message -->
+    <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+        <property name="basenames">
+            <list>
+                <value>i18n/application-messages</value>
+            </list>
+        </property>
+    </bean>
 
-  <!-- Exception Code Resolver. -->
-  <bean id="exceptionCodeResolver" class="org.terasoluna.gfw.common.exception.SimpleMappingExceptionCodeResolver">
-    <!-- Setting and Customization by project. -->
-    <property name="exceptionMappings">
-      <map>
-        <entry key="ResourceNotFoundException" value="w.xx.0001" />
-        <entry key="BusinessException" value="w.xx.0002" />
-        <entry key="InvalidTransactionTokenException" value="i.xx.0010" />
-        <entry key="InvalidCSRFTokenException" value="i.xx.0010" />
-        <entry key="IndexOutOfBoundsException" value="w.xx.0011" />
-      </map>
-    </property>
-    <property name="defaultExceptionCode" value="e.xx.9999" />
-  </bean>
+    <!-- Exception Code Resolver. -->
+    <bean id="exceptionCodeResolver" class="org.terasoluna.gfw.common.exception.SimpleMappingExceptionCodeResolver">
+        <!-- Setting and Customization by project. -->
+        <property name="exceptionMappings">
+            <map>
+                <entry key="ResourceNotFoundException" value="w.xx.0001" />
+                <entry key="BusinessException" value="w.xx.0002" />
+                <entry key="InvalidTransactionTokenException" value="i.xx.0010" />
+                <entry key="InvalidCSRFTokenException" value="i.xx.0010" />
+                <entry key="IndexOutOfBoundsException" value="w.xx.0011" />
+            </map>
+        </property>
+        <property name="defaultExceptionCode" value="e.xx.9999" />
+    </bean>
 
-  <bean id="exceptionCodeResolverNoSet" class="org.terasoluna.gfw.common.exception.SimpleMappingExceptionCodeResolver">
-  </bean>
+    <bean id="exceptionCodeResolverNoSet" class="org.terasoluna.gfw.common.exception.SimpleMappingExceptionCodeResolver">
+    </bean>
 
-  <bean id="messageExceptionCodeResolver"
-    class="org.terasoluna.gfw.functionaltest.app.exceptionhandling.MessageMappingExceptionCodeResolver">
-    <!-- Setting and Customization by project. -->
-    <property name="exceptionMessageMappings">
-      <map>
-        <entry key="BusinessMessageException5_6 Error" value="w.xx.0001" />
-      </map>
-    </property>
-    <property name="defaultExceptionCode" value="e.xx.9999" />
-  </bean>
+    <bean id="messageExceptionCodeResolver"
+        class="org.terasoluna.gfw.functionaltest.app.exceptionhandling.MessageMappingExceptionCodeResolver">
+        <!-- Setting and Customization by project. -->
+        <property name="exceptionMessageMappings">
+            <map>
+                <entry key="BusinessMessageException5_6 Error" value="w.xx.0001" />
+            </map>
+        </property>
+        <property name="defaultExceptionCode" value="e.xx.9999" />
+    </bean>
 
-  <!-- Exception Logger. -->
-  <bean id="exceptionLogger" class="org.terasoluna.gfw.common.exception.ExceptionLogger">
-    <property name="exceptionCodeResolver" ref="exceptionCodeResolver" />
-  </bean>
+    <!-- Exception Logger. -->
+    <bean id="exceptionLogger" class="org.terasoluna.gfw.common.exception.ExceptionLogger">
+        <property name="exceptionCodeResolver" ref="exceptionCodeResolver" />
+    </bean>
 
-  <bean id="variationExceptionLogger" class="org.terasoluna.gfw.common.exception.ExceptionLogger">
-    <property name="exceptionCodeResolver" ref="exceptionCodeResolver" />
-    <property name="exceptionLevelResolver" ref="variationExceptionLevelResolver" />
-  </bean>
+    <bean id="variationExceptionLogger" class="org.terasoluna.gfw.common.exception.ExceptionLogger">
+        <property name="exceptionCodeResolver" ref="exceptionCodeResolver" />
+        <property name="exceptionLevelResolver" ref="variationExceptionLevelResolver" />
+    </bean>
 
-  <bean id="variationExceptionLevelResolver"
-    class="org.terasoluna.gfw.functionaltest.app.exceptionhandling.VariationExceptionLevelResolver">
-  </bean>
+    <bean id="variationExceptionLevelResolver"
+        class="org.terasoluna.gfw.functionaltest.app.exceptionhandling.VariationExceptionLevelResolver">
+    </bean>
 
-  <bean id="changeCodeAndMessageExceptionLogger" class="org.terasoluna.gfw.common.exception.ExceptionLogger">
-    <property name="defaultMessage" value="DEFAULT ERROR" />
-    <property name="defaultCode" value="e.00.9999" />
-  </bean>
+    <bean id="changeCodeAndMessageExceptionLogger" class="org.terasoluna.gfw.common.exception.ExceptionLogger">
+        <property name="defaultMessage" value="DEFAULT ERROR" />
+        <property name="defaultCode" value="e.00.9999" />
+    </bean>
 
-  <bean id="changeFormatExceptionLogger" class="org.terasoluna.gfw.common.exception.ExceptionLogger">
-    <property name="exceptionCodeResolver" ref="exceptionCodeResolver" />
-    <property name="trimLogMessage" value="false" />
-    <property name="logMessageFormat" value="[{0}][{1}]" />
-  </bean>
+    <bean id="changeFormatExceptionLogger" class="org.terasoluna.gfw.common.exception.ExceptionLogger">
+        <property name="exceptionCodeResolver" ref="exceptionCodeResolver" />
+        <property name="trimLogMessage" value="false" />
+        <property name="logMessageFormat" value="[{0}][{1}]" />
+    </bean>
 
-  <bean id="messageExceptionLogger" class="org.terasoluna.gfw.common.exception.ExceptionLogger">
-    <property name="exceptionCodeResolver" ref="messageExceptionCodeResolver" />
-  </bean>
+    <bean id="messageExceptionLogger" class="org.terasoluna.gfw.common.exception.ExceptionLogger">
+        <property name="exceptionCodeResolver" ref="messageExceptionCodeResolver" />
+    </bean>
 
-  <!-- Filter. -->
-  <bean id="exceptionLoggingFilter" class="org.terasoluna.gfw.web.exception.ExceptionLoggingFilter">
-    <property name="exceptionLogger" ref="exceptionLogger" />
-  </bean>
+    <!-- Filter. -->
+    <bean id="exceptionLoggingFilter" class="org.terasoluna.gfw.web.exception.ExceptionLoggingFilter">
+        <property name="exceptionLogger" ref="exceptionLogger" />
+    </bean>
 
-  <bean id="variationExceptionLoggingFilter"
-    class="org.terasoluna.gfw.functionaltest.app.exceptionhandling.ExceptionCodeExceptionLoggingFilter">
-    <property name="exceptionLogger" ref="variationExceptionLogger" />
-  </bean>
+    <bean id="variationExceptionLoggingFilter"
+        class="org.terasoluna.gfw.functionaltest.app.exceptionhandling.ExceptionCodeExceptionLoggingFilter">
+        <property name="exceptionLogger" ref="variationExceptionLogger" />
+    </bean>
 
-  <aop:aspectj-autoproxy />
+    <aop:aspectj-autoproxy />
 
 </beans>

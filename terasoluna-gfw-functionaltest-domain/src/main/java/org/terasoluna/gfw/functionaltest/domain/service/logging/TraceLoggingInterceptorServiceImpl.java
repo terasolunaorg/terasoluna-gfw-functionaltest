@@ -20,11 +20,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 @Service
-public class TraceLoggingInterceptorServiceImpl implements
-                                                TraceLoggingInterceptorService {
+public class TraceLoggingInterceptorServiceImpl implements TraceLoggingInterceptorService {
 
-    private static final Logger logger = LoggerFactory.getLogger(
-            TraceLoggingInterceptorServiceImpl.class);
+    private static final Logger logger =
+            LoggerFactory.getLogger(TraceLoggingInterceptorServiceImpl.class);
 
     @Override
     public void sleep(long millis) {

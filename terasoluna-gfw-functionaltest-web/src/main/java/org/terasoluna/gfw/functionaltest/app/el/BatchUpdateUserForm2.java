@@ -22,14 +22,12 @@ public class BatchUpdateUserForm2 {
 
     private LogicalOperator2 operator;
 
-    public BatchUpdateUserForm2(List<UpdateUserCriteriaForm2> criteria,
-            LogicalOperator2 operator) {
+    public BatchUpdateUserForm2(List<UpdateUserCriteriaForm2> criteria, LogicalOperator2 operator) {
         this.criteria = criteria;
         this.operator = operator;
     }
 
-    public BatchUpdateUserForm2() {
-    }
+    public BatchUpdateUserForm2() {}
 
     public List<UpdateUserCriteriaForm2> getCriteria() {
         return criteria;

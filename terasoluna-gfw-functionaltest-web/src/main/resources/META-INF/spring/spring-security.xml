@@ -1,49 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:sec="http://www.springframework.org/schema/security"
-  xsi:schemaLocation="
-        http://www.springframework.org/schema/security https://www.springframework.org/schema/security/spring-security.xsd
-        http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
-    ">
+    xmlns:sec="http://www.springframework.org/schema/security"
+    xsi:schemaLocation="http://www.springframework.org/schema/security https://www.springframework.org/schema/security/spring-security.xsd
+                        http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+                        ">
 
-  <sec:http pattern="/logging/**" once-per-request="false">
-    <sec:access-denied-handler ref="accessDeniedHandler" />
-    <sec:form-login login-page="/logging/userIdMDCPutFilter" login-processing-url="/logging/login"
-      default-target-url="/logging/userIdMDCPutFilter/login" />
-    <sec:logout logout-url="/logging/userIdMDCPutFilter/logout" logout-success-url="/logging/userIdMDCPutFilter"
-      delete-cookies="JSESSIONID" />
-  </sec:http>
+    <sec:http pattern="/logging/**" once-per-request="false">
+        <sec:access-denied-handler ref="accessDeniedHandler" />
+        <sec:form-login login-page="/logging/userIdMDCPutFilter" login-processing-url="/logging/login"
+            default-target-url="/logging/userIdMDCPutFilter/login" />
+        <sec:logout logout-url="/logging/userIdMDCPutFilter/logout" logout-success-url="/logging/userIdMDCPutFilter"
+            delete-cookies="JSESSIONID" />
+    </sec:http>
 
-  <bean id="accessDeniedHandler" class="org.springframework.security.web.access.DelegatingAccessDeniedHandler">
-    <constructor-arg index="0">
-      <map>
-        <entry key="org.springframework.security.web.csrf.InvalidCsrfTokenException">
-          <bean class="org.springframework.security.web.access.AccessDeniedHandlerImpl">
-            <property name="errorPage" value="/WEB-INF/views/common/error/csrfTokenError.jsp" />
-          </bean>
-        </entry>
-      </map>
-    </constructor-arg>
-    <constructor-arg index="1">
-      <bean class="org.springframework.security.web.access.AccessDeniedHandlerImpl">
-        <property name="errorPage" value="/WEB-INF/views/common/error/accessDeniedError.jsp" />
-      </bean>
-    </constructor-arg>
-  </bean>
+    <bean id="accessDeniedHandler" class="org.springframework.security.web.access.DelegatingAccessDeniedHandler">
+        <constructor-arg index="0">
+            <map>
+                <entry key="org.springframework.security.web.csrf.InvalidCsrfTokenException">
+                    <bean class="org.springframework.security.web.access.AccessDeniedHandlerImpl">
+                        <property name="errorPage" value="/WEB-INF/views/common/error/csrfTokenError.jsp" />
+                    </bean>
+                </entry>
+            </map>
+        </constructor-arg>
+        <constructor-arg index="1">
+            <bean class="org.springframework.security.web.access.AccessDeniedHandlerImpl">
+                <property name="errorPage" value="/WEB-INF/views/common/error/accessDeniedError.jsp" />
+            </bean>
+        </constructor-arg>
+    </bean>
 
-  <sec:authentication-manager>
-    <sec:authentication-provider user-service-ref="userService">
-      <sec:password-encoder ref="passwordEncoder" />
-    </sec:authentication-provider>
-  </sec:authentication-manager>
+    <sec:authentication-manager>
+        <sec:authentication-provider user-service-ref="userService">
+            <sec:password-encoder ref="passwordEncoder" />
+        </sec:authentication-provider>
+    </sec:authentication-manager>
 
-  <sec:user-service id="userService">
-    <sec:user name="user1" authorities="ROLE_USER"
-      password="{pbkdf2}48f3120ce077244ade1ffe16df9f764b26c4fe03608fb2ab65462305fb5203f54e8f238177a1436c" /> <!-- the raw password is "user1" -->
-    <sec:user name="user2" authorities="ROLE_USER"
-      password="{pbkdf2}8e287bcd70c68b8a9f1c7acdb73ad40824dfdb67c55ed8c09314ed795d3754b1be7062c910f3f1ea" /> <!-- the raw password is "user2" -->
-    <sec:user name="user3" authorities="ROLE_USER"
-      password="{pbkdf2}22dbc480b2444d53faa057ef10edcbb0f827c1618557fa72db09b71cf640c4ff21c14c6a80292dc5" /> <!-- the raw password is "user3" -->
-  </sec:user-service>
+    <sec:user-service id="userService">
+        <sec:user name="user1" authorities="ROLE_USER"
+            password="{pbkdf2}48f3120ce077244ade1ffe16df9f764b26c4fe03608fb2ab65462305fb5203f54e8f238177a1436c" /> <!-- the raw password is "user1" -->
+        <sec:user name="user2" authorities="ROLE_USER"
+            password="{pbkdf2}8e287bcd70c68b8a9f1c7acdb73ad40824dfdb67c55ed8c09314ed795d3754b1be7062c910f3f1ea" /> <!-- the raw password is "user2" -->
+        <sec:user name="user3" authorities="ROLE_USER"
+            password="{pbkdf2}22dbc480b2444d53faa057ef10edcbb0f827c1618557fa72db09b71cf640c4ff21c14c6a80292dc5" /> <!-- the raw password is "user3" -->
+    </sec:user-service>
 
 </beans>

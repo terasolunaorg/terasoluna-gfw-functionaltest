@@ -55,8 +55,8 @@ public class ElController {
     }
 
     @RequestMapping(value = "output_01", method = RequestMethod.POST)
-    public String xSSMeasures_InputData(
-            @RequestParam("outputData") String outputData, Model model) {
+    public String xSSMeasures_InputData(@RequestParam("outputData") String outputData,
+            Model model) {
         model.addAttribute("outputData", outputData);
 
         return "el/xssOutput";
@@ -68,8 +68,8 @@ public class ElController {
     }
 
     @RequestMapping(value = "output_02", method = RequestMethod.POST)
-    public String urlEncoding_InputData(
-            @RequestParam("outputData") String outputData, Model model) {
+    public String urlEncoding_InputData(@RequestParam("outputData") String outputData,
+            Model model) {
         model.addAttribute("outputData", outputData);
 
         return "el/urlOutput";
@@ -81,8 +81,7 @@ public class ElController {
     }
 
     @RequestMapping(value = "output_03", method = RequestMethod.POST)
-    public String newLine_InputData(
-            @RequestParam("outputData") String outputData, Model model) {
+    public String newLine_InputData(@RequestParam("outputData") String outputData, Model model) {
         model.addAttribute("outputData", outputData);
 
         return "el/newLineOutput";
@@ -94,8 +93,7 @@ public class ElController {
     }
 
     @RequestMapping(value = "output_04", method = RequestMethod.POST)
-    public String cutString_InputData(
-            @RequestParam("outputData") String outputData, Model model) {
+    public String cutString_InputData(@RequestParam("outputData") String outputData, Model model) {
         model.addAttribute("outputData", outputData);
 
         return "el/cutOutput";
@@ -112,17 +110,14 @@ public class ElController {
     }
 
     @RequestMapping(value = "output_05", method = RequestMethod.POST)
-    public String urlLink_InputData(
-            @RequestParam("outputData") String outputData, Model model) {
+    public String urlLink_InputData(@RequestParam("outputData") String outputData, Model model) {
         model.addAttribute("outputData", outputData);
 
         return "el/linkOutput";
     }
 
-    @RequestMapping(value = "output_05_04", method = { RequestMethod.GET,
-            RequestMethod.POST })
-    public String urlULink_InputDatas(String URLPath, String outputQueryParam,
-            Model model) {
+    @RequestMapping(value = "output_05_04", method = {RequestMethod.GET, RequestMethod.POST})
+    public String urlULink_InputDatas(String URLPath, String outputQueryParam, Model model) {
         model.addAttribute("URLPath", URLPath);
         model.addAttribute("outputQueryParam", outputQueryParam);
 
@@ -158,8 +153,8 @@ public class ElController {
     }
 
     @RequestMapping(value = "search", method = RequestMethod.GET)
-    public String search(CustomerSearchCriteria criteria,
-            @PageableDefault Pageable pageable, Model model) {
+    public String search(CustomerSearchCriteria criteria, @PageableDefault Pageable pageable,
+            Model model) {
 
         // Create Dummy Data
         List<String> customerList = new ArrayList<String>();
@@ -188,8 +183,7 @@ public class ElController {
     @RequestMapping(value = "7_1", method = RequestMethod.GET)
     public String javascriptXSSMeasures_07_01(Model model) {
 
-        model.addAttribute("xssAttack",
-                "</script><script>alert('XSS Attack');</script>");
+        model.addAttribute("xssAttack", "</script><script>alert('XSS Attack');</script>");
 
         return "el/javascriptOutput";
     }
@@ -197,8 +191,7 @@ public class ElController {
     @RequestMapping(value = "7_2", method = RequestMethod.GET)
     public String javascriptXSSMeasures_07_02(Model model) {
 
-        model.addAttribute("xssAttack",
-                "</script><script>alert(\"XSS Attack\");</script>");
+        model.addAttribute("xssAttack", "</script><script>alert(\"XSS Attack\");</script>");
 
         return "el/javascriptOutput";
     }

@@ -39,8 +39,7 @@ import org.terasoluna.gfw.functionaltest.domain.DBLogCleaner;
 
 public class FunctionTestSupport extends ApplicationObjectSupport {
 
-    private static final Logger logger = LoggerFactory.getLogger(
-            FunctionTestSupport.class);
+    private static final Logger logger = LoggerFactory.getLogger(FunctionTestSupport.class);
 
     protected static WebDriver driver;
 
@@ -106,27 +105,25 @@ public class FunctionTestSupport extends ApplicationObjectSupport {
 
     private String simplePackageName;
 
-    protected WebDriverInputFieldAccessor inputFieldAccessor = WebDriverInputFieldAccessor.JAVASCRIPT;
+    protected WebDriverInputFieldAccessor inputFieldAccessor =
+            WebDriverInputFieldAccessor.JAVASCRIPT;
 
     protected Duration defaultTimeoutSecForImplicitlyWait;
 
     protected FunctionTestSupport() {
-        this.simplePackageName = this.getClass().getPackage().getName()
-                .replaceAll(".*\\.", "");
+        this.simplePackageName = this.getClass().getPackage().getName().replaceAll(".*\\.", "");
     }
 
     @Value("${selenium.webDriverInputFieldAccessor:JAVASCRIPT}")
-    public void setWebDriverInputFieldAccessor(
-            String webDriverInputFieldAccessor) {
-        this.inputFieldAccessor = WebDriverInputFieldAccessor.valueOf(
-                webDriverInputFieldAccessor.toUpperCase());
+    public void setWebDriverInputFieldAccessor(String webDriverInputFieldAccessor) {
+        this.inputFieldAccessor =
+                WebDriverInputFieldAccessor.valueOf(webDriverInputFieldAccessor.toUpperCase());
     }
 
     @Value("${selenium.defaultTimeoutSecForImplicitlyWait:5}")
-    public void setDefaultTimeoutSecForImplicitlyWait(
-            long defaultTimeoutSecForImplicitlyWait) {
-        this.defaultTimeoutSecForImplicitlyWait = Duration.ofSeconds(
-                defaultTimeoutSecForImplicitlyWait);
+    public void setDefaultTimeoutSecForImplicitlyWait(long defaultTimeoutSecForImplicitlyWait) {
+        this.defaultTimeoutSecForImplicitlyWait =
+                Duration.ofSeconds(defaultTimeoutSecForImplicitlyWait);
     }
 
     @AfterClass
@@ -140,11 +137,10 @@ public class FunctionTestSupport extends ApplicationObjectSupport {
 
         String testCaseName = testName.getMethodName().replaceAll("^test", "");
 
-        File evidenceSavingDirectory = new File(String.format("%s/%s/%s",
-                evidenceBaseDirectory, simplePackageName, testCaseName));
+        File evidenceSavingDirectory = new File(
+                String.format("%s/%s/%s", evidenceBaseDirectory, simplePackageName, testCaseName));
 
-        logger.debug("evidenceSavingDirectory is " + evidenceSavingDirectory
-                .getAbsolutePath());
+        logger.debug("evidenceSavingDirectory is " + evidenceSavingDirectory.getAbsolutePath());
 
         screenCapture.setUp(evidenceSavingDirectory);
         pageSource.setUp(evidenceSavingDirectory);
@@ -165,8 +161,7 @@ public class FunctionTestSupport extends ApplicationObjectSupport {
         if (driverType != null) {
             return;
         }
-        for (String activeProfile : getApplicationContext().getEnvironment()
-                .getActiveProfiles()) {
+        for (String activeProfile : getApplicationContext().getEnvironment().getActiveProfiles()) {
             for (WebDriverType type : WebDriverType.values()) {
                 if (type.toString().equalsIgnoreCase(activeProfile)) {
                     driverType = type;
@@ -194,13 +189,12 @@ public class FunctionTestSupport extends ApplicationObjectSupport {
         if (driver == null) {
             driver = newWebDriver();
         }
-        driver.manage().timeouts().implicitlyWait(
-                this.defaultTimeoutSecForImplicitlyWait);
+        driver.manage().timeouts().implicitlyWait(this.defaultTimeoutSecForImplicitlyWait);
         driver.get(getPackageRootUrl());
 
         this.webDriverOperations = new WebDriverOperations(driver);
-        this.webDriverOperations.setDefaultTimeoutForImplicitlyWait(
-                this.defaultTimeoutSecForImplicitlyWait);
+        this.webDriverOperations
+                .setDefaultTimeoutForImplicitlyWait(this.defaultTimeoutSecForImplicitlyWait);
         this.webDriverWait = new WebDriverWait(driver, this.defaultTimeoutSecForImplicitlyWait);
     }
 
@@ -289,12 +283,9 @@ public class FunctionTestSupport extends ApplicationObjectSupport {
         }
     }
 
-    protected void onSucceeded() {
-    }
+    protected void onSucceeded() {}
 
-    protected void onFailed(Throwable e) {
-    }
+    protected void onFailed(Throwable e) {}
 
-    protected void onFinished() {
-    }
+    protected void onFinished() {}
 }

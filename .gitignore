@@ -9,3 +9,4 @@ target
 evidence
 log
 *.iml
+.vscode

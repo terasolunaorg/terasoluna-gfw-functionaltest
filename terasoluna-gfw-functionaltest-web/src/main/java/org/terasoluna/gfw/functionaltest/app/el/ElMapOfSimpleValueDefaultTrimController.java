@@ -40,8 +40,7 @@ public class ElMapOfSimpleValueDefaultTrimController {
 
     @InitBinder
     public void bindTrimmingEditor(WebDataBinder binder) {
-        binder.registerCustomEditor(String.class,
-                new StringTrimmerEditor(true));
+        binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
     }
 
     @ModelAttribute
@@ -64,8 +63,8 @@ public class ElMapOfSimpleValueDefaultTrimController {
     }
 
     @RequestMapping(value = "6_17/search", method = RequestMethod.GET)
-    public String nestedJavaBeanQueryString(MapForm mapForm,
-            @PageableDefault Pageable pageable, Model model) {
+    public String nestedJavaBeanQueryString(MapForm mapForm, @PageableDefault Pageable pageable,
+            Model model) {
 
         // Create Dummy Data
         List<String> dummyList = new ArrayList<String>();
@@ -84,12 +83,9 @@ public class ElMapOfSimpleValueDefaultTrimController {
         model.addAttribute("mapA1String", mapA1String);
         model.addAttribute("mapA2String", mapA2String);
 
-        String mapA0StringItem = Objects.toString(mapForm.getItem().getMapA()
-                .get("d"));
-        String mapA1StringItem = Objects.toString(mapForm.getItem().getMapA()
-                .get("e"));
-        String mapA2StringItem = Objects.toString(mapForm.getItem().getMapA()
-                .get("f"));
+        String mapA0StringItem = Objects.toString(mapForm.getItem().getMapA().get("d"));
+        String mapA1StringItem = Objects.toString(mapForm.getItem().getMapA().get("e"));
+        String mapA2StringItem = Objects.toString(mapForm.getItem().getMapA().get("f"));
 
         model.addAttribute("mapA0StringItem", mapA0StringItem);
         model.addAttribute("mapA1StringItem", mapA1StringItem);

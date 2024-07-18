@@ -31,17 +31,16 @@ import org.terasoluna.gfw.web.download.AbstractFileDownloadView;
 public class ImageFileDownloadView extends AbstractFileDownloadView {
 
     @Override
-    protected InputStream getInputStream(Map<String, Object> model,
-            HttpServletRequest request) throws IOException {
+    protected InputStream getInputStream(Map<String, Object> model, HttpServletRequest request)
+            throws IOException {
         Resource resource = new ClassPathResource("image/Duke.png");
         return resource.getInputStream();
     }
 
     @Override
-    protected void addResponseHeader(Map<String, Object> model,
-            HttpServletRequest request, HttpServletResponse response) {
-        response.setHeader("Content-Disposition",
-                "attachment; filename=Duke.png");
+    protected void addResponseHeader(Map<String, Object> model, HttpServletRequest request,
+            HttpServletResponse response) {
+        response.setHeader("Content-Disposition", "attachment; filename=Duke.png");
         response.setContentType("image/png");
     }
 

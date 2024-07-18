@@ -1,62 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:jpa="http://www.springframework.org/schema/data/jpa" xmlns:mybatis="http://mybatis.org/schema/mybatis-spring"
-  xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
-        http://www.springframework.org/schema/data/jpa https://www.springframework.org/schema/data/jpa/spring-jpa.xsd
-        http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd">
+    xmlns:jpa="http://www.springframework.org/schema/data/jpa" xmlns:mybatis="http://mybatis.org/schema/mybatis-spring"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+                        http://www.springframework.org/schema/data/jpa https://www.springframework.org/schema/data/jpa/spring-jpa.xsd
+                        http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd">
 
-  <import resource="classpath:/META-INF/spring/terasoluna-gfw-functionaltest-env.xml" />
+    <import resource="classpath:/META-INF/spring/terasoluna-gfw-functionaltest-env.xml" />
 
-  <jpa:repositories base-package="org.terasoluna.gfw.functionaltest.domain.repository"
-    transaction-manager-ref="jpaTransactionManager" />
+    <jpa:repositories base-package="org.terasoluna.gfw.functionaltest.domain.repository"
+        transaction-manager-ref="jpaTransactionManager" />
 
-  <bean id="jpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
-    <property name="showSql" value="false" />
-    <property name="database" value="${database}" />
-  </bean>
+    <bean id="jpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+        <property name="showSql" value="false" />
+        <property name="database" value="${database}" />
+    </bean>
 
-  <bean class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" id="abstractEntityManagerFactory"
-    abstract="true">
-    <property name="packagesToScan" value="org.terasoluna.gfw.functionaltest.domain.model" />
-    <property name="jpaVendorAdapter" ref="jpaVendorAdapter" />
-    <property name="jpaPropertyMap">
-      <map>
-        <entry key="hibernate.hbm2ddl.auto" value="none" />
-        <entry key="hibernate.ejb.naming_strategy" value="org.hibernate.cfg.ImprovedNamingStrategy" />
-        <entry key="hibernate.connection.charSet" value="UTF-8" />
-        <entry key="hibernate.show_sql" value="false" />
-        <entry key="hibernate.format_sql" value="false" />
-        <entry key="hibernate.use_sql_comments" value="true" />
-        <entry key="hibernate.jdbc.batch_size" value="30" />
-        <entry key="hibernate.jdbc.fetch_size" value="100" />
-      </map>
-    </property>
-  </bean>
+    <bean class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" id="abstractEntityManagerFactory"
+        abstract="true">
+        <property name="packagesToScan" value="org.terasoluna.gfw.functionaltest.domain.model" />
+        <property name="jpaVendorAdapter" ref="jpaVendorAdapter" />
+        <property name="jpaPropertyMap">
+            <map>
+                <entry key="hibernate.hbm2ddl.auto" value="none" />
+                <entry key="hibernate.ejb.naming_strategy" value="org.hibernate.cfg.ImprovedNamingStrategy" />
+                <entry key="hibernate.connection.charSet" value="UTF-8" />
+                <entry key="hibernate.show_sql" value="false" />
+                <entry key="hibernate.format_sql" value="false" />
+                <entry key="hibernate.use_sql_comments" value="true" />
+                <entry key="hibernate.jdbc.batch_size" value="30" />
+                <entry key="hibernate.jdbc.fetch_size" value="100" />
+            </map>
+        </property>
+    </bean>
 
-  <bean id="jdbcTemplate" class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
-    <constructor-arg>
-      <ref bean="dataSource" />
-    </constructor-arg>
-  </bean>
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
+        <constructor-arg>
+            <ref bean="dataSource" />
+        </constructor-arg>
+    </bean>
 
 
-  <!-- define the DatabaseIdProvider -->
-  <bean id="databaseIdProvider" class="org.apache.ibatis.mapping.VendorDatabaseIdProvider">
-    <property name="properties">
-      <props>
-        <prop key="Oracle">oracle</prop>
-        <prop key="PostgreSQL">postgres</prop>
-        <prop key="H2">h2</prop>
-      </props>
-    </property>
-  </bean>
+    <!-- define the DatabaseIdProvider -->
+    <bean id="databaseIdProvider" class="org.apache.ibatis.mapping.VendorDatabaseIdProvider">
+        <property name="properties">
+            <props>
+                <prop key="Oracle">oracle</prop>
+                <prop key="PostgreSQL">postgres</prop>
+                <prop key="H2">h2</prop>
+            </props>
+        </property>
+    </bean>
 
-  <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-    <property name="dataSource" ref="dataSource" />
-    <property name="configLocation" value="classpath:META-INF/mybatis/mybatis-config.xml" />
-    <property name="databaseIdProvider" ref="databaseIdProvider" />
-  </bean>
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="configLocation" value="classpath:META-INF/mybatis/mybatis-config.xml" />
+        <property name="databaseIdProvider" ref="databaseIdProvider" />
+    </bean>
 
-  <mybatis:scan base-package="org.terasoluna.gfw.functionaltest.domain.repository" />
+    <mybatis:scan base-package="org.terasoluna.gfw.functionaltest.domain.repository" />
 
 </beans>

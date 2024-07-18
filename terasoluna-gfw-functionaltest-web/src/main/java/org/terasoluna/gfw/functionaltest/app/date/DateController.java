@@ -134,15 +134,15 @@ public class DateController {
     @RequestMapping(value = "1_4", method = RequestMethod.GET)
     public String serverTimeReturn_01_04(Model model) {
 
-        model.addAttribute("firstExpectedDate", DateConvertUtils
-                .convertToSqlDate(new java.util.Date()));
+        model.addAttribute("firstExpectedDate",
+                DateConvertUtils.convertToSqlDate(new java.util.Date()));
 
         java.sql.Date sqlDate = dateFactory.newSqlDate();
 
         model.addAttribute("serverTime", sqlDate);
         model.addAttribute("type", sqlDate.getClass());
-        model.addAttribute("lastExpectedDate", DateConvertUtils
-                .convertToSqlDate(new java.util.Date()));
+        model.addAttribute("lastExpectedDate",
+                DateConvertUtils.convertToSqlDate(new java.util.Date()));
 
         return "date/dateDisplay";
     }
@@ -269,15 +269,15 @@ public class DateController {
     @RequestMapping(value = "3_4", method = RequestMethod.GET)
     public String adjustedDateReturn_03_04(Model model) {
 
-        model.addAttribute("firstExpectedDate", DateConvertUtils
-                .convertToSqlDate(new java.util.Date()));
+        model.addAttribute("firstExpectedDate",
+                DateConvertUtils.convertToSqlDate(new java.util.Date()));
 
         java.sql.Date sqlDate = msecJdbcAdjustedDateFactory.newSqlDate();
 
         model.addAttribute("serverTime", sqlDate);
         model.addAttribute("type", sqlDate.getClass());
-        model.addAttribute("lastExpectedDate", DateConvertUtils
-                .convertToSqlDate(new java.util.Date()));
+        model.addAttribute("lastExpectedDate",
+                DateConvertUtils.convertToSqlDate(new java.util.Date()));
 
         return "date/dateDisplay";
     }

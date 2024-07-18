@@ -29,8 +29,8 @@ import org.terasoluna.gfw.web.download.AbstractFileDownloadView;
 public class TextFileDownloadView extends AbstractFileDownloadView {
 
     @Override
-    protected InputStream getInputStream(Map<String, Object> model,
-            HttpServletRequest request) throws IOException {
+    protected InputStream getInputStream(Map<String, Object> model, HttpServletRequest request)
+            throws IOException {
 
         InputStream contents = (InputStream) model.get("contents");
 
@@ -38,10 +38,9 @@ public class TextFileDownloadView extends AbstractFileDownloadView {
     }
 
     @Override
-    protected void addResponseHeader(Map<String, Object> model,
-            HttpServletRequest request, HttpServletResponse response) {
-        response.setHeader("Content-Disposition",
-                "attachment; filename=framework.txt");
+    protected void addResponseHeader(Map<String, Object> model, HttpServletRequest request,
+            HttpServletResponse response) {
+        response.setHeader("Content-Disposition", "attachment; filename=framework.txt");
         response.setContentType("text/plain");
     }
 

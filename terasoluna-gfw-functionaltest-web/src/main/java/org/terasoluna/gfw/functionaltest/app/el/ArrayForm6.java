@@ -26,11 +26,10 @@ public class ArrayForm6 {
 
     private ArrayFormItem6 item;
 
-    public ArrayForm6() {
-    }
+    public ArrayForm6() {}
 
-    public ArrayForm6(int[] array1, double[] array2, byte[] array3,
-            String[] array4, ArrayFormItem6 item) {
+    public ArrayForm6(int[] array1, double[] array2, byte[] array3, String[] array4,
+            ArrayFormItem6 item) {
         this.array1 = array1;
         this.array2 = array2;
         this.array3 = array3;

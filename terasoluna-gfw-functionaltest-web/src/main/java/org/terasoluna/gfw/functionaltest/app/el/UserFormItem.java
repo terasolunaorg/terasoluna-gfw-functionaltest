@@ -31,8 +31,7 @@ public class UserFormItem implements Serializable {
         this.age = age;
     }
 
-    public UserFormItem() {
-    }
+    public UserFormItem() {}
 
     public String getName() {
         return name;

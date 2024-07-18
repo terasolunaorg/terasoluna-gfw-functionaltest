@@ -49,7 +49,8 @@ public class TransactionTokenCustomFlow2Controller {
         return "transactiontoken/customStoreSizeNext";
     }
 
-    @RequestMapping(value = "createFlow_1", method = RequestMethod.POST, params = "intermediateOther")
+    @RequestMapping(value = "createFlow_1", method = RequestMethod.POST,
+            params = "intermediateOther")
     @TransactionTokenCheck(value = "createOther", type = TransactionTokenType.IN)
     public String customflowStepInOther() {
         return "transactiontoken/customStoreSizeNext";
