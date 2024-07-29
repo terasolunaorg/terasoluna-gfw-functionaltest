@@ -1,0 +1,270 @@
+= terasoluna-gfw-web/TransactionToken
+
+org.terasoluna.gfw.web.transaction.tokenパッケージのテスト
+
+== Transaction token テスト
+
+テストケースクラス: org.terasoluna.gfw.functionaltest.app.transactiontoken.TransactionTokenTest
+
+=== 1. @TransactionTokenCheckのvalue(Namespace)指定
+
+[cols="5,5,30,20,20", options="header"]
+|===
+| 項番
+| 観点
+| 試験項目
+| 試験条件
+| 確認内容
+
+| 1.1
+| 20X系
+| クラスに対して、指定したvalueの値で、Namespaceが有効になっていること
+a| * クラスのみに対して、@TransactionTokenCheck("transactiontoken")を指定している
+a| * 生成したトークンは「transactiontoken~xxx~xxx」の形であること
+
+| 1.2
+| 20X系
+| クラスとメソッドに対して、指定したvalueの値で、Namespaceが有効になっていること
+a| * クラスに対して、@TransactionTokenCheck("transactiontoken")とメソッドに、@TransactionTokenCheck("create")は指定している
+a| * 生成したトークンは「transactiontoken/create~xxx~xxx」 の形であること
+
+| 1.3
+| 20X系
+| メソッドに対して、指定したvalueの値で、Namespaceが有効になっていること
+a| * メソッドのみに、@TransactionTokenCheck("create")は指定している
+a| * 生成したトークンは「create~xxx~xxx」 の形であること
+
+| 1.4
+| 20X系
+| クラスとメソッド両方に対して、valueの値は指定していないので、globalTokenでNamespaceが有効になっていること
+a| * クラスとメソッド両方に対して、@TransactionTokenCheckのvalue指定はない
+a| * 生成したトークンは「globalToken~xxx~xxx」 の形であること
+
+|===
+
+=== 2. @TransactionTokenCheckのFlow control (TransactionTokenTypeを使ってTransactionTokenのライフサイクルを確認する)
+
+[cols="5,5,30,20,20", options="header"]
+|===
+| 項番
+| 観点
+| 試験項目
+| 試験条件
+| 確認内容
+
+| 2.1
+| 20X系
+| BEGIN-IN-CHECK-END (Namespace指定している - value属性)
+a| * RequestMapping用に六つのメソッドにTransactionTokenType　BEGIN,IN,CHECK,ENDそれぞれを付けている
+a| * BEGINのついているメソッドに対するリクエストのレスポンスにhidden項目「_TRANSACTION_TOKEN」が入っていること（作成されている）
+* INのついているメソッドに対するリクエストのレスポンスにhidden項目「_TRANSACTION_TOKEN」が入っていること（更新されている）
+* CHECKのついているメソッドに対するリクエストのレスポンスにhidden項目「_TRANSACTION_TOKEN」が入っていること（更新されていない）
+* ENDのついているメソッドに対するリクエストのレスポンスにhidden項目「_TRANSACTION_TOKEN」が入っていないこと（破棄されている）
+* BEGINのついているメソッドで作られたtransaction tokenと、INのついているメソッドで作られたtransaction tokenの比較を行い、name、keyは一致し、valueは一致していないこと(特定部分のみ更新されていること)
+
+| 2.2
+| 20X系
+| BEGIN-IN-CHECK-END (Namespace指定している - namespace属性)
+a| * RequestMapping用に六つのメソッドにTransactionTokenType　BEGIN,IN,CHECK,ENDそれぞれが付けている
+a| * BEGINのついているメソッドに対するリクエストのレスポンスにhidden項目「_TRANSACTION_TOKEN」が入っていること（作成されている）
+* INのついているメソッドに対するリクエストのレスポンスにhidden項目「_TRANSACTION_TOKEN」が入っていること（更新されている）
+* CHECKのついているメソッドに対するリクエストのレスポンスにhidden項目「_TRANSACTION_TOKEN」が入っていること（更新されていない）
+* ENDのついているメソッドに対するリクエストのレスポンスにhidden項目「_TRANSACTION_TOKEN」が入っていないこと（破棄されている）
+* BEGINのついているメソッドで作られたtransaction tokenと、INのついているメソッドで作られたtransaction tokenの比較を行い、name、keyは一致し、valueは一致していないこと(特定部分のみ更新されていること)
+
+| 2.3
+| 20X系
+| BEGIN-IN-CHECK-END (Namespace指定していない - globalToken)
+a| * RequestMapping用に六つのメソッドにTransactionTokenType　BEGIN,IN,CHECK,ENDそれぞれが付けている
+a| * BEGINのついているメソッドに対するリクエストのレスポンスにhidden項目「_TRANSACTION_TOKEN」が入っていること（作成されている）
+* INのついているメソッドに対するリクエストのレスポンスにhidden項目「_TRANSACTION_TOKEN」が入っていること（更新されている）
+* ENDのついているメソッドに対するリクエストのレスポンスにhidden項目「_TRANSACTION_TOKEN」が入っていないこと（破棄されている）
+* CHECKのついているメソッドに対するリクエストのレスポンスにhidden項目「_TRANSACTION_TOKEN」が入っていること（更新されていない）
+* BEGINのついているメソッドで作られたtransaction tokenと、INのついているメソッドで作られたtransaction tokenの比較を行い、name、keyは一致し、valueは一致していないこと(特定部分のみ更新されていること)
+* 作成されたtransaction tokenのnameは"globalToken"であること
+
+| 2.4
+| 20X系
+| BEGIN-END
+a| * RequestMapping用に二つのメソッドにTransactionTokenType　BEGIN,ENDそれぞれが付けている
+a| * BEGINメソッドに対するリクエストのレスポンスにhidden項目「_TRANSACTION_TOKEN」が入っていること（作成されている）
+* ENDメソッドに対するリクエストのレスポンスにhidden項目「_TRANSACTION_TOKEN」が入っていないこと（破棄されている）
+
+| 2.5
+| 20X系
+| BEGIN-IN-IN(Redo)-IN-END
+a| * RequestMapping用に四つのメソッドにTransactionTokenType　BEGIN,IN,IN,ENDそれぞれが付けている。INが付けているメソッド一つはRedo(戻る)用のメソッドである。
+a| * BEGINメソッドに対するリクエストのレスポンスにhidden項目「_TRANSACTION_TOKEN」が入っていること（作成されている）
+* INメソッドに対するリクエストのレスポンスにhidden項目「_TRANSACTION_TOKEN」が入っていること（更新されている）
+* ENDメソッドに対するリクエストのレスポンスにhidden項目「_TRANSACTION_TOKEN」が入っていないこと（破棄されている）
+* BEGINメソッドで作られたtransaction tokenと、INメソッドで作られたtransaction tokenの比較を行い、name、keyは一致し、valueは一致していないこと(特定部分のみ更新されていること)
+
+| 2.6
+| 20X系
+| BEGIN(Input Error)-BEGIN-IN
+a| * RequestMapping用に二つのメソッドにTransactionTokenType　BEGIN,INそれぞれが付けている
+a| * 入力チェックエラーが発生してもBEGINメソッドに対するリクエストのレスポンスにhidden項目「_TRANSACTION_TOKEN」が入っていること（作成されている）
+* 入力チェックエラーを解決してもう一度リクエストを出したらレスポンスにhidden項目「_TRANSACTION_TOKEN」が入っていること（作成されている）
+* INメソッドに対するリクエストのレスポンスにhidden項目「_TRANSACTION_TOKEN」が入っていること（更新されている）
+* BEGINメソッドで作られたtransaction tokenと、INメソッドで作られたtransaction tokenの比較を行い、nameは一致し、key、valueは一致していないこと(特定部分のみ更新されていること)
+
+| 2.7
+| 20X系
+| BEGIN-END (Business Error)
+a| * RequestMapping用に二つのメソッドにTransactionTokenType　BEGIN,ENDそれぞれが付けている
+a| * BEGINメソッドに対するリクエストのレスポンスにhidden項目「_TRANSACTION_TOKEN」が入っていること（作成されている）
+* ENDメソッドに対するリクエストの処理でエラーが発生してもレスポンスにhidden項目「_TRANSACTION_TOKEN」が入っていないこと（破棄されている）
+
+| 2.8
+| 20X系
+| BEGIN-IN-TransactionTokenContext経由破棄(Business Error)
+a| * RequestMapping用に二つのメソッドにTransactionTokenType　BEGIN,INそれぞれが付けている
+a| * BEGINメソッドに対するリクエストのレスポンスにhidden項目「_TRANSACTION_TOKEN」が入っていること（作成されている）
+* INメソッドに対するリクエストの処理でエラーが発生してもレスポンスにhidden項目「_TRANSACTION_TOKEN」が入っていること（破棄されていない。更新されている）
+* BEGINメソッドで作られたtransaction tokenと、INメソッドで作られたtransaction tokenの比較を行い、name、keyは一致し、valueは一致していないこと(特定部分のみ更新されていること)
+
+| 2.9
+| 40X系
+| IN called without BEGIN (Token error since token not present)
+a| * メソッドの@TransactionTokenCheckにTransactionTokenType INが付けている
+a| * INメソッドに対するリクエストの呼び出しでトークンが渡されていないのでtoken errorが発生されている
+
+| 2.10
+| 40X系
+| BEGIN-IN-(Browser Back)-IN (Token error due to Token mismatch)
+a| * メソッドの@TransactionTokenCheckにTransactionTokenType BEGIN,INがそれぞれ付けている
+a| * INメソッドに対するリクエストが完了したらBrowserのBackを押してまたサブミットするとtoken errorが発生されている
+
+| 2.11
+| 40X系
+| BEGIN-IN (Token error due to Token mismatch)
+a| * メソッドの@TransactionTokenCheckにTransactionTokenType INが付けている
+INの着いているメソッドにリクエストしてからブラウザバックで戻り、もう一度同じリクエストをする。
+a| * INメソッドに対するリクエストの呼び出しで渡されたトークンが一致していないのでtoken errorが発生されている
+
+| 2.12
+| 40X系
+| END called without BEGIN (Token error since token not present)
+a| * メソッドの@TransactionTokenCheckにTransactionTokenType ENDが付けている
+a| * ENDメソッドに対するリクエストの呼び出しでトークンが渡されていないのでtoken errorが発生されている
+
+| 2.13
+| 40X系
+| BEGIN-END (Token error due to Token mismatch)
+a| * メソッドの@TransactionTokenCheckにTransactionTokenType BEGIN,ENDがそれぞれ付けている
+a| * ENDメソッドに対するリクエストの呼び出しで渡されたトークンが一致していないのでtoken errorが発生されている
+
+| 2.14
+| 20X系
+| BEGIN-IN
+a| * メソッドの@TransactionTokenCheckにTransactionTokenType BEGIN,ENDがそれぞれ付けている
+a| * BEGINメソッドに対するリクエストのレスポンスにhidden項目「_TRANSACTION_TOKEN」が入っていること（作成されている）
+* INメソッドに対するリクエストのレスポンスにhidden項目「_TRANSACTION_TOKEN」が入っていること（更新されている）
+* BEGINメソッドで作られたtransaction tokenと、INメソッドで作られたtransaction tokenの比較を行い、name、keyは一致し、valueは一致していないこと(特定部分のみ更新されていること)
+
+| 2.15
+| 20X系
+| BEGIN-CHECK(File Download)-IN
+a| * メソッドの@TransactionTokenCheckにTransactionTokenType BEGIN,CHECK,INがそれぞれ付けている
+a| * BEGINのついているメソッドのレスポンスにhidden項目「_TRANSACTION_TOKEN」が入っていること（作成されている）
+* INのついているメソッドの実行時にエラーが発生しないこと
+* INのついているメソッドのレスポンスにhidden項目「_TRANSACTION_TOKEN」が入っていること（更新されている）
+
+| 2.16
+| 40X系
+| BEGIN-IN-(Browser Back)-CHECK
+a| * メソッドの@TransactionTokenCheckにTransactionTokenType BEGIN,IN,CHECKがそれぞれ付けている
+a| * BEGINのついているメソッドのレスポンスにhidden項目「_TRANSACTION_TOKEN」が入っていること（作成されている）
+* INのついているメソッドの実行時にエラーが発生しないこと
+* CHECKのついているメソッドに対するリクエストの呼び出しでトークンが一致していないのでtoken errorが発生する
+
+| 2.17
+| 40X系
+| CHECK called without BEGIN (Token error since token not present)
+a| * メソッドの@TransactionTokenCheckにTransactionTokenType CHECKが付けている
+a| * CHECKのついているメソッドに対するリクエストの呼び出しでトークンが渡されていないのでtoken errorが発生する
+
+|===
+
+=== 3. TransactionTokenStoreのサイズチェック (同時処理数の一定数と同等、または超える時の動き)
+
+[cols="5,5,30,20,20", options="header"]
+|===
+| 項番
+| 観点
+| 試験項目
+| 試験条件
+| 確認内容
+
+| 3.1
+| 40X系
+| 同じセッションでNameSpaceごとに保持できるTransactionTokenの数が超えると自動で過去のトランザクショントークンを削除される (windowをMax+1起動)
+a| * クラスのみに対して、@TransactionTokenCheck("transactiontoken")を指定している
+* 同じ業務処理を十個のタブで行っていて、Transactionトークンが生成されている状態
+a| * 同じ業務処理を十一回目のタブで行って、一回目のタブに移動してサブミットするとトークンエラーになっていること
+
+| 3.2
+| 40X系
+| 同じセッションでNameSpaceごとに保持できるTransactionTokenの数が超えると自動で過去のトランザクショントークンを削除される (カスタム設定 = 2)
+a| * クラスとメソッドに対してnamespaceを指定している (例 : Namespace = transactiontoken/create)
+* 同じセッションで違う業務処理を二つのタブで行っていて、Transactionトークンが生成されている状態
+a| * 同じセッションで違う業務処理を新規のタブで行って、一回目のタブに移動してサブミットするとトークンエラーになっていること
+
+| 3.3
+| 40X系
+| 同じセッションでNameSpaceごとに保持できるTransactionTokenの数が超えると自動で過去のトランザクショントークンを削除される (カスタム設定 = 2)
+a| * メソッドのみに対して、@TransactionTokenCheck("xxxxx")を指定している
+* 同じセッションで違う業務処理を二つのタブで行っていて、Transactionトークンが生成されている状態
+a| * 同じセッションで違う業務処理を新規のタブで行って、一回目のタブに移動してサブミットするとトークンエラーになっていること
+
+| 3.4
+| 40X系
+| 同じセッションでNameSpaceごとに保持できるTransactionTokenの数が超えると自動で過去のトランザクショントークンを削除される
+a| * Namespace指定していない (NameSpaceはグローバルNamespaceになる)。同時処理数の一定数を1にセットしている。
+* 任意の業務処理を行って、Transactionトークンが生成されている状態
+a| * 同じセッションで新規のタブで任意の業務処理を行って、一回目のタブに移動してサブミットするとトークンエラーになっていること
+
+| 3.5
+| 20X系
+| 同じセッションでNameSpaceごとに保持できるTransactionTokenの数と同じ場合、自動で過去のトランザクショントークンを削除されないこと (デフォルト10個)
+試験参考 https://github.com/terasolunaorg/terasoluna-gfw-functionaltest/issues/37
+a| * クラスのみに対して、@TransactionTokenCheck("transactiontoken")を指定している
+* 同じ業務処理を十個のタブで行っていて、Transactionトークンが生成されている状態
+a| * 一回目のタブに移動してサブミットしても正常にレスポンスが返却されること
+
+| 3.6
+| 40X系
+| 同じセッションでNameSpaceごとに保持できるTransactionTokenの数が超えると自動で過去のトランザクショントークンを削除される(windowをMax起動し、上書きしたセッションでリクエスト送信)
+試験参考 https://github.com/terasolunaorg/terasoluna-gfw-functionaltest/issues/37
+a| * クラスのみに対して、@TransactionTokenCheck("transactiontoken")を指定している
+* 同じ業務処理を十個のタブで行っていて、Transactionトークンが生成されている状態
+* どこかのタブでtokenを上書きした(5個目のタブ)後、消されたtokenを所持しているタブから画面遷移を行う。
+a| * 一回目のタブに移動してサブミットしても正常にレスポンスが返却されること
+* 消されたtokenを所持しているタブから画面遷移を行った場合、トークンエラーになっていること。
+
+|===
+
+=== 4. JSP Tag (t:transaction)
+
+[cols="5,5,30,20,20", options="header"]
+|===
+| 項番
+| 観点
+| 試験項目
+| 試験条件
+| 確認内容
+
+| 4.1
+| 20X系
+| <form:form>タグを使用しない場合は、<t:transaction /> を明示的に使用することにより、同じようにTransactionTokenCheckのhidden項目が埋め込まれる
+a| * 対象JSPに<form:form>タグを使用しないで<t:transaction />タグが定義されている
+a| * Transaction トークンが生成されて出力ビューとして上記のJSPが指定されているときレスポンスにhidden項目「_TRANSACTION_TOKEN」が入っていること
+* 生成したトークンは「globalToken\~xxx~xxx」の形であること
+
+| 4.2
+| 40X系
+| jspに別途「_TRANSACTION_TOKEN」のnameを定義してJspExceptionとなること (この試験項目は作成中です)
+a| * jspに別途「_TRANSACTION_TOKEN」のnameを定義している
+a| * JspExceptionとなること
+
+|===

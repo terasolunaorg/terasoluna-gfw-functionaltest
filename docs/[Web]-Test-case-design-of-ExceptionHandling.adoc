@@ -1,0 +1,451 @@
+= terasoluna-gfw-web/ExceptionHandling 
+
+org.terasoluna.gfw.common.exception、org.terasoluna.gfw.web.exceptionパッケージのテスト
+
+== 例外ハンドリングテスト
+
+テストケースクラス: 
+
+=== 1. リクエスト単位、Controllerクラスがハンドリングする場合
+
+[cols="5,5,30,20,20", options="header"]
+|===
+| 項番
+| 観点
+| 試験項目
+| 試験条件
+| 確認内容
+
+| 1.1
+| 40X系
+a| **BusinessException**
+
+Serviceで発生したBusinessExceptionをControllerでtry catchを行い、WARNLogが出力されていることの確認を行うテスト
+a| * ResultMessagesLoggingInterceptorをServiceクラスにAOPを設定する。
+* ServiceクラスでBusinessExceptionをスローする。(メッセージは固定値)
+* Controllerで例外をキャッチし、遷移先を指定する。
+a| * ログにWARNレベルのログが出力されていること。
+* 指定されたメッセージが出力されること。
+* 出力されたログフォーマットが、[errorcode] メッセージ の形式であること。
+* MessagesPanelTagでメッセージが出力されていること。 ※ 1
+
+| 1.2
+| 40X系
+a| **BusinessException**
+
+ResultMessagesLoggingInterceptorの拡張テスト
+カスタムResultMessagesLoggingInterceptorを作成し、出力されるログのレベルを変更できること。
+a| * カスタムResultMessagesLoggingInterceptorでは、logResultMessagesNotificationExceptionをオーバライドし
+* Logger.infoでログの出力を行う。
+* ServiceクラスでBusinessExceptionをスローする。(メッセージはコード指定)
+a| * ログにINFOレベルのログが出力されていること。
+
+
+|===
+
+※ 1 基本全ての試験で確認
+※ ログの確認は、DBに出力内容を登録し、アサーションする。
+
+
+=== 2. ユースケース単位、Controllerクラスでハンドリングする場合
+
+[cols="5,5,30,20,20", options="header"]
+|===
+| 項番
+| 観点
+| 試験項目
+| 試験条件
+| 確認内容
+
+| 2.1
+| 10X系
+a| **試験用の独自例外**
+
+HandlerExceptionResolverLoggingInterceptorのログが出力されることの確認のテスト
+ステータスコードが100の場合、INFOログが出力されることのテスト
+a| * Serviceクラスで例外をスローする。(メッセージはコード定義、スローする例外は任意)
+* @ExceptionHandlerで上記例外を設定
+* @ResponseStatus(HttpStatus.CONTINUE)を指定
+* 例外ハンドリングメソッドで遷移先を指定
+a| * ログにINFOレベルのログが出力されていること。
+* 指定されたメッセージが出力されること。
+
+| 2.2
+| 20X系
+a| **試験用の独自例外**
+
+HandlerExceptionResolverLoggingInterceptorのログが出力されることの確認のテスト
+ステータスコードが200の場合、INFOログが出力されることのテスト
+a| * Serviceクラスで例外をスローする。(メッセージはコード定義、スローする例外は任意)
+* @ExceptionHandlerで上記例外を設定
+* @ResponseStatus(HttpServletResponse.SC_OK)を指定
+* 例外ハンドリングメソッドで遷移先を指定
+a| * ログにINFOレベルのログが出力されていること。
+* 指定されたメッセージが出力されること。
+
+| 2.3
+| 30X系
+a| **試験用の独自例外**
+
+HandlerExceptionResolverLoggingInterceptorのログが出力されることの確認のテスト
+ステータスコードが300の場合、INFOログが出力されることのテスト
+a| * Serviceクラスで例外をスローする。(メッセージはコード定義、スローする例外は任意)
+* @ExceptionHandlerで上記例外を設定
+* @ResponseStatus(HttpServletResponse.SC_MULTIPLE_CHOICES)を指定
+* 例外ハンドリングメソッドで遷移先を指定
+a| * ログにINFOレベルのログが出力されていること。
+* 指定されたメッセージが出力されること。
+
+| 2.4
+| 40X系
+a| **OptimisticLockingFailureException**
+
+HandlerExceptionResolverLoggingInterceptorのログが出力されることの確認のテスト
+ステータスコードが409の場合、WARNログが出力されることのテスト
+a| * Serviceクラスで例外をスローする。(メッセージはコード定義、スローする例外はOptimisticLockingFailureException)
+* @ExceptionHandlerで上記例外を設定
+* @ResponseStatus(HttpServletResponse.SC_CONFLICT)を指定
+* 例外ハンドリングメソッドで遷移先を指定
+a| * ログにWARNレベルのログが出力されていること。
+* 指定されたメッセージが出力されること。
+
+| 2.5
+| 40X系
+a| **PessimisticLockingFailureException**
+
+HandlerExceptionResolverLoggingInterceptorのignoreExceptionsに指定された
+例外の場合、ログが出力されないことの確認テスト
+a| * Serviceクラスで例外をスローする。(メッセージはコード定義、スローする例外はPessimisticLockingFailureException)
+* @ExceptionHandlerで上記例外をハンドリング
+* 例外ハンドリングメソッドで遷移先を指定
+* HandlerExceptionResolverLoggingInterceptorのignoreExceptionsに上記例外を指定
+a| * ログに出力されていないこと。
+
+|===
+
+=== 3. サーブレット単位でフレームワークがハンドリングする場合
+
+[cols="5,5,30,20,20", options="header"]
+|===
+| 項番
+| 観点
+| 試験項目
+| 試験条件
+| 確認内容
+
+| 3.1
+| 50X系
+a| **SystemException**
+
+SystemExceptionへのエラーコード指定に係らず、レスポンスコードによりログレベルが決定することの確認のテスト
+SystemExceptionResolverを用いた例外ハンドリングのテスト(SystemExceptionのメッセージ指定)
+a| * ServiceクラスでSystemExceptionにメッセージコード("i.xx.xxx")、メッセージを指定し、スローする。
+* SystemExceptionResolverにdefaultErrorView、defaultStatusCode("500")が指定されていること
+a| * SystemExceptionResolverのdefaultErrorViewのシステムエラー画面に遷移すること
+* defaultStatusCodeがレスポンスコードとして返却されていること
+* SystemExceptionに設定したエラーコードをシステムエラー画面に引き継げていること(リクエストパラメータ)
+* SystemExceptionに設定したエラーコードをシステムエラー画面に引き継げていること(HTTPヘッダ)
+* ログにERRORレベルのログが出力されていること。
+
+| 3.2
+| 50X系
+a| **SystemException**
+
+SystemExceptionへのエラーコード指定に係らず、レスポンスコードによりログレベルが決定することの確認のテスト
+SystemExceptionResolverを用いた例外ハンドリングのテスト(SystemExceptionのThrowableクラスを指定)
+a| * ServiceクラスでSystemExceptionにメッセージコード("w.xx.xxx")、Throwableクラスを指定し、スローする。
+* SystemExceptionResolverにdefaultErrorView、defaultStatusCode("500")が指定されていること
+a| * SystemExceptionResolverのdefaultErrorViewのシステムエラー画面に遷移すること
+* defaultStatusCodeがレスポンスコードとして返却されていること
+* SystemExceptionに設定したエラーコードをシステムエラー画面に引き継げていること
+* ログにERRORレベルのログが出力されていること。
+
+| 3.3
+| 50X系
+a| **SystemException**
+
+SystemExceptionへのエラーコード指定に係らず、レスポンスコードによりログレベルが決定することの確認のテスト
+SystemExceptionResolverを用いた例外ハンドリングのテスト(SystemExceptionのメッセージ指定、Throwableクラスを指定)
+a| * ServiceクラスでSystemExceptionにメッセージコード("e.xx.xxx")、メッセージ、Throwableクラスを指定し、スローする。
+* SystemExceptionResolverにdefaultErrorView、defaultStatusCode("400")が指定されていること
+a| * SystemExceptionResolverのdefaultErrorViewのシステムエラー画面に遷移すること
+* defaultStatusCodeがレスポンスコードとして返却されていること
+* SystemExceptionに設定したエラーコードをシステムエラー画面に引き継げていること
+* ログにWARNレベルのログが出力されていること。
+
+| 3.4
+| 50X系
+a| **SystemException**
+
+SystemExceptionResolverを用いた例外ハンドリングで、リダイレクト後の例外メッセージの引き継ぎのテスト
+a| * ServiceクラスでSystemExceptionにメッセージコード、メッセージ、Throwableクラスを指定し、スローする。
+* SystemExceptionResolverにdefaultErrorView、defaultStatusCodeが指定されていること
+a| * SystemExceptionに設定したエラーコードをリダイレクト後のシステムエラー画面に引き継げていること
+* ログにERRORレベルのログが出力されていること。
+
+| 3.5
+| 50X系
+a| **ResultMessagesNotificationExceptionを実装した独自Exception**
+
+ResultMessagesNotificationExceptionの実装クラスで、ResultMessagesを指定した場合の、
+エラー画面への引継ぎのテスト
+SystemExceptionResolverを用いた例外ハンドリングのテスト
+a| * ServiceクラスでResultMessagesNotificationExceptionを実装したクラスをスローする
+* SystemExceptionResolverにdefaultErrorView、defaultStatusCodeが指定されていること
+a| * SystemExceptionResolverのdefaultErrorViewのシステムエラー画面に遷移すること
+* defaultStatusCodeがレスポンスコードとして返却されていること
+* 独自例外クラスに指定した、ResultMessagesをシステムエラー画面に引き継げていること
+* ログにWARNレベルのログが出力されていること。
+
+| 3.6
+| 50X系
+a| **ResultMessagesNotificationExceptionを実装した独自Exception**
+
+SystemExceptionResolverの拡張テスト resultMessagesAttributeにnullを指定する場合のテスト
+a| * ServiceクラスでResultMessagesNotificationExceptionを実装したクラスをスローする
+* SystemExceptionResolverにdefaultErrorView、defaultStatusCodeが指定されていること
+* resultMessagesAttribute属性にnullを指定する
+a| * SystemExceptionResolverのdefaultErrorViewのシステムエラー画面に遷移すること
+* defaultStatusCodeがレスポンスコードとして返却されていること
+* 独自例外クラスに指定した、ResultMessagesをシステムエラー画面に引き継げていないこと
+* ログにWARNレベルのログが出力されていること。
+
+| 3.7
+| 40X系
+a| **ResourceNotFoundException**
+
+ResourceNotFoundExceptionがスローされた場合の例外ハンドリングのテスト
+SystemExceptionResolverの拡張テストexceptionMappingsの設定、exceptionCodeResolverの設定確認
+a| * ServiceクラスでResourceNotFoundExceptionをスローする
+* SystemExceptionResolverのexceptionMappingsに keyに上記例外 + value="common/error/resourceNotFoundError" を指定する
+* SystemExceptionResolverのstatusCodesに key="common/error/resourceNotFoundError" + value="404" を指定する
+* exceptionCodeResolverのexceptionMappingsにResourceNotFoundException + value="w.xx.0001" を指定する
+a| * exceptionMappingsで指定したresourceNotFoundErrorに遷移すること
+* レスポンスコード 404が返却されていること
+* エラーコードをresourceNotFoundError画面に引き継げていること
+* ログにWARNレベルのログが出力されていること
+* ログが重複していないこと。(Service層のAOPとアプリケーション層のAOPで重複して出力していない)
+
+| 3.8
+| 50X系
+a| **DataAccessException**
+
+SystemExceptionResolverの拡張テスト defaultStatusCode、defaultErrorViewの設定確認
+a| * ServiceクラスでQueryTimeoutExceptionをスローする
+* SystemExceptionResolverのexceptionMappingsに keyに上記例外を指定しない
+* exceptionCodeResolverのdefaultExceptionCodeに "e.xx.9999" を指定する
+* defaultErrorView、defaultStatusCodeを指定する。
+a| * exceptionMappingsで指定したdefaultErrorViewの値に遷移すること
+* レスポンスコード にdefaultStatusCodeの値が返却されていること
+* エラーコードをデフォルトエラー画面に引き継げていること
+* ログにERRORレベルのログが出力されていること。
+
+| 3.9
+| 50X系
+a| **SystemException**
+
+SystemExceptionResolverの拡張テスト　exceptionCodeAttribute、exceptionCodeHeaderの設定確認
+a| * ServiceクラスでSystemExceptionにメッセージコード、Throwableクラスを指定し、スローする
+* SystemExceptionResolverにexceptionCodeAttribute、exceptionCodeHeaderが指定されていること
+* exceptionCodeAttribute="errorCode"、exceptionCodeHeader="X-Error-Code" に設定する
+a| * SystemExceptionResolverのdefaultErrorViewのシステムエラー画面に遷移すること
+* defaultStatusCodeがレスポンスコードとして返却されていること
+* SystemExceptionに設定したエラーコードをシステムエラー画面に引き継げていること(リクエストパラメータ)
+* SystemExceptionに設定したエラーコードをシステムエラー画面に引き継げていること(HTTPヘッダ)
+* ログにERRORレベルのログが出力されていること。
+
+| 3.10
+| 40X系
+a| **InvalidTransactionTokenException**
+
+共通ライブラリの、TransactionTokenの例外ハンドリングテスト
+SystemExceptionResolverを用いた例外ハンドリングのテスト
+a| * TransactionTokenの例外を発生させる
+* SystemExceptionResolverのexceptionMappingsに InvalidTransactionTokenException + value="common/error/tokenError" を指定する
+* SystemExceptionResolverのstatusCodesに key="common/error/tokenErrorr" + value="409" を指定する
+* exceptionCodeResolverのexceptionMappingsにInvalidTransactionTokenException　+ value="i.xx.0010" を指定する
+a| * exceptionMappingsで指定したresourceNotFoundErrorに遷移すること
+* レスポンスコード 409が返却されていること
+* エラーコードをtokenError画面に引き継げていること
+* ログにWARNレベルのログが出力されていること。
+
+|===
+
+=== 4.  Webアプリケーション単位でサーブレットコンテナがハンドリングする場合
+
+[cols="5,5,30,20,20", options="header"]
+|===
+| 項番
+| 観点
+| 試験項目
+| 試験条件
+| 確認内容
+
+| 4.1
+| 50X系
+a| **JspTagException**
+
+ServletContainerによる例外ハンドリング
+View層でエラーが発生した際に<error-page>に指定したパスに遷移するテスト
+a| * TagLibraryでJspTagExceptionをスローする
+* web.xmlの<error-page>のexception-typeに、jakarta.servlet.ServletExceptionを指定、locationに/WEB-INF/views/common/error/servletError.jspを指定する
+a| * error-pageに指定した、画面に遷移すること
+* ログにERRORレベルのログが出力されていること
+
+| 4.2
+| 50X系
+a| **試験用の独自例外**
+
+SystemExceptionResolverの除外設定において除外対象の例外のサブクラスも除外対象とする場合のテスト
+Serviceクラスで独自例外であるSuperClassExceptionを継承したSubClassExceptionが発生した際に<error-page>に指定したパスに遷移するテスト
+a| * ServiceでSubClassExceptionを発生させ、ServletExceptionを継承した例外にラップしてスローする
+* SystemExceptionResolverの"excludedExceptions"に"org.terasoluna.gfw.functionaltest.domain.exception.SuperClassException"を指定する
+* SystemExceptionResolverの"checkSubClass"に"true"を指定する
+* web.xmlの<error-page>のexception-typeに、jakarta.servlet.ServletExceptionを指定、locationに/WEB-INF/views/common/error/servletError.jspを指定する
+a| * SystemExceptionResolverでハンドリングされないこと
+* error-pageに指定した、画面に遷移すること
+* ログにERRORレベルのログが出力されていること
+
+| 4.3
+| 50X系
+a| **試験用の独自例外**
+
+SystemExceptionResolverの除外設定においてハンドリングした例外の原因例外も除外対象か確認する場合のテスト
+Serviceクラスで独自例外であるCauseExceptionを原因例外として持つWrappingExceptionが発生した際に<error-page>に指定したパスに遷移するテスト
+a| * ServiceでWrappingExceptionを発生させ、ServletExceptionを継承した例外にラップしてスローする
+* SystemExceptionResolverの"excludedExceptions"に"org.terasoluna.gfw.functionaltest.domain.exception.CauseException"を指定する
+* SystemExceptionResolverの"checkCause"に"true"を指定する
+* web.xmlの<error-page>のexception-typeに、jakarta.servlet.ServletExceptionを指定、locationに/WEB-INF/views/common/error/servletError.jspを指定する
+a| * SystemExceptionResolverでハンドリングされないこと
+* error-pageに指定した、画面に遷移すること
+* ログにERRORレベルのログが出力されていること
+
+| 4.4
+| 50X系
+a| **IndexOutOfBoundsException**
+
+ServletContainerによる例外ハンドリング
+ExceptionLevelResolverとの連携確認のテスト
+a| * FilterでIndexOutOfBoundsExceptionをスローする
+* web.xmlの<error-page>のexception-typeに、java.lang.Exceptionを指定、locationに/WEB-INF/views/common/error/unhandledSystemError.htmlを指定する
+* exceptionCodeResolverのexceptionMappingsにIndexOutOfBoundsException value="w.xx.0011" を指定する
+a| * error-pageに指定した、画面に遷移すること
+* ログにERRORレベルのログが出力されていること
+
+| 4.5
+| 50X系
+a| **IOException**
+
+ServletContainerによる例外ハンドリング
+Filterでエラーが発生した際に<error-page>に指定したパスに遷移するテスト
+a| * TagLibraryでIOExceptionをスローする
+* web.xmlの<error-page>のexception-typeに、java.lang.Exceptionを指定、locationに/WEB-INF/views/common/error/unhandledSystemError.htmlを指定する
+a| * error-pageに指定した、画面に遷移すること
+* ログにERRORレベルのログが出力されていること
+
+|===
+
+=== 5. ExceptionLoggerバリエーションテスト
+
+[cols="5,5,30,20,20", options="header"]
+|===
+| 項番
+| 観点
+| 試験項目
+| 試験条件
+| 確認内容
+
+| 5.1
+| 40X系
+a| **試験用の独自例外**
+
+カスタムExceptionLevelResolverでのPrefixによるログレベルの出力テスト(ExceptionLoggingFilter)
+a| * ExceptionLevelResolverを実装したカスタムクラスを作成(n=INFO、a=WARN、d=Error)
+* Taglib内で例外をスローする。(メッセージはコード定義(n.cc.0000)、スローする例外は任意)
+* ExceptionLoggingFilterを、例外コードでログレベルを判定するように拡張する。
+a| * ログにINFOレベルのログが出力されていること。
+
+| 5.2
+| 40X系
+a| **試験用の独自例外**
+
+カスタムExceptionLevelResolverでのPrefixによるログレベルの出力テスト(ExceptionLoggingFilter)
+a| * ExceptionLevelResolverを実装したカスタムクラスを作成(n=INFO、a=WARN、d=Error)
+* Taglib内で例外をスローする。(メッセージはコード定義(a.cc.0000)、スローする例外は任意)
+* ExceptionLoggingFilterを、例外コードでログレベルを判定するように拡張する。
+a| * ログにWARNレベルのログが出力されていること。
+
+| 5.3
+| 40X系
+a| **試験用の独自例外**
+
+カスタムExceptionLevelResolverでのPrefixによるログレベルの出力テスト(ExceptionLoggingFilter)
+a| * ExceptionLevelResolverを実装したカスタムクラスを作成(n=INFO、a=WARN、d=Error)
+* Taglib内で例外をスローする。(メッセージはコード定義(d.cc.0000)、スローする例外は任意)
+* ExceptionLoggingFilterを、例外コードでログレベルを判定するように拡張する。
+a| * ログにERRORレベルのログが出力されていること。
+
+| 5.4
+| 40X系
+a| **試験用の独自例外**
+
+defaultCode、defaultMessageの差し替えのテスト(HandlerExceptionResolverLoggingInterceptor)
+a| * ExceptionLoggerのプロパティにdefaultCode="e.00.9999"、defaultMessage="DEFAULT ERROR"を指定する
+* Serviceクラスで独自例外をスローする。
+a| * ログのメッセージに、[e.00.9999] DEFAULT ERROR が出力されていること
+* ログにERRORレベルのログが出力されていること。
+
+| 5.5
+| 40X系
+a| **試験用の独自例外**
+
+trimLogMessageの無効化、logMessageFormatの差し替えのテスト(HandlerExceptionResolverLoggingInterceptor)
+a| * ExceptionLoggerのプロパティにtrimLogMessage=false、logMessageFormat="[{0}][{1}]" を指定する
+* Serviceクラスで独自例外をスローする.(メッセージはコード定義(e.xx.9999)、メッセージは"5_5 Error "(末尾に半角スペースを付与)、スローする例外は任意。）対象の例外ハンドリング時に、レスポンスコード"300"を設定する。
+a| * ログのメッセージに、[e.xx.9999][5_5 Error ] が出力されていること
+* ログにINFOレベルのログが出力されていること。
+
+| 5.6
+| 40X系
+a| **試験用の独自例外**
+
+カスタムExceptionCodeResolverでのエラーコードの紐付けが可能であることのテスト(HandlerExceptionResolverLoggingInterceptor)
+a| * 例外 + メッセージでエラーコードを解決する、カスタムExceptionCodeResolverを実装し、
+* ExceptionCodeResolverにカスタムExceptionCodeResolverを指定する。
+* exceptionCodeResolverのexceptionMappingsに "上記例外+メッセージ" value="w.xx.0001" を指定する
+a| * ログのメッセージに、指定したエラーコードが出力されていること。
+* ログにERRORレベルのログが出力されていること。
+
+|===
+
+=== 6. SharedServiceで例外発生した場合
+
+[cols="5,5,30,20,20", options="header"]
+|===
+| 項番
+| 観点
+| 試験項目
+| 試験条件
+| 確認内容
+
+| 6.1
+| 40X系
+a| **BusinessException**
+
+Serviceの中でSharedServiceを呼び出して、SharedService内でBusinessExceptionをthrowして、
+Serviceがそのままthrowした場合、ログが1回だけ出力されていることを確認するテスト
+a| * ServiceクラスからSharedServiceクラスを呼び出す
+* Serviceクラスで例外をスローする。(メッセージはコード定義)
+a| * ログにWARNレベルのログが出力されていること。
+
+| 6.2
+| 40X系
+a| **BusinessException**
+
+Serviceの中でSharedServiceを呼び出して、SharedService内でBusinessExceptionをthrowして、
+Serviceがcatchした場合、ログが出力されていないことを確認するテスト
+a| * ServiceクラスからSharedServiceクラスを呼び出す
+* Serviceクラスで例外をキャッチする。(メッセージはコード定義)
+a| * ログが出力されていないこと。
+
+|===

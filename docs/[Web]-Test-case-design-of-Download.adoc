@@ -1,0 +1,36 @@
+= terasoluna-gfw-web/Download
+
+org.terasoluna.gfw.web.downloadパッケージのテスト
+
+== 汎用的なファイルダウンロードのテスト
+
+テストケースクラス: 
+
+== 1. ファイルのダウンロード
+
+[cols="5,5,30,20,20", options="header"]
+|===
+| 項番
+| 観点
+| 試験項目
+| 試験条件
+| 確認内容
+
+| 1.1
+| 20X系
+| サーバ上のファイルがダウンロード可能なことを確認するテスト
+a| * AbstractFileDownloadViewを継承したクラスを作成する
+a| * レスポンスのBodyに Duke.png のByte[] が指定されていること
+* Content-Dispositionに attachment; filename=Duke.png が指定されていること
+* Content-Typeに image/png;charset=UTF-8 が指定されていること
+
+| 1.2
+| 20X系
+| BLOBデータのダウンロードが可能なことを確認するテスト
+a| * AbstractFileDownloadViewを継承したクラスを作成する
+* BLOBに"Spring Framework"を設定する
+a| * レスポンスのBodyに "Spring Framework" が設定されていること
+* Content-Dispositionに attachment; filename=framework.txt が指定されていること
+* Content-Typeに text/plain;charset=UTF-8 が指定されていること
+
+|===
