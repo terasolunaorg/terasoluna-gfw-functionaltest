@@ -2,7 +2,7 @@
 
 == JdbcSequencerテスト
 
-テストケースクラス: `org.terasoluna.gfw.functionaltest.app.sequencer.SequencerTest``
+テストケースクラス: `org.terasoluna.gfw.functionaltest.app.sequencer.SequencerTest`
 
 === 1. 各種形式でシーケンスを返すテスト
 

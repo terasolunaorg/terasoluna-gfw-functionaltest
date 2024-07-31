@@ -4,7 +4,7 @@ org.terasoluna.gfw.web.transaction.tokenパッケージのテスト
 
 == Transaction token テスト
 
-テストケースクラス: org.terasoluna.gfw.functionaltest.app.transactiontoken.TransactionTokenTest
+テストケースクラス: `org.terasoluna.gfw.functionaltest.app.transactiontoken.TransactionTokenTest`
 
 === 1. @TransactionTokenCheckのvalue(Namespace)指定
 

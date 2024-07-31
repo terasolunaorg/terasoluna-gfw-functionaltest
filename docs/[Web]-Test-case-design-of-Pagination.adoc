@@ -4,7 +4,7 @@ org.terasoluna.gfw.web.paginationパッケージのテスト
 
 == PaginationTag出力テスト
 
-テストケースクラス: org.terasoluna.gfw.functionaltest.app.pagination.PaginationTest
+テストケースクラス: `org.terasoluna.gfw.functionaltest.app.pagination.PaginationTest`
 
 === 1. デフォルト指定(page="${page}"のみ)
 

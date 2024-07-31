@@ -4,7 +4,7 @@ org.terasoluna.gfw.common.validatorパッケージのテスト
 
 == Validation テスト
 
-テストケースクラス: org.terasoluna.gfw.functionaltest.app.validation.ValidationTest
+テストケースクラス: `org.terasoluna.gfw.functionaltest.app.validation.ValidationTest`
 
 === `@ByteMin` アノテーションと属性の確認
 

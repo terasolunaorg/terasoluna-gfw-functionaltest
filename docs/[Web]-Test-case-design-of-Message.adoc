@@ -5,7 +5,7 @@ org.terasoluna.gfw.web.messageパッケージのテスト
 
 == MessagePanelTag出力テスト
 
-テストケースクラス: org.terasoluna.gfw.functionaltest.app.message.MessageTest
+テストケースクラス: `org.terasoluna.gfw.functionaltest.app.message.MessageTest`
 
 === 1. デフォルト指定
 

@@ -2,7 +2,7 @@
 
 == Queryの%,_,％,＿をエスケープするテスト
 
-テストケースクラス: `org.terasoluna.gfw.functionaltest.app.query.QueryEscapeUtilsTest``
+テストケースクラス: `org.terasoluna.gfw.functionaltest.app.query.QueryEscapeUtilsTest`
 
 Entryテーブルに使用するデータとして投入されているものとする
 

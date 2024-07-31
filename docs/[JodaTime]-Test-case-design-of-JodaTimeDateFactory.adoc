@@ -4,7 +4,7 @@ org.terasoluna.gfw.common.date.jodatimeパッケージのテスト
 
 == JodaTimeDateFactoryテスト
 
-テストケースクラス:`org.terasoluna.gfw.functionaltest.app.date.DateTest`
+テストケースクラス: `org.terasoluna.gfw.functionaltest.app.date.DateTest`
 
 === 1. システム時刻（サーバ時刻）を返却の場合
 
