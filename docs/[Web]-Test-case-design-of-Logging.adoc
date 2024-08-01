@@ -1,0 +1,234 @@
+= terasoluna-gfw-web/Logging
+
+org.terasoluna.gfw.web.loggingパッケージのテスト
+
+=== 1. XTrackMDCPutFilterのテスト
+
+[cols="5,5,30,20,20", options="header"]
+|===
+| 項番
+| 観点
+| 試験項目
+| 試験条件
+| 確認内容
+
+| 1.1
+| 20X系
+| XTrackMDCPutFilterのMDC生成テスト（通常版）
+a| * Controller内でMDCService.getMDC("X-Track")でX-TrackのMDC値を取得
+* 取得したMDCを画面に出して確認
+a| * 取得したMDCが32桁の英数字であること
+* 取得したX-TrackのMDC値がフッタに表示しているX-TrackのMDC値と一致していること
+
+| 1.2
+| 20X系
+| XTrackMDCPutFilterのMDC生成テスト（attribute変更(X-TrackId)版）
+a| * filter設定時にattributeを"X-TrackId"を設定
+* Controller内でMDCService.getMDC("X-Track")でX-TrackのMDC値を取得
+* 取得したX-TrackのMDC値を画面に出して確認 
+a| * 取得したX-TrackのMDC値が32桁の英数字であること
+* 取得したX-TrackのMDC値がフッタに表示しているX-TrackのMDC値と一致していること
+
+| 1.3
+| 20X系
+| XTrackMDCPutFilterのX-TrackのMDC値削除テスト（removeValue=true）
+a| * TODO・・・（後回し）
+a| * XTrackMDCPutFilterより後のFilterでrequest.setAttribute(MDCService.getMDC("X-Track"))して画面でnullになっていることを確認？
+
+| 1.4
+| 20X系
+| HTTP Request Headerに"X-Track"を入れた場合、Response Headerの"X-Track"に同じ値が入っていることの確認
+a| * requestヘッダにMDC"12345678901234567890123456789012"を設定（X-Track=12345678901234567890123456789012）
+* responseヘッダからMDC（X-Track）を取得
+* （上記はselenumからREST Templateを使用して確認）
+a| * requestヘッダに設定されている"X-Track"(MDC)とResponseヘッダーの"X-Track"(MDC)が一致していること
+
+| 1.5
+| 20X系
+| 同一トランザクション内でX-Trackの値が変わっていないことの確認
+a| * 同一トランザクション内処理を実施（request間）
+a| * ログに出力されている"X-Track"(MDC)が同一トランザクション内（request）で一致していること（目視確認）
+
+| 1.6
+| 20X系
+| 同一トランザクションではなくてもrequestヘッダーに前と同じ"X-track”(MDC)が送られてきたら、"X-track”(MDC)の値は変わらずにログに出力されていることの確認
+a| * "X-track”(MDC)を取得するリクエストを送信
+* responseヘッダからMDC（X-Track）を取得し、requestヘッダに設定してリクエストを送信
+* （上記はselenumからREST Templateを使用して確認）
+a| * ログに出力されている"X-Track"(MDC)がRequestヘッダーの"X-Track"(MDC)と一致していること（目視確認）
+
+|===
+
+=== 2. UserIdMDCPutFilterのテスト
+
+[cols="5,5,30,20,20", options="header"]
+|===
+| 項番
+| 観点
+| 試験項目
+| 試験条件
+| 確認内容
+
+| 2.1
+| 20X系
+| UserIdMDCPutFilterのMDC生成テスト（通常版）（認証前確認）
+a| * ログイン認証を行っていない状態であること
+* Controller内でMDCService.getMDC("USER")でMDC値を取得
+* 取得した"USER"のMDC値を画面に出して確認
+a| * UserIdに"anonymousUser"が表示されること
+
+| 2.2
+| 20X系
+| UserIdMDCPutFilterのMDC生成テスト（attribute変更(X-UserId)版）（認証前確認）
+a| * ログイン認証を行っていない状態であること
+* filter設定時にattributeを"X-UserId"を設定
+* Controller内でMDCService.getMDC("X-UserId")でMDC値を取得
+* 取得したMDCを画面に出して確認
+a| * UserIdに"anonymousUser"が表示されること
+
+| 2.3
+| 20X系
+| UserIdMDCPutFilterのMDC削除テスト（removeValue=true）（認証前確認）
+a| * TODO・・・（後回し）
+a| * UserIdMDCPutFilterより後のFilterでrequest.setAttribute(MDCService.getMDC("USER"))して画面でnullになっていることを確認？
+
+| 2.4
+| 20X系
+| UserIdMDCPutFilterのMDC生成テスト（通常版）（認証後確認）
+a| * ログイン認証を行っている状態であること（userID：user1）
+* Controller内でMDCService.getMDC("USER")で"USER"のMDC値を取得
+* 取得した"USER"のMDC値を画面に出して確認
+a| * UserIdにログインId（user1）が表示されること
+
+| 2.5
+| 20X系
+| AnonymousAuthenticationFilterを外してanounimousUserを作らない場合でもnull pointer exceptionが起きないか
+a| * TODO・・・（後回し）
+a| * AnonymousAuthenticationFilterを外してanounimousUserを作らない場合でもnull pointer exceptionが起きないこと
+
+| 2.6
+| 20X系
+| ログイン中に遷移していてもuserIDが変更されていないことの確認
+a| * ログイン認証を行っている状態であること（userID：user1）
+* ログイン中にいくつかの画面遷移後に、Controller内でMDCService.getMDC("USER")で"USER"のMDC値を取得
+* 取得した"USER"のMDC値を画面に出して確認
+a| * UserIdにログインId（user1）が表示されること
+
+|===
+
+=== 3. MDCClearFilterのテスト
+
+[cols="5,5,30,20,20", options="header"]
+|===
+| 項番
+| 観点
+| 試験項目
+| 試験条件
+| 確認内容
+
+| 3.1
+| 20X系
+| XTrackMDCPutFilterとUserIdMDCPutFilterのMDC値が削除されていることの確認
+a| * TODO・・・（後回し）
+a| * MDCClearFilterより後のFilterでrequest.setAttribute(MDCService.getMDC("USER"))して画面でnullになっていることを確認？
+
+|===
+
+=== 4. TraceLoggingInterceptorのテスト
+
+[cols="5,5,30,20,20", options="header"]
+|===
+| 項番
+| 観点
+| 試験項目
+| 試験条件
+| 確認内容
+
+| 4.1
+| 20X系
+| Traceログ出力テスト
+a| * TraceLoggingInterceptor設定しているControllerを処理（interceptorでtraceログ出力を行う）
+* Controller内で3秒以内の処理を実施
+a| * TraceLoggingInterceptorで出力するContlloreのmethodの処理単位で、[START CONTROLLER] クラス名.メソッド名(リクエストパラメータがTraceレベルでログに出力されていることを確認（目視確認）
+* TraceLoggingInterceptorで出力するContlloreのmethodの処理単位で、[END CONTROLLER  ] クラス名.メソッド名(レスポンスパラメータ)-> view={view名}, model={modelの内容}がTraceレベルでログに出力されていることを確認（目視確認）
+* TraceLoggingInterceptorで出力するContlloreのmethodの処理単位で、[HANDLING TIME   ] クラス名.メソッド名(レスポンスパラメータ)-> 処理時間ナノ秒 がTraceレベルでログに出力されていることを確認（目視確認）
+
+| 4.2
+| 20X系
+| Controller内で一定時間以上の遅い処理が行われるとWARNログがでていること 通常設定値（3秒）
+a| * Controller内で3秒以上かかる処理を実施
+a| * TraceLoggingInterceptorで出力するContlloreのmethodの処理単位で、[HANDLING TIME   ] クラス名.メソッド名(レスポンスパラメータ)-> 処理時間ナノ秒 > 基準処理ナノ秒 がWarnレベルでログに出力されていることを確認（目視確認）
+
+| 4.3
+| 20X系
+| Controller内で一定時間以上の遅い処理が行われるとWARNログがでていること 変更設定値（5秒）
+a| * Controller内で3秒以上（5秒以内）かかる処理を実施
+a| * [HANDLING TIME   ]がWARNログで出力されていないことを確認（目視確認）
+
+| 4.4
+| 20X系
+| Controller内で一定時間以上の遅い処理が行われるとWARNログがでていること 変更設定値（5秒）
+a| * Controller内で5秒以上かかる処理を実施
+a| * [HANDLING TIME   ]がWARNログで出力されていることを確認（目視確認）
+
+|===
+
+=== 5. HttpSessionEventLoggingListenerのテスト
+
+[cols="5,5,30,20,20", options="header"]
+|===
+| 項番
+| 観点
+| 試験項目
+| 試験条件
+| 確認内容
+
+| 5.1
+| 20X系
+| Logging確認　セッションにバインドされたオブジェクトが活性化された場合
+a| * TODO・・・（後回し）
+a| * TODO・・・（後回し）
+
+| 5.2
+| 20X系
+| Logging確認　セッションにバインドされたオブジェクトが非活性化された場合
+a| * TODO・・・（後回し）
+a| * TODO・・・（後回し）
+
+| 5.3
+| 20X系
+| Logging確認　セッションにオブジェクトがバインドされた場合
+a| * TODO・・・（後回し）
+a| * TODO・・・（後回し）
+
+| 5.4
+| 20X系
+| Logging確認　セッションにオブジェクトがアンバインドされた場合
+a| * TODO・・・（後回し）
+a| * TODO・・・（後回し）
+
+| 5.5
+| 20X系
+| Logging確認　セッションにAttributeが追加された場合
+a| * TODO・・・（後回し）
+a| * TODO・・・（後回し）
+
+| 5.6
+| 20X系
+| Logging確認　セッションからAttributeが削除された場合
+a| * TODO・・・（後回し）
+a| * TODO・・・（後回し）
+
+| 5.7
+| 20X系
+| Logging確認　セッションが生成された場合
+a| * TODO・・・（後回し）
+a| * TODO・・・（後回し）
+
+| 5.8
+| 20X系
+| Logging確認　セッションが無効にされようとしている場合
+a| * TODO・・・（後回し）
+a| * TODO・・・（後回し）
+
+|===

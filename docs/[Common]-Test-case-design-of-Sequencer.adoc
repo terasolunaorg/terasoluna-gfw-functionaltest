@@ -1,0 +1,78 @@
+= terasoluna-gfw-common/Sequencer
+
+== JdbcSequencerテスト
+
+テストケースクラス: `org.terasoluna.gfw.functionaltest.app.sequencer.SequencerTest`
+
+=== 1. 各種形式でシーケンスを返すテスト
+
+[cols="5,5,30,20,20", options="header"]
+|===
+| 項番
+| 観点
+| 試験項目
+| 試験条件
+| 確認内容
+
+| 1.1
+| 20X系
+| Integerを返すシーケンサのテスト
+a| * nextValueQueryでシーケンサの次の値をそのまま取得するSQL(DB依存)を設定
+* currentValueQueryでシーケンサの現在値をそのまま取得するSQL(DB依存)を設定
+* sequenceClassにjava.lang.Integerを設定
+* 同じトランザクションでシーケンサを取得
+a| * シーケンサ取得ページで以下の値が取得できていること。
+** 次の値(初期値+1) → 現在値(初期値+1) → 現在値(初期値+1) → 次の値(初期値+2) → 次の値(初期値+3) → 現在値(初期値+3) → 次の値(初期値+4) → 現在値(初期値+4)
+
+| 1.2
+| 20X系
+| Longを返すシーケンサのテスト
+a| * nextValueQueryでシーケンサの次の値をそのまま取得するSQL(DB依存)を設定
+* currentValueQueryでシーケンサの現在値をそのまま取得するSQL(DB依存)を設定
+* sequenceClassにjava.lang.Longを設定
+* 同じトランザクションでシーケンサを取得
+a| * シーケンサ取得ページで以下の値が取得できていること。
+** 1.1と同じ
+
+| 1.3
+| 20X系
+| BigIntegerを返すシーケンサのテスト
+a| * nextValueQueryでシーケンサの次の値をそのまま取得するSQL(DB依存)を設定
+* currentValueQueryでシーケンサの現在値をそのまま取得するSQL(DB依存)を設定
+* sequenceClassにjava.math.BigIntegerを設定
+* 同じトランザクションでシーケンサを取得
+a| * シーケンサ取得ページで以下の値が取得できていること。
+** 1.1と同じ
+
+| 1.4
+| 20X系
+| フォーマットされたStringを返すシーケンサのテスト
+a| * nextValueQueryでシーケンサの次の値をフォーマットして"0000000001"形式で取得するSQL(DB依存)を設定
+* currentValueQueryでシーケンサの現在値をフォーマットして"0000000001"形式で取得するSQL(DB依存)を設定
+* sequenceClassにjava.lang.Stringを設定
+* 同じトランザクションでシーケンサを取得
+a| * シーケンサ取得ページで以下の値が取得できていること。
+** 1.1と同じ
+
+|===
+
+=== 2. シーケンス取得で異常発生時のテスト
+
+[cols="5,5,30,20,20", options="header"]
+|===
+| 項番
+| 観点
+| 試験項目
+| 試験条件
+| 確認内容
+
+| 2.1
+| 50X系
+| シーケンサの取得に失敗するテスト
+a| * nextValueQueryに存在しないシーケンスにアクセスするSQLを設定
+* currentValueQueryに存在しないシーケンスにアクセスするSQLを設定
+* sequenceClassにjava.lang.Integerを設定
+a| * シーケンサ次の値取得ページ(A)でorg.springframework.dao.DataAccessExceptionが発生すること(DataAccessExceptionをハンドリングするページを作成)
+* シーケンサ現在値取得ページ(B)でorg.springframework.dao.DataAccessExceptionが発生すること(DataAccessExceptionをハンドリングするページを作成)
+
+|===
