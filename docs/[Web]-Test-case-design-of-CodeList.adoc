@@ -1,0 +1,534 @@
+= terasoluna-gfw-web/CodeList
+
+== SimpleMapCodelistテスト
+
+テストケースクラス: 
+
+=== 1.CodeListを画面に取得され、submitしたらkeyの値が送られることをテストする
+
+[cols="5,5,30,20,20", options="header"]
+|===
+| 項番
+| 観点
+| 試験項目
+| 試験条件
+| 確認内容
+
+| 1.1
+| 20X系
+| CodeListのBean定義にコードの定義がある。
+a| * Bean定義ファイルにCL_CODELIST01_01の定義がある。
+* CL_CODELIST01_01に「Key1->label1, key2->label2, key3->label3」の定義がある。
+* JSPにCL_CODELIST01_01を利用されている。
+a| * 確認画面のセレクトボックスに「label1, label2, label3」を表示されることを確認する。
+* 「label1」を選択し、Submitボタンを押下時、次の画面で「key1」を表示されることを確認する。
+* 「label2」を選択し、Submitボタンを押下時、次の画面で「key2」を表示されることを確認する。
+* 「label3」を選択し、Submitボタンを押下時、次の画面で「key3」を表示されることを確認する。
+
+| 1.2
+| 20X系
+| CodeListのBean定義にコードの定義がない。
+a| * Bean定義ファイルにCL_CODELIST01_02の定義がある。
+* CL_CODELIST01_02の定義に「Map」propertyが存在しない。（コードの定義はない）
+* JSPにCL_CODELIST01_02を利用されている。
+a| * 確認画面に空のセレクトボックスが表示されることを確認する.
+
+|===
+
+
+== NumberRangeCodeListテスト
+
+
+テストケースクラス: 
+
+=== 2.CodeListを画面に取得され、submitしたらkeyの値が送られることをテストする
+
+[cols="5,5,30,20,20", options="header"]
+|===
+| 項番
+| 観点
+| 試験項目
+| 試験条件
+| 確認内容
+
+| 2.1
+| 20X系
+| FromとTo属性の指定がある。From < To。Intervalの指定がない。
+a| * Bean定義ファイルにCL_CODELIST02_01の定義がある。
+* CL_CODELIST02_01のfromプロパティのvalue属性の値は「1」。
+* CL_CODELIST02_01のfromプロパティのvalue属性の値は「5」。
+* CL_CODELIST02_01にintervalプロパティの指定はない。
+* JSPにCL_CODELIST02_01を利用されている。
+a| * 確認画面のセレクトボックスに「1,2,3,4,5」を表示されることを確認する。
+* 「1」を選択し、Submitボタンを押下時、次の画面で「1」を表示されることを確認する。
+* 「2」を選択し、Submitボタンを押下時、次の画面で「2」を表示されることを確認する。
+* 「3」を選択し、Submitボタンを押下時、次の画面で「3」を表示されることを確認する。
+* 「4」を選択し、Submitボタンを押下時、次の画面で「4」を表示されることを確認する。
+* 「5」を選択し、Submitボタンを押下時、次の画面で「5」を表示されることを確認する。
+
+| 2.2
+| 20X系
+| FromとTo属性の指定がある。From > To。Intervalの指定がない。
+a| * Bean定義ファイルにCL_CODELIST02_02の定義がある。
+* CL_CODELIST02_02のfromプロパティのvalue属性の値は「5」。
+* CL_CODELIST02_02のfromプロパティのvalue属性の値は「1」。
+* JSPにCL_CODELIST02_02を利用されている。
+a| * 確認画面のセレクトボックスに「5,4,3,2,1」を表示されることを確認する。
+* 「3」を選択し、Submitボタンを押下時、次の画面で「3」を表示されることを確認する.
+
+| 2.3
+| 20X系
+| FromとTo属性の指定がある。From > To。Intervalの指定がある。
+a| * Bean定義ファイルにCL_CODELIST02_03の定義がある。
+* CL_CODELIST02_03のfromプロパティのvalue属性の値は「5」。
+* CL_CODELIST02_03のfromプロパティのvalue属性の値は「1」。
+* CL_CODELIST02_03の intervalプロパティのvalue属性の値は「3」。
+* JSPにCL_CODELIST02_03を利用されている。
+a| * 確認画面のセレクトボックスに「5,2」を表示されることを確認する。
+* 「2」を選択し、Submitボタンを押下時、次の画面で「2」を表示されることを確認する.
+
+| 2.4
+| 20X系
+| FromとTo属性の指定がある。From > To。Intervalの指定がある。labelFormatとvalueformatの指定がある。
+a| * Bean定義ファイルにCL_CODELIST02_04の定義がある。
+* CL_CODELIST02_04のfromプロパティのvalue属性の値は「5」。
+* CL_CODELIST02_04のfromプロパティのvalue属性の値は「1」。
+* CL_CODELIST02_04の intervalプロパティのvalue属性の値は「3」。
+* CL_CODELIST02_04の labelFormatプロパティのvalue属性の値は「%02d」。
+* CL_CODELIST02_04の valueFormatプロパティのvalue属性の値は「%03d」。
+* JSPにCL_CODELIST02_04を利用されている。
+a| * 確認画面のセレクトボックスに「05,02」を表示されることを確認する。
+* 「02」を選択し、Submitボタンを押下時、次の画面で「002」を表示されることを確認する。
+
+|===
+
+== JdbcCodeListテスト
+
+テストケースクラス: 
+
+=== 3.CodeListを画面に取得され、submitしたらkeyの値が送られることをテストする
+
+[cols="5,5,30,20,20", options="header"]
+|===
+| 項番
+| 観点
+| 試験項目
+| 試験条件
+| 確認内容
+
+| 3.1
+| 20X系
+| 複数レコードを返すqueryが指定されていて、lazyInitが無効になっている
+a| * Bean定義ファイルにCL_CODELIST_ITEM1の定義がある。
+* CL_CODELIST_ITEM1のquerySQLプロパティのvalue属性の値は「select code, label from item1 ORDER BY code」。
+* codelist4テーブルに「Key1->label1, key2->label2, key3->label3」が登録されている。
+* CL_CODELIST_ITEM1にlazyInitプロパティが指定されてない。
+* JSPにCL_CODELIST_ITEM1を利用されている。
+a| * 確認画面のセレクトボックスに「label1, label2, label3」を表示されることを確認する。
+* 「label1」を選択し、Submitボタンを押下時、次の画面で「key1」を表示されることを確認する.
+
+| 3.2
+| 20X系
+| 0レコードを返すqueryが指定されていて、lazyInitが無効になっている
+a| * Bean定義ファイルにCL_CODELIST_ITEM2の定義がある。
+* CL_CODELIST_ITEM2のquerySQLプロパティのvalue属性の値は「select code, label from item2 ORDER BY code」。
+* CL_CODELIST_ITEM2にlazyInitプロパティが指定されてない。
+* JSPにCL_CODELIST_ITEM2を利用されている。
+a| * 確認画面に空のセレクトボックスが表示されることを確認する.
+
+| 3.3
+| 20X系
+| 例外を発生させるQueryが指定されていて、lazyInitが有効になっている
+a| * Bean定義ファイルにCL_CODELIST_WRONG_ITEMの定義がある。
+* CL_CODELIST_WRONG_ITEMのquerySqlプロパティのvalue属性の値は「select code, label_wrong from item2 ORDER BY code」
+* CL_CODELIST_WRONG_ITEMのlazyInitプロパティのvalue属性の値は「true」になっている。
+* JSPにCL_CODELIST_WRONG_ITEMを利用されている。
+a| * DB例外が発生することを確認する.
+
+|===
+
+=== 4.refresh機能によってCodeList内容が更新されたことを確認する
+
+[cols="5,5,30,20,20", options="header"]
+|===
+| 項番
+| 観点
+| 試験項目
+| 試験条件
+| 確認内容
+
+| 4.1
+| 20X系
+| schedulerを使ってrefreshメソッドを呼ぶ
+a| * TODO
+a| * TODO
+
+| 4.2
+| 20X系
+| ビジネスロジックでrefreshメソッドを呼ぶ(更新した場合)
+a| * Bean定義ファイルにCL_CODELIST_ITEM1の定義がある。
+* CL_CODELIST_ITEM1のquerySQLプロパティのvalue属性の値は「select code, label from item1 ORDER BY code」。
+* CL_CODELIST_ITEM1テーブルに「Key1->label1, key2->label2, key3->label3」が登録されている。
+* JSPにCL_CODELIST_ITEM1を利用されている。
+* 確認画面で更新ボタンを押下時、テーブル管理画面へ遷移し、そこからテーブル登録データを更新する
+a| * 確認画面のセレクトボックスに「label1, label2, label3」を表示されることを確認する。
+* 「テーブル更新」ボタンを押下してテーブル管理画面へ遷移する。
+* そこで「key2 -> label2」を「bbb -> aaa」に変更して「確認画面へ」を押す。
+* 確認画面セレクトボックスに「label1, label2, label3」を表示されることを確認する。
+* 「refresh」ボタンを押下し、確認画面へ遷移する
+* 確認画面でセレクトボックスは「label1, aaa, label3」になっていることを確認する.
+
+| 4.3
+| 20X系
+| ビジネスロジックでrefreshメソッドを呼ぶ(追加した場合)
+a| * Bean定義ファイルにCL_CODELIST_ITEM1の定義がある。
+* CL_CODELIST_ITEM1のquerySQLプロパティのvalue属性の値は「select code, label from item1 ORDER BY code」。
+* CL_CODELIST_ITEM1テーブルに「Key1->label1, key2->label2, key3->label3」が登録されている。
+* JSPにCL_CODELIST_ITEM1を利用されている。
+* 確認画面で更新ボタンを押下時、テーブル管理画面へ遷移し、そこからテーブル登録データを追加する
+a| * 確認画面のセレクトボックスに「label1, label2, label3」を表示されることを確認する。
+* 「テーブル更新」ボタンを押下してテーブル管理画面へ遷移する。
+* そこでkeyが「key4」、labelが「label4」で追加して「確認画面へ」を押す。
+* 確認画面セレクトボックスに「label1, label2, label3」を表示されることを確認する。
+* 「refresh」ボタンを押下し、確認画面へ遷移する
+* 確認画面でセレクトボックスは「label1, label2, label3、label4」になっていることを確認する.
+
+|===
+
+== 5.CodeListへのアクセスはThread-safeであることを確認する
+
+[cols="5,5,30,20,20", options="header"]
+|===
+| 項番
+| 観点
+| 試験項目
+| 試験条件
+| 確認内容
+
+| 5.1
+| 20X系
+| TODO
+a| * TODO
+a| * TODO
+
+|===
+
+== SimpleI18nCodeListテスト
+
+テストケースクラス: 
+
+=== 6.CodeListを画面に取得され、submitしたらkeyの値が送られることをテストする
+
+[cols="5,5,30,20,20", options="header"]
+|===
+| 項番
+| 観点
+| 試験項目
+| 試験条件
+| 確認内容
+
+| 6.1
+| 20X系
+| rowsでCodeListオブジェクトを定義する。
+a| * Bean定義ファイルにCL_CODELIST06_01がrowsで定義されている。
+* 「en」Localeのコード定義は「key1->label1, key2->label2, key3->label3」。
+* 「ja」Localeのコード定義は「key1->ラベル1, key2->ラベル2, key3->ラベル3」。
+* fallbackToプロパティの設定は「en」。
+* JSPにCL_CODELIST06_01を利用されている。
+* リクエストのLocaleはenにしてある。
+a| * 確認画面のセレクトボックスに「label1, label2, label3」を表示されることを確認する。
+* 「label1」を選択し、Submitボタンを押下時、次の画面で「key1」を表示されることを確認する.
+
+| 6.2
+| 20X系
+| rowsByCodeListでCodeListオブジェクトを定義する。
+a| * Bean定義ファイルにCL_CODELIST06_02がrowsByCodeListで定義されている。
+* 「en」Localeのコード定義は「key1->label1, key2->label2, key3->label3」。
+* 「ja」Localeのコード定義は「key1->ラベル1, key2->ラベル2, key3->ラベル3」。
+* fallbackToプロパティの設定は「en」。
+* JSPにCL_CODELIST06_02を利用されている。
+* リクエストのLocaleはenにしてある。
+a| * 確認画面のセレクトボックスに「label1, label2, label3」を表示されることを確認する。
+* 「label1」を選択し、Submitボタンを押下時、次の画面で「key1」を表示されることを確認する.
+
+| 6.3
+| 20X系
+| columnsでCodeListオブジェクトを定義する。
+a| * Bean定義ファイルにCL_CODELIST06_03がcolumnsで定義されている。
+* 「en」Localeのコード定義は「key1->label1, key2->label2, key3->label3」。
+* 「ja」Localeのコード定義は「key1->ラベル1, key2->ラベル2, key3->ラベル3」。
+* fallbackToプロパティの設定は「en」。
+* JSPにCL_CODELIST06_03を利用されている。
+* リクエストのLocaleはenにしてある。
+a| * 確認画面のセレクトボックスに「label1, label2, label3」を表示されることを確認する。
+* 「label1」を選択し、Submitボタンを押下時、次の画面で「key1」を表示されることを確認する.
+
+|===
+
+== 11.CodeListを画面に取得され、ロケールに応じたラベルが表示されることをテストする
+
+[cols="5,5,30,20,20", options="header"]
+|===
+| 項番
+| 観点
+| 試験項目
+| 試験条件
+| 確認内容
+
+| 11.1
+| 20X系
+| 言語のLocaleを指定し、対応する言語Localeのコードを表示する。
+a| * Bean定義ファイルにCL_CODELIST11_01がrowsで定義されている。
+* 「en」Localeのコード定義は「key1->label1, key2->label2, key3->label3」。
+* 「ja」Localeのコード定義は「key1->ラベル1, key2->ラベル2, key3->ラベル3」。
+* 「fr」Localeのコード定義は「key1->étiquette un, key2->étiquette deux, key3->étiquette trois」。
+* 「fr_ca」Localeのコード定義は「key1->étiquette1, key2->étiquette2, key3->étiquette3」。
+* fallbackToプロパティの設定は「ja」。
+* JSPにCL_CODELIST11_01を利用されている。
+* リクエストのLocaleはenにしてある。
+a| * 確認画面のセレクトボックスに「label1, label2, label3」を表示されることを確認する.
+
+| 11.2
+| 20X系
+| 国のLocaleを指定し、対応する国Localeのコードを表示する。
+a| * Bean定義ファイルにCL_CODELIST11_01が定義されている。
+* JSPにCL_CODELIST11_01を利用されている。
+* リクエストのLocaleはfr_caにしてある。
+a| * 確認画面のセレクトボックスに「étiquette1, étiquette2, étiquette3」を表示されることを確認する。
+
+| 11.3
+| 20X系
+| 国のLocaleを指定し、フォールバックされた言語Localeのコードを表示する。
+a| * Bean定義ファイルにCL_CODELIST11_01が定義されている。
+* JSPにCL_CODELIST11_01を利用されている。
+* リクエストのLocaleはfr_frにしてある。
+a| * 確認画面のセレクトボックスに「étiquette un, étiquette deux, étiquette trois」を表示されることを確認する。
+
+| 11.4
+| 20X系
+| 定義されていないLocaleを指定し、fallbackToプロパティに指定されたLocaleのコードを表示する。
+a| * Bean定義ファイルにCL_CODELIST11_01が定義されている。
+* JSPにCL_CODELIST11_01を利用されている。
+* リクエストのLocaleはdeにしてある。
+a| * 確認画面のセレクトボックスに「ラベル1, ラベル2, ラベル3」を表示されることを確認する。
+
+| 11.5
+| 20X系
+| 定義されていないLocaleを指定し、フォールバックされたデフォルトLocaleのコードを表示する。
+a| * Bean定義ファイルにCL_CODELIST11_05がrowsで定義されている。
+* 「en」Localeのコード定義は「key1->label1, key2->label2, key3->label3」。
+* 「ja」Localeのコード定義は「key1->ラベル1, key2->ラベル2, key3->ラベル3」。
+* fallbackToプロパティの設定は行われていない。
+* JSPにCL_CODELIST11_05を利用されている。
+* デフォルトロケールにja_JPを設定されている
+* リクエストのLocaleはdeにしてある。
+a| * 確認画面のセレクトボックスに「ラベル1, ラベル2, ラベル3」を表示されることを確認する.
+
+|===
+
+== CodeListInterceptorテスト
+
+=== 7.CodeListInterceptorのCodeListPatternへの変更で読み込まれるCodeListの変更を確認する。
+
+テストケースクラス: 
+
+[cols="5,5,30,20,20", options="header"]
+|===
+| 項番
+| 観点
+| 試験項目
+| 試験条件
+| 確認内容
+
+| 7.1
+| 20X系
+| CodeListInterceptorの定義にCodeListPattern属性の指定がある。
+a| * Bean定義ファイルに「CL」からはじまるBeanとそうではないBeanが存在する。「CL_CODELIST01_01, CL_CODELIST01_02,..., SAMPLE_CODELIST」が定義されている。
+* CodeListInterceptorのcodeListPattern属性に「CL\_.+」が指定されている。
+* JSPに「CL_CODELIST01_01, SAMPLE_CODELIST」を利用されている。
+a| * 確認画面でCL_CODELIST01_01に対するセレクトボックスに該当するコードが表示されることを確認する。
+* SAMPLE_CODELISTに対するセレクトボックスは空ということを確認する。
+
+| 7.2
+| 20X系
+| CodeListInterceptorの定義にCodeListPattern属性の指定がない。
+a| * Bean定義ファイルに「CL」からはじまるBeanとそうではないBeanが存在する。「CL_CODELIST01_01, CL_CODELIST01_02,..., SAMPLE_CODELIST」が定義されている。
+* Bean定義ファイルにCodeListInterceptorの定義がある。codeListPattern属性の指定がいない。
+* JSPに「CL_CODELIST01_01, SAMPLE_CODELIST」を利用されている。
+a| * 確認画面でCL_CODELIST01_01, SAMPLE_CODELISTに対するセレクトボックスに該当するコードが表示されることを確認する。
+* NOTE：codeListPatternを指定しないと「3.3」の例外を発生させるコードリストも読み込まれて例外が発生するのでテストできない。
+
+| 7.3
+| 20X系
+| 複数パターンのBeanが取得されるようにCodeListInterceptorの定義にCodeListPattern属性を指定する
+a| * Bean定義ファイルに「CL」からはじまるBeanとそうではないBeanが存在する。「CL_CODELIST01_01, CL_CODELIST01_02,..., SAMPLE_CODELIST, NOPATTERN_CODELIST」が定義されている。
+* Bean定義ファイルにCodeListInterceptorの定義がある。codeListPattern属性に「CL\_.+\|SAMPLE_.+」が指定されている。
+* JSPに「SAMPLE_CODELIST, NOPATTERN_CODELIST」を利用されている。
+a| * 確認画面でSAMPLE_CODELISTに対するセレクトボックスに該当するコードが表示されることを確認する。
+* NOPATTERN_CODELISTに対するセレクトボックスは空ということを確認する.
+
+|===
+
+== 10.エラー発生後の画面でコードリストが表示できることを確認する
+
+[cols="5,5,30,20,20", options="header"]
+|===
+| 項番
+| 観点
+| 試験項目
+| 試験条件
+| 確認内容
+
+| 10.1
+| 40X系
+| エラーが発生してもCodeListオブジェクトが生成され、コードリストが表示できること。
+a| * Bean定義ファイルにCL_CODELIST10_01の定義がある。
+* CL_CODELIST10_01に「Key1->label1, key2->label2, key3->label3」の定義がある。
+* JSPにCL_CODELIST10_01を利用されている。
+* Contoller の処理で例外が発生する。
+a| * エラーが発生している状況でも、確認画面のセレクトボックスに「label1, label2, label3」が表示されることを確認する。
+* 「label1」を選択し、Submitボタンを押下時、次の画面で「key1」が表示されることを確認する.
+
+|===
+
+== ExistInCodeListテスト
+
+テストケースクラス: 
+
+=== 8.ExistInCodeList annotationを利用して入力チェック行われることを確認する
+
+[cols="5,5,30,20,20", options="header"]
+|===
+| 項番
+| 観点
+| 試験項目
+| 試験条件
+| 確認内容
+
+| 8.1
+| 20X系
+| Fieldの型はStringの場合。
+a| * Bean定義ファイルにSAMPLE_CODELISTが定義されている。
+* SAMPLE_CODELISTに「Key1->label1, key2->label2, key3->label3」の定義がある
+* 入力画面のForm beanのfieldに対して「@ExistInCodeList(codeListId = "SAMPLE_CODELIST")」を使用する
+a| * key1入力の場合エラーが発生しないこと。key5入力の場合「Does not exist in SAMPLE_CODELIST」が表示されること。
+
+| 8.2
+| 20X系
+| Fieldの型はCharacterの場合。
+a| * Bean定義ファイルにCHARACTER_CODELISTが定義されている
+* CHARACTER_CODELISTに「a->character1, b->character2, c->character3」の定義がある。
+* 入力画面のForm beanのfieldに対して「@ExistInCodeList(codeListId = "CHARACTER_CODELIST")」を使用する
+* 入力画面のForm beanのfieldの型はcharacterである。
+a| * 入力画面で「a」を入力するとエラーが表示されないこと。「h」を入力するとエラーが表示されること
+
+| 8.3
+| 20X系
+| Fieldの型はNumberの場合。
+a| * Bean定義ファイルにNUMBER_CODELISTが定義されている
+* NUMBER_CODELISTのfromプロパティのvalue属性の値は「1」。
+* NUMBER_CODELISTのtoプロパティのvalue属性の値は「5」。
+* NUMBER_CODELISTにvalueFormatプロパティの指定はない。
+* 入力画面のForm beanのfieldに対して「@ExistInCodeList(codeListId = "NUMBER_CODELIST")」を使用する
+* 入力画面のForm beanのfieldの型はIntegerである。
+a| * 入力画面で「5」を入力するとエラーが表示されないこと。「6」を入力するとエラーが表示されること
+
+| 8.4
+| 20X系
+| Fieldの型はNumberで、NumberRangeCodeListにvalueFormatが指定されている場合。
+a| * Bean定義ファイルにNUMBER_FORMATTED_CODELISTが定義されている
+* NUMBER_FORMATTED_CODELISTのfromプロパティのvalue属性の値は「1」。
+* NUMBER_FORMATTED_CODELISTのtoプロパティのvalue属性の値は「5」。
+* NUMBER_FORMATTED_CODELISTのvalueFormatプロパティのvalue属性の値が「%02d」。
+* 入力画面のForm beanのfieldに対して「@ExistInCodeList(codeListId = "NUMBER_FORMATTED_CODELIST")」を使用する
+* 入力画面のForm beanのfieldの型はLongである。
+a| * 入力画面で「5」を入力するとエラーが表示されないこと。「6」を入力するとエラーが表示されること
+
+| 8.5
+| 40X系
+| 指定のCodeListが存在しない。
+a| * 入力画面のForm beanのfieldに対して「@ExistInCodeList(codeListId = "WRONG_CODELIST")」を使用する
+* Bean定義ファイルにWRONG_CODELISTは存在しない。
+a| * システムエラーが発生すること。
+
+| 8.6
+| 40X系
+| メソッドに対してAnnotationを利用する。
+a| * ExistInCheckFormのitem6はJSPに使用する
+* item6のgetterメソッドに対して@ExitInCodeListを使用する
+a| * key1入力の場合エラーが発生しないこと。key5入力の場合「Does not exist in SAMPLE_CODELIST」が表示されること。
+
+| 8.7
+| 20X系
+| @ExistInCodeListにカスタムメッセージを定義する。
+a| * ExistInCheckFormのitem7はJSPに使用する。
+* @ExistInCodeList(codeListId = "SAMPLE_CODELIST", message = "This is a custom message notifying that value doesn't exist in sample codelist")をitem7に適用する。
+a| * key5入力の場合「This is a custom message notifying that value doesn't exist in sample codelist」が表示されること。
+
+| 8.8
+| 20X系
+| Annotation-typeにExistInCodeListを利用する。
+a| * ExistInCheckFormのitem8はJSPに使用する。
+* @ExistInSampleCodeListをitem8に適用する。
+* @ExistInSampleCodeListの定義に@ExistInCodeList(codeListId = "SAMPLE_CODELIST", message = "This message comes from extended codelist notifying that value doesn't exist in sample codelist")を使用する。
+a| * key5入力の場合「This message comes from extended codelist notifying that value doesn't exist in sample codelist」が表示されること。
+
+| 8.9
+| 20X系
+| @ExistInCodeListにカスタムメッセージを複数定義する。
+a| * ExistInCheckFormのitem9はJSPに使用する。
+* Bean定義ファイルにSAMPLE_CODELISTが定義されていること。
+* SAMPLE_CODELISTに「Key1->label1, key2->label2, key3->label3」の定義があること。
+* Bean定義ファイルにSAMPLE_MULTIPLE_CODELISTが定義されていること。
+* SAMPLE_MULTIPLE_CODELISTに「Key1->label1, key4->label4, key5->label5」の定義があること。
+* @ExistInCodeListをitem9に適用する。
+* @ExistInCodeListの定義に複数@ExistInCodeListを使用する。
+a| * 「key1」を入力した場合エラーが発生しないこと。
+* 「key2」を入力した場合SAMPLE_MULTIPLE_CODELISTのエラーが発生すること。
+* 「key4」を入力した場合SAMPLE_CODELISTのエラーが発生すること。
+* 「key6」を入力した場合SAMPLE_CODELISTとSAMPLE_MULTIPLE_CODELISTのエラーが発生すること。
+
+| 8.10
+| 20X系
+| パラメータに対してAnnotationを利用する。
+a| * CodeListFormのitem1はJSPに使用する。
+* Bean定義ファイルにCL_CODELIST08_08が定義されている。
+* CL_CODELIST08_08に「Key1->label1, key2->label2」の定義がある。
+* Serviceインターフェースのメソッドのパラメータに対して「@ExistInCodeList(codeListId = "CL_CODELIST08_08")」を使用する。
+a| * key1入力の場合エラーが発生しないこと。key5入力の場合「Does not exist in CL_CODELIST08_08」が表示されること.
+
+| 8.11
+| 40X系
+| 日本語ロケールを指定した場合に、日本語メッセージが表示されること（検証エラー）
+a| * 8.1と同様
+* LocaleResolverを利用して日本語ロケールに変更する
+a| * 日本語エラーメッセージが表示されること.
+
+|===
+   
+== EnumCodelistテスト
+
+テストケースクラス: 
+
+=== 9.CodeListを画面から取得され、submitしたらkeyの値が送られることをテストする
+
+[cols="5,5,30,20,20", options="header"]
+|===
+| 項番
+| 観点
+| 試験項目
+| 試験条件
+| 確認内容
+
+| 9.1
+| 20X系
+| EnumクラスからCodeListオブジェクトが作成されること。
+a| * Enumクラスがある。
+* Enumクラスに「Key1->label1, key2->label2, key3->label3」の定義がある。
+* JSPにEnumCodeListから生成されたMapを利用している。
+a| * 確認画面のセレクトボックスに「label1, label2, label3」を表示されることを確認する。
+* 「label1」を選択し、Submitボタンを押下時、次の画面で「key1」を表示されることを確認する。
+* 「label2」を選択し、Submitボタンを押下時、次の画面で「key2」を表示されることを確認する。
+* 「label3」を選択し、Submitボタンを押下時、次の画面で「key3」を表示されることを確認する。
+
+|===

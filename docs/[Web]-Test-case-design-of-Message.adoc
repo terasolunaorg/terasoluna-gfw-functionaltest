@@ -1,0 +1,494 @@
+= terasoluna-gfw-web/Message
+
+org.terasoluna.gfw.common.messageパッケージのテスト
+org.terasoluna.gfw.web.messageパッケージのテスト
+
+== MessagePanelTag出力テスト
+
+テストケースクラス: `org.terasoluna.gfw.functionaltest.app.message.MessageTest`
+
+=== 1. デフォルト指定
+
+[cols="5,5,30,20,20", options="header"]
+|===
+| 項番
+| 観点
+| 試験項目
+| 試験条件
+| 確認内容
+
+| 1.1
+| 20X系
+| ResultMessagesに単一のメッセージを指定した場合のメッセージ表示テスト
+a| * ResultMessagesにsuccessで指定し、表示メッセージは、messageSourceで読み込まれたコードを設定する。"Hello World!!"
+a| * "Hello World!!"が表示されていること
+* message要素が<div>タグで構成されていること ※ 1
+* <div>タグのクラスに "alert alert-success" が指定されていること ※ 1
+* HTMLの外側のタグが<ul>タグで構成されていること ※ 1
+* HTMLの内側のタグが<li>タグで構成されていること ※ 1
+
+| 1.2
+| 20X系
+| ResultMessagesに複数のメッセージを指定した場合のメッセージ表示テスト
+a| * ResultMessagesにsuccessで指定し、表示メッセージは、messageSourceで読み込まれたコードを設定する。"Hello World!!"
+* ResultMessagesにsuccessで指定し、表示メッセージは、messageSourceで読み込まれたコードを設定する。"Hello Message!!"
+a| * "Hello World!!"、"Hello Message!!"が表示されていること
+* <div>タグのクラスに "alert alert-success" が指定されていること
+
+| 1.3
+| 20X系
+| ResultMessagesに文字列を定義した場合のメッセージ表示テスト
+a| * ResultMessagesに "Error Message!!" をハードコードする。
+a| * "Error Message!!"が表示されていること
+* <div>タグのクラスに "alert alert-error" が指定されていること
+
+| 1.4
+| 20X系
+| StandardResultMessageTypeの確認(info) でtypeを設定した場合のメッセージ表示テスト
+a| * ResultMessagesにinfoで指定し、表示メッセージは、messageSourceで読み込まれたコードを設定する。"Hello World!!"
+a| * "Hello World!!"が表示されていること
+* <div>タグのクラスに "alert alert-info" が指定されていること
+
+| 1.5
+| 20X系
+| StandardResultMessageTypeの確認(warning) でtypeを設定した場合のメッセージ表示テスト
+a| * ResultMessagesにwarningで指定し、表示メッセージは、messageSourceで読み込まれたコードを設定する。"Hello World!!"
+a| * "Hello World!!"が表示されていること
+* <div>タグのクラスに "alert alert-warning" が指定されていること
+
+| 1.6
+| 20X系
+| StandardResultMessageTypeの確認(error) でtypeを設定した場合のメッセージ表示テスト
+a| * ResultMessagesにerrorで指定し、表示メッセージは、messageSourceで読み込まれたコードを設定する。"Hello World!!"
+a| * "Hello World!!"が表示されていること
+* <div>タグのクラスに "alert alert-error" が指定されていること
+
+| 1.7
+| 20X系
+| StandardResultMessageTypeの確認(danger) でtypeを設定した場合のメッセージ表示テスト
+a| * ResultMessagesにdangerで指定し、表示メッセージは、messageSourceで読み込まれたコードを設定する。"Hello World!!"
+a| * "Hello World!!"が表示されていること
+* <div>タグのクラスに "alert alert-danger" が指定されていること
+
+| 1.8
+| 20X系
+| StandardResultMessageTypeの確認(primary) でtypeを設定した場合のメッセージ表示テスト
+a| * ResultMessagesにprimaryで指定し、表示メッセージは、messageSourceで読み込まれたコードを設定する。"Hello World!!"
+a| * "Hello World!!"が表示されていること
+* <div>タグのクラスに "alert alert-primary" が指定されていること
+
+| 1.9
+| 20X系
+| StandardResultMessageTypeの確認(secondary) でtypeを設定した場合のメッセージ表示テスト
+a| * ResultMessagesにsecondaryで指定し、表示メッセージは、messageSourceで読み込まれたコードを設定する。"Hello World!!"
+a| * "Hello World!!"が表示されていること
+* <div>タグのクラスに "alert alert-secondary" が指定されていること
+
+| 1.10
+| 20X系
+| StandardResultMessageTypeの確認(light) でtypeを設定した場合のメッセージ表示テスト
+a| * ResultMessagesにlightで指定し、表示メッセージは、messageSourceで読み込まれたコードを設定する。"Hello World!!"
+a| * "Hello World!!"が表示されていること
+* <div>タグのクラスに "alert alert-light" が指定されていること
+
+| 1.11
+| 20X系
+| StandardResultMessageTypeの確認(dark) でtypeを設定した場合のメッセージ表示テスト
+a| * ResultMessagesにdarkで指定し、表示メッセージは、messageSourceで読み込まれたコードを設定する。"Hello World!!"
+a| * "Hello World!!"が表示されていること
+* <div>タグのクラスに "alert alert-dark" が指定されていること
+
+| 1.12
+| 40X系
+| BusinessExceptionをスローした場合のメッセージ表示テスト
+a| * BusinessExceptionにerrorで指定し、"Error Message!!" を設定する
+a| * "Error Message!!" が表示されていること
+* <div>タグのクラスに "alert alert-error" が指定されていること
+| 1.13
+| 20X系
+| ResultMessageを使用するメッセージ表示のテスト
+a| * ResultMessagesにResultMessageをsuccessで指定し、表示メッセージは、messageSourceで読み込まれたコードを設定する。"Hello World!!"
+a| * "Hello World!!"が表示されていること
+| 1.14
+| 20X系
+| 置換パラメータの埋め込み確認
+a| * ResultMessagesにResultMessageをsuccessで指定し、表示メッセージには、埋め込み文字に"Terasoluna" を指定し、messageSourceで読み込まれたコードを設定する。"Hello {0}!!"
+a| * "Hello Terasoluna!!"が表示されていること
+| 1.15
+| 20X系
+| ResultMessageを使用した、置換パラメータの埋め込み確認
+a| * ResultMessagesにResultMessageをsuccessで指定し、表示メッセージには、埋め込み文字に"Terasoluna" を指定し、messageSourceで読み込まれたコードを設定する。"Hello {0}!!"
+a| * "Hello Terasoluna!!"が表示されていること
+| 1.16
+| 20X系
+| ResultMessageにmessageSourceで読み込まれたコード、デフォルトメッセージを設定した場合のテスト
+a| * ResultMessagesをsuccessで指定し、ResultMessageには、messageSourceで読み込まれたコード（値："Hello World!!"）、デフォルトメッセージに"Terasoluna !!" を指定する。
+a| * "Hello World!!"が表示されていること
+| 1.17
+| 20X系
+| ResultMessageにmessageSourceで読み込まれていないコード、デフォルトメッセージを設定した場合のテスト
+a| * ResultMessagesをsuccessで指定し、ResultMessageには、messageSourceで読み込まれていないコード、デフォルトメッセージに"Terasoluna !!" を指定する。
+a| * "Terasoluna !!"が表示されていること
+
+|===
+
+=== 2. messagesAttributeName指定
+
+[cols="5,5,30,20,20", options="header"]
+|===
+| 項番
+| 観点
+| 試験項目
+| 試験条件
+| 確認内容
+
+| 2.1
+| 20X系
+| messagesAttributeNameに指定した場合のテスト
+a| * messagesAttributeName="successMessage"を指定し、ResultMessagesを設定したmodelの属性名も"successMessage"に指定
+* ResultMessagesにsuccessで指定し、表示メッセージは、messageSourceで読み込まれたコードを設定する。"Hello World!!"
+a| * "Hello World!!" が出力されること
+
+| 2.2
+| 20X系
+| messagesAttributeNameの表示項目に文字列を指定した場合のテスト
+a| * messagesAttributeName="errorMessage"を指定し、ResultMessagesを設定したmodelの属性名も"errorMessage"に指定
+* ResultMessagesに、messageSourceで読み込まれたコードを設定する。"Error Message!!"
+a| * "Error Message!!" が出力されること
+
+| 2.3
+| 20X系
+| messagesType=""を指定し、messagesAttributeNameの表示項目にResultMessageを単数指定した場合のテスト
+a| * messagesAttributeName="successMessage"を指定し、ResultMessagesを設定したmodelの属性名も"successMessage"に指定
+* ResultMessagesにsuccessで指定し、表示メッセージは、messageSourceで読み込まれたコードを設定する。"Hello World!!"
+* messagesType="" を指定
+a| * "Hello World!!" が出力されること
+* <div>タグのクラスに "alert" が指定されていること
+
+| 2.4
+| 20X系
+| messagesType=""を指定し、messagesAttributeNameの表示項目にResultMessageを複数指定した場合のテスト
+a| * messagesAttributeName="successMessages"を指定し、ResultMessagesを設定したmodelの属性名も"successMessages"に指定
+* ResultMessagesにsuccessで指定し、表示メッセージは、messageSourceで読み込まれたコードを設定する。"Hello World!!"
+* ResultMessagesにsuccessで指定し、表示メッセージは、messageSourceで読み込まれたコードを設定する。"Hello Message!!"
+* messagesType="" を指定
+a| * "Hello World!!"、"Hello Message!!"が表示されていること
+* <div>タグのクラスに "alert" が指定されていること
+
+|===
+
+=== 3. Element要素の指定
+
+[cols="5,5,30,20,20", options="header"]
+|===
+| 項番
+| 観点
+| 試験項目
+| 試験条件
+| 確認内容
+
+| 3.1
+| 20X系
+| panelElement、outerElement、innerElementが指定したタグに変更されているかのテスト
+a| * panelElement="table" を指定
+* outerElement="tr" を指定
+* innerElement="td" を指定
+* ResultMessagesにsuccessで指定し、表示メッセージは、messageSourceで読み込まれたコードを設定する。"Hello World!!"
+a| * "Hello World!!"が出力されていること
+* message要素が<table>タグで構成されていること
+* HTMLの外側のタグが<tr>タグで構成されていること
+* HTMLの内側のタグが<td>タグで構成されていること
+
+| 3.2
+| 20X系
+| panelElement(p)、outerElement("")、innerElement("")を指定した場合のテスト
+a| * panelElement="p" を指定
+* outerElement="" を指定
+* innerElement="" を指定
+* ResultMessagesにsuccessで指定し、表示メッセージは、messageSourceで読み込まれたコードを設定する。"Hello World!!"
+a| * "Hello World!!"が出力されていること
+* message要素が<p>タグで構成されていること
+* HTMLの外側のタグが存在しないこと
+* HTMLの内側のタグが存在しないこと
+
+| 3.3
+| 20X系
+| panelElement("")、outerElement(div)、innerElement("")を指定した場合のテスト
+a| * panelElement="" を指定
+* outerElement="div" を指定
+* innerElement="" を指定
+* ResultMessagesにsuccessで指定し、表示メッセージは、messageSourceで読み込まれたコードを設定する。"Hello World!!"
+a| * "Hello World!!"が出力されていること
+* message要素が存在しないこと
+* HTMLの外側のタグが<div> タグで構成されていること
+* HTMLの内側のタグが存在しないこと
+
+| 3.4
+| 20X系
+| panelElement("")、outerElement("")、innerElement("span")を指定した場合のテスト
+a| * panelElement="" を指定
+* outerElement="" を指定
+* innerElement="span" を指定
+* ResultMessagesにsuccessで指定し、表示メッセージは、messageSourceで読み込まれたコードを設定する。"Hello World!!"
+a| * "Hello World!!"が出力されていること
+* message要素が存在しないこと
+* HTMLの外側のタグが存在しないこと
+* HTMLの内側のタグが<span> タグで構成されていること
+
+| 3.5
+| 40X系
+| panelElement("")、outerElement("")、innerElement("")を指定した場合のテスト
+a| * panelElement="" を指定
+* outerElement="" を指定
+* innerElement="" を指定
+* web.xmlのerror-pageにjakarta.servlet.ServletExceptionを定義し、locationにservletError.jspを指定
+a| * servletError.jspに遷移すること
+
+|===
+
+=== 4. panelClass要素の指定
+
+[cols="5,5,30,20,20", options="header"]
+|===
+| 項番
+| 観点
+| 試験項目
+| 試験条件
+| 確認内容
+
+| 4.1
+| 20X系
+| panelClassName、panelTypeClassPrefixが指定したタグに変更されているかのテスト
+a| * panelClassName="label" panelTypeClassPrefix="label-" に変更すること
+* ResultMessagesにsuccessで指定し、表示メッセージは、messageSourceで読み込まれたコードを設定する。"Hello World!!"
+a| * "Hello World!!"が出力されていること
+* <div>タグのクラスに "label label-success" が指定されていること
+
+| 4.2
+| 20X系
+| panelClassName、panelTypeClassPrefixを未指定で設定し変更されているかのテスト
+a| * panelClassName="" panelTypeClassPrefix="" に変更すること
+* ResultMessagesにsuccessで指定し、表示メッセージは、messageSourceで読み込まれたコードを設定する。"Hello World!!"
+a| * "Hello World!!"が出力されていること
+* <div>タグのクラスに "success" が指定されていること
+
+|===
+
+=== 5. messagesType要素の指定
+
+[cols="5,5,30,20,20", options="header"]
+|===
+| 項番
+| 観点
+| 試験項目
+| 試験条件
+| 確認内容
+
+| 5.1
+| 20X系
+| messagesType="warning" を指定 + messagesAttributeName="login_error_message" を指定した値で変更されているかのテスト
+a| * messagesAttributeName="login_error_message"を指定し、ResultMessagesを設定したmodelの属性名も"login_error_message"に指定
+* ResultMessagesに文字列の、"Warn Message!!" を設定する
+* messagesType="warning" を指定
+a| * "Warn Message!!" が出力されていること
+* <div>タグのクラスに "alert alert-warning" が指定されていること
+
+| 5.2
+| 20X系
+| messagesType="warning" を指定 + messagesAttributeName="login_error_message" ResultMessages.error() を指定し、typeが上書きされていることのテスト
+a| * messagesAttributeName="login_error_message"を指定し、ResultMessagesを設定したmodelの属性名も"login_error_message"に指定
+* ResultMessagesにerrorで指定し、表示メッセージは、messageSourceで読み込まれたコードを設定する。"Warn Message!!"
+* messagesType="warning" を指定
+a| * "Warn Message!!" が出力されていること
+* <div>タグのクラスに "alert alert-warning" が指定されていること
+
+| 5.3
+| 20X系
+| messagesType="warning" を指定 + messagesAttributeNameの表示項目にResultMessageを複数指定した場合のテスト
+a| * messagesAttributeName="login_error_messages"を指定し、ResultMessagesを設定したmodelの属性名も"login_error_message"に指定
+* ResultMessagesにerrorで指定し、表示メッセージは、messageSourceで読み込まれたコードを設定する。"Warn Message!!"
+* ResultMessagesにerrorで指定し、表示メッセージは、messageSourceで読み込まれたコードを設定する。"Error Message!!" 
+* messagesType="warning" を指定
+a| * "Warn Message!!"、"Error Message!!"が出力されていること
+* <div>タグのクラスに "alert alert-warning" が指定されていること
+
+|===
+
+=== 6. ResultMessageTypeの独自実装
+
+[cols="5,5,30,20,20", options="header"]
+|===
+| 項番
+| 観点
+| 試験項目
+| 試験条件
+| 確認内容
+
+| 6.1
+| 20X系
+| ResultMessageTypeを独自実装したクラスでのtype確認のテスト(Blueprint CSS Framework 1.0使用)
+a| * {.error, .notice, .success, .info} を定義したResultMessageTypeの実装を作成
+* ResultMessagesにnoticeで指定し、表示メッセージは、messageSourceで読み込まれたコードを設定する。"Notice !!"
+* RpanelTypeClassPrefix=""を指定
+a| * "Notice !!" が出力されていること
+* <div>タグのクラスに "alert notice" が指定されていること
+
+| 6.2
+| 20X系
+| ResultMessageTypeを独自実装したクラスでのtype確認のテスト(Blueprint CSS Framework 1.0使用)
+a| * {.error, .notice, .success, .info} を定義したResultMessageTypeの実装を作成
+* ResultMessagesにerrorで指定し、表示メッセージは、messageSourceで読み込まれたコードを設定する。"Error !!"
+a| * "Error !!" が出力されていること
+* <div>タグのクラスに "alert error" が指定されていること
+
+| 6.3
+| 20X系
+| ResultMessageTypeを独自実装したクラスでのtype確認のテスト(Blueprint CSS Framework 1.0使用)
+a| * {.error, .notice, .success, .info} を定義したResultMessageTypeの実装を作成
+* ResultMessagesにsuccessで指定し、表示メッセージは、messageSourceで読み込まれたコードを設定する。"Success !!"
+a| * "Success !!" が出力されていること
+* <div>タグのクラスに "alert success" が指定されていること
+
+| 6.4
+| 20X系
+| ResultMessageTypeを独自実装したクラスでのtype確認のテスト(Blueprint CSS Framework 1.0使用)
+a| * {.error, .notice, .success, .info} を定義したResultMessageTypeの実装を作成
+* ResultMessagesにinfoで指定し、表示メッセージは、messageSourceで読み込まれたコードを設定する。"Info !!"
+a| * "Info !!" が出力されていること
+* <div>タグのクラスに "alert info" が指定されていること
+
+|===
+
+=== 7. 出力メッセージの確認
+
+[cols="5,5,30,20,20", options="header"]
+|===
+| 項番
+| 観点
+| 試験項目
+| 試験条件
+| 確認内容
+
+| 7.1
+| 20X系
+| 出力メッセージをハードコードした場合のテスト
+a| * ResultMessagesにsuccessで指定し、"Hello World!!" を設定する
+* ResultMessagesにsuccessで指定し、"Hello Message!!" を設定する
+a| * "Hello World!!"、"Hello Message!!"が表示されていること
+
+| 7.2
+| 50X系
+| メッセージコードが定義されていない場合のテスト
+a| * BusinessExceptionに設定するResultMessagesをerrorで指定し、表示メッセージは、messageSourceで読み込まれていないコードを設定する
+a| * システムエラー画面に遷移すること
+
+| 7.3
+| 40X系
+| Localeによるメッセージの変更テスト
+a| * BusinessExceptionに設定するResultMessagesをerrorで指定し、表示メッセージは、messageSourceで読み込まれたコードを設定する
+* Localeをjaに指定する
+a| * "エラーメッセージ!!" が表示されていること
+* <div>タグのクラスに "alert alert-error" が指定されていること
+
+| 7.4
+| 40X系
+| Localeによるメッセージの変更テスト
+a| * BusinessExceptionに設定するResultMessagesをerrorで指定し、表示メッセージは、messageSourceで読み込まれたコードを設定する
+* Localeをenに指定する
+a| * "Error Message!!" が表示されていること
+* <div>タグのクラスに "alert alert-error" が指定されていること
+
+| 7.5
+| 20X系
+| ResultMessagesの複数定義のテスト
+a| * ResultMessagesにsuccessで指定し、"Hello World!!" を設定する
+* ResultMessagesにerrorで指定し、messagesAttributeName="error_message"、表示メッセージは、messageSourceで読み込まれたコードを設定する。"Error Message!!"
+a| * "Hello World!!"、"Error Message!!"が表示されていること
+
+|===
+
+=== 8. スタイルによる描画変更
+
+[cols="5,5,30,20,20", options="header"]
+|===
+| 項番
+| 観点
+| 試験項目
+| 試験条件
+| 確認内容
+
+| 8.1
+| 20X系
+| 表示内容の変更が可能なことを確認するテスト(Kube FrameWork使用)
+a| * panelClassName="message" panelTypeClassPrefix="message-" に変更すること
+* ResultMessagesにsuccessで指定し、表示メッセージは、messageSourceで読み込まれたコードを設定する。"Hello World!!"
+* outerElement="" を指定
+* innerElement="" を指定
+a| * "Hello World!!" が表示されること
+* <div>タグのクラスに "message message-success" が指定されていること
+
+|===
+
+=== 9. disableHtmlEscape要素の指定
+
+[cols="5,5,30,20,20", options="header"]
+|===
+| 項番
+| 観点
+| 試験項目
+| 試験条件
+| 確認内容
+
+| 9.1
+| 20X系
+| HTML Escapeされることをテスト
+a| * disableHtmlEscape要素の指定がないこと
+* ResultMessagesにsuccessで指定し、表示メッセージは、messageSourceで読み込まれたコードを設定する。"<div>Hello World!!</div>"
+a| * "<div>Hello World!!</div>"が出力されていること
+* メッセージがHTML Escapeされたこと
+
+| 9.2
+| 20X系
+| HTML Escape機能が無効化されることをテスト
+a| * disableHtmlEscape="true"を指定すること
+* ResultMessagesにsuccessで指定し、表示メッセージは、messageSourceで読み込まれたコードを設定する。"<div>Hello World!!</div>"
+a| * "Hello World!!"が出力されていること
+* メッセージがHTML Escapeされなかったこと
+
+|===
+
+=== 10. HTMLタグ構成の確認
+
+[cols="5,5,30,20,20", options="header"]
+|===
+| 項番
+| 観点
+| 試験項目
+| 試験条件
+| 確認内容
+
+| 10.1
+| 20X系
+| 出力対象が存在しない場合に、innerElementに開始・終了タグが出力されることを確認するテスト
+a| * 出力メッセージに空文字を設定する
+a| * "<div class="alert alert-success"><ul><li></li></ul></div>"が出力されていること
+
+| 10.2
+| 20X系
+| 出力メッセージが存在しない場合に、outerElementに開始・終了タグが出力されることを確認するテスト
+a| * 出力メッセージに空のリストを設定する
+a| * "<div class="alert alert-success"><ul></ul></div>"が出力されていること
+
+| 10.3
+| 20X系
+| 出力メッセージが存在しない場合に、panelElementに開始・終了タグが出力されることを確認するテスト
+a| * 出力メッセージに空のリストを設定する
+* outerElement=""を指定
+* innerElement=""を指定
+a| * "<div class="alert alert-success"></div>"が出力されていること
+
+|===
+
+※1 基本全ての試験で確認する。拡張する場合のみ指定値で確認し、それ以外はデフォルト指定であること。
+
+※2 基本 Localeはenを設定

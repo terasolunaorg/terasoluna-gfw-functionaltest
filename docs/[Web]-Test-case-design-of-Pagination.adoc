@@ -1,0 +1,809 @@
+= terasoluna-gfw-web/Pagination
+
+org.terasoluna.gfw.web.paginationパッケージのテスト
+
+== PaginationTag出力テスト
+
+テストケースクラス: `org.terasoluna.gfw.functionaltest.app.pagination.PaginationTest`
+
+=== 1. デフォルト指定(page="${page}"のみ)
+
+[cols="5,5,30,20,20", options="header"]
+|===
+| 項番
+| 観点
+| 試験項目
+| 試験条件
+| 確認内容
+
+| 1.1
+| 20X系
+a| ページ数がmaxDisplayCount(デフォルト=10)より小さい場合に全ページ用のページネーションが出力されることのテスト
+デフォルトのHTMLタグ、クラス、クエリでページネーションが作成されることのテスト
+a| * Pageオブジェクトのページ数が3
+* currentPage=1
+a| * 1~3ページがすべて表示されていること
+* currentPageへのリンクのクエリが「javascript:void(0)」となっていること
+* ページネーションを構成する外側のHTMLタグが<ul>であること ※ 1
+* ページネーションを構成する内側のHTMLタグが<li>であること ※ 1
+* previousLinkが\&lt;になっていること ※ 1
+* nextLinkが\&gt;になっていること ※ 1
+* firstLinkが\&lt;\&lt;になっていること ※ 1
+* lastLinkが\&gt;\&gt;になっていること  ※ 1
+* previousLinkの遷移先が、javascript:void(0) になっていること ※ 1
+* currentPageに指定されたクラスが、“active”であること ※ 1
+* firstLinkに指定されたクラスが、“disabled”であること ※ 1
+* lastPageで3ページ目に移動できること
+
+| 1.2
+| 20X系
+| ページ数=maxDisplayCountの場合に全ページ用のページネーションが出力されることのテスト
+a| * Pageオブジェクトのページ数が10
+* currentPage=1
+a| * 1~10ページが表示されていること
+* lastPageで10ページ目に移動できること
+
+| 1.3
+| 20X系
+| ページ数がmaxDisplayCountより大きい場合に全ページ用のページネーションが出力されることのテスト
+a| * Pageオブジェクトのページ数が20
+* currentPage=1
+a| * 1~10ページが表示されていること
+* currentPage=1の状態で、第11ページへのリンクが存在しないこと
+* 6ページのリンクを押下した場合、1-10ページが表示されていること
+* 7ページのリンクを押下した場合、2-11ページが表示されていること
+* lastPageで20ページ目に移動できること
+
+| 1.4
+| 20X系
+| ページ数が0の場合にページネーションが出力されないことのテスト
+a| * Pageオブジェクトのページ数が0
+* currentPage=1
+a| * ページネーションが表示されないこと
+
+| 1.5
+| 20X系
+| Pageオブジェクトがnullの場合にページネーションが出力されないことのテスト
+a| * Pageオブジェクト=null
+* currentPage=1
+a| * ページネーションが表示されないこと
+
+| 1.6
+| 20X系
+| currentPage=firstPageの場合にジャンプリンクがactive/disabledになっているかのテスト
+a| * Pageオブジェクトのページ数が3
+* currentPage=1
+a| * previousLinkがdisabledになっていること
+* nextLinkがactiveになっていること
+* firstLinkがdisabledになっていること
+* lastLinkがactiveになっていること
+
+| 1.7
+| 20X系
+| firstPage < currentPage < lastPageの場合にジャンプリンクがactive/disabledになっているかのテスト
+a| * Pageオブジェクトのページ数が3
+* currentPage=2
+a| * previousLinkがactiveになっていること
+* nextLinkがactiveになっていること
+* firstLinkがactiveになっていること
+* lastLinkがactiveになっていること
+
+| 1.8
+| 20X系
+| currentPage = lastPageの場合にジャンプリンクがactive/disabledになっているかのテスト
+a| * Pageオブジェクトのページ数が3
+* currentPage=3
+a| * previousLinkがactiveになっていること
+* nextLinkがdisabledになっていること
+* firstLinkがactiveになっていること
+* lastLinkがdisabledになっていること
+
+| 1.9
+| 20X系
+| fistPage < currentPage < maxDisplayCount < lastPageの場合にジャンプリンクがactive/disabledになっているかのテスト
+a| * Pageオブジェクトのページ数が20
+* currentPage=3
+a| * previousLinkがactiveになっていること
+* nextLinkがactiveになっていること
+* firstLinkがactiveになっていること
+* lastLinkがactiveになっていること
+
+| 1.10
+| 20X系
+| fistPage < maxDisplayCount < currentPage < lastPageの場合にジャンプリンクがactive/disabledになっているかのテスト
+a| * Pageオブジェクトのページ数が20
+* currentPage=13
+a| * previousLinkがactiveになっていること
+* nextLinkがactiveになっていること
+* firstLinkがactiveになっていること
+* lastLinkがactiveになっていること
+
+| 1.11
+| 20X系
+| active/disabledのページリンクを押下しても、リクエストが送信されないこと。（デフォルト"javascript:void(0)"のため）
+a| * Pageオブジェクトのページ数が20
+* currentPage=1
+a| * previousLinkをクリックしてもリクエストが送信されないこと。（フッターのX-Trackの値が変更されないこと）
+* firstLinkをクリックしてもリクエストが送信されないこと。（フッターのX-Trackの値が変更されないこと）
+* page=1をクリックしてもリクエストが送信されないこと。（フッターのX-Trackの値が変更されないこと）
+* nextLinkをクリックしたらリクエストが送信されること。（フッターのX-Trackの値が変更されること)
+
+|===
+
+=== 2. pathTmplの指定
+
+[cols="5,5,30,20,20", options="header"]
+|===
+| 項番
+| 観点
+| 試験項目
+| 試験条件
+| 確認内容
+
+| 2.1
+| 20X系
+| ページネーションの遷移を押下した際に送信するパスがpathTmplの値で変更されていることのテスト
+a| * Pageオブジェクトのページ数が3
+* pathTmpl="/terasoluna-gfw-functionaltest-web/pagination/2_1" を指定
+a| * ページネーションのリンクのURLのパスが "/terasoluna-gfw-functionaltest-web/pagination/2_1" に変更されていること。
+
+|===
+
+=== 3. queryTmplの指定
+
+[cols="5,5,30,20,20", options="header"]
+|===
+| 項番
+| 観点
+| 試験項目
+| 試験条件
+| 確認内容
+
+| 3.1
+| 20X系
+a| ページネーションの遷移を押下した際に送信するクエリがqueryTmplで指定した値に変更されていることのテスト
+Sortクラスの値が引き継げること
+a| * Pageオブジェクトのページ数が3
+* Sortクラスに右記を設定する {property=firstname direction=DESC},{property=lastname direction=DESC}
+* currentPage=1
+* queryTmpl="page={page}&size={size}&sort={sortOrderProperty}&Direction={sortOrderDirection}" を指定
+a| * ページネーションのリンクのクエリが以下になっていること
+* currentPage=1 = javascript:void(0)
+* page=2 = ?page=1&size=100&sort=fistname&Direction=DESC
+
+|===
+
+=== 4. maxDisplayCountの指定
+
+[cols="5,5,30,20,20", options="header"]
+|===
+| 項番
+| 観点
+| 試験項目
+| 試験条件
+| 確認内容
+
+| 4.1
+| 20X系
+| maxDisplayCountで指定した値が最大表示数に変更されていることのテスト
+a| * Pageオブジェクトのページ数が30
+* maxDisplayCount="20" を指定
+a| * 1～20ページに変更されていること
+* 11ページのリンクを押下した場合、1-20ページが表示されていること
+* 12ページのリンクを押下した場合、2-21ページが表示されていること
+
+| 4.2
+| 20X系
+| maxDisplayCountが"0"の場合、ナンバーリンクが表示されていないことのテスト
+a| * Pageオブジェクトのページ数が30
+* maxDisplayCount="0" を指定
+a| * nextLink、firstLink、previousLink、lastLinkのみの表示になっていること
+
+| 4.3
+| 20X系
+a| maxDisplayCountがブランクの場合、ナンバーリンクが表示されていないことのテスト
+サーバ毎に挙動が異なりWeblogicで試験が失敗するため@Ignoreを付けている。その他のサーバで実施する際には@Ignoreを外す必要がある
+https://github.com/terasolunaorg/terasoluna-gfw-functionaltest/issues/924 で改善する予定
+a| * Pageオブジェクトのページ数が30
+* maxDisplayCount="" を指定
+a| * nextLink、firstLink、previousLink、lastLinkのみの表示になっていること
+
+|===
+
+=== 5. outerElementの指定
+
+[cols="5,5,30,20,20", options="header"]
+|===
+| 項番
+| 観点
+| 試験項目
+| 試験条件
+| 確認内容
+
+| 5.1
+| 20X系
+| paginationを構成するHTMLの外側のタグが指定した値に変更されていることのテスト
+a| * Pageオブジェクトのページ数が3
+* outerElement="div" を指定
+a| * ページネーションを構成するHTMLの外側のタグが<div>に変更されていること
+
+|===
+
+=== 6. innerElementの指定
+
+[cols="5,5,30,20,20", options="header"]
+|===
+| 項番
+| 観点
+| 試験項目
+| 試験条件
+| 確認内容
+
+| 6.1
+| 20X系
+| paginationを構成するHTMLの内側のタグが指定した値に変更されていることのテスト
+a| * Pageオブジェクトのページ数が3
+* innerElement="div"を指定
+a| * ページネーションを構成するHTMLの内側のタグが<div>に変更されていること
+
+|===
+
+=== 7. firstLinkTextの指定
+
+[cols="5,5,30,20,20", options="header"]
+|===
+| 項番
+| 観点
+| 試験項目
+| 試験条件
+| 確認内容
+
+| 7.1
+| 20X系
+| 先頭へ戻るリンクの表示内容が指定した値に変更されていることのテスト
+a| * Pageオブジェクトのページ数が3
+* firstLinkText="first"を指定
+a| * firstLinkがfirstになっていること
+
+| 7.2
+| 20X系
+| 先頭へ戻るリンクの表示内容がブランクの場合、デフォルト表示されていることのテスト
+a| * Pageオブジェクトのページ数が3
+* firstLinkText=""を指定
+a| * firstLinkが非表示になっていること
+
+|===
+
+=== 8. previousLinkTextの指定
+
+[cols="5,5,30,20,20", options="header"]
+|===
+| 項番
+| 観点
+| 試験項目
+| 試験条件
+| 確認内容
+
+| 8.1
+| 20X系
+| 前へ戻るリンクの表示内容が指定した値に変更されていることのテスト
+a| * Pageオブジェクトのページ数が3
+* previousLinkText="prev"を指定
+a| * previousLinkがprevになっていること
+
+| 8.2
+| 20X系
+| 前へ戻るリンクの表示内容がブランクの場合、デフォルト表示されていることのテスト
+a| * Pageオブジェクトのページ数が3
+* previousLinkText=""を指定
+a| * previousLinkが非表示になっていること
+
+|===
+
+=== 9. nextLinkTextの指定
+
+[cols="5,5,30,20,20", options="header"]
+|===
+| 項番
+| 観点
+| 試験項目
+| 試験条件
+| 確認内容
+
+| 9.1
+| 20X系
+| 次へ進むリンクの表示内容が指定した値に変更されていることのテスト
+a| * Pageオブジェクトのページ数が3
+* nextLinkText="next" を指定
+a| * nextLinkがnextになっていること
+
+| 9.2
+| 20X系
+| 次へ進むリンクの表示内容がブランクの場合、デフォルト表示されていることのテスト
+a| * Pageオブジェクトのページ数が3
+* nextLinkText="" を指定
+a| * nextLinkが非表示になっていること
+
+|===
+
+=== 10. lastLinkTextの指定
+
+[cols="5,5,30,20,20", options="header"]
+|===
+| 項番
+| 観点
+| 試験項目
+| 試験条件
+| 確認内容
+
+| 10.1
+| 20X系
+| 最終ページへ進むリンクの表示内容が指定した値に変更されていることのテスト
+a| * Pageオブジェクトのページ数が3
+* lastLinkText="last" を指定
+a| * lastLinkの表示テキストが"last"になっていること
+
+| 10.2
+| 20X系
+| 最終ページへ進むリンクの表示内容がブランクの場合、デフォルト表示されていることのテスト
+a| * Pageオブジェクトのページ数が3
+* lastLinkText="" を指定
+a| * lastLinkが非表示になっていること
+
+|===
+
+=== 11. disabledHrefの指定
+
+[cols="5,5,30,20,20", options="header"]
+|===
+| 項番
+| 観点
+| 試験項目
+| 試験条件
+| 確認内容
+
+| 11.1
+| 20X系
+| 無効な先頭ページ、最終ページを表示している際の遷移先が指定した値に変更されていることのテスト
+a| * Pageオブジェクトのページ数が3
+* disabledHref="javascript:void(0);"
+* currentPage=1
+a| * firstLink、previousLink、nextLink、lastLinkリンクが <a href="javascript:void(0);"> で定義されていること
+
+| 11.2
+| 20X系
+| 無効な先頭ページ、最終ページを表示している際の遷移先の表示内容がブランクの場合、リンク表示されないことのテスト
+a| * Pageオブジェクトのページ数が3
+* disabledHref=""
+* currentPage=1
+a| * firstLink、previousLink、nextLink、lastLinkリンクが無効の場合 <a> タグが定義されていないこと
+
+|===
+
+=== 12. activeClassの指定
+
+[cols="5,5,30,20,20", options="header"]
+|===
+| 項番
+| 観点
+| 試験項目
+| 試験条件
+| 確認内容
+
+| 12.1
+| 20X系
+| 表示しているページに指定するclassが指定した値に変更されていることのテスト
+a| * Pageオブジェクトのページ数が3
+* activeClass="actv" を指定
+a| * currentPage のclassが <li class="actv"> が指定されていること
+
+| 12.2
+| 20X系
+| 表示しているページに指定するclassがブランクの場合、ブランク設定されていることのテスト
+a| * Pageオブジェクトのページ数が3
+* activeClass="" を指定
+a| * currentPage のclassが <li class=""> が指定されていること
+
+|===
+
+=== 13. disabledClassの指定
+
+[cols="5,5,30,20,20", options="header"]
+|===
+| 項番
+| 観点
+| 試験項目
+| 試験条件
+| 確認内容
+
+| 13.1
+| 20X系
+| 先頭ページ、最終ページを表示している際の無効時の描画classが指定した値に変更されていることのテスト
+a| * Pageオブジェクトのページ数が3
+* disabledClass="dis" を指定
+* currentPage=1
+a| * previousLink のclassが <li class="dis"> が指定されていること
+
+| 13.2
+| 20X系
+| 先頭ページ、最終ページを表示している際の無効時の描画classがブランクの場合、ブランク設定されていることのテスト
+a| * Pageオブジェクトのページ数が3
+* disabledClass="" を指定
+* currentPage=1
+a| * previousLink のclassが <li class=""> が指定されていること
+
+|===
+
+=== 14. pathTmpl、queryTmplの組み合わせ指定
+
+[cols="5,5,30,20,20", options="header"]
+|===
+| 項番
+| 観点
+| 試験項目
+| 試験条件
+| 確認内容
+
+| 14.1
+| 20X系
+| pathTmpl、queryTmplの組み合わせ時の確認
+a| * Pageオブジェクトのページ数が3
+* pathTmpl="/pagination/14_1/{page}/{size}" を指定
+* queryTmpl="" を指定
+a| * ページネーションのリンクのURLのパスが "/terasoluna-gfw-functionaltest-web/pagination/14_1/0/3" に変更されていること。
+* クエリが付与されていないこと。
+
+|===
+
+=== 15.  outerElement、innerElementの組み合わせ
+
+[cols="5,5,30,20,20", options="header"]
+|===
+| 項番
+| 観点
+| 試験項目
+| 試験条件
+| 確認内容
+
+| 15.1
+| 20X系
+| outerElementをなし、innerElementを表示する組み合わせ
+a| * Pageオブジェクトのページ数が3
+* outerElement=""
+* innerElement="span"
+a| * <span>タグでのみページネーションが構成されていること。
+
+|===
+
+=== 16. firstLinkText、lastLinkTextの組み合わせ指定
+
+[cols="5,5,30,20,20", options="header"]
+|===
+| 項番
+| 観点
+| 試験項目
+| 試験条件
+| 確認内容
+
+| 16.1
+| 20X系
+| 先頭へ戻るリンクの表示内容が指定した値に変更されていることのテスト
+a| * Pageオブジェクトのページ数が3
+* firstLinkText="first"を指定
+* lastLinkText="last"
+* previousLinkText=""を指定
+* nextLinkText="" を指定
+* cssframeworkにbootstrapを指定
+a| * firstLinkが"first"、lastLinkが"last"になっていること
+
+| 16.2
+| 20X系
+| 先頭へ戻るリンクの表示内容が指定した値に変更されていることのテスト
+a| * Pageオブジェクトのページ数が3
+* firstLinkText=""を指定
+* lastLinkText=""を指定
+* previousLinkText=""を指定
+* nextLinkText="" を指定
+a| * firstLinkが非表示になっていること
+* lastLinkが非表示になっていること
+
+|===
+
+=== 17. previousLinkText、nextLinkTextの組み合わせ指定
+
+[cols="5,5,30,20,20", options="header"]
+|===
+| 項番
+| 観点
+| 試験項目
+| 試験条件
+| 確認内容
+
+| 17.1
+| 20X系
+| 次へ進むリンクの表示内容が指定した値に変更されていることのテスト
+a| * Pageオブジェクトのページ数が3
+* previousLinkText="prev"を指定
+* nextLinkText="next" を指定
+* firstLinkText=""を指定
+* lastLinkText=""を指定
+a| * previousLinkがprevになっていること
+* nextLinkがnextになっていること
+
+|===
+
+=== 18. outerElement、innerElement、pageLinkのclass指定
+
+[cols="5,5,30,20,20", options="header"]
+|===
+| 項番
+| 観点
+| 試験項目
+| 試験条件
+| 確認内容
+
+| 18.1
+| 20X系
+| outerElementClassを指定して、<ul>タグに、classを追加できることのテスト
+a| * Pageオブジェクトのページ数が3
+* outerElementClass="rightPosition"を指定
+a| * <ul> タグのclassに"rightPosition"が設定され、右の位置に指定されていること
+
+| 18.2
+| 20X系
+| innerElementClassを指定して、選択可能な<li>タグに、classを追加できることのテスト
+a| * Pageオブジェクトのページ数が3
+* innerElementClass="enable"を指定
+a| * <li> タグのclassに"enable"が設定され、文字が大きく表示されていること
+
+| 18.3
+| 20X系
+| anchorClassを指定して、<a>タグに、classを追加できることのテスト
+a| * Pageオブジェクトのページ数が3
+* anchorClass="link"を指定
+a| * <a> タグのclassに"link"が設定されていること
+
+|===
+
+=== 19. CSSによるスタイル変更
+
+[cols="5,5,30,20,20", options="header"]
+|===
+| 項番
+| 観点
+| 試験項目
+| 試験条件
+| 確認内容
+
+| 19.1
+| 20X系
+| Pagerの実現のテスト
+a| * Pageオブジェクトのページ数が3
+* firstLinkText=""を指定
+* lastLinkText=""を指定
+* maxDisplayCount="0" を指定
+* nextLinkText="next"
+* previousLinkText="prev"
+* outerElementClass="pager"を指定
+a| * nextLink、firstLinkのみが表示されていること。
+
+|===
+
+※1 基本全ての試験で確認する。拡張する場合のみ指定値で確認し、それ以外はデフォルト指定であること。
+
+=== 20. criteriaQuery属性による検索条件の引き継ぎ
+
+バグ対応(https://github.com/terasolunaorg/terasoluna-gfw/issues/12) で追加。
+
+[cols="5,5,30,20,20", options="header"]
+|===
+| 項番
+| 観点
+| 試験項目
+| 試験条件
+| 確認内容
+
+| 20.1
+| 20X系
+| criteriaQuery属性(f:query使用)に指定した引き継ぎ条件(クエリ文字列)でページ検索が行われることを確認する。
+a| * 検索条件には、URLエンコーディング対象の文字(f:query使用)を含める。
+a| * 検索条件に指定した値がページ検索時に引き継がれていること。
+
+| 20.2
+| 20X系
+| criteriaQuery属性(f:u使用)に指定した引き継ぎ条件(クエリ文字列)でページ検索が行われることを確認する。
+a| * 検索条件には、URLエンコーディング対象の文字(f:u使用)を含める。
+a| * 検索条件に指定した値がページ検索時に引き継がれていること。
+
+| 20.3
+| 20X系
+| criteriaQuery属性に指定した引き継ぎ条件(クエリ文字列)がXSS対策されることを確認する。
+a| * 検索条件には、XSS対策が必要な文字を含める。
+* disableHtmlEscapeOfCriteriaQuery=false(or 属性省略)を指定する。
+a| * XSS対策が必要な文字がエスケープされ、指定した値がページ検索時に引き継がれること。
+
+| 20.4
+| 20X系
+| criteriaQuery属性に指定した引き継ぎ条件(クエリ文字列)に対してXSS対策(HTMLエスケープ処理)を無効化できることを確認する。
+a| * 検索条件には、URL Encodingが行われた文字(XSS対策が不要な文字、f:query使用)を指定する。
+* disableHtmlEscapeOfCriteriaQuery=trueを指定する。
+a| * 指定した値がページ検索時に引き継がれること。
+
+| 20.5
+| 20X系
+| criteriaQuery属性に指定した引き継ぎ条件(クエリ文字列)に対してXSS対策(HTMLエスケープ処理)を無効化できることを確認する。
+a| * 検索条件には、URL Encodingが行われた文字(XSS対策が不要な文字、f:u使用)を指定する。
+* disableHtmlEscapeOfCriteriaQuery=trueを指定する。
+a| * 指定した値がページ検索時に引き継がれること。
+
+|===
+
+=== 21. pathTmpl、criteriaQueryの組み合わせによる検索条件のURLエンコーディングと引き継ぎ確認
+
+[cols="5,5,30,20,20", options="header"]
+|===
+| 項番
+| 観点
+| 試験項目
+| 試験条件
+| 確認内容
+
+| 21.1
+| 20X系
+| pathTmpl、criteriaQuery(f:query使用)の組み合わせ時の確認
+a| * pathTmpl="/pagination/21_1/{page}/{size}" を指定
+* criteriaQuery属性に指定した引き継ぎ条件(クエリ文字列)でページ検索が行われることを確認する。
+* 検索条件には、URLエンコーディング対象の文字(f:query使用)を含める。
+a| * ページネーションのリンクのURLのパスが "/terasoluna-gfw-functionaltest-web/pagination/21_1/{page}/{size}" に変更されていること。
+* 検索条件に指定した値がURLエンコーディングされていること。
+* 検索条件に指定した値がページ検索時に引き継がれること。
+
+| 21.2
+| 20X系
+| pathTmpl、criteriaQuery(f:u使用)の組み合わせ時の確認
+a| * pathTmpl="/pagination/21_1/{page}/{size}" を指定
+* criteriaQuery属性に指定した引き継ぎ条件(クエリ文字列)でページ検索が行われることを確認する。
+* 検索条件には、URLエンコーディング対象の文字(f:u使用)を含める。
+a| * ページネーションのリンクのURLのパスが "/terasoluna-gfw-functionaltest-web/pagination/21_1/{page}/{size}" に変更されていること。
+* 検索条件に指定した値がURLエンコーディングされていること。
+* 検索条件に指定した値がページ検索時に引き継がれること。
+
+|===
+
+=== 22. queryTmpl、criteriaQueryの組み合わせによる検索条件のURLエンコーディングと引き継ぎ確認
+
+[cols="5,5,30,20,20", options="header"]
+|===
+| 項番
+| 観点
+| 試験項目
+| 試験条件
+| 確認内容
+
+| 22.1
+| 20X系
+| queryTmpl、criteriaQuery(f:query使用)の組み合わせ時の確認
+a| * queryTmpl="page={page}&size={size}&sort={sortOrderProperty},{sortOrderDirection}" を指定
+* criteriaQuery属性に指定した引き継ぎ条件(クエリ文字列)でページ検索が行われることを確認する。
+* 検索条件には、URLエンコーディング対象の文字(f:query使用)を含める。
+a| * ページネーションのリンクのクエリが"?page=1&size=10&sort=personId,DESC"になっていること
+* 検索条件に指定した値がURLエンコーディングされていること。
+* 検索条件に指定した値がページ検索時に引き継がれること。
+
+| 22.2
+| 20X系
+| queryTmpl、criteriaQuery(f:u使用)の組み合わせ時の確認
+a| * queryTmpl="page={page}&size={size}&sort={sortOrderProperty},{sortOrderDirection}" を指定
+* criteriaQuery属性に指定した引き継ぎ条件(クエリ文字列)でページ検索が行われることを確認する。
+* 検索条件には、URLエンコーディング対象の文字(f:u使用)を含める。
+a| * ページネーションのリンクのクエリが"?page=1&size=10&sort=personId,DESC"になっていること
+* 検索条件に指定した値がURLエンコーディングされていること。
+* 検索条件に指定した値がページ検索時に引き継がれること。
+
+|===
+
+=== 23. pathTmpl、queryTmpl、criteriaQueryの組み合わせによる検索条件のURLエンコーディングと引き継ぎ確認
+
+[cols="5,5,30,20,20", options="header"]
+|===
+| 項番
+| 観点
+| 試験項目
+| 試験条件
+| 確認内容
+
+| 23.1
+| 20X系
+| pathTmpl、queryTmpl、criteriaQuery(f:query使用)の組み合わせ時の確認
+a| * pathTmpl="/pagination/23_1/{page}/{size}" を指定
+* queryTmpl="page={page}&size={size}&sort={sortOrderProperty},{sortOrderDirection}" を指定
+* criteriaQuery属性に指定した引き継ぎ条件(クエリ文字列)でページ検索が行われることを確認する。
+* 検索条件には、URLエンコーディング対象の文字(f:query使用)を含める。
+a| * ページネーションのリンクのURLのパスが "/terasoluna-gfw-functionaltest-web/pagination/23_1/{page}/{size}" に変更されていること。
+* ページネーションのリンクのクエリが"?page=1&size=10&sort=firstname,DESC"になっていること
+* 検索条件に指定した値がURLエンコーディングされていること。
+* 検索条件に指定した値がページ検索時に引き継がれること。
+
+| 23.2
+| 20X系
+| pathTmpl、queryTmpl、criteriaQuery(f:u使用)の組み合わせ時の確認
+a| * pathTmpl="/pagination/23_1/{page}/{size}" を指定
+* queryTmpl="page={page}&size={size}&sort={sortOrderProperty},{sortOrderDirection}" を指定
+* criteriaQuery属性に指定した引き継ぎ条件(クエリ文字列)でページ検索が行われることを確認する。
+* 検索条件には、URLエンコーディング対象の文字(f:u使用)を含める。
+a| * ページネーションのリンクのURLのパスが "/terasoluna-gfw-functionaltest-web/pagination/23_1/{page}/{size}" に変更されていること。
+* ページネーションのリンクのクエリが"?page=1&size=10&sort=firstname,DESC"になっていること
+* 検索条件に指定した値がURLエンコーディングされていること。
+* 検索条件に指定した値がページ検索時に引き継がれること。
+
+|===
+
+=== 24. enableLinkOfCurrentPage=trueの場合、currentPageのリクエストが行われること
+
+[cols="5,5,30,20,20", options="header"]
+|===
+| 項番
+| 観点
+| 試験項目
+| 試験条件
+| 確認内容
+
+| 24.1
+| 20X系
+| activeのページリンクを押下して、リクエストが送信されること。
+a| * Pageオブジェクトのページ数が20
+* currentPage=1
+a| * page=1がactiveになっていること
+* page=1のリンクのクエリが"?page=0&size=15"になっていること。
+* page=1をクリックしたらリクエストが送信されること。（フッターのX-Trackの値が変更されること）
+
+|===
+
+=== 25. JavaScriptを使用したページリンクの無効化
+
+[cols="5,5,30,20,20", options="header"]
+|===
+| 項番
+| 観点
+| 試験項目
+| 試験条件
+| 確認内容
+
+| 25.1
+| 20X系
+| disabeled,activeのページリンクが
+a| * Pageオブジェクトのページ数が20
+* currentPage=1
+* paginationタグにdisabledHref="#"属性を追加
+* jspにJavaScriptでクリック無効を追加
+a| * previousLinkのリンクがデフォルトの"javascript:void(0)"から変更されていること
+* firstLinkのリンクがデフォルトの"javascript:void(0)"から変更されていること
+* page=1のリンクがデフォルトの"javascript:void(0)"から変更されていること
+* previousLinkをクリックしてもリクエストが送信されないこと。（フッターのX-Trackの値が変更されないこと）
+* firstLinkをクリックしてもリクエストが送信されないこと。（フッターのX-Trackの値が変更されないこと）
+* page=1をクリックしてもリクエストが送信されないこと。（フッターのX-Trackの値が変更されないこと）
+* nextLinkをクリックしたらリクエストが送信されること。（フッターのX-Trackの値が変更されること）
+
+|===
+
+=== 26. HTMLタグ構成の確認
+
+[cols="5,5,30,20,20", options="header"]
+|===
+| 項番
+| 観点
+| 試験項目
+| 試験条件
+| 確認内容
+
+| 26.1
+| 20X系
+| ナンバーリンクが非表示の場合に、outerElementに開始・終了タグが出力されることを確認する
+a| * firstLinkText=""を指定
+* previousLinkText=""を指定
+* nextLinkText=""を指定
+* lastLinkText=""を指定
+* maxDisplayCount="0"を指定
+a| * "<ul></ul>"が出力されていること
+
+|===

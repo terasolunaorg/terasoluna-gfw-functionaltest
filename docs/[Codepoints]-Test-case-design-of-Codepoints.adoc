@@ -1,0 +1,641 @@
+= terasoluna-gfw-codepoints/CodePoints
+
+== CodePointsを使った文字種チェックテスト
+
+テストケースクラス: `org.terasoluna.gfw.functionaltest.app.codepoints.CodePointsTest`
+
+=== 1. CodePointsでの文字種チェック
+
+[cols="5,5,30,20,20", options="header"]
+|===
+| 項番
+| 観点
+| 試験項目
+| 試験条件
+| 確認内容
+
+| 1.1
+| 20X系
+| CodePoints#ofメソッドで、コードポイント集合のインスタンスを作成してキャッシュする。
+a| * CodePoints#ofメソッドで、JIS_X_0208_Katakanaのインスタンスを2つ作成。
+* 一つ目のインスタンスを使用し、CodePoints#containsAllメソッドで、"カナ"をチェックする。
+a| * 一つ目と二つ目のインスタンスが同一であること。
+* trueが返却されること。
+
+
+| 1.2
+| 20X系
+| 既存のコードポイント集合のインスタンスをnewで作成する。
+a| * newでJIS_X_0208_Katakanaのインスタンスを作成。
+* CodePoints#containsAllメソッドで、"カナ"をチェックする。
+a| * trueが返却されること。
+
+| 1.3
+| 20X系
+| CodePointsのコンストラクタにコードポイントを指定してコードポイント集合を作成する。
+a| * コンストラクタに0x0061（a）, 0x0062（b）を指定する。
+* CodePoints#containsAllメソッドで、"ab"をチェックする。
+a| * trueが返却されること。
+
+| 1.4
+| 20X系
+| CodePointsのコンストラクタにSetを指定してコードポイント集合を作成する。
+a| * Set<Integer>に0x0061（a）, 0x0062（b）を登録し、CodePointsのコンストラクタに作成したSet指定する。
+* CodePoints#containsAllメソッドで、"ab"をチェックする。
+a| * trueが返却されること。
+
+| 1.5
+| 20X系
+| CodePointsのコンストラクタにコードポイントの文字列を指定してコードポイント集合を作成する。
+a| * コンストラクタに"ab"を指定する。
+* CodePoints#containsAllメソッドで、"ab"をチェックする。
+a| * trueが返却されること.
+
+| 1.6
+| 20X系
+| CodePointsのコンストラクタにコードポイントの文字列を複数指定してコードポイント集合を作成する。
+a| * コンストラクタに"a"と"b"を指定する。
+* CodePoints#containsAllメソッドで、"ab"をチェックする。"
+a| * trueが返却されること。
+
+| 1.7
+| 20X系
+| 和集合で新規のコードポイント集合のインスタンスを作成する。
+a|* "ab"から成るコードポイント集合と、"cd"から成るコードポイント集合を作成する。
+* 上記２つのコードポイント集合の和集合を行う。
+* 上記を使用して、CodePoints#containsAllメソッドで、"abcd"をチェックする。
+a| * trueが返却されること。
+
+| 1.8
+| 20X系
+| 差集合で新規のコードポイント集合のインスタンスを作成する。
+a| * "abcd"から成るコードポイント集合と、"cd"から成るコードポイント集合を作成する。
+* 上記２つのコードポイント集合の差集合を行う。
+* 上記を使用して、CodePoints#containsAllメソッドで、"ab"をチェックする。
+a| * trueが返却されること。
+
+| 1.9
+| 20X系
+| 積集合で新規のコードポイント集合のインスタンスを作成する。
+a| * "abcd"から成るコードポイント集合と、"cde"から成るコードポイント集合を作成する。
+* 上記２つのコードポイント集合の積集合を行う。
+* 上記を使用して、CodePoints#containsAllメソッドで、"cd"をチェックする。
+a| * trueが返却されること。
+
+| 1.10
+| 20X系
+a| CodePoints#containsAllメソッドで、文字種チェックを行う。
+1文字
+a| * JIS_X_0208_Katakanaを使用する。
+* 文字列"カ"でチェックを行う。
+a| * trueが返却されること。
+
+| 1.11
+| 20X系
+a| CodePoints#containsAllメソッドで、文字種チェックを行う。
+複数文字
+a| * JIS_X_0208_Katakanaを使用する。
+* 文字列"カナ"でチェックを行う。
+a| * trueが返却されること。
+
+| 1.12
+| 20X系
+a| CodePoints#containsAllメソッドで、文字種チェックを行う。
+チェックエラー
+a| * JIS_X_0208_Katakanaを使用する。
+* 文字列"カナa"でチェックを行う。
+a| * falseが返却されること。
+
+| 1.13
+| 20X系
+a| CodePoints#firstExcludedContPointメソッドで、文字種チェックを行う。
+不一致文字種無し
+a| * JIS_X_0208_Katakanaを使用する。
+* 文字列"カナ"でチェックを行う。
+a| * CodePoints#NOT_FOUNDが返却されること。
+
+| 1.14
+| 20X系
+a| CodePoints#firstExcludedContPointメソッドで、文字種チェックを行う。
+先頭に不一致文字種
+a| * JIS_X_0208_Katakanaを使用する。
+* 文字列"aカナ"でチェックを行う。
+a| * 0x0061 (a)が返却されること。
+
+| 1.15
+| 20X系
+a| CodePoints#firstExcludedContPointメソッドで、文字種チェックを行う。
+途中に不一致文字種
+a| * JIS_X_0208_Katakanaを使用する。
+* 文字列"カaナ"でチェックを行う。
+a| * 0x0061 (a)が返却されること。
+
+| 1.16
+| 20X系
+a| CodePoints#firstExcludedContPointメソッドで、文字種チェックを行う。
+末尾に不一致文字種
+a| * JIS_X_0208_Katakanaを使用する。
+* 文字列"カナa"でチェックを行う。
+a| * 0x0061 (a)が返却されること。
+
+| 1.17
+| 20X系
+a| CodePoints#allExcludedCodePointsメソッドで、文字種チェックを行う。
+不一致文字種無し
+a| * JIS_X_0208_Katakanaを使用する。
+* 文字列"カナ"でチェックを行う。
+a| * サイズ0 の Size<Integer>が返却されること。
+
+| 1.18
+| 20X系
+a| CodePoints#allExcludedCodePointsメソッドで、文字種チェックを行う。
+不一致文字種１つ
+a| * JIS_X_0208_Katakanaを使用する。
+* 文字列"カナa"でチェックを行う。
+a| * 以下の文字が格納されたSize＜Integer>が返却されること。
+* [0x0061 (a)]
+
+| 1.19
+| 20X系
+a| CodePoints#allExcludedCodePointsメソッドで、文字種チェックを行う。
+不一致文字種複数
+a| * JIS_X_0208_Katakanaを使用する。
+* 文字列"カaナb"でチェックを行う。
+a| * 以下の文字が格納されたSize＜Integer>が返却されること。
+* [0x0061 (a), 0x0062 (b)]
+
+|===
+
+
+=== 2. @ConsistOfアノテーションにてBean Validationチェックを行う。
+
+
+準備1． 以下のアノテーションが設定されたフィールドを持つJavaBeanを作成する。
+
+[source,java]
+----
+  
+@ConsistOf(JIS_X_0208_Hiragana.class)
+private String jisX208Hiragana;
+
+@ConsistOf({JIS_X_0208_Hiragana.class, JIS_X_0208_Katakana.class})
+private String jisX208HiraganaKatakana;
+
+@ConsistOf(ASCIIControlChars.class)
+private String asciiCtrlChars;
+
+@ConsistOf(ASCIIPrintableChars.class)
+private String asciiPrntChars;
+
+@ConsistOf(CRLF.class)
+private String crlf;
+
+@ConsistOf(JIS_X_0201_Katakana.class)
+private String jisX201Katakana;
+
+@ConsistOf(JIS_X_0201_LatinLetters.class)
+private String jisX201LatinLetters;
+
+@ConsistOf(JIS_X_0208_SpecialChars.class)
+private String jisX208SpecialChars;
+
+@ConsistOf(JIS_X_0208_LatinLetters.class)
+private String jisX208LatinLetters;
+
+@ConsistOf(JIS_X_0208_Katakana.class)
+private String jisX208Katakana;
+
+@ConsistOf(JIS_X_0208_GreekLetters.class)
+private String jisX208GreekLetteres;
+
+@ConsistOf(JIS_X_0208_CyrillicLetters.class)
+private String jisX0208CyrillicLetters;
+
+@ConsistOf(JIS_X_0208_BoxDrawingChars.class)
+private String jisX0208BoxDrawingChars;
+
+@ConsistOf(JIS_X_0208_Kanji.class)
+private String jisX0208Kanji;
+
+@ConsistOf(JIS_X_0213_Kanji.class)
+private String jisX0213Kanji;
+
+@ConsistOf(NumberChars.class)
+private String numberChars;
+
+@ConsistOf(HiraganaKatakanaChars.class)
+private String hiraganaKatakanaChars;
+
+@ConsistOf(KanaChars.class)
+private String kanaChars;
+
+----
+
+準備2． JavaBeanの各フィールドに対応する入力部品を作成する。
+
+[source,xml]
+----
+  
+<form:input path="jisX208Hiragana" />
+<form:errors path="jisX208Hiragana" />
+
+<form:input path="jisX208HiraganaKatakana" />
+<form:errors path="jisX208HiraganaKatakana" />
+
+<form:input path="asciiCtrlChars" />
+<form:errors path="asciiCtrlChars" />
+
+<form:input path="asciiPrntChars" />
+<form:errors path="asciiPrntChars" />
+
+<form:textarea path="crlf" />
+<form:errors path="crlf" />
+
+<form:input path="jisX201Katakana" />
+<form:errors path="jisX201Katakana" />
+
+<form:input path="jisX201LatinLetters" />
+<form:errors path="jisX201LatinLetters" />
+
+<form:input path="jisX208SpecialChars" />
+<form:errors path="jisX208SpecialChars" />
+
+<form:input path="jisX208LatinLetters" />
+<form:errors path="jisX208LatinLetters" />
+
+<form:input path="jisX208Katakana" />
+<form:errors path="jisX208Katakana" />
+
+<form:input path="jisX208GreekLetteres" />
+<form:errors path="jisX208GreekLetteres" />
+
+<form:input path="jisX0208CyrillicLetters" />
+<form:errors path="jisX0208CyrillicLetters" />
+
+<form:input path="jisX0208BoxDrawingChars" />
+<form:errors path="jisX0208BoxDrawingChars" />
+
+<form:input path="jisX0208Kanji" />
+<form:errors path="jisX0208Kanji" />
+
+<form:input path="jisX0213Kanji" />
+<form:errors path="jisX0213Kanji" />
+
+<form:input path="numberChars" />
+<form:errors path="numberChars" />
+
+<form:input path="hiraganaKatakanaChars" />
+<form:errors path="hiraganaKatakanaChars" />
+
+<form:input path="kanaChars" />
+<form:errors path="kanaChars" />
+
+----
+
+準備3． ValidationMessages.properties に以下を設定する。
+
+[source,properties]
+----
+
+org.terasoluna.gfw.common.codepoints.ConsistOf.message=Input value is a character type that is not allowed.
+
+----
+
+準備4． 入力値を検証するだけのWebアプリを作成する。
+
+
+
+[cols="5,5,30,20,20", options="header"]
+|===
+| 項番
+| 観点
+| 試験項目
+| 試験条件
+| 確認内容
+
+| 2.1
+| 20X系
+a| @ConsistOfアノテーションを使って、単一のコードポイント集合でBean Validationチェックを行う。
+チェックエラーなし
+a| * jisX208Hiraganaの入力フィールドに"しめい"を入力する。
+* リクエストを送る。
+a| * エラーメッセージが表示されないこと。
+
+| 2.2
+| 20X系
+a| @ConsistOfアノテーションを使って、単一のコードポイント集合でBean Validationチェックを行う。
+チェックエラーあり
+a| * jisX208Hiraganaの入力フィールドに"しメい"を入力する。
+* リクエストを送る。
+a| * 対象の入力フィールドの横に以下エラーメッセージが表示されること。
+* Input value is a character type that is not allowed.
+
+| 2.3
+| 20X系
+a| @ConsistOfアノテーションを使って、複数のコードポイント集合でBean Validationチェックを行う。
+チェックエラーなし
+a| * jisX208HiraganaKatakanaの入力フィールドに"メモめも"を入力する。
+* リクエストを送る。
+a| * エラーメッセージが表示されないこと。
+
+| 2.4
+| 20X系
+a| @ConsistOfアノテーションを使って、複数のコードポイント集合でBean Validationチェックを行う。
+チェックエラーあり
+a| * jisX208HiraganaKatakanaの入力フィールドに"メモめもmemo"を入力する。
+* リクエストを送る。
+a| * 対象の入力フィールドの横に以下エラーメッセージが表示されること。
+* Input value is a character type that is not allowed.
+
+| 2.5
+| 20X系
+a| ASCIIControlCharsを使って文字種チェックを行う。
+チェックエラーなし
+a| * asciiCtrlCharsの入力フィールドに "\u0007\b\t\u000b\r\n" を入力する。
+* リクエストを送る。
+a| * エラーメッセージが表示されないこと。
+
+| 2.6
+| 20X系
+a| ASCIIControlCharsを使って文字種チェックを行う。
+チェックエラーあり
+a| * asciiCtrlCharsの入力フィールドに "\u0007\b\tM\u000b\r\n" を入力する。
+* リクエストを送る。
+a| * 対象の入力フィールドの横に以下エラーメッセージが表示されること。
+* Input value is a character type that is not allowed.
+
+| 2.7
+| 20X系
+a| ASCIIPrintableCharsを使って文字種チェックを行う。
+チェックエラーなし
+a| * asciiPrntCharsの入力フィールドに " 012abcABC~" を入力する。
+* リクエストを送る。
+a| * エラーメッセージが表示されないこと。
+
+| 2.8
+| 20X系
+a| ASCIIPrintableCharsを使って文字種チェックを行う。
+チェックエラーあり
+a| * asciiPrntCharsの入力フィールドに "\u001f 012abcABC~" を入力する。
+* リクエストを送る。
+a| * 対象の入力フィールドの横に以下エラーメッセージが表示されること。
+* Input value is a character type that is not allowed.
+
+| 2.9
+| 20X系
+a| CRLFを使って文字種チェックを行う。
+チェックエラーなし
+a| * crlfの入力フィールドに "\r\n" を入力する。
+* リクエストを送る。
+a| * エラーメッセージが表示されないこと。
+
+| 2.10
+| 20X系
+a| CRLFを使って文字種チェックを行う。
+チェックエラーあり
+a| * crlfの入力フィールドに "\rA\n" を入力する。
+* リクエストを送る。
+a| * 対象の入力フィールドの横に以下エラーメッセージが表示されること。
+* Input value is a character type that is not allowed.
+
+| 2.11
+| 20X系
+a| JIS_X_0201_Katakanaを使って文字種チェックを行う。
+チェックエラーなし
+a| * jisX201Katakanaの入力フィールドに "｡ｶﾀｶﾅﾟ" を入力する。
+* リクエストを送る。
+a| * エラーメッセージが表示されないこと。
+
+| 2.12
+| 20X系
+a| JIS_X_0201_Katakanaを使って文字種チェックを行う。
+チェックエラーあり
+a| * jisX201Katakanaの入力フィールドに " ｡ｶﾀｶﾅﾟ" を入力する。
+* リクエストを送る。
+a| * 対象の入力フィールドの横に以下エラーメッセージが表示されること。
+* Input value is a character type that is not allowed.
+
+| 2.13
+| 20X系
+a| JIS_X_0201_LatinLettersを使って文字種チェックを行う。
+チェックエラーなし
+a| * jisX201LatinLettersの入力フィールドに " 012aB}‾" を入力する。
+* リクエストを送る。
+a| * エラーメッセージが表示されないこと。
+
+| 2.14
+| 20X系
+a| JIS_X_0201_LatinLettersを使って文字種チェックを行う。
+チェックエラーあり
+a| * jisX201LatinLettersの入力フィールドに "ｱ 012aB}‾" を入力する。
+* リクエストを送る。
+a| * 対象の入力フィールドの横に以下エラーメッセージが表示されること。
+* Input value is a character type that is not allowed.
+
+| 2.15
+| 20X系
+a| JIS_X_0208_SpecialCharsを使って文字種チェックを行う。
+チェックエラーなし
+a| * jisX208SpecialCharsの入力フィールドに "\u3000☆★〒◯" を入力する。
+* リクエストを送る。
+a| * エラーメッセージが表示されないこと。
+
+| 2.16
+| 20X系
+a| JIS_X_0208_SpecialCharsを使って文字種チェックを行う。
+チェックエラーあり
+a| * jisX208SpecialCharsの入力フィールドに "ア\u3000☆★〒◯" を入力する。
+* リクエストを送る。
+a| * 対象の入力フィールドの横に以下エラーメッセージが表示されること。
+* Input value is a character type that is not allowed.
+
+| 2.17
+| 20X系
+a| JIS_X_0208_LatinLettersを使って文字種チェックを行う。
+チェックエラーなし
+a| * jisX208LatinLettersの入力フィールドに "０Ａａｚ" を入力する。
+* リクエストを送る。
+a| * エラーメッセージが表示されないこと。
+
+| 2.18
+| 20X系
+a| JIS_X_0208_LatinLettersを使って文字種チェックを行う。
+チェックエラーあり
+a| * jisX208LatinLettersの入力フィールドに "０Ａａｚｱ" を入力する。
+* リクエストを送る。
+a| * 対象の入力フィールドの横に以下エラーメッセージが表示されること。
+* Input value is a character type that is not allowed.
+
+| 2.19
+| 20X系
+a| JIS_X_0208_Katakanaを使って文字種チェックを行う。
+チェックエラーなし
+a| * jisX208Katakanaの入力フィールドに "ァカナヶ" を入力する。
+* リクエストを送る。
+a| * エラーメッセージが表示されないこと。
+
+| 2.20
+| 20X系
+a| JIS_X_0208_Katakanaを使って文字種チェックを行う。
+チェックエラーあり
+a| * jisX208Katakanaの入力フィールドに "あァカナヶ" を入力する。
+* リクエストを送る。
+a| * 対象の入力フィールドの横に以下エラーメッセージが表示されること。
+* Input value is a character type that is not allowed.
+
+| 2.21
+| 20X系
+a| JIS_X_0208_GreekLettersを使って文字種チェックを行う。
+チェックエラーなし
+a| * jisX208GreekLetteresの入力フィールドに "ΑΦω" を入力する。
+* リクエストを送る。
+a| * エラーメッセージが表示されないこと。
+
+| 2.22
+| 20X系
+a| JIS_X_0208_GreekLettersを使って文字種チェックを行う。
+チェックエラーあり
+a| * jisX208GreekLetteresの入力フィールドに "ΑΦ・ω・" を入力する。
+* リクエストを送る。
+a| * 対象の入力フィールドの横に以下エラーメッセージが表示されること。
+* Input value is a character type that is not allowed.
+
+| 2.23
+| 20X系
+a| JIS_X_0208_CyrillicLettersを使って文字種チェックを行う。
+チェックエラーなし
+a| * jisX0208CyrillicLettersの入力フィールドに "АЯя" を入力する。
+* リクエストを送る。
+a| * エラーメッセージが表示されないこと。
+
+| 2.24
+| 20X系
+a| JIS_X_0208_CyrillicLettersを使って文字種チェックを行う。
+チェックエラーあり
+a| * jisX0208CyrillicLettersの入力フィールドに "АЯяア" を入力する。
+* リクエストを送る。
+a| * 対象の入力フィールドの横に以下エラーメッセージが表示されること。
+* Input value is a character type that is not allowed.
+
+| 2.25
+| 20X系
+a| JIS_X_0208_BoxDrawingCharsを使って文字種チェックを行う。
+チェックエラーなし
+a| * jisX0208BoxDrawingCharsの入力フィールドに "─╋╂" を入力する。
+* リクエストを送る。
+a| * エラーメッセージが表示されないこと。
+
+| 2.26
+| 20X系
+a| JIS_X_0208_BoxDrawingCharsを使って文字種チェックを行う。
+チェックエラーあり
+a| * jisX0208BoxDrawingCharsの入力フィールドに "─あ╋╂" を入力する。
+* リクエストを送る。
+a| * 対象の入力フィールドの横に以下エラーメッセージが表示されること。
+* Input value is a character type that is not allowed.
+
+| 2.27
+| 20X系
+a| JIS_X_0208_Kanjiを使って文字種チェックを行う。
+チェックエラーなし
+a| * jisX0208Kanjiの入力フィールドに "亜椈熙" を入力する。
+* リクエストを送る。
+a| * エラーメッセージが表示されないこと。
+
+| 2.28
+| 20X系
+a| JIS_X_0208_Kanjiを使って文字種チェックを行う。
+チェックエラーあり
+a| * jisX0208Kanjiの入力フィールドに "亜椈熙ヰ" を入力する。
+* リクエストを送る。
+a| * 対象の入力フィールドの横に以下エラーメッセージが表示されること。
+* Input value is a character type that is not allowed.
+
+| 2.29
+| 20X系
+a| JIS_X_0213_Kanjiを使って文字種チェックを行う。
+チェックエラーなし
+a| * jisX0213Kanjiの入力フィールドに "亜窠𪚲" を入力する。
+* リクエストを送る。
+a| * エラーメッセージが表示されないこと。
+
+| 2.30
+| 20X系
+a| JIS_X_0213_Kanjiを使って文字種チェックを行う。
+チェックエラーあり
+a| * jisX0213Kanjiの入力フィールドに "亜窠𪚲ヰ" を入力する。
+* リクエストを送る。
+a| * 対象の入力フィールドの横に以下エラーメッセージが表示されること。
+* Input value is a character type that is not allowed.
+
+| 2.31
+| 20X系
+a| コードポイントを指定して新規にコードポイント集合のクラスを作成する。
+チェックエラーなし
+a| * 新規に数字のみのコードポイント集合クラス「NumberChars」を作成する。
+* CodePointsのコンストラクタに 0x0030～0x0039まで（"1"～"9"まで）のコードポイントを指定する。
+* numberCharsの入力フィールドに "01589" を入力する。
+* リクエストを送る。
+a| * エラーメッセージが表示されないこと。
+
+| 2.32
+| 20X系
+a| コードポイントを指定して新規にコードポイント集合のクラスを作成する。
+チェックエラーあり
+a| * 新規に数字のみのコードポイント集合クラス「NumberChars」を作成する。
+* CodePointsのコンストラクタに 0x0030～0x0039まで（"1"～"9"まで）のコードポイントを指定する。
+* numberCharsの入力フィールドに "a01589" を入力する。
+* リクエストを送る。
+a| * 対象の入力フィールドの横に以下エラーメッセージが表示されること。
+* Input value is a character type that is not allowed.
+
+| 2.33
+| 20X系
+a| 既存のコードポイント集合の和集合の演算で新規にコードポイント集合のクラスを作成する。
+チェックエラーなし
+a| * 新規にひらがなとカタカナから成るコードポイント集合クラス「HiraganaKatakanaChars」を作成する。
+* CodePointsのコンストラクタに JIS_X_0208_HiraganaとJIS_X_0208_Katakanaの和集合を指定する。
+* hiraganaKatakanaCharsの入力フィールドに "ひらカナ" を入力する。
+* リクエストを送る。
+a| * エラーメッセージが表示されないこと。
+
+| 2.34
+| 20X系
+a| 既存のコードポイント集合の和集合の演算で新規にコードポイント集合のクラスを作成する。
+チェックエラーあり
+a| * 新規にひらがなとカタカナから成るコードポイント集合クラス「HiraganaKatakanaChars」を作成する。
+* CodePointsのコンストラクタに X_JIS_0208_HiraganaとX_JIS_0208_Katakanaの和集合 を指定する。
+* hiraganaKatakanaCharsの入力フィールドに "ひらカナA" を入力する。
+* リクエストを送る。
+a| * 対象の入力フィールドの横に以下エラーメッセージが表示されること。
+* Input value is a character type that is not allowed.
+
+| 2.35
+| 20X系
+a| 既存のコードポイント集合の差集合の演算で新規にコードポイント集合のクラスを作成する。
+チェックエラーなし
+a| * 新規に記号（｡｢｣､･）を除いたカタカナから成るコードポイント集合クラス「kanaChars」を作成する。
+* CodePointsのコンストラクタに X_JIS_0208_Katakanaと記号（｡｢｣､･）から成るコードポイント集合（新規に作成）の差集合 を指定する。
+* kanaCharsの入力フィールドに "カタカナ" を入力する。
+* リクエストを送る。
+a| * エラーメッセージが表示されないこと。
+
+| 2.36
+| 20X系
+a| 既存のコードポイント集合の差集合の演算で新規にコードポイント集合のクラスを作成する。
+チェックエラーあり
+a| * 新規に記号（｡｢｣､･）を除いたカタカナから成るコードポイント集合クラス「kanaChars」を作成する。
+* CodePointsのコンストラクタに X_JIS_0208_Katakanaと記号（｡｢｣､･）から成るコードポイント集合（新規に作成）の差集合 を指定する。
+* kanaCharsの入力フィールドに "カタカナ。" を入力する。
+* リクエストを送る。
+a| * 対象の入力フィールドの横に以下エラーメッセージが表示されること。
+* Input value is a character type that is not allowed.
+
+| 2.37
+| 20X系
+| 日本語ロケールを指定した場合に、日本語メッセージが表示されること（検証エラー）
+a| * 2.xのチェックエラーありパターンと同様
+* LocaleResolverを利用して日本語ロケールに変更する
+a| * 日本語エラーメッセージが表示されること
+
+|===
