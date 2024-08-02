@@ -16,8 +16,9 @@
 package org.terasoluna.gfw.functionaltest.config;
 
 import javax.sql.DataSource;
-
 import org.apache.commons.dbcp2.BasicDataSource;
+import org.checkerframework.checker.units.qual.s;
+import org.htmlunit.BrowserVersion;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -39,8 +40,6 @@ import org.terasoluna.gfw.functionaltest.app.webdrivers.EdgeDriverFactoryBean;
 import org.terasoluna.gfw.functionaltest.app.webdrivers.FirefoxDriverFactoryBean;
 import org.terasoluna.gfw.functionaltest.app.webdrivers.HtmlUnitDriverEx;
 import org.terasoluna.gfw.functionaltest.domain.DBLogCleaner;
-
-import com.gargoylesoftware.htmlunit.BrowserVersion;
 
 /**
  * Bean definition to SeleniumContext configure.
@@ -228,19 +227,13 @@ public class SeleniumContextConfig {
     }
 
     private BrowserVersion getBrowserVersion(String version) {
-        if ("FIREFOX".equals(version)) {
-            return BrowserVersion.FIREFOX;
-        } else if ("FIREFOX_ESR".equals(version)) {
-            return BrowserVersion.FIREFOX_ESR;
-        } else if ("CHROME".equals(version)) {
-            return BrowserVersion.CHROME;
-        } else if ("EDGE".equals(version)) {
-            return BrowserVersion.EDGE;
-        } else if ("INTERNET_EXPLORER".equals(version)) {
-            return BrowserVersion.INTERNET_EXPLORER;
-        } else {
-            return BrowserVersion.BEST_SUPPORTED;
-        }
+        return switch (version) {
+            case "FIREFOX" -> BrowserVersion.FIREFOX;
+            case "FIREFOX_ESR" -> BrowserVersion.FIREFOX_ESR;
+            case "CHROME" -> BrowserVersion.CHROME;
+            case "EDGE" -> BrowserVersion.EDGE;
+            default -> BrowserVersion.BEST_SUPPORTED;
+        };
     }
 
     /**
