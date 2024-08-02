@@ -15,10 +15,9 @@
  */
 package org.terasoluna.gfw.functionaltest.app.webdrivers;
 
+import org.htmlunit.BrowserVersion;
+import org.htmlunit.Page;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
-
-import com.gargoylesoftware.htmlunit.BrowserVersion;
-import com.gargoylesoftware.htmlunit.Page;
 
 public class HtmlUnitDriverEx extends HtmlUnitDriver {
 

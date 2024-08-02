@@ -17,9 +17,11 @@ package org.terasoluna.gfw.functionaltest.app;
 
 import java.io.File;
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
-
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.Rule;
@@ -34,7 +36,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.support.ApplicationObjectSupport;
 import org.terasoluna.gfw.functionaltest.app.webdrivers.WebDriverType;
 import org.terasoluna.gfw.functionaltest.domain.DBLogCleaner;
-
 import jakarta.inject.Inject;
 
 public class FunctionTestSupport extends ApplicationObjectSupport {
@@ -161,14 +162,21 @@ public class FunctionTestSupport extends ApplicationObjectSupport {
         if (driverType != null) {
             return;
         }
-        for (String activeProfile : getApplicationContext().getEnvironment().getActiveProfiles()) {
+
+        List<String> profiles = new ArrayList<>(
+                Arrays.asList(getApplicationContext().getEnvironment().getActiveProfiles()));
+        profiles.addAll(
+                Arrays.asList(getApplicationContext().getEnvironment().getDefaultProfiles()));
+
+        for (String profile : profiles) {
             for (WebDriverType type : WebDriverType.values()) {
-                if (type.toString().equalsIgnoreCase(activeProfile)) {
+                if (type.toString().equalsIgnoreCase(profile)) {
                     driverType = type;
                     return;
                 }
             }
         }
+
         driverType = WebDriverType.DEFAULT();
     }
 
