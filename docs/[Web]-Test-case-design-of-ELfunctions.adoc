@@ -182,6 +182,98 @@ a| * 入力値(クエリパラメータ値)が、"tera&1"
 a| * 出力された値が、<a href="http://localhost:8080/terasoluna-gfw-functionaltest-web/el/output_05_04?name=tera%261">http://localhost:8080/terasoluna-gfw-functionaltest-web/el/output_05_04?name=tera%261</a> で出力されていること
 * 指定した値がページ検索時に引き継がれること。
 
+| 5.5
+| 20X系
+| 想定されるURL文字列が「RFC-3986」に準拠した文字で構成される場合、リンク内に正しく表示されることを確認するテスト
+a| 下部に記載したURL文字列（Reserved Characters、Unreserved Characters、Percent-Encoding）を使い、試験を繰り返し行う。
+
+* 入力値に、下記記載のURL文字列を入力する。
+* 入力値をf:link()で出力する。
+
+＜Reserved Characters＞
+
+* "http://sample.aaa.com:8080"
+* "http://sample.aaa.com/path/resource/index?queryString=bbb"
+* "http://sample.aaa.com#section3"
+* "http://[2001:db8::1]/path"
+* "http://user@sample.aaa.com"
+* "http://sample.aaa.com/path/#!/web"
+* "http://sample.aaa.com/path/resource/index?name=bbb&name2=ccc"
+* "http://sample.aaa.com/path/resource/index?name=bbb;name2=ccc"
+* "http://sample.aaa.com/path/resource/$sample"
+* "http://sample.aaa.com/path/resource/'sample'"
+* "http://sample.aaa.com/path/resource/(sample)"
+* "http://sample.aaa.com/path/resource/*sample"
+* "http://sample.aaa.com/path/resource/sample+page"
+* "http://sample.aaa.com/path/resource/index?name=bbb,name2=ccc"
+
+＜Unreserved Characters＞
+
+* "http://sample.aaa.com:8080"
+* "http://sample.aaa.com/path/web-resource"
+* "http://sample.aaa.com/path/web_resource"
+* "http://sample.aaa.com/~user/path"
+
+＜Percent-Encoding＞
+
+* "http://localhost:8080/terasoluna-gfw-functionaltest-web/el/output_05_04?name%3D%E3%81%82%E3%81%82%E3%81%82"
+
+a| 以下の通り出力されること
+
+＜Reserved Characters＞
+
+* <a href="http://sample.aaa.com:8080">http://sample.aaa.com:8080</a>
+* <a href="http://sample.aaa.com/path/resource/index?queryString=bbb">http://sample.aaa.com/path/resource/index?queryString=bbb</a>
+* <a href="http://sample.aaa.com#section3">http://sample.aaa.com#section3</a>
+* <a href="http://[2001:db8::1]/path">http://[2001:db8::1]/path</a>
+* <a href="http://user@sample.aaa.com">http://user@sample.aaa.com</a>
+* <a href="http://sample.aaa.com/path/\#!/web">http://sample.aaa.com/path/#!/web</a>
+* <a href="http://sample.aaa.com/path/resource/index?name=bbb&name2=ccc">http://sample.aaa.com/path/resource/index?name=bbb&name2=ccc</a>
+* <a href="http://sample.aaa.com/path/resource/index?name=bbb;name2=ccc">http://sample.aaa.com/path/resource/index?name=bbb;name2=ccc</a>
+* <a href="http://sample.aaa.com/path/resource/$sample">http://sample.aaa.com/path/resource/$sample</a>
+* <a href="http://sample.aaa.com/path/resource/'sample'">http://sample.aaa.com/path/resource/'sample'</a>
+* <a href="http://sample.aaa.com/path/resource/(sample)">http://sample.aaa.com/path/resource/(sample)</a>
+* <a href="http://sample.aaa.com/path/resource/*sample">http://sample.aaa.com/path/resource/*sample</a>
+* <a href="http://sample.aaa.com/path/resource/sample+page">http://sample.aaa.com/path/resource/sample+page</a>
+* <a href="http://sample.aaa.com/path/resource/index?name=bbb,name2=ccc">http://sample.aaa.com/path/resource/index?name=bbb,name2=ccc</a>
+
+＜Unreserved Characters＞
+
+* <a href="http://sample.aaa.com:8080">http://sample.aaa.com:8080</a>
+* <a href="http://sample.aaa.com/path/web-resource">http://sample.aaa.com/path/web-resource</a>
+* <a href="http://sample.aaa.com/path/web_resource">http://sample.aaa.com/path/web_resource</a>
+* <a href="http://sample.aaa.com/\~user/path">http://sample.aaa.com/\~user/path</a>
+
+＜Percent-Encoding＞
+
+* <a href="http://localhost:8080/terasoluna-gfw-functionaltest-web/el/output_05_04?name%3Daaa%26name2%3D%E3%81%82%E3%81%82%E3%81%82">http://localhost:8080/terasoluna-gfw-functionaltest-web/el/output_05_04?name%3Daaa%26name2%3D%E3%81%82%E3%81%82%E3%81%82</a>
+
+| 5.6
+| 20X系
+| 想定されるURL文字列に「RFC-3986」に準拠していない文字を含む場合、リンクには表示されないことを確認するテスト
+a| * 入力値に、下記URL文字列を入力する。
+
+"http://sample.aaa.com/^path"
+
+* 入力値をf:link()で出力する。
+
+a| 以下の通り出力されること
+
+<a href="http://sample.aaa.com/">http://sample.aaa.com/</a>^path
+
+| 5.7
+| 20X系
+| 想定されるURL文字列のホストがIDNラベルで記載されている場合、リンクが生成されないことを確認するテスト（国際化ドメインは未対応）
+a| * 入力値に、下記URL文字列を入力する。
+
+"http://テスト.com/path"
+
+* 入力値をf:link()で出力する。
+
+a| 以下の通り出力され、リンクが生成されないこと
+
+"http://テスト.com/path"
+
 |===
 
 === 6. クエリ表示の出力確認
