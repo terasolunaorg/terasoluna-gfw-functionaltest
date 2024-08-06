@@ -286,6 +286,248 @@ public class ElTest extends FunctionTestSupport {
         }
     }
 
+    /**
+     * URL link scenario to check for RFC 3986 compliance. [f:link 05_05 Test]
+     * <p>
+     * Test Pattern coverage is performed by UnitTest, so testing is performed at the assumed URL.
+     */
+    @Test
+    public void test05_URL_Link_Scenario() {
+
+        driver.findElement(By.id("05")).click();
+
+        // RFC 3986
+        // Reserved Characters（gen-delims）
+        // gen-delims = ":" / "/" / "?" / "#" / "[" / "]" / "@
+
+        // General URL ":" "/"
+        inputFieldAccessor.overrideValue(By.id("text-output"), "http://sample.aaa.com:8080",
+                driver);
+        driver.findElement(By.id("btn-output")).click();
+        assertThat(driver.findElement(By.id("linkOutput")).getText(),
+                is("http://sample.aaa.com:8080"));
+        assertThat(driver.findElement(By.linkText("http://sample.aaa.com:8080")).getText(),
+                is("http://sample.aaa.com:8080"));
+
+        // Start query parameters "?"
+        inputFieldAccessor.overrideValue(By.id("text-output"),
+                "http://sample.aaa.com/path/resource/index?queryString=bbb", driver);
+        driver.findElement(By.id("btn-output")).click();
+        assertThat(driver.findElement(By.id("linkOutput")).getText(),
+                is("http://sample.aaa.com/path/resource/index?queryString=bbb"));
+        assertThat(driver
+                .findElement(
+                        By.linkText("http://sample.aaa.com/path/resource/index?queryString=bbb"))
+                .getText(), is("http://sample.aaa.com/path/resource/index?queryString=bbb"));
+
+        // Fragment identifier "#"
+        inputFieldAccessor.overrideValue(By.id("text-output"), "http://sample.aaa.com#section3",
+                driver);
+        driver.findElement(By.id("btn-output")).click();
+        assertThat(driver.findElement(By.id("linkOutput")).getText(),
+                is("http://sample.aaa.com#section3"));
+        assertThat(driver.findElement(By.linkText("http://sample.aaa.com#section3")).getText(),
+                is("http://sample.aaa.com#section3"));
+
+        // IPv6 URL "[" "]"
+        inputFieldAccessor.overrideValue(By.id("text-output"), "http://[2001:db8::1]/path", driver);
+        driver.findElement(By.id("btn-output")).click();
+        assertThat(driver.findElement(By.id("linkOutput")).getText(),
+                is("http://[2001:db8::1]/path"));
+        assertThat(driver.findElement(By.linkText("http://[2001:db8::1]/path")).getText(),
+                is("http://[2001:db8::1]/path"));
+
+        // Authentication information and host delimitation "@"
+        inputFieldAccessor.overrideValue(By.id("text-output"), "http://user@sample.aaa.com",
+                driver);
+        driver.findElement(By.id("btn-output")).click();
+        assertThat(driver.findElement(By.id("linkOutput")).getText(),
+                is("http://user@sample.aaa.com"));
+        assertThat(driver.findElement(By.linkText("http://user@sample.aaa.com")).getText(),
+                is("http://user@sample.aaa.com"));
+
+        // Reserved Characters（sub-delims）
+        // sub-delims = "!" / "$" / "&" / "'" / "(" / ")" / "*" / "+" / "," / ";" / "="
+
+        // Ajax fragment "!"
+        inputFieldAccessor.overrideValue(By.id("text-output"), "http://sample.aaa.com/path/#!/web",
+                driver);
+        driver.findElement(By.id("btn-output")).click();
+        assertThat(driver.findElement(By.id("linkOutput")).getText(),
+                is("http://sample.aaa.com/path/#!/web"));
+        assertThat(driver.findElement(By.linkText("http://sample.aaa.com/path/#!/web")).getText(),
+                is("http://sample.aaa.com/path/#!/web"));
+
+        // Query Parameter Delimiters "&" "="
+        inputFieldAccessor.overrideValue(By.id("text-output"),
+                "http://sample.aaa.com/path/resource/index?name=bbb&name2=ccc", driver);
+        driver.findElement(By.id("btn-output")).click();
+        assertThat(driver.findElement(By.id("linkOutput")).getText(),
+                is("http://sample.aaa.com/path/resource/index?name=bbb&name2=ccc"));
+        assertThat(driver
+                .findElement(
+                        By.linkText("http://sample.aaa.com/path/resource/index?name=bbb&name2=ccc"))
+                .getText(), is("http://sample.aaa.com/path/resource/index?name=bbb&name2=ccc"));
+
+        // Query parameter delimiters (e.g. CGI) ";"
+        inputFieldAccessor.overrideValue(By.id("text-output"),
+                "http://sample.aaa.com/path/resource/index?name=bbb;name2=ccc", driver);
+        driver.findElement(By.id("btn-output")).click();
+        assertThat(driver.findElement(By.id("linkOutput")).getText(),
+                is("http://sample.aaa.com/path/resource/index?name=bbb;name2=ccc"));
+        assertThat(driver
+                .findElement(
+                        By.linkText("http://sample.aaa.com/path/resource/index?name=bbb;name2=ccc"))
+                .getText(), is("http://sample.aaa.com/path/resource/index?name=bbb;name2=ccc"));
+
+        // Pattern of Assumption "$" "'" "(" ")" "*" "+" ","
+        inputFieldAccessor.overrideValue(By.id("text-output"),
+                "http://sample.aaa.com/path/resource/$sample", driver);
+        driver.findElement(By.id("btn-output")).click();
+        assertThat(driver.findElement(By.id("linkOutput")).getText(),
+                is("http://sample.aaa.com/path/resource/$sample"));
+        assertThat(driver.findElement(By.linkText("http://sample.aaa.com/path/resource/$sample"))
+                .getText(), is("http://sample.aaa.com/path/resource/$sample"));
+
+        inputFieldAccessor.overrideValue(By.id("text-output"),
+                "http://sample.aaa.com/path/resource/'sample'", driver);
+        driver.findElement(By.id("btn-output")).click();
+        assertThat(driver.findElement(By.id("linkOutput")).getText(),
+                is("http://sample.aaa.com/path/resource/'sample'"));
+        assertThat(driver.findElement(By.linkText("http://sample.aaa.com/path/resource/'sample'"))
+                .getText(), is("http://sample.aaa.com/path/resource/'sample'"));
+
+        inputFieldAccessor.overrideValue(By.id("text-output"),
+                "http://sample.aaa.com/path/resource/(sample)", driver);
+        driver.findElement(By.id("btn-output")).click();
+        assertThat(driver.findElement(By.id("linkOutput")).getText(),
+                is("http://sample.aaa.com/path/resource/(sample)"));
+        assertThat(driver.findElement(By.linkText("http://sample.aaa.com/path/resource/(sample)"))
+                .getText(), is("http://sample.aaa.com/path/resource/(sample)"));
+
+        inputFieldAccessor.overrideValue(By.id("text-output"),
+                "http://sample.aaa.com/path/resource/*sample", driver);
+        driver.findElement(By.id("btn-output")).click();
+        assertThat(driver.findElement(By.id("linkOutput")).getText(),
+                is("http://sample.aaa.com/path/resource/*sample"));
+        assertThat(driver.findElement(By.linkText("http://sample.aaa.com/path/resource/*sample"))
+                .getText(), is("http://sample.aaa.com/path/resource/*sample"));
+
+        inputFieldAccessor.overrideValue(By.id("text-output"),
+                "http://sample.aaa.com/path/resource/sample+page", driver);
+        driver.findElement(By.id("btn-output")).click();
+        assertThat(driver.findElement(By.id("linkOutput")).getText(),
+                is("http://sample.aaa.com/path/resource/sample+page"));
+        assertThat(
+                driver.findElement(By.linkText("http://sample.aaa.com/path/resource/sample+page"))
+                        .getText(),
+                is("http://sample.aaa.com/path/resource/sample+page"));
+
+        inputFieldAccessor.overrideValue(By.id("text-output"),
+                "http://sample.aaa.com/path/resource/index?name=bbb,name2=ccc", driver);
+        driver.findElement(By.id("btn-output")).click();
+        assertThat(driver.findElement(By.id("linkOutput")).getText(),
+                is("http://sample.aaa.com/path/resource/index?name=bbb,name2=ccc"));
+        assertThat(driver
+                .findElement(
+                        By.linkText("http://sample.aaa.com/path/resource/index?name=bbb,name2=ccc"))
+                .getText(), is("http://sample.aaa.com/path/resource/index?name=bbb,name2=ccc"));
+
+        // Unreserved Characters
+        // unreserved = ALPHA / DIGIT / "-" / "." / "_" / "~"
+
+        // URL General ALPHA DIGIT "."
+        inputFieldAccessor.overrideValue(By.id("text-output"), "http://sample.aaa.com:8080",
+                driver);
+        driver.findElement(By.id("btn-output")).click();
+        assertThat(driver.findElement(By.id("linkOutput")).getText(),
+                is("http://sample.aaa.com:8080"));
+        assertThat(driver.findElement(By.linkText("http://sample.aaa.com:8080")).getText(),
+                is("http://sample.aaa.com:8080"));
+
+        // Word delimiters "-"
+        inputFieldAccessor.overrideValue(By.id("text-output"),
+                "http://sample.aaa.com/path/web-resource", driver);
+        driver.findElement(By.id("btn-output")).click();
+        assertThat(driver.findElement(By.id("linkOutput")).getText(),
+                is("http://sample.aaa.com/path/web-resource"));
+        assertThat(driver.findElement(By.linkText("http://sample.aaa.com/path/web-resource"))
+                .getText(), is("http://sample.aaa.com/path/web-resource"));
+
+        // Word delimiters "_"
+        inputFieldAccessor.overrideValue(By.id("text-output"),
+                "http://sample.aaa.com/path/web_resource", driver);
+        driver.findElement(By.id("btn-output")).click();
+        assertThat(driver.findElement(By.id("linkOutput")).getText(),
+                is("http://sample.aaa.com/path/web_resource"));
+        assertThat(driver.findElement(By.linkText("http://sample.aaa.com/path/web_resource"))
+                .getText(), is("http://sample.aaa.com/path/web_resource"));
+
+        // Web server user directory "~"
+        inputFieldAccessor.overrideValue(By.id("text-output"), "http://sample.aaa.com/~user/path",
+                driver);
+        driver.findElement(By.id("btn-output")).click();
+        assertThat(driver.findElement(By.id("linkOutput")).getText(),
+                is("http://sample.aaa.com/~user/path"));
+        assertThat(driver.findElement(By.linkText("http://sample.aaa.com/~user/path")).getText(),
+                is("http://sample.aaa.com/~user/path"));
+
+        // Percent-Encoding
+        // pct-encoded = "%" HEXDIG HEXDIG
+
+        // URL Encoding "%" HEXDIG HEXDIG
+        inputFieldAccessor.overrideValue(By.id("text-output"),
+                "http://localhost:8080/terasoluna-gfw-functionaltest-web/el/output_05_04?name%3D%E3%81%82%E3%81%82%E3%81%82",
+                driver);
+        driver.findElement(By.id("btn-output")).click();
+        assertThat(driver.findElement(By.id("linkOutput")).getText(), is(
+                "http://localhost:8080/terasoluna-gfw-functionaltest-web/el/output_05_04?name%3D%E3%81%82%E3%81%82%E3%81%82"));
+        assertThat(driver.findElement(By.linkText(
+                "http://localhost:8080/terasoluna-gfw-functionaltest-web/el/output_05_04?name%3D%E3%81%82%E3%81%82%E3%81%82"))
+                .getText(),
+                is("http://localhost:8080/terasoluna-gfw-functionaltest-web/el/output_05_04?name%3D%E3%81%82%E3%81%82%E3%81%82"));
+    }
+
+    /**
+     * Cases not compliant with RFC 3986 [f:link 05_06 Test]
+     */
+    @Test
+    public void test05_URL_Link_Scenario_ExclusionCase() {
+
+        driver.findElement(By.id("05")).click();
+
+        // Wrong URL (exception case) e.g. "^"
+        inputFieldAccessor.overrideValue(By.id("text-output"), "http://sample.aaa.com/^path",
+                driver);
+        driver.findElement(By.id("btn-output")).click();
+        assertThat(driver.findElement(By.id("linkOutput")).getText(),
+                is("http://sample.aaa.com/^path"));
+        assertThat(driver.findElement(By.linkText("http://sample.aaa.com/")).getText(),
+                is("http://sample.aaa.com/"));
+    }
+
+    /**
+     * The Case of Internationalized Domains (unsupported) [f:link 05_07 Test]
+     */
+    @Test(expected = NoSuchElementException.class)
+    public void test05_URL_Link_Scenario_IDNCase() {
+
+        driver.findElement(By.id("05")).click();
+
+        // IDN（Internationalized Domain Label）
+        inputFieldAccessor.overrideValue(By.id("text-output"), "http://テスト.com/path", driver);
+        driver.findElement(By.id("btn-output")).click();
+        assertThat(driver.findElement(By.id("linkOutput")).getText(), is("http://テスト.com/path"));
+        try {
+            // There must be no a link under linkOutput.
+            driver.findElement(By.xpath("//p[@id='linkOutput']/a"));
+            fail("a link has been created.");
+        } catch (NoSuchElementException e) {
+            throw e;
+        }
+    }
+
+
     @Test
     public void test06_Query_Display() {
 
