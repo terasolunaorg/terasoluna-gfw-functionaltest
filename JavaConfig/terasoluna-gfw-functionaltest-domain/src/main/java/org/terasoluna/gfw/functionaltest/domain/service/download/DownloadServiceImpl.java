@@ -22,8 +22,6 @@ import java.util.Collections;
 
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
-import org.springframework.jdbc.support.lob.DefaultLobHandler;
-import org.springframework.jdbc.support.lob.LobHandler;
 import org.springframework.stereotype.Service;
 
 import jakarta.inject.Inject;
@@ -36,14 +34,12 @@ public class DownloadServiceImpl implements DownloadService {
     @Inject
     protected NamedParameterJdbcTemplate jdbcTemplate;
 
-    private LobHandler lobHandler = new DefaultLobHandler();
-
     @Override
     public InputStream findContentsById(int documentId) {
         InputStream contentsStream = jdbcTemplate.queryForObject(FIND_CONTENTS_BY_ID,
                 Collections.singletonMap("documentId", documentId), new RowMapper<InputStream>() {
                     public InputStream mapRow(ResultSet rs, int i) throws SQLException {
-                        InputStream blobStream = lobHandler.getBlobAsBinaryStream(rs, "contents");
+                        InputStream blobStream = rs.getBinaryStream("contents");
                         return blobStream;
                     }
                 });
