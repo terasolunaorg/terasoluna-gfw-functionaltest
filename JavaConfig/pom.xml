@@ -167,26 +167,6 @@
                     </configuration>
                 </plugin>
                 <plugin>
-                    <groupId>com.mycila</groupId>
-                    <artifactId>license-maven-plugin</artifactId>
-                    <version>${com.mycila.license-maven-plugin.version}</version>
-                    <configuration>
-                        <licenseSets>
-                            <licenseSet>
-                                <header>${project.root.basedir}/license/header.txt</header>
-                                <includes>
-                                    <include>src/main/java/**/*.java</include>
-                                    <include>src/test/java/**/*.java</include>
-                                </includes>
-                                <headerDefinitions>
-                                    <headerDefinition>${project.root.basedir}/license/header-definition.xml</headerDefinition>
-                                </headerDefinitions>
-                            </licenseSet>
-                        </licenseSets>
-                        <encoding>${encoding}</encoding>
-                    </configuration>
-                </plugin>
-                <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-javadoc-plugin</artifactId>
                     <configuration>
@@ -253,7 +233,6 @@
         <org.apache.maven.plugins.maven-failsafe-plugin.version>3.0.0-M7</org.apache.maven.plugins.maven-failsafe-plugin.version>
         <org.apache.maven.plugins.maven-surefire-plugin.version>3.0.0-M7</org.apache.maven.plugins.maven-surefire-plugin.version>
         <org.codehaus.mojo.xml-maven-plugin.version>1.0.2</org.codehaus.mojo.xml-maven-plugin.version>
-        <com.mycila.license-maven-plugin.version>4.2.rc3</com.mycila.license-maven-plugin.version>
         <!-- == Dependency Versions == -->
         <postgresql.version>42.7.1</postgresql.version>
         <ojdbc.version>23.3.0.23.09</ojdbc.version>
