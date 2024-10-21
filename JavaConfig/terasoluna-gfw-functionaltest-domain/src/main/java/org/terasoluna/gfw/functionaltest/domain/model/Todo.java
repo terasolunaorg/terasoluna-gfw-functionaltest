@@ -21,6 +21,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
 @Entity
@@ -34,7 +35,7 @@ public class Todo implements Serializable {
     @Column(name = "id")
     private Integer id;
 
-    @NotNull
+    @NotEmpty
     @Column(name = "todo_title")
     private String todoTitle;
 
