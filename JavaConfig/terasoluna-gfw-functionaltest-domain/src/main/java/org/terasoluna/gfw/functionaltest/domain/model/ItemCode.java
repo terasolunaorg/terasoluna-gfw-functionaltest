@@ -16,12 +16,12 @@
 package org.terasoluna.gfw.functionaltest.domain.model;
 
 import java.io.Serializable;
-
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
@@ -38,13 +38,13 @@ public class ItemCode implements Serializable {
     private Integer id;
 
     @Basic(optional = false)
-    @NotNull
+    @NotEmpty
     @Size(min = 1, max = 25)
     @Column(name = "code")
     private String code;
 
     @Basic(optional = false)
-    @NotNull
+    @NotEmpty
     @Size(min = 1, max = 25)
     @Column(name = "label")
     private String label;

@@ -22,6 +22,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
@@ -38,13 +39,13 @@ public class Person implements Serializable {
     private Integer personId;
 
     @Basic(optional = false)
-    @NotNull
+    @NotEmpty
     @Size(min = 1, max = 25)
     @Column(name = "firstname")
     private String firstname;
 
     @Basic(optional = false)
-    @NotNull
+    @NotEmpty
     @Size(min = 1, max = 25)
     @Column(name = "lastname")
     private String lastname;
