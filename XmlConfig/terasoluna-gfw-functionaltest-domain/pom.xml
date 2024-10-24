@@ -12,6 +12,11 @@
     </parent>
     <name>TERASOLUNA Server Framework for Java (5.x) - Functionality Test Application - Domain Layer</name>
     <description>Domain layer of Functionality Test Application using TERASOLUNA Server Framework for Java (5.x)</description>
+    <scm>
+        <connection>scm:git:git@github.com:terasolunaorg/terasoluna-gfw-functionaltest.git</connection>
+        <developerConnection>scm:git:git@github.com:terasolunaorg/terasoluna-gfw-functionaltest.git</developerConnection>
+        <url>git@github.com:terasolunaorg/terasoluna-gfw-functionaltest.git</url>
+    </scm>
 
     <build>
         <plugins>
