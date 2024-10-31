@@ -11,6 +11,11 @@
     </parent>
     <name>TERASOLUNA Server Framework for Java (5.x) - Functionality Test Application - Environment Layer</name>
     <description>Environment dependent layer of Functionality Test Application using TERASOLUNA Server Framework for Java (5.x)</description>
+    <scm>
+        <connection>scm:git:git://github.com/terasolunaorg/terasoluna-gfw-functionaltest.git</connection>
+        <developerConnection>scm:git:ssh://github.com/terasolunaorg/terasoluna-gfw-functionaltest.git</developerConnection>
+        <url>https://github.com/terasolunaorg/terasoluna-gfw-functionaltest</url>
+    </scm>
     <build>
         <finalName>${project.env.buildFinalName}</finalName>
         <resources>

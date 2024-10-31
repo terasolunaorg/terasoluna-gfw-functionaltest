@@ -47,6 +47,18 @@
             </snapshots>
         </repository>
     </repositories>
+    <developers>
+        <developer>
+            <name>NTT DATA Group Corporation</name>
+            <organization>NTT DATA Group Corporation</organization>
+            <organizationUrl>http://terasolunaorg.github.io/</organizationUrl>
+        </developer>
+    </developers>
+    <scm>
+        <connection>scm:git:git://github.com/terasolunaorg/terasoluna-gfw-functionaltest.git</connection>
+        <developerConnection>scm:git:ssh://github.com/terasolunaorg/terasoluna-gfw-functionaltest.git</developerConnection>
+        <url>https://github.com/terasolunaorg/terasoluna-gfw-functionaltest</url>
+    </scm>
     <build>
         <pluginManagement>
             <plugins>

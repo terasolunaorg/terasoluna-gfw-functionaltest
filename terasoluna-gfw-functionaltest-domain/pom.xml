@@ -22,6 +22,12 @@
         </plugins>
     </build>
 
+    <scm>
+        <connection>scm:git:git://github.com/terasolunaorg/terasoluna-gfw-functionaltest.git</connection>
+        <developerConnection>scm:git:ssh://github.com/terasolunaorg/terasoluna-gfw-functionaltest.git</developerConnection>
+        <url>https://github.com/terasolunaorg/terasoluna-gfw-functionaltest</url>
+    </scm>
+
     <dependencies>
         <!-- == Begin TERASOLUNA == -->
         <dependency>
