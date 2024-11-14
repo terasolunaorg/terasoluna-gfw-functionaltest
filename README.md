@@ -6,11 +6,11 @@ This project provides functional tests of [TERASOLUNA Server Framework for Java 
 
 ## Test case design
 
-Test case scenarios are managed at [wiki pages](https://github.com/terasolunaorg/terasoluna-gfw-functionaltest/wiki).
+Test case scenarios are managed at [doc](./docs/).
 
 > **Note:**
 >
-> Currently, support language is Japanese only. (Will translate to English as soon as possible)
+> Currently, support language is Japanese only.
 
 ## Tested environments at the time of release
 
