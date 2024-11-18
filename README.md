@@ -6,7 +6,7 @@ This project provides functional tests of [TERASOLUNA Server Framework for Java 
 
 ## Test case design
 
-Test case scenarios are managed at [doc](./docs/).
+Test case scenarios are managed at [docs](./docs/).
 
 > **Note:**
 >
