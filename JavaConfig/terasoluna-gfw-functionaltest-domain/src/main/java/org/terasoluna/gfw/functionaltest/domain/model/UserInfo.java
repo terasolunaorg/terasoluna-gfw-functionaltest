@@ -20,7 +20,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 @Entity
@@ -28,19 +28,19 @@ import jakarta.validation.constraints.Size;
 public class UserInfo {
     @Id
     @Basic(optional = false)
-    @NotEmpty
+    @NotNull
     @Size(min = 1, max = 25)
     @Column(name = "username")
     private String username;
 
     @Basic(optional = false)
-    @NotEmpty
+    @NotNull
     @Size(min = 1, max = 25)
     @Column(name = "name")
     private String name;
 
     @Basic(optional = false)
-    @NotEmpty
+    @NotNull
     @Size(min = 1, max = 25)
     @Column(name = "address")
     private String address;
