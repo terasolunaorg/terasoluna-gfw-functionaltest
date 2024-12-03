@@ -81,7 +81,7 @@ The commands are different for XML-based configuration and Java-based configurat
 $ cd {your repository directory}
 $ git checkout {target branch}
 $ cd {your repository directory}/XmlConfig
-$ mvn -U install -am -pl terasoluna-gfw-functionaltest-web -P tomcat10-postgresql,warpack-env,warpack-jstl,travis
+$ mvn -U install -am -pl terasoluna-gfw-functionaltest-web -P tomcat10-postgresql,include-context,compile-env
 ```
 
 **Java-based configuration**
@@ -90,12 +90,12 @@ $ mvn -U install -am -pl terasoluna-gfw-functionaltest-web -P tomcat10-postgresq
 $ cd {your repository directory}
 $ git checkout {target branch}
 $ cd {your repository directory}/JavaConfig
-$ mvn -U install -am -pl terasoluna-gfw-functionaltest-web -P tomcat10-postgresql,warpack-env,warpack-jstl,travis
+$ mvn -U install -am -pl terasoluna-gfw-functionaltest-web -P tomcat10-postgresql,include-context,compile-env
 ```
 
 > **Note:**
 >
-> If you not use default user(`postgres`) or password(`P0stgres`), you should modify settings in `terasoluna-gfw-functionaltest-env/configs/travis/ContainerConfigXML/context.xml`.
+> If you not use default user(`postgres`) or password(`P0stgres`), you should modify settings in `terasoluna-gfw-functionaltest-env/configs/local/ContainerConfigXML/context.xml`.
 
 ### [Step 4] Initialize database (Optional)
 If PostgreSQL use as database, initialize database before run functional test.
@@ -108,10 +108,8 @@ $ mvn -U sql:execute -pl terasoluna-gfw-functionaltest-initdb
 >
 > If you not use default user(`postgres`) or password(`P0stgres`), you should specify `-Ddb.username={your user}` or `-Ddb.password={your password}` or both.
 
-### [Step 5] Startup Tomcat9 and deploy war file
-Startup Tomcat9 and deploy war file using [CARGO maven plugin](https://codehaus-cargo.github.io/cargo/Maven2+plugin.html).
-
-#### Case that use embedded H2 as database
+### [Step 5] Startup Tomcat10 and deploy war file
+Startup Tomcat10 and deploy war file using [CARGO maven plugin](https://codehaus-cargo.github.io/cargo/Maven+3+Plugin.html).
 
 The commands are different for XML-based configuration and Java-based configuration.
 
@@ -127,24 +125,6 @@ $ mvn -U cargo:run -pl terasoluna-gfw-functionaltest-web
 ```console
 $ cd {your repository directory}/JavaConfig
 $ mvn -U cargo:run -pl terasoluna-gfw-functionaltest-web
-```
-
-#### Case that use PostgreSQL as database (use Tomcat JNDI Resource)
-
-The commands are different for XML-based configuration and Java-based configuration.
-
-**XML-based configuration**
-
-```console
-$ cd {your repository directory}/XmlConfig
-$ mvn -U cargo:run -pl terasoluna-gfw-functionaltest-web -P travis
-```
-
-**Java-based configuration**
-
-```console
-$ cd {your repository directory}/JavaConfig
-$ mvn -U cargo:run -pl terasoluna-gfw-functionaltest-web -P travis
 ```
 
 > **Note:**

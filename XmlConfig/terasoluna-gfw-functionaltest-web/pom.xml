@@ -29,7 +29,7 @@
 
     <profiles>
         <profile>
-            <id>local</id>
+            <id>compile-env</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
@@ -41,17 +41,13 @@
             </dependencies>
         </profile>
         <profile>
-            <id>warpack-env</id>
+            <id>provided-env</id>
             <dependencies>
                 <dependency>
                     <groupId>${project.groupId}</groupId>
                     <artifactId>terasoluna-gfw-functionaltest-env</artifactId>
+                    <scope>provided</scope>
                 </dependency>
-            </dependencies>
-        </profile>
-        <profile>
-            <id>warpack-jstl</id>
-            <dependencies>
             </dependencies>
         </profile>
     </profiles>
