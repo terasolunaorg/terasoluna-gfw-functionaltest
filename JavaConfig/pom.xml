@@ -73,18 +73,6 @@
                                 <artifactId>mapstruct-processor</artifactId>
                                 <version>${mapstruct.version}</version>
                             </path>
-                            <!-- REMOVE THIS LINE IF YOU USE MapStruct AND Lombok
-                            <path>
-                                <groupId>org.projectlombok</groupId>
-                                <artifactId>lombok</artifactId>
-                                <version>${lombok.version}</version>
-                            </path>
-                            <path>
-                                <groupId>org.projectlombok</groupId>
-                                <artifactId>lombok-mapstruct-binding</artifactId>
-                                <version>${lombok-mapstruct-binding.version}</version>
-                            </path>
-                            REMOVE THIS LINE IF YOU USE MapStruct AND Lombok -->
                         </annotationProcessorPaths>
                         <compilerArgs>
                             <arg>-Amapstruct.defaultComponentModel=spring</arg>
@@ -185,6 +173,20 @@
                         <source>${java-version}</source>
                     </configuration>
                 </plugin>
+                <plugin>
+                    <groupId>org.codehaus.cargo</groupId>
+                    <artifactId>cargo-maven3-plugin</artifactId>
+                    <configuration>
+                        <container>
+                            <dependencies>
+                                <dependency>
+                                    <groupId>org.postgresql</groupId>
+                                    <artifactId>postgresql</artifactId>
+                                </dependency>
+                            </dependencies>
+                        </container>
+                    </configuration>
+                </plugin>
             </plugins>
         </pluginManagement>
     </build>
@@ -213,20 +215,6 @@
                 <version>${webdrivermanager.version}</version>
             </dependency>
             <!-- == End Test == -->
-
-            <!-- == Begin Database == -->
-            <dependency>
-                <groupId>org.postgresql</groupId>
-                <artifactId>postgresql</artifactId>
-                <version>${postgresql.version}</version>
-            </dependency>
-            <dependency>
-                <!-- ojdbc8.jar must be pre-installed in local repository. -->
-                <groupId>com.oracle.database.jdbc</groupId>
-                <artifactId>ojdbc11</artifactId>
-                <version>${ojdbc.version}</version>
-            </dependency>
-            <!-- == End Database == -->
 
             <!-- == Begin logback-db == -->
             <dependency>
@@ -258,37 +246,29 @@
         <java-version>17</java-version>
         <cargo.jvmargs>-Xms512m -Xmx1024m -Duser.language=ja -Duser.country=JP -Duser.timezone=Asia/Tokyo -Djava.locale.providers=COMPAT,CLDR,SPI</cargo.jvmargs>
     </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <scope>provided</scope>
+            <optional>true</optional>
+        </dependency>
+    </dependencies>
+
     <profiles>
         <profile>
-            <id>travis</id>
-            <dependencies>
-                <dependency>
-                    <groupId>org.postgresql</groupId>
-                    <artifactId>postgresql</artifactId>
-                    <scope>provided</scope>
-                </dependency>
-            </dependencies>
+            <id>include-context</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
             <build>
                 <pluginManagement>
                     <plugins>
                         <plugin>
                             <artifactId>maven-war-plugin</artifactId>
                             <configuration>
-                                <containerConfigXML>${project.basedir}/../terasoluna-gfw-functionaltest-env/configs/travis/ContainerConfigXML/context.xml</containerConfigXML>
-                            </configuration>
-                        </plugin>
-                        <plugin>
-                            <groupId>org.codehaus.cargo</groupId>
-                            <artifactId>cargo-maven3-plugin</artifactId>
-                            <configuration>
-                                <container>
-                                    <dependencies>
-                                        <dependency>
-                                            <groupId>org.postgresql</groupId>
-                                            <artifactId>postgresql</artifactId>
-                                        </dependency>
-                                    </dependencies>
-                                </container>
+                                <containerConfigXML>${project.basedir}/../terasoluna-gfw-functionaltest-env/configs/local/ContainerConfigXML/context.xml</containerConfigXML>
                             </configuration>
                         </plugin>
                     </plugins>
