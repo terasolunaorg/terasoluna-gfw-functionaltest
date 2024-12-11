@@ -21,6 +21,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -34,7 +35,7 @@ public class Todo implements Serializable {
     @Column(name = "id")
     private Integer id;
 
-    @NotNull
+    @NotEmpty
     @Column(name = "todo_title")
     private String todoTitle;
 
