@@ -47,9 +47,6 @@
                     <td><a id="QueryEscape" href="${pageContext.request.contextPath}/queryescape"> QueryEscape Function Test</a></td>
                 </tr>
                 <tr>
-                    <td><a id="Date" href="${pageContext.request.contextPath}/date">Date Function Test</a></td>
-                </tr>
-                <tr>
                     <td><a id="Time" href="${pageContext.request.contextPath}/time">JSR-310 Date And Time Function Test</a></td>
                 </tr>
                 <tr>
