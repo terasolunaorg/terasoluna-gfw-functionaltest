@@ -38,7 +38,7 @@ import org.terasoluna.gfw.functionaltest.app.webdrivers.WebDriverType;
 import org.terasoluna.gfw.functionaltest.domain.DBLogCleaner;
 import jakarta.inject.Inject;
 
-public class FunctionTestSupport extends ApplicationObjectSupport {
+public abstract class FunctionTestSupport extends ApplicationObjectSupport {
 
     private static final Logger logger = LoggerFactory.getLogger(FunctionTestSupport.class);
 
