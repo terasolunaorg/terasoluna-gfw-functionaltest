@@ -38,7 +38,7 @@ import org.terasoluna.gfw.functionaltest.domain.exception.ResultMessagesInfoLogg
 @ComponentScan(basePackages = {"org.terasoluna.gfw.functionaltest.domain"})
 @Import({TerasolunaGfwFunctionaltestInfraConfig.class,
         TerasolunaGfwFunctionaltestCodeListConfig.class,
-        TerasolunaGfwFunctionaltestJodaConfig.class, TerasolunaGfwFunctionaltestJsr310Config.class})
+        TerasolunaGfwFunctionaltestJsr310Config.class})
 public class TerasolunaGfwFunctionaltestDomainConfig {
 
     /**

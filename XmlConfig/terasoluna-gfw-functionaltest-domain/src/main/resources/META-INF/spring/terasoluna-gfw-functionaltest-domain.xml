@@ -15,9 +15,6 @@
     <import resource="classpath*:META-INF/spring/**/*-codelist.xml" />
     <context:component-scan base-package="org.terasoluna.gfw.functionaltest.domain" />
 
-    <!-- Joda-Time will be removed in due course as JSR-310 is transitioned. -->
-    <import resource="classpath:META-INF/spring/terasoluna-gfw-functionaltest-joda.xml" />
-
     <!-- JSR-310 -->
     <import resource="classpath:META-INF/spring/terasoluna-gfw-functionaltest-jsr310.xml" />
 
