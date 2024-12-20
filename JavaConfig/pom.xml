@@ -60,6 +60,7 @@
         </repository>
     </repositories>
     <build>
+        <finalName>${project.artifactId}</finalName>
         <pluginManagement>
             <plugins>
                 <plugin>
@@ -96,9 +97,9 @@
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>${org.apache.maven.plugins.maven-surefire-plugin.version}</version>
                     <configuration>
-                        <systemProperties>
+                        <systemPropertyVariables>
                             <jdk.tls.client.protocols>TLSv1.2</jdk.tls.client.protocols>
-                        </systemProperties>
+                        </systemPropertyVariables>
                     </configuration>
                 </plugin>
                 <plugin>
@@ -149,21 +150,12 @@
                                 </excludes>
                             </resource>
                         </webResources>
-                        <warName>${project.artifactId}</warName>
                         <archive>
                             <addMavenDescriptor>false</addMavenDescriptor>
                             <manifest>
                                 <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
                             </manifest>
                         </archive>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.codehaus.mojo</groupId>
-                    <artifactId>xml-maven-plugin</artifactId>
-                    <version>${org.codehaus.mojo.xml-maven-plugin.version}</version>
-                    <configuration>
-                        <indentSize>2</indentSize>
                     </configuration>
                 </plugin>
                 <plugin>
@@ -228,11 +220,10 @@
     </dependencyManagement>
     <properties>
         <!-- == Maven Plugin Versions == -->
-        <org.apache.maven.plugins.maven-war-plugin.version>3.3.2</org.apache.maven.plugins.maven-war-plugin.version>
-        <org.codehaus.mojo.build-helper-maven-plugin.version>3.3.0</org.codehaus.mojo.build-helper-maven-plugin.version>
-        <org.apache.maven.plugins.maven-failsafe-plugin.version>3.0.0-M7</org.apache.maven.plugins.maven-failsafe-plugin.version>
-        <org.apache.maven.plugins.maven-surefire-plugin.version>3.0.0-M7</org.apache.maven.plugins.maven-surefire-plugin.version>
-        <org.codehaus.mojo.xml-maven-plugin.version>1.0.2</org.codehaus.mojo.xml-maven-plugin.version>
+        <org.apache.maven.plugins.maven-war-plugin.version>3.4.0</org.apache.maven.plugins.maven-war-plugin.version>
+        <org.codehaus.mojo.build-helper-maven-plugin.version>3.6.0</org.codehaus.mojo.build-helper-maven-plugin.version>
+        <org.apache.maven.plugins.maven-failsafe-plugin.version>3.5.2</org.apache.maven.plugins.maven-failsafe-plugin.version>
+        <org.apache.maven.plugins.maven-surefire-plugin.version>3.5.2</org.apache.maven.plugins.maven-surefire-plugin.version>
         <!-- == Dependency Versions == -->
         <postgresql.version>42.7.1</postgresql.version>
         <ojdbc.version>23.3.0.23.09</ojdbc.version>
