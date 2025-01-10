@@ -36,7 +36,7 @@ By default, database owner is `postgres` user, and password of `postgres` user i
 
 #### Create database
 ```console
-$ createdb -U postgres terasoluna-gfw-functionaltest --locale=C --encoding=UTF8 --template=template0
+$ createdb -U postgres --locale=C --encoding=UTF8 --template=template0 terasoluna-gfw-functionaltest
 ```
 
 ### [Step 2] Clone a repository
@@ -150,18 +150,23 @@ $ cd {your repository directory}/JavaConfig
 $ mvn -U test -pl terasoluna-gfw-functionaltest-selenium -Dwdm.cachePath=/opt/geckodriver -Dwdm.geckoDriverVersion=0.32.0
 ```
 
+The following options can be set at selenium runtime.
+
+Please use them according to the situation.
+
+If you do not specify any options, firefox (the latest driver) & headless mode will be used.
+
+| Option | Overview | Value that can be set | Default value | Setting example
+| ---- | ---- | ---- | ---- | ---- |
+| wdm.cachePath | Directory where web driver is downloaded | Any directory | /.cache/selenium | -Dwdm.cachePath=/opt/geckodriver |
+| wdm.geckoDriverVersion | Version of geckoDriver | [Version](https://github.com/mozilla/geckodriver/releases) | Latest version | -Dwdm.geckoDriverVersion=0.32.0 |
+| selenium.headless | Headless | true, false | true | -Dselenium.headless=false |
+| cargo.maven.containerUrl | cargoのコンテナURL | [Tomcat](https://archive.apache.org/dist/tomcat/) | URL corresponding to the version of Tomcat set in parent of | -Dcargo.maven.containerUrl=[https://archive.apache.org/dist/tomcat/tomcat-10/v10.1.33/bin/apache-tomcat-10.1.33.zip](https://archive.apache.org/dist/tomcat/tomcat-10/v10.1.33/bin/apache-tomcat-10.1.33.zip) |
+
 > **Note:**
 >
 > If functional test is failed, try again using latest Selenium(specify with `-Dselenium.version={latest version}`).
 > Please also refer [tested environment](https://github.com/terasolunaorg/terasoluna-gfw-functionaltest/wiki/Tested-Environment) for more information about our tested environment. At last, please check [selenium changelog](https://github.com/SeleniumHQ/selenium/blob/master/java/CHANGELOG) to make sure your Firefox version is supported.
-
-> **Note:**
->
-> By default, [webdrivermanager](https://github.com/bonigarcia/webdrivermanager) will download the latest [geckodriver](https://github.com/mozilla/geckodriver/releases) to `~/.cache/selenium` automatically.
-> If you want to specify the download destination directory, please specify "`-Dwdm.cachePath`" in the startup argument.
-> To specify the version of geckoDriver, specify "`-Dwdm.geckoDriverVersion`" in the startup argument.
->
-> See [advanced-configuration](https://bonigarcia.dev/webdrivermanager/#advanced-configuration) for details on configuration.
 
 ## Appendix
 
@@ -201,9 +206,7 @@ terasoluna-gfw-functionaltest
     └─terasoluna-gfw-functionaltest-web
 ```
 
-
-This project is
-It is divided and managed in two directories: XML-based configuration and Java-based configuration.
+This project is divided and managed in two directories: XML-based configuration and Java-based configuration.
 
 The project configurations under XML-based configuration and Java-based configuration are the same.
 
