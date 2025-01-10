@@ -161,7 +161,7 @@ If you do not specify any options, firefox (the latest driver) & headless mode w
 | wdm.cachePath | Directory where web driver is downloaded | Any directory | /.cache/selenium | -Dwdm.cachePath=/opt/geckodriver |
 | wdm.geckoDriverVersion | Version of geckoDriver | [Version](https://github.com/mozilla/geckodriver/releases) | Latest version | -Dwdm.geckoDriverVersion=0.32.0 |
 | selenium.headless | Headless | true, false | true | -Dselenium.headless=false |
-| cargo.maven.containerUrl | cargoのコンテナURL | [Tomcat](https://archive.apache.org/dist/tomcat/) | URL corresponding to the version of Tomcat set in parent of | -Dcargo.maven.containerUrl=[https://archive.apache.org/dist/tomcat/tomcat-10/v10.1.33/bin/apache-tomcat-10.1.33.zip](https://archive.apache.org/dist/tomcat/tomcat-10/v10.1.33/bin/apache-tomcat-10.1.33.zip) |
+| cargo.maven.containerUrl | container URL for Cargo | [Tomcat](https://archive.apache.org/dist/tomcat/) | URL corresponding to the version of Tomcat set in parent of | -Dcargo.maven.containerUrl=[https://archive.apache.org/dist/tomcat/tomcat-10/v10.1.33/bin/apache-tomcat-10.1.33.zip](https://archive.apache.org/dist/tomcat/tomcat-10/v10.1.33/bin/apache-tomcat-10.1.33.zip) |
 
 > **Note:**
 >
