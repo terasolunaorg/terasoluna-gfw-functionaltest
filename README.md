@@ -140,14 +140,14 @@ The commands are different for XML-based configuration and Java-based configurat
 
 ```console
 $ cd {your repository directory}/XmlConfig
-$ mvn -U test -pl terasoluna-gfw-functionaltest-selenium -Dwdm.cachePath=/opt/geckodriver -Dwdm.geckoDriverVersion=0.32.0
+$ mvn -U test -pl terasoluna-gfw-functionaltest-selenium
 ```
 
 **Java-based configuration**
 
 ```console
 $ cd {your repository directory}/JavaConfig
-$ mvn -U test -pl terasoluna-gfw-functionaltest-selenium -Dwdm.cachePath=/opt/geckodriver -Dwdm.geckoDriverVersion=0.32.0
+$ mvn -U test -pl terasoluna-gfw-functionaltest-selenium
 ```
 
 The following options can be set at selenium runtime.
