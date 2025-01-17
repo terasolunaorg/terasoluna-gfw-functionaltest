@@ -18,7 +18,7 @@ Tested environments are managed at [wiki page](https://github.com/terasolunaorg/
 
 ## How to perform functional test
 
-**Preconditions are as follow:**
+**Preconditions are as follows:**
 
 * [JDK 8 +](https://developers.redhat.com/products/openjdk/download) installed (`JAVA_HOME` defined as environment variable)
 * [Maven](https://maven.apache.org/download.cgi) installed (Can run `mvn` command)
@@ -36,7 +36,7 @@ By default, database owner is `postgres` user, and password of `postgres` user i
 
 #### Create database
 ```console
-$ createdb -U postgres terasoluna-gfw-functionaltest --locale=C --encoding=UTF8 --template=template0
+$ createdb -U postgres --locale=C --encoding=UTF8 --template=template0 terasoluna-gfw-functionaltest
 ```
 
 ### [Step 2] Clone a repository
@@ -73,10 +73,10 @@ $ mvn -U install -am -pl terasoluna-gfw-functionaltest-web -P tomcat9-postgresql
 
 > **Note:**
 >
-> If you not use default user(`postgres`) or password(`P0stgres`), you should modify settings in `terasoluna-gfw-functionaltest-env/configs/local/ContainerConfigXML/context.xml`.
+> If you do not use default user(`postgres`) or password(`P0stgres`), you should modify settings in `terasoluna-gfw-functionaltest-env/configs/local/ContainerConfigXML/context.xml`.
 
 ### [Step 4] Initialize database (Optional)
-If PostgreSQL use as database, initialize database before run functional test.
+If PostgreSQL is used as database, initialize database before run functional test.
 
 ```console
 $ mvn -U sql:execute -pl terasoluna-gfw-functionaltest-initdb
@@ -94,6 +94,12 @@ $ cd {your repository directory}
 $ mvn -U cargo:run -pl terasoluna-gfw-functionaltest-web
 ```
 
+The following options can be set at cargo runtime.
+
+| Option | Overview | Value that can be set | Default value | Setting example
+| ---- | ---- | ---- | ---- | ---- |
+| cargo.maven.containerUrl | container URL for Cargo | [Tomcat](https://archive.apache.org/dist/tomcat/) | URL corresponding to the version of Tomcat set in parent of | -Dcargo.maven.containerUrl=[https://archive.apache.org/dist/tomcat/tomcat-9/v9.0.93/bin/apache-tomcat-9.0.93.zip](https://archive.apache.org/dist/tomcat/tomcat-9/v9.0.93/bin/apache-tomcat-9.0.93.zip) |
+
 > **Note:**
 >
 > Shutdown trigger is "Ctrl + C" on console.
@@ -103,27 +109,31 @@ Run tests using Selenium(`WebDriver`) on JUnit.
 
 ```console
 $ cd {your repository directory}
-$ mvn -U test -pl terasoluna-gfw-functionaltest-selenium -Dwdm.cachePath=/opt/geckodriver -Dwdm.geckoDriverVersion=0.32.0
+$ mvn -U test -pl terasoluna-gfw-functionaltest-selenium
 ```
 
-> **Note:**
->
-> If functional test is failed, try again using latest Selenium(specify with `-Dselenium.version={latest version}`).
-> Please also refer [tested environment](https://github.com/terasolunaorg/terasoluna-gfw-functionaltest/wiki/Tested-Environment) for more information about our tested environment. At last, please check [selenium changelog](https://github.com/SeleniumHQ/selenium/blob/master/java/CHANGELOG) to make sure your Firefox version is supported.
+The following options can be set at selenium runtime.
+
+Please use them according to the situation.
+
+If you do not specify any options, firefox (the latest driver) & headless mode will be used.
+
+| Option | Overview | Value that can be set | Default value | Setting example
+| ---- | ---- | ---- | ---- | ---- |
+| wdm.cachePath | Directory where web driver is downloaded | Any directory | /.cache/selenium | -Dwdm.cachePath=/opt/geckodriver |
+| wdm.geckoDriverVersion | Version of geckoDriver | [Version](https://github.com/mozilla/geckodriver/releases) | Latest version | -Dwdm.geckoDriverVersion=0.32.0 |
+| selenium.headless | Headless | true, false | true | -Dselenium.headless=false |
 
 > **Note:**
 >
-> By default, [webdrivermanager](https://github.com/bonigarcia/webdrivermanager) will download the latest [geckodriver](https://github.com/mozilla/geckodriver/releases) to `~/.cache/selenium` automatically.
-> If you want to specify the download destination directory, please specify "`-Dwdm.cachePath`" in the startup argument.
-> To specify the version of geckoDriver, specify "`-Dwdm.geckoDriverVersion`" in the startup argument.
->
-> See [advanced-configuration](https://bonigarcia.dev/webdrivermanager/#advanced-configuration) for details on configuration.
+> If functional test fail, try again using latest Selenium(specify with `-Dselenium.version={latest version}`).
+> Please also refer [tested environment](https://github.com/terasolunaorg/terasoluna-gfw-functionaltest/wiki/Tested-Environment) for more information about our tested environment. At last, please check [selenium changelog](https://github.com/SeleniumHQ/selenium/blob/master/java/CHANGELOG) to make sure your Firefox version is supported.
 
 ## Appendix
 
 ### How to use latest or any branch snapshot of Common Library
 
-If latest or any branch snapshot of Common Library want to use, install latest or any branch snapshot before build and test.
+If latest or any branch snapshot of Common Library want to use, install latest or any branch snapshot before building and testing.
 
 #### Clone terasoluna-gfw repository into local machine
 
