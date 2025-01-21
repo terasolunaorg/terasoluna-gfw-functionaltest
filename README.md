@@ -18,18 +18,18 @@ Tested environments are managed at [wiki page](https://github.com/terasolunaorg/
 
 ## How to perform functional test
 
-**Preconditions are as follow:**
+**Preconditions are as follows:**
 
 * [JDK 17](https://developers.redhat.com/products/openjdk/download) installed (`JAVA_HOME` defined as environment variable)
 * [Maven](https://maven.apache.org/download.cgi) installed (Can run `mvn` command)
 * Firefox([for personal](https://www.mozilla.org/en-US/firefox/all/) or [ESR](https://www.mozilla.org/en-US/firefox/organizations/all/)) installed (ESR is used on our CI environment)
 
 ### [Step 1] Create database of PostgreSQL (Optional)
-If [PostgreSQL](http://www.postgresql.org/) use as database , you need to create database of PostgreSQL into local machine. (PostgreSQL can download via [here site](http://www.postgresql.org/download/)).
+If [PostgreSQL](http://www.postgresql.org/) is used as database , you need to create database of PostgreSQL into local machine. (PostgreSQL can download via [here site](http://www.postgresql.org/download/)).
 
 > **Note:**
 >
-> If [H2](http://www.h2database.com/) use as database, you can skip this step.
+> If [H2](http://www.h2database.com/) is used as database, you can skip this step.
 
 #### Download & install
 By default, database owner is `postgres` user, and password of `postgres` user is `'P0stgres'`.
@@ -49,7 +49,7 @@ $ git clone https://github.com/terasolunaorg/terasoluna-gfw-functionaltest.git
 ### [Step 3] Build artifacts
 Build artifacts using maven commands as follows.
 
-#### Case that use embedded H2 as database
+#### Case of using embedded H2 as database
 
 The commands are different for XML-based configuration and Java-based configuration.
 
@@ -71,7 +71,7 @@ $ cd {your repository directory}/JavaConfig
 $ mvn -U install -am -pl terasoluna-gfw-functionaltest-web
 ```
 
-#### Case that use PostgreSQL as database
+#### Case of using PostgreSQL as database
 
 The commands are different for XML-based configuration and Java-based configuration.
 
@@ -95,10 +95,10 @@ $ mvn -U install -am -pl terasoluna-gfw-functionaltest-web -P tomcat10-postgresq
 
 > **Note:**
 >
-> If you not use default user(`postgres`) or password(`P0stgres`), you should modify settings in `terasoluna-gfw-functionaltest-env/configs/local/ContainerConfigXML/context.xml`.
+> If you do not use default user(`postgres`) or password(`P0stgres`), you should modify settings in `terasoluna-gfw-functionaltest-env/configs/local/ContainerConfigXML/context.xml`.
 
 ### [Step 4] Initialize database (Optional)
-If PostgreSQL use as database, initialize database before run functional test.
+If PostgreSQL is used as database, initialize database before run functional test.
 
 ```console
 $ mvn -U sql:execute -pl terasoluna-gfw-functionaltest-initdb
@@ -106,7 +106,7 @@ $ mvn -U sql:execute -pl terasoluna-gfw-functionaltest-initdb
 
 > **Note:**
 >
-> If you not use default user(`postgres`) or password(`P0stgres`), you should specify `-Ddb.username={your user}` or `-Ddb.password={your password}` or both.
+> If you do not use default user(`postgres`) or password(`P0stgres`), you should specify `-Ddb.username={your user}` or `-Ddb.password={your password}` or both.
 
 ### [Step 5] Startup Tomcat10 and deploy war file
 Startup Tomcat10 and deploy war file using [CARGO maven plugin](https://codehaus-cargo.github.io/cargo/Maven+3+Plugin.html).
@@ -126,6 +126,12 @@ $ mvn -U cargo:run -pl terasoluna-gfw-functionaltest-web
 $ cd {your repository directory}/JavaConfig
 $ mvn -U cargo:run -pl terasoluna-gfw-functionaltest-web
 ```
+
+The following options can be set at cargo runtime.
+
+| Option | Overview | Value that can be set | Default value | Setting example
+| ---- | ---- | ---- | ---- | ---- |
+| cargo.maven.containerUrl | container URL for Cargo | [Tomcat](https://archive.apache.org/dist/tomcat/) | URL corresponding to the version of Tomcat set in parent of | -Dcargo.maven.containerUrl=[https://archive.apache.org/dist/tomcat/tomcat-10/v10.1.33/bin/apache-tomcat-10.1.33.zip](https://archive.apache.org/dist/tomcat/tomcat-10/v10.1.33/bin/apache-tomcat-10.1.33.zip) |
 
 > **Note:**
 >
@@ -161,18 +167,17 @@ If you do not specify any options, firefox (the latest driver) & headless mode w
 | wdm.cachePath | Directory where web driver is downloaded | Any directory | /.cache/selenium | -Dwdm.cachePath=/opt/geckodriver |
 | wdm.geckoDriverVersion | Version of geckoDriver | [Version](https://github.com/mozilla/geckodriver/releases) | Latest version | -Dwdm.geckoDriverVersion=0.32.0 |
 | selenium.headless | Headless | true, false | true | -Dselenium.headless=false |
-| cargo.maven.containerUrl | container URL for Cargo | [Tomcat](https://archive.apache.org/dist/tomcat/) | URL corresponding to the version of Tomcat set in parent of | -Dcargo.maven.containerUrl=[https://archive.apache.org/dist/tomcat/tomcat-10/v10.1.33/bin/apache-tomcat-10.1.33.zip](https://archive.apache.org/dist/tomcat/tomcat-10/v10.1.33/bin/apache-tomcat-10.1.33.zip) |
 
 > **Note:**
 >
-> If functional test is failed, try again using latest Selenium(specify with `-Dselenium.version={latest version}`).
+> If functional test fail, try again using latest Selenium(specify with `-Dselenium.version={latest version}`).
 > Please also refer [tested environment](https://github.com/terasolunaorg/terasoluna-gfw-functionaltest/wiki/Tested-Environment) for more information about our tested environment. At last, please check [selenium changelog](https://github.com/SeleniumHQ/selenium/blob/master/java/CHANGELOG) to make sure your Firefox version is supported.
 
 ## Appendix
 
 ### How to use latest or any branch snapshot of Common Library
 
-If latest or any branch snapshot of Common Library want to use, install latest or any branch snapshot before build and test.
+If you want to use latest or any branch snapshot of Common Library, install latest or any branch snapshot before building and testing.
 
 #### Clone terasoluna-gfw repository into local machine
 
