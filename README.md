@@ -49,7 +49,7 @@ $ git clone https://github.com/terasolunaorg/terasoluna-gfw-functionaltest.git
 ### [Step 3] Build artifacts
 Build artifacts using maven commands as follows.
 
-#### Case that use embedded H2 as database
+#### Case of using embedded H2 as database
 
 ```console
 $ cd {your repository directory}
@@ -63,7 +63,7 @@ $ mvn -U install -am -pl terasoluna-gfw-functionaltest-web
 >
 > mvn -U install -am -pl terasoluna-gfw-functionaltest-web -P include-context,compile-env
 
-#### Case that use PostgreSQL as database
+#### Case of using PostgreSQL as database
 
 ```console
 $ cd {your repository directory}
@@ -133,7 +133,7 @@ If you do not specify any options, firefox (the latest driver) & headless mode w
 
 ### How to use latest or any branch snapshot of Common Library
 
-If latest or any branch snapshot of Common Library want to use, install latest or any branch snapshot before building and testing.
+If you want to use latest or any branch snapshot of Common Library, install latest or any branch snapshot before building and testing.
 
 #### Clone terasoluna-gfw repository into local machine
 
