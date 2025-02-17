@@ -199,23 +199,6 @@
                 <artifactId>terasoluna-gfw-functionaltest-env</artifactId>
                 <version>${project.version}</version>
             </dependency>
-
-            <!-- == Begin Test == -->
-            <dependency>
-                <groupId>io.github.bonigarcia</groupId>
-                <artifactId>webdrivermanager</artifactId>
-                <version>${webdrivermanager.version}</version>
-            </dependency>
-            <!-- == End Test == -->
-
-            <!-- == Begin logback-db == -->
-            <dependency>
-                <groupId>ch.qos.logback.db</groupId>
-                <artifactId>logback-classic-db</artifactId>
-                <version>${logback-db.version}</version>
-            </dependency>
-            <!-- == End logback-db == -->
-
         </dependencies>
     </dependencyManagement>
     <properties>
@@ -225,10 +208,8 @@
         <org.apache.maven.plugins.maven-failsafe-plugin.version>3.5.2</org.apache.maven.plugins.maven-failsafe-plugin.version>
         <org.apache.maven.plugins.maven-surefire-plugin.version>3.5.2</org.apache.maven.plugins.maven-surefire-plugin.version>
         <!-- == Dependency Versions == -->
-        <postgresql.version>42.7.1</postgresql.version>
-        <ojdbc.version>23.3.0.23.09</ojdbc.version>
-        <webdrivermanager.version>5.6.3</webdrivermanager.version>
-        <logback-db.version>1.2.11.1</logback-db.version>
+        <postgresql.version>42.7.4</postgresql.version>
+        <ojdbc.version>23.5.0.24.07</ojdbc.version>
         <!-- == Project Properties == -->
         <project.env.main.directory>src/main</project.env.main.directory>
         <project.env.buildFinalName>${project.artifactId}-${project.version}</project.env.buildFinalName>
