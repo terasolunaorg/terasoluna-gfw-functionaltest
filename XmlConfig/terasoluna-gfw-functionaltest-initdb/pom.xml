@@ -50,7 +50,7 @@
                 <db.password>gfw</db.password>
                 <db.driver>oracle.jdbc.OracleDriver</db.driver>
                 <db.groupId>com.oracle.database.jdbc</db.groupId>
-                <db.artifactId>ojdbc8</db.artifactId>
+                <db.artifactId>ojdbc17</db.artifactId>
                 <db.version>${ojdbc.version}</db.version>
                 <db.delimiterType>row</db.delimiterType>
             </properties>

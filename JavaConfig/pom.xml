@@ -209,7 +209,7 @@
         <org.apache.maven.plugins.maven-surefire-plugin.version>3.5.2</org.apache.maven.plugins.maven-surefire-plugin.version>
         <!-- == Dependency Versions == -->
         <postgresql.version>42.7.4</postgresql.version>
-        <ojdbc.version>23.5.0.24.07</ojdbc.version>
+        <ojdbc.version>23.6.0.24.10</ojdbc.version>
         <!-- == Project Properties == -->
         <project.env.main.directory>src/main</project.env.main.directory>
         <project.env.buildFinalName>${project.artifactId}-${project.version}</project.env.buildFinalName>
