@@ -384,7 +384,7 @@ public class PaginationController {
 
         model.addAttribute("page", page);
 
-        return "pagination/InOutElement";
+        return "pagination/inOutElement";
     }
 
     @GetMapping(value = "16_1")
