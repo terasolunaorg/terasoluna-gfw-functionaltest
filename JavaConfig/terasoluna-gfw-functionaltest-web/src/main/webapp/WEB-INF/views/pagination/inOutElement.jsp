@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/app/css/style.css" type="text/css" media="screen, projection" />
         <script type="text/javascript" src="${pageContext.request.contextPath}/resources/vendor/js/jquery-1.7.2.js"></script>
 
-        <c:set var="titleKey" value="title.pagination.InOutElement" />
+        <c:set var="titleKey" value="title.pagination.inOutElement" />
         <title><spring:message code="${titleKey}" text="terasoluna-gfw-functionaltest" /></title>
     </head>
     <body>
