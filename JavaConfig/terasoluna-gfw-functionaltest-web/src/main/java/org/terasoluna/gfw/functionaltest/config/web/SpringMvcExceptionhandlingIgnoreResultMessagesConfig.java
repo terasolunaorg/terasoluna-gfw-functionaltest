@@ -16,7 +16,6 @@
 package org.terasoluna.gfw.functionaltest.config.web;
 
 import java.util.Properties;
-
 import org.springframework.aop.Advisor;
 import org.springframework.aop.aspectj.AspectJExpressionPointcut;
 import org.springframework.aop.support.DefaultPointcutAdvisor;
@@ -44,8 +43,8 @@ public class SpringMvcExceptionhandlingIgnoreResultMessagesConfig implements Web
 
     /**
      * Configure {@link SystemExceptionResolver} bean.
-     * @param exceptionCodeResolver Bean defined by ApplicationContext#exceptionCodeResolver
-     * @see com.example.securelogin.config.app.ApplicationContext#exceptionCodeResolver()
+     * @param exceptionCodeResolver Bean defined by ApplicationContextConfig#exceptionCodeResolver
+     * @see org.terasoluna.gfw.functionaltest.config.app.ApplicationContextConfig#exceptionCodeResolver()
      * @return Bean of configured {@link SystemExceptionResolver}
      */
     @Bean
@@ -80,8 +79,8 @@ public class SpringMvcExceptionhandlingIgnoreResultMessagesConfig implements Web
 
     /**
      * Configure messages logging AOP.
-     * @param exceptionLogger Bean defined by ApplicationContext#exceptionLogger
-     * @see com.example.securelogin.config.app.ApplicationContext#exceptionLogger()
+     * @param exceptionLogger Bean defined by ApplicationContextConfig#exceptionLogger
+     * @see org.terasoluna.gfw.functionaltest.config.app.ApplicationContextConfig#exceptionLogger()
      * @return Bean of configured {@link HandlerExceptionResolverLoggingInterceptor}
      */
     @Bean("handlerExceptionResolverLoggingInterceptor")
