@@ -44,8 +44,8 @@ public class SpringMvcExceptionhandlingExceptionloggerVariationConfig implements
 
     /**
      * Configure {@link SystemExceptionResolver} bean.
-     * @param exceptionCodeResolver Bean defined by ApplicationContext#exceptionCodeResolver
-     * @see com.example.securelogin.config.app.ApplicationContext#exceptionCodeResolver()
+     * @param exceptionCodeResolver Bean defined by ApplicationContextConfig#exceptionCodeResolver
+     * @see org.terasoluna.gfw.functionaltest.config.app.ApplicationContextConfig#exceptionCodeResolver()
      * @return Bean of configured {@link SystemExceptionResolver}
      */
     @Bean
@@ -79,8 +79,8 @@ public class SpringMvcExceptionhandlingExceptionloggerVariationConfig implements
     /**
      * Configure messages logging AOP.
      * @param changeCodeAndMessageExceptionLogger Bean defined by
-     *        ApplicationContext#changeCodeAndMessageExceptionLogger
-     * @see com.example.securelogin.config.app.ApplicationContext#changeCodeAndMessageExceptionLogger()
+     *        ApplicationContextConfig#changeCodeAndMessageExceptionLogger
+     * @see org.terasoluna.gfw.functionaltest.config.app.ApplicationContextConfig#changeCodeAndMessageExceptionLogger()
      * @return Bean of configured {@link HandlerExceptionResolverLoggingInterceptor}
      */
     @Bean("handlerExceptionResolverLoggingInterceptor")
