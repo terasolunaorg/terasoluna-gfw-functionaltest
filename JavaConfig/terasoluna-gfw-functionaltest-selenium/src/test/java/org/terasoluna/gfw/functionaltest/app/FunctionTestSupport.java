@@ -24,12 +24,10 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
-import org.junit.Rule;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.TestInfo;
-import org.junit.rules.TestWatcher;
-import org.junit.runner.Description;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
@@ -40,6 +38,7 @@ import org.terasoluna.gfw.functionaltest.app.webdrivers.WebDriverType;
 import org.terasoluna.gfw.functionaltest.domain.DBLogCleaner;
 import jakarta.inject.Inject;
 
+@ExtendWith(FunctionalTestSupportExtension.class)
 public abstract class FunctionTestSupport extends ApplicationObjectSupport {
 
     private static final Logger logger = LoggerFactory.getLogger(FunctionTestSupport.class);
@@ -81,28 +80,7 @@ public abstract class FunctionTestSupport extends ApplicationObjectSupport {
     @Inject
     private DBLogCleaner dbLogCleaner;
 
-    
     public String testName;
-
-    @Rule
-    public TestWatcher testWatcher = new TestWatcher() {
-        @Override
-        protected void succeeded(Description description) {
-            onSucceeded();
-            succeededEvidence();
-        }
-
-        @Override
-        protected void failed(Throwable e, Description description) {
-            onFailed(e);
-            failedEvidence();
-        }
-
-        @Override
-        protected void finished(Description description) {
-            onFinished();
-        }
-    };
 
     private boolean useSetupDefaultWebDriver = true;
 
@@ -138,7 +116,7 @@ public abstract class FunctionTestSupport extends ApplicationObjectSupport {
     @BeforeEach
     public final void setUpEvidence() {
 
-        String testCaseName =  testName.replaceAll("^test", "");
+        String testCaseName = testName.replaceAll("^test", "");
 
         File evidenceSavingDirectory = new File(
                 String.format("%s/%s/%s", evidenceBaseDirectory, simplePackageName, testCaseName));
@@ -255,7 +233,7 @@ public abstract class FunctionTestSupport extends ApplicationObjectSupport {
         webDrivers.clear();
     }
 
-    private void succeededEvidence() {
+    protected void succeededEvidence() {
         String subTitle = "succeeded";
         for (WebDriver webDriver : webDrivers) {
             try {
@@ -276,7 +254,7 @@ public abstract class FunctionTestSupport extends ApplicationObjectSupport {
         }
     }
 
-    private void failedEvidence() {
+    protected void failedEvidence() {
         String subTitle = "failed";
         for (WebDriver webDriver : webDrivers) {
             try {
