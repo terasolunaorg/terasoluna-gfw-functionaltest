@@ -18,16 +18,13 @@ package org.terasoluna.gfw.functionaltest.app.sequencer;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 import org.terasoluna.gfw.functionaltest.app.FunctionTestSupport;
 import org.terasoluna.gfw.functionaltest.config.SeleniumContextConfig;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {SeleniumContextConfig.class})
+@SpringJUnitConfig(classes = {SeleniumContextConfig.class})
 public class SequencerTest extends FunctionTestSupport {
 
     @Test

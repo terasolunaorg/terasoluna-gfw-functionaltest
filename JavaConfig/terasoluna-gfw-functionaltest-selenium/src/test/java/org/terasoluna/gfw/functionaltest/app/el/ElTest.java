@@ -18,26 +18,24 @@ package org.terasoluna.gfw.functionaltest.app.el;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsNull.nullValue;
-import static org.junit.Assert.fail;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.StringReader;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 import org.terasoluna.gfw.functionaltest.app.FunctionTestSupport;
 import org.terasoluna.gfw.functionaltest.config.SeleniumContextConfig;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {SeleniumContextConfig.class})
+@SpringJUnitConfig(classes = {SeleniumContextConfig.class})
 public class ElTest extends FunctionTestSupport {
 
     private boolean acceptNextAlert = true;
@@ -266,25 +264,27 @@ public class ElTest extends FunctionTestSupport {
         driver.navigate().to(applicationContextUrl + "/el/output_05_04?name=tera%261");
     }
 
-    @Test(expected = NoSuchElementException.class)
+    @Test
     public void test05_URL_NO_Link() {
+        assertThrows(NoSuchElementException.class, () -> {
 
-        driver.findElement(By.id("05")).click();
-        inputFieldAccessor.overrideValue(By.id("text-output"),
-                "123456789ttps://example.com/tour/ 01234567890", driver);
-        driver.findElement(By.id("btn-output")).click();
+            driver.findElement(By.id("05")).click();
+            inputFieldAccessor.overrideValue(By.id("text-output"),
+                    "123456789ttps://example.com/tour/ 01234567890", driver);
+            driver.findElement(By.id("btn-output")).click();
 
-        // output 05_03 Test
-        assertThat(driver.findElement(By.id("linkOutput")).getText(),
-                is("123456789ttps://example.com/tour/ 01234567890"));
+            // output 05_03 Test
+            assertThat(driver.findElement(By.id("linkOutput")).getText(),
+                    is("123456789ttps://example.com/tour/ 01234567890"));
 
-        try {
-            // No link
-            driver.findElement(By.linkText("ttps://example.com/tour/"));
-            fail("error route");
-        } catch (NoSuchElementException e) {
-            throw e;
-        }
+            try {
+                // No link
+                driver.findElement(By.linkText("ttps://example.com/tour/"));
+                fail("error route");
+            } catch (NoSuchElementException e) {
+                throw e;
+            }
+        });
     }
 
     /**
@@ -510,22 +510,24 @@ public class ElTest extends FunctionTestSupport {
     /**
      * The Case of Internationalized Domains (unsupported) [f:link 05_07 Test]
      */
-    @Test(expected = NoSuchElementException.class)
+    @Test
     public void test05_URL_Link_Scenario_IDNCase() {
+        assertThrows(NoSuchElementException.class, () -> {
 
-        driver.findElement(By.id("05")).click();
+            driver.findElement(By.id("05")).click();
 
-        // IDN（Internationalized Domain Label）
-        inputFieldAccessor.overrideValue(By.id("text-output"), "http://テスト.com/path", driver);
-        driver.findElement(By.id("btn-output")).click();
-        assertThat(driver.findElement(By.id("linkOutput")).getText(), is("http://テスト.com/path"));
-        try {
-            // There must be no a link under linkOutput.
-            driver.findElement(By.xpath("//p[@id='linkOutput']/a"));
-            fail("a link has been created.");
-        } catch (NoSuchElementException e) {
-            throw e;
-        }
+            // IDN（Internationalized Domain Label）
+            inputFieldAccessor.overrideValue(By.id("text-output"), "http://テスト.com/path", driver);
+            driver.findElement(By.id("btn-output")).click();
+            assertThat(driver.findElement(By.id("linkOutput")).getText(), is("http://テスト.com/path"));
+            try {
+                // There must be no a link under linkOutput.
+                driver.findElement(By.xpath("//p[@id='linkOutput']/a"));
+                fail("a link has been created.");
+            } catch (NoSuchElementException e) {
+                throw e;
+            }
+        });
     }
 
     @Test

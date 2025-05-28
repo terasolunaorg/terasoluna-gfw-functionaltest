@@ -18,12 +18,9 @@ package org.terasoluna.gfw.functionaltest.app.exceptionhandling;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
-
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.RestTemplate;
@@ -33,8 +30,7 @@ import org.terasoluna.gfw.functionaltest.config.SeleniumContextConfig;
 
 import jakarta.inject.Inject;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {SeleniumContextConfig.class})
+@SpringJUnitConfig(classes = {SeleniumContextConfig.class})
 public class ExceptionHandlingTest extends FunctionTestSupport {
 
     @Inject

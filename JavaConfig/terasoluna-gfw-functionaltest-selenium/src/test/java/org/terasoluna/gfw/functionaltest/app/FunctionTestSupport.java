@@ -16,16 +16,18 @@
 package org.terasoluna.gfw.functionaltest.app;
 
 import java.io.File;
+import java.lang.reflect.Method;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
-import org.junit.AfterClass;
-import org.junit.Before;
 import org.junit.Rule;
-import org.junit.rules.TestName;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.TestInfo;
 import org.junit.rules.TestWatcher;
 import org.junit.runner.Description;
 import org.openqa.selenium.WebDriver;
@@ -79,8 +81,8 @@ public abstract class FunctionTestSupport extends ApplicationObjectSupport {
     @Inject
     private DBLogCleaner dbLogCleaner;
 
-    @Rule
-    public TestName testName = new TestName();
+    
+    public String testName;
 
     @Rule
     public TestWatcher testWatcher = new TestWatcher() {
@@ -127,16 +129,16 @@ public abstract class FunctionTestSupport extends ApplicationObjectSupport {
                 Duration.ofSeconds(defaultTimeoutSecForImplicitlyWait);
     }
 
-    @AfterClass
+    @AfterAll
     public final static void tearDownWebDrivers() {
         quitWebDrivers();
         driver = null;
     }
 
-    @Before
+    @BeforeEach
     public final void setUpEvidence() {
 
-        String testCaseName = testName.getMethodName().replaceAll("^test", "");
+        String testCaseName =  testName.replaceAll("^test", "");
 
         File evidenceSavingDirectory = new File(
                 String.format("%s/%s/%s", evidenceBaseDirectory, simplePackageName, testCaseName));
@@ -149,7 +151,7 @@ public abstract class FunctionTestSupport extends ApplicationObjectSupport {
         dbLog.setUp(evidenceSavingDirectory);
     }
 
-    @Before
+    @BeforeEach
     public final void setUpDefaultWebDriver() {
         if (!useSetupDefaultWebDriver) {
             return;
@@ -157,7 +159,7 @@ public abstract class FunctionTestSupport extends ApplicationObjectSupport {
         bootDefaultWebDriver();
     }
 
-    @Before
+    @BeforeEach
     public final void setUpWebDriverType() {
         if (driverType != null) {
             return;
@@ -180,8 +182,12 @@ public abstract class FunctionTestSupport extends ApplicationObjectSupport {
         driverType = WebDriverType.DEFAULT();
     }
 
-    @Before
-    public final void setUpDBLog() {
+    @BeforeEach
+    public final void setUpDBLog(TestInfo testInfo) {
+        Optional<Method> testMethod = testInfo.getTestMethod();
+        if (testMethod.isPresent()) {
+            this.testName = testMethod.get().getName();
+        }
         dbLogCleaner.cleanupAll();
     }
 
