@@ -24,9 +24,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 import static org.openqa.selenium.support.ui.ExpectedConditions.textToBe;
-
 import java.time.Duration;
-
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
@@ -35,7 +33,7 @@ import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 import org.terasoluna.gfw.functionaltest.app.FunctionTestSupport;
 import org.terasoluna.gfw.functionaltest.config.SeleniumContextConfig;
 
-@SpringJUnitConfig(classes = {SeleniumContextConfig.class})
+@SpringJUnitConfig(classes = { SeleniumContextConfig.class })
 public class PaginationTest extends FunctionTestSupport {
 
     @Test
@@ -218,48 +216,40 @@ public class PaginationTest extends FunctionTestSupport {
 
     @Test
     public void test01_04_defaultSpecified() {
+
+        driver.findElement(By.id("defaultSpecified_1_4")).click();
+        webDriverWait.until(textToBe(By.xpath("//h1[2]"), "1 Page"));
+
         assertThrows(NoSuchElementException.class, () -> {
-            driver.findElement(By.id("defaultSpecified_1_4")).click();
-            webDriverWait.until(textToBe(By.xpath("//h1[2]"), "1 Page"));
+            // Immediate time-out value set
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
 
-            try {
-                // Immediate time-out value set
-                driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
-
-                // pagination no display
-                driver.findElement(By.xpath("//li[3]/a"));
-                fail("error route");
-            } catch (NoSuchElementException e) {
-
-                // screen capture
-                screenCapture.save(driver);
-
-                throw e;
-            }
+            // pagination no display
+            driver.findElement(By.xpath("//li[3]/a"));
+            fail("error route");
         });
+
+        // screen capture
+        screenCapture.save(driver);
     }
 
     @Test
     public void test01_05_defaultSpecified() {
+
+        driver.findElement(By.id("defaultSpecified_1_5")).click();
+        webDriverWait.until(textToBe(By.xpath("//h1[2]"), "1 Page"));
+
         assertThrows(NoSuchElementException.class, () -> {
-            driver.findElement(By.id("defaultSpecified_1_5")).click();
-            webDriverWait.until(textToBe(By.xpath("//h1[2]"), "1 Page"));
+            // Immediate time-out value set
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
 
-            try {
-                // Immediate time-out value set
-                driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
-
-                // pagination no display
-                driver.findElement(By.xpath("//li[3]/a"));
-                fail("error route");
-            } catch (NoSuchElementException e) {
-
-                // screen capture
-                screenCapture.save(driver);
-
-                throw e;
-            }
+            // pagination no display
+            driver.findElement(By.xpath("//li[3]/a"));
+            fail("error route");
         });
+
+        // screen capture
+        screenCapture.save(driver);
     }
 
     @Test
@@ -726,49 +716,45 @@ public class PaginationTest extends FunctionTestSupport {
 
     @Test
     public void test04_02_maxDisplayCountSpecified() {
+
+        driver.findElement(By.id("maxDisplayCountSpecified_4_2")).click();
+        webDriverWait.until(textToBe(By.xpath("//h1[2]"), "1 Page"));
+
+        // all page display check not page number link
+        // previousLink, nextLink, firstLink, lastLink check
+        assertThat(driver.findElement(By.xpath("//li[1]/a")).getText(), is("<<"));
+        assertThat(driver.findElement(By.xpath("//li[2]/a")).getText(), is("<"));
+        assertThat(driver.findElement(By.xpath("//li[3]/a")).getText(), is(">"));
+        assertThat(driver.findElement(By.xpath("//li[4]/a")).getText(), is(">>"));
+
+        // HTML tags outside "<ul>" check
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul")), notNullValue());
+        // HTML tags inside "<li>" check
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul/li[1]")), notNullValue());
+
+        // previousLink value "#" check
+        assertThat(driver.findElement(By.xpath("(//a[contains(@href, '#')])[2]")), notNullValue());
+
+        // "disabled" class check
+        assertThat(driver.findElement(By.cssSelector("li.disabled > a")).getText(), is("<<"));
+
         assertThrows(NoSuchElementException.class, () -> {
-            driver.findElement(By.id("maxDisplayCountSpecified_4_2")).click();
-            webDriverWait.until(textToBe(By.xpath("//h1[2]"), "1 Page"));
+            // Immediate time-out value set
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
 
-            // all page display check not page number link
-            // previousLink, nextLink, firstLink, lastLink check
-            assertThat(driver.findElement(By.xpath("//li[1]/a")).getText(), is("<<"));
-            assertThat(driver.findElement(By.xpath("//li[2]/a")).getText(), is("<"));
-            assertThat(driver.findElement(By.xpath("//li[3]/a")).getText(), is(">"));
-            assertThat(driver.findElement(By.xpath("//li[4]/a")).getText(), is(">>"));
-
-            // HTML tags outside "<ul>" check
-            assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul")), notNullValue());
-            // HTML tags inside "<li>" check
-            assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul/li[1]")), notNullValue());
-
-            // previousLink value "#" check
-            assertThat(driver.findElement(By.xpath("(//a[contains(@href, '#')])[2]")), notNullValue());
-
-            // "disabled" class check
-            assertThat(driver.findElement(By.cssSelector("li.disabled > a")).getText(), is("<<"));
-
-            try {
-                // Immediate time-out value set
-                driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
-
-                // "active" class check
-                driver.findElement(By.cssSelector("li.active > a"));
-                fail("error route");
-            } catch (NoSuchElementException e) {
-
-                for (int i = 1; i < 31; i++) {
-                    // active page number check
-                    webDriverWait.until(textToBe(By.xpath("//h1[2]"), String.valueOf(i) + " Page"));
-                    // screen capture
-                    screenCapture.save(driver);
-
-                    driver.findElement(By.linkText(">")).click();
-                }
-
-                throw e;
-            }
+            // "active" class check
+            driver.findElement(By.cssSelector("li.active > a"));
+            fail("error route");
         });
+
+        for (int i = 1; i < 31; i++) {
+            // active page number check
+            webDriverWait.until(textToBe(By.xpath("//h1[2]"), String.valueOf(i) + " Page"));
+            // screen capture
+            screenCapture.save(driver);
+
+            driver.findElement(By.linkText(">")).click();
+        }
     }
 
     @Test
@@ -1115,52 +1101,49 @@ public class PaginationTest extends FunctionTestSupport {
 
     @Test
     public void test10_02_lastLinkTextSpecified() {
+
+        driver.findElement(By.id("lastLinkTextSpecified_10_2")).click();
+        webDriverWait.until(textToBe(By.xpath("//h1[2]"), "1 Page"));
+
+        // lastLink no display
+        // firstLink, previousLink, nextLink check
+        assertThat(driver.findElement(By.xpath("//li[1]/a")).getText(), is("<<"));
+        assertThat(driver.findElement(By.xpath("//li[2]/a")).getText(), is("<"));
+        assertThat(driver.findElement(By.xpath("//li[5]/a")).getText(), is("3"));
+        assertThat(driver.findElement(By.xpath("//li[6]/a")).getText(), is(">"));
+
+        // HTML tags outside "<ul>" check
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul")), notNullValue());
+        // HTML tags inside "<li>" check
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul/li[1]")), notNullValue());
+
+        // previousLink value "#" check
+        assertThat(driver.findElement(By.xpath("(//a[contains(@href, '#')])[1]")), notNullValue());
+
+        // "active" class check
+        assertThat(driver.findElement(By.cssSelector("li.active > a")).getText(), is("1"));
+
+        // "disabled" class check
+        assertThat(driver.findElement(By.cssSelector("li.disabled > a")).getText(), is("<<"));
+
         assertThrows(NoSuchElementException.class, () -> {
-            driver.findElement(By.id("lastLinkTextSpecified_10_2")).click();
-            webDriverWait.until(textToBe(By.xpath("//h1[2]"), "1 Page"));
+            // Immediate time-out value set
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
 
-            // lastLink no display
-            // firstLink, previousLink, nextLink check
-            assertThat(driver.findElement(By.xpath("//li[1]/a")).getText(), is("<<"));
-            assertThat(driver.findElement(By.xpath("//li[2]/a")).getText(), is("<"));
-            assertThat(driver.findElement(By.xpath("//li[5]/a")).getText(), is("3"));
-            assertThat(driver.findElement(By.xpath("//li[6]/a")).getText(), is(">"));
-
-            // HTML tags outside "<ul>" check
-            assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul")), notNullValue());
-            // HTML tags inside "<li>" check
-            assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul/li[1]")), notNullValue());
-
-            // previousLink value "#" check
-            assertThat(driver.findElement(By.xpath("(//a[contains(@href, '#')])[1]")), notNullValue());
-
-            // "active" class check
-            assertThat(driver.findElement(By.cssSelector("li.active > a")).getText(), is("1"));
-
-            // "disabled" class check
-            assertThat(driver.findElement(By.cssSelector("li.disabled > a")).getText(), is("<<"));
-
-            try {
-                // Immediate time-out value set
-                driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
-
-                // no last link
-                driver.findElement(By.xpath("//li[7]/a"));
-                fail("error route");
-            } catch (NoSuchElementException e) {
-                // screen capture
-                for (int i = 1; i < 4; i++) {
-                    // active page number check
-                    webDriverWait.until(textToBe(By.xpath("//h1[2]"), String.valueOf(i) + " Page"));
-                    // screen capture
-                    screenCapture.save(driver);
-
-                    driver.findElement(By.linkText(">")).click();
-                }
-
-                throw e;
-            }
+            // no last link
+            driver.findElement(By.xpath("//li[7]/a"));
+            fail("error route");
         });
+
+        // screen capture
+        for (int i = 1; i < 4; i++) {
+            // active page number check
+            webDriverWait.until(textToBe(By.xpath("//h1[2]"), String.valueOf(i) + " Page"));
+            // screen capture
+            screenCapture.save(driver);
+
+            driver.findElement(By.linkText(">")).click();
+        }
     }
 
     @Test
@@ -1492,153 +1475,146 @@ public class PaginationTest extends FunctionTestSupport {
 
     @Test
     public void test16_01_firstLastLinkCombination() {
+
+        driver.findElement(By.id("firstLastLinkCombination_16_1")).click();
+        webDriverWait.until(textToBe(By.xpath("//h1[2]"), "1 Page"));
+
+        // HTML tags outside "<ul>" check
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul")), notNullValue());
+        // HTML tags inside "<li>" check
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul/li[1]")), notNullValue());
+
+        // firstLink, lastLink check, previousLink, nextLink, no display
+        assertThat(driver.findElement(By.xpath("//li[1]/a")).getText(), is("first"));
+        assertThat(driver.findElement(By.xpath("//li[2]/a")).getText(), is("1"));
+        assertThat(driver.findElement(By.xpath("//li[4]/a")).getText(), is("3"));
+        assertThat(driver.findElement(By.xpath("//li[5]/a")).getText(), is("last"));
+
+        // previousLink value "#" check
+        assertThat(driver.findElement(By.xpath("(//a[contains(@href, '#')])[2]")), notNullValue());
+
+        // "active" class check
+        assertThat(driver.findElement(By.cssSelector("li.active > a")).getText(), is("1"));
+
+        // "disabled" class check
+        assertThat(driver.findElement(By.cssSelector("li.disabled > a")).getText(), is("first"));
+
+        driver.findElement(By.linkText("last")).click();
+        webDriverWait.until(textToBe(By.xpath("//h1[2]"), "3 Page"));
+
+        // "active" class check
+        assertThat(driver.findElement(By.cssSelector("li.active > a")).getText(), is("3"));
+
         assertThrows(NoSuchElementException.class, () -> {
-            driver.findElement(By.id("firstLastLinkCombination_16_1")).click();
-            webDriverWait.until(textToBe(By.xpath("//h1[2]"), "1 Page"));
+            // Immediate time-out value set
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
 
-            // HTML tags outside "<ul>" check
-            assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul")), notNullValue());
-            // HTML tags inside "<li>" check
-            assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul/li[1]")), notNullValue());
-
-            // firstLink, lastLink check, previousLink, nextLink, no display
-            assertThat(driver.findElement(By.xpath("//li[1]/a")).getText(), is("first"));
-            assertThat(driver.findElement(By.xpath("//li[2]/a")).getText(), is("1"));
-            assertThat(driver.findElement(By.xpath("//li[4]/a")).getText(), is("3"));
-            assertThat(driver.findElement(By.xpath("//li[5]/a")).getText(), is("last"));
-
-            // previousLink value "#" check
-            assertThat(driver.findElement(By.xpath("(//a[contains(@href, '#')])[2]")), notNullValue());
-
-            // "active" class check
-            assertThat(driver.findElement(By.cssSelector("li.active > a")).getText(), is("1"));
-
-            // "disabled" class check
-            assertThat(driver.findElement(By.cssSelector("li.disabled > a")).getText(), is("first"));
-
-            driver.findElement(By.linkText("last")).click();
-            webDriverWait.until(textToBe(By.xpath("//h1[2]"), "3 Page"));
-
-            // "active" class check
-            assertThat(driver.findElement(By.cssSelector("li.active > a")).getText(), is("3"));
-
-            try {
-                // Immediate time-out value set
-                driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
-
-                // "last link" no check
-                driver.findElement(By.xpath("//li[6]/a"));
-                fail("error route");
-            } catch (NoSuchElementException e) {
-                driver.findElement(By.linkText("first")).click();
-                for (int i = 1; i < 4; i++) {
-                    driver.findElement(By.linkText(String.valueOf(i))).click();
-                    // active page number check
-                    webDriverWait.until(textToBe(By.xpath("//h1[2]"), String.valueOf(i) + " Page"));
-                    // screen capture
-                    screenCapture.save(driver);
-                }
-
-                throw e;
-            }
+            // "last link" no check
+            driver.findElement(By.xpath("//li[6]/a"));
+            fail("error route");
         });
+
+        driver.findElement(By.linkText("first")).click();
+        for (int i = 1; i < 4; i++) {
+            driver.findElement(By.linkText(String.valueOf(i))).click();
+            // active page number check
+            webDriverWait.until(textToBe(By.xpath("//h1[2]"), String.valueOf(i) + " Page"));
+            // screen capture
+            screenCapture.save(driver);
+        }
     }
 
     @Test
     public void test16_02_firstLastLinkCombination() {
+
+        driver.findElement(By.id("firstLastLinkCombination_16_2")).click();
+        webDriverWait.until(textToBe(By.xpath("//h1[2]"), "1 Page"));
+
+        // HTML tags outside "<ul>" check
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul")), notNullValue());
+        // HTML tags inside "<li>" check
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul/li[1]")),
+                notNullValue());
+
+        // firstLink, lastLink, previousLink, nextLink, no display
+        assertThat(driver.findElement(By.xpath("//li[1]/a")).getText(), is("1"));
+        assertThat(driver.findElement(By.xpath("//li[2]/a")).getText(), is("2"));
+        assertThat(driver.findElement(By.xpath("//li[3]/a")).getText(), is("3"));
+
+        // "active" class check
+        assertThat(driver.findElement(By.cssSelector("li.active > a")).getText(), is("1"));
+
         assertThrows(NoSuchElementException.class, () -> {
-            driver.findElement(By.id("firstLastLinkCombination_16_2")).click();
-            webDriverWait.until(textToBe(By.xpath("//h1[2]"), "1 Page"));
+            // Immediate time-out value set
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
 
-            // HTML tags outside "<ul>" check
-            assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul")), notNullValue());
-            // HTML tags inside "<li>" check
-            assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul/li[1]")), notNullValue());
-
-            // firstLink, lastLink, previousLink, nextLink, no display
-            assertThat(driver.findElement(By.xpath("//li[1]/a")).getText(), is("1"));
-            assertThat(driver.findElement(By.xpath("//li[2]/a")).getText(), is("2"));
-            assertThat(driver.findElement(By.xpath("//li[3]/a")).getText(), is("3"));
-
-            // "active" class check
-            assertThat(driver.findElement(By.cssSelector("li.active > a")).getText(), is("1"));
-
-            try {
-                // Immediate time-out value set
-                driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
-
-                // "last link" no check
-                driver.findElement(By.xpath("//li[4]/a"));
-                fail("error route");
-            } catch (NoSuchElementException e) {
-
-                for (int i = 1; i < 4; i++) {
-                    driver.findElement(By.linkText(String.valueOf(i))).click();
-                    // active page number check
-                    webDriverWait.until(textToBe(By.xpath("//h1[2]"), String.valueOf(i) + " Page"));
-                    // screen capture
-                    screenCapture.save(driver);
-                }
-
-                throw e;
-            }
+            // "last link" no check
+            driver.findElement(By.xpath("//li[4]/a"));
+            fail("error route");
         });
+
+        for (int i = 1; i < 4; i++) {
+            driver.findElement(By.linkText(String.valueOf(i))).click();
+            // active page number check
+            webDriverWait.until(textToBe(By.xpath("//h1[2]"), String.valueOf(i) + " Page"));
+            // screen capture
+            screenCapture.save(driver);
+        }
+
     }
 
     @Test
     public void test17_01_previousNextLinkCombination() {
+
+        driver.findElement(By.id("previousNextLinkCombination_17_1")).click();
+        webDriverWait.until(textToBe(By.xpath("//h1[2]"), "1 Page"));
+
+        // HTML tags outside "<ul>" check
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul")), notNullValue());
+        // HTML tags inside "<li>" check
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul/li[1]")),
+                notNullValue());
+
+        // previousLink, nextLink check, firstLink, lastLink no display
+        assertThat(driver.findElement(By.xpath("//li[1]/a")).getText(), is("prev"));
+        assertThat(driver.findElement(By.xpath("//li[2]/a")).getText(), is("1"));
+        assertThat(driver.findElement(By.xpath("//li[4]/a")).getText(), is("3"));
+        assertThat(driver.findElement(By.xpath("//li[5]/a")).getText(), is("next"));
+
+        // previousLink value "#" check
+        assertThat(driver.findElement(By.xpath("(//a[contains(@href, '#')])[2]")),
+                notNullValue());
+
+        // "active" class check
+        assertThat(driver.findElement(By.cssSelector("li.active > a")).getText(), is("1"));
+
+        // "disabled" class check
+        assertThat(driver.findElement(By.cssSelector("li.disabled > a")).getText(), is("prev"));
+
+        driver.findElement(By.linkText("next")).click();
+        webDriverWait.until(textToBe(By.xpath("//h1[2]"), "2 Page"));
+
+        // "active" class check
+        assertThat(driver.findElement(By.cssSelector("li.active > a")).getText(), is("2"));
+
         assertThrows(NoSuchElementException.class, () -> {
-            driver.findElement(By.id("previousNextLinkCombination_17_1")).click();
-            webDriverWait.until(textToBe(By.xpath("//h1[2]"), "1 Page"));
+            // Immediate time-out value set
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
 
-            // HTML tags outside "<ul>" check
-            assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul")), notNullValue());
-            // HTML tags inside "<li>" check
-            assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul/li[1]")), notNullValue());
+            // "last link" no check
+            driver.findElement(By.xpath("//li[6]/a"));
+            fail("error route");
+        });
 
-            // previousLink, nextLink check, firstLink, lastLink no display
-            assertThat(driver.findElement(By.xpath("//li[1]/a")).getText(), is("prev"));
-            assertThat(driver.findElement(By.xpath("//li[2]/a")).getText(), is("1"));
-            assertThat(driver.findElement(By.xpath("//li[4]/a")).getText(), is("3"));
-            assertThat(driver.findElement(By.xpath("//li[5]/a")).getText(), is("next"));
-
-            // previousLink value "#" check
-            assertThat(driver.findElement(By.xpath("(//a[contains(@href, '#')])[2]")), notNullValue());
-
-            // "active" class check
-            assertThat(driver.findElement(By.cssSelector("li.active > a")).getText(), is("1"));
-
-            // "disabled" class check
-            assertThat(driver.findElement(By.cssSelector("li.disabled > a")).getText(), is("prev"));
+        driver.findElement(By.linkText("1")).click();
+        for (int i = 1; i < 4; i++) {
+            // active page number check
+            webDriverWait.until(textToBe(By.xpath("//h1[2]"), String.valueOf(i) + " Page"));
+            // screen capture
+            screenCapture.save(driver);
 
             driver.findElement(By.linkText("next")).click();
-            webDriverWait.until(textToBe(By.xpath("//h1[2]"), "2 Page"));
-
-            // "active" class check
-            assertThat(driver.findElement(By.cssSelector("li.active > a")).getText(), is("2"));
-
-            try {
-                // Immediate time-out value set
-                driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
-
-                // "last link" no check
-                driver.findElement(By.xpath("//li[6]/a"));
-                fail("error route");
-            } catch (NoSuchElementException e) {
-
-                driver.findElement(By.linkText("1")).click();
-                for (int i = 1; i < 4; i++) {
-                    // active page number check
-                    webDriverWait.until(textToBe(By.xpath("//h1[2]"), String.valueOf(i) + " Page"));
-                    // screen capture
-                    screenCapture.save(driver);
-
-                    driver.findElement(By.linkText("next")).click();
-                }
-
-                throw e;
-            }
-        });
+        }
     }
 
     @Test
@@ -1762,56 +1738,54 @@ public class PaginationTest extends FunctionTestSupport {
 
     @Test
     public void test19_01_screenDrawing() {
+
+        driver.findElement(By.id("screenDrawing_19_1")).click();
+        webDriverWait.until(textToBe(By.xpath("//h1[2]"), "1 Page"));
+
+        // HTML tags outside "<ul>" check
+        assertThat(driver.findElement(By.xpath("/html/body/div/ul[2]")), notNullValue());
+        // HTML tags inside "<li>" check
+        assertThat(driver.findElement(By.xpath("/html/body/div/ul[2]/li[1]")), notNullValue());
+
+        // previousLink, nextLink change, firstLink, lastLink no display check
+        assertThat(driver.findElement(By.xpath("//li[1]/a")).getText(), is("prev"));
+        assertThat(driver.findElement(By.xpath("//li[2]/a")).getText(), is("next"));
+
+        // previousLink value "#" check
+        assertThat(driver.findElement(By.xpath("(//a[contains(@href, '#')])[1]")),
+                notNullValue());
+
+        // "disabled" class check
+        assertThat(driver.findElement(By.cssSelector("li.disabled > a")).getText(), is("prev"));
+
+        driver.findElement(By.linkText("next")).click();
+        webDriverWait.until(textToBe(By.xpath("//h1[2]"), "2 Page"));
+        driver.findElement(By.linkText("next")).click();
+        webDriverWait.until(textToBe(By.xpath("//h1[2]"), "3 Page"));
+
+        // move page 3 page check
+        assertThat(driver.findElement(By.xpath("//td")).getText(), is("201"));
+
         assertThrows(NoSuchElementException.class, () -> {
-            driver.findElement(By.id("screenDrawing_19_1")).click();
-            webDriverWait.until(textToBe(By.xpath("//h1[2]"), "1 Page"));
+            // Immediate time-out value set
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
 
-            // HTML tags outside "<ul>" check
-            assertThat(driver.findElement(By.xpath("/html/body/div/ul[2]")), notNullValue());
-            // HTML tags inside "<li>" check
-            assertThat(driver.findElement(By.xpath("/html/body/div/ul[2]/li[1]")), notNullValue());
-
-            // previousLink, nextLink change, firstLink, lastLink no display check
-            assertThat(driver.findElement(By.xpath("//li[1]/a")).getText(), is("prev"));
-            assertThat(driver.findElement(By.xpath("//li[2]/a")).getText(), is("next"));
-
-            // previousLink value "#" check
-            assertThat(driver.findElement(By.xpath("(//a[contains(@href, '#')])[1]")), notNullValue());
-
-            // "disabled" class check
-            assertThat(driver.findElement(By.cssSelector("li.disabled > a")).getText(), is("prev"));
-
-            driver.findElement(By.linkText("next")).click();
-            webDriverWait.until(textToBe(By.xpath("//h1[2]"), "2 Page"));
-            driver.findElement(By.linkText("next")).click();
-            webDriverWait.until(textToBe(By.xpath("//h1[2]"), "3 Page"));
-
-            // move page 3 page check
-            assertThat(driver.findElement(By.xpath("//td")).getText(), is("201"));
-
-            try {
-                // Immediate time-out value set
-                driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
-
-                // "last link" no check
-                driver.findElement(By.xpath("//li[3]/a"));
-                fail("error route");
-            } catch (NoSuchElementException e) {
-                driver.findElement(By.linkText("prev")).click();
-                webDriverWait.until(textToBe(By.xpath("//h1[2]"), "2 Page"));
-                driver.findElement(By.linkText("prev")).click();
-                for (int i = 1; i < 4; i++) {
-                    // active page number check
-                    webDriverWait.until(textToBe(By.xpath("//h1[2]"), String.valueOf(i) + " Page"));
-                    // screen capture
-                    screenCapture.save(driver);
-
-                    driver.findElement(By.linkText("next")).click();
-                }
-
-                throw e;
-            }
+            // "last link" no check
+            driver.findElement(By.xpath("//li[3]/a"));
+            fail("error route");
         });
+
+        driver.findElement(By.linkText("prev")).click();
+        webDriverWait.until(textToBe(By.xpath("//h1[2]"), "2 Page"));
+        driver.findElement(By.linkText("prev")).click();
+        for (int i = 1; i < 4; i++) {
+            // active page number check
+            webDriverWait.until(textToBe(By.xpath("//h1[2]"), String.valueOf(i) + " Page"));
+            // screen capture
+            screenCapture.save(driver);
+
+            driver.findElement(By.linkText("next")).click();
+        }
     }
 
     @Test
@@ -2107,7 +2081,8 @@ public class PaginationTest extends FunctionTestSupport {
             // wait
             driver.findElement(By.tagName("body"));
 
-            // check include "/terasoluna-gfw-functionaltest-web/pagination/21_1/{page}/{size}" in
+            // check include
+            // "/terasoluna-gfw-functionaltest-web/pagination/21_1/{page}/{size}" in
             // URL.
             assertTrue(driver.getCurrentUrl()
                     .contains("/terasoluna-gfw-functionaltest-web/pagination/21_1/2/10"));
@@ -2173,7 +2148,8 @@ public class PaginationTest extends FunctionTestSupport {
             // wait
             driver.findElement(By.tagName("body"));
 
-            // check include "/terasoluna-gfw-functionaltest-web/pagination/21_1/{page}/{size}" in
+            // check include
+            // "/terasoluna-gfw-functionaltest-web/pagination/21_1/{page}/{size}" in
             // URL.
             assertTrue(driver.getCurrentUrl()
                     .contains("/terasoluna-gfw-functionaltest-web/pagination/21_1/2/10"));
@@ -2308,8 +2284,7 @@ public class PaginationTest extends FunctionTestSupport {
         assertTrue(driver.getCurrentUrl().contains("?page=1&size=10&sort=personId,DESC"));
 
         // check output of <f:u>.
-        WebElement fuElement =
-                driver.findElement(By.id("paginationCombinationOfQueryTmplAndCriteriaQueryAndFU"));
+        WebElement fuElement = driver.findElement(By.id("paginationCombinationOfQueryTmplAndCriteriaQueryAndFU"));
 
         for (int count = 3; count <= 12; count++) {
             // skip current page
@@ -2367,7 +2342,8 @@ public class PaginationTest extends FunctionTestSupport {
             // wait
             driver.findElement(By.tagName("body"));
 
-            // check include "/terasoluna-gfw-functionaltest-web/pagination/23_1/{page}/{size}" in
+            // check include
+            // "/terasoluna-gfw-functionaltest-web/pagination/23_1/{page}/{size}" in
             // URL.
             assertTrue(driver.getCurrentUrl()
                     .contains("/terasoluna-gfw-functionaltest-web/pagination/23_1/1/10"));
@@ -2437,7 +2413,8 @@ public class PaginationTest extends FunctionTestSupport {
             // wait
             driver.findElement(By.tagName("body"));
 
-            // check include "/terasoluna-gfw-functionaltest-web/pagination/23_1/{page}/{size}" in
+            // check include
+            // "/terasoluna-gfw-functionaltest-web/pagination/23_1/{page}/{size}" in
             // URL.
             assertTrue(driver.getCurrentUrl()
                     .contains("/terasoluna-gfw-functionaltest-web/pagination/23_1/1/10"));
