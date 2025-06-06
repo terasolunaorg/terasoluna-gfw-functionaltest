@@ -19,11 +19,11 @@ import org.junit.jupiter.api.extension.AfterTestExecutionCallback;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.api.extension.TestWatcher;
 
-public class FunctionalTestSupportExtension implements TestWatcher, AfterTestExecutionCallback {
+public class FunctionTestSupportExtension implements TestWatcher, AfterTestExecutionCallback {
 
     private final FunctionTestSupport testSupport;
 
-    public FunctionalTestSupportExtension(FunctionTestSupport testSupport) {
+    public FunctionTestSupportExtension(FunctionTestSupport testSupport) {
         this.testSupport = testSupport;
     }
 

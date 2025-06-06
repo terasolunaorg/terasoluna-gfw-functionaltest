@@ -84,7 +84,7 @@ public abstract class FunctionTestSupport extends ApplicationObjectSupport {
     public String testName;
 
     @RegisterExtension
-    FunctionalTestSupportExtension extension = new FunctionalTestSupportExtension(this);
+    FunctionTestSupportExtension extension = new FunctionTestSupportExtension(this);
 
     private boolean useSetupDefaultWebDriver = true;
 
