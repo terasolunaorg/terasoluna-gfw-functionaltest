@@ -119,8 +119,12 @@ public abstract class FunctionTestSupport extends ApplicationObjectSupport {
     }
 
     @BeforeEach
-    public final void setUpEvidence() {
+    public final void setUpEvidence(TestInfo testInfo) {
 
+        Optional<Method> testMethod = testInfo.getTestMethod();
+        if (testMethod.isPresent()) {
+            this.testName = testMethod.get().getName();
+        }
         String testCaseName = testName.replaceAll("^test", "");
 
         File evidenceSavingDirectory = new File(
@@ -166,11 +170,7 @@ public abstract class FunctionTestSupport extends ApplicationObjectSupport {
     }
 
     @BeforeEach
-    public final void setUpDBLog(TestInfo testInfo) {
-        Optional<Method> testMethod = testInfo.getTestMethod();
-        if (testMethod.isPresent()) {
-            this.testName = testMethod.get().getName();
-        }
+    public final void setUpDBLog() {
         dbLogCleaner.cleanupAll();
     }
 
