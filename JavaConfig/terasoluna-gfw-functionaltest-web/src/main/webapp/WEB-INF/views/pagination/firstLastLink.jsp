@@ -23,7 +23,7 @@
             <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/vendor/bootstrap-3.0.0/css/bootstrap.css" />
             <h1>${f:h(page.number + 1) }&nbsp;Page</h1>
             <div class="text-center">
-                <t:pagination page="${page}" firstLinkText="first" lastLinkText="last" previousLinkText="" nextLinkText="" outerElementClass="pagination" />
+                <t:pagination page="${page}" firstLinkText="first" lastLinkText="last" previousLinkText="" nextLinkText="" outerElementClass="pagination" disabledHref="#" />
             </div>
             <table class="maintable">
                 <thead>

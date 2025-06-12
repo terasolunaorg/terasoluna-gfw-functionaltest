@@ -18,25 +18,17 @@ package org.terasoluna.gfw.functionaltest.app.download;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.text.IsEqualIgnoringCase.equalToIgnoringCase;
-
 import java.io.IOException;
-
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.util.StreamUtils;
 import org.springframework.web.client.RestTemplate;
 import org.terasoluna.gfw.functionaltest.app.FunctionTestSupport;
-
 import jakarta.inject.Inject;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:META-INF/spring/seleniumContext.xml"})
 public class DownloadTest extends FunctionTestSupport {
     @Inject
     protected RestTemplate restTemplate;

@@ -22,7 +22,7 @@
 
             <h1>${f:h(page.number + 1) }&nbsp;Page</h1>
             <div class="pagination">
-                <t:pagination page="${page}" maxDisplayCount="0" />
+                <t:pagination page="${page}" maxDisplayCount="0" disabledHref="#" />
             </div>
             <table class="maintable">
                 <thead>

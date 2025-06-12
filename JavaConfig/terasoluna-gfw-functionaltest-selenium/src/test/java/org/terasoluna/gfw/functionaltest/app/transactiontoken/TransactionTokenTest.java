@@ -19,28 +19,20 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsNot.not;
 import static org.hamcrest.core.IsNull.notNullValue;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
-
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.terasoluna.gfw.functionaltest.app.FunctionTestSupport;
-import org.terasoluna.gfw.functionaltest.config.SeleniumContextConfig;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {SeleniumContextConfig.class})
 public class TransactionTokenTest extends FunctionTestSupport {
 
     private static final Set<String> testCasesOfRebootTarget =
@@ -53,17 +45,17 @@ public class TransactionTokenTest extends FunctionTestSupport {
         disableSetupDefaultWebDriver();
     }
 
-    @Before
+    @BeforeEach
     public void setUp() {
-        if (testCasesOfRebootTarget.contains(testName.getMethodName())) {
+        if (testCasesOfRebootTarget.contains(testName)) {
             quitDefaultWebDriver();
         }
         bootDefaultWebDriver();
     }
 
-    @After
+    @AfterEach
     public void tearDown() {
-        if (testCasesOfRebootTarget.contains(testName.getMethodName())) {
+        if (testCasesOfRebootTarget.contains(testName)) {
             quitDefaultWebDriver();
         }
     }
