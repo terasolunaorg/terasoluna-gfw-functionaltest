@@ -18,7 +18,6 @@ package org.terasoluna.gfw.functionaltest.config.web;
 import java.util.List;
 import java.util.Locale;
 import java.util.regex.Pattern;
-
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -40,6 +39,7 @@ import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
+import org.springframework.web.servlet.resource.LiteWebJarsResourceResolver;
 import org.springframework.web.servlet.support.RequestDataValueProcessor;
 import org.terasoluna.gfw.web.codelist.CodeListInterceptor;
 import org.terasoluna.gfw.web.logging.TraceLoggingInterceptor;
@@ -123,6 +123,10 @@ public class SpringMvcCommonConfig implements WebMvcConfigurer {
         registry.addResourceHandler("/resources/**")
                 .addResourceLocations("/resources/", "classpath:META-INF/resources/")
                 .setCachePeriod(60 * 60);
+        registry.addResourceHandler("/webjars/**")
+                .addResourceLocations("/webjars/", "classpath:/META-INF/resources/webjars/")
+                .setCachePeriod(60 * 60).resourceChain(true)
+                .addResolver(new LiteWebJarsResourceResolver());
     }
 
     /**
@@ -130,20 +134,20 @@ public class SpringMvcCommonConfig implements WebMvcConfigurer {
      */
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        addInterceptor(registry, traceLoggingInterceptor(), "/**", "/resources/**",
+        addInterceptor(registry, traceLoggingInterceptor(), "/**", "/resources/**", "/webjars/**",
                 "/logging/traceLoggingInterceptor/customWarnHandling/**");
         addInterceptor(registry, transactionTokenInterceptor(), "/**", "/resources/**",
-                "/transactiontoken/customTransactionStoreSize2/**",
+                "/webjars/**", "/transactiontoken/customTransactionStoreSize2/**",
                 "/transactiontoken/customTransactionStoreSize1/**");
         addInterceptor(registry, size2TransactionTokenInterceptor(),
                 "/transactiontoken/customTransactionStoreSize2/**");
         addInterceptor(registry, size1TransactionTokenInterceptor(),
                 "/transactiontoken/customTransactionStoreSize1/**");
-        addInterceptor(registry, localeChangeInterceptor(), "/**", "/resources/**");
+        addInterceptor(registry, localeChangeInterceptor(), "/**", "/resources/**", "/webjars/**");
         addWebRequestInterceptor(registry, openEntityManagerInViewInterceptor(), "/**",
-                "/resources/**");
+                "/resources/**", "/webjars/**");
         addInterceptor(registry, anyPathCodeListInterceptor(), "/**", "/resources/**",
-                "/codelist/noPattern/**", "/codelist/jdbcCodeListTestDBError/**");
+                "/webjars/**", "/codelist/noPattern/**", "/codelist/jdbcCodeListTestDBError/**");
         addInterceptor(registry, multiplePatternListInterceptor(), "/codelist/multiplePattern/**");
         addInterceptor(registry, jdbcCodeListInterceptor(), "/codelist/jdbcCodeListTestDBError/**");
         addInterceptor(registry, warnHandlingTraceLoggingInterceptor(),
