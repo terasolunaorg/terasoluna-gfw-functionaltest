@@ -153,6 +153,30 @@
             <scope>test</scope>
         </dependency>
         <!-- == End Unit Test == -->
+
+        <!-- == Begin WebJars == -->
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>webjars-locator-lite</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>jquery</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>bootstrap</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.webjars.npm</groupId>
+            <artifactId>imperavi-kube</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <!-- == End WebJars == -->
+
     </dependencies>
     <properties>
         <project.root.basedir>${project.parent.basedir}</project.root.basedir>
