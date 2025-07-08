@@ -11,7 +11,7 @@
         <meta name="viewport" content="width=device-width" />
 
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/app/css/style.css" type="text/css" media="screen, projection" />
-        <script type="text/javascript" src="${pageContext.request.contextPath}/resources/vendor/js/jquery-1.7.2.js"></script>
+        <script type="text/javascript" src="${pageContext.request.contextPath}/webjars/jquery/jquery.js"></script>
 
         <c:set var="titleKey" value="title.transactiontoken.flow1NamespaceStep4" />
         <title><spring:message code="${titleKey}" text="terasoluna-gfw-functionaltest" /></title>

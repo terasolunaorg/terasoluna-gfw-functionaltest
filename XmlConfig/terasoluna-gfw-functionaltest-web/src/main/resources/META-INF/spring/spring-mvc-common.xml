@@ -31,17 +31,28 @@
 
     <mvc:resources mapping="/resources/**" location="/resources/,classpath:META-INF/resources/"
         cache-period="#{60 * 60}" />
-
+    <mvc:resources mapping="/webjars/**"
+        location="/webjars/,classpath:/META-INF/resources/webjars/"
+        cache-period="#{60 * 60}" >
+        <mvc:resource-chain resource-cache="true">
+            <mvc:resolvers>
+                <bean class="org.springframework.web.servlet.resource.LiteWebJarsResourceResolver"/>
+            </mvc:resolvers>
+        </mvc:resource-chain>
+    </mvc:resources>
+        
     <mvc:interceptors>
         <mvc:interceptor>
             <mvc:mapping path="/**" />
             <mvc:exclude-mapping path="/resources/**" />
+            <mvc:exclude-mapping path="/webjars/**" />
             <mvc:exclude-mapping path="/logging/traceLoggingInterceptor/customWarnHandling/**" />
             <bean class="org.terasoluna.gfw.web.logging.TraceLoggingInterceptor" />
         </mvc:interceptor>
         <mvc:interceptor>
             <mvc:mapping path="/**" />
             <mvc:exclude-mapping path="/resources/**" />
+            <mvc:exclude-mapping path="/webjars/**" />
             <mvc:exclude-mapping path="/transactiontoken/customTransactionStoreSize2/**" />
             <mvc:exclude-mapping path="/transactiontoken/customTransactionStoreSize1/**" />
             <bean class="org.terasoluna.gfw.web.token.transaction.TransactionTokenInterceptor" />
@@ -62,16 +73,19 @@
         <mvc:interceptor>
             <mvc:mapping path="/**" />
             <mvc:exclude-mapping path="/resources/**" />
+            <mvc:exclude-mapping path="/webjars/**" />
             <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" />
         </mvc:interceptor>
         <mvc:interceptor>
             <mvc:mapping path="/**" />
             <mvc:exclude-mapping path="/resources/**" />
+            <mvc:exclude-mapping path="/webjars/**" />
             <bean class="org.springframework.orm.jpa.support.OpenEntityManagerInViewInterceptor" />
         </mvc:interceptor>
         <mvc:interceptor>
             <mvc:mapping path="/**" />
             <mvc:exclude-mapping path="/resources/**" />
+            <mvc:exclude-mapping path="/webjars/**" />
             <mvc:exclude-mapping path="/codelist/noPattern/**" />
             <mvc:exclude-mapping path="/codelist/jdbcCodeListTestDBError/**" />
             <bean class="org.terasoluna.gfw.web.codelist.CodeListInterceptor">
