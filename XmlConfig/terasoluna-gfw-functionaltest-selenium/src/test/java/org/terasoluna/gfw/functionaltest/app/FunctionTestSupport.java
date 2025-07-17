@@ -27,7 +27,10 @@ import java.util.Set;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.TestInfo;
+import org.junit.jupiter.api.extension.AfterTestExecutionCallback;
+import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.api.extension.RegisterExtension;
+import org.junit.jupiter.api.extension.TestWatcher;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
@@ -85,6 +88,32 @@ public abstract class FunctionTestSupport extends ApplicationObjectSupport {
 
     @RegisterExtension
     FunctionTestSupportExtension extension = new FunctionTestSupportExtension(this);
+
+    private class FunctionTestSupportExtension implements TestWatcher, AfterTestExecutionCallback {
+
+        private final FunctionTestSupport testSupport;
+
+        public FunctionTestSupportExtension(FunctionTestSupport testSupport) {
+            this.testSupport = testSupport;
+        }
+
+        @Override
+        public void testSuccessful(ExtensionContext context) {
+            testSupport.onSucceeded();
+            testSupport.succeededEvidence();
+        }
+
+        @Override
+        public void testFailed(ExtensionContext context, Throwable cause) {
+            testSupport.onFailed(cause);
+            testSupport.failedEvidence();
+        }
+
+        @Override
+        public void afterTestExecution(ExtensionContext context) {
+            testSupport.onFinished();
+        }
+    }
 
     private boolean useSetupDefaultWebDriver = true;
 
