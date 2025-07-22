@@ -16,28 +16,33 @@
 package org.terasoluna.gfw.functionaltest.app;
 
 import java.io.File;
+import java.lang.reflect.Method;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.Rule;
-import org.junit.rules.TestName;
-import org.junit.rules.TestWatcher;
-import org.junit.runner.Description;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.TestInfo;
+import org.junit.jupiter.api.extension.AfterTestExecutionCallback;
+import org.junit.jupiter.api.extension.ExtensionContext;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import org.junit.jupiter.api.extension.TestWatcher;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.support.ApplicationObjectSupport;
+import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 import org.terasoluna.gfw.functionaltest.app.webdrivers.WebDriverType;
 import org.terasoluna.gfw.functionaltest.domain.DBLogCleaner;
 import jakarta.inject.Inject;
 
+@SpringJUnitConfig(locations = {"classpath:META-INF/spring/seleniumContext.xml"})
 public abstract class FunctionTestSupport extends ApplicationObjectSupport {
 
     private static final Logger logger = LoggerFactory.getLogger(FunctionTestSupport.class);
@@ -79,28 +84,36 @@ public abstract class FunctionTestSupport extends ApplicationObjectSupport {
     @Inject
     private DBLogCleaner dbLogCleaner;
 
-    @Rule
-    public TestName testName = new TestName();
+    public String testName;
 
-    @Rule
-    public TestWatcher testWatcher = new TestWatcher() {
-        @Override
-        protected void succeeded(Description description) {
-            onSucceeded();
-            succeededEvidence();
+    @RegisterExtension
+    FunctionTestSupportExtension extension = new FunctionTestSupportExtension(this);
+
+    private class FunctionTestSupportExtension implements TestWatcher, AfterTestExecutionCallback {
+
+        private final FunctionTestSupport testSupport;
+
+        public FunctionTestSupportExtension(FunctionTestSupport testSupport) {
+            this.testSupport = testSupport;
         }
 
         @Override
-        protected void failed(Throwable e, Description description) {
-            onFailed(e);
-            failedEvidence();
+        public void testSuccessful(ExtensionContext context) {
+            testSupport.onSucceeded();
+            testSupport.succeededEvidence();
         }
 
         @Override
-        protected void finished(Description description) {
-            onFinished();
+        public void testFailed(ExtensionContext context, Throwable cause) {
+            testSupport.onFailed(cause);
+            testSupport.failedEvidence();
         }
-    };
+
+        @Override
+        public void afterTestExecution(ExtensionContext context) {
+            testSupport.onFinished();
+        }
+    }
 
     private boolean useSetupDefaultWebDriver = true;
 
@@ -127,16 +140,21 @@ public abstract class FunctionTestSupport extends ApplicationObjectSupport {
                 Duration.ofSeconds(defaultTimeoutSecForImplicitlyWait);
     }
 
-    @AfterClass
+    @AfterAll
     public final static void tearDownWebDrivers() {
         quitWebDrivers();
         driver = null;
     }
 
-    @Before
-    public final void setUpEvidence() {
+    @BeforeEach
+    public final void setUpEvidence(TestInfo testInfo) {
 
-        String testCaseName = testName.getMethodName().replaceAll("^test", "");
+        Optional<Method> testMethod = testInfo.getTestMethod();
+        if (testMethod.isPresent()) {
+            this.testName = testMethod.get().getName();
+        }
+
+        String testCaseName = testName.replaceAll("^test", "");
 
         File evidenceSavingDirectory = new File(
                 String.format("%s/%s/%s", evidenceBaseDirectory, simplePackageName, testCaseName));
@@ -149,7 +167,7 @@ public abstract class FunctionTestSupport extends ApplicationObjectSupport {
         dbLog.setUp(evidenceSavingDirectory);
     }
 
-    @Before
+    @BeforeEach
     public final void setUpDefaultWebDriver() {
         if (!useSetupDefaultWebDriver) {
             return;
@@ -157,7 +175,7 @@ public abstract class FunctionTestSupport extends ApplicationObjectSupport {
         bootDefaultWebDriver();
     }
 
-    @Before
+    @BeforeEach
     public final void setUpWebDriverType() {
         if (driverType != null) {
             return;
@@ -180,7 +198,7 @@ public abstract class FunctionTestSupport extends ApplicationObjectSupport {
         driverType = WebDriverType.DEFAULT();
     }
 
-    @Before
+    @BeforeEach
     public final void setUpDBLog() {
         dbLogCleaner.cleanupAll();
     }
@@ -249,7 +267,7 @@ public abstract class FunctionTestSupport extends ApplicationObjectSupport {
         webDrivers.clear();
     }
 
-    private void succeededEvidence() {
+    protected void succeededEvidence() {
         String subTitle = "succeeded";
         for (WebDriver webDriver : webDrivers) {
             try {
@@ -270,7 +288,7 @@ public abstract class FunctionTestSupport extends ApplicationObjectSupport {
         }
     }
 
-    private void failedEvidence() {
+    protected void failedEvidence() {
         String subTitle = "failed";
         for (WebDriver webDriver : webDrivers) {
             try {
