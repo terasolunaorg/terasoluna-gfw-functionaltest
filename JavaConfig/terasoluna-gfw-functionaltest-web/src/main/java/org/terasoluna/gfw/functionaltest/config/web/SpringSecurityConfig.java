@@ -15,10 +15,7 @@
  */
 package org.terasoluna.gfw.functionaltest.config.web;
 
-import static org.springframework.security.web.util.matcher.AntPathRequestMatcher.antMatcher;
-
 import java.util.LinkedHashMap;
-
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -38,7 +35,6 @@ import org.springframework.security.web.access.AccessDeniedHandlerImpl;
 import org.springframework.security.web.access.DelegatingAccessDeniedHandler;
 import org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler;
 import org.springframework.security.web.csrf.InvalidCsrfTokenException;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 /**
  * Bean definition to configure SpringSecurity.
@@ -49,7 +45,7 @@ public class SpringSecurityConfig {
 
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
-        return web -> web.ignoring().requestMatchers(antMatcher("/resources/**"), antMatcher("/webjars/**"));
+        return web -> web.ignoring().requestMatchers("/resources/**", "/webjars/**");
     }
 
     /**
@@ -60,10 +56,9 @@ public class SpringSecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
-        http.securityMatcher(new AntPathRequestMatcher("/logging/**"));
+        http.securityMatcher("/logging/**");
 
-        http.authorizeHttpRequests(
-                authz -> authz.requestMatchers(new AntPathRequestMatcher("/**")).permitAll());
+        http.authorizeHttpRequests(authz -> authz.requestMatchers("/**").permitAll());
 
         http.exceptionHandling(ex -> ex.accessDeniedHandler(accessDeniedHandler()));
 
@@ -105,8 +100,7 @@ public class SpringSecurityConfig {
     @Bean
     public AuthenticationProvider authProvider(
             @Qualifier("passwordEncoder") PasswordEncoder passwordEncoder) {
-        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
-        authProvider.setUserDetailsService(userDetailsService());
+        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider(userDetailsService());
         authProvider.setPasswordEncoder(passwordEncoder);
         return authProvider;
     }
