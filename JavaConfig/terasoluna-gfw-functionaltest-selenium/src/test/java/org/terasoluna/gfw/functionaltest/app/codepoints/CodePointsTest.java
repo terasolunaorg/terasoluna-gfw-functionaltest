@@ -15,8 +15,7 @@
  */
 package org.terasoluna.gfw.functionaltest.app.codepoints;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.MatcherAssert.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.Select;
@@ -34,8 +33,8 @@ public class CodePointsTest extends FunctionTestSupport {
         new Select(driver.findElement(By.id("useInstanceKind"))).selectByValue("codePointsOf");
         driver.findElement(By.id("containsAll")).click();
 
-        assertThat(driver.findElement(By.id("instanceCheck")).getText(), is("true"));
-        assertThat(driver.findElement(By.id("containsAll")).getText(), is("true"));
+        assertThat(driver.findElement(By.id("instanceCheck")).getText()).isEqualTo("true");
+        assertThat(driver.findElement(By.id("containsAll")).getText()).isEqualTo("true");
     }
 
     @Test
@@ -48,7 +47,7 @@ public class CodePointsTest extends FunctionTestSupport {
                 .selectByValue("newJIS_X_0208_Katakana");
         driver.findElement(By.id("containsAll")).click();
 
-        assertThat(driver.findElement(By.id("containsAll")).getText(), is("true"));
+        assertThat(driver.findElement(By.id("containsAll")).getText()).isEqualTo("true");
     }
 
     @Test
@@ -63,7 +62,7 @@ public class CodePointsTest extends FunctionTestSupport {
                 .selectByValue("newCodePointsWithIntegerArray");
         driver.findElement(By.id("containsAll")).click();
 
-        assertThat(driver.findElement(By.id("containsAll")).getText(), is("true"));
+        assertThat(driver.findElement(By.id("containsAll")).getText()).isEqualTo("true");
     }
 
     @Test
@@ -78,7 +77,7 @@ public class CodePointsTest extends FunctionTestSupport {
                 .selectByValue("newCodePointsWithIntegerSet");
         driver.findElement(By.id("containsAll")).click();
 
-        assertThat(driver.findElement(By.id("containsAll")).getText(), is("true"));
+        assertThat(driver.findElement(By.id("containsAll")).getText()).isEqualTo("true");
     }
 
     @Test
@@ -91,7 +90,7 @@ public class CodePointsTest extends FunctionTestSupport {
                 .selectByValue("newCodePonitsWithString");
         driver.findElement(By.id("containsAll")).click();
 
-        assertThat(driver.findElement(By.id("containsAll")).getText(), is("true"));
+        assertThat(driver.findElement(By.id("containsAll")).getText()).isEqualTo("true");
     }
 
     @Test
@@ -104,7 +103,7 @@ public class CodePointsTest extends FunctionTestSupport {
         inputFieldAccessor.overrideValue(By.id("codePoints1"), "b", driver);
         driver.findElement(By.id("containsAll")).click();
 
-        assertThat(driver.findElement(By.id("containsAll")).getText(), is("true"));
+        assertThat(driver.findElement(By.id("containsAll")).getText()).isEqualTo("true");
     }
 
     @Test
@@ -120,7 +119,7 @@ public class CodePointsTest extends FunctionTestSupport {
         new Select(driver.findElement(By.id("operation"))).selectByValue("union");
         driver.findElement(By.id("containsAll")).click();
 
-        assertThat(driver.findElement(By.id("containsAll")).getText(), is("true"));
+        assertThat(driver.findElement(By.id("containsAll")).getText()).isEqualTo("true");
     }
 
     @Test
@@ -138,7 +137,7 @@ public class CodePointsTest extends FunctionTestSupport {
         new Select(driver.findElement(By.id("operation"))).selectByValue("subtract");
         driver.findElement(By.id("containsAll")).click();
 
-        assertThat(driver.findElement(By.id("containsAll")).getText(), is("true"));
+        assertThat(driver.findElement(By.id("containsAll")).getText()).isEqualTo("true");
     }
 
     @Test
@@ -157,7 +156,7 @@ public class CodePointsTest extends FunctionTestSupport {
         new Select(driver.findElement(By.id("operation"))).selectByValue("intersect");
         driver.findElement(By.id("containsAll")).click();
 
-        assertThat(driver.findElement(By.id("containsAll")).getText(), is("true"));
+        assertThat(driver.findElement(By.id("containsAll")).getText()).isEqualTo("true");
     }
 
     @Test
@@ -170,7 +169,7 @@ public class CodePointsTest extends FunctionTestSupport {
                 .selectByValue("codePointsOfWithJIS_X_0208_Katakana");
         driver.findElement(By.id("containsAll")).click();
 
-        assertThat(driver.findElement(By.id("containsAll")).getText(), is("true"));
+        assertThat(driver.findElement(By.id("containsAll")).getText()).isEqualTo("true");
     }
 
     @Test
@@ -183,7 +182,7 @@ public class CodePointsTest extends FunctionTestSupport {
                 .selectByValue("codePointsOfWithJIS_X_0208_Katakana");
         driver.findElement(By.id("containsAll")).click();
 
-        assertThat(driver.findElement(By.id("containsAll")).getText(), is("true"));
+        assertThat(driver.findElement(By.id("containsAll")).getText()).isEqualTo("true");
     }
 
     @Test
@@ -196,7 +195,7 @@ public class CodePointsTest extends FunctionTestSupport {
                 .selectByValue("codePointsOfWithJIS_X_0208_Katakana");
         driver.findElement(By.id("containsAll")).click();
 
-        assertThat(driver.findElement(By.id("containsAll")).getText(), is("false"));
+        assertThat(driver.findElement(By.id("containsAll")).getText()).isEqualTo("false");
     }
 
     @Test
@@ -209,7 +208,7 @@ public class CodePointsTest extends FunctionTestSupport {
 
         String codepoints = driver.findElement(By.id("firstExcludedCodepoint")).getText();
 
-        assertThat(Integer.parseInt(codepoints), is(CodePoints.NOT_FOUND));
+        assertThat(Integer.parseInt(codepoints)).isEqualTo(CodePoints.NOT_FOUND);
     }
 
     @Test
@@ -222,7 +221,7 @@ public class CodePointsTest extends FunctionTestSupport {
 
         String codepoints = driver.findElement(By.id("firstExcludedCodepoint")).getText();
 
-        assertThat(Integer.parseInt(codepoints), is(0x0061));
+        assertThat(Integer.parseInt(codepoints)).isEqualTo(0x0061);
     }
 
     @Test
@@ -235,7 +234,7 @@ public class CodePointsTest extends FunctionTestSupport {
 
         String codepoints = driver.findElement(By.id("firstExcludedCodepoint")).getText();
 
-        assertThat(Integer.parseInt(codepoints), is(0x0061));
+        assertThat(Integer.parseInt(codepoints)).isEqualTo(0x0061);
     }
 
     @Test
@@ -248,7 +247,7 @@ public class CodePointsTest extends FunctionTestSupport {
 
         String codepoints = driver.findElement(By.id("firstExcludedCodepoint")).getText();
 
-        assertThat(Integer.parseInt(codepoints), is(0x0061));
+        assertThat(Integer.parseInt(codepoints)).isEqualTo(0x0061);
     }
 
     @Test
@@ -259,7 +258,7 @@ public class CodePointsTest extends FunctionTestSupport {
         inputFieldAccessor.overrideValue(By.id("targetValue"), "カナ", driver);
         driver.findElement(By.id("getExcludedCodePoints")).click();
 
-        assertThat(driver.findElement(By.id("excludedCodepointsSize")).getText(), is("0"));
+        assertThat(driver.findElement(By.id("excludedCodepointsSize")).getText()).isEqualTo("0");
     }
 
     @Test
@@ -272,8 +271,8 @@ public class CodePointsTest extends FunctionTestSupport {
 
         String excludedCodePoint1 = driver.findElement(By.id("excludedCodePoint1")).getText();
 
-        assertThat(driver.findElement(By.id("excludedCodepointsSize")).getText(), is("1"));
-        assertThat(Integer.parseInt(excludedCodePoint1), is(0x0061));
+        assertThat(driver.findElement(By.id("excludedCodepointsSize")).getText()).isEqualTo("1");
+        assertThat(Integer.parseInt(excludedCodePoint1)).isEqualTo(0x0061);
     }
 
     @Test
@@ -287,9 +286,9 @@ public class CodePointsTest extends FunctionTestSupport {
         String excludedCodePoint1 = driver.findElement(By.id("excludedCodePoint1")).getText();
         String excludedCodePoint2 = driver.findElement(By.id("excludedCodePoint2")).getText();
 
-        assertThat(driver.findElement(By.id("excludedCodepointsSize")).getText(), is("2"));
-        assertThat(Integer.parseInt(excludedCodePoint1), is(0x0061));
-        assertThat(Integer.parseInt(excludedCodePoint2), is(0x0062));
+        assertThat(driver.findElement(By.id("excludedCodepointsSize")).getText()).isEqualTo("2");
+        assertThat(Integer.parseInt(excludedCodePoint1)).isEqualTo(0x0061);
+        assertThat(Integer.parseInt(excludedCodePoint2)).isEqualTo(0x0062);
     }
 
 }

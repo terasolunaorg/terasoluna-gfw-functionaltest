@@ -15,9 +15,7 @@
  */
 package org.terasoluna.gfw.functionaltest.app.download;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.text.IsEqualIgnoringCase.equalToIgnoringCase;
+import static org.assertj.core.api.Assertions.assertThat;
 import java.io.IOException;
 import org.junit.jupiter.api.Test;
 import org.springframework.core.io.ClassPathResource;
@@ -47,13 +45,14 @@ public class DownloadTest extends FunctionTestSupport {
 
         HttpHeaders headers = response.getHeaders();
         System.out.println("test01_01_fileDownload: X-Track=" + headers.getFirst("X-Track"));
-        assertThat(headers.getFirst("Content-Disposition"), is("attachment; filename=Duke.png"));
+        assertThat(headers.getFirst("Content-Disposition"))
+                .isEqualTo("attachment; filename=Duke.png");
 
         MediaType contentType = headers.getContentType();
-        assertThat(contentType.getType(), is("image"));
-        assertThat(contentType.getSubtype(), is("png"));
+        assertThat(contentType.getType()).isEqualTo("image");
+        assertThat(contentType.getSubtype()).isEqualTo("png");
 
-        assertThat(response.getBody(), is(expected));
+        assertThat(response.getBody()).isEqualTo(expected);
     }
 
     @Test
@@ -64,15 +63,15 @@ public class DownloadTest extends FunctionTestSupport {
         HttpHeaders headers = response.getHeaders();
         System.out.println("test01_02_fileDownload: X-Track=" + headers.getFirst("X-Track"));
 
-        assertThat(headers.getFirst("Content-Disposition"),
-                is("attachment; filename=framework.txt"));
+        assertThat(headers.getFirst("Content-Disposition"))
+                .isEqualTo("attachment; filename=framework.txt");
 
         MediaType contentType = headers.getContentType();
-        assertThat(contentType.getType(), is("text"));
-        assertThat(contentType.getSubtype(), is("plain"));
-        assertThat(contentType.getParameter("charset"), equalToIgnoringCase("UTF-8"));
+        assertThat(contentType.getType()).isEqualTo("text");
+        assertThat(contentType.getSubtype()).isEqualTo("plain");
+        assertThat(contentType.getParameter("charset")).isEqualToIgnoringCase("UTF-8");
 
-        assertThat(response.getBody(), is("Spring Framework"));
+        assertThat(response.getBody()).isEqualTo("Spring Framework");
 
     }
 }
