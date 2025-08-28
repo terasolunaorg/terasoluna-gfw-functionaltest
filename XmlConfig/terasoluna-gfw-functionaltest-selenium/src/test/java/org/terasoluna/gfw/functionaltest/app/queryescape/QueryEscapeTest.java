@@ -15,8 +15,7 @@
  */
 package org.terasoluna.gfw.functionaltest.app.queryescape;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.MatcherAssert.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.terasoluna.gfw.functionaltest.app.FunctionTestSupport;
@@ -37,10 +36,10 @@ public class QueryEscapeTest extends FunctionTestSupport {
         driver.findElement(By.id("prefix")).click();
 
         // search result check
-        assertThat(driver.findElement(By.id("searchresult")).getText(),
-                is("prefix search result 2"));
-        assertThat(driver.findElement(By.xpath("//td[2]")).getText(), is("AB%DE1"));
-        assertThat(driver.findElement(By.xpath("//tr[2]//td[2]")).getText(), is("AB%DE2"));
+        assertThat(driver.findElement(By.id("searchresult")).getText())
+                .isEqualTo("prefix search result 2");
+        assertThat(driver.findElement(By.xpath("//td[2]")).getText()).isEqualTo("AB%DE1");
+        assertThat(driver.findElement(By.xpath("//tr[2]//td[2]")).getText()).isEqualTo("AB%DE2");
 
         // screen capture (Automatic capture conducted at the end)
     }
@@ -58,10 +57,10 @@ public class QueryEscapeTest extends FunctionTestSupport {
         driver.findElement(By.id("prefix")).click();
 
         // search result check
-        assertThat(driver.findElement(By.id("searchresult")).getText(),
-                is("prefix search result 2"));
-        assertThat(driver.findElement(By.xpath("//td[2]")).getText(), is("AB_DE1"));
-        assertThat(driver.findElement(By.xpath("//tr[2]//td[2]")).getText(), is("AB_DE2"));
+        assertThat(driver.findElement(By.id("searchresult")).getText())
+                .isEqualTo("prefix search result 2");
+        assertThat(driver.findElement(By.xpath("//td[2]")).getText()).isEqualTo("AB_DE1");
+        assertThat(driver.findElement(By.xpath("//tr[2]//td[2]")).getText()).isEqualTo("AB_DE2");
 
         // screen capture (Automatic capture conducted at the end)
     }
@@ -79,10 +78,10 @@ public class QueryEscapeTest extends FunctionTestSupport {
         driver.findElement(By.id("prefix")).click();
 
         // search result check
-        assertThat(driver.findElement(By.id("searchresult")).getText(),
-                is("prefix search result 2"));
-        assertThat(driver.findElement(By.xpath("//td[2]")).getText(), is("AB％DE1"));
-        assertThat(driver.findElement(By.xpath("//tr[2]//td[2]")).getText(), is("AB％DE2"));
+        assertThat(driver.findElement(By.id("searchresult")).getText())
+                .isEqualTo("prefix search result 2");
+        assertThat(driver.findElement(By.xpath("//td[2]")).getText()).isEqualTo("AB％DE1");
+        assertThat(driver.findElement(By.xpath("//tr[2]//td[2]")).getText()).isEqualTo("AB％DE2");
 
         // screen capture (Automatic capture conducted at the end)
     }
@@ -100,10 +99,10 @@ public class QueryEscapeTest extends FunctionTestSupport {
         driver.findElement(By.id("prefix")).click();
 
         // search result check
-        assertThat(driver.findElement(By.id("searchresult")).getText(),
-                is("prefix search result 2"));
-        assertThat(driver.findElement(By.xpath("//td[2]")).getText(), is("AB＿DE1"));
-        assertThat(driver.findElement(By.xpath("//tr[2]//td[2]")).getText(), is("AB＿DE2"));
+        assertThat(driver.findElement(By.id("searchresult")).getText())
+                .isEqualTo("prefix search result 2");
+        assertThat(driver.findElement(By.xpath("//td[2]")).getText()).isEqualTo("AB＿DE1");
+        assertThat(driver.findElement(By.xpath("//tr[2]//td[2]")).getText()).isEqualTo("AB＿DE2");
 
         // screen capture (Automatic capture conducted at the end)
     }
@@ -121,10 +120,10 @@ public class QueryEscapeTest extends FunctionTestSupport {
         driver.findElement(By.id("prefix")).click();
 
         // search result check
-        assertThat(driver.findElement(By.id("searchresult")).getText(),
-                is("prefix search result 2"));
-        assertThat(driver.findElement(By.xpath("//td[2]")).getText(), is("ABCDE1"));
-        assertThat(driver.findElement(By.xpath("//tr[2]//td[2]")).getText(), is("ABCDE2"));
+        assertThat(driver.findElement(By.id("searchresult")).getText())
+                .isEqualTo("prefix search result 2");
+        assertThat(driver.findElement(By.xpath("//td[2]")).getText()).isEqualTo("ABCDE1");
+        assertThat(driver.findElement(By.xpath("//tr[2]//td[2]")).getText()).isEqualTo("ABCDE2");
 
         // screen capture (Automatic capture conducted at the end)
     }
@@ -142,10 +141,10 @@ public class QueryEscapeTest extends FunctionTestSupport {
         driver.findElement(By.id("prefix")).click();
 
         // search result check
-        assertThat(driver.findElement(By.id("searchresult")).getText(),
-                is("prefix search result 2"));
-        assertThat(driver.findElement(By.xpath("//td[2]")).getText(), is("AB~DE1"));
-        assertThat(driver.findElement(By.xpath("//tr[2]//td[2]")).getText(), is("AB~DE2"));
+        assertThat(driver.findElement(By.id("searchresult")).getText())
+                .isEqualTo("prefix search result 2");
+        assertThat(driver.findElement(By.xpath("//td[2]")).getText()).isEqualTo("AB~DE1");
+        assertThat(driver.findElement(By.xpath("//tr[2]//td[2]")).getText()).isEqualTo("AB~DE2");
 
         // screen capture (Automatic capture conducted at the end)
     }
@@ -162,20 +161,20 @@ public class QueryEscapeTest extends FunctionTestSupport {
         driver.findElement(By.id("prefix")).click();
 
         // search result check
-        assertThat(driver.findElement(By.id("searchresult")).getText(),
-                is("prefix search result 12"));
-        assertThat(driver.findElement(By.xpath("//td[2]")).getText(), is("ABCDE1"));
-        assertThat(driver.findElement(By.xpath("//tr[2]//td[2]")).getText(), is("ABCDE2"));
-        assertThat(driver.findElement(By.xpath("//tr[3]//td[2]")).getText(), is("AB%DE1"));
-        assertThat(driver.findElement(By.xpath("//tr[4]//td[2]")).getText(), is("AB%DE2"));
-        assertThat(driver.findElement(By.xpath("//tr[5]//td[2]")).getText(), is("AB_DE1"));
-        assertThat(driver.findElement(By.xpath("//tr[6]//td[2]")).getText(), is("AB_DE2"));
-        assertThat(driver.findElement(By.xpath("//tr[7]//td[2]")).getText(), is("AB％DE1"));
-        assertThat(driver.findElement(By.xpath("//tr[8]//td[2]")).getText(), is("AB％DE2"));
-        assertThat(driver.findElement(By.xpath("//tr[9]//td[2]")).getText(), is("AB＿DE1"));
-        assertThat(driver.findElement(By.xpath("//tr[10]//td[2]")).getText(), is("AB＿DE2"));
-        assertThat(driver.findElement(By.xpath("//tr[11]//td[2]")).getText(), is("AB~DE1"));
-        assertThat(driver.findElement(By.xpath("//tr[12]//td[2]")).getText(), is("AB~DE2"));
+        assertThat(driver.findElement(By.id("searchresult")).getText())
+                .isEqualTo("prefix search result 12");
+        assertThat(driver.findElement(By.xpath("//td[2]")).getText()).isEqualTo("ABCDE1");
+        assertThat(driver.findElement(By.xpath("//tr[2]//td[2]")).getText()).isEqualTo("ABCDE2");
+        assertThat(driver.findElement(By.xpath("//tr[3]//td[2]")).getText()).isEqualTo("AB%DE1");
+        assertThat(driver.findElement(By.xpath("//tr[4]//td[2]")).getText()).isEqualTo("AB%DE2");
+        assertThat(driver.findElement(By.xpath("//tr[5]//td[2]")).getText()).isEqualTo("AB_DE1");
+        assertThat(driver.findElement(By.xpath("//tr[6]//td[2]")).getText()).isEqualTo("AB_DE2");
+        assertThat(driver.findElement(By.xpath("//tr[7]//td[2]")).getText()).isEqualTo("AB％DE1");
+        assertThat(driver.findElement(By.xpath("//tr[8]//td[2]")).getText()).isEqualTo("AB％DE2");
+        assertThat(driver.findElement(By.xpath("//tr[9]//td[2]")).getText()).isEqualTo("AB＿DE1");
+        assertThat(driver.findElement(By.xpath("//tr[10]//td[2]")).getText()).isEqualTo("AB＿DE2");
+        assertThat(driver.findElement(By.xpath("//tr[11]//td[2]")).getText()).isEqualTo("AB~DE1");
+        assertThat(driver.findElement(By.xpath("//tr[12]//td[2]")).getText()).isEqualTo("AB~DE2");
 
         // screen capture (Automatic capture conducted at the end)
     }
@@ -192,8 +191,8 @@ public class QueryEscapeTest extends FunctionTestSupport {
         driver.findElement(By.id("nullTodoTitle")).click();
 
         // search result check
-        assertThat(driver.findElement(By.id("searchresult")).getText(),
-                is("null todo title search result 0"));
+        assertThat(driver.findElement(By.id("searchresult")).getText())
+                .isEqualTo("null todo title search result 0");
 
         // screen capture (Automatic capture conducted at the end)
     }
@@ -211,9 +210,9 @@ public class QueryEscapeTest extends FunctionTestSupport {
         driver.findElement(By.id("suffix")).click();
 
         // search result check
-        assertThat(driver.findElement(By.id("searchresult")).getText(),
-                is("suffix search result 1"));
-        assertThat(driver.findElement(By.xpath("//td[2]")).getText(), is("AB%DE1"));
+        assertThat(driver.findElement(By.id("searchresult")).getText())
+                .isEqualTo("suffix search result 1");
+        assertThat(driver.findElement(By.xpath("//td[2]")).getText()).isEqualTo("AB%DE1");
 
         // screen capture (Automatic capture conducted at the end)
     }
@@ -231,9 +230,9 @@ public class QueryEscapeTest extends FunctionTestSupport {
         driver.findElement(By.id("suffix")).click();
 
         // search result check
-        assertThat(driver.findElement(By.id("searchresult")).getText(),
-                is("suffix search result 1"));
-        assertThat(driver.findElement(By.xpath("//td[2]")).getText(), is("AB_DE1"));
+        assertThat(driver.findElement(By.id("searchresult")).getText())
+                .isEqualTo("suffix search result 1");
+        assertThat(driver.findElement(By.xpath("//td[2]")).getText()).isEqualTo("AB_DE1");
 
         // screen capture (Automatic capture conducted at the end)
     }
@@ -251,9 +250,9 @@ public class QueryEscapeTest extends FunctionTestSupport {
         driver.findElement(By.id("suffix")).click();
 
         // search result check
-        assertThat(driver.findElement(By.id("searchresult")).getText(),
-                is("suffix search result 1"));
-        assertThat(driver.findElement(By.xpath("//td[2]")).getText(), is("AB％DE1"));
+        assertThat(driver.findElement(By.id("searchresult")).getText())
+                .isEqualTo("suffix search result 1");
+        assertThat(driver.findElement(By.xpath("//td[2]")).getText()).isEqualTo("AB％DE1");
 
         // screen capture (Automatic capture conducted at the end)
     }
@@ -271,9 +270,9 @@ public class QueryEscapeTest extends FunctionTestSupport {
         driver.findElement(By.id("suffix")).click();
 
         // search result check
-        assertThat(driver.findElement(By.id("searchresult")).getText(),
-                is("suffix search result 1"));
-        assertThat(driver.findElement(By.xpath("//td[2]")).getText(), is("AB＿DE1"));
+        assertThat(driver.findElement(By.id("searchresult")).getText())
+                .isEqualTo("suffix search result 1");
+        assertThat(driver.findElement(By.xpath("//td[2]")).getText()).isEqualTo("AB＿DE1");
 
         // screen capture (Automatic capture conducted at the end)
     }
@@ -291,9 +290,9 @@ public class QueryEscapeTest extends FunctionTestSupport {
         driver.findElement(By.id("suffix")).click();
 
         // search result check
-        assertThat(driver.findElement(By.id("searchresult")).getText(),
-                is("suffix search result 1"));
-        assertThat(driver.findElement(By.xpath("//td[2]")).getText(), is("ABCDE1"));
+        assertThat(driver.findElement(By.id("searchresult")).getText())
+                .isEqualTo("suffix search result 1");
+        assertThat(driver.findElement(By.xpath("//td[2]")).getText()).isEqualTo("ABCDE1");
 
         // screen capture (Automatic capture conducted at the end)
     }
@@ -311,9 +310,9 @@ public class QueryEscapeTest extends FunctionTestSupport {
         driver.findElement(By.id("suffix")).click();
 
         // search result check
-        assertThat(driver.findElement(By.id("searchresult")).getText(),
-                is("suffix search result 1"));
-        assertThat(driver.findElement(By.xpath("//td[2]")).getText(), is("AB~DE1"));
+        assertThat(driver.findElement(By.id("searchresult")).getText())
+                .isEqualTo("suffix search result 1");
+        assertThat(driver.findElement(By.xpath("//td[2]")).getText()).isEqualTo("AB~DE1");
 
         // screen capture (Automatic capture conducted at the end)
     }
@@ -331,10 +330,10 @@ public class QueryEscapeTest extends FunctionTestSupport {
         driver.findElement(By.id("partical")).click();
 
         // search result check
-        assertThat(driver.findElement(By.id("searchresult")).getText(),
-                is("partical search result 2"));
-        assertThat(driver.findElement(By.xpath("//td[2]")).getText(), is("AB%DE1"));
-        assertThat(driver.findElement(By.xpath("//tr[2]//td[2]")).getText(), is("AB%DE2"));
+        assertThat(driver.findElement(By.id("searchresult")).getText())
+                .isEqualTo("partical search result 2");
+        assertThat(driver.findElement(By.xpath("//td[2]")).getText()).isEqualTo("AB%DE1");
+        assertThat(driver.findElement(By.xpath("//tr[2]//td[2]")).getText()).isEqualTo("AB%DE2");
 
         // screen capture (Automatic capture conducted at the end)
     }
@@ -352,10 +351,10 @@ public class QueryEscapeTest extends FunctionTestSupport {
         driver.findElement(By.id("partical")).click();
 
         // search result check
-        assertThat(driver.findElement(By.id("searchresult")).getText(),
-                is("partical search result 2"));
-        assertThat(driver.findElement(By.xpath("//td[2]")).getText(), is("AB_DE1"));
-        assertThat(driver.findElement(By.xpath("//tr[2]//td[2]")).getText(), is("AB_DE2"));
+        assertThat(driver.findElement(By.id("searchresult")).getText())
+                .isEqualTo("partical search result 2");
+        assertThat(driver.findElement(By.xpath("//td[2]")).getText()).isEqualTo("AB_DE1");
+        assertThat(driver.findElement(By.xpath("//tr[2]//td[2]")).getText()).isEqualTo("AB_DE2");
 
         // screen capture (Automatic capture conducted at the end)
     }
@@ -373,10 +372,10 @@ public class QueryEscapeTest extends FunctionTestSupport {
         driver.findElement(By.id("partical")).click();
 
         // search result check
-        assertThat(driver.findElement(By.id("searchresult")).getText(),
-                is("partical search result 2"));
-        assertThat(driver.findElement(By.xpath("//td[2]")).getText(), is("AB％DE1"));
-        assertThat(driver.findElement(By.xpath("//tr[2]//td[2]")).getText(), is("AB％DE2"));
+        assertThat(driver.findElement(By.id("searchresult")).getText())
+                .isEqualTo("partical search result 2");
+        assertThat(driver.findElement(By.xpath("//td[2]")).getText()).isEqualTo("AB％DE1");
+        assertThat(driver.findElement(By.xpath("//tr[2]//td[2]")).getText()).isEqualTo("AB％DE2");
 
         // screen capture (Automatic capture conducted at the end)
     }
@@ -394,10 +393,10 @@ public class QueryEscapeTest extends FunctionTestSupport {
         driver.findElement(By.id("partical")).click();
 
         // search result check
-        assertThat(driver.findElement(By.id("searchresult")).getText(),
-                is("partical search result 2"));
-        assertThat(driver.findElement(By.xpath("//td[2]")).getText(), is("AB＿DE1"));
-        assertThat(driver.findElement(By.xpath("//tr[2]//td[2]")).getText(), is("AB＿DE2"));
+        assertThat(driver.findElement(By.id("searchresult")).getText())
+                .isEqualTo("partical search result 2");
+        assertThat(driver.findElement(By.xpath("//td[2]")).getText()).isEqualTo("AB＿DE1");
+        assertThat(driver.findElement(By.xpath("//tr[2]//td[2]")).getText()).isEqualTo("AB＿DE2");
 
         // screen capture (Automatic capture conducted at the end)
     }
@@ -415,10 +414,10 @@ public class QueryEscapeTest extends FunctionTestSupport {
         driver.findElement(By.id("partical")).click();
 
         // search result check
-        assertThat(driver.findElement(By.id("searchresult")).getText(),
-                is("partical search result 2"));
-        assertThat(driver.findElement(By.xpath("//td[2]")).getText(), is("ABCDE1"));
-        assertThat(driver.findElement(By.xpath("//tr[2]//td[2]")).getText(), is("ABCDE2"));
+        assertThat(driver.findElement(By.id("searchresult")).getText())
+                .isEqualTo("partical search result 2");
+        assertThat(driver.findElement(By.xpath("//td[2]")).getText()).isEqualTo("ABCDE1");
+        assertThat(driver.findElement(By.xpath("//tr[2]//td[2]")).getText()).isEqualTo("ABCDE2");
 
         // screen capture (Automatic capture conducted at the end)
     }
@@ -436,10 +435,10 @@ public class QueryEscapeTest extends FunctionTestSupport {
         driver.findElement(By.id("partical")).click();
 
         // search result check
-        assertThat(driver.findElement(By.id("searchresult")).getText(),
-                is("partical search result 2"));
-        assertThat(driver.findElement(By.xpath("//td[2]")).getText(), is("AB~DE1"));
-        assertThat(driver.findElement(By.xpath("//tr[2]//td[2]")).getText(), is("AB~DE2"));
+        assertThat(driver.findElement(By.id("searchresult")).getText())
+                .isEqualTo("partical search result 2");
+        assertThat(driver.findElement(By.xpath("//td[2]")).getText()).isEqualTo("AB~DE1");
+        assertThat(driver.findElement(By.xpath("//tr[2]//td[2]")).getText()).isEqualTo("AB~DE2");
 
         // screen capture (Automatic capture conducted at the end)
     }
@@ -457,10 +456,10 @@ public class QueryEscapeTest extends FunctionTestSupport {
         driver.findElement(By.id("prefix")).click();
 
         // search result check
-        assertThat(driver.findElement(By.id("searchresult")).getText(),
-                is("prefix search result 2"));
-        assertThat(driver.findElement(By.xpath("//td[2]")).getText(), is("AB%DE1"));
-        assertThat(driver.findElement(By.xpath("//tr[2]//td[2]")).getText(), is("AB%DE2"));
+        assertThat(driver.findElement(By.id("searchresult")).getText())
+                .isEqualTo("prefix search result 2");
+        assertThat(driver.findElement(By.xpath("//td[2]")).getText()).isEqualTo("AB%DE1");
+        assertThat(driver.findElement(By.xpath("//tr[2]//td[2]")).getText()).isEqualTo("AB%DE2");
 
         // screen capture (Automatic capture conducted at the end)
     }
@@ -478,10 +477,10 @@ public class QueryEscapeTest extends FunctionTestSupport {
         driver.findElement(By.id("prefix")).click();
 
         // search result check
-        assertThat(driver.findElement(By.id("searchresult")).getText(),
-                is("prefix search result 2"));
-        assertThat(driver.findElement(By.xpath("//td[2]")).getText(), is("AB_DE1"));
-        assertThat(driver.findElement(By.xpath("//tr[2]//td[2]")).getText(), is("AB_DE2"));
+        assertThat(driver.findElement(By.id("searchresult")).getText())
+                .isEqualTo("prefix search result 2");
+        assertThat(driver.findElement(By.xpath("//td[2]")).getText()).isEqualTo("AB_DE1");
+        assertThat(driver.findElement(By.xpath("//tr[2]//td[2]")).getText()).isEqualTo("AB_DE2");
 
         // screen capture (Automatic capture conducted at the end)
     }
@@ -499,10 +498,10 @@ public class QueryEscapeTest extends FunctionTestSupport {
         driver.findElement(By.id("prefix")).click();
 
         // search result check
-        assertThat(driver.findElement(By.id("searchresult")).getText(),
-                is("prefix search result 2"));
-        assertThat(driver.findElement(By.xpath("//td[2]")).getText(), is("AB％DE1"));
-        assertThat(driver.findElement(By.xpath("//tr[2]//td[2]")).getText(), is("AB％DE2"));
+        assertThat(driver.findElement(By.id("searchresult")).getText())
+                .isEqualTo("prefix search result 2");
+        assertThat(driver.findElement(By.xpath("//td[2]")).getText()).isEqualTo("AB％DE1");
+        assertThat(driver.findElement(By.xpath("//tr[2]//td[2]")).getText()).isEqualTo("AB％DE2");
 
         // screen capture (Automatic capture conducted at the end)
     }
@@ -520,10 +519,10 @@ public class QueryEscapeTest extends FunctionTestSupport {
         driver.findElement(By.id("prefix")).click();
 
         // search result check
-        assertThat(driver.findElement(By.id("searchresult")).getText(),
-                is("prefix search result 2"));
-        assertThat(driver.findElement(By.xpath("//td[2]")).getText(), is("AB＿DE1"));
-        assertThat(driver.findElement(By.xpath("//tr[2]//td[2]")).getText(), is("AB＿DE2"));
+        assertThat(driver.findElement(By.id("searchresult")).getText())
+                .isEqualTo("prefix search result 2");
+        assertThat(driver.findElement(By.xpath("//td[2]")).getText()).isEqualTo("AB＿DE1");
+        assertThat(driver.findElement(By.xpath("//tr[2]//td[2]")).getText()).isEqualTo("AB＿DE2");
 
         // screen capture (Automatic capture conducted at the end)
     }
@@ -541,10 +540,10 @@ public class QueryEscapeTest extends FunctionTestSupport {
         driver.findElement(By.id("prefix")).click();
 
         // search result check
-        assertThat(driver.findElement(By.id("searchresult")).getText(),
-                is("prefix search result 2"));
-        assertThat(driver.findElement(By.xpath("//td[2]")).getText(), is("ABCDE1"));
-        assertThat(driver.findElement(By.xpath("//tr[2]//td[2]")).getText(), is("ABCDE2"));
+        assertThat(driver.findElement(By.id("searchresult")).getText())
+                .isEqualTo("prefix search result 2");
+        assertThat(driver.findElement(By.xpath("//td[2]")).getText()).isEqualTo("ABCDE1");
+        assertThat(driver.findElement(By.xpath("//tr[2]//td[2]")).getText()).isEqualTo("ABCDE2");
 
         // screen capture (Automatic capture conducted at the end)
     }
@@ -562,10 +561,10 @@ public class QueryEscapeTest extends FunctionTestSupport {
         driver.findElement(By.id("prefix")).click();
 
         // search result check
-        assertThat(driver.findElement(By.id("searchresult")).getText(),
-                is("prefix search result 2"));
-        assertThat(driver.findElement(By.xpath("//td[2]")).getText(), is("AB~DE1"));
-        assertThat(driver.findElement(By.xpath("//tr[2]//td[2]")).getText(), is("AB~DE2"));
+        assertThat(driver.findElement(By.id("searchresult")).getText())
+                .isEqualTo("prefix search result 2");
+        assertThat(driver.findElement(By.xpath("//td[2]")).getText()).isEqualTo("AB~DE1");
+        assertThat(driver.findElement(By.xpath("//tr[2]//td[2]")).getText()).isEqualTo("AB~DE2");
 
         // screen capture (Automatic capture conducted at the end)
     }
@@ -583,9 +582,9 @@ public class QueryEscapeTest extends FunctionTestSupport {
         driver.findElement(By.id("suffix")).click();
 
         // search result check
-        assertThat(driver.findElement(By.id("searchresult")).getText(),
-                is("suffix search result 1"));
-        assertThat(driver.findElement(By.xpath("//td[2]")).getText(), is("AB%DE1"));
+        assertThat(driver.findElement(By.id("searchresult")).getText())
+                .isEqualTo("suffix search result 1");
+        assertThat(driver.findElement(By.xpath("//td[2]")).getText()).isEqualTo("AB%DE1");
 
         // screen capture (Automatic capture conducted at the end)
     }
@@ -603,9 +602,9 @@ public class QueryEscapeTest extends FunctionTestSupport {
         driver.findElement(By.id("suffix")).click();
 
         // search result check
-        assertThat(driver.findElement(By.id("searchresult")).getText(),
-                is("suffix search result 1"));
-        assertThat(driver.findElement(By.xpath("//td[2]")).getText(), is("AB_DE1"));
+        assertThat(driver.findElement(By.id("searchresult")).getText())
+                .isEqualTo("suffix search result 1");
+        assertThat(driver.findElement(By.xpath("//td[2]")).getText()).isEqualTo("AB_DE1");
 
         // screen capture (Automatic capture conducted at the end)
     }
@@ -623,9 +622,9 @@ public class QueryEscapeTest extends FunctionTestSupport {
         driver.findElement(By.id("suffix")).click();
 
         // search result check
-        assertThat(driver.findElement(By.id("searchresult")).getText(),
-                is("suffix search result 1"));
-        assertThat(driver.findElement(By.xpath("//td[2]")).getText(), is("AB％DE1"));
+        assertThat(driver.findElement(By.id("searchresult")).getText())
+                .isEqualTo("suffix search result 1");
+        assertThat(driver.findElement(By.xpath("//td[2]")).getText()).isEqualTo("AB％DE1");
 
         // screen capture (Automatic capture conducted at the end)
     }
@@ -643,9 +642,9 @@ public class QueryEscapeTest extends FunctionTestSupport {
         driver.findElement(By.id("suffix")).click();
 
         // search result check
-        assertThat(driver.findElement(By.id("searchresult")).getText(),
-                is("suffix search result 1"));
-        assertThat(driver.findElement(By.xpath("//td[2]")).getText(), is("AB＿DE1"));
+        assertThat(driver.findElement(By.id("searchresult")).getText())
+                .isEqualTo("suffix search result 1");
+        assertThat(driver.findElement(By.xpath("//td[2]")).getText()).isEqualTo("AB＿DE1");
 
         // screen capture (Automatic capture conducted at the end)
     }
@@ -663,9 +662,9 @@ public class QueryEscapeTest extends FunctionTestSupport {
         driver.findElement(By.id("suffix")).click();
 
         // search result check
-        assertThat(driver.findElement(By.id("searchresult")).getText(),
-                is("suffix search result 1"));
-        assertThat(driver.findElement(By.xpath("//td[2]")).getText(), is("ABCDE1"));
+        assertThat(driver.findElement(By.id("searchresult")).getText())
+                .isEqualTo("suffix search result 1");
+        assertThat(driver.findElement(By.xpath("//td[2]")).getText()).isEqualTo("ABCDE1");
 
         // screen capture (Automatic capture conducted at the end)
     }
@@ -683,9 +682,9 @@ public class QueryEscapeTest extends FunctionTestSupport {
         driver.findElement(By.id("suffix")).click();
 
         // search result check
-        assertThat(driver.findElement(By.id("searchresult")).getText(),
-                is("suffix search result 1"));
-        assertThat(driver.findElement(By.xpath("//td[2]")).getText(), is("AB~DE1"));
+        assertThat(driver.findElement(By.id("searchresult")).getText())
+                .isEqualTo("suffix search result 1");
+        assertThat(driver.findElement(By.xpath("//td[2]")).getText()).isEqualTo("AB~DE1");
 
         // screen capture (Automatic capture conducted at the end)
     }
@@ -703,10 +702,10 @@ public class QueryEscapeTest extends FunctionTestSupport {
         driver.findElement(By.id("partical")).click();
 
         // search result check
-        assertThat(driver.findElement(By.id("searchresult")).getText(),
-                is("partical search result 2"));
-        assertThat(driver.findElement(By.xpath("//td[2]")).getText(), is("AB%DE1"));
-        assertThat(driver.findElement(By.xpath("//tr[2]//td[2]")).getText(), is("AB%DE2"));
+        assertThat(driver.findElement(By.id("searchresult")).getText())
+                .isEqualTo("partical search result 2");
+        assertThat(driver.findElement(By.xpath("//td[2]")).getText()).isEqualTo("AB%DE1");
+        assertThat(driver.findElement(By.xpath("//tr[2]//td[2]")).getText()).isEqualTo("AB%DE2");
 
         // screen capture (Automatic capture conducted at the end)
     }
@@ -724,10 +723,10 @@ public class QueryEscapeTest extends FunctionTestSupport {
         driver.findElement(By.id("partical")).click();
 
         // search result check
-        assertThat(driver.findElement(By.id("searchresult")).getText(),
-                is("partical search result 2"));
-        assertThat(driver.findElement(By.xpath("//td[2]")).getText(), is("AB_DE1"));
-        assertThat(driver.findElement(By.xpath("//tr[2]//td[2]")).getText(), is("AB_DE2"));
+        assertThat(driver.findElement(By.id("searchresult")).getText())
+                .isEqualTo("partical search result 2");
+        assertThat(driver.findElement(By.xpath("//td[2]")).getText()).isEqualTo("AB_DE1");
+        assertThat(driver.findElement(By.xpath("//tr[2]//td[2]")).getText()).isEqualTo("AB_DE2");
 
         // screen capture (Automatic capture conducted at the end)
     }
@@ -745,10 +744,10 @@ public class QueryEscapeTest extends FunctionTestSupport {
         driver.findElement(By.id("partical")).click();
 
         // search result check
-        assertThat(driver.findElement(By.id("searchresult")).getText(),
-                is("partical search result 2"));
-        assertThat(driver.findElement(By.xpath("//td[2]")).getText(), is("AB％DE1"));
-        assertThat(driver.findElement(By.xpath("//tr[2]//td[2]")).getText(), is("AB％DE2"));
+        assertThat(driver.findElement(By.id("searchresult")).getText())
+                .isEqualTo("partical search result 2");
+        assertThat(driver.findElement(By.xpath("//td[2]")).getText()).isEqualTo("AB％DE1");
+        assertThat(driver.findElement(By.xpath("//tr[2]//td[2]")).getText()).isEqualTo("AB％DE2");
 
         // screen capture (Automatic capture conducted at the end)
     }
@@ -766,10 +765,10 @@ public class QueryEscapeTest extends FunctionTestSupport {
         driver.findElement(By.id("partical")).click();
 
         // search result check
-        assertThat(driver.findElement(By.id("searchresult")).getText(),
-                is("partical search result 2"));
-        assertThat(driver.findElement(By.xpath("//td[2]")).getText(), is("AB＿DE1"));
-        assertThat(driver.findElement(By.xpath("//tr[2]//td[2]")).getText(), is("AB＿DE2"));
+        assertThat(driver.findElement(By.id("searchresult")).getText())
+                .isEqualTo("partical search result 2");
+        assertThat(driver.findElement(By.xpath("//td[2]")).getText()).isEqualTo("AB＿DE1");
+        assertThat(driver.findElement(By.xpath("//tr[2]//td[2]")).getText()).isEqualTo("AB＿DE2");
 
         // screen capture (Automatic capture conducted at the end)
     }
@@ -787,10 +786,10 @@ public class QueryEscapeTest extends FunctionTestSupport {
         driver.findElement(By.id("partical")).click();
 
         // search result check
-        assertThat(driver.findElement(By.id("searchresult")).getText(),
-                is("partical search result 2"));
-        assertThat(driver.findElement(By.xpath("//td[2]")).getText(), is("ABCDE1"));
-        assertThat(driver.findElement(By.xpath("//tr[2]//td[2]")).getText(), is("ABCDE2"));
+        assertThat(driver.findElement(By.id("searchresult")).getText())
+                .isEqualTo("partical search result 2");
+        assertThat(driver.findElement(By.xpath("//td[2]")).getText()).isEqualTo("ABCDE1");
+        assertThat(driver.findElement(By.xpath("//tr[2]//td[2]")).getText()).isEqualTo("ABCDE2");
 
         // screen capture (Automatic capture conducted at the end)
     }
@@ -808,10 +807,10 @@ public class QueryEscapeTest extends FunctionTestSupport {
         driver.findElement(By.id("partical")).click();
 
         // search result check
-        assertThat(driver.findElement(By.id("searchresult")).getText(),
-                is("partical search result 2"));
-        assertThat(driver.findElement(By.xpath("//td[2]")).getText(), is("AB~DE1"));
-        assertThat(driver.findElement(By.xpath("//tr[2]//td[2]")).getText(), is("AB~DE2"));
+        assertThat(driver.findElement(By.id("searchresult")).getText())
+                .isEqualTo("partical search result 2");
+        assertThat(driver.findElement(By.xpath("//td[2]")).getText()).isEqualTo("AB~DE1");
+        assertThat(driver.findElement(By.xpath("//tr[2]//td[2]")).getText()).isEqualTo("AB~DE2");
 
         // screen capture (Automatic capture conducted at the end)
     }

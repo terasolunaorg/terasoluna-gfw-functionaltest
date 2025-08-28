@@ -15,10 +15,7 @@
  */
 package org.terasoluna.gfw.functionaltest.app.pagination;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.not;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.core.IsNull.notNullValue;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -38,34 +35,34 @@ public class PaginationTest extends FunctionTestSupport {
         webDriverWait.until(textToBe(By.xpath("//h1[2]"), "1 Page"));
 
         // all page display check
-        assertThat(driver.findElement(By.xpath("//li[3]/a")).getText(), is("1"));
-        assertThat(driver.findElement(By.xpath("//li[4]/a")).getText(), is("2"));
-        assertThat(driver.findElement(By.xpath("//li[5]/a")).getText(), is("3"));
+        assertThat(driver.findElement(By.xpath("//li[3]/a")).getText()).isEqualTo("1");
+        assertThat(driver.findElement(By.xpath("//li[4]/a")).getText()).isEqualTo("2");
+        assertThat(driver.findElement(By.xpath("//li[5]/a")).getText()).isEqualTo("3");
 
         // currentPage query check
         assertThat(driver.findElement(By.xpath("(//a[contains(@href, 'javascript:void(0)')])[3]"))
-                .getText(), is("1"));
+                .getText()).isEqualTo("1");
 
         // HTML tags outside "<ul>" check
-        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul")), notNullValue());
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul"))).isNotNull();
         // HTML tags inside "<li>" check
-        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul/li[1]")), notNullValue());
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul/li[1]"))).isNotNull();
 
         // previousLink, nextLink, firstLink, lastLink check
-        assertThat(driver.findElement(By.xpath("//li[1]/a")).getText(), is("<<"));
-        assertThat(driver.findElement(By.xpath("//li[2]/a")).getText(), is("<"));
-        assertThat(driver.findElement(By.xpath("//li[6]/a")).getText(), is(">"));
-        assertThat(driver.findElement(By.xpath("//li[7]/a")).getText(), is(">>"));
+        assertThat(driver.findElement(By.xpath("//li[1]/a")).getText()).isEqualTo("<<");
+        assertThat(driver.findElement(By.xpath("//li[2]/a")).getText()).isEqualTo("<");
+        assertThat(driver.findElement(By.xpath("//li[6]/a")).getText()).isEqualTo(">");
+        assertThat(driver.findElement(By.xpath("//li[7]/a")).getText()).isEqualTo(">>");
 
         // previousLink value "javascript:void(0)" check
-        assertThat(driver.findElement(By.xpath("(//a[contains(@href, 'javascript:void(0)')])[2]")),
-                notNullValue());
+        assertThat(driver.findElement(By.xpath("(//a[contains(@href, 'javascript:void(0)')])[2]")))
+                .isNotNull();
 
         // "active" class check
-        assertThat(driver.findElement(By.cssSelector("li.active > a")).getText(), is("1"));
+        assertThat(driver.findElement(By.cssSelector("li.active > a")).getText()).isEqualTo("1");
 
         // "disabled" class check
-        assertThat(driver.findElement(By.cssSelector("li.disabled > a")).getText(), is("<<"));
+        assertThat(driver.findElement(By.cssSelector("li.disabled > a")).getText()).isEqualTo("<<");
 
         // screen capture
         screenCapture.save(driver);
@@ -74,7 +71,7 @@ public class PaginationTest extends FunctionTestSupport {
         webDriverWait.until(textToBe(By.xpath("//h1[2]"), "2 Page"));
 
         // move page 2 page check
-        assertThat(driver.findElement(By.cssSelector("li.active > a")).getText(), is("2"));
+        assertThat(driver.findElement(By.cssSelector("li.active > a")).getText()).isEqualTo("2");
 
         screenCapture.save(driver);
 
@@ -82,7 +79,7 @@ public class PaginationTest extends FunctionTestSupport {
         webDriverWait.until(textToBe(By.xpath("//h1[2]"), "3 Page"));
 
         // move page 3 page check
-        assertThat(driver.findElement(By.cssSelector("li.active > a")).getText(), is("3"));
+        assertThat(driver.findElement(By.cssSelector("li.active > a")).getText()).isEqualTo("3");
 
         // screen capture
         screenCapture.save(driver);
@@ -97,30 +94,30 @@ public class PaginationTest extends FunctionTestSupport {
         // all page display check
         for (int i = 1; i < 11; i++) {
             String elemnetNumber = String.valueOf(i + 2);
-            assertThat(driver.findElement(By.xpath("//li[" + elemnetNumber + "]/a")).getText(),
-                    is(String.valueOf(i)));
+            assertThat(driver.findElement(By.xpath("//li[" + elemnetNumber + "]/a")).getText())
+                    .isEqualTo(String.valueOf(i));
         }
 
         // HTML tags outside "<ul>" check
-        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul")), notNullValue());
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul"))).isNotNull();
         // HTML tags inside "<li>" check
-        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul/li[1]")), notNullValue());
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul/li[1]"))).isNotNull();
 
         // previousLink, nextLink, firstLink, lastLink check
-        assertThat(driver.findElement(By.xpath("//li[1]/a")).getText(), is("<<"));
-        assertThat(driver.findElement(By.xpath("//li[2]/a")).getText(), is("<"));
-        assertThat(driver.findElement(By.xpath("//li[13]/a")).getText(), is(">"));
-        assertThat(driver.findElement(By.xpath("//li[14]/a")).getText(), is(">>"));
+        assertThat(driver.findElement(By.xpath("//li[1]/a")).getText()).isEqualTo("<<");
+        assertThat(driver.findElement(By.xpath("//li[2]/a")).getText()).isEqualTo("<");
+        assertThat(driver.findElement(By.xpath("//li[13]/a")).getText()).isEqualTo(">");
+        assertThat(driver.findElement(By.xpath("//li[14]/a")).getText()).isEqualTo(">>");
 
         // previousLink value "javascript:void(0)" check
-        assertThat(driver.findElement(By.xpath("(//a[contains(@href, 'javascript:void(0)')])[2]")),
-                notNullValue());
+        assertThat(driver.findElement(By.xpath("(//a[contains(@href, 'javascript:void(0)')])[2]")))
+                .isNotNull();
 
         // "active" class check
-        assertThat(driver.findElement(By.cssSelector("li.active > a")).getText(), is("1"));
+        assertThat(driver.findElement(By.cssSelector("li.active > a")).getText()).isEqualTo("1");
 
         // "disabled" class check
-        assertThat(driver.findElement(By.cssSelector("li.disabled > a")).getText(), is("<<"));
+        assertThat(driver.findElement(By.cssSelector("li.disabled > a")).getText()).isEqualTo("<<");
 
         // screen capture
         screenCapture.save(driver);
@@ -143,58 +140,58 @@ public class PaginationTest extends FunctionTestSupport {
         // all page display check
         for (int i = 1; i < 11; i++) {
             String elemnetNumber = String.valueOf(i + 2);
-            assertThat(driver.findElement(By.xpath("//li[" + elemnetNumber + "]/a")).getText(),
-                    is(String.valueOf(i)));
+            assertThat(driver.findElement(By.xpath("//li[" + elemnetNumber + "]/a")).getText())
+                    .isEqualTo(String.valueOf(i));
         }
 
         // 11 page no diplay
-        assertThat(driver.findElement(By.xpath("//li[13]/a")).getText(), not("11"));
+        assertThat(driver.findElement(By.xpath("//li[13]/a")).getText()).isNotEqualTo("11");
 
         // HTML tags outside "<ul>" check
-        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul")), notNullValue());
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul"))).isNotNull();
         // HTML tags inside "<li>" check
-        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul/li[1]")), notNullValue());
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul/li[1]"))).isNotNull();
 
         // previousLink, nextLink, firstLink, lastLink check
-        assertThat(driver.findElement(By.xpath("//li[1]/a")).getText(), is("<<"));
-        assertThat(driver.findElement(By.xpath("//li[2]/a")).getText(), is("<"));
-        assertThat(driver.findElement(By.xpath("//li[13]/a")).getText(), is(">"));
-        assertThat(driver.findElement(By.xpath("//li[14]/a")).getText(), is(">>"));
+        assertThat(driver.findElement(By.xpath("//li[1]/a")).getText()).isEqualTo("<<");
+        assertThat(driver.findElement(By.xpath("//li[2]/a")).getText()).isEqualTo("<");
+        assertThat(driver.findElement(By.xpath("//li[13]/a")).getText()).isEqualTo(">");
+        assertThat(driver.findElement(By.xpath("//li[14]/a")).getText()).isEqualTo(">>");
 
         // previousLink value "javascript:void(0)" check
-        assertThat(driver.findElement(By.xpath("(//a[contains(@href, 'javascript:void(0)')])[2]")),
-                notNullValue());
+        assertThat(driver.findElement(By.xpath("(//a[contains(@href, 'javascript:void(0)')])[2]")))
+                .isNotNull();
 
         // "active" class check
-        assertThat(driver.findElement(By.cssSelector("li.active > a")).getText(), is("1"));
+        assertThat(driver.findElement(By.cssSelector("li.active > a")).getText()).isEqualTo("1");
 
         // "disabled" class check
-        assertThat(driver.findElement(By.cssSelector("li.disabled > a")).getText(), is("<<"));
+        assertThat(driver.findElement(By.cssSelector("li.disabled > a")).getText()).isEqualTo("<<");
 
         driver.findElement(By.linkText("6")).click();
         webDriverWait.until(textToBe(By.xpath("//h1[2]"), "6 Page"));
 
         // move page 6 page check
-        assertThat(driver.findElement(By.cssSelector("li.active > a")).getText(), is("6"));
+        assertThat(driver.findElement(By.cssSelector("li.active > a")).getText()).isEqualTo("6");
 
         // all page display check
         for (int i = 1; i < 11; i++) {
             String elemnetNumber = String.valueOf(i + 2);
-            assertThat(driver.findElement(By.xpath("//li[" + elemnetNumber + "]/a")).getText(),
-                    is(String.valueOf(i)));
+            assertThat(driver.findElement(By.xpath("//li[" + elemnetNumber + "]/a")).getText())
+                    .isEqualTo(String.valueOf(i));
         }
 
         driver.findElement(By.linkText("7")).click();
         webDriverWait.until(textToBe(By.xpath("//h1[2]"), "7 Page"));
 
         // move page 7 page check
-        assertThat(driver.findElement(By.cssSelector("li.active > a")).getText(), is("7"));
+        assertThat(driver.findElement(By.cssSelector("li.active > a")).getText()).isEqualTo("7");
 
         // all page display check
         for (int i = 2; i < 12; i++) {
             String elemnetNumber = String.valueOf(i + 1);
-            assertThat(driver.findElement(By.xpath("//li[" + elemnetNumber + "]/a")).getText(),
-                    is(String.valueOf(i)));
+            assertThat(driver.findElement(By.xpath("//li[" + elemnetNumber + "]/a")).getText())
+                    .isEqualTo(String.valueOf(i));
         }
 
         driver.findElement(By.linkText("<<")).click();
@@ -253,37 +250,37 @@ public class PaginationTest extends FunctionTestSupport {
 
         // firstLink disabled
         assertThat(driver.findElement(By.xpath("//a[contains(@href, 'javascript:void(0)')]"))
-                .getText(), is("<<"));
+                .getText()).isEqualTo("<<");
         // previousLink disabled
         assertThat(driver.findElement(By.xpath("(//a[contains(@href, 'javascript:void(0)')])[2]"))
-                .getText(), is("<"));
+                .getText()).isEqualTo("<");
         // nextLink active
         assertThat(driver.findElement(By.xpath("(//a[contains(@href, '?page=1&size=10')])[2]"))
-                .getText(), is(">"));
+                .getText()).isEqualTo(">");
         // lastLink active
         assertThat(driver.findElement(By.xpath("(//a[contains(@href, '?page=2&size=10')])[2]"))
-                .getText(), is(">>"));
+                .getText()).isEqualTo(">>");
 
         // HTML tags outside "<ul>" check
-        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul")), notNullValue());
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul"))).isNotNull();
         // HTML tags inside "<li>" check
-        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul/li[1]")), notNullValue());
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul/li[1]"))).isNotNull();
 
         // previousLink, nextLink, firstLink, lastLink check
-        assertThat(driver.findElement(By.xpath("//li[1]/a")).getText(), is("<<"));
-        assertThat(driver.findElement(By.xpath("//li[2]/a")).getText(), is("<"));
-        assertThat(driver.findElement(By.xpath("//li[6]/a")).getText(), is(">"));
-        assertThat(driver.findElement(By.xpath("//li[7]/a")).getText(), is(">>"));
+        assertThat(driver.findElement(By.xpath("//li[1]/a")).getText()).isEqualTo("<<");
+        assertThat(driver.findElement(By.xpath("//li[2]/a")).getText()).isEqualTo("<");
+        assertThat(driver.findElement(By.xpath("//li[6]/a")).getText()).isEqualTo(">");
+        assertThat(driver.findElement(By.xpath("//li[7]/a")).getText()).isEqualTo(">>");
 
         // previousLink value "javascript:void(0)" check
-        assertThat(driver.findElement(By.xpath("(//a[contains(@href, 'javascript:void(0)')])[2]")),
-                notNullValue());
+        assertThat(driver.findElement(By.xpath("(//a[contains(@href, 'javascript:void(0)')])[2]")))
+                .isNotNull();
 
         // "active" class check
-        assertThat(driver.findElement(By.cssSelector("li.active > a")).getText(), is("1"));
+        assertThat(driver.findElement(By.cssSelector("li.active > a")).getText()).isEqualTo("1");
 
         // "disabled" class check
-        assertThat(driver.findElement(By.cssSelector("li.disabled > a")).getText(), is("<<"));
+        assertThat(driver.findElement(By.cssSelector("li.disabled > a")).getText()).isEqualTo("<<");
 
         for (int i = 1; i < 4; i++) {
             // active page number check
@@ -306,31 +303,31 @@ public class PaginationTest extends FunctionTestSupport {
 
         // firstLink active
         assertThat(
-                driver.findElement(By.xpath("//a[contains(@href, '?page=0&size=10')]")).getText(),
-                is("<<"));
+                driver.findElement(By.xpath("//a[contains(@href, '?page=0&size=10')]")).getText())
+                        .isEqualTo("<<");
         // previousLink active
         assertThat(driver.findElement(By.xpath("(//a[contains(@href, '?page=0&size=10')])[2]"))
-                .getText(), is("<"));
+                .getText()).isEqualTo("<");
         // nextLink active
         assertThat(driver.findElement(By.xpath("(//a[contains(@href, '?page=2&size=10')])[2]"))
-                .getText(), is(">"));
+                .getText()).isEqualTo(">");
         // lastLink active
         assertThat(driver.findElement(By.xpath("(//a[contains(@href, '?page=2&size=10')])[3]"))
-                .getText(), is(">>"));
+                .getText()).isEqualTo(">>");
 
         // HTML tags outside "<ul>" check
-        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul")), notNullValue());
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul"))).isNotNull();
         // HTML tags inside "<li>" check
-        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul/li[1]")), notNullValue());
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul/li[1]"))).isNotNull();
 
         // previousLink, nextLink, firstLink, lastLink check
-        assertThat(driver.findElement(By.xpath("//li[1]/a")).getText(), is("<<"));
-        assertThat(driver.findElement(By.xpath("//li[2]/a")).getText(), is("<"));
-        assertThat(driver.findElement(By.xpath("//li[6]/a")).getText(), is(">"));
-        assertThat(driver.findElement(By.xpath("//li[7]/a")).getText(), is(">>"));
+        assertThat(driver.findElement(By.xpath("//li[1]/a")).getText()).isEqualTo("<<");
+        assertThat(driver.findElement(By.xpath("//li[2]/a")).getText()).isEqualTo("<");
+        assertThat(driver.findElement(By.xpath("//li[6]/a")).getText()).isEqualTo(">");
+        assertThat(driver.findElement(By.xpath("//li[7]/a")).getText()).isEqualTo(">>");
 
         // "active" class check
-        assertThat(driver.findElement(By.cssSelector("li.active > a")).getText(), is("2"));
+        assertThat(driver.findElement(By.cssSelector("li.active > a")).getText()).isEqualTo("2");
 
         driver.findElement(By.linkText("<<")).click();
         for (int i = 1; i < 4; i++) {
@@ -354,42 +351,42 @@ public class PaginationTest extends FunctionTestSupport {
 
         // firstLink active
         assertThat(
-                driver.findElement(By.xpath("//a[contains(@href, '?page=0&size=10')]")).getText(),
-                is("<<"));
+                driver.findElement(By.xpath("//a[contains(@href, '?page=0&size=10')]")).getText())
+                        .isEqualTo("<<");
         // previousLink active
         assertThat(
-                driver.findElement(By.xpath("//a[contains(@href, '?page=1&size=10')]")).getText(),
-                is("<"));
+                driver.findElement(By.xpath("//a[contains(@href, '?page=1&size=10')]")).getText())
+                        .isEqualTo("<");
         // current page disabled
         assertThat(driver.findElement(By.xpath("//a[contains(@href, 'javascript:void(0)')]"))
-                .getText(), is("3"));
+                .getText()).isEqualTo("3");
         // nextLink disabled
         assertThat(driver.findElement(By.xpath("(//a[contains(@href, 'javascript:void(0)')])[2]"))
-                .getText(), is(">"));
+                .getText()).isEqualTo(">");
         // lastLink disabled
         assertThat(driver.findElement(By.xpath("(//a[contains(@href, 'javascript:void(0)')])[3]"))
-                .getText(), is(">>"));
+                .getText()).isEqualTo(">>");
 
         // HTML tags outside "<ul>" check
-        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul")), notNullValue());
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul"))).isNotNull();
         // HTML tags inside "<li>" check
-        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul/li[1]")), notNullValue());
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul/li[1]"))).isNotNull();
 
         // previousLink, nextLink, firstLink, lastLink check
-        assertThat(driver.findElement(By.xpath("//li[1]/a")).getText(), is("<<"));
-        assertThat(driver.findElement(By.xpath("//li[2]/a")).getText(), is("<"));
-        assertThat(driver.findElement(By.xpath("//li[6]/a")).getText(), is(">"));
-        assertThat(driver.findElement(By.xpath("//li[7]/a")).getText(), is(">>"));
+        assertThat(driver.findElement(By.xpath("//li[1]/a")).getText()).isEqualTo("<<");
+        assertThat(driver.findElement(By.xpath("//li[2]/a")).getText()).isEqualTo("<");
+        assertThat(driver.findElement(By.xpath("//li[6]/a")).getText()).isEqualTo(">");
+        assertThat(driver.findElement(By.xpath("//li[7]/a")).getText()).isEqualTo(">>");
 
         // previousLink value "javascript:void(0)" check
-        assertThat(driver.findElement(By.xpath("(//a[contains(@href, 'javascript:void(0)')])[2]")),
-                notNullValue());
+        assertThat(driver.findElement(By.xpath("(//a[contains(@href, 'javascript:void(0)')])[2]")))
+                .isNotNull();
 
         // "active" class check
-        assertThat(driver.findElement(By.cssSelector("li.active > a")).getText(), is("3"));
+        assertThat(driver.findElement(By.cssSelector("li.active > a")).getText()).isEqualTo("3");
 
         // "disabled" class check
-        assertThat(driver.findElement(By.cssSelector("li.disabled > a")).getText(), is(">"));
+        assertThat(driver.findElement(By.cssSelector("li.disabled > a")).getText()).isEqualTo(">");
 
         driver.findElement(By.linkText("<<")).click();
         for (int i = 1; i < 4; i++) {
@@ -413,33 +410,33 @@ public class PaginationTest extends FunctionTestSupport {
 
         // firstLink active
         assertThat(
-                driver.findElement(By.xpath("//a[contains(@href, '?page=0&size=15')]")).getText(),
-                is("<<"));
+                driver.findElement(By.xpath("//a[contains(@href, '?page=0&size=15')]")).getText())
+                        .isEqualTo("<<");
         // previousLink active
         assertThat(
-                driver.findElement(By.xpath("//a[contains(@href, '?page=1&size=15')]")).getText(),
-                is("<"));
+                driver.findElement(By.xpath("//a[contains(@href, '?page=1&size=15')]")).getText())
+                        .isEqualTo("<");
         // nextLink disabled
         assertThat(driver.findElement(By.xpath("(//a[contains(@href, '?page=3&size=15')])[2]"))
-                .getText(), is(">"));
+                .getText()).isEqualTo(">");
         // lastLink disabled
         assertThat(
-                driver.findElement(By.xpath("//a[contains(@href, '?page=19&size=15')]")).getText(),
-                is(">>"));
+                driver.findElement(By.xpath("//a[contains(@href, '?page=19&size=15')]")).getText())
+                        .isEqualTo(">>");
 
         // HTML tags outside "<ul>" check
-        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul")), notNullValue());
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul"))).isNotNull();
         // HTML tags inside "<li>" check
-        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul/li[1]")), notNullValue());
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul/li[1]"))).isNotNull();
 
         // previousLink, nextLink, firstLink, lastLink check
-        assertThat(driver.findElement(By.xpath("//li[1]/a")).getText(), is("<<"));
-        assertThat(driver.findElement(By.xpath("//li[2]/a")).getText(), is("<"));
-        assertThat(driver.findElement(By.xpath("//li[13]/a")).getText(), is(">"));
-        assertThat(driver.findElement(By.xpath("//li[14]/a")).getText(), is(">>"));
+        assertThat(driver.findElement(By.xpath("//li[1]/a")).getText()).isEqualTo("<<");
+        assertThat(driver.findElement(By.xpath("//li[2]/a")).getText()).isEqualTo("<");
+        assertThat(driver.findElement(By.xpath("//li[13]/a")).getText()).isEqualTo(">");
+        assertThat(driver.findElement(By.xpath("//li[14]/a")).getText()).isEqualTo(">>");
 
         // "active" class check
-        assertThat(driver.findElement(By.cssSelector("li.active > a")).getText(), is("3"));
+        assertThat(driver.findElement(By.cssSelector("li.active > a")).getText()).isEqualTo("3");
 
         driver.findElement(By.linkText("<<")).click();
         for (int i = 1; i < 21; i++) {
@@ -466,33 +463,33 @@ public class PaginationTest extends FunctionTestSupport {
 
         // firstLink active
         assertThat(
-                driver.findElement(By.xpath("//a[contains(@href, '?page=0&size=15')]")).getText(),
-                is("<<"));
+                driver.findElement(By.xpath("//a[contains(@href, '?page=0&size=15')]")).getText())
+                        .isEqualTo("<<");
         // previousLink active
         assertThat(
-                driver.findElement(By.xpath("//a[contains(@href, '?page=11&size=15')]")).getText(),
-                is("<"));
+                driver.findElement(By.xpath("//a[contains(@href, '?page=11&size=15')]")).getText())
+                        .isEqualTo("<");
         // nextLink disabled
         assertThat(driver.findElement(By.xpath("(//a[contains(@href, '?page=13&size=15')])[2]"))
-                .getText(), is(">"));
+                .getText()).isEqualTo(">");
         // lastLink disabled
         assertThat(
-                driver.findElement(By.xpath("//a[contains(@href, '?page=19&size=15')]")).getText(),
-                is(">>"));
+                driver.findElement(By.xpath("//a[contains(@href, '?page=19&size=15')]")).getText())
+                        .isEqualTo(">>");
 
         // HTML tags outside "<ul>" check
-        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul")), notNullValue());
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul"))).isNotNull();
         // HTML tags inside "<li>" check
-        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul/li[1]")), notNullValue());
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul/li[1]"))).isNotNull();
 
         // previousLink, nextLink, firstLink, lastLink check
-        assertThat(driver.findElement(By.xpath("//li[1]/a")).getText(), is("<<"));
-        assertThat(driver.findElement(By.xpath("//li[2]/a")).getText(), is("<"));
-        assertThat(driver.findElement(By.xpath("//li[13]/a")).getText(), is(">"));
-        assertThat(driver.findElement(By.xpath("//li[14]/a")).getText(), is(">>"));
+        assertThat(driver.findElement(By.xpath("//li[1]/a")).getText()).isEqualTo("<<");
+        assertThat(driver.findElement(By.xpath("//li[2]/a")).getText()).isEqualTo("<");
+        assertThat(driver.findElement(By.xpath("//li[13]/a")).getText()).isEqualTo(">");
+        assertThat(driver.findElement(By.xpath("//li[14]/a")).getText()).isEqualTo(">>");
 
         // "active" class check
-        assertThat(driver.findElement(By.cssSelector("li.active > a")).getText(), is("13"));
+        assertThat(driver.findElement(By.cssSelector("li.active > a")).getText()).isEqualTo("13");
 
         driver.findElement(By.linkText("<<")).click();
         for (int i = 1; i < 21; i++) {
@@ -518,26 +515,26 @@ public class PaginationTest extends FunctionTestSupport {
         driver.findElement(By.linkText("<<")).click();
         String firstLinkXtrack = driver.findElement(By.id("xtrack")).getText();
         // not change xtrack
-        assertThat(firstLinkXtrack, is(orgXtrack));
+        assertThat(firstLinkXtrack).isEqualTo(orgXtrack);
 
         // previousLink disabled click
         driver.findElement(By.linkText("<")).click();
         String previousLinkXtrack = driver.findElement(By.id("xtrack")).getText();
         // not change xtrack
-        assertThat(previousLinkXtrack, is(orgXtrack));
+        assertThat(previousLinkXtrack).isEqualTo(orgXtrack);
 
         // currentPage(1Page) active click
         driver.findElement(By.linkText("<")).click();
         String currentPageXtrack = driver.findElement(By.id("xtrack")).getText();
         // not change xtrack
-        assertThat(currentPageXtrack, is(orgXtrack));
+        assertThat(currentPageXtrack).isEqualTo(orgXtrack);
 
         // nextLink click
         driver.findElement(By.linkText(">")).click();
         webDriverWait.until(textToBe(By.xpath("//h1[2]"), "2 Page"));
         String nextLinkXtrack = driver.findElement(By.id("xtrack")).getText();
         // change xtrack
-        assertThat(nextLinkXtrack, is(not(orgXtrack)));
+        assertThat(nextLinkXtrack).isNotEqualTo(orgXtrack);
     }
 
     @Test
@@ -547,34 +544,33 @@ public class PaginationTest extends FunctionTestSupport {
 
         // current page url path
         assertThat(driver.findElement(By.xpath("/html/body/div/div[1]/ul/li[3]/a"))
-                .getAttribute("href"), is("javascript:void(0)"));
+                .getAttribute("href")).isEqualTo("javascript:void(0)");
 
         // change url path
-        assertThat(
-                driver.findElement(By.xpath("/html/body/div/div[1]/ul/li[4]/a"))
-                        .getAttribute("href"),
-                is(serverUrl + "/" + contextName + "/pagination/2_1?page=1&size=100"));
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[1]/ul/li[4]/a"))
+                .getAttribute("href")).isEqualTo(
+                        serverUrl + "/" + contextName + "/pagination/2_1?page=1&size=100");
 
         // HTML tags outside "<ul>" check
-        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul")), notNullValue());
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul"))).isNotNull();
         // HTML tags inside "<li>" check
-        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul/li[1]")), notNullValue());
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul/li[1]"))).isNotNull();
 
         // previousLink, nextLink, firstLink, lastLink check
-        assertThat(driver.findElement(By.xpath("//li[1]/a")).getText(), is("<<"));
-        assertThat(driver.findElement(By.xpath("//li[2]/a")).getText(), is("<"));
-        assertThat(driver.findElement(By.xpath("//li[6]/a")).getText(), is(">"));
-        assertThat(driver.findElement(By.xpath("//li[7]/a")).getText(), is(">>"));
+        assertThat(driver.findElement(By.xpath("//li[1]/a")).getText()).isEqualTo("<<");
+        assertThat(driver.findElement(By.xpath("//li[2]/a")).getText()).isEqualTo("<");
+        assertThat(driver.findElement(By.xpath("//li[6]/a")).getText()).isEqualTo(">");
+        assertThat(driver.findElement(By.xpath("//li[7]/a")).getText()).isEqualTo(">>");
 
         // previousLink value "javascript:void(0)" check
-        assertThat(driver.findElement(By.xpath("(//a[contains(@href, 'javascript:void(0)')])[2]")),
-                notNullValue());
+        assertThat(driver.findElement(By.xpath("(//a[contains(@href, 'javascript:void(0)')])[2]")))
+                .isNotNull();
 
         // "active" class check
-        assertThat(driver.findElement(By.cssSelector("li.active > a")).getText(), is("1"));
+        assertThat(driver.findElement(By.cssSelector("li.active > a")).getText()).isEqualTo("1");
 
         // "disabled" class check
-        assertThat(driver.findElement(By.cssSelector("li.disabled > a")).getText(), is("<<"));
+        assertThat(driver.findElement(By.cssSelector("li.disabled > a")).getText()).isEqualTo("<<");
 
         for (int i = 1; i < 4; i++) {
             // active page number check
@@ -594,35 +590,34 @@ public class PaginationTest extends FunctionTestSupport {
 
         // current page query value
         assertThat(driver.findElement(By.xpath("/html/body/div/div[1]/ul/li[3]/a"))
-                .getAttribute("href"), is("javascript:void(0)"));
+                .getAttribute("href")).isEqualTo("javascript:void(0)");
 
         // change query value
-        assertThat(
-                driver.findElement(By.xpath("/html/body/div/div[1]/ul/li[4]/a"))
-                        .getAttribute("href"),
-                is(serverUrl + "/" + contextName
-                        + "/pagination/3_1?page=1&size=100&sort=firstname,DESC"));
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[1]/ul/li[4]/a"))
+                .getAttribute("href"))
+                        .isEqualTo(serverUrl + "/" + contextName
+                                + "/pagination/3_1?page=1&size=100&sort=firstname,DESC");
 
         // HTML tags outside "<ul>" check
-        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul")), notNullValue());
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul"))).isNotNull();
         // HTML tags inside "<li>" check
-        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul/li[1]")), notNullValue());
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul/li[1]"))).isNotNull();
 
         // previousLink, nextLink, firstLink, lastLink check
-        assertThat(driver.findElement(By.xpath("//li[1]/a")).getText(), is("<<"));
-        assertThat(driver.findElement(By.xpath("//li[2]/a")).getText(), is("<"));
-        assertThat(driver.findElement(By.xpath("//li[6]/a")).getText(), is(">"));
-        assertThat(driver.findElement(By.xpath("//li[7]/a")).getText(), is(">>"));
+        assertThat(driver.findElement(By.xpath("//li[1]/a")).getText()).isEqualTo("<<");
+        assertThat(driver.findElement(By.xpath("//li[2]/a")).getText()).isEqualTo("<");
+        assertThat(driver.findElement(By.xpath("//li[6]/a")).getText()).isEqualTo(">");
+        assertThat(driver.findElement(By.xpath("//li[7]/a")).getText()).isEqualTo(">>");
 
         // previousLink value "javascript:void(0)" check
-        assertThat(driver.findElement(By.xpath("(//a[contains(@href, 'javascript:void(0)')])[2]")),
-                notNullValue());
+        assertThat(driver.findElement(By.xpath("(//a[contains(@href, 'javascript:void(0)')])[2]")))
+                .isNotNull();
 
         // "active" class check
-        assertThat(driver.findElement(By.cssSelector("li.active > a")).getText(), is("1"));
+        assertThat(driver.findElement(By.cssSelector("li.active > a")).getText()).isEqualTo("1");
 
         // "disabled" class check
-        assertThat(driver.findElement(By.cssSelector("li.disabled > a")).getText(), is("<<"));
+        assertThat(driver.findElement(By.cssSelector("li.disabled > a")).getText()).isEqualTo("<<");
 
         for (int i = 1; i < 4; i++) {
             // active page number check
@@ -644,55 +639,55 @@ public class PaginationTest extends FunctionTestSupport {
         // all page display check
         for (int i = 1; i < 21; i++) {
             String elemnetNumber = String.valueOf(i + 2);
-            assertThat(driver.findElement(By.xpath("//li[" + elemnetNumber + "]/a")).getText(),
-                    is(String.valueOf(i)));
+            assertThat(driver.findElement(By.xpath("//li[" + elemnetNumber + "]/a")).getText())
+                    .isEqualTo(String.valueOf(i));
         }
 
         // HTML tags outside "<ul>" check
-        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul")), notNullValue());
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul"))).isNotNull();
         // HTML tags inside "<li>" check
-        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul/li[1]")), notNullValue());
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul/li[1]"))).isNotNull();
 
         // previousLink, nextLink, firstLink, lastLink check
-        assertThat(driver.findElement(By.xpath("//li[1]/a")).getText(), is("<<"));
-        assertThat(driver.findElement(By.xpath("//li[2]/a")).getText(), is("<"));
-        assertThat(driver.findElement(By.xpath("//li[23]/a")).getText(), is(">"));
-        assertThat(driver.findElement(By.xpath("//li[24]/a")).getText(), is(">>"));
+        assertThat(driver.findElement(By.xpath("//li[1]/a")).getText()).isEqualTo("<<");
+        assertThat(driver.findElement(By.xpath("//li[2]/a")).getText()).isEqualTo("<");
+        assertThat(driver.findElement(By.xpath("//li[23]/a")).getText()).isEqualTo(">");
+        assertThat(driver.findElement(By.xpath("//li[24]/a")).getText()).isEqualTo(">>");
 
         // previousLink value "javascript:void(0)" check
-        assertThat(driver.findElement(By.xpath("(//a[contains(@href, 'javascript:void(0)')])[2]")),
-                notNullValue());
+        assertThat(driver.findElement(By.xpath("(//a[contains(@href, 'javascript:void(0)')])[2]")))
+                .isNotNull();
 
         // "active" class check
-        assertThat(driver.findElement(By.cssSelector("li.active > a")).getText(), is("1"));
+        assertThat(driver.findElement(By.cssSelector("li.active > a")).getText()).isEqualTo("1");
 
         // "disabled" class check
-        assertThat(driver.findElement(By.cssSelector("li.disabled > a")).getText(), is("<<"));
+        assertThat(driver.findElement(By.cssSelector("li.disabled > a")).getText()).isEqualTo("<<");
 
         driver.findElement(By.linkText("11")).click();
         webDriverWait.until(textToBe(By.xpath("//h1[2]"), "11 Page"));
 
         // move page 11 page check
-        assertThat(driver.findElement(By.cssSelector("li.active > a")).getText(), is("11"));
+        assertThat(driver.findElement(By.cssSelector("li.active > a")).getText()).isEqualTo("11");
 
         // all page display check
         for (int i = 1; i < 21; i++) {
             String elemnetNumber = String.valueOf(i + 2);
-            assertThat(driver.findElement(By.xpath("//li[" + elemnetNumber + "]/a")).getText(),
-                    is(String.valueOf(i)));
+            assertThat(driver.findElement(By.xpath("//li[" + elemnetNumber + "]/a")).getText())
+                    .isEqualTo(String.valueOf(i));
         }
 
         driver.findElement(By.linkText("12")).click();
         webDriverWait.until(textToBe(By.xpath("//h1[2]"), "12 Page"));
 
         // move page 12 page check
-        assertThat(driver.findElement(By.cssSelector("li.active > a")).getText(), is("12"));
+        assertThat(driver.findElement(By.cssSelector("li.active > a")).getText()).isEqualTo("12");
 
         // all page display check
         for (int i = 2; i < 21; i++) {
             String elemnetNumber = String.valueOf(i + 1);
-            assertThat(driver.findElement(By.xpath("//li[" + elemnetNumber + "]/a")).getText(),
-                    is(String.valueOf(i)));
+            assertThat(driver.findElement(By.xpath("//li[" + elemnetNumber + "]/a")).getText())
+                    .isEqualTo(String.valueOf(i));
         }
 
         driver.findElement(By.linkText("<<")).click();
@@ -716,21 +711,21 @@ public class PaginationTest extends FunctionTestSupport {
 
         // all page display check not page number link
         // previousLink, nextLink, firstLink, lastLink check
-        assertThat(driver.findElement(By.xpath("//li[1]/a")).getText(), is("<<"));
-        assertThat(driver.findElement(By.xpath("//li[2]/a")).getText(), is("<"));
-        assertThat(driver.findElement(By.xpath("//li[3]/a")).getText(), is(">"));
-        assertThat(driver.findElement(By.xpath("//li[4]/a")).getText(), is(">>"));
+        assertThat(driver.findElement(By.xpath("//li[1]/a")).getText()).isEqualTo("<<");
+        assertThat(driver.findElement(By.xpath("//li[2]/a")).getText()).isEqualTo("<");
+        assertThat(driver.findElement(By.xpath("//li[3]/a")).getText()).isEqualTo(">");
+        assertThat(driver.findElement(By.xpath("//li[4]/a")).getText()).isEqualTo(">>");
 
         // HTML tags outside "<ul>" check
-        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul")), notNullValue());
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul"))).isNotNull();
         // HTML tags inside "<li>" check
-        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul/li[1]")), notNullValue());
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul/li[1]"))).isNotNull();
 
         // previousLink value "#" check
-        assertThat(driver.findElement(By.xpath("(//a[contains(@href, '#')])[2]")), notNullValue());
+        assertThat(driver.findElement(By.xpath("(//a[contains(@href, '#')])[2]"))).isNotNull();
 
         // "disabled" class check
-        assertThat(driver.findElement(By.cssSelector("li.disabled > a")).getText(), is("<<"));
+        assertThat(driver.findElement(By.cssSelector("li.disabled > a")).getText()).isEqualTo("<<");
 
         assertThrows(NoSuchElementException.class, () -> {
             // Immediate time-out value set
@@ -756,25 +751,25 @@ public class PaginationTest extends FunctionTestSupport {
         webDriverWait.until(textToBe(By.xpath("//h1[2]"), "1 Page"));
 
         // HTML tags outside "<div>" check
-        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/div")), notNullValue());
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/div"))).isNotNull();
         // HTML tags inside "<li>" check
-        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/div/li[1]")), notNullValue());
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/div/li[1]"))).isNotNull();
 
         // previousLink, nextLink, firstLink, lastLink check
-        assertThat(driver.findElement(By.xpath("//li[1]/a")).getText(), is("<<"));
-        assertThat(driver.findElement(By.xpath("//li[2]/a")).getText(), is("<"));
-        assertThat(driver.findElement(By.xpath("//li[6]/a")).getText(), is(">"));
-        assertThat(driver.findElement(By.xpath("//li[7]/a")).getText(), is(">>"));
+        assertThat(driver.findElement(By.xpath("//li[1]/a")).getText()).isEqualTo("<<");
+        assertThat(driver.findElement(By.xpath("//li[2]/a")).getText()).isEqualTo("<");
+        assertThat(driver.findElement(By.xpath("//li[6]/a")).getText()).isEqualTo(">");
+        assertThat(driver.findElement(By.xpath("//li[7]/a")).getText()).isEqualTo(">>");
 
         // previousLink value "javascript:void(0)" check
-        assertThat(driver.findElement(By.xpath("(//a[contains(@href, 'javascript:void(0)')])[2]")),
-                notNullValue());
+        assertThat(driver.findElement(By.xpath("(//a[contains(@href, 'javascript:void(0)')])[2]")))
+                .isNotNull();
 
         // "active" class check
-        assertThat(driver.findElement(By.cssSelector("li.active > a")).getText(), is("1"));
+        assertThat(driver.findElement(By.cssSelector("li.active > a")).getText()).isEqualTo("1");
 
         // "disabled" class check
-        assertThat(driver.findElement(By.cssSelector("li.disabled > a")).getText(), is("<<"));
+        assertThat(driver.findElement(By.cssSelector("li.disabled > a")).getText()).isEqualTo("<<");
 
         driver.findElement(By.linkText("<<")).click();
         for (int i = 1; i < 4; i++) {
@@ -794,25 +789,25 @@ public class PaginationTest extends FunctionTestSupport {
         webDriverWait.until(textToBe(By.xpath("//h1[2]"), "1 Page"));
 
         // HTML tags outside "<ul>" check
-        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul")), notNullValue());
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul"))).isNotNull();
         // HTML tags inside "<li>" check
-        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul/div[1]")), notNullValue());
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul/div[1]"))).isNotNull();
 
         // previousLink, nextLink, firstLink, lastLink check
-        assertThat(driver.findElement(By.xpath("//div[1]/a")).getText(), is("<<"));
-        assertThat(driver.findElement(By.xpath("//div[2]/a")).getText(), is("<"));
-        assertThat(driver.findElement(By.xpath("//div[6]/a")).getText(), is(">"));
-        assertThat(driver.findElement(By.xpath("//div[7]/a")).getText(), is(">>"));
+        assertThat(driver.findElement(By.xpath("//div[1]/a")).getText()).isEqualTo("<<");
+        assertThat(driver.findElement(By.xpath("//div[2]/a")).getText()).isEqualTo("<");
+        assertThat(driver.findElement(By.xpath("//div[6]/a")).getText()).isEqualTo(">");
+        assertThat(driver.findElement(By.xpath("//div[7]/a")).getText()).isEqualTo(">>");
 
         // previousLink value "javascript:void(0)" check
-        assertThat(driver.findElement(By.xpath("(//a[contains(@href, 'javascript:void(0)')])[2]")),
-                notNullValue());
+        assertThat(driver.findElement(By.xpath("(//a[contains(@href, 'javascript:void(0)')])[2]")))
+                .isNotNull();
 
         // "active" class check
-        assertThat(driver.findElement(By.cssSelector("div.active")).getText(), is("1"));
+        assertThat(driver.findElement(By.cssSelector("div.active")).getText()).isEqualTo("1");
 
         // "disabled" class check
-        assertThat(driver.findElement(By.cssSelector("div.disabled")).getText(), is("<<"));
+        assertThat(driver.findElement(By.cssSelector("div.disabled")).getText()).isEqualTo("<<");
 
         for (int i = 1; i < 4; i++) {
             // active page number check
@@ -831,27 +826,28 @@ public class PaginationTest extends FunctionTestSupport {
         webDriverWait.until(textToBe(By.xpath("//h1[2]"), "1 Page"));
 
         // first link value "*"
-        assertThat(driver.findElement(By.xpath("//li[1]/a")).getText(), is("first"));
+        assertThat(driver.findElement(By.xpath("//li[1]/a")).getText()).isEqualTo("first");
 
         // HTML tags outside "<ul>" check
-        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul")), notNullValue());
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul"))).isNotNull();
         // HTML tags inside "<li>" check
-        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul/li[1]")), notNullValue());
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul/li[1]"))).isNotNull();
 
         // previousLink, nextLink, lastLink check
-        assertThat(driver.findElement(By.xpath("//li[2]/a")).getText(), is("<"));
-        assertThat(driver.findElement(By.xpath("//li[6]/a")).getText(), is(">"));
-        assertThat(driver.findElement(By.xpath("//li[7]/a")).getText(), is(">>"));
+        assertThat(driver.findElement(By.xpath("//li[2]/a")).getText()).isEqualTo("<");
+        assertThat(driver.findElement(By.xpath("//li[6]/a")).getText()).isEqualTo(">");
+        assertThat(driver.findElement(By.xpath("//li[7]/a")).getText()).isEqualTo(">>");
 
         // previousLink value "javascript:void(0)" check
-        assertThat(driver.findElement(By.xpath("(//a[contains(@href, 'javascript:void(0)')])[2]")),
-                notNullValue());
+        assertThat(driver.findElement(By.xpath("(//a[contains(@href, 'javascript:void(0)')])[2]")))
+                .isNotNull();
 
         // "active" class check
-        assertThat(driver.findElement(By.cssSelector("li.active > a")).getText(), is("1"));
+        assertThat(driver.findElement(By.cssSelector("li.active > a")).getText()).isEqualTo("1");
 
         // "disabled" class check
-        assertThat(driver.findElement(By.cssSelector("li.disabled > a")).getText(), is("first"));
+        assertThat(driver.findElement(By.cssSelector("li.disabled > a")).getText())
+                .isEqualTo("first");
 
         for (int i = 1; i < 4; i++) {
             // active page number check
@@ -871,25 +867,25 @@ public class PaginationTest extends FunctionTestSupport {
 
         // firstLink no display
         // previousLink, nextLink, lastLink check
-        assertThat(driver.findElement(By.xpath("//li[1]/a")).getText(), is("<"));
-        assertThat(driver.findElement(By.xpath("//li[2]/a")).getText(), is("1"));
-        assertThat(driver.findElement(By.xpath("//li[5]/a")).getText(), is(">"));
-        assertThat(driver.findElement(By.xpath("//li[6]/a")).getText(), is(">>"));
+        assertThat(driver.findElement(By.xpath("//li[1]/a")).getText()).isEqualTo("<");
+        assertThat(driver.findElement(By.xpath("//li[2]/a")).getText()).isEqualTo("1");
+        assertThat(driver.findElement(By.xpath("//li[5]/a")).getText()).isEqualTo(">");
+        assertThat(driver.findElement(By.xpath("//li[6]/a")).getText()).isEqualTo(">>");
 
         // HTML tags outside "<ul>" check
-        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul")), notNullValue());
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul"))).isNotNull();
         // HTML tags inside "<li>" check
-        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul/li[1]")), notNullValue());
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul/li[1]"))).isNotNull();
 
         // previousLink value "javascript:void(0)" check
-        assertThat(driver.findElement(By.xpath("(//a[contains(@href, 'javascript:void(0)')])[1]")),
-                notNullValue());
+        assertThat(driver.findElement(By.xpath("(//a[contains(@href, 'javascript:void(0)')])[1]")))
+                .isNotNull();
 
         // "active" class check
-        assertThat(driver.findElement(By.cssSelector("li.active > a")).getText(), is("1"));
+        assertThat(driver.findElement(By.cssSelector("li.active > a")).getText()).isEqualTo("1");
 
         // "disabled" class check
-        assertThat(driver.findElement(By.cssSelector("li.disabled > a")).getText(), is("<"));
+        assertThat(driver.findElement(By.cssSelector("li.disabled > a")).getText()).isEqualTo("<");
 
         for (int i = 1; i < 4; i++) {
             // active page number check
@@ -907,27 +903,27 @@ public class PaginationTest extends FunctionTestSupport {
         webDriverWait.until(textToBe(By.xpath("//h1[2]"), "1 Page"));
 
         // Previous Link value "*"
-        assertThat(driver.findElement(By.xpath("//li[2]/a")).getText(), is("prev"));
+        assertThat(driver.findElement(By.xpath("//li[2]/a")).getText()).isEqualTo("prev");
 
         // HTML tags outside "<ul>" check
-        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul")), notNullValue());
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul"))).isNotNull();
         // HTML tags inside "<li>" check
-        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul/li[1]")), notNullValue());
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul/li[1]"))).isNotNull();
 
         // nextLink, firstLink, lastLink check
-        assertThat(driver.findElement(By.xpath("//li[1]/a")).getText(), is("<<"));
-        assertThat(driver.findElement(By.xpath("//li[6]/a")).getText(), is(">"));
-        assertThat(driver.findElement(By.xpath("//li[7]/a")).getText(), is(">>"));
+        assertThat(driver.findElement(By.xpath("//li[1]/a")).getText()).isEqualTo("<<");
+        assertThat(driver.findElement(By.xpath("//li[6]/a")).getText()).isEqualTo(">");
+        assertThat(driver.findElement(By.xpath("//li[7]/a")).getText()).isEqualTo(">>");
 
         // previousLink value "javascript:void(0)" check
-        assertThat(driver.findElement(By.xpath("(//a[contains(@href, 'javascript:void(0)')])[2]")),
-                notNullValue());
+        assertThat(driver.findElement(By.xpath("(//a[contains(@href, 'javascript:void(0)')])[2]")))
+                .isNotNull();
 
         // "active" class check
-        assertThat(driver.findElement(By.cssSelector("li.active > a")).getText(), is("1"));
+        assertThat(driver.findElement(By.cssSelector("li.active > a")).getText()).isEqualTo("1");
 
         // "disabled" class check
-        assertThat(driver.findElement(By.cssSelector("li.disabled > a")).getText(), is("<<"));
+        assertThat(driver.findElement(By.cssSelector("li.disabled > a")).getText()).isEqualTo("<<");
 
         for (int i = 1; i < 4; i++) {
             // active page number check
@@ -947,25 +943,25 @@ public class PaginationTest extends FunctionTestSupport {
 
         // previousLink no display
         // firstLink, nextLink, lastLink check
-        assertThat(driver.findElement(By.xpath("//li[1]/a")).getText(), is("<<"));
-        assertThat(driver.findElement(By.xpath("//li[2]/a")).getText(), is("1"));
-        assertThat(driver.findElement(By.xpath("//li[5]/a")).getText(), is(">"));
-        assertThat(driver.findElement(By.xpath("//li[6]/a")).getText(), is(">>"));
+        assertThat(driver.findElement(By.xpath("//li[1]/a")).getText()).isEqualTo("<<");
+        assertThat(driver.findElement(By.xpath("//li[2]/a")).getText()).isEqualTo("1");
+        assertThat(driver.findElement(By.xpath("//li[5]/a")).getText()).isEqualTo(">");
+        assertThat(driver.findElement(By.xpath("//li[6]/a")).getText()).isEqualTo(">>");
 
         // HTML tags outside "<ul>" check
-        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul")), notNullValue());
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul"))).isNotNull();
         // HTML tags inside "<li>" check
-        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul/li[1]")), notNullValue());
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul/li[1]"))).isNotNull();
 
         // firstLink value "javascript:void(0)" check
-        assertThat(driver.findElement(By.xpath("(//a[contains(@href, 'javascript:void(0)')])[1]")),
-                notNullValue());
+        assertThat(driver.findElement(By.xpath("(//a[contains(@href, 'javascript:void(0)')])[1]")))
+                .isNotNull();
 
         // "active" class check
-        assertThat(driver.findElement(By.cssSelector("li.active > a")).getText(), is("1"));
+        assertThat(driver.findElement(By.cssSelector("li.active > a")).getText()).isEqualTo("1");
 
         // "disabled" class check
-        assertThat(driver.findElement(By.cssSelector("li.disabled > a")).getText(), is("<<"));
+        assertThat(driver.findElement(By.cssSelector("li.disabled > a")).getText()).isEqualTo("<<");
 
         for (int i = 1; i < 4; i++) {
             // active page number check
@@ -984,27 +980,27 @@ public class PaginationTest extends FunctionTestSupport {
         webDriverWait.until(textToBe(By.xpath("//h1[2]"), "1 Page"));
 
         // Next Link value "*"
-        assertThat(driver.findElement(By.xpath("//li[6]/a")).getText(), is("next"));
+        assertThat(driver.findElement(By.xpath("//li[6]/a")).getText()).isEqualTo("next");
 
         // HTML tags outside "<ul>" check
-        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul")), notNullValue());
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul"))).isNotNull();
         // HTML tags inside "<li>" check
-        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul/li[1]")), notNullValue());
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul/li[1]"))).isNotNull();
 
         // previousLink, firstLink, lastLink check
-        assertThat(driver.findElement(By.xpath("//li[1]/a")).getText(), is("<<"));
-        assertThat(driver.findElement(By.xpath("//li[2]/a")).getText(), is("<"));
-        assertThat(driver.findElement(By.xpath("//li[7]/a")).getText(), is(">>"));
+        assertThat(driver.findElement(By.xpath("//li[1]/a")).getText()).isEqualTo("<<");
+        assertThat(driver.findElement(By.xpath("//li[2]/a")).getText()).isEqualTo("<");
+        assertThat(driver.findElement(By.xpath("//li[7]/a")).getText()).isEqualTo(">>");
 
         // previousLink value "javascript:void(0)" check
-        assertThat(driver.findElement(By.xpath("(//a[contains(@href, 'javascript:void(0)')])[2]")),
-                notNullValue());
+        assertThat(driver.findElement(By.xpath("(//a[contains(@href, 'javascript:void(0)')])[2]")))
+                .isNotNull();
 
         // "active" class check
-        assertThat(driver.findElement(By.cssSelector("li.active > a")).getText(), is("1"));
+        assertThat(driver.findElement(By.cssSelector("li.active > a")).getText()).isEqualTo("1");
 
         // "disabled" class check
-        assertThat(driver.findElement(By.cssSelector("li.disabled > a")).getText(), is("<<"));
+        assertThat(driver.findElement(By.cssSelector("li.disabled > a")).getText()).isEqualTo("<<");
 
         for (int i = 1; i < 4; i++) {
             // active page number check
@@ -1024,25 +1020,25 @@ public class PaginationTest extends FunctionTestSupport {
 
         // nextLink no display
         // firstLink, previousLink, lastLink check
-        assertThat(driver.findElement(By.xpath("//li[1]/a")).getText(), is("<<"));
-        assertThat(driver.findElement(By.xpath("//li[2]/a")).getText(), is("<"));
-        assertThat(driver.findElement(By.xpath("//li[5]/a")).getText(), is("3"));
-        assertThat(driver.findElement(By.xpath("//li[6]/a")).getText(), is(">>"));
+        assertThat(driver.findElement(By.xpath("//li[1]/a")).getText()).isEqualTo("<<");
+        assertThat(driver.findElement(By.xpath("//li[2]/a")).getText()).isEqualTo("<");
+        assertThat(driver.findElement(By.xpath("//li[5]/a")).getText()).isEqualTo("3");
+        assertThat(driver.findElement(By.xpath("//li[6]/a")).getText()).isEqualTo(">>");
 
         // HTML tags outside "<ul>" check
-        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul")), notNullValue());
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul"))).isNotNull();
         // HTML tags inside "<li>" check
-        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul/li[1]")), notNullValue());
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul/li[1]"))).isNotNull();
 
         // previousLink value "javascript:void(0)" check
-        assertThat(driver.findElement(By.xpath("(//a[contains(@href, 'javascript:void(0)')])[1]")),
-                notNullValue());
+        assertThat(driver.findElement(By.xpath("(//a[contains(@href, 'javascript:void(0)')])[1]")))
+                .isNotNull();
 
         // "active" class check
-        assertThat(driver.findElement(By.cssSelector("li.active > a")).getText(), is("1"));
+        assertThat(driver.findElement(By.cssSelector("li.active > a")).getText()).isEqualTo("1");
 
         // "disabled" class check
-        assertThat(driver.findElement(By.cssSelector("li.disabled > a")).getText(), is("<<"));
+        assertThat(driver.findElement(By.cssSelector("li.disabled > a")).getText()).isEqualTo("<<");
 
         for (int i = 1; i < 4; i++) {
             driver.findElement(By.linkText(String.valueOf(i))).click();
@@ -1059,27 +1055,27 @@ public class PaginationTest extends FunctionTestSupport {
         webDriverWait.until(textToBe(By.xpath("//h1[2]"), "1 Page"));
 
         // Last Link value "*"
-        assertThat(driver.findElement(By.xpath("//li[7]/a")).getText(), is("last"));
+        assertThat(driver.findElement(By.xpath("//li[7]/a")).getText()).isEqualTo("last");
 
         // HTML tags outside "<ul>" check
-        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul")), notNullValue());
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul"))).isNotNull();
         // HTML tags inside "<li>" check
-        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul/li[1]")), notNullValue());
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul/li[1]"))).isNotNull();
 
         // previousLink, firstLink, nextLink check
-        assertThat(driver.findElement(By.xpath("//li[1]/a")).getText(), is("<<"));
-        assertThat(driver.findElement(By.xpath("//li[2]/a")).getText(), is("<"));
-        assertThat(driver.findElement(By.xpath("//li[6]/a")).getText(), is(">"));
+        assertThat(driver.findElement(By.xpath("//li[1]/a")).getText()).isEqualTo("<<");
+        assertThat(driver.findElement(By.xpath("//li[2]/a")).getText()).isEqualTo("<");
+        assertThat(driver.findElement(By.xpath("//li[6]/a")).getText()).isEqualTo(">");
 
         // previousLink value "javascript:void(0)" check
-        assertThat(driver.findElement(By.xpath("(//a[contains(@href, 'javascript:void(0)')])[2]")),
-                notNullValue());
+        assertThat(driver.findElement(By.xpath("(//a[contains(@href, 'javascript:void(0)')])[2]")))
+                .isNotNull();
 
         // "active" class check
-        assertThat(driver.findElement(By.cssSelector("li.active > a")).getText(), is("1"));
+        assertThat(driver.findElement(By.cssSelector("li.active > a")).getText()).isEqualTo("1");
 
         // "disabled" class check
-        assertThat(driver.findElement(By.cssSelector("li.disabled > a")).getText(), is("<<"));
+        assertThat(driver.findElement(By.cssSelector("li.disabled > a")).getText()).isEqualTo("<<");
 
         for (int i = 1; i < 4; i++) {
             // active page number check
@@ -1100,24 +1096,24 @@ public class PaginationTest extends FunctionTestSupport {
 
         // lastLink no display
         // firstLink, previousLink, nextLink check
-        assertThat(driver.findElement(By.xpath("//li[1]/a")).getText(), is("<<"));
-        assertThat(driver.findElement(By.xpath("//li[2]/a")).getText(), is("<"));
-        assertThat(driver.findElement(By.xpath("//li[5]/a")).getText(), is("3"));
-        assertThat(driver.findElement(By.xpath("//li[6]/a")).getText(), is(">"));
+        assertThat(driver.findElement(By.xpath("//li[1]/a")).getText()).isEqualTo("<<");
+        assertThat(driver.findElement(By.xpath("//li[2]/a")).getText()).isEqualTo("<");
+        assertThat(driver.findElement(By.xpath("//li[5]/a")).getText()).isEqualTo("3");
+        assertThat(driver.findElement(By.xpath("//li[6]/a")).getText()).isEqualTo(">");
 
         // HTML tags outside "<ul>" check
-        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul")), notNullValue());
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul"))).isNotNull();
         // HTML tags inside "<li>" check
-        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul/li[1]")), notNullValue());
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul/li[1]"))).isNotNull();
 
         // previousLink value "#" check
-        assertThat(driver.findElement(By.xpath("(//a[contains(@href, '#')])[1]")), notNullValue());
+        assertThat(driver.findElement(By.xpath("(//a[contains(@href, '#')])[1]"))).isNotNull();
 
         // "active" class check
-        assertThat(driver.findElement(By.cssSelector("li.active > a")).getText(), is("1"));
+        assertThat(driver.findElement(By.cssSelector("li.active > a")).getText()).isEqualTo("1");
 
         // "disabled" class check
-        assertThat(driver.findElement(By.cssSelector("li.disabled > a")).getText(), is("<<"));
+        assertThat(driver.findElement(By.cssSelector("li.disabled > a")).getText()).isEqualTo("<<");
 
         assertThrows(NoSuchElementException.class, () -> {
             // Immediate time-out value set
@@ -1144,40 +1140,43 @@ public class PaginationTest extends FunctionTestSupport {
         webDriverWait.until(textToBe(By.xpath("//h1[2]"), "1 Page"));
 
         // firstLink, previousLink, current page value "#" check
-        assertThat(driver.findElement(By.xpath("/html/body/div/div[1]/ul/li[1]/a")).getAttribute(
-                "href"), is(serverUrl + "/" + contextName + "/pagination/11_1" + "#"));
-        assertThat(driver.findElement(By.xpath("/html/body/div/div[1]/ul/li[2]/a")).getAttribute(
-                "href"), is(serverUrl + "/" + contextName + "/pagination/11_1" + "#"));
-        assertThat(driver.findElement(By.xpath("/html/body/div/div[1]/ul/li[3]/a")).getAttribute(
-                "href"), is(serverUrl + "/" + contextName + "/pagination/11_1" + "#"));
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[1]/ul/li[1]/a"))
+                .getAttribute("href"))
+                        .isEqualTo(serverUrl + "/" + contextName + "/pagination/11_1" + "#");
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[1]/ul/li[2]/a"))
+                .getAttribute("href"))
+                        .isEqualTo(serverUrl + "/" + contextName + "/pagination/11_1" + "#");
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[1]/ul/li[3]/a"))
+                .getAttribute("href"))
+                        .isEqualTo(serverUrl + "/" + contextName + "/pagination/11_1" + "#");
 
         // HTML tags outside "<ul>" check
-        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul")), notNullValue());
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul"))).isNotNull();
         // HTML tags inside "<li>" check
-        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul/li[1]")), notNullValue());
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul/li[1]"))).isNotNull();
 
         // previousLink, nextLink, firstLink, lastLink check
-        assertThat(driver.findElement(By.xpath("//li[1]/a")).getText(), is("<<"));
-        assertThat(driver.findElement(By.xpath("//li[2]/a")).getText(), is("<"));
-        assertThat(driver.findElement(By.xpath("//li[6]/a")).getText(), is(">"));
-        assertThat(driver.findElement(By.xpath("//li[7]/a")).getText(), is(">>"));
+        assertThat(driver.findElement(By.xpath("//li[1]/a")).getText()).isEqualTo("<<");
+        assertThat(driver.findElement(By.xpath("//li[2]/a")).getText()).isEqualTo("<");
+        assertThat(driver.findElement(By.xpath("//li[6]/a")).getText()).isEqualTo(">");
+        assertThat(driver.findElement(By.xpath("//li[7]/a")).getText()).isEqualTo(">>");
 
         // "active" class check
-        assertThat(driver.findElement(By.cssSelector("li.active > a")).getText(), is("1"));
+        assertThat(driver.findElement(By.cssSelector("li.active > a")).getText()).isEqualTo("1");
 
         // "disabled" class check
-        assertThat(driver.findElement(By.cssSelector("li.disabled > a")).getText(), is("<<"));
+        assertThat(driver.findElement(By.cssSelector("li.disabled > a")).getText()).isEqualTo("<<");
 
         driver.findElement(By.linkText(">>")).click();
         webDriverWait.until(textToBe(By.xpath("//h1[2]"), "3 Page"));
 
         // nextLink, lastLink value "#" check
-        assertThat(driver.findElement(By.xpath("(//a[contains(@href, '#')])[1]")).getText(),
-                is("3"));
-        assertThat(driver.findElement(By.xpath("(//a[contains(@href, '#')])[2]")).getText(),
-                is(">"));
-        assertThat(driver.findElement(By.xpath("(//a[contains(@href, '#')])[3]")).getText(),
-                is(">>"));
+        assertThat(driver.findElement(By.xpath("(//a[contains(@href, '#')])[1]")).getText())
+                .isEqualTo("3");
+        assertThat(driver.findElement(By.xpath("(//a[contains(@href, '#')])[2]")).getText())
+                .isEqualTo(">");
+        assertThat(driver.findElement(By.xpath("(//a[contains(@href, '#')])[3]")).getText())
+                .isEqualTo(">>");
 
         driver.findElement(By.linkText("<<")).click();
         for (int i = 1; i < 4; i++) {
@@ -1196,29 +1195,29 @@ public class PaginationTest extends FunctionTestSupport {
         webDriverWait.until(textToBe(By.xpath("//h1[2]"), "1 Page"));
 
         // HTML tags outside "<ul>" check
-        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul")), notNullValue());
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul"))).isNotNull();
         // HTML tags inside "<li>" check
-        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul/li[1]")), notNullValue());
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul/li[1]"))).isNotNull();
 
         // previousLink, firstLink check (does not have anchor)
-        assertThat(driver.findElement(By.xpath("//li[1]")).getText(), is("<<"));
-        assertThat(driver.findElement(By.xpath("//li[2]")).getText(), is("<"));
+        assertThat(driver.findElement(By.xpath("//li[1]")).getText()).isEqualTo("<<");
+        assertThat(driver.findElement(By.xpath("//li[2]")).getText()).isEqualTo("<");
         // nextLink, lastLink check
-        assertThat(driver.findElement(By.xpath("//li[6]/a")).getText(), is(">"));
-        assertThat(driver.findElement(By.xpath("//li[7]/a")).getText(), is(">>"));
+        assertThat(driver.findElement(By.xpath("//li[6]/a")).getText()).isEqualTo(">");
+        assertThat(driver.findElement(By.xpath("//li[7]/a")).getText()).isEqualTo(">>");
 
         // "active" class check
-        assertThat(driver.findElement(By.cssSelector("li.active")).getText(), is("1"));
+        assertThat(driver.findElement(By.cssSelector("li.active")).getText()).isEqualTo("1");
 
         // "disabled" class check
-        assertThat(driver.findElement(By.cssSelector("li.disabled")).getText(), is("<<"));
+        assertThat(driver.findElement(By.cssSelector("li.disabled")).getText()).isEqualTo("<<");
 
         driver.findElement(By.linkText(">>")).click();
         webDriverWait.until(textToBe(By.xpath("//h1[2]"), "3 Page"));
 
         // nextLink, lastLink value check (does not have anchor)
-        assertThat(driver.findElement(By.xpath("//li[6]")).getText(), is(">"));
-        assertThat(driver.findElement(By.xpath("//li[7]")).getText(), is(">>"));
+        assertThat(driver.findElement(By.xpath("//li[6]")).getText()).isEqualTo(">");
+        assertThat(driver.findElement(By.xpath("//li[7]")).getText()).isEqualTo(">>");
 
         driver.findElement(By.linkText("<<")).click();
         for (int i = 1; i <= 3; i++) {
@@ -1238,25 +1237,25 @@ public class PaginationTest extends FunctionTestSupport {
         webDriverWait.until(textToBe(By.xpath("//h1[2]"), "1 Page"));
 
         // "active" class change "actv"
-        assertThat(driver.findElement(By.cssSelector("li.actv > a")).getText(), is("1"));
+        assertThat(driver.findElement(By.cssSelector("li.actv > a")).getText()).isEqualTo("1");
 
         // HTML tags outside "<ul>" check
-        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul")), notNullValue());
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul"))).isNotNull();
         // HTML tags inside "<li>" check
-        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul/li[1]")), notNullValue());
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul/li[1]"))).isNotNull();
 
         // previousLink, nextLink, firstLink, lastLink check
-        assertThat(driver.findElement(By.xpath("//li[1]/a")).getText(), is("<<"));
-        assertThat(driver.findElement(By.xpath("//li[2]/a")).getText(), is("<"));
-        assertThat(driver.findElement(By.xpath("//li[6]/a")).getText(), is(">"));
-        assertThat(driver.findElement(By.xpath("//li[7]/a")).getText(), is(">>"));
+        assertThat(driver.findElement(By.xpath("//li[1]/a")).getText()).isEqualTo("<<");
+        assertThat(driver.findElement(By.xpath("//li[2]/a")).getText()).isEqualTo("<");
+        assertThat(driver.findElement(By.xpath("//li[6]/a")).getText()).isEqualTo(">");
+        assertThat(driver.findElement(By.xpath("//li[7]/a")).getText()).isEqualTo(">>");
 
         // previousLink value "javascript:void(0)" check
-        assertThat(driver.findElement(By.xpath("(//a[contains(@href, 'javascript:void(0)')])[2]")),
-                notNullValue());
+        assertThat(driver.findElement(By.xpath("(//a[contains(@href, 'javascript:void(0)')])[2]")))
+                .isNotNull();
 
         // "disabled" class check
-        assertThat(driver.findElement(By.cssSelector("li.disabled > a")).getText(), is("<<"));
+        assertThat(driver.findElement(By.cssSelector("li.disabled > a")).getText()).isEqualTo("<<");
 
         for (int i = 1; i < 4; i++) {
             // active page number check
@@ -1275,26 +1274,26 @@ public class PaginationTest extends FunctionTestSupport {
         webDriverWait.until(textToBe(By.xpath("//h1[2]"), "1 Page"));
 
         // "active" class change ""
-        assertThat(driver.findElement(By.xpath("//li[contains(@class, '')][3]")).getText(),
-                is("1"));
+        assertThat(driver.findElement(By.xpath("//li[contains(@class, '')][3]")).getText())
+                .isEqualTo("1");
 
         // HTML tags outside "<ul>" check
-        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul")), notNullValue());
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul"))).isNotNull();
         // HTML tags inside "<li>" check
-        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul/li[1]")), notNullValue());
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul/li[1]"))).isNotNull();
 
         // previousLink, nextLink, firstLink, lastLink check
-        assertThat(driver.findElement(By.xpath("//li[1]/a")).getText(), is("<<"));
-        assertThat(driver.findElement(By.xpath("//li[2]/a")).getText(), is("<"));
-        assertThat(driver.findElement(By.xpath("//li[6]/a")).getText(), is(">"));
-        assertThat(driver.findElement(By.xpath("//li[7]/a")).getText(), is(">>"));
+        assertThat(driver.findElement(By.xpath("//li[1]/a")).getText()).isEqualTo("<<");
+        assertThat(driver.findElement(By.xpath("//li[2]/a")).getText()).isEqualTo("<");
+        assertThat(driver.findElement(By.xpath("//li[6]/a")).getText()).isEqualTo(">");
+        assertThat(driver.findElement(By.xpath("//li[7]/a")).getText()).isEqualTo(">>");
 
         // previousLink value "javascript:void(0)" check
-        assertThat(driver.findElement(By.xpath("(//a[contains(@href, 'javascript:void(0)')])[2]")),
-                notNullValue());
+        assertThat(driver.findElement(By.xpath("(//a[contains(@href, 'javascript:void(0)')])[2]")))
+                .isNotNull();
 
         // "disabled" class check
-        assertThat(driver.findElement(By.cssSelector("li.disabled > a")).getText(), is("<<"));
+        assertThat(driver.findElement(By.cssSelector("li.disabled > a")).getText()).isEqualTo("<<");
 
         for (int i = 1; i < 4; i++) {
             // active page number check
@@ -1312,28 +1311,28 @@ public class PaginationTest extends FunctionTestSupport {
         webDriverWait.until(textToBe(By.xpath("//h1[2]"), "1 Page"));
 
         // firstLink, previousLink class="dis" check
-        assertThat(driver.findElement(By.xpath("//li[contains(@class, 'dis')][1]")).getText(),
-                is("<<"));
-        assertThat(driver.findElement(By.xpath("//li[contains(@class, 'dis')][2]")).getText(),
-                is("<"));
+        assertThat(driver.findElement(By.xpath("//li[contains(@class, 'dis')][1]")).getText())
+                .isEqualTo("<<");
+        assertThat(driver.findElement(By.xpath("//li[contains(@class, 'dis')][2]")).getText())
+                .isEqualTo("<");
 
         // HTML tags outside "<ul>" check
-        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul")), notNullValue());
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul"))).isNotNull();
         // HTML tags inside "<li>" check
-        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul/li[1]")), notNullValue());
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul/li[1]"))).isNotNull();
 
         // previousLink, nextLink, firstLink, lastLink check
-        assertThat(driver.findElement(By.xpath("//li[1]/a")).getText(), is("<<"));
-        assertThat(driver.findElement(By.xpath("//li[2]/a")).getText(), is("<"));
-        assertThat(driver.findElement(By.xpath("//li[6]/a")).getText(), is(">"));
-        assertThat(driver.findElement(By.xpath("//li[7]/a")).getText(), is(">>"));
+        assertThat(driver.findElement(By.xpath("//li[1]/a")).getText()).isEqualTo("<<");
+        assertThat(driver.findElement(By.xpath("//li[2]/a")).getText()).isEqualTo("<");
+        assertThat(driver.findElement(By.xpath("//li[6]/a")).getText()).isEqualTo(">");
+        assertThat(driver.findElement(By.xpath("//li[7]/a")).getText()).isEqualTo(">>");
 
         // previousLink value "javascript:void(0)" check
-        assertThat(driver.findElement(By.xpath("(//a[contains(@href, 'javascript:void(0)')])[2]")),
-                notNullValue());
+        assertThat(driver.findElement(By.xpath("(//a[contains(@href, 'javascript:void(0)')])[2]")))
+                .isNotNull();
 
         // "active" class check
-        assertThat(driver.findElement(By.cssSelector("li.active > a")).getText(), is("1"));
+        assertThat(driver.findElement(By.cssSelector("li.active > a")).getText()).isEqualTo("1");
 
         for (int i = 1; i < 4; i++) {
             // active page number check
@@ -1352,28 +1351,28 @@ public class PaginationTest extends FunctionTestSupport {
         webDriverWait.until(textToBe(By.xpath("//h1[2]"), "1 Page"));
 
         // firstLink, previousLink class="dis" check
-        assertThat(driver.findElement(By.xpath("//li[contains(@class, '')][1]")).getText(),
-                is("<<"));
-        assertThat(driver.findElement(By.xpath("//li[contains(@class, '')][2]")).getText(),
-                is("<"));
+        assertThat(driver.findElement(By.xpath("//li[contains(@class, '')][1]")).getText())
+                .isEqualTo("<<");
+        assertThat(driver.findElement(By.xpath("//li[contains(@class, '')][2]")).getText())
+                .isEqualTo("<");
 
         // HTML tags outside "<ul>" check
-        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul")), notNullValue());
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul"))).isNotNull();
         // HTML tags inside "<li>" check
-        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul/li[1]")), notNullValue());
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul/li[1]"))).isNotNull();
 
         // previousLink, nextLink, firstLink, lastLink check
-        assertThat(driver.findElement(By.xpath("//li[1]/a")).getText(), is("<<"));
-        assertThat(driver.findElement(By.xpath("//li[2]/a")).getText(), is("<"));
-        assertThat(driver.findElement(By.xpath("//li[6]/a")).getText(), is(">"));
-        assertThat(driver.findElement(By.xpath("//li[7]/a")).getText(), is(">>"));
+        assertThat(driver.findElement(By.xpath("//li[1]/a")).getText()).isEqualTo("<<");
+        assertThat(driver.findElement(By.xpath("//li[2]/a")).getText()).isEqualTo("<");
+        assertThat(driver.findElement(By.xpath("//li[6]/a")).getText()).isEqualTo(">");
+        assertThat(driver.findElement(By.xpath("//li[7]/a")).getText()).isEqualTo(">>");
 
         // previousLink value "javascript:void(0)" check
-        assertThat(driver.findElement(By.xpath("(//a[contains(@href, 'javascript:void(0)')])[2]")),
-                notNullValue());
+        assertThat(driver.findElement(By.xpath("(//a[contains(@href, 'javascript:void(0)')])[2]")))
+                .isNotNull();
 
         // "active" class check
-        assertThat(driver.findElement(By.cssSelector("li.active > a")).getText(), is("1"));
+        assertThat(driver.findElement(By.cssSelector("li.active > a")).getText()).isEqualTo("1");
 
         for (int i = 1; i < 4; i++) {
             // active page number check
@@ -1391,34 +1390,34 @@ public class PaginationTest extends FunctionTestSupport {
         webDriverWait.until(textToBe(By.xpath("//h1[2]"), "1 Page"));
 
         // change path value
-        assertThat(
-                driver.findElement(By.xpath(
+        assertThat(driver
+                .findElement(By.xpath(
                         "//a[contains(@href, '/" + contextName + "/pagination/14_1/1/100')]"))
-                        .getAttribute("href"),
-                is(serverUrl + "/" + contextName + "/pagination/14_1/1/100"));
+                .getAttribute("href"))
+                        .isEqualTo(serverUrl + "/" + contextName + "/pagination/14_1/1/100");
         // first page
-        assertThat(driver.findElement(By.xpath("//h1[2]")).getText(), is("1 Page"));
+        assertThat(driver.findElement(By.xpath("//h1[2]")).getText()).isEqualTo("1 Page");
 
         // HTML tags outside "<ul>" check
-        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul")), notNullValue());
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul"))).isNotNull();
         // HTML tags inside "<li>" check
-        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul/li[1]")), notNullValue());
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul/li[1]"))).isNotNull();
 
         // previousLink, nextLink, firstLink, lastLink check
-        assertThat(driver.findElement(By.xpath("//li[1]/a")).getText(), is("<<"));
-        assertThat(driver.findElement(By.xpath("//li[2]/a")).getText(), is("<"));
-        assertThat(driver.findElement(By.xpath("//li[6]/a")).getText(), is(">"));
-        assertThat(driver.findElement(By.xpath("//li[7]/a")).getText(), is(">>"));
+        assertThat(driver.findElement(By.xpath("//li[1]/a")).getText()).isEqualTo("<<");
+        assertThat(driver.findElement(By.xpath("//li[2]/a")).getText()).isEqualTo("<");
+        assertThat(driver.findElement(By.xpath("//li[6]/a")).getText()).isEqualTo(">");
+        assertThat(driver.findElement(By.xpath("//li[7]/a")).getText()).isEqualTo(">>");
 
         // previousLink value "javascript:void(0)" check
-        assertThat(driver.findElement(By.xpath("(//a[contains(@href, 'javascript:void(0)')])[2]")),
-                notNullValue());
+        assertThat(driver.findElement(By.xpath("(//a[contains(@href, 'javascript:void(0)')])[2]")))
+                .isNotNull();
 
         // "active" class check
-        assertThat(driver.findElement(By.cssSelector("li.active > a")).getText(), is("1"));
+        assertThat(driver.findElement(By.cssSelector("li.active > a")).getText()).isEqualTo("1");
 
         // "disabled" class check
-        assertThat(driver.findElement(By.cssSelector("li.disabled > a")).getText(), is("<<"));
+        assertThat(driver.findElement(By.cssSelector("li.disabled > a")).getText()).isEqualTo("<<");
 
         for (int i = 1; i < 4; i++) {
             // active page number check
@@ -1437,23 +1436,24 @@ public class PaginationTest extends FunctionTestSupport {
         webDriverWait.until(textToBe(By.xpath("//h1[2]"), "1 Page"));
 
         // HTML tags outside "<span>" check
-        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/span[1]")), notNullValue());
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/span[1]"))).isNotNull();
 
         // previousLink, nextLink, firstLink, lastLink check
-        assertThat(driver.findElement(By.xpath("//span[1]/a")).getText(), is("<<"));
-        assertThat(driver.findElement(By.xpath("//span[2]/a")).getText(), is("<"));
-        assertThat(driver.findElement(By.xpath("//span[6]/a")).getText(), is(">"));
-        assertThat(driver.findElement(By.xpath("//span[7]/a")).getText(), is(">>"));
+        assertThat(driver.findElement(By.xpath("//span[1]/a")).getText()).isEqualTo("<<");
+        assertThat(driver.findElement(By.xpath("//span[2]/a")).getText()).isEqualTo("<");
+        assertThat(driver.findElement(By.xpath("//span[6]/a")).getText()).isEqualTo(">");
+        assertThat(driver.findElement(By.xpath("//span[7]/a")).getText()).isEqualTo(">>");
 
         // previousLink value "javascript:void(0)" check
-        assertThat(driver.findElement(By.xpath("(//a[contains(@href, 'javascript:void(0)')])[2]")),
-                notNullValue());
+        assertThat(driver.findElement(By.xpath("(//a[contains(@href, 'javascript:void(0)')])[2]")))
+                .isNotNull();
 
         // "active" class check
-        assertThat(driver.findElement(By.cssSelector("span.active > a")).getText(), is("1"));
+        assertThat(driver.findElement(By.cssSelector("span.active > a")).getText()).isEqualTo("1");
 
         // "disabled" class check
-        assertThat(driver.findElement(By.cssSelector("span.disabled > a")).getText(), is("<<"));
+        assertThat(driver.findElement(By.cssSelector("span.disabled > a")).getText())
+                .isEqualTo("<<");
 
         for (int i = 1; i < 4; i++) {
             // active page number check
@@ -1472,30 +1472,31 @@ public class PaginationTest extends FunctionTestSupport {
         webDriverWait.until(textToBe(By.xpath("//h1[2]"), "1 Page"));
 
         // HTML tags outside "<ul>" check
-        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul")), notNullValue());
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul"))).isNotNull();
         // HTML tags inside "<li>" check
-        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul/li[1]")), notNullValue());
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul/li[1]"))).isNotNull();
 
         // firstLink, lastLink check, previousLink, nextLink, no display
-        assertThat(driver.findElement(By.xpath("//li[1]/a")).getText(), is("first"));
-        assertThat(driver.findElement(By.xpath("//li[2]/a")).getText(), is("1"));
-        assertThat(driver.findElement(By.xpath("//li[4]/a")).getText(), is("3"));
-        assertThat(driver.findElement(By.xpath("//li[5]/a")).getText(), is("last"));
+        assertThat(driver.findElement(By.xpath("//li[1]/a")).getText()).isEqualTo("first");
+        assertThat(driver.findElement(By.xpath("//li[2]/a")).getText()).isEqualTo("1");
+        assertThat(driver.findElement(By.xpath("//li[4]/a")).getText()).isEqualTo("3");
+        assertThat(driver.findElement(By.xpath("//li[5]/a")).getText()).isEqualTo("last");
 
         // previousLink value "#" check
-        assertThat(driver.findElement(By.xpath("(//a[contains(@href, '#')])[2]")), notNullValue());
+        assertThat(driver.findElement(By.xpath("(//a[contains(@href, '#')])[2]"))).isNotNull();
 
         // "active" class check
-        assertThat(driver.findElement(By.cssSelector("li.active > a")).getText(), is("1"));
+        assertThat(driver.findElement(By.cssSelector("li.active > a")).getText()).isEqualTo("1");
 
         // "disabled" class check
-        assertThat(driver.findElement(By.cssSelector("li.disabled > a")).getText(), is("first"));
+        assertThat(driver.findElement(By.cssSelector("li.disabled > a")).getText())
+                .isEqualTo("first");
 
         driver.findElement(By.linkText("last")).click();
         webDriverWait.until(textToBe(By.xpath("//h1[2]"), "3 Page"));
 
         // "active" class check
-        assertThat(driver.findElement(By.cssSelector("li.active > a")).getText(), is("3"));
+        assertThat(driver.findElement(By.cssSelector("li.active > a")).getText()).isEqualTo("3");
 
         assertThrows(NoSuchElementException.class, () -> {
             // Immediate time-out value set
@@ -1522,17 +1523,17 @@ public class PaginationTest extends FunctionTestSupport {
         webDriverWait.until(textToBe(By.xpath("//h1[2]"), "1 Page"));
 
         // HTML tags outside "<ul>" check
-        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul")), notNullValue());
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul"))).isNotNull();
         // HTML tags inside "<li>" check
-        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul/li[1]")), notNullValue());
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul/li[1]"))).isNotNull();
 
         // firstLink, lastLink, previousLink, nextLink, no display
-        assertThat(driver.findElement(By.xpath("//li[1]/a")).getText(), is("1"));
-        assertThat(driver.findElement(By.xpath("//li[2]/a")).getText(), is("2"));
-        assertThat(driver.findElement(By.xpath("//li[3]/a")).getText(), is("3"));
+        assertThat(driver.findElement(By.xpath("//li[1]/a")).getText()).isEqualTo("1");
+        assertThat(driver.findElement(By.xpath("//li[2]/a")).getText()).isEqualTo("2");
+        assertThat(driver.findElement(By.xpath("//li[3]/a")).getText()).isEqualTo("3");
 
         // "active" class check
-        assertThat(driver.findElement(By.cssSelector("li.active > a")).getText(), is("1"));
+        assertThat(driver.findElement(By.cssSelector("li.active > a")).getText()).isEqualTo("1");
 
         assertThrows(NoSuchElementException.class, () -> {
             // Immediate time-out value set
@@ -1559,30 +1560,31 @@ public class PaginationTest extends FunctionTestSupport {
         webDriverWait.until(textToBe(By.xpath("//h1[2]"), "1 Page"));
 
         // HTML tags outside "<ul>" check
-        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul")), notNullValue());
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul"))).isNotNull();
         // HTML tags inside "<li>" check
-        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul/li[1]")), notNullValue());
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul/li[1]"))).isNotNull();
 
         // previousLink, nextLink check, firstLink, lastLink no display
-        assertThat(driver.findElement(By.xpath("//li[1]/a")).getText(), is("prev"));
-        assertThat(driver.findElement(By.xpath("//li[2]/a")).getText(), is("1"));
-        assertThat(driver.findElement(By.xpath("//li[4]/a")).getText(), is("3"));
-        assertThat(driver.findElement(By.xpath("//li[5]/a")).getText(), is("next"));
+        assertThat(driver.findElement(By.xpath("//li[1]/a")).getText()).isEqualTo("prev");
+        assertThat(driver.findElement(By.xpath("//li[2]/a")).getText()).isEqualTo("1");
+        assertThat(driver.findElement(By.xpath("//li[4]/a")).getText()).isEqualTo("3");
+        assertThat(driver.findElement(By.xpath("//li[5]/a")).getText()).isEqualTo("next");
 
         // previousLink value "#" check
-        assertThat(driver.findElement(By.xpath("(//a[contains(@href, '#')])[2]")), notNullValue());
+        assertThat(driver.findElement(By.xpath("(//a[contains(@href, '#')])[2]"))).isNotNull();
 
         // "active" class check
-        assertThat(driver.findElement(By.cssSelector("li.active > a")).getText(), is("1"));
+        assertThat(driver.findElement(By.cssSelector("li.active > a")).getText()).isEqualTo("1");
 
         // "disabled" class check
-        assertThat(driver.findElement(By.cssSelector("li.disabled > a")).getText(), is("prev"));
+        assertThat(driver.findElement(By.cssSelector("li.disabled > a")).getText())
+                .isEqualTo("prev");
 
         driver.findElement(By.linkText("next")).click();
         webDriverWait.until(textToBe(By.xpath("//h1[2]"), "2 Page"));
 
         // "active" class check
-        assertThat(driver.findElement(By.cssSelector("li.active > a")).getText(), is("2"));
+        assertThat(driver.findElement(By.cssSelector("li.active > a")).getText()).isEqualTo("2");
 
         assertThrows(NoSuchElementException.class, () -> {
             // Immediate time-out value set
@@ -1610,28 +1612,28 @@ public class PaginationTest extends FunctionTestSupport {
 
         // HTML tags outside class "rightPosition" check
         assertThat(driver.findElement(By.xpath("//ul[contains(@class, 'rightPosition')][1]"))
-                .getTagName(), is("ul"));
+                .getTagName()).isEqualTo("ul");
 
         // HTML tags outside "<ul>" check
-        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul")), notNullValue());
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul"))).isNotNull();
         // HTML tags inside "<li>" check
-        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul/li[1]")), notNullValue());
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul/li[1]"))).isNotNull();
 
         // previousLink, nextLink, firstLink, lastLink check
-        assertThat(driver.findElement(By.xpath("//li[1]/a")).getText(), is("<<"));
-        assertThat(driver.findElement(By.xpath("//li[2]/a")).getText(), is("<"));
-        assertThat(driver.findElement(By.xpath("//li[6]/a")).getText(), is(">"));
-        assertThat(driver.findElement(By.xpath("//li[7]/a")).getText(), is(">>"));
+        assertThat(driver.findElement(By.xpath("//li[1]/a")).getText()).isEqualTo("<<");
+        assertThat(driver.findElement(By.xpath("//li[2]/a")).getText()).isEqualTo("<");
+        assertThat(driver.findElement(By.xpath("//li[6]/a")).getText()).isEqualTo(">");
+        assertThat(driver.findElement(By.xpath("//li[7]/a")).getText()).isEqualTo(">>");
 
         // previousLink value "javascript:void(0)" check
-        assertThat(driver.findElement(By.xpath("(//a[contains(@href, 'javascript:void(0)')])[2]")),
-                notNullValue());
+        assertThat(driver.findElement(By.xpath("(//a[contains(@href, 'javascript:void(0)')])[2]")))
+                .isNotNull();
 
         // "active" class check
-        assertThat(driver.findElement(By.cssSelector("li.active > a")).getText(), is("1"));
+        assertThat(driver.findElement(By.cssSelector("li.active > a")).getText()).isEqualTo("1");
 
         // "disabled" class check
-        assertThat(driver.findElement(By.cssSelector("li.disabled > a")).getText(), is("<<"));
+        assertThat(driver.findElement(By.cssSelector("li.disabled > a")).getText()).isEqualTo("<<");
 
         for (int i = 1; i < 4; i++) {
             // active page number check
@@ -1649,28 +1651,28 @@ public class PaginationTest extends FunctionTestSupport {
         webDriverWait.until(textToBe(By.xpath("//h1[2]"), "1 Page"));
 
         // HTML tags outside "<ul>" check
-        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul")), notNullValue());
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul"))).isNotNull();
         // HTML tags inside "<li>" check
-        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul/li[1]")), notNullValue());
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul/li[1]"))).isNotNull();
 
         // HTML tags inside class "enable" check
-        assertThat(driver.findElement(By.cssSelector("li.enable > a")).getText(), is("2"));
+        assertThat(driver.findElement(By.cssSelector("li.enable > a")).getText()).isEqualTo("2");
 
         // previousLink, nextLink, firstLink, lastLink check
-        assertThat(driver.findElement(By.xpath("//li[1]/a")).getText(), is("<<"));
-        assertThat(driver.findElement(By.xpath("//li[2]/a")).getText(), is("<"));
-        assertThat(driver.findElement(By.xpath("//li[6]/a")).getText(), is(">"));
-        assertThat(driver.findElement(By.xpath("//li[7]/a")).getText(), is(">>"));
+        assertThat(driver.findElement(By.xpath("//li[1]/a")).getText()).isEqualTo("<<");
+        assertThat(driver.findElement(By.xpath("//li[2]/a")).getText()).isEqualTo("<");
+        assertThat(driver.findElement(By.xpath("//li[6]/a")).getText()).isEqualTo(">");
+        assertThat(driver.findElement(By.xpath("//li[7]/a")).getText()).isEqualTo(">>");
 
         // previousLink value "javascript:void(0)" check
-        assertThat(driver.findElement(By.xpath("(//a[contains(@href, 'javascript:void(0)')])[2]")),
-                notNullValue());
+        assertThat(driver.findElement(By.xpath("(//a[contains(@href, 'javascript:void(0)')])[2]")))
+                .isNotNull();
 
         // "active" class check
-        assertThat(driver.findElement(By.cssSelector("li.active > a")).getText(), is("1"));
+        assertThat(driver.findElement(By.cssSelector("li.active > a")).getText()).isEqualTo("1");
 
         // "disabled" class check
-        assertThat(driver.findElement(By.cssSelector("li.disabled > a")).getText(), is("<<"));
+        assertThat(driver.findElement(By.cssSelector("li.disabled > a")).getText()).isEqualTo("<<");
 
         for (int i = 1; i < 4; i++) {
             // active page number check
@@ -1688,25 +1690,25 @@ public class PaginationTest extends FunctionTestSupport {
         webDriverWait.until(textToBe(By.xpath("//h1[2]"), "1 Page"));
 
         // HTML tags outside "<ul>" check
-        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul")), notNullValue());
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul"))).isNotNull();
         // HTML tags inside "<li>" check
-        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul/li[1]")), notNullValue());
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/ul/li[1]"))).isNotNull();
 
         // previousLink, nextLink, firstLink, lastLink check
-        assertThat(driver.findElement(By.xpath("//li[1]/a")).getText(), is("<<"));
-        assertThat(driver.findElement(By.xpath("//li[2]/a")).getText(), is("<"));
-        assertThat(driver.findElement(By.xpath("//li[6]/a")).getText(), is(">"));
-        assertThat(driver.findElement(By.xpath("//li[7]/a")).getText(), is(">>"));
+        assertThat(driver.findElement(By.xpath("//li[1]/a")).getText()).isEqualTo("<<");
+        assertThat(driver.findElement(By.xpath("//li[2]/a")).getText()).isEqualTo("<");
+        assertThat(driver.findElement(By.xpath("//li[6]/a")).getText()).isEqualTo(">");
+        assertThat(driver.findElement(By.xpath("//li[7]/a")).getText()).isEqualTo(">>");
 
         // previousLink value "javascript:void(0)" check
-        assertThat(driver.findElement(By.xpath("(//a[contains(@href, 'javascript:void(0)')])[2]")),
-                notNullValue());
+        assertThat(driver.findElement(By.xpath("(//a[contains(@href, 'javascript:void(0)')])[2]")))
+                .isNotNull();
 
         // "active" class check
-        assertThat(driver.findElement(By.cssSelector("li.active > a")).getText(), is("1"));
+        assertThat(driver.findElement(By.cssSelector("li.active > a")).getText()).isEqualTo("1");
 
         // "disabled" class check
-        assertThat(driver.findElement(By.cssSelector("li.disabled > a")).getText(), is("<<"));
+        assertThat(driver.findElement(By.cssSelector("li.disabled > a")).getText()).isEqualTo("<<");
 
         for (int i = 1; i < 4; i++) {
             // active page number check
@@ -1718,8 +1720,8 @@ public class PaginationTest extends FunctionTestSupport {
         }
 
         // All of HTML tags anchor class "link" check
-        assertThat(driver.findElements(By.cssSelector("li > a.link")).size(), is(14));
-        assertThat(driver.findElements(By.cssSelector("li > a:not(.link)")).size(), is(0));
+        assertThat(driver.findElements(By.cssSelector("li > a.link")).size()).isEqualTo(14);
+        assertThat(driver.findElements(By.cssSelector("li > a:not(.link)")).size()).isEqualTo(0);
     }
 
     @Test
@@ -1729,19 +1731,20 @@ public class PaginationTest extends FunctionTestSupport {
         webDriverWait.until(textToBe(By.xpath("//h1[2]"), "1 Page"));
 
         // HTML tags outside "<ul>" check
-        assertThat(driver.findElement(By.xpath("/html/body/div/ul[2]")), notNullValue());
+        assertThat(driver.findElement(By.xpath("/html/body/div/ul[2]"))).isNotNull();
         // HTML tags inside "<li>" check
-        assertThat(driver.findElement(By.xpath("/html/body/div/ul[2]/li[1]")), notNullValue());
+        assertThat(driver.findElement(By.xpath("/html/body/div/ul[2]/li[1]"))).isNotNull();
 
         // previousLink, nextLink change, firstLink, lastLink no display check
-        assertThat(driver.findElement(By.xpath("//li[1]/a")).getText(), is("prev"));
-        assertThat(driver.findElement(By.xpath("//li[2]/a")).getText(), is("next"));
+        assertThat(driver.findElement(By.xpath("//li[1]/a")).getText()).isEqualTo("prev");
+        assertThat(driver.findElement(By.xpath("//li[2]/a")).getText()).isEqualTo("next");
 
         // previousLink value "#" check
-        assertThat(driver.findElement(By.xpath("(//a[contains(@href, '#')])[1]")), notNullValue());
+        assertThat(driver.findElement(By.xpath("(//a[contains(@href, '#')])[1]"))).isNotNull();
 
         // "disabled" class check
-        assertThat(driver.findElement(By.cssSelector("li.disabled > a")).getText(), is("prev"));
+        assertThat(driver.findElement(By.cssSelector("li.disabled > a")).getText())
+                .isEqualTo("prev");
 
         driver.findElement(By.linkText("next")).click();
         webDriverWait.until(textToBe(By.xpath("//h1[2]"), "2 Page"));
@@ -1749,7 +1752,7 @@ public class PaginationTest extends FunctionTestSupport {
         webDriverWait.until(textToBe(By.xpath("//h1[2]"), "3 Page"));
 
         // move page 3 page check
-        assertThat(driver.findElement(By.xpath("//td")).getText(), is("201"));
+        assertThat(driver.findElement(By.xpath("//td")).getText()).isEqualTo("201");
 
         assertThrows(NoSuchElementException.class, () -> {
             // Immediate time-out value set
@@ -1782,11 +1785,11 @@ public class PaginationTest extends FunctionTestSupport {
             driver.findElement(By.id("searchButton")).click();
             // assert 1 page
             webDriverWait.until(textToBe(By.id("pagePosition"), "1"));
-            assertThat(driver.findElement(By.id("rangeStart")).getText(), is("1"));
-            assertThat(driver.findElement(By.id("rangeEnd")).getText(), is("10"));
-            assertThat(driver.findElement(By.id("totalResults")).getText(), is("100"));
-            assertThat(driver.findElement(By.id("personId0")).getText(), is("201"));
-            assertThat(driver.findElement(By.id("personId9")).getText(), is("210"));
+            assertThat(driver.findElement(By.id("rangeStart")).getText()).isEqualTo("1");
+            assertThat(driver.findElement(By.id("rangeEnd")).getText()).isEqualTo("10");
+            assertThat(driver.findElement(By.id("totalResults")).getText()).isEqualTo("100");
+            assertThat(driver.findElement(By.id("personId0")).getText()).isEqualTo("201");
+            assertThat(driver.findElement(By.id("personId9")).getText()).isEqualTo("210");
         }
         // move specified page(3 page)
         {
@@ -1795,11 +1798,11 @@ public class PaginationTest extends FunctionTestSupport {
 
             // assert 3 page
             webDriverWait.until(textToBe(By.id("pagePosition"), "3"));
-            assertThat(driver.findElement(By.id("rangeStart")).getText(), is("21"));
-            assertThat(driver.findElement(By.id("rangeEnd")).getText(), is("30"));
-            assertThat(driver.findElement(By.id("totalResults")).getText(), is("100"));
-            assertThat(driver.findElement(By.id("personId0")).getText(), is("221"));
-            assertThat(driver.findElement(By.id("personId9")).getText(), is("230"));
+            assertThat(driver.findElement(By.id("rangeStart")).getText()).isEqualTo("21");
+            assertThat(driver.findElement(By.id("rangeEnd")).getText()).isEqualTo("30");
+            assertThat(driver.findElement(By.id("totalResults")).getText()).isEqualTo("100");
+            assertThat(driver.findElement(By.id("personId0")).getText()).isEqualTo("221");
+            assertThat(driver.findElement(By.id("personId9")).getText()).isEqualTo("230");
         }
         // move next page(4 page)
         {
@@ -1808,11 +1811,11 @@ public class PaginationTest extends FunctionTestSupport {
 
             // assert 4 page
             webDriverWait.until(textToBe(By.id("pagePosition"), "4"));
-            assertThat(driver.findElement(By.id("rangeStart")).getText(), is("31"));
-            assertThat(driver.findElement(By.id("rangeEnd")).getText(), is("40"));
-            assertThat(driver.findElement(By.id("totalResults")).getText(), is("100"));
-            assertThat(driver.findElement(By.id("personId0")).getText(), is("231"));
-            assertThat(driver.findElement(By.id("personId9")).getText(), is("240"));
+            assertThat(driver.findElement(By.id("rangeStart")).getText()).isEqualTo("31");
+            assertThat(driver.findElement(By.id("rangeEnd")).getText()).isEqualTo("40");
+            assertThat(driver.findElement(By.id("totalResults")).getText()).isEqualTo("100");
+            assertThat(driver.findElement(By.id("personId0")).getText()).isEqualTo("231");
+            assertThat(driver.findElement(By.id("personId9")).getText()).isEqualTo("240");
         }
         // move last page(10 page)
         {
@@ -1821,11 +1824,11 @@ public class PaginationTest extends FunctionTestSupport {
 
             // assert 10 page
             webDriverWait.until(textToBe(By.id("pagePosition"), "10"));
-            assertThat(driver.findElement(By.id("rangeStart")).getText(), is("91"));
-            assertThat(driver.findElement(By.id("rangeEnd")).getText(), is("100"));
-            assertThat(driver.findElement(By.id("totalResults")).getText(), is("100"));
-            assertThat(driver.findElement(By.id("personId0")).getText(), is("291"));
-            assertThat(driver.findElement(By.id("personId9")).getText(), is("300"));
+            assertThat(driver.findElement(By.id("rangeStart")).getText()).isEqualTo("91");
+            assertThat(driver.findElement(By.id("rangeEnd")).getText()).isEqualTo("100");
+            assertThat(driver.findElement(By.id("totalResults")).getText()).isEqualTo("100");
+            assertThat(driver.findElement(By.id("personId0")).getText()).isEqualTo("291");
+            assertThat(driver.findElement(By.id("personId9")).getText()).isEqualTo("300");
         }
         // move previous page(9 page)
         {
@@ -1834,11 +1837,11 @@ public class PaginationTest extends FunctionTestSupport {
 
             // assert 9 page
             webDriverWait.until(textToBe(By.id("pagePosition"), "9"));
-            assertThat(driver.findElement(By.id("rangeStart")).getText(), is("81"));
-            assertThat(driver.findElement(By.id("rangeEnd")).getText(), is("90"));
-            assertThat(driver.findElement(By.id("totalResults")).getText(), is("100"));
-            assertThat(driver.findElement(By.id("personId0")).getText(), is("281"));
-            assertThat(driver.findElement(By.id("personId9")).getText(), is("290"));
+            assertThat(driver.findElement(By.id("rangeStart")).getText()).isEqualTo("81");
+            assertThat(driver.findElement(By.id("rangeEnd")).getText()).isEqualTo("90");
+            assertThat(driver.findElement(By.id("totalResults")).getText()).isEqualTo("100");
+            assertThat(driver.findElement(By.id("personId0")).getText()).isEqualTo("281");
+            assertThat(driver.findElement(By.id("personId9")).getText()).isEqualTo("290");
         }
         // move first page(1 page)
         {
@@ -1847,11 +1850,11 @@ public class PaginationTest extends FunctionTestSupport {
 
             // assert 1 page
             webDriverWait.until(textToBe(By.id("pagePosition"), "1"));
-            assertThat(driver.findElement(By.id("rangeStart")).getText(), is("1"));
-            assertThat(driver.findElement(By.id("rangeEnd")).getText(), is("10"));
-            assertThat(driver.findElement(By.id("totalResults")).getText(), is("100"));
-            assertThat(driver.findElement(By.id("personId0")).getText(), is("201"));
-            assertThat(driver.findElement(By.id("personId9")).getText(), is("210"));
+            assertThat(driver.findElement(By.id("rangeStart")).getText()).isEqualTo("1");
+            assertThat(driver.findElement(By.id("rangeEnd")).getText()).isEqualTo("10");
+            assertThat(driver.findElement(By.id("totalResults")).getText()).isEqualTo("100");
+            assertThat(driver.findElement(By.id("personId0")).getText()).isEqualTo("201");
+            assertThat(driver.findElement(By.id("personId9")).getText()).isEqualTo("210");
         }
 
     }
@@ -1866,11 +1869,11 @@ public class PaginationTest extends FunctionTestSupport {
             driver.findElement(By.id("searchButton")).click();
             // assert 1 page
             webDriverWait.until(textToBe(By.id("pagePosition"), "1"));
-            assertThat(driver.findElement(By.id("rangeStart")).getText(), is("1"));
-            assertThat(driver.findElement(By.id("rangeEnd")).getText(), is("10"));
-            assertThat(driver.findElement(By.id("totalResults")).getText(), is("100"));
-            assertThat(driver.findElement(By.id("personId0")).getText(), is("201"));
-            assertThat(driver.findElement(By.id("personId9")).getText(), is("210"));
+            assertThat(driver.findElement(By.id("rangeStart")).getText()).isEqualTo("1");
+            assertThat(driver.findElement(By.id("rangeEnd")).getText()).isEqualTo("10");
+            assertThat(driver.findElement(By.id("totalResults")).getText()).isEqualTo("100");
+            assertThat(driver.findElement(By.id("personId0")).getText()).isEqualTo("201");
+            assertThat(driver.findElement(By.id("personId9")).getText()).isEqualTo("210");
         }
         // move specified page(3 page)
         {
@@ -1879,11 +1882,11 @@ public class PaginationTest extends FunctionTestSupport {
 
             // assert 3 page
             webDriverWait.until(textToBe(By.id("pagePosition"), "3"));
-            assertThat(driver.findElement(By.id("rangeStart")).getText(), is("21"));
-            assertThat(driver.findElement(By.id("rangeEnd")).getText(), is("30"));
-            assertThat(driver.findElement(By.id("totalResults")).getText(), is("100"));
-            assertThat(driver.findElement(By.id("personId0")).getText(), is("221"));
-            assertThat(driver.findElement(By.id("personId9")).getText(), is("230"));
+            assertThat(driver.findElement(By.id("rangeStart")).getText()).isEqualTo("21");
+            assertThat(driver.findElement(By.id("rangeEnd")).getText()).isEqualTo("30");
+            assertThat(driver.findElement(By.id("totalResults")).getText()).isEqualTo("100");
+            assertThat(driver.findElement(By.id("personId0")).getText()).isEqualTo("221");
+            assertThat(driver.findElement(By.id("personId9")).getText()).isEqualTo("230");
         }
         // move next page(4 page)
         {
@@ -1892,11 +1895,11 @@ public class PaginationTest extends FunctionTestSupport {
 
             // assert 4 page
             webDriverWait.until(textToBe(By.id("pagePosition"), "4"));
-            assertThat(driver.findElement(By.id("rangeStart")).getText(), is("31"));
-            assertThat(driver.findElement(By.id("rangeEnd")).getText(), is("40"));
-            assertThat(driver.findElement(By.id("totalResults")).getText(), is("100"));
-            assertThat(driver.findElement(By.id("personId0")).getText(), is("231"));
-            assertThat(driver.findElement(By.id("personId9")).getText(), is("240"));
+            assertThat(driver.findElement(By.id("rangeStart")).getText()).isEqualTo("31");
+            assertThat(driver.findElement(By.id("rangeEnd")).getText()).isEqualTo("40");
+            assertThat(driver.findElement(By.id("totalResults")).getText()).isEqualTo("100");
+            assertThat(driver.findElement(By.id("personId0")).getText()).isEqualTo("231");
+            assertThat(driver.findElement(By.id("personId9")).getText()).isEqualTo("240");
         }
         // move last page(10 page)
         {
@@ -1905,11 +1908,11 @@ public class PaginationTest extends FunctionTestSupport {
 
             // assert 10 page
             webDriverWait.until(textToBe(By.id("pagePosition"), "10"));
-            assertThat(driver.findElement(By.id("rangeStart")).getText(), is("91"));
-            assertThat(driver.findElement(By.id("rangeEnd")).getText(), is("100"));
-            assertThat(driver.findElement(By.id("totalResults")).getText(), is("100"));
-            assertThat(driver.findElement(By.id("personId0")).getText(), is("291"));
-            assertThat(driver.findElement(By.id("personId9")).getText(), is("300"));
+            assertThat(driver.findElement(By.id("rangeStart")).getText()).isEqualTo("91");
+            assertThat(driver.findElement(By.id("rangeEnd")).getText()).isEqualTo("100");
+            assertThat(driver.findElement(By.id("totalResults")).getText()).isEqualTo("100");
+            assertThat(driver.findElement(By.id("personId0")).getText()).isEqualTo("291");
+            assertThat(driver.findElement(By.id("personId9")).getText()).isEqualTo("300");
         }
         // move previous page(9 page)
         {
@@ -1918,11 +1921,11 @@ public class PaginationTest extends FunctionTestSupport {
 
             // assert 9 page
             webDriverWait.until(textToBe(By.id("pagePosition"), "9"));
-            assertThat(driver.findElement(By.id("rangeStart")).getText(), is("81"));
-            assertThat(driver.findElement(By.id("rangeEnd")).getText(), is("90"));
-            assertThat(driver.findElement(By.id("totalResults")).getText(), is("100"));
-            assertThat(driver.findElement(By.id("personId0")).getText(), is("281"));
-            assertThat(driver.findElement(By.id("personId9")).getText(), is("290"));
+            assertThat(driver.findElement(By.id("rangeStart")).getText()).isEqualTo("81");
+            assertThat(driver.findElement(By.id("rangeEnd")).getText()).isEqualTo("90");
+            assertThat(driver.findElement(By.id("totalResults")).getText()).isEqualTo("100");
+            assertThat(driver.findElement(By.id("personId0")).getText()).isEqualTo("281");
+            assertThat(driver.findElement(By.id("personId9")).getText()).isEqualTo("290");
         }
         // move first page(1 page)
         {
@@ -1931,11 +1934,11 @@ public class PaginationTest extends FunctionTestSupport {
 
             // assert 1 page
             webDriverWait.until(textToBe(By.id("pagePosition"), "1"));
-            assertThat(driver.findElement(By.id("rangeStart")).getText(), is("1"));
-            assertThat(driver.findElement(By.id("rangeEnd")).getText(), is("10"));
-            assertThat(driver.findElement(By.id("totalResults")).getText(), is("100"));
-            assertThat(driver.findElement(By.id("personId0")).getText(), is("201"));
-            assertThat(driver.findElement(By.id("personId9")).getText(), is("210"));
+            assertThat(driver.findElement(By.id("rangeStart")).getText()).isEqualTo("1");
+            assertThat(driver.findElement(By.id("rangeEnd")).getText()).isEqualTo("10");
+            assertThat(driver.findElement(By.id("totalResults")).getText()).isEqualTo("100");
+            assertThat(driver.findElement(By.id("personId0")).getText()).isEqualTo("201");
+            assertThat(driver.findElement(By.id("personId9")).getText()).isEqualTo("210");
         }
     }
 
@@ -1949,11 +1952,11 @@ public class PaginationTest extends FunctionTestSupport {
             driver.findElement(By.id("searchButton")).click();
             // assert 1 page
             webDriverWait.until(textToBe(By.id("pagePosition"), "1"));
-            assertThat(driver.findElement(By.id("rangeStart")).getText(), is("1"));
-            assertThat(driver.findElement(By.id("rangeEnd")).getText(), is("10"));
-            assertThat(driver.findElement(By.id("totalResults")).getText(), is("20"));
-            assertThat(driver.findElement(By.id("personId0")).getText(), is("181"));
-            assertThat(driver.findElement(By.id("personId9")).getText(), is("190"));
+            assertThat(driver.findElement(By.id("rangeStart")).getText()).isEqualTo("1");
+            assertThat(driver.findElement(By.id("rangeEnd")).getText()).isEqualTo("10");
+            assertThat(driver.findElement(By.id("totalResults")).getText()).isEqualTo("20");
+            assertThat(driver.findElement(By.id("personId0")).getText()).isEqualTo("181");
+            assertThat(driver.findElement(By.id("personId9")).getText()).isEqualTo("190");
         }
         // move specified page(2 page)
         {
@@ -1962,11 +1965,11 @@ public class PaginationTest extends FunctionTestSupport {
 
             // assert 3 page
             webDriverWait.until(textToBe(By.id("pagePosition"), "2"));
-            assertThat(driver.findElement(By.id("rangeStart")).getText(), is("11"));
-            assertThat(driver.findElement(By.id("rangeEnd")).getText(), is("20"));
-            assertThat(driver.findElement(By.id("totalResults")).getText(), is("20"));
-            assertThat(driver.findElement(By.id("personId0")).getText(), is("191"));
-            assertThat(driver.findElement(By.id("personId9")).getText(), is("200"));
+            assertThat(driver.findElement(By.id("rangeStart")).getText()).isEqualTo("11");
+            assertThat(driver.findElement(By.id("rangeEnd")).getText()).isEqualTo("20");
+            assertThat(driver.findElement(By.id("totalResults")).getText()).isEqualTo("20");
+            assertThat(driver.findElement(By.id("personId0")).getText()).isEqualTo("191");
+            assertThat(driver.findElement(By.id("personId9")).getText()).isEqualTo("200");
         }
     }
 
@@ -1980,11 +1983,11 @@ public class PaginationTest extends FunctionTestSupport {
             driver.findElement(By.id("searchButton")).click();
             // assert 1 page
             webDriverWait.until(textToBe(By.id("pagePosition"), "1"));
-            assertThat(driver.findElement(By.id("rangeStart")).getText(), is("1"));
-            assertThat(driver.findElement(By.id("rangeEnd")).getText(), is("10"));
-            assertThat(driver.findElement(By.id("totalResults")).getText(), is("20"));
-            assertThat(driver.findElement(By.id("personId0")).getText(), is("181"));
-            assertThat(driver.findElement(By.id("personId9")).getText(), is("190"));
+            assertThat(driver.findElement(By.id("rangeStart")).getText()).isEqualTo("1");
+            assertThat(driver.findElement(By.id("rangeEnd")).getText()).isEqualTo("10");
+            assertThat(driver.findElement(By.id("totalResults")).getText()).isEqualTo("20");
+            assertThat(driver.findElement(By.id("personId0")).getText()).isEqualTo("181");
+            assertThat(driver.findElement(By.id("personId9")).getText()).isEqualTo("190");
         }
         // move specified page(2 page)
         {
@@ -1994,11 +1997,11 @@ public class PaginationTest extends FunctionTestSupport {
 
             // assert 2 page
             webDriverWait.until(textToBe(By.id("pagePosition"), "2"));
-            assertThat(driver.findElement(By.id("rangeStart")).getText(), is("11"));
-            assertThat(driver.findElement(By.id("rangeEnd")).getText(), is("20"));
-            assertThat(driver.findElement(By.id("totalResults")).getText(), is("20"));
-            assertThat(driver.findElement(By.id("personId0")).getText(), is("191"));
-            assertThat(driver.findElement(By.id("personId9")).getText(), is("200"));
+            assertThat(driver.findElement(By.id("rangeStart")).getText()).isEqualTo("11");
+            assertThat(driver.findElement(By.id("rangeEnd")).getText()).isEqualTo("20");
+            assertThat(driver.findElement(By.id("totalResults")).getText()).isEqualTo("20");
+            assertThat(driver.findElement(By.id("personId0")).getText()).isEqualTo("191");
+            assertThat(driver.findElement(By.id("personId9")).getText()).isEqualTo("200");
         }
     }
 
@@ -2012,11 +2015,11 @@ public class PaginationTest extends FunctionTestSupport {
             driver.findElement(By.id("searchButton")).click();
             // assert 1 page
             webDriverWait.until(textToBe(By.id("pagePosition"), "1"));
-            assertThat(driver.findElement(By.id("rangeStart")).getText(), is("1"));
-            assertThat(driver.findElement(By.id("rangeEnd")).getText(), is("10"));
-            assertThat(driver.findElement(By.id("totalResults")).getText(), is("20"));
-            assertThat(driver.findElement(By.id("personId0")).getText(), is("181"));
-            assertThat(driver.findElement(By.id("personId9")).getText(), is("190"));
+            assertThat(driver.findElement(By.id("rangeStart")).getText()).isEqualTo("1");
+            assertThat(driver.findElement(By.id("rangeEnd")).getText()).isEqualTo("10");
+            assertThat(driver.findElement(By.id("totalResults")).getText()).isEqualTo("20");
+            assertThat(driver.findElement(By.id("personId0")).getText()).isEqualTo("181");
+            assertThat(driver.findElement(By.id("personId9")).getText()).isEqualTo("190");
         }
         // move specified page(2 page)
         {
@@ -2026,11 +2029,11 @@ public class PaginationTest extends FunctionTestSupport {
 
             // assert 2 page
             webDriverWait.until(textToBe(By.id("pagePosition"), "2"));
-            assertThat(driver.findElement(By.id("rangeStart")).getText(), is("11"));
-            assertThat(driver.findElement(By.id("rangeEnd")).getText(), is("20"));
-            assertThat(driver.findElement(By.id("totalResults")).getText(), is("20"));
-            assertThat(driver.findElement(By.id("personId0")).getText(), is("191"));
-            assertThat(driver.findElement(By.id("personId9")).getText(), is("200"));
+            assertThat(driver.findElement(By.id("rangeStart")).getText()).isEqualTo("11");
+            assertThat(driver.findElement(By.id("rangeEnd")).getText()).isEqualTo("20");
+            assertThat(driver.findElement(By.id("totalResults")).getText()).isEqualTo("20");
+            assertThat(driver.findElement(By.id("personId0")).getText()).isEqualTo("191");
+            assertThat(driver.findElement(By.id("personId9")).getText()).isEqualTo("200");
         }
     }
 
@@ -2044,11 +2047,11 @@ public class PaginationTest extends FunctionTestSupport {
             driver.findElement(By.id("searchButton")).click();
             // assert 1 page
             webDriverWait.until(textToBe(By.id("pagePosition"), "1"));
-            assertThat(driver.findElement(By.id("rangeStart")).getText(), is("1"));
-            assertThat(driver.findElement(By.id("rangeEnd")).getText(), is("10"));
-            assertThat(driver.findElement(By.id("totalResults")).getText(), is("100"));
-            assertThat(driver.findElement(By.id("personId0")).getText(), is("201"));
-            assertThat(driver.findElement(By.id("personId9")).getText(), is("210"));
+            assertThat(driver.findElement(By.id("rangeStart")).getText()).isEqualTo("1");
+            assertThat(driver.findElement(By.id("rangeEnd")).getText()).isEqualTo("10");
+            assertThat(driver.findElement(By.id("totalResults")).getText()).isEqualTo("100");
+            assertThat(driver.findElement(By.id("personId0")).getText()).isEqualTo("201");
+            assertThat(driver.findElement(By.id("personId9")).getText()).isEqualTo("210");
         }
         // move specified page(3 page)
         {
@@ -2056,11 +2059,11 @@ public class PaginationTest extends FunctionTestSupport {
                     .findElement(By.linkText("3")).click();
             // assert 3 page
             webDriverWait.until(textToBe(By.id("pagePosition"), "3"));
-            assertThat(driver.findElement(By.id("rangeStart")).getText(), is("21"));
-            assertThat(driver.findElement(By.id("rangeEnd")).getText(), is("30"));
-            assertThat(driver.findElement(By.id("totalResults")).getText(), is("100"));
-            assertThat(driver.findElement(By.id("personId0")).getText(), is("221"));
-            assertThat(driver.findElement(By.id("personId9")).getText(), is("230"));
+            assertThat(driver.findElement(By.id("rangeStart")).getText()).isEqualTo("21");
+            assertThat(driver.findElement(By.id("rangeEnd")).getText()).isEqualTo("30");
+            assertThat(driver.findElement(By.id("totalResults")).getText()).isEqualTo("100");
+            assertThat(driver.findElement(By.id("personId0")).getText()).isEqualTo("221");
+            assertThat(driver.findElement(By.id("personId9")).getText()).isEqualTo("230");
 
             // wait
             driver.findElement(By.tagName("body"));
@@ -2085,7 +2088,7 @@ public class PaginationTest extends FunctionTestSupport {
             }
 
             // check search condition parameter.
-            assertThat(inputFieldAccessor.getValue(By.id("name"), driver), is("+ &="));
+            assertThat(inputFieldAccessor.getValue(By.id("name"), driver)).isEqualTo("+ &=");
 
             // check output of <f:query> and <f:u> are the same URL.
             WebElement fuElement = driver
@@ -2111,11 +2114,11 @@ public class PaginationTest extends FunctionTestSupport {
             driver.findElement(By.id("searchButton")).click();
             // assert 1 page
             webDriverWait.until(textToBe(By.id("pagePosition"), "1"));
-            assertThat(driver.findElement(By.id("rangeStart")).getText(), is("1"));
-            assertThat(driver.findElement(By.id("rangeEnd")).getText(), is("10"));
-            assertThat(driver.findElement(By.id("totalResults")).getText(), is("100"));
-            assertThat(driver.findElement(By.id("personId0")).getText(), is("201"));
-            assertThat(driver.findElement(By.id("personId9")).getText(), is("210"));
+            assertThat(driver.findElement(By.id("rangeStart")).getText()).isEqualTo("1");
+            assertThat(driver.findElement(By.id("rangeEnd")).getText()).isEqualTo("10");
+            assertThat(driver.findElement(By.id("totalResults")).getText()).isEqualTo("100");
+            assertThat(driver.findElement(By.id("personId0")).getText()).isEqualTo("201");
+            assertThat(driver.findElement(By.id("personId9")).getText()).isEqualTo("210");
         }
         // move specified page(3 page)
         {
@@ -2123,11 +2126,11 @@ public class PaginationTest extends FunctionTestSupport {
                     .findElement(By.linkText("3")).click();
             // assert 3 page
             webDriverWait.until(textToBe(By.id("pagePosition"), "3"));
-            assertThat(driver.findElement(By.id("rangeStart")).getText(), is("21"));
-            assertThat(driver.findElement(By.id("rangeEnd")).getText(), is("30"));
-            assertThat(driver.findElement(By.id("totalResults")).getText(), is("100"));
-            assertThat(driver.findElement(By.id("personId0")).getText(), is("221"));
-            assertThat(driver.findElement(By.id("personId9")).getText(), is("230"));
+            assertThat(driver.findElement(By.id("rangeStart")).getText()).isEqualTo("21");
+            assertThat(driver.findElement(By.id("rangeEnd")).getText()).isEqualTo("30");
+            assertThat(driver.findElement(By.id("totalResults")).getText()).isEqualTo("100");
+            assertThat(driver.findElement(By.id("personId0")).getText()).isEqualTo("221");
+            assertThat(driver.findElement(By.id("personId9")).getText()).isEqualTo("230");
 
             // wait
             driver.findElement(By.tagName("body"));
@@ -2152,7 +2155,7 @@ public class PaginationTest extends FunctionTestSupport {
             }
 
             // check search condition parameter.
-            assertThat(inputFieldAccessor.getValue(By.id("name"), driver), is("+ &="));
+            assertThat(inputFieldAccessor.getValue(By.id("name"), driver)).isEqualTo("+ &=");
 
             // check output of <f:query> and <f:u> are the same URL.
             WebElement fqueryElement = driver
@@ -2178,11 +2181,11 @@ public class PaginationTest extends FunctionTestSupport {
             driver.findElement(By.id("searchButton")).click();
             // assert 1 page
             webDriverWait.until(textToBe(By.id("pagePosition"), "1"));
-            assertThat(driver.findElement(By.id("rangeStart")).getText(), is("1"));
-            assertThat(driver.findElement(By.id("rangeEnd")).getText(), is("10"));
-            assertThat(driver.findElement(By.id("totalResults")).getText(), is("100"));
-            assertThat(driver.findElement(By.id("personId0")).getText(), is("300"));
-            assertThat(driver.findElement(By.id("personId9")).getText(), is("291"));
+            assertThat(driver.findElement(By.id("rangeStart")).getText()).isEqualTo("1");
+            assertThat(driver.findElement(By.id("rangeEnd")).getText()).isEqualTo("10");
+            assertThat(driver.findElement(By.id("totalResults")).getText()).isEqualTo("100");
+            assertThat(driver.findElement(By.id("personId0")).getText()).isEqualTo("300");
+            assertThat(driver.findElement(By.id("personId9")).getText()).isEqualTo("291");
         }
         // move specified page(2 page)
         {
@@ -2190,11 +2193,11 @@ public class PaginationTest extends FunctionTestSupport {
                     .findElement(By.linkText("2")).click();
             // assert 2 page
             webDriverWait.until(textToBe(By.id("pagePosition"), "2"));
-            assertThat(driver.findElement(By.id("rangeStart")).getText(), is("11"));
-            assertThat(driver.findElement(By.id("rangeEnd")).getText(), is("20"));
-            assertThat(driver.findElement(By.id("totalResults")).getText(), is("100"));
-            assertThat(driver.findElement(By.id("personId0")).getText(), is("290"));
-            assertThat(driver.findElement(By.id("personId9")).getText(), is("281"));
+            assertThat(driver.findElement(By.id("rangeStart")).getText()).isEqualTo("11");
+            assertThat(driver.findElement(By.id("rangeEnd")).getText()).isEqualTo("20");
+            assertThat(driver.findElement(By.id("totalResults")).getText()).isEqualTo("100");
+            assertThat(driver.findElement(By.id("personId0")).getText()).isEqualTo("290");
+            assertThat(driver.findElement(By.id("personId9")).getText()).isEqualTo("281");
 
             // wait
             driver.findElement(By.tagName("body"));
@@ -2216,7 +2219,7 @@ public class PaginationTest extends FunctionTestSupport {
             }
 
             // check search condition parameter.
-            assertThat(inputFieldAccessor.getValue(By.id("name"), driver), is("+ &="));
+            assertThat(inputFieldAccessor.getValue(By.id("name"), driver)).isEqualTo("+ &=");
 
             // check output of <f:query> and <f:u> are the same URL.
             WebElement fuElement = driver
@@ -2242,11 +2245,11 @@ public class PaginationTest extends FunctionTestSupport {
             driver.findElement(By.id("searchButton")).click();
             // assert 1 page
             webDriverWait.until(textToBe(By.id("pagePosition"), "1"));
-            assertThat(driver.findElement(By.id("rangeStart")).getText(), is("1"));
-            assertThat(driver.findElement(By.id("rangeEnd")).getText(), is("10"));
-            assertThat(driver.findElement(By.id("totalResults")).getText(), is("100"));
-            assertThat(driver.findElement(By.id("personId0")).getText(), is("300"));
-            assertThat(driver.findElement(By.id("personId9")).getText(), is("291"));
+            assertThat(driver.findElement(By.id("rangeStart")).getText()).isEqualTo("1");
+            assertThat(driver.findElement(By.id("rangeEnd")).getText()).isEqualTo("10");
+            assertThat(driver.findElement(By.id("totalResults")).getText()).isEqualTo("100");
+            assertThat(driver.findElement(By.id("personId0")).getText()).isEqualTo("300");
+            assertThat(driver.findElement(By.id("personId9")).getText()).isEqualTo("291");
         }
         // move specified page(2 page)
         {
@@ -2254,11 +2257,11 @@ public class PaginationTest extends FunctionTestSupport {
                     .findElement(By.linkText("2")).click();
             // assert 2 page
             webDriverWait.until(textToBe(By.id("pagePosition"), "2"));
-            assertThat(driver.findElement(By.id("rangeStart")).getText(), is("11"));
-            assertThat(driver.findElement(By.id("rangeEnd")).getText(), is("20"));
-            assertThat(driver.findElement(By.id("totalResults")).getText(), is("100"));
-            assertThat(driver.findElement(By.id("personId0")).getText(), is("290"));
-            assertThat(driver.findElement(By.id("personId9")).getText(), is("281"));
+            assertThat(driver.findElement(By.id("rangeStart")).getText()).isEqualTo("11");
+            assertThat(driver.findElement(By.id("rangeEnd")).getText()).isEqualTo("20");
+            assertThat(driver.findElement(By.id("totalResults")).getText()).isEqualTo("100");
+            assertThat(driver.findElement(By.id("personId0")).getText()).isEqualTo("290");
+            assertThat(driver.findElement(By.id("personId9")).getText()).isEqualTo("281");
         }
 
         // wait
@@ -2281,7 +2284,7 @@ public class PaginationTest extends FunctionTestSupport {
         }
 
         // check search condition parameter.
-        assertThat(inputFieldAccessor.getValue(By.id("name"), driver), is("+ &="));
+        assertThat(inputFieldAccessor.getValue(By.id("name"), driver)).isEqualTo("+ &=");
 
         // check output of <f:query> and <f:u> are the same URL.
         WebElement fqueryElement = driver
@@ -2305,11 +2308,11 @@ public class PaginationTest extends FunctionTestSupport {
             driver.findElement(By.id("searchButton")).click();
             // assert 1 page
             webDriverWait.until(textToBe(By.id("pagePosition"), "1"));
-            assertThat(driver.findElement(By.id("rangeStart")).getText(), is("1"));
-            assertThat(driver.findElement(By.id("rangeEnd")).getText(), is("10"));
-            assertThat(driver.findElement(By.id("totalResults")).getText(), is("100"));
-            assertThat(driver.findElement(By.id("personId0")).getText(), is("250"));
-            assertThat(driver.findElement(By.id("personId9")).getText(), is("241"));
+            assertThat(driver.findElement(By.id("rangeStart")).getText()).isEqualTo("1");
+            assertThat(driver.findElement(By.id("rangeEnd")).getText()).isEqualTo("10");
+            assertThat(driver.findElement(By.id("totalResults")).getText()).isEqualTo("100");
+            assertThat(driver.findElement(By.id("personId0")).getText()).isEqualTo("250");
+            assertThat(driver.findElement(By.id("personId9")).getText()).isEqualTo("241");
         }
         // move specified page(2 page)
         {
@@ -2318,11 +2321,11 @@ public class PaginationTest extends FunctionTestSupport {
                     .findElement(By.linkText("2")).click();
             // assert 2 page
             webDriverWait.until(textToBe(By.id("pagePosition"), "2"));
-            assertThat(driver.findElement(By.id("rangeStart")).getText(), is("11"));
-            assertThat(driver.findElement(By.id("rangeEnd")).getText(), is("20"));
-            assertThat(driver.findElement(By.id("totalResults")).getText(), is("100"));
-            assertThat(driver.findElement(By.id("personId0")).getText(), is("240"));
-            assertThat(driver.findElement(By.id("personId9")).getText(), is("231"));
+            assertThat(driver.findElement(By.id("rangeStart")).getText()).isEqualTo("11");
+            assertThat(driver.findElement(By.id("rangeEnd")).getText()).isEqualTo("20");
+            assertThat(driver.findElement(By.id("totalResults")).getText()).isEqualTo("100");
+            assertThat(driver.findElement(By.id("personId0")).getText()).isEqualTo("240");
+            assertThat(driver.findElement(By.id("personId9")).getText()).isEqualTo("231");
 
             // wait
             driver.findElement(By.tagName("body"));
@@ -2350,7 +2353,7 @@ public class PaginationTest extends FunctionTestSupport {
             }
 
             // check search condition parameter.
-            assertThat(inputFieldAccessor.getValue(By.id("name"), driver), is("+ &="));
+            assertThat(inputFieldAccessor.getValue(By.id("name"), driver)).isEqualTo("+ &=");
 
             // check output of <f:query> and <f:u> are the same URL.
             WebElement fuElement = driver.findElement(
@@ -2376,11 +2379,11 @@ public class PaginationTest extends FunctionTestSupport {
             driver.findElement(By.id("searchButton")).click();
             // assert 1 page
             webDriverWait.until(textToBe(By.id("pagePosition"), "1"));
-            assertThat(driver.findElement(By.id("rangeStart")).getText(), is("1"));
-            assertThat(driver.findElement(By.id("rangeEnd")).getText(), is("10"));
-            assertThat(driver.findElement(By.id("totalResults")).getText(), is("100"));
-            assertThat(driver.findElement(By.id("personId0")).getText(), is("250"));
-            assertThat(driver.findElement(By.id("personId9")).getText(), is("241"));
+            assertThat(driver.findElement(By.id("rangeStart")).getText()).isEqualTo("1");
+            assertThat(driver.findElement(By.id("rangeEnd")).getText()).isEqualTo("10");
+            assertThat(driver.findElement(By.id("totalResults")).getText()).isEqualTo("100");
+            assertThat(driver.findElement(By.id("personId0")).getText()).isEqualTo("250");
+            assertThat(driver.findElement(By.id("personId9")).getText()).isEqualTo("241");
         }
         // move specified page(2 page)
         {
@@ -2389,11 +2392,11 @@ public class PaginationTest extends FunctionTestSupport {
                     .findElement(By.linkText("2")).click();
             // assert 2 page
             webDriverWait.until(textToBe(By.id("pagePosition"), "2"));
-            assertThat(driver.findElement(By.id("rangeStart")).getText(), is("11"));
-            assertThat(driver.findElement(By.id("rangeEnd")).getText(), is("20"));
-            assertThat(driver.findElement(By.id("totalResults")).getText(), is("100"));
-            assertThat(driver.findElement(By.id("personId0")).getText(), is("240"));
-            assertThat(driver.findElement(By.id("personId9")).getText(), is("231"));
+            assertThat(driver.findElement(By.id("rangeStart")).getText()).isEqualTo("11");
+            assertThat(driver.findElement(By.id("rangeEnd")).getText()).isEqualTo("20");
+            assertThat(driver.findElement(By.id("totalResults")).getText()).isEqualTo("100");
+            assertThat(driver.findElement(By.id("personId0")).getText()).isEqualTo("240");
+            assertThat(driver.findElement(By.id("personId9")).getText()).isEqualTo("231");
 
             // wait
             driver.findElement(By.tagName("body"));
@@ -2420,7 +2423,7 @@ public class PaginationTest extends FunctionTestSupport {
             }
 
             // check search condition parameter.
-            assertThat(inputFieldAccessor.getValue(By.id("name"), driver), is("+ &="));
+            assertThat(inputFieldAccessor.getValue(By.id("name"), driver)).isEqualTo("+ &=");
 
             // check output of <f:query> and <f:u> are the same URL.
             WebElement fqueryElement = driver.findElement(
@@ -2446,13 +2449,13 @@ public class PaginationTest extends FunctionTestSupport {
 
         // currentPage(1Page) link check
         assertThat(driver.findElement(By.xpath("(//a[contains(@href, '?page=0&size=15')])[1]"))
-                .getText(), is("1"));
+                .getText()).isEqualTo("1");
 
         // currentPage(1Page) active click
         driver.findElement(By.linkText("1")).click();
         String currentPageXtrack = driver.findElement(By.id("xtrack")).getText();
         // not change xtrack
-        assertThat(currentPageXtrack, is(not(orgXtrack)));
+        assertThat(currentPageXtrack).isNotEqualTo(orgXtrack);
 
     }
 
@@ -2463,11 +2466,11 @@ public class PaginationTest extends FunctionTestSupport {
 
         // firstLink, previousLink, current page value "#" check
         assertThat(driver.findElement(By.xpath("/html/body/div/div[1]/ul/li[1]/a"))
-                .getAttribute("href"), is(not("javascript:void(0)")));
+                .getAttribute("href")).isNotEqualTo("javascript:void(0)");
         assertThat(driver.findElement(By.xpath("/html/body/div/div[1]/ul/li[2]/a"))
-                .getAttribute("href"), is(not("javascript:void(0)")));
+                .getAttribute("href")).isNotEqualTo("javascript:void(0)");
         assertThat(driver.findElement(By.xpath("/html/body/div/div[1]/ul/li[3]/a"))
-                .getAttribute("href"), is(not("javascript:void(0)")));
+                .getAttribute("href")).isNotEqualTo("javascript:void(0)");
 
         // default page
         String orgXtrack = driver.findElement(By.id("xtrack")).getText();
@@ -2476,25 +2479,25 @@ public class PaginationTest extends FunctionTestSupport {
         driver.findElement(By.linkText("<<")).click();
         String firstLinkXtrack = driver.findElement(By.id("xtrack")).getText();
         // not change xtrack
-        assertThat(firstLinkXtrack, is(orgXtrack));
+        assertThat(firstLinkXtrack).isEqualTo(orgXtrack);
 
         // previousLink disabled click
         driver.findElement(By.linkText("<")).click();
         String previousLinkXtrack = driver.findElement(By.id("xtrack")).getText();
         // not change xtrack
-        assertThat(previousLinkXtrack, is(orgXtrack));
+        assertThat(previousLinkXtrack).isEqualTo(orgXtrack);
 
         // currentPage(1Page) active click
         driver.findElement(By.linkText("<")).click();
         String currentPageXtrack = driver.findElement(By.id("xtrack")).getText();
         // not change xtrack
-        assertThat(currentPageXtrack, is(orgXtrack));
+        assertThat(currentPageXtrack).isEqualTo(orgXtrack);
 
         // nextLink click
         driver.findElement(By.linkText(">")).click();
         String nextLinkXtrack = driver.findElement(By.id("xtrack")).getText();
         // change xtrack
-        assertThat(nextLinkXtrack, is(not(orgXtrack)));
+        assertThat(nextLinkXtrack).isNotEqualTo(orgXtrack);
 
     }
 
@@ -2504,7 +2507,7 @@ public class PaginationTest extends FunctionTestSupport {
         webDriverWait.until(textToBe(By.xpath("//h1[2]"), "1 Page"));
 
         // outerElement close with </ul> confirm
-        assertThat(driver.getPageSource().contains("<ul></ul>"), is(true));
+        assertThat(driver.getPageSource().contains("<ul></ul>")).isEqualTo(true);
 
         // page soruce
         pageSource.save(driver);

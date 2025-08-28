@@ -15,8 +15,7 @@
  */
 package org.terasoluna.gfw.functionaltest.app.codepoints;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.MatcherAssert.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
@@ -114,6 +113,6 @@ public class ConsistOfCheckTest extends FunctionTestSupport {
     }
 
     private void check(String id, String value) {
-        assertThat(driver.findElement(By.id(id)).getText(), is(value));
+        assertThat(driver.findElement(By.id(id)).getText()).isEqualTo(value);
     }
 }

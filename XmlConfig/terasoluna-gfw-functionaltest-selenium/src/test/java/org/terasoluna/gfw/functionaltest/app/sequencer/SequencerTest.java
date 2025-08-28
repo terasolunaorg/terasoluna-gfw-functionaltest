@@ -15,8 +15,7 @@
  */
 package org.terasoluna.gfw.functionaltest.app.sequencer;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.MatcherAssert.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.terasoluna.gfw.functionaltest.app.FunctionTestSupport;
@@ -31,23 +30,23 @@ public class SequencerTest extends FunctionTestSupport {
         driver.findElement(By.id("1_1_same_transaction")).click();
 
         // Check page
-        assertThat(driver.findElement(By.id("1_next_value1")).getText(), is("1"));
+        assertThat(driver.findElement(By.id("1_next_value1")).getText()).isEqualTo("1");
 
-        assertThat(driver.findElement(By.id("2_current_value1")).getText(), is("1"));
+        assertThat(driver.findElement(By.id("2_current_value1")).getText()).isEqualTo("1");
 
-        assertThat(driver.findElement(By.id("3_current_value2")).getText(), is("1"));
+        assertThat(driver.findElement(By.id("3_current_value2")).getText()).isEqualTo("1");
 
-        assertThat(driver.findElement(By.id("4_next_value2")).getText(), is("2"));
+        assertThat(driver.findElement(By.id("4_next_value2")).getText()).isEqualTo("2");
 
-        assertThat(driver.findElement(By.id("5_next_value3")).getText(), is("3"));
+        assertThat(driver.findElement(By.id("5_next_value3")).getText()).isEqualTo("3");
 
-        assertThat(driver.findElement(By.id("6_current_value3")).getText(), is("3"));
+        assertThat(driver.findElement(By.id("6_current_value3")).getText()).isEqualTo("3");
 
-        assertThat(driver.findElement(By.id("7_next_value4")).getText(), is("4"));
+        assertThat(driver.findElement(By.id("7_next_value4")).getText()).isEqualTo("4");
 
-        assertThat(driver.findElement(By.id("8_current_value4")).getText(), is("4"));
+        assertThat(driver.findElement(By.id("8_current_value4")).getText()).isEqualTo("4");
 
-        assertThat(driver.findElement(By.id("mode")).getText(), is("Integer"));
+        assertThat(driver.findElement(By.id("mode")).getText()).isEqualTo("Integer");
 
         // screen capture (Automatic capture conducted at the end)
 
@@ -61,23 +60,23 @@ public class SequencerTest extends FunctionTestSupport {
         driver.findElement(By.id("1_2_same_transaction")).click();
 
         // Check page
-        assertThat(driver.findElement(By.id("1_next_value1")).getText(), is("1"));
+        assertThat(driver.findElement(By.id("1_next_value1")).getText()).isEqualTo("1");
 
-        assertThat(driver.findElement(By.id("2_current_value1")).getText(), is("1"));
+        assertThat(driver.findElement(By.id("2_current_value1")).getText()).isEqualTo("1");
 
-        assertThat(driver.findElement(By.id("3_current_value2")).getText(), is("1"));
+        assertThat(driver.findElement(By.id("3_current_value2")).getText()).isEqualTo("1");
 
-        assertThat(driver.findElement(By.id("4_next_value2")).getText(), is("2"));
+        assertThat(driver.findElement(By.id("4_next_value2")).getText()).isEqualTo("2");
 
-        assertThat(driver.findElement(By.id("5_next_value3")).getText(), is("3"));
+        assertThat(driver.findElement(By.id("5_next_value3")).getText()).isEqualTo("3");
 
-        assertThat(driver.findElement(By.id("6_current_value3")).getText(), is("3"));
+        assertThat(driver.findElement(By.id("6_current_value3")).getText()).isEqualTo("3");
 
-        assertThat(driver.findElement(By.id("7_next_value4")).getText(), is("4"));
+        assertThat(driver.findElement(By.id("7_next_value4")).getText()).isEqualTo("4");
 
-        assertThat(driver.findElement(By.id("8_current_value4")).getText(), is("4"));
+        assertThat(driver.findElement(By.id("8_current_value4")).getText()).isEqualTo("4");
 
-        assertThat(driver.findElement(By.id("mode")).getText(), is("Long"));
+        assertThat(driver.findElement(By.id("mode")).getText()).isEqualTo("Long");
 
         // screen capture (Automatic capture conducted at the end)
 
@@ -91,23 +90,23 @@ public class SequencerTest extends FunctionTestSupport {
         driver.findElement(By.id("1_3_same_transaction")).click();
 
         // Check page
-        assertThat(driver.findElement(By.id("1_next_value1")).getText(), is("1"));
+        assertThat(driver.findElement(By.id("1_next_value1")).getText()).isEqualTo("1");
 
-        assertThat(driver.findElement(By.id("2_current_value1")).getText(), is("1"));
+        assertThat(driver.findElement(By.id("2_current_value1")).getText()).isEqualTo("1");
 
-        assertThat(driver.findElement(By.id("3_current_value2")).getText(), is("1"));
+        assertThat(driver.findElement(By.id("3_current_value2")).getText()).isEqualTo("1");
 
-        assertThat(driver.findElement(By.id("4_next_value2")).getText(), is("2"));
+        assertThat(driver.findElement(By.id("4_next_value2")).getText()).isEqualTo("2");
 
-        assertThat(driver.findElement(By.id("5_next_value3")).getText(), is("3"));
+        assertThat(driver.findElement(By.id("5_next_value3")).getText()).isEqualTo("3");
 
-        assertThat(driver.findElement(By.id("6_current_value3")).getText(), is("3"));
+        assertThat(driver.findElement(By.id("6_current_value3")).getText()).isEqualTo("3");
 
-        assertThat(driver.findElement(By.id("7_next_value4")).getText(), is("4"));
+        assertThat(driver.findElement(By.id("7_next_value4")).getText()).isEqualTo("4");
 
-        assertThat(driver.findElement(By.id("8_current_value4")).getText(), is("4"));
+        assertThat(driver.findElement(By.id("8_current_value4")).getText()).isEqualTo("4");
 
-        assertThat(driver.findElement(By.id("mode")).getText(), is("BigInteger"));
+        assertThat(driver.findElement(By.id("mode")).getText()).isEqualTo("BigInteger");
 
         // screen capture (Automatic capture conducted at the end)
 
@@ -121,23 +120,23 @@ public class SequencerTest extends FunctionTestSupport {
         driver.findElement(By.id("1_4_same_transaction")).click();
 
         // Check page
-        assertThat(driver.findElement(By.id("1_next_value1")).getText(), is("0000000001"));
+        assertThat(driver.findElement(By.id("1_next_value1")).getText()).isEqualTo("0000000001");
 
-        assertThat(driver.findElement(By.id("2_current_value1")).getText(), is("0000000001"));
+        assertThat(driver.findElement(By.id("2_current_value1")).getText()).isEqualTo("0000000001");
 
-        assertThat(driver.findElement(By.id("3_current_value2")).getText(), is("0000000001"));
+        assertThat(driver.findElement(By.id("3_current_value2")).getText()).isEqualTo("0000000001");
 
-        assertThat(driver.findElement(By.id("4_next_value2")).getText(), is("0000000002"));
+        assertThat(driver.findElement(By.id("4_next_value2")).getText()).isEqualTo("0000000002");
 
-        assertThat(driver.findElement(By.id("5_next_value3")).getText(), is("0000000003"));
+        assertThat(driver.findElement(By.id("5_next_value3")).getText()).isEqualTo("0000000003");
 
-        assertThat(driver.findElement(By.id("6_current_value3")).getText(), is("0000000003"));
+        assertThat(driver.findElement(By.id("6_current_value3")).getText()).isEqualTo("0000000003");
 
-        assertThat(driver.findElement(By.id("7_next_value4")).getText(), is("0000000004"));
+        assertThat(driver.findElement(By.id("7_next_value4")).getText()).isEqualTo("0000000004");
 
-        assertThat(driver.findElement(By.id("8_current_value4")).getText(), is("0000000004"));
+        assertThat(driver.findElement(By.id("8_current_value4")).getText()).isEqualTo("0000000004");
 
-        assertThat(driver.findElement(By.id("mode")).getText(), is("String"));
+        assertThat(driver.findElement(By.id("mode")).getText()).isEqualTo("String");
 
         // screen capture (Automatic capture conducted at the end)
 
@@ -150,8 +149,8 @@ public class SequencerTest extends FunctionTestSupport {
         driver.findElement(By.id("2_1_not_found_next")).click();
 
         // Check page
-        assertThat(driver.findElement(By.id("exceptionTitle")).getText(),
-                is("Data Access Error..."));
+        assertThat(driver.findElement(By.id("exceptionTitle")).getText())
+                .isEqualTo("Data Access Error...");
 
         // Return test target page from Error page
         driver.get(applicationContextUrl);
@@ -161,8 +160,8 @@ public class SequencerTest extends FunctionTestSupport {
         driver.findElement(By.id("2_1_not_found_current")).click();
 
         // Check page
-        assertThat(driver.findElement(By.id("exceptionTitle")).getText(),
-                is("Data Access Error..."));
+        assertThat(driver.findElement(By.id("exceptionTitle")).getText())
+                .isEqualTo("Data Access Error...");
 
         // screen capture (Automatic capture conducted at the end)
 
