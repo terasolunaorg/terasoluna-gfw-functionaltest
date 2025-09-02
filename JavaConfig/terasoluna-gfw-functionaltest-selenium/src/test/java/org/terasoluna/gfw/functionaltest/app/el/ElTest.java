@@ -145,7 +145,7 @@ public class ElTest extends FunctionTestSupport {
         driver.findElement(By.id("btn-output")).click();
 
         // output data 03_02 Test
-        assertThat(driver.getPageSource().contains("Spring_Mvc")).isEqualTo(true);
+        assertThat(driver.getPageSource().contains("Spring_Mvc")).isTrue();
     }
 
     @Test
@@ -614,7 +614,7 @@ public class ElTest extends FunctionTestSupport {
         driver.findElement(By.id("06_07")).click();
 
         // output 06_07 Test
-        assertThat(driver.findElement(By.id("queryOutput")).getText()).isEqualTo("");
+        assertThat(driver.findElement(By.id("queryOutput")).getText()).isEmpty();
 
         // screen capture
         screenCapture.save(driver);
@@ -840,11 +840,11 @@ public class ElTest extends FunctionTestSupport {
         driver.findElement(By.id("pagination")).findElement(By.linkText("2")).click();
 
         // output 06_15 Test
-        assertThat(driver.findElement(By.id("name")).getAttribute("value")).isEqualTo("");
-        assertThat(driver.findElement(By.id("age")).getAttribute("value")).isEqualTo("");
+        assertThat(driver.findElement(By.id("name")).getAttribute("value")).isEmpty();
+        assertThat(driver.findElement(By.id("age")).getAttribute("value")).isEmpty();
 
-        assertThat(driver.findElement(By.id("item.name")).getAttribute("value")).isEqualTo("");
-        assertThat(driver.findElement(By.id("item.age")).getAttribute("value")).isEqualTo("");
+        assertThat(driver.findElement(By.id("item.name")).getAttribute("value")).isEmpty();
+        assertThat(driver.findElement(By.id("item.age")).getAttribute("value")).isEmpty();
 
         assertThat(driver.findElement(By.id("nameString")).getText()).isEqualTo("null");
         assertThat(driver.findElement(By.id("ageString")).getText()).isEqualTo("null");
@@ -881,25 +881,25 @@ public class ElTest extends FunctionTestSupport {
         driver.findElement(By.id("pagination")).findElement(By.linkText("2")).click();
 
         // output 06_16 Test
-        assertThat(driver.findElement(By.id("listA0")).getAttribute("value")).isEqualTo("");
-        assertThat(driver.findElement(By.id("listA1")).getAttribute("value")).isEqualTo("");
-        assertThat(driver.findElement(By.id("listA2")).getAttribute("value")).isEqualTo("");
-        assertThat(driver.findElement(By.id("listB1")).isSelected()).isEqualTo(false);
-        assertThat(driver.findElement(By.id("listB2")).isSelected()).isEqualTo(false);
-        assertThat(driver.findElement(By.id("listB3")).isSelected()).isEqualTo(false);
+        assertThat(driver.findElement(By.id("listA0")).getAttribute("value")).isEmpty();
+        assertThat(driver.findElement(By.id("listA1")).getAttribute("value")).isEmpty();
+        assertThat(driver.findElement(By.id("listA2")).getAttribute("value")).isEmpty();
+        assertThat(driver.findElement(By.id("listB1")).isSelected()).isFalse();
+        assertThat(driver.findElement(By.id("listB2")).isSelected()).isFalse();
+        assertThat(driver.findElement(By.id("listB3")).isSelected()).isFalse();
         Select selectResult = new Select(driver.findElement(By.id("listC")));
         assertThat(selectResult.getAllSelectedOptions().size()).isEqualTo(1);
-        assertThat(selectResult.getFirstSelectedOption().getAttribute("value")).isEqualTo("");
+        assertThat(selectResult.getFirstSelectedOption().getAttribute("value")).isEmpty();
 
-        assertThat(driver.findElement(By.id("item.listA0")).getAttribute("value")).isEqualTo("");
-        assertThat(driver.findElement(By.id("item.listA1")).getAttribute("value")).isEqualTo("");
-        assertThat(driver.findElement(By.id("item.listA2")).getAttribute("value")).isEqualTo("");
-        assertThat(driver.findElement(By.id("item.listB1")).isSelected()).isEqualTo(false);
-        assertThat(driver.findElement(By.id("item.listB2")).isSelected()).isEqualTo(false);
-        assertThat(driver.findElement(By.id("item.listB3")).isSelected()).isEqualTo(false);
+        assertThat(driver.findElement(By.id("item.listA0")).getAttribute("value")).isEmpty();
+        assertThat(driver.findElement(By.id("item.listA1")).getAttribute("value")).isEmpty();
+        assertThat(driver.findElement(By.id("item.listA2")).getAttribute("value")).isEmpty();
+        assertThat(driver.findElement(By.id("item.listB1")).isSelected()).isFalse();
+        assertThat(driver.findElement(By.id("item.listB2")).isSelected()).isFalse();
+        assertThat(driver.findElement(By.id("item.listB3")).isSelected()).isFalse();
         Select selectItemResult = new Select(driver.findElement(By.id("item.listC")));
         assertThat(selectItemResult.getAllSelectedOptions().size()).isEqualTo(1);
-        assertThat(selectItemResult.getFirstSelectedOption().getAttribute("value")).isEqualTo("");
+        assertThat(selectItemResult.getFirstSelectedOption().getAttribute("value")).isEmpty();
 
         assertThat(driver.findElement(By.id("listA0String")).getText()).isEqualTo("null");
         assertThat(driver.findElement(By.id("listA1String")).getText()).isEqualTo("null");
@@ -930,13 +930,13 @@ public class ElTest extends FunctionTestSupport {
         driver.findElement(By.id("pagination")).findElement(By.linkText("2")).click();
 
         // output 06_17 Test
-        assertThat(driver.findElement(By.id("mapAa")).getAttribute("value")).isEqualTo("");
-        assertThat(driver.findElement(By.id("mapAb")).getAttribute("value")).isEqualTo("");
-        assertThat(driver.findElement(By.id("mapAc")).getAttribute("value")).isEqualTo("");
+        assertThat(driver.findElement(By.id("mapAa")).getAttribute("value")).isEmpty();
+        assertThat(driver.findElement(By.id("mapAb")).getAttribute("value")).isEmpty();
+        assertThat(driver.findElement(By.id("mapAc")).getAttribute("value")).isEmpty();
 
-        assertThat(driver.findElement(By.id("item.mapAd")).getAttribute("value")).isEqualTo("");
-        assertThat(driver.findElement(By.id("item.mapAe")).getAttribute("value")).isEqualTo("");
-        assertThat(driver.findElement(By.id("item.mapAf")).getAttribute("value")).isEqualTo("");
+        assertThat(driver.findElement(By.id("item.mapAd")).getAttribute("value")).isEmpty();
+        assertThat(driver.findElement(By.id("item.mapAe")).getAttribute("value")).isEmpty();
+        assertThat(driver.findElement(By.id("item.mapAf")).getAttribute("value")).isEmpty();
 
         assertThat(driver.findElement(By.id("mapA0String")).getText()).isEqualTo("null");
         assertThat(driver.findElement(By.id("mapA1String")).getText()).isEqualTo("null");

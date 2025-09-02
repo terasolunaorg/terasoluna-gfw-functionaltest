@@ -60,7 +60,7 @@ public class CodeListTest extends FunctionTestSupport {
     @Test
     public void test01_02_form() {
         driver.findElement(By.id("codelist_01_02")).click();
-        assertThat(driver.findElement(By.id("item1")).getText()).isEqualTo("");
+        assertThat(driver.findElement(By.id("item1")).getText()).isEmpty();
         driver.findElement(By.id("btnback")).click();
     }
 
@@ -146,7 +146,7 @@ public class CodeListTest extends FunctionTestSupport {
     @Test
     public void test03_02_form() {
         driver.findElement(By.id("codelist_03_02")).click();
-        assertThat(driver.findElement(By.id("item1")).getText()).isEqualTo("");
+        assertThat(driver.findElement(By.id("item1")).getText()).isEmpty();
         driver.findElement(By.id("btn1")).click();
         driver.findElement(By.id("btnback")).click();
     }
@@ -449,7 +449,7 @@ public class CodeListTest extends FunctionTestSupport {
                 .isEqualTo("label2");
         assertThat(driver.findElement(By.cssSelector("option[value=\"key3\"]")).getText())
                 .isEqualTo("label3");
-        assertThat(driver.findElement(By.id("list2")).getText()).isEqualTo("");
+        assertThat(driver.findElement(By.id("list2")).getText()).isEmpty();
         driver.findElement(By.id("btnback")).click();
     }
 
@@ -462,7 +462,7 @@ public class CodeListTest extends FunctionTestSupport {
                 .isEqualTo("ラベル2");
         assertThat(driver.findElement(By.cssSelector("option[value=\"key3\"]")).getText())
                 .isEqualTo("ラベル3");
-        assertThat(driver.findElement(By.id("list2")).getText()).isEqualTo("");
+        assertThat(driver.findElement(By.id("list2")).getText()).isEmpty();
         driver.findElement(By.id("btnback")).click();
     }
 
@@ -471,7 +471,7 @@ public class CodeListTest extends FunctionTestSupport {
         driver.findElement(By.id("codelist_10_01")).click();
         assertThat(driver.findElement(By.cssSelector("div>ul>li")).getText())
                 .isEqualTo("Warn Message!!");
-        assertThat(webDriverOperations.exists(By.tagName("option"))).isEqualTo(false);
+        assertThat(webDriverOperations.exists(By.tagName("option"))).isFalse();
         driver.findElement(By.id("btn1")).click();
         driver.findElement(By.id("btnback")).click();
     }
@@ -497,7 +497,7 @@ public class CodeListTest extends FunctionTestSupport {
         driver.findElement(By.id("codelist_08_01")).click();
         inputFieldAccessor.overrideValue(By.id("item1"), "key1", driver);
         driver.findElement(By.id("btn1")).click();
-        assertThat(driver.findElement(By.id("errors")).getText()).isEqualTo("");
+        assertThat(driver.findElement(By.id("errors")).getText()).isEmpty();;
         inputFieldAccessor.overrideValue(By.id("item1"), "key5", driver);
         driver.findElement(By.id("btn1")).click();
         assertThat(driver.findElement(By.id("item1.errors")).getText())
@@ -510,7 +510,7 @@ public class CodeListTest extends FunctionTestSupport {
         driver.findElement(By.id("codelist_08_02")).click();
         inputFieldAccessor.overrideValue(By.id("item2"), "a", driver);
         driver.findElement(By.id("btn1")).click();
-        assertThat(driver.findElement(By.id("errors")).getText()).isEqualTo("");
+        assertThat(driver.findElement(By.id("errors")).getText()).isEmpty();
         inputFieldAccessor.overrideValue(By.id("item2"), "h", driver);
         driver.findElement(By.id("btn1")).click();
         assertThat(driver.findElement(By.id("item2.errors")).getText())
@@ -523,7 +523,7 @@ public class CodeListTest extends FunctionTestSupport {
         driver.findElement(By.id("codelist_08_03")).click();
         inputFieldAccessor.overrideValue(By.id("item3"), "5", driver);
         driver.findElement(By.id("btn1")).click();
-        assertThat(driver.findElement(By.id("errors")).getText()).isEqualTo("");
+        assertThat(driver.findElement(By.id("errors")).getText()).isEmpty();
         inputFieldAccessor.overrideValue(By.id("item3"), "6", driver);
         driver.findElement(By.id("btn1")).click();
         assertThat(driver.findElement(By.id("item3.errors")).getText())
@@ -536,7 +536,7 @@ public class CodeListTest extends FunctionTestSupport {
         driver.findElement(By.id("codelist_08_04")).click();
         inputFieldAccessor.overrideValue(By.id("item4"), "5", driver);
         driver.findElement(By.id("btn1")).click();
-        assertThat(driver.findElement(By.id("errors")).getText()).isEqualTo("");
+        assertThat(driver.findElement(By.id("errors")).getText()).isEmpty();
         inputFieldAccessor.overrideValue(By.id("item4"), "6", driver);
         driver.findElement(By.id("btn1")).click();
         assertThat(driver.findElement(By.id("item4.errors")).getText())
@@ -561,7 +561,7 @@ public class CodeListTest extends FunctionTestSupport {
                 .isEqualTo("Does not exist in SAMPLE_CODELIST");
         inputFieldAccessor.overrideValue(By.id("item6"), "key1", driver);
         driver.findElement(By.id("btn1")).click();
-        assertThat(driver.findElement(By.id("errors")).getText()).isEqualTo("");
+        assertThat(driver.findElement(By.id("errors")).getText()).isEmpty();
         driver.findElement(By.id("btn1")).click();
     }
 
@@ -592,7 +592,7 @@ public class CodeListTest extends FunctionTestSupport {
         // not error occured
         inputFieldAccessor.overrideValue(By.id("item9"), "key1", driver);
         driver.findElement(By.id("btn1")).click();
-        assertThat(driver.findElement(By.id("errors")).getText()).isEqualTo("");
+        assertThat(driver.findElement(By.id("errors")).getText()).isEmpty();
 
         // sample multiple codelist error occured
         inputFieldAccessor.overrideValue(By.id("item9"), "key2", driver);
@@ -626,7 +626,7 @@ public class CodeListTest extends FunctionTestSupport {
         // not error occured
         inputFieldAccessor.overrideValue(By.id("item1"), "key1", driver);
         driver.findElement(By.id("btn1")).click();
-        assertThat(driver.findElement(By.id("item1Error")).getText()).isEqualTo("");
+        assertThat(driver.findElement(By.id("item1Error")).getText()).isEmpty();
         assertThat(driver.findElement(By.id("item1Label")).getText()).isEqualTo("label1");
 
         // error occured
@@ -634,7 +634,7 @@ public class CodeListTest extends FunctionTestSupport {
         driver.findElement(By.id("btn1")).click();
         assertThat(driver.findElement(By.id("item1Error")).getText())
                 .isEqualTo("Does not exist in CL_CODELIST08_08");
-        assertThat(driver.findElement(By.id("item1Label")).getText()).isEqualTo("");
+        assertThat(driver.findElement(By.id("item1Label")).getText()).isEmpty();
     }
 
     @Test

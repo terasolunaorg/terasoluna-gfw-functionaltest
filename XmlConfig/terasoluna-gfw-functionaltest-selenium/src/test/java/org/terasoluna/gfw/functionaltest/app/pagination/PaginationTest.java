@@ -2507,7 +2507,7 @@ public class PaginationTest extends FunctionTestSupport {
         webDriverWait.until(textToBe(By.xpath("//h1[2]"), "1 Page"));
 
         // outerElement close with </ul> confirm
-        assertThat(driver.getPageSource().contains("<ul></ul>")).isEqualTo(true);
+        assertThat(driver.getPageSource().contains("<ul></ul>")).isTrue();
 
         // page soruce
         pageSource.save(driver);

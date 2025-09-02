@@ -753,8 +753,7 @@ public class MessageTest extends FunctionTestSupport {
 
         // innerElement close with </li> confirm
         assertThat(driver.getPageSource()
-                .contains("<div class=\"alert alert-success\"><ul><li></li></ul></div>"))
-                        .isEqualTo(true);
+                .contains("<div class=\"alert alert-success\"><ul><li></li></ul></div>")).isTrue();
 
         // page source
         pageSource.save(driver);
@@ -766,7 +765,7 @@ public class MessageTest extends FunctionTestSupport {
 
         // outerElement close with </ul> confirm
         assertThat(driver.getPageSource()
-                .contains("<div class=\"alert alert-success\"><ul></ul></div>")).isEqualTo(true);
+                .contains("<div class=\"alert alert-success\"><ul></ul></div>")).isTrue();
 
         // page source
         pageSource.save(driver);
@@ -778,7 +777,7 @@ public class MessageTest extends FunctionTestSupport {
 
         // panelElement close with </div> confirm
         assertThat(driver.getPageSource().contains("<div class=\"alert alert-success\"></div>"))
-                .isEqualTo(true);
+                .isTrue();
 
         // page source
         pageSource.save(driver);

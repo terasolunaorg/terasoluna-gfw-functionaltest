@@ -43,7 +43,7 @@ public class LoggingTest extends FunctionTestSupport {
         String footerMdc = driver.findElement(By.id("xtrack")).getText();
         footerMdc = footerMdc.substring(footerMdc.indexOf(":") + 1, footerMdc.indexOf(":") + 33);
         // check default x-Track MDC
-        assertThat(targetMdc.matches("[0-9a-zA-Z]{32}")).isEqualTo(true);
+        assertThat(targetMdc.matches("[0-9a-zA-Z]{32}")).isTrue();
         assertThat(targetMdc).isEqualTo(footerMdc);
     }
 
@@ -59,7 +59,7 @@ public class LoggingTest extends FunctionTestSupport {
         String footerMdc = driver.findElement(By.id("xtrack")).getText();
         footerMdc = footerMdc.substring(footerMdc.indexOf(":") + 1, footerMdc.indexOf(":") + 33);
         // check custom x-Track MDC
-        assertThat(targetMdc.matches("[0-9a-zA-Z]{32}")).isEqualTo(true);
+        assertThat(targetMdc.matches("[0-9a-zA-Z]{32}")).isTrue();
         assertThat(targetMdc).isNotEqualTo(footerMdc);
     }
 
