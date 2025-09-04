@@ -15,9 +15,7 @@
  */
 package org.terasoluna.gfw.functionaltest.app.logging;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.not;
-import static org.hamcrest.MatcherAssert.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.springframework.http.HttpEntity;
@@ -45,8 +43,8 @@ public class LoggingTest extends FunctionTestSupport {
         String footerMdc = driver.findElement(By.id("xtrack")).getText();
         footerMdc = footerMdc.substring(footerMdc.indexOf(":") + 1, footerMdc.indexOf(":") + 33);
         // check default x-Track MDC
-        assertThat(targetMdc.matches("[0-9a-zA-Z]{32}"), is(true));
-        assertThat(targetMdc, is(footerMdc));
+        assertThat(targetMdc.matches("[0-9a-zA-Z]{32}")).isTrue();
+        assertThat(targetMdc).isEqualTo(footerMdc);
     }
 
     @Test
@@ -61,8 +59,8 @@ public class LoggingTest extends FunctionTestSupport {
         String footerMdc = driver.findElement(By.id("xtrack")).getText();
         footerMdc = footerMdc.substring(footerMdc.indexOf(":") + 1, footerMdc.indexOf(":") + 33);
         // check custom x-Track MDC
-        assertThat(targetMdc.matches("[0-9a-zA-Z]{32}"), is(true));
-        assertThat(targetMdc, not(footerMdc));
+        assertThat(targetMdc.matches("[0-9a-zA-Z]{32}")).isTrue();
+        assertThat(targetMdc).isNotEqualTo(footerMdc);
     }
 
     @Test
@@ -75,7 +73,7 @@ public class LoggingTest extends FunctionTestSupport {
                         HttpMethod.GET, new HttpEntity<byte[]>(requestHeaders), byte[].class);
 
         HttpHeaders headers = response.getHeaders();
-        assertThat(headers.getFirst("X-Track"), is("12345678901234567890123456789012"));
+        assertThat(headers.getFirst("X-Track")).isEqualTo("12345678901234567890123456789012");
     }
 
     @Test
@@ -125,7 +123,7 @@ public class LoggingTest extends FunctionTestSupport {
         driver.findElement(By.id("userIdMDCPutFilterDefault")).click();
 
         // check default userId MDC
-        assertThat(driver.findElement(By.id("userIdMDC")).getText(), is("anonymousUser"));
+        assertThat(driver.findElement(By.id("userIdMDC")).getText()).isEqualTo("anonymousUser");
     }
 
     @Test
@@ -142,7 +140,7 @@ public class LoggingTest extends FunctionTestSupport {
         driver.findElement(By.id("userIdMDCPutFilterCustom")).click();
 
         // check custom userId MDC
-        assertThat(driver.findElement(By.id("userIdMDC")).getText(), is("anonymousUser"));
+        assertThat(driver.findElement(By.id("userIdMDC")).getText()).isEqualTo("anonymousUser");
     }
 
     @Test
@@ -158,7 +156,7 @@ public class LoggingTest extends FunctionTestSupport {
         driver.findElement(By.id("userIdMDCPutFilterDefault")).click();
 
         // check default userId MDC
-        assertThat(driver.findElement(By.id("userIdMDC")).getText(), is("user1"));
+        assertThat(driver.findElement(By.id("userIdMDC")).getText()).isEqualTo("user1");
     }
 
     @Test
@@ -179,7 +177,7 @@ public class LoggingTest extends FunctionTestSupport {
         driver.findElement(By.id("userIdMDCPutFilterDefault")).click();
 
         // check default userId MDC
-        assertThat(driver.findElement(By.id("userIdMDC")).getText(), is("user1"));
+        assertThat(driver.findElement(By.id("userIdMDC")).getText()).isEqualTo("user1");
 
         // check trace logging
         // check visually the log file

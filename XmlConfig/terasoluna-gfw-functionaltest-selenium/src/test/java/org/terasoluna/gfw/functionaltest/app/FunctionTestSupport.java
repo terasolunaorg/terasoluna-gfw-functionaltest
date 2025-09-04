@@ -153,7 +153,6 @@ public abstract class FunctionTestSupport extends ApplicationObjectSupport {
         if (testMethod.isPresent()) {
             this.testName = testMethod.get().getName();
         }
-
         String testCaseName = testName.replaceAll("^test", "");
 
         File evidenceSavingDirectory = new File(

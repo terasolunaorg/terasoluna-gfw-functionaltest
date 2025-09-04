@@ -15,8 +15,7 @@
  */
 package org.terasoluna.gfw.functionaltest.app.string;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.MatcherAssert.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.terasoluna.gfw.functionaltest.app.FunctionTestSupport;
@@ -31,7 +30,8 @@ public class FullHalfConverterTest extends FunctionTestSupport {
         inputFieldAccessor.overrideValue(By.id("halfwidth"), "ｱﾞ!A8ｶﾞザ", driver);
         driver.findElement(By.id("toFullwidth")).click();
 
-        assertThat(driver.findElement(By.id("fullwidth")).getAttribute("value"), is("ア゛！Ａ８ガザ"));
+        assertThat(driver.findElement(By.id("fullwidth")).getAttribute("value"))
+                .isEqualTo("ア゛！Ａ８ガザ");
     }
 
     @Test
@@ -42,7 +42,8 @@ public class FullHalfConverterTest extends FunctionTestSupport {
         inputFieldAccessor.overrideValue(By.id("fullwidth"), "Ａ！アガｻ", driver);
         driver.findElement(By.id("toHalfwidth")).click();
 
-        assertThat(driver.findElement(By.id("halfwidth")).getAttribute("value"), is("A!ｱｶﾞｻ"));
+        assertThat(driver.findElement(By.id("halfwidth")).getAttribute("value"))
+                .isEqualTo("A!ｱｶﾞｻ");
     }
 
     @Test
@@ -84,13 +85,13 @@ public class FullHalfConverterTest extends FunctionTestSupport {
             inputFieldAccessor.overrideValue(By.id("halfwidth"), testData[1], driver);
             driver.findElement(By.id("toFullwidth")).click();
 
-            assertThat(driver.findElement(By.id("fullwidth")).getAttribute("value"),
-                    is(testData[0]));
+            assertThat(driver.findElement(By.id("fullwidth")).getAttribute("value"))
+                    .isEqualTo(testData[0]);
 
             driver.findElement(By.id("toHalfwidth")).click();
 
-            assertThat(driver.findElement(By.id("halfwidth")).getAttribute("value"),
-                    is(testData[1]));
+            assertThat(driver.findElement(By.id("halfwidth")).getAttribute("value"))
+                    .isEqualTo(testData[1]);
         }
 
     }
@@ -103,7 +104,8 @@ public class FullHalfConverterTest extends FunctionTestSupport {
         inputFieldAccessor.overrideValue(By.id("fullwidth"), "ハローワールド！", driver);
         driver.findElement(By.id("toHalfwidth")).click();
 
-        assertThat(driver.findElement(By.id("halfwidth")).getAttribute("value"), is("ﾊﾛ-ﾜ-ﾙﾄﾞ!"));
+        assertThat(driver.findElement(By.id("halfwidth")).getAttribute("value"))
+                .isEqualTo("ﾊﾛ-ﾜ-ﾙﾄﾞ!");
     }
 
     @Test
@@ -117,7 +119,7 @@ public class FullHalfConverterTest extends FunctionTestSupport {
 
         assertThat(dbLogProvider.countContainsByRegexExceptionMessage(null, null,
                 "fullwidth must be 1 length string \\(fullwidth = \\)",
-                "..*IllegalArgumentException..*"), is(1L));
+                "..*IllegalArgumentException..*")).isEqualTo(1L);
     }
 
     @Test
@@ -131,7 +133,7 @@ public class FullHalfConverterTest extends FunctionTestSupport {
 
         assertThat(dbLogProvider.countContainsByRegexExceptionMessage(null, null,
                 "fullwidth must be 1 length string \\(fullwidth = null\\)",
-                "..*IllegalArgumentException..*"), is(1L));
+                "..*IllegalArgumentException..*")).isEqualTo(1L);
     }
 
     @Test
@@ -145,7 +147,7 @@ public class FullHalfConverterTest extends FunctionTestSupport {
 
         assertThat(dbLogProvider.countContainsByRegexExceptionMessage(null, null,
                 "fullwidth must be 1 length string \\(fullwidth = ａａ\\)",
-                "..*IllegalArgumentException..*"), is(1L));
+                "..*IllegalArgumentException..*")).isEqualTo(1L);
     }
 
     @Test
@@ -159,7 +161,7 @@ public class FullHalfConverterTest extends FunctionTestSupport {
 
         assertThat(dbLogProvider.countContainsByRegexExceptionMessage(null, null,
                 "halfwidth must be 1 or 2 length string \\(halfwidth = \\)",
-                "..*IllegalArgumentException..*"), is(1L));
+                "..*IllegalArgumentException..*")).isEqualTo(1L);
     }
 
     @Test
@@ -173,7 +175,7 @@ public class FullHalfConverterTest extends FunctionTestSupport {
 
         assertThat(dbLogProvider.countContainsByRegexExceptionMessage(null, null,
                 "halfwidth must be 1 or 2 length string \\(halfwidth = null\\)",
-                "..*IllegalArgumentException..*"), is(1L));
+                "..*IllegalArgumentException..*")).isEqualTo(1L);
     }
 
     @Test
@@ -187,7 +189,7 @@ public class FullHalfConverterTest extends FunctionTestSupport {
 
         assertThat(dbLogProvider.countContainsByRegexExceptionMessage(null, null,
                 "halfwidth must be 1 or 2 length string \\(halfwidth = aaa\\)",
-                "..*IllegalArgumentException..*"), is(1L));
+                "..*IllegalArgumentException..*")).isEqualTo(1L);
     }
 
 }
