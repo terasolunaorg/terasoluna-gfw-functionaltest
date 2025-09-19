@@ -47,6 +47,4 @@
             password="{pbkdf2}2c1df137d1f93cac0dbdecf0326e64dfa9602f1b4bfcff31a1e433aca722a51b8a4852055b828a7f340e16b5696817f5" /> <!-- the raw password is "user3" -->
     </sec:user-service>
 
-    <bean id="webexpressionHandler" class="org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler" />
-
 </beans>
