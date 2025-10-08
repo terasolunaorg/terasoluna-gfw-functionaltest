@@ -15,7 +15,7 @@
  */
 package org.terasoluna.gfw.functionaltest.domain;
 
-import java.util.Date;
+import java.time.Instant;
 import java.util.concurrent.TimeUnit;
 
 import javax.sql.DataSource;
@@ -67,14 +67,14 @@ public class DBLogCleaner {
 
     private int cleanup(long savedPeriodMinutes) {
         // calculate cutoff date.
-        Date cutoffDate = new Date(
-                System.currentTimeMillis() - (TimeUnit.MINUTES.toMillis(savedPeriodMinutes)));
+        Instant cutoffDate =
+                Instant.now().minusMillis(TimeUnit.MINUTES.toMillis(savedPeriodMinutes));
 
         logger.info("Begin cleanup. cutoffDate is '{}'.", cutoffDate);
 
         // decide max event id of unnecessary log.
         MapSqlParameterSource queryParameters = new MapSqlParameterSource();
-        queryParameters.addValue("cutoffDateMillis", cutoffDate.getTime());
+        queryParameters.addValue("cutoffDateMillis", cutoffDate.toEpochMilli());
         Long maxEventId = namedParameterJdbcTemplate.queryForObject(
                 "SELECT MAX(event_id) FROM logging_event WHERE timestmp < :cutoffDateMillis",
                 queryParameters, Long.class);
