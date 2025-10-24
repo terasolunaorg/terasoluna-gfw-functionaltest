@@ -33,7 +33,6 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.security.web.access.AccessDeniedHandlerImpl;
 import org.springframework.security.web.access.DelegatingAccessDeniedHandler;
-import org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler;
 import org.springframework.security.web.csrf.InvalidCsrfTokenException;
 
 /**
@@ -100,7 +99,8 @@ public class SpringSecurityConfig {
     @Bean
     public AuthenticationProvider authProvider(
             @Qualifier("passwordEncoder") PasswordEncoder passwordEncoder) {
-        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider(userDetailsService());
+        DaoAuthenticationProvider authProvider =
+                new DaoAuthenticationProvider(userDetailsService());
         authProvider.setPasswordEncoder(passwordEncoder);
         return authProvider;
     }
@@ -124,12 +124,4 @@ public class SpringSecurityConfig {
         return manager;
     }
 
-    /**
-     * Configure {@link DefaultWebSecurityExpressionHandler} bean.
-     * @return Bean of configured {@link DefaultWebSecurityExpressionHandler}
-     */
-    @Bean("webexpressionHandler")
-    public DefaultWebSecurityExpressionHandler webExpressionHandler() {
-        return new DefaultWebSecurityExpressionHandler();
-    }
 }
