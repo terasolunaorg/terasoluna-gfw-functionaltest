@@ -27,16 +27,16 @@
                 <fieldset>
                     <legend>Nested Bean(Parent)</legend>
                     <p>
-                        <span>Date(yyyy-MM-dd)</span>
-                        <form:input path="date" />
+                        <span>LocalDateTime(yyyy-MM-dd HH:mm:ss)</span>
+                        <form:input path="localDateTime" />
                         <span>LocalDate(yyyy-MM-dd)</span>
                         <form:input path="localDate" />
                     </p>
                     <fieldset>
                         <legend>Nested Bean(Child)</legend>
                         <p>
-                            <span>Date(yyyy-MM-dd)</span>
-                            <form:input path="item.date" />
+                            <span>LocalDateTime(yyyy-MM-dd HH:mm:ss)</span>
+                            <form:input path="item.localDateTime" />
                             <span>LocalDate(yyyy-MM-dd)</span>
                             <form:input path="item.localDate" />
                         </p>

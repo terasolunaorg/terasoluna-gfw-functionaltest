@@ -16,33 +16,25 @@
 package org.terasoluna.gfw.functionaltest.app.el;
 
 import java.time.LocalDate;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class DateForm5 {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-    private Date date;
-
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate localDate;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime localDateTime;
 
     private DateFormItem5 item;
 
     public DateForm5() {}
 
-    public DateForm5(Date date, LocalDate localDate, DateFormItem5 item) {
-        this.date = date;
+    public DateForm5(LocalDateTime localDateTime, LocalDate localDate, DateFormItem5 item) {
+        this.localDateTime = localDateTime;
         this.localDate = localDate;
         this.item = item;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
     }
 
     public LocalDate getLocalDate() {
@@ -51,6 +43,14 @@ public class DateForm5 {
 
     public void setLocalDate(LocalDate localDate) {
         this.localDate = localDate;
+    }
+
+    public LocalDateTime getLocalDateTime() {
+        return localDateTime;
+    }
+
+    public void setLocalDateTime(LocalDateTime localDateTime) {
+        this.localDateTime = localDateTime;
     }
 
     public DateFormItem5 getItem() {

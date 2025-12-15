@@ -16,7 +16,7 @@
 package org.terasoluna.gfw.functionaltest.domain.repository.customer;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -33,8 +33,8 @@ public class CustomerSearchCriteria implements Serializable {
 
     private int age;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date dateOfBirth;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    private LocalDate dateOfBirth;
 
     public String getName() {
         return name;
@@ -68,11 +68,11 @@ public class CustomerSearchCriteria implements Serializable {
         this.age = age;
     }
 
-    public Date getDateOfBirth() {
+    public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
+    public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 

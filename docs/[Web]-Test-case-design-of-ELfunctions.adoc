@@ -291,7 +291,7 @@ a| 以下の通り出力され、リンクが生成されないこと
 | Mapがクエリ表示されることを確認するテスト
 a| * 出力値(Map)をf:query()で出力する
 * 出力するMapの値は以下のパターンを設定する
-* java.util.Date、String、int
+* java.time.LocalDate、String、int
 a| * クエリ形式(&Key=Value)で表示されること
 
 | 6.2
@@ -309,7 +309,7 @@ a| * クエリ形式(&Key=Value)で表示されること
 | JavaBeanがクエリ表示されることを確認するテスト
 a| * 出力値(JavaBean)をf:query()で出力する
 * 出力するJavaBeanの値はBoolean型はtrue及びfalse、他の型は任意、型は以下のパターンを設定する
-* String、List<String>、Boolean、int、java.util.Date
+* String、List<String>、Boolean、int、java.time.LocalDate
 * 検索フォーム + PaginationTag を使用
 a| * クエリ形式(&Key=Value)で表示されること
 
@@ -318,7 +318,7 @@ a| * クエリ形式(&Key=Value)で表示されること
 | JavaBeanがクエリ表示されることを確認するテスト(値=null)
 a| * 出力値(JavaBean)をf:query()で出力する
 * 出力するJavaBeanの値はNULL、型は以下のパターンを設定する。
-* String、List<String>、Boolean、java.util.Date
+* String、List<String>、Boolean、java.time.LocalDate
 * 検索フォーム + PaginationTag を使用
 a| * クエリ形式(&Key=Value)で表示されること
 
@@ -393,7 +393,7 @@ a| * 遷移先ページに元のパラメータが引き継がれ、formにバ�
 | 20X系
 | DateTimeFormatアノテーションが付与されたフィールドを持つネストしたJavaBeanのクエリパラメータが遷移先ページへ適切にバインドされることを確認するテスト
 a| * JavaBeanのフィールドの型は以下のパターンを設定する
-* java.util.Date,org.joda.time.LocalDate
+* java.time.LocalDateTime,java.time.LocalDate
 * 入力フォームからパラメータを送信し、フォームオブジェクトに値をバインド
 * t:paginationを使用してページ遷移（フォームオブジェクトにバインドされた値をf:query()でクエリ化）
 a| * 遷移先ページに元のパラメータが引き継がれ、formにバインドされていること
