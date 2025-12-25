@@ -765,14 +765,13 @@ public class ElTest extends FunctionTestSupport {
         driver.findElement(By.id("pagination")).findElement(By.linkText("2")).click();
 
         // output 06_13 Test
-        assertThat(driver.findElement(By.id("localDateTime")).getAttribute("value"))
-                .isEqualTo("2015-04-01 10:20:30");
-        assertThat(driver.findElement(By.id("localDate")).getAttribute("value"))
-                .isEqualTo("2015-06-10");
-        assertThat(driver.findElement(By.id("item.localDateTime")).getAttribute("value"))
-                .isEqualTo("2015-05-01 10:30:40");
-        assertThat(driver.findElement(By.id("item.localDate")).getAttribute("value"))
-                .isEqualTo("2015-07-10");
+         assertThat(driver.findElement(By.id("localDateTime")).getAttribute("value"),
+                is("2015-04-01 10:20:30"));
+        assertThat(driver.findElement(By.id("localDate")).getAttribute("value"), is("2015-06-10"));
+        assertThat(driver.findElement(By.id("item.localDateTime")).getAttribute("value"),
+                is("2015-05-01 10:30:40"));
+        assertThat(driver.findElement(By.id("item.localDate")).getAttribute("value"),
+                is("2015-07-10"));
     }
 
     @Test
