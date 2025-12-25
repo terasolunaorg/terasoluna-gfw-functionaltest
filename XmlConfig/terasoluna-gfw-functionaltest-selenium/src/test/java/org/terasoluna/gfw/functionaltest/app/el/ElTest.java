@@ -755,18 +755,21 @@ public class ElTest extends FunctionTestSupport {
     public void test06_13_DateTimeFormat() {
         driver.findElement(By.id("06_13")).click();
 
-        inputFieldAccessor.overrideValue(By.id("date"), "2015-04-01", driver);
+        inputFieldAccessor.overrideValue(By.id("localDateTime"), "2015-04-01 10:20:30", driver);
         inputFieldAccessor.overrideValue(By.id("localDate"), "2015-06-10", driver);
-        inputFieldAccessor.overrideValue(By.id("item.date"), "2015-05-01", driver);
+        inputFieldAccessor.overrideValue(By.id("item.localDateTime"), "2015-05-01 10:30:40",
+                driver);
         inputFieldAccessor.overrideValue(By.id("item.localDate"), "2015-07-10", driver);
 
         driver.findElement(By.id("searchButton")).click();
         driver.findElement(By.id("pagination")).findElement(By.linkText("2")).click();
 
         // output 06_13 Test
-        assertThat(driver.findElement(By.id("date")).getAttribute("value"), is("2015-04-01"));
+         assertThat(driver.findElement(By.id("localDateTime")).getAttribute("value"),
+                is("2015-04-01 10:20:30"));
         assertThat(driver.findElement(By.id("localDate")).getAttribute("value"), is("2015-06-10"));
-        assertThat(driver.findElement(By.id("item.date")).getAttribute("value"), is("2015-05-01"));
+        assertThat(driver.findElement(By.id("item.localDateTime")).getAttribute("value"),
+                is("2015-05-01 10:30:40"));
         assertThat(driver.findElement(By.id("item.localDate")).getAttribute("value"),
                 is("2015-07-10"));
     }
