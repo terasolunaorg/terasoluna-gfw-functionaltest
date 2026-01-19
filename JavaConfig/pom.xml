@@ -259,5 +259,19 @@
                 <project.env.buildFinalName>${project.artifactId}-${project.version}-tomcat10-oracle</project.env.buildFinalName>
             </properties>
         </profile>
+        <profile>
+            <id>tomcat11-postgresql</id>
+            <properties>
+                <project.env.main.directory>configs/tomcat11-postgresql</project.env.main.directory>
+                <project.env.buildFinalName>${project.artifactId}-${project.version}-tomcat11-postgresql</project.env.buildFinalName>
+            </properties>
+        </profile>
+        <profile>
+            <id>tomcat11-oracle</id>
+            <properties>
+                <project.env.main.directory>configs/tomcat11-oracle</project.env.main.directory>
+                <project.env.buildFinalName>${project.artifactId}-${project.version}-tomcat11-oracle</project.env.buildFinalName>
+            </properties>
+        </profile>
     </profiles>
 </project>
