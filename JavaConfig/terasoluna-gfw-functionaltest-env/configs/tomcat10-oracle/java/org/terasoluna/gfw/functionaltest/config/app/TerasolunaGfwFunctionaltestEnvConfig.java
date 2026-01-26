@@ -19,7 +19,6 @@ import java.math.BigInteger;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 import org.apache.commons.dbcp2.BasicDataSource;
@@ -54,10 +53,9 @@ public class TerasolunaGfwFunctionaltestEnvConfig {
     /**
      * Configure {@link DataSource} bean.
      * @return Bean of configured {@link JndiObjectFactoryBean}
-     * @throws NamingException
      */
     @Bean(name = "dataSource")
-    public JndiObjectFactoryBean dataSource() throws NamingException {
+    public JndiObjectFactoryBean dataSource() {
         JndiObjectFactoryBean bean = new JndiObjectFactoryBean();
         bean.setJndiName("jdbc/gfwFunctionaltestDataSource");
         bean.setExpectedType(javax.sql.DataSource.class);
