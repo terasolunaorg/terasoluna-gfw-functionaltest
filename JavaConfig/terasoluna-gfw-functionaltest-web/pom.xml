@@ -170,11 +170,6 @@
             <artifactId>bootstrap</artifactId>
             <scope>runtime</scope>
         </dependency>
-        <dependency>
-            <groupId>org.webjars.npm</groupId>
-            <artifactId>imperavi-kube</artifactId>
-            <scope>runtime</scope>
-        </dependency>
         <!-- == End WebJars == -->
 
     </dependencies>
