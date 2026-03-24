@@ -20,7 +20,6 @@
         <div class="wrapper">
             <jsp:include page="/WEB-INF/views/layout/header.jsp" />
 
-            <link rel="stylesheet" href="${pageContext.request.contextPath}/webjars/imperavi-kube/dist/css/kube.css" type="text/css" media="screen, projection" />
             <h2>Output Message</h2>
             <t:messagesPanel panelClassName="message" panelTypeClassPrefix="message-" outerElement="" innerElement="" />
 
