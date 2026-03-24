@@ -401,6 +401,43 @@ footer {
     text-align: right;
 }
 
+.message {
+    margin: 0 0 20px;
+    padding: 10px 14px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.message ul,
+.message ol {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.message-success {
+    color: #2f6627;
+    background-color: #edf7e8;
+    border-color: #b9e0a9;
+}
+
+.message-info {
+    color: #1f4f7a;
+    background-color: #e8f3fb;
+    border-color: #a7cbe7;
+}
+
+.message-warning {
+    color: #7d5a20;
+    background-color: #fff7e6;
+    border-color: #f0d58f;
+}
+
+.message-error {
+    color: #7a2222;
+    background-color: #fdeaea;
+    border-color: #efb0b0;
+}
+
 .page {
     height: 46px;
     margin: 18px 0;
