@@ -192,11 +192,6 @@
                 <artifactId>bootstrap</artifactId>
                 <version>${bootstrap.version}</version>
             </dependency>
-            <dependency>
-                <groupId>org.webjars.npm</groupId>
-                <artifactId>imperavi-kube</artifactId>
-                <version>${imperavi-kube.version}</version>
-            </dependency>
         </dependencies>
     </dependencyManagement>
     <properties>
@@ -207,7 +202,6 @@
         <!-- == WebJars Version == -->
         <jquery.version>1.11.1</jquery.version>
         <bootstrap.version>3.2.0</bootstrap.version>
-        <imperavi-kube.version>6.5.2</imperavi-kube.version>
         <!-- == Project Properties == -->
         <project.env.main.directory>src/main</project.env.main.directory>
         <project.env.buildFinalName>${project.artifactId}-${project.version}</project.env.buildFinalName>
