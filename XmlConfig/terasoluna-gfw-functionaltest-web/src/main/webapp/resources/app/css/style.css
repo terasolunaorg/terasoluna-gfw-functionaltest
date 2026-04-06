@@ -128,7 +128,7 @@ header ul {
     background: -webkit-linear-gradient(top, #f8f8f8 0%, #dddddd 100%);
     background: -o-linear-gradient(top, #f8f8f8 0%, #dddddd 100%);
     background: -ms-linear-gradient(top, #f8f8f8 0%, #dddddd 100%);
-    background: linear-gradient(top, #f8f8f8 0%, #dddddd 100%);
+    background: linear-gradient(to bottom, #f8f8f8 0%, #dddddd 100%);
 
     border-radius: 5px;
     border: 1px solid #d2d2d2;
@@ -581,10 +581,7 @@ input.mainbtn {
     padding: 5px 0;
 }
 .mainbtn:hover {
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(5%, #dfdfdf), color-stop(100%, #ededed));
-    background: -moz-linear-gradient(center top, #dfdfdf 5%, #ededed 100%);
-    background: -ms-linear-gradient(top, #dfdfdf 5%, #ededed 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfdfdf', endColorstr='#ededed');
+    background: linear-gradient(to bottom, #dfdfdf 5%, #ededed 100%);
     background-color: #dfdfdf;
 }
 .mainbtn:active {
@@ -607,10 +604,7 @@ input.mainbtn-left {
     padding: 5px 0;
 }
 .mainbtn-left:hover {
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(5%, #dfdfdf), color-stop(100%, #ededed));
-    background: -moz-linear-gradient(center top, #dfdfdf 5%, #ededed 100%);
-    background: -ms-linear-gradient(top, #dfdfdf 5%, #ededed 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfdfdf', endColorstr='#ededed');
+    background: linear-gradient(to bottom, #dfdfdf 5%, #ededed 100%);
     background-color: #dfdfdf;
 }
 .mainbtn-left:active {
@@ -632,10 +626,7 @@ input.mainbtn-wide {
     padding: 3px 0;
 }
 .mainbtn-wide:hover {
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(5%, #dfdfdf), color-stop(100%, #ededed));
-    background: -moz-linear-gradient(center top, #dfdfdf 5%, #ededed 100%);
-    background: -ms-linear-gradient(top, #dfdfdf 5%, #ededed 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfdfdf', endColorstr='#ededed');
+    background: linear-gradient(to bottom, #dfdfdf 5%, #ededed 100%);
     background-color: #dfdfdf;
 }
 .mainbtn-wide:active {
