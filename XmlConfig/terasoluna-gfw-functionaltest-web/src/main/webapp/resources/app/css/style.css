@@ -581,7 +581,10 @@ input.mainbtn {
     padding: 5px 0;
 }
 .mainbtn:hover {
-    background: linear-gradient(to bottom, #dfdfdf 5%, #ededed 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(5%, #dfdfdf), color-stop(100%, #ededed));
+    background: -moz-linear-gradient(top, #dfdfdf 5%, #ededed 100%);
+    background: -ms-linear-gradient(top, #dfdfdf 5%, #ededed 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfdfdf', endColorstr='#ededed');
     background-color: #dfdfdf;
 }
 .mainbtn:active {
@@ -604,7 +607,10 @@ input.mainbtn-left {
     padding: 5px 0;
 }
 .mainbtn-left:hover {
-    background: linear-gradient(to bottom, #dfdfdf 5%, #ededed 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(5%, #dfdfdf), color-stop(100%, #ededed));
+    background: -moz-linear-gradient(top, #dfdfdf 5%, #ededed 100%);
+    background: -ms-linear-gradient(top, #dfdfdf 5%, #ededed 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfdfdf', endColorstr='#ededed');
     background-color: #dfdfdf;
 }
 .mainbtn-left:active {
@@ -626,7 +632,10 @@ input.mainbtn-wide {
     padding: 3px 0;
 }
 .mainbtn-wide:hover {
-    background: linear-gradient(to bottom, #dfdfdf 5%, #ededed 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(5%, #dfdfdf), color-stop(100%, #ededed));
+    background: -moz-linear-gradient(top, #dfdfdf 5%, #ededed 100%);
+    background: -ms-linear-gradient(top, #dfdfdf 5%, #ededed 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfdfdf', endColorstr='#ededed');
     background-color: #dfdfdf;
 }
 .mainbtn-wide:active {
