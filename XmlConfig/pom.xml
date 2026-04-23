@@ -201,7 +201,7 @@
         <ojdbc.version>23.26.0.0.0</ojdbc.version>
         <!-- == WebJars Version == -->
         <jquery.version>1.11.1</jquery.version>
-        <bootstrap.version>3.2.0</bootstrap.version>
+        <bootstrap.version>5.3.8</bootstrap.version>
         <!-- == Project Properties == -->
         <project.env.main.directory>src/main</project.env.main.directory>
         <project.env.buildFinalName>${project.artifactId}-${project.version}</project.env.buildFinalName>
