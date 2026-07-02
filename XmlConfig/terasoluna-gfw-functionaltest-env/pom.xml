@@ -21,9 +21,6 @@
         <resources>
             <resource>
                 <directory>${project.env.main.directory}/resources</directory>
-                <excludes>
-                    <exclude>**/*.env.ftl</exclude>
-                </excludes>
             </resource>
         </resources>
         <plugins>

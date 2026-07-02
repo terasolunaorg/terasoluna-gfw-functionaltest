@@ -17,9 +17,12 @@
         <url>https://github.com/terasolunaorg/terasoluna-gfw-functionaltest</url>
     </scm>
 
-    <properties>
-        <project.root.basedir>${project.parent.basedir}</project.root.basedir>
-    </properties>
+    <!--
+        initdb profiles
+        - local-*    : DB on the host machine (host = 127.0.0.1)
+        - container-*: DB inside Docker compose (host = container alias: postgres / oracle)
+        Oracle is container-only.
+    -->
     <profiles>
         <profile>
             <id>local-postgres</id>
@@ -40,15 +43,29 @@
             </properties>
         </profile>
         <profile>
-            <!-- ojdbc8.jar must be pre-installed in local repository. -->
-            <id>oracle</id>
+            <id>container-postgres</id>
+            <properties>
+                <db.encoding>UTF8</db.encoding>
+                <db.basedir>${project.basedir}/src/main/sqls/postgres</db.basedir>
+                <db.url>jdbc:postgresql://db-server:5432/terasoluna-gfw-functionaltest</db.url>
+                <db.username>postgres</db.username>
+                <db.password>P0stgres</db.password>
+                <db.driver>org.postgresql.Driver</db.driver>
+                <db.groupId>org.postgresql</db.groupId>
+                <db.artifactId>postgresql</db.artifactId>
+                <db.version>${postgresql.version}</db.version>
+                <db.delimiterType>row</db.delimiterType>
+            </properties>
+        </profile>
+        <profile>
+            <id>container-oracle</id>
             <properties>
                 <db.encoding>UTF8</db.encoding>
                 <db.basedir>${project.basedir}/src/main/sqls/oracle</db.basedir>
-                <db.url>jdbc:oracle:thin:@localhost:1521:teradb</db.url>
-                <db.username>gfw</db.username>
-                <db.password>gfw</db.password>
-                <db.driver>oracle.jdbc.OracleDriver</db.driver>
+                <db.url>jdbc:oracle:thin:@db-server:1521:tera_server</db.url>
+                <db.username>cfw</db.username>
+                <db.password>cfw</db.password>
+                <db.driver>oracle.jdbc.driver.OracleDriver</db.driver>
                 <db.groupId>com.oracle.database.jdbc</db.groupId>
                 <db.artifactId>ojdbc17</db.artifactId>
                 <db.version>${ojdbc.version}</db.version>
@@ -75,18 +92,21 @@
                     <username>${db.username}</username>
                     <password>${db.password}</password>
                     <encoding>${db.encoding}</encoding>
-                    <autocommit>false</autocommit>
+                    <skip>${maven.test.skip}</skip>
                     <delimiterType>${db.delimiterType}</delimiterType>
-                    <skip>false</skip>
+                    <orderFile>ascending</orderFile>
+                    <autocommit>false</autocommit>
                     <fileset>
                         <basedir>${db.basedir}</basedir>
                         <includes>
                             <include>*.sql</include>
                         </includes>
                     </fileset>
-                    <orderFile>ascending</orderFile>
                 </configuration>
             </plugin>
         </plugins>
     </build>
+    <properties>
+        <project.root.basedir>${project.parent.basedir}</project.root.basedir>
+    </properties>
 </project>

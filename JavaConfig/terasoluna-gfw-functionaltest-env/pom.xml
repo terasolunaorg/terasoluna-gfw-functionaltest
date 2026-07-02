@@ -18,16 +18,44 @@
     </scm>
     <build>
         <finalName>${project.env.buildFinalName}</finalName>
-        <sourceDirectory>${project.env.main.directory}/java</sourceDirectory>
+        <sourceDirectory>src/main/java</sourceDirectory>
         <resources>
             <resource>
-                <directory>${project.env.main.directory}/resources</directory>
+                <directory>src/main/resources</directory>
                 <excludes>
-                    <exclude>**/*.env.ftl</exclude>
+                    <exclude>META-INF/web-fragment.xml</exclude>
                 </excludes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>META-INF/web-fragment.xml</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>${project.env.main.directory}/resources</directory>
             </resource>
         </resources>
         <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>add-envconfig-source</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>add-source</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <source>${project.env.envconfig.source.dir}</source>
+                            </sources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
