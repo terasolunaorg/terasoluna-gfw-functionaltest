@@ -123,9 +123,10 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-war-plugin</artifactId>
                     <configuration>
+                        <containerConfigXML>${project.root.basedir}/${project.env.target.name}/${project.env.main.directory}/ContainerConfigXML/context.xml</containerConfigXML>
                         <webResources>
                             <resource>
-                                <directory>${project.basedir}/../terasoluna-gfw-functionaltest-env/${project.env.main.directory}/webapp/WEB-INF</directory>
+                                <directory>${project.root.basedir}/${project.env.target.name}/src/main/webapp/WEB-INF</directory>
                                 <targetPath>WEB-INF</targetPath>
                                 <filtering>true</filtering>
                                 <excludes>
@@ -203,8 +204,10 @@
         <jquery.version>4.0.0</jquery.version>
         <bootstrap.version>5.3.8</bootstrap.version>
         <!-- == Project Properties == -->
-        <project.env.main.directory>src/main</project.env.main.directory>
+        <project.env.main.directory>configs/local-h2</project.env.main.directory>
+        <project.env.target.name>terasoluna-gfw-functionaltest-env</project.env.target.name>
         <project.env.buildFinalName>${project.artifactId}-${project.version}</project.env.buildFinalName>
+        <project.env.envconfig.source.dir>${project.root.basedir}/${project.env.target.name}/configs/_env-default/java</project.env.envconfig.source.dir>
         <project.root.basedir>${project.basedir}</project.root.basedir>
         <encoding>UTF-8</encoding>
         <java-version>17</java-version>
@@ -222,49 +225,67 @@
 
     <profiles>
         <profile>
-            <id>include-context</id>
+            <id>local-h2</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
-            <build>
-                <pluginManagement>
-                    <plugins>
-                        <plugin>
-                            <artifactId>maven-war-plugin</artifactId>
-                            <configuration>
-                                <containerConfigXML>${project.basedir}/../terasoluna-gfw-functionaltest-env/configs/local/ContainerConfigXML/context.xml</containerConfigXML>
-                            </configuration>
-                        </plugin>
-                    </plugins>
-                </pluginManagement>
-            </build>
-        </profile>
-        <profile>
-            <id>tomcat10-postgresql</id>
             <properties>
-                <project.env.main.directory>configs/tomcat10-postgresql</project.env.main.directory>
-                <project.env.buildFinalName>${project.artifactId}-${project.version}-tomcat10-postgresql</project.env.buildFinalName>
+                <project.env.main.directory>configs/local-h2</project.env.main.directory>
+                <project.env.buildFinalName>${project.artifactId}-${project.version}-local-h2</project.env.buildFinalName>
             </properties>
         </profile>
         <profile>
-            <id>tomcat10-oracle</id>
+            <id>local-postgres</id>
             <properties>
-                <project.env.main.directory>configs/tomcat10-oracle</project.env.main.directory>
-                <project.env.buildFinalName>${project.artifactId}-${project.version}-tomcat10-oracle</project.env.buildFinalName>
+                <project.env.main.directory>configs/local-postgres</project.env.main.directory>
+                <project.env.buildFinalName>${project.artifactId}-${project.version}-local-postgres</project.env.buildFinalName>
+                <project.env.envconfig.source.dir>${project.root.basedir}/${project.env.target.name}/configs/_env-jndi/java</project.env.envconfig.source.dir>
             </properties>
         </profile>
         <profile>
-            <id>tomcat11-postgresql</id>
+            <id>container-embedded-h2</id>
             <properties>
-                <project.env.main.directory>configs/tomcat11-postgresql</project.env.main.directory>
-                <project.env.buildFinalName>${project.artifactId}-${project.version}-tomcat11-postgresql</project.env.buildFinalName>
+                <project.env.main.directory>configs/container-embedded-h2</project.env.main.directory>
+                <project.env.buildFinalName>${project.artifactId}-${project.version}-container-embedded-h2</project.env.buildFinalName>
             </properties>
         </profile>
         <profile>
-            <id>tomcat11-oracle</id>
+            <id>container-embedded-postgres</id>
             <properties>
-                <project.env.main.directory>configs/tomcat11-oracle</project.env.main.directory>
-                <project.env.buildFinalName>${project.artifactId}-${project.version}-tomcat11-oracle</project.env.buildFinalName>
+                <project.env.main.directory>configs/container-embedded-postgres</project.env.main.directory>
+                <project.env.buildFinalName>${project.artifactId}-${project.version}-container-embedded-postgres</project.env.buildFinalName>
+                <project.env.envconfig.source.dir>${project.root.basedir}/${project.env.target.name}/configs/_env-jndi/java</project.env.envconfig.source.dir>
+            </properties>
+        </profile>
+        <profile>
+            <id>container-embedded-oracle</id>
+            <properties>
+                <project.env.main.directory>configs/container-embedded-oracle</project.env.main.directory>
+                <project.env.buildFinalName>${project.artifactId}-${project.version}-container-embedded-oracle</project.env.buildFinalName>
+                <project.env.envconfig.source.dir>${project.root.basedir}/${project.env.target.name}/configs/_env-jndi/java</project.env.envconfig.source.dir>
+            </properties>
+        </profile>
+        <profile>
+            <id>container-external-h2</id>
+            <properties>
+                <project.env.main.directory>configs/container-external-h2</project.env.main.directory>
+                <project.env.buildFinalName>${project.artifactId}-${project.version}-h2</project.env.buildFinalName>
+            </properties>
+        </profile>
+        <profile>
+            <id>container-external-postgres</id>
+            <properties>
+                <project.env.main.directory>configs/container-external-postgres</project.env.main.directory>
+                <project.env.buildFinalName>${project.artifactId}-${project.version}-postgres</project.env.buildFinalName>
+                <project.env.envconfig.source.dir>${project.root.basedir}/${project.env.target.name}/configs/_env-jndi/java</project.env.envconfig.source.dir>
+            </properties>
+        </profile>
+        <profile>
+            <id>container-external-oracle</id>
+            <properties>
+                <project.env.main.directory>configs/container-external-oracle</project.env.main.directory>
+                <project.env.buildFinalName>${project.artifactId}-${project.version}-oracle</project.env.buildFinalName>
+                <project.env.envconfig.source.dir>${project.root.basedir}/${project.env.target.name}/configs/_env-jndi/java</project.env.envconfig.source.dir>
             </properties>
         </profile>
     </profiles>
