@@ -4,6 +4,6 @@
 <Context>
     <Resource name="jdbc/gfwFunctionaltestDataSource" type="javax.sql.DataSource"
         driverClassName="oracle.jdbc.OracleDriver" username="cfw" password="cfw"
-        url="jdbc:oracle:thin:@db-server:1521/tera-server" maxIdle="16" minIdle="0" maxWaitMillis="60000"
+        url="jdbc:oracle:thin:@db-server:1521/tera_server" maxIdle="16" minIdle="0" maxWaitMillis="60000"
         maxTotal="96" />
 </Context>
