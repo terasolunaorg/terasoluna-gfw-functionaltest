@@ -22,6 +22,7 @@ import java.util.Map;
 import javax.sql.DataSource;
 
 import org.apache.commons.dbcp2.BasicDataSource;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
@@ -40,6 +41,44 @@ import jakarta.persistence.EntityManagerFactory;
  */
 @Configuration
 public class TerasolunaGfwFunctionaltestEnvConfig {
+
+    /**
+     * Property databaseName.
+     */
+    @Value("${database}")
+    private String database;
+
+    private boolean isOracle() {
+        return "ORACLE".equalsIgnoreCase(database);
+    }
+
+    private String nextValueQuery(String sequenceName) {
+        if (isOracle()) {
+            return "SELECT " + sequenceName + ".nextval AS seq FROM DUAL";
+        }
+        return "SELECT nextval('" + sequenceName + "') AS seq";
+    }
+
+    private String currentValueQuery(String sequenceName) {
+        if (isOracle()) {
+            return "SELECT " + sequenceName + ".currval AS seq FROM DUAL";
+        }
+        return "SELECT currval('" + sequenceName + "') AS seq";
+    }
+
+    private String stringNextValueQuery(String sequenceName) {
+        if (isOracle()) {
+            return "SELECT LPAD(" + sequenceName + ".nextval, 10, '0') AS seq FROM DUAL";
+        }
+        return "SELECT TO_CHAR(nextval('" + sequenceName + "'),'FM0000000000') AS seq";
+    }
+
+    private String stringCurrentValueQuery(String sequenceName) {
+        if (isOracle()) {
+            return "SELECT LPAD(" + sequenceName + ".currval, 10, '0') AS seq FROM DUAL";
+        }
+        return "SELECT TO_CHAR(currval('" + sequenceName + "'),'FM0000000000') AS seq";
+    }
 
     /**
      * Configure {@link DefaultClockFactory}.
@@ -73,8 +112,8 @@ public class TerasolunaGfwFunctionaltestEnvConfig {
         JdbcSequencer<Integer> jdbcSequencer = new JdbcSequencer<Integer>();
         jdbcSequencer.setDataSource(dataSource);
         jdbcSequencer.setSequenceClass(java.lang.Integer.class);
-        jdbcSequencer.setNextValueQuery("SELECT nextval('INTEGER_SEQ') AS seq");
-        jdbcSequencer.setCurrentValueQuery("SELECT currval('INTEGER_SEQ') AS seq");
+        jdbcSequencer.setNextValueQuery(nextValueQuery("INTEGER_SEQ"));
+        jdbcSequencer.setCurrentValueQuery(currentValueQuery("INTEGER_SEQ"));
         return jdbcSequencer;
     }
 
@@ -88,8 +127,8 @@ public class TerasolunaGfwFunctionaltestEnvConfig {
         JdbcSequencer<Long> jdbcSequencer = new JdbcSequencer<Long>();
         jdbcSequencer.setDataSource(dataSource);
         jdbcSequencer.setSequenceClass(java.lang.Long.class);
-        jdbcSequencer.setNextValueQuery("SELECT nextval('LONG_SEQ') AS seq");
-        jdbcSequencer.setCurrentValueQuery("SELECT currval('LONG_SEQ') AS seq");
+        jdbcSequencer.setNextValueQuery(nextValueQuery("LONG_SEQ"));
+        jdbcSequencer.setCurrentValueQuery(currentValueQuery("LONG_SEQ"));
         return jdbcSequencer;
     }
 
@@ -103,8 +142,8 @@ public class TerasolunaGfwFunctionaltestEnvConfig {
         JdbcSequencer<BigInteger> jdbcSequencer = new JdbcSequencer<BigInteger>();
         jdbcSequencer.setDataSource(dataSource);
         jdbcSequencer.setSequenceClass(java.math.BigInteger.class);
-        jdbcSequencer.setNextValueQuery("SELECT nextval('BIG_INTEGER_SEQ') AS seq");
-        jdbcSequencer.setCurrentValueQuery("SELECT currval('BIG_INTEGER_SEQ') AS seq");
+        jdbcSequencer.setNextValueQuery(nextValueQuery("BIG_INTEGER_SEQ"));
+        jdbcSequencer.setCurrentValueQuery(currentValueQuery("BIG_INTEGER_SEQ"));
         return jdbcSequencer;
     }
 
@@ -118,10 +157,8 @@ public class TerasolunaGfwFunctionaltestEnvConfig {
         JdbcSequencer<String> jdbcSequencer = new JdbcSequencer<String>();
         jdbcSequencer.setDataSource(dataSource);
         jdbcSequencer.setSequenceClass(java.lang.String.class);
-        jdbcSequencer
-                .setNextValueQuery("SELECT TO_CHAR(nextval('STRING_SEQ'),'FM0000000000') AS seq");
-        jdbcSequencer.setCurrentValueQuery(
-                "SELECT TO_CHAR(currval('STRING_SEQ'),'FM0000000000') AS seq");
+        jdbcSequencer.setNextValueQuery(stringNextValueQuery("STRING_SEQ"));
+        jdbcSequencer.setCurrentValueQuery(stringCurrentValueQuery("STRING_SEQ"));
         return jdbcSequencer;
     }
 
@@ -135,8 +172,8 @@ public class TerasolunaGfwFunctionaltestEnvConfig {
         JdbcSequencer<Integer> jdbcSequencer = new JdbcSequencer<Integer>();
         jdbcSequencer.setDataSource(dataSource);
         jdbcSequencer.setSequenceClass(java.lang.Integer.class);
-        jdbcSequencer.setNextValueQuery("SELECT nextval('NOT_FOUND_SEQ') AS seq");
-        jdbcSequencer.setCurrentValueQuery("SELECT currval('NOT_FOUND_SEQ') AS seq");
+        jdbcSequencer.setNextValueQuery(nextValueQuery("NOT_FOUND_SEQ"));
+        jdbcSequencer.setCurrentValueQuery(currentValueQuery("NOT_FOUND_SEQ"));
         return jdbcSequencer;
     }
 
