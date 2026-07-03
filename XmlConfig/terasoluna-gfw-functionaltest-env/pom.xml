@@ -46,6 +46,15 @@
             </plugin>
         </plugins>
     </build>
+    <dependencies>
+        <!-- PostgreSQL JDBC driver: bundled for local, provided for container. -->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>${postgresql.version}</version>
+            <scope>${libs.scope}</scope>
+        </dependency>
+    </dependencies>
     <properties>
         <project.root.basedir>${project.parent.basedir}</project.root.basedir>
     </properties>

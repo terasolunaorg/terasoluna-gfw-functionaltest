@@ -96,6 +96,14 @@
             <type>pom</type>
         </dependency>
         <!-- == End TERASOLUNA == -->
+
+        <!-- PostgreSQL JDBC driver: bundled for local/container-embedded, provided for container-external. -->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>${postgresql.version}</version>
+            <scope>${libs.scope}</scope>
+        </dependency>
     </dependencies>
     <properties>
         <project.root.basedir>${project.parent.basedir}</project.root.basedir>

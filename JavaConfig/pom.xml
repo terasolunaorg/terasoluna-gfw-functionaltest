@@ -152,16 +152,6 @@
                 <plugin>
                     <groupId>org.codehaus.cargo</groupId>
                     <artifactId>cargo-maven3-plugin</artifactId>
-                    <configuration>
-                        <container>
-                            <dependencies>
-                                <dependency>
-                                    <groupId>org.postgresql</groupId>
-                                    <artifactId>postgresql</artifactId>
-                                </dependency>
-                            </dependencies>
-                        </container>
-                    </configuration>
                 </plugin>
             </plugins>
         </pluginManagement>
@@ -211,6 +201,8 @@
         <project.env.envconfig.source.dir>${project.root.basedir}/${project.env.target.name}/configs/_env-default/java</project.env.envconfig.source.dir>
         <!-- env-jar dependency scope: 'compile' for embedded, 'provided' for external. -->
         <env.scope>compile</env.scope>
+        <!-- JDBC driver dependency scope: bundled for local, provided for container. -->
+        <libs.scope>compile</libs.scope>
         <!-- Selenium runtime hosts (reserved for profile consistency). -->
         <selenium.serverHost>localhost</selenium.serverHost>
         <selenium.serverPort>8080</selenium.serverPort>
@@ -246,6 +238,7 @@
             <properties>
                 <project.env.main.directory>configs/container-embedded-h2</project.env.main.directory>
                 <project.env.buildFinalName>${project.artifactId}-${project.version}-container-embedded-h2</project.env.buildFinalName>
+                <libs.scope>provided</libs.scope>
                 <selenium.serverHost>ap-server</selenium.serverHost>
                 <selenium.logDbHost>ap-server</selenium.logDbHost>
             </properties>
@@ -256,6 +249,7 @@
                 <project.env.main.directory>configs/container-embedded-postgres</project.env.main.directory>
                 <project.env.buildFinalName>${project.artifactId}-${project.version}-container-embedded-postgres</project.env.buildFinalName>
                 <project.env.envconfig.source.dir>${project.root.basedir}/${project.env.target.name}/configs/_env-jndi/java</project.env.envconfig.source.dir>
+                <libs.scope>provided</libs.scope>
                 <selenium.serverHost>ap-server</selenium.serverHost>
                 <selenium.logDbHost>ap-server</selenium.logDbHost>
             </properties>
@@ -266,6 +260,7 @@
                 <project.env.main.directory>configs/container-embedded-oracle</project.env.main.directory>
                 <project.env.buildFinalName>${project.artifactId}-${project.version}-container-embedded-oracle</project.env.buildFinalName>
                 <project.env.envconfig.source.dir>${project.root.basedir}/${project.env.target.name}/configs/_env-jndi/java</project.env.envconfig.source.dir>
+                <libs.scope>provided</libs.scope>
                 <selenium.serverHost>ap-server</selenium.serverHost>
                 <selenium.logDbHost>ap-server</selenium.logDbHost>
             </properties>
@@ -276,6 +271,7 @@
                 <project.env.main.directory>configs/container-external-h2</project.env.main.directory>
                 <project.env.buildFinalName>${project.artifactId}-${project.version}-h2</project.env.buildFinalName>
                 <env.scope>provided</env.scope>
+                <libs.scope>provided</libs.scope>
                 <selenium.serverHost>ap-server</selenium.serverHost>
                 <selenium.logDbHost>ap-server</selenium.logDbHost>
             </properties>
@@ -287,6 +283,7 @@
                 <project.env.buildFinalName>${project.artifactId}-${project.version}-postgres</project.env.buildFinalName>
                 <project.env.envconfig.source.dir>${project.root.basedir}/${project.env.target.name}/configs/_env-jndi/java</project.env.envconfig.source.dir>
                 <env.scope>provided</env.scope>
+                <libs.scope>provided</libs.scope>
                 <selenium.serverHost>ap-server</selenium.serverHost>
                 <selenium.logDbHost>ap-server</selenium.logDbHost>
             </properties>
@@ -298,6 +295,7 @@
                 <project.env.buildFinalName>${project.artifactId}-${project.version}-oracle</project.env.buildFinalName>
                 <project.env.envconfig.source.dir>${project.root.basedir}/${project.env.target.name}/configs/_env-jndi/java</project.env.envconfig.source.dir>
                 <env.scope>provided</env.scope>
+                <libs.scope>provided</libs.scope>
                 <selenium.serverHost>ap-server</selenium.serverHost>
                 <selenium.logDbHost>ap-server</selenium.logDbHost>
             </properties>
