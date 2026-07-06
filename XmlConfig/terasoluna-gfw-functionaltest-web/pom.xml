@@ -27,36 +27,10 @@
         </plugins>
     </build>
 
-    <profiles>
-        <profile>
-            <id>compile-env</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <dependencies>
-                <dependency>
-                    <groupId>${project.groupId}</groupId>
-                    <artifactId>terasoluna-gfw-functionaltest-env</artifactId>
-                </dependency>
-            </dependencies>
-        </profile>
-        <profile>
-            <id>provided-env</id>
-            <dependencies>
-                <dependency>
-                    <groupId>${project.groupId}</groupId>
-                    <artifactId>terasoluna-gfw-functionaltest-env</artifactId>
-                    <scope>provided</scope>
-                </dependency>
-            </dependencies>
-        </profile>
-    </profiles>
-
     <dependencies>
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>terasoluna-gfw-functionaltest-env</artifactId>
-            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>

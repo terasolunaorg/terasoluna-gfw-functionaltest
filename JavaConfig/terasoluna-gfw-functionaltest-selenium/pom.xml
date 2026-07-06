@@ -19,7 +19,33 @@
     </scm>
 
     <build>
+        <testResources>
+            <testResource>
+                <directory>src/test/resources</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>META-INF/spring/selenium.properties</include>
+                </includes>
+            </testResource>
+            <testResource>
+                <directory>src/test/resources</directory>
+                <filtering>false</filtering>
+                <excludes>
+                    <exclude>META-INF/spring/selenium.properties</exclude>
+                </excludes>
+            </testResource>
+        </testResources>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <configuration>
+                    <useDefaultDelimiters>false</useDefaultDelimiters>
+                    <delimiters>
+                        <delimiter>@</delimiter>
+                    </delimiters>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
