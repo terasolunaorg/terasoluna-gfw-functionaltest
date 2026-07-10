@@ -131,7 +131,7 @@ public class CodeListTest extends FunctionTestSupport {
         assertThat(driver.findElement(By.cssSelector("option[value=\"key3\"]")).getText(),
                 is("label3"));
         new Select(driver.findElement(By.id("item1"))).selectByVisibleText("label2");
-        driver.findElement(By.id("btn1")).click();
+        driver.findElement(By.id("btnConfirm")).click();
         assertThat(driver.findElement(By.id("output")).getText(), is("key2"));
         driver.findElement(By.id("btnback")).click();
     }
