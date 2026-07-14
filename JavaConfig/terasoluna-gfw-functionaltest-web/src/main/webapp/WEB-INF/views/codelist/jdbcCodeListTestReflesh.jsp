@@ -28,9 +28,9 @@
                         <td><form:select path="item1" items="${CL_CODELIST_ITEM1}" /></td>
                     </tr>
                     <tr>
-                        <td><input id="btn1" class="mainbtn" style="width: 200px" type="submit" value="Confirm" name="confirm" /></td>
-                        <td><input id="btn1" class="mainbtn" style="width: 200px" type="submit" value="Refresh CodeList" name="jdbcCodeListTestRefreshCodeList" /></td>
-                        <td><input id="btn1" class="mainbtn" style="width: 200px" type="submit" value="Update Table" name="jdbcCodeListTestSelectCodeList" /></td>
+                        <td><input id="btnConfirm" class="mainbtn" style="width: 200px" type="submit" value="Confirm" name="confirm" /></td>
+                        <td><input id="btnRefreshCodeList" class="mainbtn" style="width: 200px" type="submit" value="Refresh CodeList" name="jdbcCodeListTestRefreshCodeList" /></td>
+                        <td><input id="btnUpdateTable" class="mainbtn" style="width: 200px" type="submit" value="Update Table" name="jdbcCodeListTestSelectCodeList" /></td>
                     </tr>
                 </table>
             </form:form>
