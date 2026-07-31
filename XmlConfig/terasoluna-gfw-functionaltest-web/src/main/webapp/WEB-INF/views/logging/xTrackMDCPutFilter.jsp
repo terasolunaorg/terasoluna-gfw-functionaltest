@@ -30,7 +30,7 @@
                     <td><a id="xTrackMDCPutFilterCustom" href="${pageContext.request.contextPath}/logging/xTrackMDCPutFilter/1_2">custom attribute name</a></td>
                 </tr>
                 <tr>
-                    <td><a id="xTrackMDCPutFilterCustom" href="${pageContext.request.contextPath}/logging/xTrackMDCPutFilter/1_4">Check consistency HTTP Request Header to Response Header</a></td>
+                    <td><a id="xTrackMDCPutFilterHeaderConsistency" href="${pageContext.request.contextPath}/logging/xTrackMDCPutFilter/1_4">Check consistency HTTP Request Header to Response Header</a></td>
                 </tr>
             </table>
 
