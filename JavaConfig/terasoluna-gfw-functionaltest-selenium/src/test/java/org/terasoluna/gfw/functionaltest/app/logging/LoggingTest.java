@@ -18,18 +18,16 @@ package org.terasoluna.gfw.functionaltest.app.logging;
 import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
-import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.web.client.RestClient;
 import org.terasoluna.gfw.functionaltest.app.FunctionTestSupport;
 import jakarta.inject.Inject;
 
 public class LoggingTest extends FunctionTestSupport {
 
     @Inject
-    protected RestTemplate restTemplate;
+    protected RestClient restClient;
 
     @Test
     public void test01_01_createDefaultXTrackMDC() {
@@ -68,9 +66,9 @@ public class LoggingTest extends FunctionTestSupport {
         // test Check consistency HTTP Request Header to Response Header
         HttpHeaders requestHeaders = new HttpHeaders();
         requestHeaders.set("X-Track", "12345678901234567890123456789012");
-        ResponseEntity<byte[]> response =
-                restTemplate.exchange(applicationContextUrl + "/logging/xTrackMDCPutFilter/1_4",
-                        HttpMethod.GET, new HttpEntity<byte[]>(requestHeaders), byte[].class);
+        ResponseEntity<byte[]> response = restClient.get()
+                .uri(applicationContextUrl + "/logging/xTrackMDCPutFilter/1_4")
+                .headers(h -> h.addAll(requestHeaders)).retrieve().toEntity(byte[].class);
 
         HttpHeaders headers = response.getHeaders();
         assertThat(headers.getFirst("X-Track")).isEqualTo("12345678901234567890123456789012");
@@ -101,8 +99,8 @@ public class LoggingTest extends FunctionTestSupport {
         // logging same x-track MDC HTTP Request Header
         HttpHeaders requestHeaders = new HttpHeaders();
         requestHeaders.set("X-Track", targetMdc);
-        restTemplate.exchange(applicationContextUrl + "/logging/xTrackMDCPutFilter/1_4",
-                HttpMethod.GET, new HttpEntity<byte[]>(requestHeaders), byte[].class);
+        restClient.get().uri(applicationContextUrl + "/logging/xTrackMDCPutFilter/1_4")
+                .headers(h -> h.addAll(requestHeaders)).retrieve().toEntity(byte[].class);
 
         // check XTrack logging same transaction in HTTP Request Header to logfile
         // check visually the log file

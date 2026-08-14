@@ -23,13 +23,13 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.StreamUtils;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.web.client.RestClient;
 import org.terasoluna.gfw.functionaltest.app.FunctionTestSupport;
 import jakarta.inject.Inject;
 
 public class DownloadTest extends FunctionTestSupport {
     @Inject
-    protected RestTemplate restTemplate;
+    protected RestClient restClient;
 
     public DownloadTest() {
         disableSetupDefaultWebDriver();
@@ -37,8 +37,8 @@ public class DownloadTest extends FunctionTestSupport {
 
     @Test
     public void test01_01_fileDownload() throws IOException {
-        ResponseEntity<byte[]> response =
-                restTemplate.getForEntity(applicationContextUrl + "/download/1_1", byte[].class);
+        ResponseEntity<byte[]> response = restClient.get()
+                .uri(applicationContextUrl + "/download/1_1").retrieve().toEntity(byte[].class);
         ClassPathResource images = new ClassPathResource("/image/Duke.png");
 
         byte[] expected = StreamUtils.copyToByteArray(images.getInputStream());
@@ -57,8 +57,8 @@ public class DownloadTest extends FunctionTestSupport {
 
     @Test
     public void test01_02_fileDownload() {
-        ResponseEntity<String> response =
-                restTemplate.getForEntity(applicationContextUrl + "/download/1_2", String.class);
+        ResponseEntity<String> response = restClient.get()
+                .uri(applicationContextUrl + "/download/1_2").retrieve().toEntity(String.class);
 
         HttpHeaders headers = response.getHeaders();
         System.out.println("test01_02_fileDownload: X-Track=" + headers.getFirst("X-Track"));
