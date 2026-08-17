@@ -25,11 +25,12 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.core.io.Resource;
+import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.TransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.web.client.RestClient;
 import org.terasoluna.gfw.functionaltest.app.DBLog;
 import org.terasoluna.gfw.functionaltest.app.DBLogProvider;
 import org.terasoluna.gfw.functionaltest.app.PageSource;
@@ -131,12 +132,13 @@ public class SeleniumContextConfig {
     }
 
     /**
-     * Configure the {@link RestTemplate}.
-     * @return Bean of configured {@link RestTemplate}
+     * Configure the {@link RestClient}.
+     * @return Bean of configured {@link RestClient}
      */
-    @Bean("restTemplate")
-    public RestTemplate restTemplate() {
-        return new RestTemplate();
+    @Bean("restClient")
+    public RestClient restClient() {
+        return RestClient.builder().requestFactory(new SimpleClientHttpRequestFactory())
+                .build();
     }
 
     /**

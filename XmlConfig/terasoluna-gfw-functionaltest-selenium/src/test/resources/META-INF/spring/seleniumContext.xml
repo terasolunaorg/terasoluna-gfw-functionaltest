@@ -29,7 +29,9 @@
 
     <bean id="pageSource" class="org.terasoluna.gfw.functionaltest.app.PageSource" />
 
-    <bean id="restTemplate" class="org.springframework.web.client.RestTemplate" />
+    <!-- RestClient generation is defined in Java (RestClientConfig) and imported here. -->
+    <context:annotation-config />
+    <bean class="org.terasoluna.gfw.functionaltest.config.RestClientConfig" />
 
     <bean id="dbLogAssertOperations" class="org.terasoluna.gfw.functionaltest.app.DBLogProvider">
         <constructor-arg index="0">

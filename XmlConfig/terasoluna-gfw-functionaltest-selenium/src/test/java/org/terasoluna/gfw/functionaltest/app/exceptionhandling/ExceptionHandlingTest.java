@@ -21,7 +21,7 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.HttpServerErrorException;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.web.client.RestClient;
 import org.terasoluna.gfw.functionaltest.app.FunctionTestSupport;
 import org.terasoluna.gfw.functionaltest.app.webdrivers.WebDriverType;
 import jakarta.inject.Inject;
@@ -29,7 +29,7 @@ import jakarta.inject.Inject;
 public class ExceptionHandlingTest extends FunctionTestSupport {
 
     @Inject
-    protected RestTemplate restTemplate;
+    protected RestClient restClient;
 
     public ExceptionHandlingTest() {}
 
@@ -188,8 +188,8 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
         screenCapture.save(driver);
 
         try {
-            restTemplate.getForEntity(applicationContextUrl + "/exceptionhandling/3_1",
-                    String.class);
+            restClient.get().uri(applicationContextUrl + "/exceptionhandling/3_1")
+                    .retrieve().toBodilessEntity();
         } catch (HttpServerErrorException e) {
             // Response Header Error Code assert
             assertThat(e.getResponseHeaders().get("X-Exception-Code").get(0).toString())
@@ -219,8 +219,8 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
         screenCapture.save(driver);
 
         try {
-            restTemplate.getForEntity(applicationContextUrl + "/exceptionhandling/3_2",
-                    String.class);
+            restClient.get().uri(applicationContextUrl + "/exceptionhandling/3_2")
+                    .retrieve().toBodilessEntity();
         } catch (HttpServerErrorException e) {
             // Response Header Error Code assert
             assertThat(e.getResponseHeaders().get("X-Exception-Code").get(0).toString())
@@ -250,10 +250,10 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
         screenCapture.save(driver);
 
         try {
-            restTemplate.getForEntity(
-                    applicationContextUrl
-                            + "/exceptionHandlingChangeDefaultStatusCode/exceptionhandling/3_3",
-                    String.class);
+            restClient.get()
+                    .uri(applicationContextUrl
+                            + "/exceptionHandlingChangeDefaultStatusCode/exceptionhandling/3_3")
+                    .retrieve().toBodilessEntity();
         } catch (HttpClientErrorException e) {
             // Response Header Error Code assert
             assertThat(e.getResponseHeaders().get("X-Exception-Code").get(0).toString())
@@ -305,8 +305,8 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
         screenCapture.save(driver);
 
         try {
-            restTemplate.getForEntity(applicationContextUrl + "/exceptionhandling/3_5",
-                    String.class);
+            restClient.get().uri(applicationContextUrl + "/exceptionhandling/3_5")
+                    .retrieve().toBodilessEntity();
         } catch (HttpServerErrorException e) {
             // Response Header Error Code assert
             assertThat(e.getResponseHeaders().get("X-Exception-Code").get(0).toString())
@@ -338,10 +338,10 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
         screenCapture.save(driver);
 
         try {
-            restTemplate.getForEntity(
-                    applicationContextUrl
-                            + "/exceptionHandlingIgnoreResultMessages/exceptionhandling/3_6",
-                    String.class);
+            restClient.get()
+                    .uri(applicationContextUrl
+                            + "/exceptionHandlingIgnoreResultMessages/exceptionhandling/3_6")
+                    .retrieve().toBodilessEntity();
         } catch (HttpServerErrorException e) {
             // Response Header Error Code assert
             assertThat(e.getResponseHeaders().get("X-Exception-Code").get(0).toString())
@@ -372,8 +372,8 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
         screenCapture.save(driver);
 
         try {
-            restTemplate.getForEntity(applicationContextUrl + "/exceptionhandling/3_7",
-                    String.class);
+            restClient.get().uri(applicationContextUrl + "/exceptionhandling/3_7")
+                    .retrieve().toBodilessEntity();
         } catch (HttpClientErrorException e) {
             // Response Header Error Code assert
             assertThat(e.getResponseHeaders().get("X-Exception-Code").get(0).toString())
@@ -402,10 +402,10 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
         screenCapture.save(driver);
 
         try {
-            restTemplate.getForEntity(
-                    applicationContextUrl
-                            + "/exceptionHandlingChangeAttribute/exceptionhandling/3_8",
-                    String.class);
+            restClient.get()
+                    .uri(applicationContextUrl
+                            + "/exceptionHandlingChangeAttribute/exceptionhandling/3_8")
+                    .retrieve().toBodilessEntity();
         } catch (HttpServerErrorException e) {
             // Response Header Error Code assert
             assertThat(e.getResponseHeaders().get("X-Error-Code").get(0).toString())
@@ -434,10 +434,10 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
         screenCapture.save(driver);
 
         try {
-            restTemplate.getForEntity(
-                    applicationContextUrl
-                            + "/exceptionHandlingChangeAttribute/exceptionhandling/3_9",
-                    String.class);
+            restClient.get()
+                    .uri(applicationContextUrl
+                            + "/exceptionHandlingChangeAttribute/exceptionhandling/3_9")
+                    .retrieve().toBodilessEntity();
         } catch (HttpServerErrorException e) {
             // Response Header Error Code assert
             assertThat(e.getResponseHeaders().get("X-Error-Code").get(0).toString())
@@ -467,8 +467,8 @@ public class ExceptionHandlingTest extends FunctionTestSupport {
         screenCapture.save(driver);
 
         try {
-            restTemplate.getForEntity(applicationContextUrl + "/exceptionhandling/3_10",
-                    String.class);
+            restClient.get().uri(applicationContextUrl + "/exceptionhandling/3_10")
+                    .retrieve().toBodilessEntity();
         } catch (HttpClientErrorException e) {
             // Response Header Error Code assert
             assertThat(e.getResponseHeaders().get("X-Exception-Code").get(0).toString())
