@@ -220,7 +220,7 @@
         <project.root.basedir>${project.basedir}</project.root.basedir>
         <encoding>UTF-8</encoding>
         <java-version>17</java-version>
-        <cargo.jvmargs>-Xms512m -Xmx1024m -Duser.language=ja -Duser.country=JP -Duser.timezone=Asia/Tokyo -Djava.locale.providers=COMPAT,CLDR,SPI</cargo.jvmargs>
+        <cargo.jvmargs>-Xms512m -Xmx1024m -Duser.language=ja -Duser.country=JP -Duser.timezone=Asia/Tokyo</cargo.jvmargs>
     </properties>
 
     <profiles>

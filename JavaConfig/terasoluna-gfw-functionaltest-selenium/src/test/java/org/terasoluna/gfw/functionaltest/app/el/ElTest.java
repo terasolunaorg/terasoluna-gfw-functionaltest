@@ -537,7 +537,8 @@ public class ElTest extends FunctionTestSupport {
         assertThat(driver.findElement(By.id("queryOutput")).getText(),
                 is("Date=10/1/13&String=Spring&int=100"));
         assertThat(driver.findElement(By.id("noAndQueryOutput")).getText(),
-                is("%26String=framework&Long=100&boolean=true&DateTime=10/1/13%2012:00%20AM"));
+                is("%26String=framework&Long=100&boolean=true&DateTime=10/1/13,%2012:00%20AM"));
+
 
         // screen capture
         screenCapture.save(driver);
@@ -757,7 +758,8 @@ public class ElTest extends FunctionTestSupport {
 
         inputFieldAccessor.overrideValue(By.id("localDateTime"), "2015-04-01 10:20:30", driver);
         inputFieldAccessor.overrideValue(By.id("localDate"), "2015-06-10", driver);
-        inputFieldAccessor.overrideValue(By.id("item.localDateTime"), "2015-05-01 10:30:40", driver);
+        inputFieldAccessor.overrideValue(By.id("item.localDateTime"), "2015-05-01 10:30:40",
+                driver);
         inputFieldAccessor.overrideValue(By.id("item.localDate"), "2015-07-10", driver);
 
         driver.findElement(By.id("searchButton")).click();

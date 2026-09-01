@@ -537,7 +537,8 @@ public class ElTest extends FunctionTestSupport {
         assertThat(driver.findElement(By.id("queryOutput")).getText(),
                 is("Date=10/1/13&String=Spring&int=100"));
         assertThat(driver.findElement(By.id("noAndQueryOutput")).getText(),
-                is("%26String=framework&Long=100&boolean=true&DateTime=10/1/13%2012:00%20AM"));
+                is("%26String=framework&Long=100&boolean=true&DateTime=10/1/13,%2012:00%20AM"));
+
 
         // screen capture
         screenCapture.save(driver);
@@ -765,7 +766,7 @@ public class ElTest extends FunctionTestSupport {
         driver.findElement(By.id("pagination")).findElement(By.linkText("2")).click();
 
         // output 06_13 Test
-         assertThat(driver.findElement(By.id("localDateTime")).getAttribute("value"),
+        assertThat(driver.findElement(By.id("localDateTime")).getAttribute("value"),
                 is("2015-04-01 10:20:30"));
         assertThat(driver.findElement(By.id("localDate")).getAttribute("value"), is("2015-06-10"));
         assertThat(driver.findElement(By.id("item.localDateTime")).getAttribute("value"),
