@@ -54,6 +54,7 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
                     <configuration>
+                        <release>${java-release}</release>
                         <parameters>true</parameters>
                         <annotationProcessorPaths>
                             <path>
@@ -215,6 +216,24 @@
     </properties>
 
     <profiles>
+        <profile>
+            <id>jdk-17</id>
+            <activation>
+                <jdk>17</jdk>
+            </activation>
+            <properties>
+                <java-release>17</java-release>
+            </properties>
+        </profile>
+        <profile>
+            <id>jdk-21</id>
+            <activation>
+                <jdk>21</jdk>
+            </activation>
+            <properties>
+                <java-release>21</java-release>
+            </properties>
+        </profile>
         <profile>
             <id>local-h2</id>
             <activation>
