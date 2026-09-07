@@ -59,7 +59,8 @@ The commands are different for XML-based configuration and Java-based configurat
 $ cd {your repository directory}
 $ git checkout {target branch}
 $ cd {your repository directory}/XmlConfig
-$ mvn -U install -am -pl terasoluna-gfw-functionaltest-web
+$ mvn -U install -am -pl terasoluna-gfw-functionaltest-web             # JDK 17
+$ mvn -U install -am -pl terasoluna-gfw-functionaltest-web -P local-h2 # JDK 21 or JDK 25
 ```
 
 **Java-based configuration**
@@ -68,7 +69,8 @@ $ mvn -U install -am -pl terasoluna-gfw-functionaltest-web
 $ cd {your repository directory}
 $ git checkout {target branch}
 $ cd {your repository directory}/JavaConfig
-$ mvn -U install -am -pl terasoluna-gfw-functionaltest-web
+$ mvn -U install -am -pl terasoluna-gfw-functionaltest-web             # JDK 17
+$ mvn -U install -am -pl terasoluna-gfw-functionaltest-web -P local-h2 # JDK 21 or JDK 25
 ```
 
 #### Case of using PostgreSQL as database
