@@ -59,8 +59,8 @@ The commands are different for XML-based configuration and Java-based configurat
 $ cd {your repository directory}
 $ git checkout {target branch}
 $ cd {your repository directory}/XmlConfig
-$ mvn -U install -am -pl terasoluna-gfw-functionaltest-web             # JDK 17
-$ mvn -U install -am -pl terasoluna-gfw-functionaltest-web -P local-h2 # JDK 21 or JDK 25
+$ mvn -U install -am -pl terasoluna-gfw-functionaltest-web             # For JDK 17
+$ mvn -U install -am -pl terasoluna-gfw-functionaltest-web -P local-h2 # For JDK 21 or JDK 25
 ```
 
 **Java-based configuration**
@@ -69,9 +69,15 @@ $ mvn -U install -am -pl terasoluna-gfw-functionaltest-web -P local-h2 # JDK 21 
 $ cd {your repository directory}
 $ git checkout {target branch}
 $ cd {your repository directory}/JavaConfig
-$ mvn -U install -am -pl terasoluna-gfw-functionaltest-web             # JDK 17
-$ mvn -U install -am -pl terasoluna-gfw-functionaltest-web -P local-h2 # JDK 21 or JDK 25
+$ mvn -U install -am -pl terasoluna-gfw-functionaltest-web             # For JDK 17
+$ mvn -U install -am -pl terasoluna-gfw-functionaltest-web -P local-h2 # For JDK 21 or JDK 25
 ```
+
+> **Note:**
+>
+> The `local-h2` profile is active by default and configures the build for the embedded H2 database.
+> When the build runs on JDK 21 or JDK 25, the JDK-based profile activation automatically activates the `jdk-21` or `jdk-25` profile to set the corresponding Java version.
+> Because activating another profile in the same POM causes the default profile to become inactive, specify `-P local-h2` explicitly when using embedded H2 with JDK 21 or JDK 25.
 
 #### Case of using PostgreSQL as database
 
