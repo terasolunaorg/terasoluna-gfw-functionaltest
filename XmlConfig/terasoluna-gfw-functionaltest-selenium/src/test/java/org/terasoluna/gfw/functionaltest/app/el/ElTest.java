@@ -524,8 +524,11 @@ public class ElTest extends FunctionTestSupport {
         // output 06_01-02 Test
         assertThat(driver.findElement(By.id("queryOutput")).getText())
                 .isEqualTo("Date=10/1/13&String=Spring&int=100");
-        assertThat(driver.findElement(By.id("noAndQueryOutput")).getText()).isEqualTo(
-                "%26String=framework&Long=100&boolean=true&DateTime=10/1/13,%2012:00%20AM");
+        // Depending on the CLDR version, the half-width space used when the string is converted to
+        // a string differs.
+        assertThat(driver.findElement(By.id("noAndQueryOutput")).getText()).isIn(
+                "%26String=framework&Long=100&boolean=true&DateTime=10/1/13,%2012:00%20AM",
+                "%26String=framework&Long=100&boolean=true&DateTime=10/1/13,%2012:00%E2%80%AFAM");
 
         // screen capture
         screenCapture.save(driver);
