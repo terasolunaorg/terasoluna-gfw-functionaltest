@@ -15,6 +15,7 @@
  */
 package org.terasoluna.gfw.functionaltest.app.el;
 
+import static org.hamcrest.CoreMatchers.anyOf;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsNull.nullValue;
@@ -536,9 +537,9 @@ public class ElTest extends FunctionTestSupport {
         // output 06_01-02 Test
         assertThat(driver.findElement(By.id("queryOutput")).getText(),
                 is("Date=10/1/13&String=Spring&int=100"));
-        assertThat(driver.findElement(By.id("noAndQueryOutput")).getText().isIn(
-                "%26String=framework&Long=100&boolean=true&DateTime=10/1/13,%2012:00%20AM",
-                "%26String=framework&Long=100&boolean=true&DateTime=10/1/13,%2012:00%E2%80%AFAM"));
+        assertThat(driver.findElement(By.id("noAndQueryOutput")).getText(), anyOf(
+                is("%26String=framework&Long=100&boolean=true&DateTime=10/1/13,%2012:00%20AM"),
+                is("%26String=framework&Long=100&boolean=true&DateTime=10/1/13,%2012:00%E2%80%AFAM")));
 
         // screen capture
         screenCapture.save(driver);
