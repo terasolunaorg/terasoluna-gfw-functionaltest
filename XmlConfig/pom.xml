@@ -145,9 +145,6 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-javadoc-plugin</artifactId>
-                    <configuration>
-                        <source>${java-version}</source>
-                    </configuration>
                 </plugin>
                 <plugin>
                     <groupId>org.codehaus.cargo</groupId>
@@ -219,7 +216,7 @@
         <selenium.logDbPort>9192</selenium.logDbPort>
         <project.root.basedir>${project.basedir}</project.root.basedir>
         <encoding>UTF-8</encoding>
-        <java-version>17</java-version>
+        <maven.compiler.release>${java.specification.version}</maven.compiler.release>
         <cargo.jvmargs>-Xms512m -Xmx1024m -Duser.language=ja -Duser.country=JP -Duser.timezone=Asia/Tokyo</cargo.jvmargs>
     </properties>
 
