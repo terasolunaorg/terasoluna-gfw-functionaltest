@@ -59,7 +59,7 @@ The commands are different for XML-based configuration and Java-based configurat
 $ cd {your repository directory}
 $ git checkout {target branch}
 $ cd {your repository directory}/XmlConfig
-$ mvn -U install -am -pl terasoluna-gfw-functionaltest-web
+$ mvn clean install -am -pl terasoluna-gfw-functionaltest-web
 ```
 
 **Java-based configuration**
@@ -68,7 +68,7 @@ $ mvn -U install -am -pl terasoluna-gfw-functionaltest-web
 $ cd {your repository directory}
 $ git checkout {target branch}
 $ cd {your repository directory}/JavaConfig
-$ mvn -U install -am -pl terasoluna-gfw-functionaltest-web
+$ mvn clean install -am -pl terasoluna-gfw-functionaltest-web
 ```
 
 #### Case of using PostgreSQL as database
@@ -81,7 +81,7 @@ The commands are different for XML-based configuration and Java-based configurat
 $ cd {your repository directory}
 $ git checkout {target branch}
 $ cd {your repository directory}/XmlConfig
-$ mvn -U install -am -pl terasoluna-gfw-functionaltest-web -P local-postgres
+$ mvn clean install -am -pl terasoluna-gfw-functionaltest-web -P local-postgres
 ```
 
 **Java-based configuration**
@@ -90,7 +90,7 @@ $ mvn -U install -am -pl terasoluna-gfw-functionaltest-web -P local-postgres
 $ cd {your repository directory}
 $ git checkout {target branch}
 $ cd {your repository directory}/JavaConfig
-$ mvn -U install -am -pl terasoluna-gfw-functionaltest-web -P local-postgres
+$ mvn clean install -am -pl terasoluna-gfw-functionaltest-web -P local-postgres
 ```
 
 > **Note:**
@@ -101,7 +101,7 @@ $ mvn -U install -am -pl terasoluna-gfw-functionaltest-web -P local-postgres
 If PostgreSQL is used as database, initialize database before run functional test.
 
 ```console
-$ mvn -U sql:execute -pl terasoluna-gfw-functionaltest-initdb
+$ mvn sql:execute -pl terasoluna-gfw-functionaltest-initdb
 ```
 
 > **Note:**
@@ -117,14 +117,14 @@ The commands are different for XML-based configuration and Java-based configurat
 
 ```console
 $ cd {your repository directory}/XmlConfig
-$ mvn -U cargo:run -pl terasoluna-gfw-functionaltest-web
+$ mvn cargo:run -pl terasoluna-gfw-functionaltest-web
 ```
 
 **Java-based configuration**
 
 ```console
 $ cd {your repository directory}/JavaConfig
-$ mvn -U cargo:run -pl terasoluna-gfw-functionaltest-web
+$ mvn cargo:run -pl terasoluna-gfw-functionaltest-web
 ```
 
 The following options can be set at cargo runtime.
@@ -146,14 +146,14 @@ The commands are different for XML-based configuration and Java-based configurat
 
 ```console
 $ cd {your repository directory}/XmlConfig
-$ mvn -U test -pl terasoluna-gfw-functionaltest-selenium
+$ mvn test -pl terasoluna-gfw-functionaltest-selenium
 ```
 
 **Java-based configuration**
 
 ```console
 $ cd {your repository directory}/JavaConfig
-$ mvn -U test -pl terasoluna-gfw-functionaltest-selenium
+$ mvn test -pl terasoluna-gfw-functionaltest-selenium
 ```
 
 The following options can be set at selenium runtime.
