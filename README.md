@@ -101,7 +101,7 @@ $ mvn clean install -am -pl terasoluna-gfw-functionaltest-web -P local-postgres
 If PostgreSQL is used as database, initialize database before run functional test.
 
 ```console
-$ mvn -U sql:execute -pl terasoluna-gfw-functionaltest-initdb
+$ mvn sql:execute -pl terasoluna-gfw-functionaltest-initdb
 ```
 
 > **Note:**
@@ -117,14 +117,14 @@ The commands are different for XML-based configuration and Java-based configurat
 
 ```console
 $ cd {your repository directory}/XmlConfig
-$ mvn -U cargo:run -pl terasoluna-gfw-functionaltest-web
+$ mvn cargo:run -pl terasoluna-gfw-functionaltest-web
 ```
 
 **Java-based configuration**
 
 ```console
 $ cd {your repository directory}/JavaConfig
-$ mvn -U cargo:run -pl terasoluna-gfw-functionaltest-web
+$ mvn cargo:run -pl terasoluna-gfw-functionaltest-web
 ```
 
 The following options can be set at cargo runtime.
