@@ -205,6 +205,7 @@
         <project.env.main.directory>configs/local-h2</project.env.main.directory>
         <project.env.target.name>terasoluna-gfw-functionaltest-env</project.env.target.name>
         <project.env.buildFinalName>${project.artifactId}-${project.version}</project.env.buildFinalName>
+        <project.env.envconfig.resource.dir>configs/_env-default/resources</project.env.envconfig.resource.dir>
         <!-- env-jar dependency scope: 'compile' for embedded, 'provided' for external. -->
         <env.scope>compile</env.scope>
         <!-- JDBC driver dependency scope: bundled for local, provided for container. -->
@@ -236,6 +237,7 @@
             <properties>
                 <project.env.main.directory>configs/local-postgres</project.env.main.directory>
                 <project.env.buildFinalName>${project.artifactId}-${project.version}-local-postgres</project.env.buildFinalName>
+                <project.env.envconfig.resource.dir>configs/_env-jndi/resources</project.env.envconfig.resource.dir>
             </properties>
         </profile>
         <profile>
@@ -253,6 +255,7 @@
             <properties>
                 <project.env.main.directory>configs/container-embedded-postgres</project.env.main.directory>
                 <project.env.buildFinalName>${project.artifactId}-${project.version}-container-embedded-postgres</project.env.buildFinalName>
+                <project.env.envconfig.resource.dir>configs/_env-jndi/resources</project.env.envconfig.resource.dir>
                 <libs.scope>provided</libs.scope>
                 <selenium.serverHost>ap-server</selenium.serverHost>
                 <selenium.logDbHost>ap-server</selenium.logDbHost>
@@ -263,6 +266,7 @@
             <properties>
                 <project.env.main.directory>configs/container-embedded-oracle</project.env.main.directory>
                 <project.env.buildFinalName>${project.artifactId}-${project.version}-container-embedded-oracle</project.env.buildFinalName>
+                <project.env.envconfig.resource.dir>configs/_env-jndi/resources</project.env.envconfig.resource.dir>
                 <libs.scope>provided</libs.scope>
                 <selenium.serverHost>ap-server</selenium.serverHost>
                 <selenium.logDbHost>ap-server</selenium.logDbHost>
@@ -284,6 +288,7 @@
             <properties>
                 <project.env.main.directory>configs/container-external-postgres</project.env.main.directory>
                 <project.env.buildFinalName>${project.artifactId}-${project.version}-postgres</project.env.buildFinalName>
+                <project.env.envconfig.resource.dir>configs/_env-jndi/resources</project.env.envconfig.resource.dir>
                 <env.scope>provided</env.scope>
                 <libs.scope>provided</libs.scope>
                 <selenium.serverHost>ap-server</selenium.serverHost>
@@ -295,6 +300,7 @@
             <properties>
                 <project.env.main.directory>configs/container-external-oracle</project.env.main.directory>
                 <project.env.buildFinalName>${project.artifactId}-${project.version}-oracle</project.env.buildFinalName>
+                <project.env.envconfig.resource.dir>configs/_env-jndi/resources</project.env.envconfig.resource.dir>
                 <env.scope>provided</env.scope>
                 <libs.scope>provided</libs.scope>
                 <selenium.serverHost>ap-server</selenium.serverHost>

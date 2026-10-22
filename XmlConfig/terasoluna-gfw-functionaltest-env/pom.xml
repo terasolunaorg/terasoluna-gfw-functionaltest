@@ -20,6 +20,22 @@
         <finalName>${project.env.buildFinalName}</finalName>
         <resources>
             <resource>
+                <directory>src/main/resources</directory>
+                <excludes>
+                    <exclude>META-INF/web-fragment.xml</exclude>
+                </excludes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>META-INF/web-fragment.xml</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>${project.env.envconfig.resource.dir}</directory>
+            </resource>
+            <resource>
                 <directory>${project.env.main.directory}/resources</directory>
             </resource>
         </resources>
