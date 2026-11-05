@@ -57,27 +57,9 @@ public class ApplicationContextConfig {
     @Bean("passwordEncoder")
     public PasswordEncoder passwordEncoder() {
         Map<String, PasswordEncoder> idToPasswordEncoder = new HashMap<>();
-        idToPasswordEncoder.put("pbkdf2", pbkdf2PasswordEncoder());
-        idToPasswordEncoder.put("bcrypt", bCryptPasswordEncoder());
+        idToPasswordEncoder.put("pbkdf2", Pbkdf2PasswordEncoder.defaultsForSpringSecurity_v5_8());
+        idToPasswordEncoder.put("bcrypt", new BCryptPasswordEncoder());
         return new DelegatingPasswordEncoder("pbkdf2", idToPasswordEncoder);
-    }
-
-    /**
-     * Configure {@link Pbkdf2PasswordEncoder} bean.
-     * @return Bean of configured {@link Pbkdf2PasswordEncoder}
-     */
-    @Bean
-    public Pbkdf2PasswordEncoder pbkdf2PasswordEncoder() {
-        return Pbkdf2PasswordEncoder.defaultsForSpringSecurity_v5_8();
-    }
-
-    /**
-     * Configure {@link BCryptPasswordEncoder} bean.
-     * @return Bean of configured {@link BCryptPasswordEncoder}
-     */
-    @Bean
-    public BCryptPasswordEncoder bCryptPasswordEncoder() {
-        return new BCryptPasswordEncoder();
     }
 
     /**
