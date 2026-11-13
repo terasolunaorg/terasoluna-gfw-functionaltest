@@ -23,7 +23,9 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -56,12 +58,17 @@ public class SpringSecurityConfig {
     /**
      * Configure {@link SecurityFilterChain} bean.
      * @param http Builder class for setting up authentication and authorization
+     * @param authenticationManager AuthenticationManager to be used for authentication
      * @return Bean of configured {@link SecurityFilterChain}
      */
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain filterChain(HttpSecurity http,
+            @Qualifier("authenticationManager") AuthenticationManager authenticationManager)
+            throws Exception {
 
         http.securityMatcher(new AntPathRequestMatcher("/logging/**"));
+
+        http.authenticationManager(authenticationManager);
 
         http.authorizeHttpRequests(
                 authz -> authz.requestMatchers(new AntPathRequestMatcher("/**")).permitAll());
@@ -99,11 +106,25 @@ public class SpringSecurityConfig {
     }
 
     /**
+     * Configure {@link AuthenticationManager} bean.
+     * @param authenticationProvider AuthenticationProvider defined by
+     *        {@link #authProvider(PasswordEncoder)}
+     * @return Bean of configured {@link AuthenticationManager}
+     * @throws Exception
+     */
+    @Bean("authenticationManager")
+    public AuthenticationManager authenticationManager(
+            @Qualifier("authenticationProvider") AuthenticationProvider authenticationProvider)
+            throws Exception {
+        return new ProviderManager(authenticationProvider);
+    }
+
+    /**
      * Configure {@link AuthenticationProvider} bean.
      * @param passwordEncoder PasswordEncoder defined by ApplicationContextConfig#passwordEncoder()
      * @return Bean of configured {@link AuthenticationProvider}
      */
-    @Bean
+    @Bean("authenticationProvider")
     public AuthenticationProvider authProvider(
             @Qualifier("passwordEncoder") PasswordEncoder passwordEncoder) {
         DaoAuthenticationProvider authProvider =
