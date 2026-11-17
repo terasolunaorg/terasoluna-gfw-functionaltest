@@ -6,7 +6,7 @@
 
     <sec:http pattern="/resources/**" security="none" />
     <sec:http pattern="/webjars/**" security="none" />
-    <sec:http pattern="/logging/**">
+    <sec:http pattern="/logging/**" authentication-manager-ref="authenticationManager">
         <sec:intercept-url pattern="/**" access="permitAll" />
         <sec:access-denied-handler ref="accessDeniedHandler" />
         <sec:form-login login-page="/logging/userIdMDCPutFilter" login-processing-url="/logging/login"
@@ -32,7 +32,7 @@
         </constructor-arg>
     </bean>
 
-    <sec:authentication-manager>
+    <sec:authentication-manager id="authenticationManager">
         <sec:authentication-provider user-service-ref="userService">
             <sec:password-encoder ref="passwordEncoder" />
         </sec:authentication-provider>
